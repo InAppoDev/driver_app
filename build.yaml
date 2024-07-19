@@ -1,0 +1,6 @@
+targets:
+  $default:
+    builders:
+      auto_route_generator:autoRouteBuilder:
+        options:
+          generate_for_dir: [lib]
