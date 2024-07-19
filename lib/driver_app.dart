@@ -1,27 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tms_driver/presentation/blocks/bloc/auth_bloc.dart';
-import 'package:tms_driver/presentation/pages/login/login_page.dart';
+import 'router/app_router.dart';
 
 class DriverApp extends StatelessWidget {
   const DriverApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Driver App',
-      // theme: AppTheme.lightTheme,
-      // darkTheme: AppTheme.darkTheme,
-      // localizationsDelegates: [],
+      routerDelegate: router.routerDelegate,
+      routeInformationParser: router.routeInformationParser,
+      routeInformationProvider: router.routeInformationProvider,
       supportedLocales: const [
         Locale('en', 'US'),
       ],
-      // initialRoute: RouteConstants.initialRoute,
-      // routes: AppRoutes.routes,
-      home: BlocProvider(
-        create: (context) => AuthBloc(),
-        child: LoginPage(),
-      ),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/pages/home/home_page.dart';
+import 'package:tms_driver/presentation/pages/trip_list/trip_list.dart';
 import 'package:tms_driver/presentation/pages/message_list/message_list.dart';
 import 'package:tms_driver/presentation/pages/profile/profile.dart';
-import 'package:tms_driver/presentation/pages/trip_list/trip_list.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -13,13 +13,19 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
+  Color color = const Color.fromRGBO(239, 243, 249, 1.0);
 
-  static const List<Widget> _widgetOptions = <Widget>[
+  static const List<Widget> _routes = [
     HomePage(),
     TripListPage(),
     MessageListPage(),
     ProfilePage(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -30,25 +36,36 @@ class MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
       appBar: AppBar(
-        title: Text('Main Page'),
+        title: const Text('Main Page'),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _routes,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        backgroundColor: Colors.white,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.orange,
+        unselectedItemColor: Colors.grey,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.travel_explore),
-            label: 'Trips',
+            icon: Icon(Icons.place_outlined),
+            label: 'Trip',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.message),
+            icon: Icon(Icons.message_outlined),
             label: 'Messages',
           ),
           BottomNavigationBarItem(
@@ -56,8 +73,6 @@ class MainPageState extends State<MainPage> {
             label: 'Profile',
           ),
         ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
       ),
     );
   }
