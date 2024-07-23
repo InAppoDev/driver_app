@@ -13,7 +13,6 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
-  Color color = const Color.fromRGBO(239, 243, 249, 1.0);
 
   static const List<Widget> _routes = [
     HomePage(),
@@ -47,12 +46,9 @@ class MainPageState extends State<MainPage> {
         children: _routes,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         items: const [

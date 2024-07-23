@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/presentation/theme/theme.dart';
 import 'router/app_router.dart';
 
 class DriverApp extends StatelessWidget {
@@ -8,6 +9,7 @@ class DriverApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Driver App',
+      theme: lightTheme,
       routerDelegate: router.routerDelegate,
       routeInformationParser: router.routeInformationParser,
       routeInformationProvider: router.routeInformationProvider,

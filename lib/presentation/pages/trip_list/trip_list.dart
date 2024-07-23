@@ -5,8 +5,11 @@ class TripListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Trip Page'),
+    return Container(
+      decoration: BoxDecoration(color: Theme.of(context).canvasColor),
+      child: const Center(
+        child: Text('Trip Page'),
+      ),
     );
   }
 }
