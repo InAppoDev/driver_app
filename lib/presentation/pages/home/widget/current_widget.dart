@@ -19,7 +19,7 @@ class CurrentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 7.5),
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(12)),

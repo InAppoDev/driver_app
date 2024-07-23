@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFFF5F5F5),
+      decoration: BoxDecoration(color: Theme.of(context).canvasColor),
       child: const SingleChildScrollView(
         child: Column(
           children: [
