@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tms_driver/presentation/blocks/bloc/auth_bloc.dart';
+import 'package:tms_driver/presentation/blocks/auth/auth_bloc.dart';
 import 'package:tms_driver/presentation/pages/login/widget/login_view.dart';
 
 class LoginPage extends StatelessWidget {

@@ -7,6 +7,6 @@ class NetworkException extends BaseException {
   const NetworkException(
     this.message,
   ) : super(
-          ExceptionType.networkExeption,
+          ExceptionType.networkException,
         );
 }
