@@ -11,4 +11,7 @@ class AppColors {
   static const Color white = Color.fromRGBO(239, 243, 249, 1.0);
   static const Color error = Color(0xFFFF0606);
   static const Color success = Color(0xFF3CB012);
+  static const Color palePink = Color(0xFFFFF8F6);
+  static const Color lightGray = Color(0xFFEBE7E8);
+  static const Color textGray = Color(0xFF5A5857);
 }
