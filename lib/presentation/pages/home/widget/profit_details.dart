@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tms_driver/presentation/pages/home/widget/profit_details_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tms_driver/presentation/pages/home/widget/profit_details_widget.dart';
+
 class ProfitDetails extends StatelessWidget {
   const ProfitDetails({super.key});
 
