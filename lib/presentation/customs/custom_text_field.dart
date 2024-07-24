@@ -27,7 +27,7 @@ class CustomTextField extends StatelessWidget {
           fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
-        keyboardType: TextInputType.phone,
+        // keyboardType: TextInputType.phone,
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),

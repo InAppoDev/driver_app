@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tms_driver/presentation/blocks/bloc/user_bloc.dart';
+import 'package:tms_driver/presentation/blocks/user/user_bloc.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
