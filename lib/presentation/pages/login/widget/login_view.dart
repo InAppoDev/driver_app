@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/blocks/bloc/auth_bloc.dart';
+import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/custom_shape.dart';
 import 'package:tms_driver/presentation/customs/custom_text_field.dart';
 import 'package:tms_driver/presentation/theme/app_colors.dart';
@@ -80,33 +81,15 @@ class LoginView extends StatelessWidget {
                   loading: () => const CircularProgressIndicator(),
                   orElse: () => Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 45),
-                    child: SizedBox(
-                      height: 48,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          context.read<AuthBloc>().add(
-                                AuthEvent.loginButtonPressed(
-                                  username: _usernameController.text,
-                                ),
-                              );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.orange,
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(8), // Border radius
-                          ),
-                        ),
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.mainWhite,
-                          ),
-                        ),
-                      ),
+                    child: CustomButton(
+                      label: 'Login',
+                      onPressed: () {
+                        context.read<AuthBloc>().add(
+                              AuthEvent.loginButtonPressed(
+                                username: _usernameController.text,
+                              ),
+                            );
+                      },
                     ),
                   ),
                 );
