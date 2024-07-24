@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/pages/home/home_page.dart';
+import 'package:tms_driver/presentation/pages/home/widget/home_bottom_sheet.dart';
 import 'package:tms_driver/presentation/pages/trip_list/trip_list.dart';
 import 'package:tms_driver/presentation/pages/message_list/message_list.dart';
 import 'package:tms_driver/presentation/pages/profile/profile.dart';
@@ -41,9 +43,29 @@ class MainPageState extends State<MainPage> {
         foregroundColor: Colors.black,
         elevation: 0,
       ),
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _routes,
+      body: Stack(
+        children: [
+          IndexedStack(
+            index: _selectedIndex,
+            children: _routes,
+          ),
+          Positioned(
+            bottom: 5,
+            left: 15,
+            right: 15,
+            child: CustomButton(
+              label: 'Start',
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return const HomeBottomSheet();
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
