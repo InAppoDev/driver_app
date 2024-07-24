@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tms_driver/presentation/blocks/bloc/auth_bloc.dart';
-import 'package:tms_driver/presentation/customs/custom_button.dart';
+import 'package:tms_driver/presentation/blocks/login/login_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_shape.dart';
 import 'package:tms_driver/presentation/customs/custom_text_field.dart';
 import 'package:tms_driver/presentation/theme/app_colors.dart';
@@ -11,20 +10,26 @@ class LoginView extends StatelessWidget {
   const LoginView({
     super.key,
     required TextEditingController usernameController,
-  }) : _usernameController = usernameController;
+    required TextEditingController codeController,
+  })  : _usernameController = usernameController,
+        _codeController = codeController;
 
   final TextEditingController _usernameController;
+  final TextEditingController _codeController;
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
+    _usernameController.text = '9993335111';
+    return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
-        state.maybeWhen(
-          authenticated: () {
-            context.go('/main');
-          },
-          orElse: () {},
-        );
+        if (state.status == LoginStatus.authenticated) {
+          context.go('/main');
+        }
+        if (state.status == LoginStatus.failure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.errorMessage ?? 'An error occurred')),
+          );
+        }
       },
       child: SingleChildScrollView(
         child: Column(
@@ -62,7 +67,7 @@ class LoginView extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Enter your Phone number to login an account',
+              'Enter your Email or Phone number to login to your account',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
@@ -75,23 +80,88 @@ class LoginView extends StatelessWidget {
               child: CustomTextField(controller: _usernameController),
             ),
             const SizedBox(height: 30),
-            BlocBuilder<AuthBloc, AuthState>(
+            BlocBuilder<LoginBloc, LoginState>(
               builder: (context, state) {
-                return state.maybeWhen(
-                  loading: () => const CircularProgressIndicator(),
-                  orElse: () => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 45),
-                    child: CustomButton(
-                      label: 'Login',
-                      onPressed: () {
-                        context.read<AuthBloc>().add(
-                              AuthEvent.loginButtonPressed(
-                                username: _usernameController.text,
+                return Column(
+                  children: [
+                    if (state.status == LoginStatus.loading)
+                      const CircularProgressIndicator(),
+                    if (state.status != LoginStatus.codeSent)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 45),
+                        child: SizedBox(
+                          height: 48,
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              context.read<LoginBloc>().add(
+                                    LoginEvent.loginButtonPressed(
+                                      username: _usernameController.text,
+                                    ),
+                                  );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.orange,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                            );
-                      },
-                    ),
-                  ),
+                            ),
+                            child: const Text(
+                              'Request Code',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.mainWhite,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    if (state.status == LoginStatus.codeSent)
+                      Column(
+                        children: [
+                          const SizedBox(height: 10),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 32),
+                            child: CustomTextField(
+                              controller: _codeController,
+                              hintText: 'Enter Code',
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 45),
+                            child: SizedBox(
+                              height: 48,
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  context.read<LoginBloc>().add(
+                                        LoginEvent.verifyCode(
+                                          code: _codeController.text,
+                                        ),
+                                      );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.orange,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                child: const Text(
+                                  'Verify Code',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.mainWhite,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                  ],
                 );
               },
             ),

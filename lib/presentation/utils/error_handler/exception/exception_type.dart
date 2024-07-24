@@ -1,5 +1,5 @@
 enum ExceptionType {
   unauth,
   validation,
-  networkExeption,
+  networkException,
 }

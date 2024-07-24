@@ -5,48 +5,85 @@ import 'package:tms_driver/presentation/utils/error_handler/exception/validation
 
 class ErrorHandlerImpl implements ErrorHandler {
   @override
-  void handleException(
-    Exception exception,
-  ) {
+  Exception handle(Object exception) {
     if (exception is BaseException) {
       switch (exception.type) {
-        case ExceptionType.networkExeption:
+        case ExceptionType.networkException:
           {
-            // Get.showErrorMessage(
-            //     'txt_oops'.tr,
-            //     'txt_it_looks_like_you_are_having_problems_with_your_internet_connection'
-            //         .tr);
-
+            _showErrorMessage(
+              'Oops!',
+              'It looks like you are having problems with your internet connection.',
+            );
             break;
           }
         case ExceptionType.unauth:
           {
-            // _handleUnAuth();
+            _handleUnAuth();
             break;
           }
         case ExceptionType.validation:
           {
-            exception as ValidationException;
-            // String? message;
+            final validationException = exception as ValidationException;
+            String? message;
 
-            // if (exception.message['non_field_errors'] != null) {
-            //   message = exception.message['non_field_errors']!;
-            // }
+            if (validationException.message['non_field_errors'] != null) {
+              message = validationException.message['non_field_errors'];
+            }
 
-            // Get.showErrorMessage(
-            //     'txt_oops'.tr,
-            //     message ??
-            //         '${'txt_something_went_wrong'.tr} ${'txt_please_try_again'.tr}');
-            throw exception;
+            _showErrorMessage(
+              'Oops!',
+              message ?? 'Something went wrong. Please try again.',
+            );
+            return validationException;
+          }
+        case ExceptionType.unauth:
+          {
+            _showErrorMessage(
+              'Error',
+              'An unknown error occurred. Please try again.',
+            );
+            break;
           }
       }
     } else {
-      throw exception;
+      _showErrorMessage(
+        'Error',
+        'An unexpected error occurred. Please try again.',
+      );
     }
+    return Exception('An error occurred');
   }
 
   @override
-  void handleStatusCode(int? responseStatusCode) {
-    print(' ErrorHandlerImpl  responseStatusCode $responseStatusCode');
+  Exception handleStatusCode(int? responseStatusCode) {
+    if (responseStatusCode != null) {
+      if (responseStatusCode >= 400 && responseStatusCode < 500) {
+        _showErrorMessage(
+          'Client Error',
+          'A client error occurred. Status code: $responseStatusCode',
+        );
+      } else if (responseStatusCode >= 500) {
+        _showErrorMessage(
+          'Server Error',
+          'A server error occurred. Status code: $responseStatusCode',
+        );
+      } else {
+        print('Status code: $responseStatusCode');
+      }
+    }
+    return Exception('HTTP status code: $responseStatusCode');
+  }
+
+  void _showErrorMessage(String title, String message) {
+    print('$title: $message');
+  }
+
+  void _handleUnAuth() {
+    print('Unauthenticated! Redirecting to login...');
+  }
+
+  @override
+  void handleException(Exception exception) {
+    handle(exception);
   }
 }
