@@ -10,7 +10,7 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<UserBloc, UserState>(
       listener: (context, state) {
-        if (state == UserState.initial()) {
+        if (state == const UserState.initial()) {
           context.go('/login');
         }
       },
