@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/pages/home/widget/summary_of_the_day_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DashBoard extends StatelessWidget {
   const DashBoard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return  Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -17,27 +18,27 @@ class DashBoard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Dashboard',
-                    style: TextStyle(
+                    AppLocalizations.of(context)!.dashboard,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.person_outline,
                     color: Color(0xFF1652F6),
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
-                'Below is a summary of your day',
-                style: TextStyle(fontSize: 12),
+                AppLocalizations.of(context)!.belowIsASummaryOfDay,
+                style: const TextStyle(fontSize: 12),
               ),
             ],
           ),
         ),
-        Padding(
+        const Padding(
           padding: EdgeInsets.symmetric(horizontal: 7),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
