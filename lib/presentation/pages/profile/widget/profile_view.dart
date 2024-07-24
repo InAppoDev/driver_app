@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/blocks/user/user_bloc.dart';
+import 'package:tms_driver/presentation/pages/profile/widget/user_profile.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -18,25 +19,21 @@ class ProfileView extends StatelessWidget {
         builder: (context, state) {
           return Container(
             decoration: BoxDecoration(color: Theme.of(context).canvasColor),
-            child: Center(
-              child: state.when(
-                initial: () => const Text('Initializing...'),
-                loading: () => const CircularProgressIndicator(),
-                loaded: (user) => Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Name: ${user.firstName} ${user.lastName}'),
-                    Text('Email: ${user.email}'),
-                    const SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: () {
-                        context.read<UserBloc>().add(const UserEvent.logout());
-                      },
-                      child: const Text('Logout'),
-                    ),
-                  ],
-                ),
-                error: (message) => Text('Error: $message'),
+            height: MediaQuery.of(context).size.height,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  state.maybeWhen(
+                    loaded: (user) => UserProfile(user: user),
+                    orElse: () => const SizedBox.shrink(),
+                  ),
+                  state.when(
+                    initial: () => const Text('Initializing...'),
+                    loading: () => const CircularProgressIndicator(),
+                    loaded: (user) => Container(),
+                    error: (message) => Text('Error: $message'),
+                  ),
+                ],
               ),
             ),
           );
