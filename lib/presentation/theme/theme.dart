@@ -10,6 +10,7 @@ final lightTheme = ThemeData(
       selectedItemColor: AppColors.orange,
       unselectedItemColor: AppColors.mainGray,
     ),
+    cardColor: AppColors.orange,
     iconTheme: const IconThemeData(
       color: AppColors.mainGray,
     ));
