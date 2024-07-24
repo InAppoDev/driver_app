@@ -20,15 +20,25 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
+  @JsonKey(name: 'first_name')
   String get firstName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'last_name')
   String get lastName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'photo')
   String? get photo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'phone')
   String get phone => throw _privateConstructorUsedError;
+  @JsonKey(name: 'email')
   String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'address')
   String get address => throw _privateConstructorUsedError;
+  @JsonKey(name: 'city')
   String get city => throw _privateConstructorUsedError;
+  @JsonKey(name: 'state_code')
   String get stateCode => throw _privateConstructorUsedError;
+  @JsonKey(name: 'zip_code')
   String get zipCode => throw _privateConstructorUsedError;
+  @JsonKey(name: 'emergency_phone')
   String? get emergencyPhone => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,16 +53,16 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String firstName,
-      String lastName,
-      String? photo,
-      String phone,
-      String email,
-      String address,
-      String city,
-      String stateCode,
-      String zipCode,
-      String? emergencyPhone});
+      {@JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      @JsonKey(name: 'photo') String? photo,
+      @JsonKey(name: 'phone') String phone,
+      @JsonKey(name: 'email') String email,
+      @JsonKey(name: 'address') String address,
+      @JsonKey(name: 'city') String city,
+      @JsonKey(name: 'state_code') String stateCode,
+      @JsonKey(name: 'zip_code') String zipCode,
+      @JsonKey(name: 'emergency_phone') String? emergencyPhone});
 }
 
 /// @nodoc
@@ -133,16 +143,16 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String firstName,
-      String lastName,
-      String? photo,
-      String phone,
-      String email,
-      String address,
-      String city,
-      String stateCode,
-      String zipCode,
-      String? emergencyPhone});
+      {@JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
+      @JsonKey(name: 'photo') String? photo,
+      @JsonKey(name: 'phone') String phone,
+      @JsonKey(name: 'email') String email,
+      @JsonKey(name: 'address') String address,
+      @JsonKey(name: 'city') String city,
+      @JsonKey(name: 'state_code') String stateCode,
+      @JsonKey(name: 'zip_code') String zipCode,
+      @JsonKey(name: 'emergency_phone') String? emergencyPhone});
 }
 
 /// @nodoc
@@ -216,39 +226,49 @@ class __$$UserModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl(
-      {required this.firstName,
-      required this.lastName,
-      this.photo,
-      required this.phone,
-      required this.email,
-      required this.address,
-      required this.city,
-      required this.stateCode,
-      required this.zipCode,
-      this.emergencyPhone});
+      {@JsonKey(name: 'first_name') required this.firstName,
+      @JsonKey(name: 'last_name') required this.lastName,
+      @JsonKey(name: 'photo') this.photo,
+      @JsonKey(name: 'phone') required this.phone,
+      @JsonKey(name: 'email') required this.email,
+      @JsonKey(name: 'address') required this.address,
+      @JsonKey(name: 'city') required this.city,
+      @JsonKey(name: 'state_code') required this.stateCode,
+      @JsonKey(name: 'zip_code') required this.zipCode,
+      @JsonKey(name: 'emergency_phone') this.emergencyPhone});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
 
   @override
+  @JsonKey(name: 'first_name')
   final String firstName;
   @override
+  @JsonKey(name: 'last_name')
   final String lastName;
   @override
+  @JsonKey(name: 'photo')
   final String? photo;
   @override
+  @JsonKey(name: 'phone')
   final String phone;
   @override
+  @JsonKey(name: 'email')
   final String email;
   @override
+  @JsonKey(name: 'address')
   final String address;
   @override
+  @JsonKey(name: 'city')
   final String city;
   @override
+  @JsonKey(name: 'state_code')
   final String stateCode;
   @override
+  @JsonKey(name: 'zip_code')
   final String zipCode;
   @override
+  @JsonKey(name: 'emergency_phone')
   final String? emergencyPhone;
 
   @override
@@ -298,39 +318,50 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {required final String firstName,
-      required final String lastName,
-      final String? photo,
-      required final String phone,
-      required final String email,
-      required final String address,
-      required final String city,
-      required final String stateCode,
-      required final String zipCode,
-      final String? emergencyPhone}) = _$UserModelImpl;
+          {@JsonKey(name: 'first_name') required final String firstName,
+          @JsonKey(name: 'last_name') required final String lastName,
+          @JsonKey(name: 'photo') final String? photo,
+          @JsonKey(name: 'phone') required final String phone,
+          @JsonKey(name: 'email') required final String email,
+          @JsonKey(name: 'address') required final String address,
+          @JsonKey(name: 'city') required final String city,
+          @JsonKey(name: 'state_code') required final String stateCode,
+          @JsonKey(name: 'zip_code') required final String zipCode,
+          @JsonKey(name: 'emergency_phone') final String? emergencyPhone}) =
+      _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
 
   @override
+  @JsonKey(name: 'first_name')
   String get firstName;
   @override
+  @JsonKey(name: 'last_name')
   String get lastName;
   @override
+  @JsonKey(name: 'photo')
   String? get photo;
   @override
+  @JsonKey(name: 'phone')
   String get phone;
   @override
+  @JsonKey(name: 'email')
   String get email;
   @override
+  @JsonKey(name: 'address')
   String get address;
   @override
+  @JsonKey(name: 'city')
   String get city;
   @override
+  @JsonKey(name: 'state_code')
   String get stateCode;
   @override
+  @JsonKey(name: 'zip_code')
   String get zipCode;
   @override
+  @JsonKey(name: 'emergency_phone')
   String? get emergencyPhone;
   @override
   @JsonKey(ignore: true)

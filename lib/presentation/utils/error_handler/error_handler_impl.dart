@@ -10,7 +10,6 @@ class ErrorHandlerImpl implements ErrorHandler {
       switch (exception.type) {
         case ExceptionType.networkException:
           {
-            // Обробка помилок мережі
             _showErrorMessage(
               'Oops!',
               'It looks like you are having problems with your internet connection.',
@@ -19,13 +18,11 @@ class ErrorHandlerImpl implements ErrorHandler {
           }
         case ExceptionType.unauth:
           {
-            // Обробка неавторизованих помилок
             _handleUnAuth();
             break;
           }
         case ExceptionType.validation:
           {
-            // Обробка помилок валідації
             final validationException = exception as ValidationException;
             String? message;
 
@@ -41,7 +38,6 @@ class ErrorHandlerImpl implements ErrorHandler {
           }
         case ExceptionType.unauth:
           {
-            // Обробка невідомих помилок
             _showErrorMessage(
               'Error',
               'An unknown error occurred. Please try again.',
@@ -50,7 +46,6 @@ class ErrorHandlerImpl implements ErrorHandler {
           }
       }
     } else {
-      // Обробка всіх інших типів винятків
       _showErrorMessage(
         'Error',
         'An unexpected error occurred. Please try again.',
@@ -63,19 +58,16 @@ class ErrorHandlerImpl implements ErrorHandler {
   Exception handleStatusCode(int? responseStatusCode) {
     if (responseStatusCode != null) {
       if (responseStatusCode >= 400 && responseStatusCode < 500) {
-        // Обробка клієнтських помилок
         _showErrorMessage(
           'Client Error',
           'A client error occurred. Status code: $responseStatusCode',
         );
       } else if (responseStatusCode >= 500) {
-        // Обробка серверних помилок
         _showErrorMessage(
           'Server Error',
           'A server error occurred. Status code: $responseStatusCode',
         );
       } else {
-        // Інформаційні та успішні статуси
         print('Status code: $responseStatusCode');
       }
     }
@@ -83,20 +75,15 @@ class ErrorHandlerImpl implements ErrorHandler {
   }
 
   void _showErrorMessage(String title, String message) {
-    // Використовуйте ваш улюблений спосіб відображення повідомлень про помилки
-    // Наприклад, Get.snackbar(title, message);
     print('$title: $message');
   }
 
   void _handleUnAuth() {
-    // Обробка неавторизованих помилок, наприклад, перенаправлення на екран входу
-    // Get.offAllNamed('/login');
     print('Unauthenticated! Redirecting to login...');
   }
 
   @override
   void handleException(Exception exception) {
-    // Ви можете реалізувати цей метод, якщо потрібна спеціальна обробка винятків
     handle(exception);
   }
 }

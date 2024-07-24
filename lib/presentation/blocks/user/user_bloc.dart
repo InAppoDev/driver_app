@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tms_driver/data/data_source/auth_data_source.dart';
 import 'package:tms_driver/data/models/user_model.dart';
 import 'package:tms_driver/domain/repositories/user_repository.dart';
 
@@ -10,8 +11,10 @@ part 'user_bloc.freezed.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   final UserRepository userRepository;
+  final AuthDataSource authDataSource;
 
-  UserBloc(this.userRepository) : super(const UserState.initial()) {
+  UserBloc(this.userRepository, this.authDataSource)
+      : super(const UserState.initial()) {
     on<UserEvent>(_userEvent);
   }
 
@@ -25,6 +28,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         } catch (e) {
           emit(UserState.error(message: e.toString()));
         }
+      },
+      logout: (e) async {
+        await authDataSource.clearTokens();
+        emit(const UserState.initial());
       },
     );
   }

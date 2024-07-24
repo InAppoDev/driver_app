@@ -103,8 +103,7 @@ class LoginView extends StatelessWidget {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.orange,
                               shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(8), // Border radius
+                                borderRadius: BorderRadius.circular(8),
                               ),
                             ),
                             child: const Text(
@@ -146,8 +145,7 @@ class LoginView extends StatelessWidget {
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColors.orange,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        8), // Border radius
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
                                 child: const Text(

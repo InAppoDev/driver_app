@@ -12,6 +12,7 @@ class AuthInterceptor extends Interceptor {
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     final token = await authDataSource.getAuthToken();
+    print('token.accessToken - $token');
     options.headers['Authorization'] = 'Bearer $token';
     options.baseUrl = api;
     return handler.next(options);

@@ -20,11 +20,18 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   void _initialize() async {
     try {
+      final token = await authDataSource.getAuthToken();
+      if (token != null) {
+        emit(state.copyWith(status: LoginStatus.authenticated));
+        print('User is already authenticated');
+        return;
+      }
+
       final message = await apiDataSource.ping();
       print('Server is working: $message');
       await apiDataSource.getConfig();
     } catch (e) {
-      print('Server ERROR');
+      print('Server ERROR: $e');
     }
   }
 
