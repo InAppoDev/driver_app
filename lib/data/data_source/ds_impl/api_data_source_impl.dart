@@ -52,7 +52,8 @@ class ApiDataSourceImpl implements ApiDataSource {
   }
 
   @override
-  Future<String> requestAuthCode(String phone, {bool useEmail = false}) async {
+  Future<String> requestAuthCode(
+      {required String phone, bool useEmail = false}) async {
     final response =
         await _makeRequest(() => dio.post('/auth/request-code', data: {
               'phone': phone,
@@ -63,7 +64,8 @@ class ApiDataSourceImpl implements ApiDataSource {
   }
 
   @override
-  Future<String> verifyAuth(String authCode, String verificationCode) async {
+  Future<String> verifyAuth(
+      {required String authCode, required String verificationCode}) async {
     final response = await _makeRequest(() => dio.post('/auth/verify', data: {
           'auth_code': authCode,
           'verification_code': verificationCode,
