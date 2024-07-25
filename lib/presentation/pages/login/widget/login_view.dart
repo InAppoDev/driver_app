@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/blocks/login/login_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_shape.dart';
 import 'package:tms_driver/presentation/customs/custom_text_field.dart';
-import 'package:tms_driver/presentation/theme/app_colors.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class LoginView extends StatelessWidget {
@@ -20,8 +19,9 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _usernameController.text = '9993335111'; // Val
-    // _usernameController.text = '9991451655'; // Max
+    final theme = Theme.of(context);
+    // _usernameController.text = '9993335111'; // Val
+    _usernameController.text = '9991451655'; // Max
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state.status == LoginStatus.authenticated) {
@@ -34,167 +34,168 @@ class LoginView extends StatelessWidget {
         }
       },
       child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              // SvgPicture.asset('assets/images/logo.svg'),
-              ClipPath(
-                clipper: CustomShape(),
-                child: Container(
-                  height: 230,
-                  width: double.infinity,
-                  color: AppColors.mainWhite,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/logo.png',
-                      ),
-                      const Text(
-                        'DRIVER APP',
-                        style: TextStyle(
-                          letterSpacing: 7,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.orange,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 42),
-              Text(
-                context.localizations.getStarted,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                context.localizations.enterYourPhoneNumberToLoginAnAccount,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.textGray,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: CustomTextField(
-                  controller: _usernameController,
-                  prefixIcon: const Padding(
-                    padding: EdgeInsets.only(left: 30, right: 21, top: 12),
-                    child: Text(
-                      '+1',
+        child: Column(
+          children: [
+            // SvgPicture.asset('assets/images/logo.svg'),
+            ClipPath(
+              clipper: CustomShape(),
+              child: Container(
+                height: 230,
+                width: double.infinity,
+                color: theme.scaffoldBackgroundColor,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/logo.png',
+                    ),
+                    Text(
+                      'DRIVER APP',
                       style: TextStyle(
-                        fontSize: 16,
+                        letterSpacing: 7,
                         fontWeight: FontWeight.w600,
-                        color: AppColors.textGray,
+                        color: theme.cardColor,
                       ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 42),
+            Text(
+              context.localizations.getStarted,
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              context.localizations.enterYourPhoneNumberToLoginAnAccount,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: theme.hintColor,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: CustomTextField(
+                controller: _usernameController,
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 21, top: 12),
+                  child: Text(
+                    '+1',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: theme.hintColor,
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 30),
-              BlocBuilder<LoginBloc, LoginState>(
-                builder: (context, state) {
-                  return Column(
-                    children: [
-                      if (state.status == LoginStatus.loading)
-                        const CircularProgressIndicator(),
-                      if (state.status != LoginStatus.codeSent)
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 45),
-                          child: SizedBox(
-                            height: 48,
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                context.read<LoginBloc>().add(
-                                      LoginEvent.loginButtonPressed(
-                                        username: _usernameController.text,
-                                      ),
-                                    );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.orange,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
+            ),
+            const SizedBox(height: 30),
+            BlocBuilder<LoginBloc, LoginState>(
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    if (state.status == LoginStatus.loading)
+                      const CircularProgressIndicator(),
+                    if (state.status == LoginStatus.initial ||
+                        state.status == LoginStatus.failure)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 45),
+                        child: SizedBox(
+                          height: 48,
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              context.read<LoginBloc>().add(
+                                    LoginEvent.loginButtonPressed(
+                                      username: _usernameController.text,
+                                    ),
+                                  );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: theme.cardColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Text(
-                                context.localizations.requestCode,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.mainWhite,
-                                ),
+                            ),
+                            child: Text(
+                              context.localizations.requestCode,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: theme.scaffoldBackgroundColor,
                               ),
                             ),
                           ),
                         ),
-                      if (state.status == LoginStatus.codeSent)
-                        Column(
-                          children: [
-                            const SizedBox(height: 10),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 32),
-                              child: CustomTextField(
-                                controller: _codeController,
-                                hintText: context.localizations.enterCode,
-                              ),
+                      ),
+                    if ((state.status != LoginStatus.authenticated &&
+                            state.status == LoginStatus.codeSent) ||
+                        state.status == LoginStatus.authenticated &&
+                            state.status == LoginStatus.loading)
+                      Column(
+                        children: [
+                          const SizedBox(height: 10),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 32),
+                            child: CustomTextField(
+                              controller: _codeController,
+                              hintText: context.localizations.enterCode,
                             ),
-                            const SizedBox(height: 30),
+                          ),
+                          const SizedBox(height: 30),
+                          if (state.status != LoginStatus.loading)
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 45),
-                              child: SizedBox(
-                                height: 48,
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    context.read<LoginBloc>().add(
-                                          LoginEvent.verifyCode(
-                                            code: _codeController.text,
-                                          ),
-                                        );
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppColors.orange,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
+                              padding: const EdgeInsets.symmetric(horizontal: 45),
+                            child: SizedBox(
+                              height: 48,
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  context.read<LoginBloc>().add(
+                                        LoginEvent.verifyCode(
+                                          code: _codeController.text,
+                                        ),
+                                      );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: theme.cardColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
-                                  child: Text(
-                                    context.localizations.verifyCode,
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColors.mainWhite,
-                                    ),
+                                ),
+                                child: Text(
+                                  context.localizations.verifyCode,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                    color: theme.scaffoldBackgroundColor,
                                   ),
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                    ],
-                  );
-                },
+                          ),
+                        ],
+                      ),
+                  ],
+                );
+              },
+            ),
+            const SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 45),
+              child: Text(
+                context.localizations.yourDataIsProtected,
+                textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 45),
-                child: Text(
-                  context.localizations.yourDataIsProtected,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

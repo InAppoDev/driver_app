@@ -11,32 +11,11 @@ class Currents extends StatelessWidget {
         Column(
           children: [
             CurrentWidget(
-              topic: 'Current Route',
-              description: 'An overview of your route',
-              value: '15/26',
-              completedTasks: 12,
-              valueDescription: 'Route progress',
-            ),
-            CurrentWidget(
-              topic: 'Current Task',
-              description: 'An overview of your route',
-              value: '15/26',
-              completedTasks: 12,
-              valueDescription: 'Route progress',
-            ),
-            CurrentWidget(
-              topic: 'Current Task',
-              description: 'An overview of your route',
-              value: '15/26',
-              completedTasks: 12,
-              valueDescription: 'Route progress',
-            ),
-            CurrentWidget(
-              topic: 'Current Task',
-              description: 'An overview of your route',
-              value: '15/26',
-              completedTasks: 12,
-              valueDescription: 'Route progress',
+              topic: 'Ongoing Trip',
+              description: 'An overview of your trip',
+              value: '1/3',
+              milesToGo: 512,
+              valueDescription: 'Stops',
             ),
           ],
         ),

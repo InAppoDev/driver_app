@@ -3,17 +3,17 @@
     "@profitDetails": {
       "description": "Profit Details"
     },
-    "salesRevenue": "Sales & Revenue",
-    "@salesRevenue": {
-      "description": "Sales & Revenue"
+    "belowIsAShortSummaryOfYourMonth": "Below is a short summary of your month",
+    "@belowIsAShortSummaryOfYourMonth": {
+      "description": "Below is a short summary of your mont"
     },
-    "dashboard": "Dashboard",
-    "@dashboard": {
-      "description": "Dashboard"
+    "lifetimeStats": "Lifetime Stats",
+    "@lifetimeStats": {
+      "description": "Lifetime Stats"
     },
-    "belowIsASummaryOfDay": "Below is a summary of your day",
-    "@belowIsASummaryOfDay": {
-      "description": "Below is a summary of your day"
+    "hereIsASummaryOfYourOverallPerformance": "Here is a summary of your overall\nperformance",
+    "@hereIsASummaryOfYourOverallPerformance": {
+      "description": "Here is a summary of your overall\nperformance"
     },
     "getStarted": "Get Started",
     "@getStarted": {

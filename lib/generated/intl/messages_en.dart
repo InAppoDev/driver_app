@@ -22,18 +22,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "belowIsASummaryOfDay": MessageLookupByLibrary.simpleMessage(
-            "Below is a summary of your day"),
-        "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
+        "belowIsAShortSummaryOfYourMonth": MessageLookupByLibrary.simpleMessage(
+            "Below is a short summary of your month"),
         "enterCode": MessageLookupByLibrary.simpleMessage("Enter Code"),
         "enterYourPhoneNumberToLoginAnAccount":
             MessageLookupByLibrary.simpleMessage(
                 "Enter your Phone number to login an account"),
         "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+        "hereIsASummaryOfYourOverallPerformance":
+            MessageLookupByLibrary.simpleMessage(
+                "Here is a summary of your overall\nperformance"),
+        "lifetimeStats": MessageLookupByLibrary.simpleMessage("Lifetime Stats"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "profitDetails": MessageLookupByLibrary.simpleMessage("Profit Details"),
         "requestCode": MessageLookupByLibrary.simpleMessage("Request Code"),
-        "salesRevenue": MessageLookupByLibrary.simpleMessage("Sales & Revenue"),
         "verifyCode": MessageLookupByLibrary.simpleMessage("Verify Code"),
         "yourDataIsProtected": MessageLookupByLibrary.simpleMessage(
             "Your data is protected and used solely for app authentication. We respect your privacy and security.")
