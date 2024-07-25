@@ -16,11 +16,9 @@ class LoginPage extends StatelessWidget {
       backgroundColor: AppColors.palePink,
       body: BlocProvider(
         create: (context) => LoginBloc(),
-        child: SafeArea(
-          child: LoginView(
-            usernameController: _usernameController,
-            codeController: _codeController,
-          ),
+        child: LoginView(
+          usernameController: _usernameController,
+          codeController: _codeController,
         ),
       ),
     );
