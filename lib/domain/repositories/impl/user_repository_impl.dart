@@ -5,7 +5,7 @@ import 'package:tms_driver/domain/repositories/user_repository.dart';
 class UserRepositoryImpl implements UserRepository {
   final ApiDataSource apiDataSource;
 
-  UserRepositoryImpl(this.apiDataSource);
+  UserRepositoryImpl({required this.apiDataSource});
 
   @override
   Future<UserModel> getUser() async {

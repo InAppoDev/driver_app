@@ -4,8 +4,6 @@ import 'package:tms_driver/injection.dart';
 
 void main() {
   initApp().then(
-    (_) => runApp(
-      const DriverApp(),
-    ),
+    (_) => runApp(const DriverApp()),
   );
 }

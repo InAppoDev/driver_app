@@ -38,7 +38,16 @@ class MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Main Page'),
+        title: Row(
+          children: [
+            SizedBox(
+              height: 30,
+              child: Image.asset(
+                'assets/images/logo.png',
+              ),
+            ),
+          ],
+        ),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         elevation: 0,

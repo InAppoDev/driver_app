@@ -5,12 +5,16 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? hintText;
   final Function(String)? onChanged;
+  final Widget? prefixIcon;
+  final double borderRadius;
 
   const CustomTextField({
     super.key,
     this.controller,
     this.hintText,
     this.onChanged,
+    this.prefixIcon,
+    this.borderRadius = 8,
   });
 
   @override
@@ -42,17 +46,7 @@ class CustomTextField extends StatelessWidget {
             borderSide: const BorderSide(color: AppColors.lightGray),
           ),
           hintText: hintText,
-          prefixIcon: const Padding(
-            padding: EdgeInsets.only(left: 30, right: 21, top: 12),
-            child: Text(
-              '+1',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: AppColors.textGray,
-              ),
-            ),
-          ),
+          prefixIcon: prefixIcon,
         ),
       ),
     );

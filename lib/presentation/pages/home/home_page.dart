@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
           children: [
             ProfitDashboard(),
             Currents(),
+            SizedBox(height: 50),
           ],
         ),
       ),
