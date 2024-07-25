@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tms_driver/presentation/theme/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
@@ -7,6 +6,7 @@ class CustomTextField extends StatelessWidget {
   final Function(String)? onChanged;
   final Widget? prefixIcon;
   final double borderRadius;
+  final int? maxLines;
 
   const CustomTextField({
     super.key,
@@ -15,14 +15,17 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.prefixIcon,
     this.borderRadius = 8,
+    this.maxLines = 10,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       height: 60,
       alignment: Alignment.center,
       child: TextField(
+        maxLength: maxLines,
         maxLines: null,
         expands: true,
         onChanged: onChanged,
@@ -31,19 +34,20 @@ class CustomTextField extends StatelessWidget {
           fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
-        // keyboardType: TextInputType.phone,
+        keyboardType: TextInputType.phone,
         decoration: InputDecoration(
+          counterText: '',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: AppColors.lightGray),
+            borderSide:  BorderSide(color: theme.highlightColor),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: AppColors.lightGray),
+            borderSide:  BorderSide(color: theme.highlightColor),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: AppColors.lightGray),
+            borderSide:  BorderSide(color: theme.cardColor),
           ),
           hintText: hintText,
           prefixIcon: prefixIcon,

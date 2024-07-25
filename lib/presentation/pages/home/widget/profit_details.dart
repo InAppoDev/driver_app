@@ -14,14 +14,14 @@ class ProfitDetails extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 5),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  context.localizations.profitDetails,
-                  style: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.w600),
+                const Text(
+                  'July 2024',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                 ),
                 Text(
-                  context.localizations.salesRevenue,
+                  context.localizations.belowIsAShortSummaryOfYourMonth,
                   style: const TextStyle(fontSize: 12),
                 ),
               ],
@@ -31,35 +31,36 @@ class ProfitDetails extends StatelessWidget {
             children: [
               ProfitDetailsWidget(
                 isSelected: false,
-                icon: Icons.people,
-                amount: '56.4',
-                text: 'Customers',
+                icon: Icons.local_shipping,
+                amount: '35',
+                text: 'Trips',
                 showM: false,
                 showDollar: false,
               ),
               ProfitDetailsWidget(
                 isSelected: true,
-                icon: Icons.credit_card,
-                amount: '320',
-                text: 'Total Sales',
+                icon: Icons.speed,
+                amount: '4500',
+                text: 'Total Miles',
                 showM: false,
                 showDollar: true,
               ),
               ProfitDetailsWidget(
                 isSelected: false,
-                icon: Icons.pie_chart_outline,
-                amount: '45.6',
-                text: 'Revenue',
+                icon: Icons.checklist,
+                amount: '412',
+                text: 'Check Calls',
                 showM: true,
                 showDollar: true,
               ),
               ProfitDetailsWidget(
                 isSelected: false,
                 icon: Icons.people,
-                amount: '56.4',
-                text: 'Customers',
+                amount: '210',
+                text: 'Drive Time',
                 showM: false,
                 showDollar: false,
+                showHours: true,
               ),
             ],
           ),

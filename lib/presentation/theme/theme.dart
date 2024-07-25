@@ -11,6 +11,13 @@ final lightTheme = ThemeData(
     shape: CircularNotchedRectangle(),
     elevation: 10,
   ),
+  hintColor: AppColors.textGray,
+  highlightColor: AppColors.lightGray,
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    backgroundColor: AppColors.mainWhite,
+    selectedItemColor: AppColors.orange,
+    unselectedItemColor: AppColors.mainGray,
+  ),
   cardColor: AppColors.orange,
   iconTheme: const IconThemeData(
     color: AppColors.mainGray,

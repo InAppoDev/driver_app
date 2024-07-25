@@ -5,10 +5,16 @@ class SummaryOfTheDayWidget extends StatelessWidget {
     super.key,
     required this.value,
     required this.text,
+    this.showK = false,
+    this.showMi = false,
+    this.showMph = false,
   });
 
   final int value;
   final String text;
+  final bool showK;
+  final bool showMi;
+  final bool showMph;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,14 @@ class SummaryOfTheDayWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            value.toString(),
+            value.toString() +
+                (showK
+                    ? 'k'
+                    : showMi
+                        ? 'M'
+                        : showMph
+                            ? 'Mph'
+                            : ''),
             style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
           ),
           Text(
