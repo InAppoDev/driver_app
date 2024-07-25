@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/blocks/login/login_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_shape.dart';
@@ -64,14 +65,16 @@ class LoginView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 42),
-              const Text(
-                'Get Started',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+              Text(
+                AppLocalizations.of(context)!.getStarted,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 10),
-              const Text(
-                'Enter your Email or Phone number to login to your account',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!
+                    .enterYourPhoneNumberToLoginAnAccount,
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                   color: AppColors.textGray,
@@ -122,9 +125,9 @@ class LoginView extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                               ),
-                              child: const Text(
-                                'Request Code',
-                                style: TextStyle(
+                              child: Text(
+                                AppLocalizations.of(context)!.requestCode,
+                                style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.mainWhite,
@@ -142,7 +145,8 @@ class LoginView extends StatelessWidget {
                                   const EdgeInsets.symmetric(horizontal: 32),
                               child: CustomTextField(
                                 controller: _codeController,
-                                hintText: 'Enter Code',
+                                hintText:
+                                    AppLocalizations.of(context)!.enterCode,
                               ),
                             ),
                             const SizedBox(height: 30),
@@ -166,9 +170,9 @@ class LoginView extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                   ),
-                                  child: const Text(
-                                    'Verify Code',
-                                    style: TextStyle(
+                                  child: Text(
+                                    AppLocalizations.of(context)!.verifyCode,
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400,
                                       color: AppColors.mainWhite,
@@ -184,10 +188,10 @@ class LoginView extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 30),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 45),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 45),
                 child: Text(
-                  'Your data is protected and used solely for app authentication. We respect your privacy and security.',
+                  AppLocalizations.of(context)!.yourDataIsProtected,
                   textAlign: TextAlign.center,
                 ),
               ),

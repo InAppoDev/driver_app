@@ -6,6 +6,7 @@ class CustomTextField extends StatelessWidget {
   final String? hintText;
   final Function(String)? onChanged;
   final Widget? prefixIcon;
+  final double borderRadius;
 
   const CustomTextField({
     super.key,
@@ -13,6 +14,7 @@ class CustomTextField extends StatelessWidget {
     this.hintText,
     this.onChanged,
     this.prefixIcon,
+    this.borderRadius = 8,
   });
 
   @override
