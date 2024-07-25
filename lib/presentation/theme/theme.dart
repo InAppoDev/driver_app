@@ -15,4 +15,6 @@ final lightTheme = ThemeData(
   iconTheme: const IconThemeData(
     color: AppColors.mainGray,
   ),
+  primaryColor: AppColors.orange,
+  shadowColor: AppColors.darkGray,
 );
