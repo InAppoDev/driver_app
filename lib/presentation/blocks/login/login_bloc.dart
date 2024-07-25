@@ -12,8 +12,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final ApiDataSource apiDataSource;
   final AuthDataSource authDataSource;
 
-  LoginBloc({required this.apiDataSource, required this.authDataSource})
-      : super(LoginState.initial()) {
+  LoginBloc({
+    required this.apiDataSource,
+    required this.authDataSource,
+  }) : super(LoginState.initial()) {
     _initialize();
     on<LoginEvent>(_loginEvent);
   }

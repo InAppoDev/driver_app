@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/pages/home/widget/summary_of_the_day_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class DashBoard extends StatelessWidget {
   const DashBoard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -18,7 +18,7 @@ class DashBoard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    AppLocalizations.of(context)!.dashboard,
+                    context.localizations.dashboard,
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -32,7 +32,7 @@ class DashBoard extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                AppLocalizations.of(context)!.belowIsASummaryOfDay,
+                context.localizations.belowIsASummaryOfDay,
                 style: const TextStyle(fontSize: 12),
               ),
             ],

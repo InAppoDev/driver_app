@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/blocks/login/login_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_shape.dart';
 import 'package:tms_driver/presentation/customs/custom_text_field.dart';
 import 'package:tms_driver/presentation/theme/app_colors.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({
@@ -66,14 +66,13 @@ class LoginView extends StatelessWidget {
               ),
               const SizedBox(height: 42),
               Text(
-                AppLocalizations.of(context)!.getStarted,
+                context.localizations.getStarted,
                 style:
                     const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 10),
               Text(
-                AppLocalizations.of(context)!
-                    .enterYourPhoneNumberToLoginAnAccount,
+                context.localizations.enterYourPhoneNumberToLoginAnAccount,
                 style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
@@ -126,7 +125,7 @@ class LoginView extends StatelessWidget {
                                 ),
                               ),
                               child: Text(
-                                AppLocalizations.of(context)!.requestCode,
+                                context.localizations.requestCode,
                                 style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
@@ -145,8 +144,7 @@ class LoginView extends StatelessWidget {
                                   const EdgeInsets.symmetric(horizontal: 32),
                               child: CustomTextField(
                                 controller: _codeController,
-                                hintText:
-                                    AppLocalizations.of(context)!.enterCode,
+                                hintText: context.localizations.enterCode,
                               ),
                             ),
                             const SizedBox(height: 30),
@@ -171,7 +169,7 @@ class LoginView extends StatelessWidget {
                                     ),
                                   ),
                                   child: Text(
-                                    AppLocalizations.of(context)!.verifyCode,
+                                    context.localizations.verifyCode,
                                     style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400,
@@ -191,7 +189,7 @@ class LoginView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 45),
                 child: Text(
-                  AppLocalizations.of(context)!.yourDataIsProtected,
+                  context.localizations.yourDataIsProtected,
                   textAlign: TextAlign.center,
                 ),
               ),
