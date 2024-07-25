@@ -21,5 +21,21 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "belowIsASummaryOfDay": MessageLookupByLibrary.simpleMessage(
+            "Below is a summary of your day"),
+        "dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
+        "enterCode": MessageLookupByLibrary.simpleMessage("Enter Code"),
+        "enterYourPhoneNumberToLoginAnAccount":
+            MessageLookupByLibrary.simpleMessage(
+                "Enter your Phone number to login an account"),
+        "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "profitDetails": MessageLookupByLibrary.simpleMessage("Profit Details"),
+        "requestCode": MessageLookupByLibrary.simpleMessage("Request Code"),
+        "salesRevenue": MessageLookupByLibrary.simpleMessage("Sales & Revenue"),
+        "verifyCode": MessageLookupByLibrary.simpleMessage("Verify Code"),
+        "yourDataIsProtected": MessageLookupByLibrary.simpleMessage(
+            "Your data is protected and used solely for app authentication. We respect your privacy and security.")
+      };
 }

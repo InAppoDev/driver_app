@@ -49,6 +49,117 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Profit Details`
+  String get profitDetails {
+    return Intl.message(
+      'Profit Details',
+      name: 'profitDetails',
+      desc: 'Profit Details',
+      args: [],
+    );
+  }
+
+  /// `Sales & Revenue`
+  String get salesRevenue {
+    return Intl.message(
+      'Sales & Revenue',
+      name: 'salesRevenue',
+      desc: 'Sales & Revenue',
+      args: [],
+    );
+  }
+
+  /// `Dashboard`
+  String get dashboard {
+    return Intl.message(
+      'Dashboard',
+      name: 'dashboard',
+      desc: 'Dashboard',
+      args: [],
+    );
+  }
+
+  /// `Below is a summary of your day`
+  String get belowIsASummaryOfDay {
+    return Intl.message(
+      'Below is a summary of your day',
+      name: 'belowIsASummaryOfDay',
+      desc: 'Below is a summary of your day',
+      args: [],
+    );
+  }
+
+  /// `Get Started`
+  String get getStarted {
+    return Intl.message(
+      'Get Started',
+      name: 'getStarted',
+      desc: 'Get Started',
+      args: [],
+    );
+  }
+
+  /// `Enter your Phone number to login an account`
+  String get enterYourPhoneNumberToLoginAnAccount {
+    return Intl.message(
+      'Enter your Phone number to login an account',
+      name: 'enterYourPhoneNumberToLoginAnAccount',
+      desc: 'Enter your Phone number to login an account',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: 'Login',
+      args: [],
+    );
+  }
+
+  /// `Your data is protected and used solely for app authentication. We respect your privacy and security.`
+  String get yourDataIsProtected {
+    return Intl.message(
+      'Your data is protected and used solely for app authentication. We respect your privacy and security.',
+      name: 'yourDataIsProtected',
+      desc:
+          'Your data is protected and used solely for app authentication. We respect your privacy and security.',
+      args: [],
+    );
+  }
+
+  /// `Verify Code`
+  String get verifyCode {
+    return Intl.message(
+      'Verify Code',
+      name: 'verifyCode',
+      desc: 'Verify Code',
+      args: [],
+    );
+  }
+
+  /// `Enter Code`
+  String get enterCode {
+    return Intl.message(
+      'Enter Code',
+      name: 'enterCode',
+      desc: 'Enter Codee',
+      args: [],
+    );
+  }
+
+  /// `Request Code`
+  String get requestCode {
+    return Intl.message(
+      'Request Code',
+      name: 'requestCode',
+      desc: 'Request Code',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

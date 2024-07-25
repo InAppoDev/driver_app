@@ -1,35 +1,32 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tms_driver/data/data_source/api_data_source.dart';
-import 'package:tms_driver/data/data_source/auth_data_source.dart';
+import 'package:get_it/get_it.dart';
+import 'package:tms_driver/domain/repositories/auth_repository.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
 part 'login_bloc.freezed.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final ApiDataSource apiDataSource;
-  final AuthDataSource authDataSource;
+  final AuthRepository authRepo = GetIt.instance<AuthRepository>();
 
-  LoginBloc({required this.apiDataSource, required this.authDataSource})
-      : super(LoginState.initial()) {
+  LoginBloc() : super(LoginState.initial()) {
     _initialize();
     on<LoginEvent>(_loginEvent);
   }
 
-  void _initialize() async {
+  Future<void> _initialize() async {
     try {
-      final token = await authDataSource.getAuthToken();
+      final token = await authRepo.getAuthToken();
       if (token != null) {
         emit(state.copyWith(status: LoginStatus.authenticated));
         print('User is already authenticated');
         return;
       }
 
-      final message = await apiDataSource.ping();
+      final message = await authRepo.ping();
       print('Server is working: $message');
-      await apiDataSource.getConfig();
     } catch (e) {
       print('Server ERROR: $e');
     }
@@ -41,7 +38,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         emit(state.copyWith(status: LoginStatus.loading));
         try {
           final authCode =
-              await apiDataSource.requestAuthCode(username, useEmail: true);
+              await authRepo.requestAuthCode(username, useEmail: true);
           emit(
             state.copyWith(
               status: LoginStatus.codeSent,
@@ -67,9 +64,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       verifyCode: (code) async {
         emit(state.copyWith(status: LoginStatus.loading));
         try {
-          final authToken =
-              await apiDataSource.verifyAuth(state.authCode, code);
-          await authDataSource.saveAccessToken(authToken);
+          print('state.authCode ${state.authCode} code: $code');
+          await authRepo.verifyAuth(state.authCode, code);
           emit(state.copyWith(status: LoginStatus.authenticated));
         } catch (e) {
           emit(state.copyWith(
