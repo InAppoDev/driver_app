@@ -6,6 +6,8 @@ import 'package:tms_driver/data/data_source/api_data_source.dart';
 import 'package:tms_driver/data/data_source/auth_data_source.dart';
 import 'package:tms_driver/data/data_source/ds_impl/api_data_source_impl.dart';
 import 'package:tms_driver/data/data_source/ds_impl/auth_data_source_impl.dart';
+import 'package:tms_driver/domain/repositories/auth_repository.dart';
+import 'package:tms_driver/domain/repositories/impl/auth_repository_impl.dart';
 import 'package:tms_driver/domain/repositories/impl/user_repository_impl.dart';
 import 'package:tms_driver/domain/repositories/user_repository.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler.dart';
@@ -40,6 +42,14 @@ Future<void> initApp() async {
   );
 
   GetIt.instance.registerSingleton<UserRepository>(
-    UserRepositoryImpl(apiDataSource),
+    UserRepositoryImpl(
+      apiDataSource: apiDataSource,
+    ),
+  );
+  GetIt.instance.registerSingleton<AuthRepository>(
+    AuthRepositoryImpl(
+      apiDataSource: apiDataSource,
+      authDataSource: authDataSource,
+    ),
   );
 }

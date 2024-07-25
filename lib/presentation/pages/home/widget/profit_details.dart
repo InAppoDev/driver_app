@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tms_driver/presentation/pages/home/widget/profit_details_widget.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ProfitDetails extends StatelessWidget {
   const ProfitDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Center(
+    return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -16,11 +16,12 @@ class ProfitDetails extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  AppLocalizations.of(context)!.profitDetails,
-                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  context.localizations.profitDetails,
+                  style: const TextStyle(
+                      fontSize: 15, fontWeight: FontWeight.w600),
                 ),
-                 Text(
-                  AppLocalizations.of(context)!.salesRevenue,
+                Text(
+                  context.localizations.salesRevenue,
                   style: const TextStyle(fontSize: 12),
                 ),
               ],
