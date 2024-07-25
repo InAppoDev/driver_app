@@ -5,6 +5,7 @@ final lightTheme = ThemeData(
   useMaterial3: true,
   scaffoldBackgroundColor: AppColors.mainWhite,
   canvasColor: AppColors.white,
+  focusColor: AppColors.black,
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: AppColors.mainWhite,
     selectedItemColor: AppColors.orange,
