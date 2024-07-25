@@ -60,32 +60,32 @@ class S {
     );
   }
 
-  /// `Sales & Revenue`
-  String get salesRevenue {
+  /// `Below is a short summary of your month`
+  String get belowIsAShortSummaryOfYourMonth {
     return Intl.message(
-      'Sales & Revenue',
-      name: 'salesRevenue',
-      desc: 'Sales & Revenue',
+      'Below is a short summary of your month',
+      name: 'belowIsAShortSummaryOfYourMonth',
+      desc: 'Below is a short summary of your mont',
       args: [],
     );
   }
 
-  /// `Dashboard`
-  String get dashboard {
+  /// `Lifetime Stats`
+  String get lifetimeStats {
     return Intl.message(
-      'Dashboard',
-      name: 'dashboard',
-      desc: 'Dashboard',
+      'Lifetime Stats',
+      name: 'lifetimeStats',
+      desc: 'Lifetime Stats',
       args: [],
     );
   }
 
-  /// `Below is a summary of your day`
-  String get belowIsASummaryOfDay {
+  /// `Here is a summary of your overall\nperformance`
+  String get hereIsASummaryOfYourOverallPerformance {
     return Intl.message(
-      'Below is a summary of your day',
-      name: 'belowIsASummaryOfDay',
-      desc: 'Below is a summary of your day',
+      'Here is a summary of your overall\nperformance',
+      name: 'hereIsASummaryOfYourOverallPerformance',
+      desc: 'Here is a summary of your overall\nperformance',
       args: [],
     );
   }

@@ -6,7 +6,7 @@ class CurrentWidget extends StatelessWidget {
     required this.topic,
     required this.description,
     required this.value,
-    required this.completedTasks,
+    required this.milesToGo,
     required this.valueDescription,
   });
 
@@ -14,7 +14,7 @@ class CurrentWidget extends StatelessWidget {
   final String description;
   final String value;
   final String valueDescription;
-  final int completedTasks;
+  final int milesToGo;
 
   @override
   Widget build(BuildContext context) {
@@ -82,14 +82,14 @@ class CurrentWidget extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    completedTasks.toString(),
+                    milesToGo.toString(),
                     style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                   const Text(
-                    'Task to be completed',
+                    'Miles to go',
                     style: TextStyle(fontSize: 12),
                   ),
                 ],

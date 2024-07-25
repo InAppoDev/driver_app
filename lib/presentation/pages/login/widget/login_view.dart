@@ -21,7 +21,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     // _usernameController.text = '9993335111'; // Val
-    // _usernameController.text = '9991451655'; // Max
+    _usernameController.text = '9991451655'; // Max
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state.status == LoginStatus.authenticated) {
@@ -137,7 +137,8 @@ class LoginView extends StatelessWidget {
                       ),
                     if ((state.status != LoginStatus.authenticated &&
                             state.status == LoginStatus.codeSent) ||
-                        state.status == LoginStatus.authenticated)
+                        state.status == LoginStatus.authenticated &&
+                            state.status == LoginStatus.loading)
                       Column(
                         children: [
                           const SizedBox(height: 10),
@@ -149,8 +150,9 @@ class LoginView extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 30),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 45),
+                          if (state.status != LoginStatus.loading)
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 45),
                             child: SizedBox(
                               height: 48,
                               width: double.infinity,

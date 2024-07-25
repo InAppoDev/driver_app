@@ -9,6 +9,7 @@ class ProfitDetailsWidget extends StatelessWidget {
     required this.text,
     required this.showM,
     required this.showDollar,
+    this.showHours = false,
   });
 
   final bool isSelected;
@@ -17,6 +18,7 @@ class ProfitDetailsWidget extends StatelessWidget {
   final String text;
   final bool showM;
   final bool showDollar;
+  final bool showHours;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,12 @@ class ProfitDetailsWidget extends StatelessWidget {
           ),
           const SizedBox(height: 7),
           Text(
-            (showDollar ? '\$$amount' : amount) + (showM ? 'M' : 'k'),
+            (showDollar ? '\$$amount' : amount) +
+                (showHours
+                    ? 'h'
+                    : showM
+                        ? 'M'
+                        : 'k'),
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w700,

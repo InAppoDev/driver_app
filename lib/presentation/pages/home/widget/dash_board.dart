@@ -8,31 +8,22 @@ class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    context.localizations.dashboard,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const Icon(
-                    Icons.person_outline,
-                    color: Color(0xFF1652F6),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
               Text(
-                context.localizations.belowIsASummaryOfDay,
+                context.localizations.lifetimeStats,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Text(
+                context.localizations.hereIsASummaryOfYourOverallPerformance,
                 style: const TextStyle(fontSize: 12),
               ),
             ],
@@ -44,12 +35,31 @@ class DashBoard extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                SummaryOfTheDayWidget(value: 16, text: 'New Activity'),
-                SummaryOfTheDayWidget(value: 16, text: 'Current Tasks'),
-                SummaryOfTheDayWidget(value: 16, text: 'Completed Tasks'),
-                SummaryOfTheDayWidget(value: 16, text: 'Completed Tasks'),
-                SummaryOfTheDayWidget(value: 16, text: 'Completed Tasks'),
-                SummaryOfTheDayWidget(value: 16, text: 'Completed Tasks'),
+                SummaryOfTheDayWidget(value: 1086, text: 'Total trips'),
+                SummaryOfTheDayWidget(
+                  value: 610,
+                  text: 'Total Miles',
+                  showK: true,
+                ),
+                SummaryOfTheDayWidget(
+                  value: 2361,
+                  text: 'Total Stops',
+                ),
+                SummaryOfTheDayWidget(
+                  value: 30,
+                  text: 'Shortest Trip',
+                  showMi: true,
+                ),
+                SummaryOfTheDayWidget(
+                  value: 6155,
+                  text: 'Longest Trip',
+                  showMi: true,
+                ),
+                SummaryOfTheDayWidget(
+                  value: 51,
+                  text: 'Average Speed',
+                  showMph: true,
+                ),
               ],
             ),
           ),
