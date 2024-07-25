@@ -6,10 +6,10 @@ final lightTheme = ThemeData(
   scaffoldBackgroundColor: AppColors.mainWhite,
   canvasColor: AppColors.white,
   focusColor: AppColors.black,
-  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    backgroundColor: AppColors.mainWhite,
-    selectedItemColor: AppColors.orange,
-    unselectedItemColor: AppColors.mainGray,
+  bottomAppBarTheme: const BottomAppBarTheme(
+    color: AppColors.mainWhite,
+    shape: CircularNotchedRectangle(),
+    elevation: 10,
   ),
   cardColor: AppColors.orange,
   iconTheme: const IconThemeData(
@@ -17,4 +17,15 @@ final lightTheme = ThemeData(
   ),
   primaryColor: AppColors.orange,
   shadowColor: AppColors.darkGray,
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: AppColors.orange,
+    foregroundColor: AppColors.white,
+    elevation: 6,
+    hoverElevation: 8,
+    focusElevation: 8,
+    disabledElevation: 0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
+  ),
 );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/pages/home/home_page.dart';
 import 'package:tms_driver/presentation/pages/home/widget/home_bottom_sheet.dart';
 import 'package:tms_driver/presentation/pages/trip_list/trip_list.dart';
@@ -52,53 +51,55 @@ class MainPageState extends State<MainPage> {
         foregroundColor: Colors.black,
         elevation: 0,
       ),
-      body: Stack(
-        children: [
-          IndexedStack(
-            index: _selectedIndex,
-            children: _routes,
-          ),
-          Positioned(
-            bottom: 5,
-            left: 15,
-            right: 15,
-            child: CustomButton(
-              label: 'Start',
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return const HomeBottomSheet();
-                  },
-                );
-              },
-            ),
-          ),
-        ],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _routes,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        type: BottomNavigationBarType.fixed,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.place_outlined),
-            label: 'Trip',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message_outlined),
-            label: 'Messages',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 5.0,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _buildNavItem(context, Icons.home, 'Home', 0),
+            _buildNavItem(context, Icons.place_outlined, 'Trips', 1),
+            const SizedBox(width: 30), // Space for the FAB
+            _buildNavItem(context, Icons.message_outlined, 'Messages', 2),
+            _buildNavItem(context, Icons.person, 'Profile', 3),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return const HomeBottomSheet();
+            },
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+
+  Widget _buildNavItem(
+      BuildContext context, IconData icon, String label, int index) {
+    final isSelected = _selectedIndex == index;
+    final color = isSelected
+        ? Theme.of(context).primaryColor
+        : Theme.of(context).shadowColor;
+    final fontWeight = isSelected ? FontWeight.w600 : FontWeight.w400;
+
+    return GestureDetector(
+      onTap: () => _onItemTapped(index),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, color: color),
+          Text(label, style: TextStyle(color: color, fontWeight: fontWeight)),
         ],
       ),
     );
