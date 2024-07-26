@@ -17,25 +17,24 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   FutureOr<void> _loginEvent(event, emit) async {
     await event.when(
+      onboardingCompleted: () {
+        emit(state.copyWith(status: LoginStatus.initial));
+      },
       loginButtonPressed: (username) async {
         emit(state.copyWith(status: LoginStatus.loading));
         try {
           final authCode =
               await authRepo.requestAuthCode(username, useEmail: true);
-          emit(
-            state.copyWith(
-              status: LoginStatus.codeSent,
-              username: username,
-              authCode: authCode,
-            ),
-          );
+          emit(state.copyWith(
+            status: LoginStatus.codeSent,
+            username: username,
+            authCode: authCode,
+          ));
         } catch (e) {
-          emit(
-            state.copyWith(
-              status: LoginStatus.failure,
-              errorMessage: e.toString(),
-            ),
-          );
+          emit(state.copyWith(
+            status: LoginStatus.failure,
+            errorMessage: e.toString(),
+          ));
         }
       },
       codeRequested: () {
@@ -47,7 +46,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       verifyCode: (code) async {
         emit(state.copyWith(status: LoginStatus.loading));
         try {
-          print('state.authCode ${state.authCode} code: $code');
           await authRepo.verifyAuth(state.authCode, code);
           emit(state.copyWith(status: LoginStatus.authenticated));
         } catch (e) {
