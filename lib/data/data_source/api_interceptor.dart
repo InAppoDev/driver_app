@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:tms_driver/data/data_source/auth_data_source.dart';
 
 class AuthInterceptor extends Interceptor {
@@ -12,7 +13,9 @@ class AuthInterceptor extends Interceptor {
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     final token = await authDataSource.getAuthToken();
-    print('token.accessToken - $token');
+    if (kDebugMode) {
+      print('AuthInterceptor token.accessToken - $token');
+    }
     options.headers['Authorization'] = 'Bearer $token';
     options.baseUrl = api;
     return handler.next(options);

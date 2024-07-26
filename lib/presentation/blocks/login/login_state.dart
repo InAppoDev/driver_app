@@ -1,6 +1,13 @@
 part of 'login_bloc.dart';
 
-enum LoginStatus { initial, loading, codeSent, authenticated, failure }
+enum LoginStatus {
+  initial,
+  loading,
+  codeSent,
+  authenticated,
+  failure,
+  showOnboarding
+}
 
 @freezed
 class LoginState with _$LoginState {
@@ -16,6 +23,6 @@ class LoginState with _$LoginState {
         username: '',
         code: '',
         authCode: '',
-        status: LoginStatus.initial,
+        status: LoginStatus.showOnboarding,
       );
 }

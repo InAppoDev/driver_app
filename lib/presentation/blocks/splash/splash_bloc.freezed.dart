@@ -91,15 +91,23 @@ class __$$SplashEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SplashEventImpl implements _SplashEvent {
+class _$SplashEventImpl with DiagnosticableTreeMixin implements _SplashEvent {
   const _$SplashEventImpl({this.errorMessage});
 
   @override
   final String? errorMessage;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SplashEvent(errorMessage: $errorMessage)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SplashEvent'))
+      ..add(DiagnosticsProperty('errorMessage', errorMessage));
   }
 
   @override
@@ -220,7 +228,7 @@ class __$$SplashStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SplashStateImpl implements _SplashState {
+class _$SplashStateImpl with DiagnosticableTreeMixin implements _SplashState {
   const _$SplashStateImpl({required this.status, this.errorMessage});
 
   @override
@@ -229,8 +237,17 @@ class _$SplashStateImpl implements _SplashState {
   final String? errorMessage;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SplashState(status: $status, errorMessage: $errorMessage)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SplashState'))
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('errorMessage', errorMessage));
   }
 
   @override
