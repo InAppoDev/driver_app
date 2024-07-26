@@ -12,24 +12,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthRepository authRepo = GetIt.instance<AuthRepository>();
 
   LoginBloc() : super(LoginState.initial()) {
-    _initialize();
     on<LoginEvent>(_loginEvent);
-  }
-
-  Future<void> _initialize() async {
-    try {
-      final token = await authRepo.getAuthToken();
-      if (token != null) {
-        emit(state.copyWith(status: LoginStatus.authenticated));
-        print('User is already authenticated');
-        return;
-      }
-
-      final message = await authRepo.ping();
-      print('Server is working: $message');
-    } catch (e) {
-      print('Server ERROR: $e');
-    }
   }
 
   FutureOr<void> _loginEvent(event, emit) async {

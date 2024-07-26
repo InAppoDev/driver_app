@@ -11,7 +11,7 @@ class TripListPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => TripBloc(),
       child: BlocListener<TripBloc, TripState>(
-        listener: (context, ggg) {},
+        listener: (context, listenerState) {},
         child: BlocBuilder<TripBloc, TripState>(
           builder: (context, state) {
             return Container(

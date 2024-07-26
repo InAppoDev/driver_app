@@ -14,7 +14,6 @@ class TripBloc extends Bloc<TripEvent, TripState> {
   }
 
   void _changeTabEvent(TripEvent event, Emitter<TripState> emit) {
-    print('event.status - ${event.status}');
     emit(state.copyWith(tabStatus: event.status));
   }
 }
