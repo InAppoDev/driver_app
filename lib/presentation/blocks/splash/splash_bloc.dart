@@ -4,9 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:tms_driver/domain/repositories/auth_repository.dart';
 
 part 'splash_bloc.freezed.dart';
-
 part 'splash_event.dart';
-
 part 'splash_state.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
@@ -14,6 +12,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
   SplashBloc() : super(SplashState.initial()) {
     _initialize();
+    on<SplashEvent>(_startAnimation);
   }
 
   Future<void> _initialize() async {
@@ -32,5 +31,9 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     } catch (e) {
       print('Server ERROR: $e');
     }
+  }
+
+  void _startAnimation(SplashEvent event, Emitter<SplashState> emit) {
+    emit(state.copyWith(startAnimation: event.startAnimation));
   }
 }

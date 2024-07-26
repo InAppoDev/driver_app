@@ -12,6 +12,7 @@ enum SplashStatus {
 class SplashState with _$SplashState {
   const factory SplashState({
     required SplashStatus status,
+    @Default(false) bool startAnimation,
     String? errorMessage,
   }) = _SplashState;
 
