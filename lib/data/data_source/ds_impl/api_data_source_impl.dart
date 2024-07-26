@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:tms_driver/data/data_source/api_data_source.dart';
 import 'package:tms_driver/data/data_source/api_interceptor.dart';
@@ -27,7 +28,9 @@ class ApiDataSourceImpl implements ApiDataSource {
       Future<Response> Function() requestFunction) async {
     try {
       final response = await requestFunction();
-      print(' _makeRequest response.statusCode ${response.statusCode}');
+      if (kDebugMode) {
+        print(' _makeRequest response.statusCode ${response.statusCode}');
+      }
       if (response.statusCode != 200 && response.statusCode != 201) {
         errorHandler.handleStatusCode(response.statusCode);
         throw Exception('Request failed with status: ${response.statusCode}');
@@ -59,7 +62,9 @@ class ApiDataSourceImpl implements ApiDataSource {
               'phone': phone,
               'use_email': useEmail,
             }));
-    print(response.data['auth_code']);
+    if (kDebugMode) {
+      print(response.data['auth_code']);
+    }
     return response.data['auth_code'];
   }
 
@@ -70,15 +75,18 @@ class ApiDataSourceImpl implements ApiDataSource {
           'auth_code': authCode,
           'verification_code': verificationCode,
         }));
-    print(response.data['auth_token']);
+    if (kDebugMode) {
+      print(response.data['auth_token']);
+    }
     return response.data['auth_token'];
   }
 
   @override
   Future<UserModel> getUser() async {
-    print(getUser);
     final response = await _makeRequest(() => dio.get('/me'));
-    print(response.data);
+    if (kDebugMode) {
+      print(response.data);
+    }
     return UserModel.fromJson(response.data);
   }
 }

@@ -22,6 +22,7 @@ mixin _$LoginEvent {
     required TResult Function() codeRequested,
     required TResult Function(String code) codeChanged,
     required TResult Function(String code) verifyCode,
+    required TResult Function() onboardingCompleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$LoginEvent {
     TResult? Function()? codeRequested,
     TResult? Function(String code)? codeChanged,
     TResult? Function(String code)? verifyCode,
+    TResult? Function()? onboardingCompleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$LoginEvent {
     TResult Function()? codeRequested,
     TResult Function(String code)? codeChanged,
     TResult Function(String code)? verifyCode,
+    TResult Function()? onboardingCompleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$LoginEvent {
     required TResult Function(_CodeRequested value) codeRequested,
     required TResult Function(_CodeChanged value) codeChanged,
     required TResult Function(_VerifyCode value) verifyCode,
+    required TResult Function(_OnboardingCompleted value) onboardingCompleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$LoginEvent {
     TResult? Function(_CodeRequested value)? codeRequested,
     TResult? Function(_CodeChanged value)? codeChanged,
     TResult? Function(_VerifyCode value)? verifyCode,
+    TResult? Function(_OnboardingCompleted value)? onboardingCompleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$LoginEvent {
     TResult Function(_CodeRequested value)? codeRequested,
     TResult Function(_CodeChanged value)? codeChanged,
     TResult Function(_VerifyCode value)? verifyCode,
+    TResult Function(_OnboardingCompleted value)? onboardingCompleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -156,6 +162,7 @@ class _$LoginButtonPressedImpl implements _LoginButtonPressed {
     required TResult Function() codeRequested,
     required TResult Function(String code) codeChanged,
     required TResult Function(String code) verifyCode,
+    required TResult Function() onboardingCompleted,
   }) {
     return loginButtonPressed(username);
   }
@@ -167,6 +174,7 @@ class _$LoginButtonPressedImpl implements _LoginButtonPressed {
     TResult? Function()? codeRequested,
     TResult? Function(String code)? codeChanged,
     TResult? Function(String code)? verifyCode,
+    TResult? Function()? onboardingCompleted,
   }) {
     return loginButtonPressed?.call(username);
   }
@@ -178,6 +186,7 @@ class _$LoginButtonPressedImpl implements _LoginButtonPressed {
     TResult Function()? codeRequested,
     TResult Function(String code)? codeChanged,
     TResult Function(String code)? verifyCode,
+    TResult Function()? onboardingCompleted,
     required TResult orElse(),
   }) {
     if (loginButtonPressed != null) {
@@ -193,6 +202,7 @@ class _$LoginButtonPressedImpl implements _LoginButtonPressed {
     required TResult Function(_CodeRequested value) codeRequested,
     required TResult Function(_CodeChanged value) codeChanged,
     required TResult Function(_VerifyCode value) verifyCode,
+    required TResult Function(_OnboardingCompleted value) onboardingCompleted,
   }) {
     return loginButtonPressed(this);
   }
@@ -204,6 +214,7 @@ class _$LoginButtonPressedImpl implements _LoginButtonPressed {
     TResult? Function(_CodeRequested value)? codeRequested,
     TResult? Function(_CodeChanged value)? codeChanged,
     TResult? Function(_VerifyCode value)? verifyCode,
+    TResult? Function(_OnboardingCompleted value)? onboardingCompleted,
   }) {
     return loginButtonPressed?.call(this);
   }
@@ -215,6 +226,7 @@ class _$LoginButtonPressedImpl implements _LoginButtonPressed {
     TResult Function(_CodeRequested value)? codeRequested,
     TResult Function(_CodeChanged value)? codeChanged,
     TResult Function(_VerifyCode value)? verifyCode,
+    TResult Function(_OnboardingCompleted value)? onboardingCompleted,
     required TResult orElse(),
   }) {
     if (loginButtonPressed != null) {
@@ -276,6 +288,7 @@ class _$CodeRequestedImpl implements _CodeRequested {
     required TResult Function() codeRequested,
     required TResult Function(String code) codeChanged,
     required TResult Function(String code) verifyCode,
+    required TResult Function() onboardingCompleted,
   }) {
     return codeRequested();
   }
@@ -287,6 +300,7 @@ class _$CodeRequestedImpl implements _CodeRequested {
     TResult? Function()? codeRequested,
     TResult? Function(String code)? codeChanged,
     TResult? Function(String code)? verifyCode,
+    TResult? Function()? onboardingCompleted,
   }) {
     return codeRequested?.call();
   }
@@ -298,6 +312,7 @@ class _$CodeRequestedImpl implements _CodeRequested {
     TResult Function()? codeRequested,
     TResult Function(String code)? codeChanged,
     TResult Function(String code)? verifyCode,
+    TResult Function()? onboardingCompleted,
     required TResult orElse(),
   }) {
     if (codeRequested != null) {
@@ -313,6 +328,7 @@ class _$CodeRequestedImpl implements _CodeRequested {
     required TResult Function(_CodeRequested value) codeRequested,
     required TResult Function(_CodeChanged value) codeChanged,
     required TResult Function(_VerifyCode value) verifyCode,
+    required TResult Function(_OnboardingCompleted value) onboardingCompleted,
   }) {
     return codeRequested(this);
   }
@@ -324,6 +340,7 @@ class _$CodeRequestedImpl implements _CodeRequested {
     TResult? Function(_CodeRequested value)? codeRequested,
     TResult? Function(_CodeChanged value)? codeChanged,
     TResult? Function(_VerifyCode value)? verifyCode,
+    TResult? Function(_OnboardingCompleted value)? onboardingCompleted,
   }) {
     return codeRequested?.call(this);
   }
@@ -335,6 +352,7 @@ class _$CodeRequestedImpl implements _CodeRequested {
     TResult Function(_CodeRequested value)? codeRequested,
     TResult Function(_CodeChanged value)? codeChanged,
     TResult Function(_VerifyCode value)? verifyCode,
+    TResult Function(_OnboardingCompleted value)? onboardingCompleted,
     required TResult orElse(),
   }) {
     if (codeRequested != null) {
@@ -416,6 +434,7 @@ class _$CodeChangedImpl implements _CodeChanged {
     required TResult Function() codeRequested,
     required TResult Function(String code) codeChanged,
     required TResult Function(String code) verifyCode,
+    required TResult Function() onboardingCompleted,
   }) {
     return codeChanged(code);
   }
@@ -427,6 +446,7 @@ class _$CodeChangedImpl implements _CodeChanged {
     TResult? Function()? codeRequested,
     TResult? Function(String code)? codeChanged,
     TResult? Function(String code)? verifyCode,
+    TResult? Function()? onboardingCompleted,
   }) {
     return codeChanged?.call(code);
   }
@@ -438,6 +458,7 @@ class _$CodeChangedImpl implements _CodeChanged {
     TResult Function()? codeRequested,
     TResult Function(String code)? codeChanged,
     TResult Function(String code)? verifyCode,
+    TResult Function()? onboardingCompleted,
     required TResult orElse(),
   }) {
     if (codeChanged != null) {
@@ -453,6 +474,7 @@ class _$CodeChangedImpl implements _CodeChanged {
     required TResult Function(_CodeRequested value) codeRequested,
     required TResult Function(_CodeChanged value) codeChanged,
     required TResult Function(_VerifyCode value) verifyCode,
+    required TResult Function(_OnboardingCompleted value) onboardingCompleted,
   }) {
     return codeChanged(this);
   }
@@ -464,6 +486,7 @@ class _$CodeChangedImpl implements _CodeChanged {
     TResult? Function(_CodeRequested value)? codeRequested,
     TResult? Function(_CodeChanged value)? codeChanged,
     TResult? Function(_VerifyCode value)? verifyCode,
+    TResult? Function(_OnboardingCompleted value)? onboardingCompleted,
   }) {
     return codeChanged?.call(this);
   }
@@ -475,6 +498,7 @@ class _$CodeChangedImpl implements _CodeChanged {
     TResult Function(_CodeRequested value)? codeRequested,
     TResult Function(_CodeChanged value)? codeChanged,
     TResult Function(_VerifyCode value)? verifyCode,
+    TResult Function(_OnboardingCompleted value)? onboardingCompleted,
     required TResult orElse(),
   }) {
     if (codeChanged != null) {
@@ -561,6 +585,7 @@ class _$VerifyCodeImpl implements _VerifyCode {
     required TResult Function() codeRequested,
     required TResult Function(String code) codeChanged,
     required TResult Function(String code) verifyCode,
+    required TResult Function() onboardingCompleted,
   }) {
     return verifyCode(code);
   }
@@ -572,6 +597,7 @@ class _$VerifyCodeImpl implements _VerifyCode {
     TResult? Function()? codeRequested,
     TResult? Function(String code)? codeChanged,
     TResult? Function(String code)? verifyCode,
+    TResult? Function()? onboardingCompleted,
   }) {
     return verifyCode?.call(code);
   }
@@ -583,6 +609,7 @@ class _$VerifyCodeImpl implements _VerifyCode {
     TResult Function()? codeRequested,
     TResult Function(String code)? codeChanged,
     TResult Function(String code)? verifyCode,
+    TResult Function()? onboardingCompleted,
     required TResult orElse(),
   }) {
     if (verifyCode != null) {
@@ -598,6 +625,7 @@ class _$VerifyCodeImpl implements _VerifyCode {
     required TResult Function(_CodeRequested value) codeRequested,
     required TResult Function(_CodeChanged value) codeChanged,
     required TResult Function(_VerifyCode value) verifyCode,
+    required TResult Function(_OnboardingCompleted value) onboardingCompleted,
   }) {
     return verifyCode(this);
   }
@@ -609,6 +637,7 @@ class _$VerifyCodeImpl implements _VerifyCode {
     TResult? Function(_CodeRequested value)? codeRequested,
     TResult? Function(_CodeChanged value)? codeChanged,
     TResult? Function(_VerifyCode value)? verifyCode,
+    TResult? Function(_OnboardingCompleted value)? onboardingCompleted,
   }) {
     return verifyCode?.call(this);
   }
@@ -620,6 +649,7 @@ class _$VerifyCodeImpl implements _VerifyCode {
     TResult Function(_CodeRequested value)? codeRequested,
     TResult Function(_CodeChanged value)? codeChanged,
     TResult Function(_VerifyCode value)? verifyCode,
+    TResult Function(_OnboardingCompleted value)? onboardingCompleted,
     required TResult orElse(),
   }) {
     if (verifyCode != null) {
@@ -636,6 +666,127 @@ abstract class _VerifyCode implements LoginEvent {
   @JsonKey(ignore: true)
   _$$VerifyCodeImplCopyWith<_$VerifyCodeImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnboardingCompletedImplCopyWith<$Res> {
+  factory _$$OnboardingCompletedImplCopyWith(_$OnboardingCompletedImpl value,
+          $Res Function(_$OnboardingCompletedImpl) then) =
+      __$$OnboardingCompletedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OnboardingCompletedImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$OnboardingCompletedImpl>
+    implements _$$OnboardingCompletedImplCopyWith<$Res> {
+  __$$OnboardingCompletedImplCopyWithImpl(_$OnboardingCompletedImpl _value,
+      $Res Function(_$OnboardingCompletedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$OnboardingCompletedImpl implements _OnboardingCompleted {
+  const _$OnboardingCompletedImpl();
+
+  @override
+  String toString() {
+    return 'LoginEvent.onboardingCompleted()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnboardingCompletedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String username) loginButtonPressed,
+    required TResult Function() codeRequested,
+    required TResult Function(String code) codeChanged,
+    required TResult Function(String code) verifyCode,
+    required TResult Function() onboardingCompleted,
+  }) {
+    return onboardingCompleted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String username)? loginButtonPressed,
+    TResult? Function()? codeRequested,
+    TResult? Function(String code)? codeChanged,
+    TResult? Function(String code)? verifyCode,
+    TResult? Function()? onboardingCompleted,
+  }) {
+    return onboardingCompleted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String username)? loginButtonPressed,
+    TResult Function()? codeRequested,
+    TResult Function(String code)? codeChanged,
+    TResult Function(String code)? verifyCode,
+    TResult Function()? onboardingCompleted,
+    required TResult orElse(),
+  }) {
+    if (onboardingCompleted != null) {
+      return onboardingCompleted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginButtonPressed value) loginButtonPressed,
+    required TResult Function(_CodeRequested value) codeRequested,
+    required TResult Function(_CodeChanged value) codeChanged,
+    required TResult Function(_VerifyCode value) verifyCode,
+    required TResult Function(_OnboardingCompleted value) onboardingCompleted,
+  }) {
+    return onboardingCompleted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginButtonPressed value)? loginButtonPressed,
+    TResult? Function(_CodeRequested value)? codeRequested,
+    TResult? Function(_CodeChanged value)? codeChanged,
+    TResult? Function(_VerifyCode value)? verifyCode,
+    TResult? Function(_OnboardingCompleted value)? onboardingCompleted,
+  }) {
+    return onboardingCompleted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginButtonPressed value)? loginButtonPressed,
+    TResult Function(_CodeRequested value)? codeRequested,
+    TResult Function(_CodeChanged value)? codeChanged,
+    TResult Function(_VerifyCode value)? verifyCode,
+    TResult Function(_OnboardingCompleted value)? onboardingCompleted,
+    required TResult orElse(),
+  }) {
+    if (onboardingCompleted != null) {
+      return onboardingCompleted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnboardingCompleted implements LoginEvent {
+  const factory _OnboardingCompleted() = _$OnboardingCompletedImpl;
 }
 
 /// @nodoc

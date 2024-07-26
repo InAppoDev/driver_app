@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler.dart';
 import 'package:tms_driver/presentation/utils/error_handler/exception/base_exception.dart';
 import 'package:tms_driver/presentation/utils/error_handler/exception/exception_type.dart';
@@ -68,18 +69,24 @@ class ErrorHandlerImpl implements ErrorHandler {
           'A server error occurred. Status code: $responseStatusCode',
         );
       } else {
-        print('Status code: $responseStatusCode');
+        if (kDebugMode) {
+          print('Status code: $responseStatusCode');
+        }
       }
     }
     return Exception('HTTP status code: $responseStatusCode');
   }
 
   void _showErrorMessage(String title, String message) {
-    print('$title: $message');
+    if (kDebugMode) {
+      print('$title: $message');
+    }
   }
 
   void _handleUnAuth() {
-    print('Unauthenticated! Redirecting to login...');
+    if (kDebugMode) {
+      print('Unauthenticated! Redirecting to login...');
+    }
   }
 
   @override

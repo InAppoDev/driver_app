@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
@@ -21,16 +22,22 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       final token = await authRepo.getAuthToken();
       if (token != null) {
         emit(state.copyWith(status: SplashStatus.authenticated));
-        print('User is already authenticated');
+        if (kDebugMode) {
+          print('User is already authenticated');
+        }
         return;
       } else {
         emit(state.copyWith(status: SplashStatus.unauthenticated));
       }
 
       final message = await authRepo.ping();
-      print('Server is working: $message');
+      if (kDebugMode) {
+        print('Server is working: $message');
+      }
     } catch (e) {
-      print('Server ERROR: $e');
+      if (kDebugMode) {
+        print('Server ERROR: $e');
+      }
     }
   }
 }

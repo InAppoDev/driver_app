@@ -12,7 +12,7 @@ class UserProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -33,15 +33,32 @@ class UserProfile extends StatelessWidget {
           if (user.photo != null)
             Row(
               children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: NetworkImage(user.photo!),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.grey[200],
+                    child: user.photo != null
+                        ? Image.network(
+                            user.photo!,
+                            fit: BoxFit.cover,
+                            width: 100,
+                            height: 100,
+                          )
+                        : Icon(
+                            Icons.person,
+                            size: 50,
+                            color: Colors.grey[400],
+                          ),
+                  ),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
                         '${user.firstName} ${user.lastName}',
@@ -52,7 +69,7 @@ class UserProfile extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        '${user.email} ',
+                        user.email,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -60,6 +77,7 @@ class UserProfile extends StatelessWidget {
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           TextButton(
                             onPressed: () {
@@ -74,7 +92,7 @@ class UserProfile extends StatelessWidget {
                             ),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),
