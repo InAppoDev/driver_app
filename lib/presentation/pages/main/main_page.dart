@@ -65,7 +65,7 @@ class MainPageState extends State<MainPage> {
             _buildNavItem(context, Icons.place_outlined, 'Trips', 1),
             const SizedBox(width: 30), // Space for the FAB
             _buildNavItem(context, Icons.message_outlined, 'Messages', 2),
-            _buildNavItem(context, Icons.person, 'Profile', 3),
+            _buildNavItem(context, Icons.person, 'You', 3),
           ],
         ),
       ),
@@ -79,7 +79,7 @@ class MainPageState extends State<MainPage> {
             },
           );
         },
-        child: const Icon(Icons.add),
+        child: const Text('Drive on'),
       ),
     );
   }

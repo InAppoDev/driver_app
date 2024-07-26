@@ -7,11 +7,12 @@ class HomeBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 200,
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
           CustomButton(
-            label: 'Stop',
+            label: 'Park',
             onPressed: () {
               Navigator.pop(context);
             },

@@ -21,7 +21,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    _usernameController.text = '9993335111'; // Val
+    // _usernameController.text = '9993335111'; // Val
     // _usernameController.text = '9991451655'; // Max
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
@@ -112,16 +112,15 @@ class LoginView extends StatelessWidget {
                   const SizedBox(height: 30),
                   BlocBuilder<LoginBloc, LoginState>(
                     builder: (context, state) {
-                      return Column(
-                        children: [
-                          if (state.status == LoginStatus.loading)
-                            const CircularProgressIndicator(),
-                          if (state.status == LoginStatus.initial ||
-                              state.status == LoginStatus.failure)
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 45),
-                              child: SizedBox(
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 32),
+                        child: Column(
+                          children: [
+                            if (state.status == LoginStatus.loading)
+                              const CircularProgressIndicator(),
+                            if (state.status == LoginStatus.initial ||
+                                state.status == LoginStatus.failure)
+                              SizedBox(
                                 height: 48,
                                 width: double.infinity,
                                 child: ElevatedButton(
@@ -148,60 +147,60 @@ class LoginView extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            ),
-                          if ((state.status != LoginStatus.authenticated &&
-                                  state.status == LoginStatus.codeSent) ||
-                              state.status == LoginStatus.authenticated &&
-                                  state.status == LoginStatus.loading)
-                            Column(
-                              children: [
-                                const SizedBox(height: 10),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 32),
-                                  child: CustomTextField(
-                                    controller: _codeController,
-                                    hintText: context.localizations.enterCode,
-                                  ),
-                                ),
-                                const SizedBox(height: 30),
-                                if (state.status != LoginStatus.loading)
+                            if ((state.status != LoginStatus.authenticated &&
+                                    state.status == LoginStatus.codeSent) ||
+                                state.status == LoginStatus.authenticated &&
+                                    state.status == LoginStatus.loading)
+                              Column(
+                                children: [
+                                  const SizedBox(height: 10),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 45),
-                                    child: SizedBox(
-                                      height: 48,
-                                      width: double.infinity,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          context.read<LoginBloc>().add(
-                                                LoginEvent.verifyCode(
-                                                  code: _codeController.text,
-                                                ),
-                                              );
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: theme.cardColor,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8),
+                                        horizontal: 32),
+                                    child: CustomTextField(
+                                      controller: _codeController,
+                                      hintText: context.localizations.enterCode,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 30),
+                                  if (state.status != LoginStatus.loading)
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 45),
+                                      child: SizedBox(
+                                        height: 48,
+                                        width: double.infinity,
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            context.read<LoginBloc>().add(
+                                                  LoginEvent.verifyCode(
+                                                    code: _codeController.text,
+                                                  ),
+                                                );
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: theme.cardColor,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
                                           ),
-                                        ),
-                                        child: Text(
-                                          context.localizations.verifyCode,
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                            color:
-                                                theme.scaffoldBackgroundColor,
+                                          child: Text(
+                                            context.localizations.verifyCode,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400,
+                                              color:
+                                                  theme.scaffoldBackgroundColor,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                              ],
-                            ),
-                        ],
+                                ],
+                              ),
+                          ],
+                        ),
                       );
                     },
                   ),

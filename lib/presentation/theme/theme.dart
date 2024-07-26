@@ -28,6 +28,10 @@ final lightTheme = ThemeData(
     backgroundColor: AppColors.orange,
     foregroundColor: AppColors.white,
     elevation: 6,
+    sizeConstraints: const BoxConstraints.tightFor(
+      width: 70,
+      height: 70,
+    ),
     hoverElevation: 8,
     focusElevation: 8,
     disabledElevation: 0,

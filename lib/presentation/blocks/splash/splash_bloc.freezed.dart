@@ -123,15 +123,25 @@ class __$$StartAnimationImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartAnimationImpl implements _StartAnimation {
+class _$StartAnimationImpl
+    with DiagnosticableTreeMixin
+    implements _StartAnimation {
   const _$StartAnimationImpl({required this.startAnimation});
 
   @override
   final bool startAnimation;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SplashEvent.startAnimation(startAnimation: $startAnimation)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SplashEvent.startAnimation'))
+      ..add(DiagnosticsProperty('startAnimation', startAnimation));
   }
 
   @override
@@ -321,7 +331,7 @@ class __$$SplashStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SplashStateImpl implements _SplashState {
+class _$SplashStateImpl with DiagnosticableTreeMixin implements _SplashState {
   const _$SplashStateImpl(
       {required this.status, this.startAnimation = false, this.errorMessage});
 
@@ -334,8 +344,18 @@ class _$SplashStateImpl implements _SplashState {
   final String? errorMessage;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SplashState(status: $status, startAnimation: $startAnimation, errorMessage: $errorMessage)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SplashState'))
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('startAnimation', startAnimation))
+      ..add(DiagnosticsProperty('errorMessage', errorMessage));
   }
 
   @override

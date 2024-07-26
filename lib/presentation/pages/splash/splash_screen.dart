@@ -8,7 +8,6 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return BlocProvider(
       create: (context) => SplashBloc(),
       child: BlocListener<SplashBloc, SplashState>(
@@ -26,7 +25,7 @@ class SplashScreen extends StatelessWidget {
                   .add(const SplashEvent.startAnimation(startAnimation: true));
             }
 
-            await Future.delayed(const Duration(milliseconds: 1200), () {});
+            await Future.delayed(const Duration(milliseconds: 800), () {});
             if (context.mounted) {
               context.go('/login');
             }
@@ -42,24 +41,14 @@ class SplashScreen extends StatelessWidget {
         child: BlocBuilder<SplashBloc, SplashState>(
           builder: (context, state) {
             return Scaffold(
-                body: Stack(
-              children: [
-                AnimatedPositioned(
-                  top: state.startAnimation
-                      ? 168
-                      : height / 2 - 115,
-                  left: 0,
-                  right: 0,
-                  duration: const Duration(milliseconds: 700),
-                  child: AnimatedScale(
-                    scale: state.startAnimation ? 0.97: 0.65,
-                    duration: const Duration(milliseconds: 1000),
-                    child: Image.asset(
-                      'assets/images/logo.png',
-                    ),
-                  ),
+                body: Center(
+              child: AnimatedScale(
+                scale: state.startAnimation ? 0.97 : 0.5,
+                duration: const Duration(milliseconds: 500),
+                child: Image.asset(
+                  'assets/images/logo.png',
                 ),
-              ],
+              ),
             ));
           },
         ),
