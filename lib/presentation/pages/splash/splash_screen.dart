@@ -8,7 +8,6 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final height = MediaQuery.of(context).size.height;
     return BlocProvider(
       create: (context) => SplashBloc(),
@@ -47,34 +46,16 @@ class SplashScreen extends StatelessWidget {
               children: [
                 AnimatedPositioned(
                   top: state.startAnimation
-                      ? 0
+                      ? 168
                       : height / 2 - 115,
                   left: 0,
                   right: 0,
                   duration: const Duration(milliseconds: 700),
                   child: AnimatedScale(
-                    scale: state.startAnimation ? 1 : 0.6,
+                    scale: state.startAnimation ? 0.97: 0.65,
                     duration: const Duration(milliseconds: 1000),
-                    child: Container(
-                      height: height * 0.266,
-                      width: double.infinity,
-                      color: theme.scaffoldBackgroundColor,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/logo.png',
-                          ),
-                          Text(
-                            'DRIVER APP',
-                            style: TextStyle(
-                              letterSpacing: 7,
-                              fontWeight: FontWeight.w600,
-                              color: theme.cardColor,
-                            ),
-                          ),
-                        ],
-                      ),
+                    child: Image.asset(
+                      'assets/images/logo.png',
                     ),
                   ),
                 ),

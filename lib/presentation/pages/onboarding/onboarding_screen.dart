@@ -71,10 +71,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   return Padding(
                     padding: const EdgeInsets.all(40.0),
                     child: Column(
+                     mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
                           contents[i].image,
-                          height: SizeConfig.blockV! * 35,
+                          height: SizeConfig.blockV! * 5,
                         ),
                         SizedBox(
                           height: (height >= 840) ? 60 : 30,
