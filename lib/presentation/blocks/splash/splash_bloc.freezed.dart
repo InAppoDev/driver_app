@@ -16,7 +16,39 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SplashEvent {
-  String? get errorMessage => throw _privateConstructorUsedError;
+  bool get startAnimation => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool startAnimation) startAnimation,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool startAnimation)? startAnimation,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool startAnimation)? startAnimation,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartAnimation value) startAnimation,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartAnimation value)? startAnimation,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartAnimation value)? startAnimation,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SplashEventCopyWith<SplashEvent> get copyWith =>
@@ -29,7 +61,7 @@ abstract class $SplashEventCopyWith<$Res> {
           SplashEvent value, $Res Function(SplashEvent) then) =
       _$SplashEventCopyWithImpl<$Res, SplashEvent>;
   @useResult
-  $Res call({String? errorMessage});
+  $Res call({bool startAnimation});
 }
 
 /// @nodoc
@@ -45,104 +77,155 @@ class _$SplashEventCopyWithImpl<$Res, $Val extends SplashEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errorMessage = freezed,
+    Object? startAnimation = null,
   }) {
     return _then(_value.copyWith(
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+      startAnimation: null == startAnimation
+          ? _value.startAnimation
+          : startAnimation // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$SplashEventImplCopyWith<$Res>
+abstract class _$$StartAnimationImplCopyWith<$Res>
     implements $SplashEventCopyWith<$Res> {
-  factory _$$SplashEventImplCopyWith(
-          _$SplashEventImpl value, $Res Function(_$SplashEventImpl) then) =
-      __$$SplashEventImplCopyWithImpl<$Res>;
+  factory _$$StartAnimationImplCopyWith(_$StartAnimationImpl value,
+          $Res Function(_$StartAnimationImpl) then) =
+      __$$StartAnimationImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? errorMessage});
+  $Res call({bool startAnimation});
 }
 
 /// @nodoc
-class __$$SplashEventImplCopyWithImpl<$Res>
-    extends _$SplashEventCopyWithImpl<$Res, _$SplashEventImpl>
-    implements _$$SplashEventImplCopyWith<$Res> {
-  __$$SplashEventImplCopyWithImpl(
-      _$SplashEventImpl _value, $Res Function(_$SplashEventImpl) _then)
+class __$$StartAnimationImplCopyWithImpl<$Res>
+    extends _$SplashEventCopyWithImpl<$Res, _$StartAnimationImpl>
+    implements _$$StartAnimationImplCopyWith<$Res> {
+  __$$StartAnimationImplCopyWithImpl(
+      _$StartAnimationImpl _value, $Res Function(_$StartAnimationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errorMessage = freezed,
+    Object? startAnimation = null,
   }) {
-    return _then(_$SplashEventImpl(
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+    return _then(_$StartAnimationImpl(
+      startAnimation: null == startAnimation
+          ? _value.startAnimation
+          : startAnimation // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SplashEventImpl with DiagnosticableTreeMixin implements _SplashEvent {
-  const _$SplashEventImpl({this.errorMessage});
+class _$StartAnimationImpl implements _StartAnimation {
+  const _$StartAnimationImpl({required this.startAnimation});
 
   @override
-  final String? errorMessage;
+  final bool startAnimation;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SplashEvent(errorMessage: $errorMessage)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SplashEvent'))
-      ..add(DiagnosticsProperty('errorMessage', errorMessage));
+  String toString() {
+    return 'SplashEvent.startAnimation(startAnimation: $startAnimation)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SplashEventImpl &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            other is _$StartAnimationImpl &&
+            (identical(other.startAnimation, startAnimation) ||
+                other.startAnimation == startAnimation));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
+  int get hashCode => Object.hash(runtimeType, startAnimation);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SplashEventImplCopyWith<_$SplashEventImpl> get copyWith =>
-      __$$SplashEventImplCopyWithImpl<_$SplashEventImpl>(this, _$identity);
+  _$$StartAnimationImplCopyWith<_$StartAnimationImpl> get copyWith =>
+      __$$StartAnimationImplCopyWithImpl<_$StartAnimationImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool startAnimation) startAnimation,
+  }) {
+    return startAnimation(this.startAnimation);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool startAnimation)? startAnimation,
+  }) {
+    return startAnimation?.call(this.startAnimation);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool startAnimation)? startAnimation,
+    required TResult orElse(),
+  }) {
+    if (startAnimation != null) {
+      return startAnimation(this.startAnimation);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StartAnimation value) startAnimation,
+  }) {
+    return startAnimation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StartAnimation value)? startAnimation,
+  }) {
+    return startAnimation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StartAnimation value)? startAnimation,
+    required TResult orElse(),
+  }) {
+    if (startAnimation != null) {
+      return startAnimation(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _SplashEvent implements SplashEvent {
-  const factory _SplashEvent({final String? errorMessage}) = _$SplashEventImpl;
+abstract class _StartAnimation implements SplashEvent {
+  const factory _StartAnimation({required final bool startAnimation}) =
+      _$StartAnimationImpl;
 
   @override
-  String? get errorMessage;
+  bool get startAnimation;
   @override
   @JsonKey(ignore: true)
-  _$$SplashEventImplCopyWith<_$SplashEventImpl> get copyWith =>
+  _$$StartAnimationImplCopyWith<_$StartAnimationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$SplashState {
   SplashStatus get status => throw _privateConstructorUsedError;
+  bool get startAnimation => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -156,7 +239,7 @@ abstract class $SplashStateCopyWith<$Res> {
           SplashState value, $Res Function(SplashState) then) =
       _$SplashStateCopyWithImpl<$Res, SplashState>;
   @useResult
-  $Res call({SplashStatus status, String? errorMessage});
+  $Res call({SplashStatus status, bool startAnimation, String? errorMessage});
 }
 
 /// @nodoc
@@ -173,6 +256,7 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
   @override
   $Res call({
     Object? status = null,
+    Object? startAnimation = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -180,6 +264,10 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as SplashStatus,
+      startAnimation: null == startAnimation
+          ? _value.startAnimation
+          : startAnimation // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -196,7 +284,7 @@ abstract class _$$SplashStateImplCopyWith<$Res>
       __$$SplashStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({SplashStatus status, String? errorMessage});
+  $Res call({SplashStatus status, bool startAnimation, String? errorMessage});
 }
 
 /// @nodoc
@@ -211,6 +299,7 @@ class __$$SplashStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? startAnimation = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$SplashStateImpl(
@@ -218,6 +307,10 @@ class __$$SplashStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as SplashStatus,
+      startAnimation: null == startAnimation
+          ? _value.startAnimation
+          : startAnimation // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -228,26 +321,21 @@ class __$$SplashStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SplashStateImpl with DiagnosticableTreeMixin implements _SplashState {
-  const _$SplashStateImpl({required this.status, this.errorMessage});
+class _$SplashStateImpl implements _SplashState {
+  const _$SplashStateImpl(
+      {required this.status, this.startAnimation = false, this.errorMessage});
 
   @override
   final SplashStatus status;
   @override
+  @JsonKey()
+  final bool startAnimation;
+  @override
   final String? errorMessage;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SplashState(status: $status, errorMessage: $errorMessage)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SplashState'))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('errorMessage', errorMessage));
+  String toString() {
+    return 'SplashState(status: $status, startAnimation: $startAnimation, errorMessage: $errorMessage)';
   }
 
   @override
@@ -256,12 +344,15 @@ class _$SplashStateImpl with DiagnosticableTreeMixin implements _SplashState {
         (other.runtimeType == runtimeType &&
             other is _$SplashStateImpl &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.startAnimation, startAnimation) ||
+                other.startAnimation == startAnimation) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, errorMessage);
+  int get hashCode =>
+      Object.hash(runtimeType, status, startAnimation, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -273,10 +364,13 @@ class _$SplashStateImpl with DiagnosticableTreeMixin implements _SplashState {
 abstract class _SplashState implements SplashState {
   const factory _SplashState(
       {required final SplashStatus status,
+      final bool startAnimation,
       final String? errorMessage}) = _$SplashStateImpl;
 
   @override
   SplashStatus get status;
+  @override
+  bool get startAnimation;
   @override
   String? get errorMessage;
   @override
