@@ -6,7 +6,8 @@ class AppColors {
   static const Color gray = Color(0xFF747C85);
   static const Color mainGray = Color(0xFF64748B);
   static const Color darkGray = Color(0xFF4E4B65);
-  static const Color black = Color(0xFF121212);
+  static const Color black = Color(0xFF171717);
+  static const Color lightBlack = Color(0xFF121212);
   static const Color mainWhite = Color(0xFFFFFFFF);
   static const Color white = Color.fromRGBO(239, 243, 249, 1.0);
   static const Color error = Color(0xFFFF0606);
