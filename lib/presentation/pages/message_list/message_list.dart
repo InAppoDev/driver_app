@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/presentation/pages/message_list/widget/message_widget.dart';
 
 class MessageListPage extends StatelessWidget {
   const MessageListPage({super.key});
@@ -7,8 +8,11 @@ class MessageListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(color: Theme.of(context).canvasColor),
-      child: const Center(
-        child: Text('Message List Page'),
+      child: ListView.builder(
+        itemCount: 12,
+        itemBuilder: (context, index) {
+          return const MessageWidget();
+        },
       ),
     );
   }
