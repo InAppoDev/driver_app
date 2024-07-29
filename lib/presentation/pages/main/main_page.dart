@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/presentation/customs/custom_app_bar.dart';
 import 'package:tms_driver/presentation/pages/home/home_page.dart';
 import 'package:tms_driver/presentation/pages/home/widget/home_bottom_sheet.dart';
-import 'package:tms_driver/presentation/pages/trip_list/trip_list.dart';
 import 'package:tms_driver/presentation/pages/message_list/message_list.dart';
 import 'package:tms_driver/presentation/pages/profile/profile.dart';
+import 'package:tms_driver/presentation/pages/trip_list/trip_list.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -36,21 +37,7 @@ class MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            SizedBox(
-              height: 30,
-              child: Image.asset(
-                'assets/images/logo.png',
-              ),
-            ),
-          ],
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
-      ),
+      appBar: const CustomAppBar(),
       body: IndexedStack(
         index: _selectedIndex,
         children: _routes,
