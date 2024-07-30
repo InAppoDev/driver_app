@@ -62,7 +62,7 @@ class LoginView extends StatelessWidget {
                             'assets/images/logo.png',
                           ),
                           Text(
-                            'DRIVER APP',
+                            context.localizations.driveApp,
                             style: TextStyle(
                               letterSpacing: 7,
                               fontWeight: FontWeight.w600,

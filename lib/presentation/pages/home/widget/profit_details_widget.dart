@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ProfitDetailsWidget extends StatelessWidget {
   const ProfitDetailsWidget({
@@ -42,10 +43,10 @@ class ProfitDetailsWidget extends StatelessWidget {
           Text(
             (showDollar ? '\$$amount' : amount) +
                 (showHours
-                    ? 'h'
+                    ? context.localizations.h
                     : showM
-                        ? 'M'
-                        : 'k'),
+                        ? context.localizations.m
+                        : context.localizations.k),
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w700,

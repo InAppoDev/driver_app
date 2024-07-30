@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class CurrentWidget extends StatelessWidget {
   const CurrentWidget({
@@ -88,8 +89,8 @@ class CurrentWidget extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  const Text(
-                    'Miles to go',
+                  Text(
+                    context.localizations.milesToGo,
                     style: TextStyle(fontSize: 12),
                   ),
                 ],

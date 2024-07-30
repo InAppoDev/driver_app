@@ -22,22 +22,68 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "accountInformation":
+            MessageLookupByLibrary.simpleMessage("Account Information"),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
+        "averageSpeed": MessageLookupByLibrary.simpleMessage("Average Speed"),
         "belowIsAShortSummaryOfYourMonth": MessageLookupByLibrary.simpleMessage(
             "Below is a short summary of your month"),
+        "butUnderstandingTheContributionsOurColleaguesMakeToOurTeamsAndCompanies":
+            MessageLookupByLibrary.simpleMessage(
+                "But understanding the contributions our colleagues make to our teams and companies."),
+        "checkCalls": MessageLookupByLibrary.simpleMessage("Check Calls"),
+        "city": MessageLookupByLibrary.simpleMessage("City"),
+        "driveApp": MessageLookupByLibrary.simpleMessage("DRIVER APP"),
+        "driveOn": MessageLookupByLibrary.simpleMessage("Drive on"),
+        "driveTime": MessageLookupByLibrary.simpleMessage("Drive Time"),
         "enterCode": MessageLookupByLibrary.simpleMessage("Enter Code"),
         "enterYourPhoneNumberToLoginAnAccount":
             MessageLookupByLibrary.simpleMessage(
                 "Enter your Phone number to login an account"),
+        "getNotifiedWhenWorkHappens": MessageLookupByLibrary.simpleMessage(
+            "Get notified when work happens"),
         "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
+        "h": MessageLookupByLibrary.simpleMessage("h"),
         "hereIsASummaryOfYourOverallPerformance":
             MessageLookupByLibrary.simpleMessage(
                 "Here is a summary of your overall\nperformance"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "initializing": MessageLookupByLibrary.simpleMessage("Initializing..."),
+        "k": MessageLookupByLibrary.simpleMessage("k"),
         "lifetimeStats": MessageLookupByLibrary.simpleMessage("Lifetime Stats"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "longestTrip": MessageLookupByLibrary.simpleMessage("Longest Trip"),
+        "m": MessageLookupByLibrary.simpleMessage("M"),
+        "messages": MessageLookupByLibrary.simpleMessage("Messages"),
+        "milesToGo": MessageLookupByLibrary.simpleMessage("Miles to go"),
+        "mph": MessageLookupByLibrary.simpleMessage("Mph"),
+        "next": MessageLookupByLibrary.simpleMessage("NEXT"),
+        "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "profitDetails": MessageLookupByLibrary.simpleMessage("Profit Details"),
+        "rememberToKeepTrackOfYourProfessionalAccomplishments":
+            MessageLookupByLibrary.simpleMessage(
+                "Remember to keep track of your professional accomplishments."),
         "requestCode": MessageLookupByLibrary.simpleMessage("Request Code"),
+        "shortestTrip": MessageLookupByLibrary.simpleMessage("Shortest Trip"),
+        "skip": MessageLookupByLibrary.simpleMessage("SKIP"),
+        "start": MessageLookupByLibrary.simpleMessage("START"),
+        "stateCode": MessageLookupByLibrary.simpleMessage("State Code"),
+        "stayOrganizedWithTeam":
+            MessageLookupByLibrary.simpleMessage("Stay organized with team"),
+        "takeControlOfNotificationsCollaborateLiveOrOnYourOwnTime":
+            MessageLookupByLibrary.simpleMessage(
+                "Take control of notifications, collaborate live or on your own time."),
+        "totalMiles": MessageLookupByLibrary.simpleMessage("Total Miles"),
+        "totalStops": MessageLookupByLibrary.simpleMessage("Total Stops"),
+        "totalTrips": MessageLookupByLibrary.simpleMessage("Total trips"),
+        "trackYourWorkAndGetTheResult": MessageLookupByLibrary.simpleMessage(
+            "Track Your work and get the result"),
+        "trips": MessageLookupByLibrary.simpleMessage("Trips"),
         "verifyCode": MessageLookupByLibrary.simpleMessage("Verify Code"),
+        "you": MessageLookupByLibrary.simpleMessage("You"),
         "yourDataIsProtected": MessageLookupByLibrary.simpleMessage(
-            "Your data is protected and used solely for app authentication. We respect your privacy and security.")
+            "Your data is protected and used solely for app authentication. We respect your privacy and security."),
+        "zipCode": MessageLookupByLibrary.simpleMessage("Zip Code")
       };
 }

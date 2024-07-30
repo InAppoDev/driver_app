@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class SummaryOfTheDayWidget extends StatelessWidget {
   const SummaryOfTheDayWidget({
@@ -32,11 +33,11 @@ class SummaryOfTheDayWidget extends StatelessWidget {
           Text(
             value.toString() +
                 (showK
-                    ? 'k'
+                    ? context.localizations.k
                     : showMi
-                        ? 'M'
+                        ? context.localizations.m
                         : showMph
-                            ? 'Mph'
+                            ? context.localizations.mph
                             : ''),
             style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
           ),

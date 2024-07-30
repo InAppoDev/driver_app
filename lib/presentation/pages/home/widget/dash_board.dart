@@ -29,35 +29,38 @@ class DashBoard extends StatelessWidget {
             ],
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 7),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 7),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                SummaryOfTheDayWidget(value: 1086, text: 'Total trips'),
+                SummaryOfTheDayWidget(
+                  value: 1086,
+                  text: context.localizations.totalTrips,
+                ),
                 SummaryOfTheDayWidget(
                   value: 610,
-                  text: 'Total Miles',
+                  text: context.localizations.totalMiles,
                   showK: true,
                 ),
                 SummaryOfTheDayWidget(
                   value: 2361,
-                  text: 'Total Stops',
+                  text: context.localizations.totalStops,
                 ),
                 SummaryOfTheDayWidget(
                   value: 30,
-                  text: 'Shortest Trip',
+                  text: context.localizations.shortestTrip,
                   showMi: true,
                 ),
                 SummaryOfTheDayWidget(
                   value: 6155,
-                  text: 'Longest Trip',
+                  text: context.localizations.longestTrip,
                   showMi: true,
                 ),
                 SummaryOfTheDayWidget(
                   value: 51,
-                  text: 'Average Speed',
+                  text: context.localizations.averageSpeed,
                   showMph: true,
                 ),
               ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tms_driver/data/models/user_model.dart';
 import 'package:tms_driver/presentation/blocks/user/user_bloc.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class UserProfile extends StatelessWidget {
   final UserModel user;
@@ -86,7 +87,7 @@ class UserProfile extends StatelessWidget {
                                   .add(const UserEvent.logout());
                             },
                             child: Text(
-                              'Logout',
+                              context.localizations.logout,
                               style: TextStyle(
                                   color: Theme.of(context).primaryColor),
                             ),
@@ -101,21 +102,28 @@ class UserProfile extends StatelessWidget {
           const SizedBox(height: 16),
           const Divider(),
           const SizedBox(height: 16),
-          const Text(
-            'Account Information',
-            style: TextStyle(
+          Text(
+            context.localizations.accountInformation,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
             ),
           ),
           const SizedBox(height: 16),
-          _buildUserInfo(context, title: 'Phone', value: user.phone),
-          _buildUserInfo(context, title: 'Address', value: user.address),
-          _buildUserInfo(context, title: 'City', value: user.city),
-          _buildUserInfo(context, title: 'State Code', value: user.stateCode),
-          _buildUserInfo(context, title: 'State Code', value: user.stateCode),
-          _buildUserInfo(context, title: 'Zip Code', value: user.zipCode),
-          _buildUserInfo(context, title: 'Zip Code', value: user.zipCode),
+          _buildUserInfo(context,
+              title: context.localizations.phone, value: user.phone),
+          _buildUserInfo(context,
+              title: context.localizations.address, value: user.address),
+          _buildUserInfo(context,
+              title: context.localizations.city, value: user.city),
+          _buildUserInfo(context,
+              title: context.localizations.stateCode, value: user.stateCode),
+          _buildUserInfo(context,
+              title: context.localizations.stateCode, value: user.stateCode),
+          _buildUserInfo(context,
+              title: context.localizations.zipCode, value: user.zipCode),
+          _buildUserInfo(context,
+              title: context.localizations.zipCode, value: user.zipCode),
           _buildUserInfo(context,
               title: 'Emergency Phone', value: user.emergencyPhone ?? 'N/A'),
           const SizedBox(height: 20),

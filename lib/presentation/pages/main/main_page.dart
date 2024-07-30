@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/pages/home/home_page.dart';
 import 'package:tms_driver/presentation/pages/home/widget/home_bottom_sheet.dart';
-import 'package:tms_driver/presentation/pages/trip_list/trip_list.dart';
 import 'package:tms_driver/presentation/pages/message_list/message_list.dart';
 import 'package:tms_driver/presentation/pages/profile/profile.dart';
+import 'package:tms_driver/presentation/pages/trip_list/trip_list.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -61,11 +62,13 @@ class MainPageState extends State<MainPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _buildNavItem(context, Icons.home, 'Home', 0),
-            _buildNavItem(context, Icons.place_outlined, 'Trips', 1),
+            _buildNavItem(context, Icons.home, context.localizations.home, 0),
+            _buildNavItem(
+                context, Icons.place_outlined, context.localizations.trips, 1),
             const SizedBox(width: 30), // Space for the FAB
-            _buildNavItem(context, Icons.message_outlined, 'Messages', 2),
-            _buildNavItem(context, Icons.person, 'You', 3),
+            _buildNavItem(context, Icons.message_outlined,
+                context.localizations.messages, 2),
+            _buildNavItem(context, Icons.person, context.localizations.you, 3),
           ],
         ),
       ),
@@ -79,7 +82,7 @@ class MainPageState extends State<MainPage> {
             },
           );
         },
-        child: const Text('Drive on'),
+        child: Text(context.localizations.driveOn),
       ),
     );
   }

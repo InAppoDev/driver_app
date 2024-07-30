@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/pages/onboarding/onboarding_content.dart';
 import 'package:tms_driver/presentation/pages/onboarding/size_config.dart';
 import 'package:tms_driver/presentation/theme/app_colors.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class OnboardingScreen extends StatefulWidget {
   final VoidCallback onCompleted;
@@ -66,7 +67,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 physics: const BouncingScrollPhysics(),
                 controller: _controller,
                 onPageChanged: (value) => setState(() => _currentPage = value),
-                itemCount: contents.length,
+                itemCount: contents(context).length,
                 itemBuilder: (context, i) {
                   return Padding(
                     padding: const EdgeInsets.all(40.0),
@@ -74,14 +75,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          contents[i].image,
+                          contents(context)[i].image,
                           height: SizeConfig.blockV! * 5,
                         ),
                         SizedBox(
                           height: (height >= 840) ? 60 : 30,
                         ),
                         Text(
-                          contents[i].title,
+                          contents(context)[i].title,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: "Mulish",
@@ -91,7 +92,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         const SizedBox(height: 15),
                         Text(
-                          contents[i].desc,
+                          contents(context)[i].desc,
                           style: TextStyle(
                             fontFamily: "Mulish",
                             fontWeight: FontWeight.w300,
@@ -113,14 +114,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
-                      contents.length,
+                      contents(context).length,
                       (int index) => _buildDots(
                         context: context,
                         index: index,
                       ),
                     ),
                   ),
-                  _currentPage + 1 == contents.length
+                  _currentPage + 1 == contents(context).length
                       ? Padding(
                           padding: const EdgeInsets.all(30),
                           child: ElevatedButton(
@@ -139,7 +140,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   TextStyle(fontSize: (width <= 550) ? 13 : 17),
                             ),
                             child: Text(
-                              "START",
+                              context.localizations.start,
                               style: TextStyle(
                                   color: Theme.of(context)
                                       .scaffoldBackgroundColor),
@@ -163,7 +164,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   ),
                                 ),
                                 child: Text(
-                                  "SKIP",
+                                  context.localizations.skip,
                                   style: TextStyle(
                                       color: Theme.of(context).primaryColor),
                                 ),
@@ -191,7 +192,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       fontSize: (width <= 550) ? 13 : 17,
                                     )),
                                 child: Text(
-                                  "NEXT",
+                                  context.localizations.next,
                                   style: TextStyle(
                                       color: Theme.of(context)
                                           .scaffoldBackgroundColor),

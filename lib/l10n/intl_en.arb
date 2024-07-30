@@ -42,5 +42,150 @@
     "requestCode": "Request Code",
     "@requestCode": {
       "description": "Request Code"
-    }
+    },
+  "initializing": "Initializing...",
+  "@initializing": {
+    "description": "Initializing..."
+  },
+  "logout": "Logout",
+  "@logout": {
+    "description": "Logout"
+  },
+  "accountInformation": "Account Information",
+  "@accountInformation": {
+    "description": "Account Information"
+  },
+  "phone": "Phone",
+  "@phone": {
+    "description": "Phone"
+  },
+  "address": "Address",
+  "@address": {
+    "description": "Address"
+  },
+  "city": "City",
+  "@city": {
+    "description": "City"
+  },
+  "stateCode": "State Code",
+  "@stateCode": {
+    "description": "State Code"
+  },
+  "zipCode": "Zip Code",
+  "@zipCode": {
+    "description": "Zip Code"
+  },
+  "trackYourWorkAndGetTheResult": "Track Your work and get the result",
+  "@trackYourWorkAndGetTheResult": {
+    "description": "Track Your work and get the result"
+  },
+  "rememberToKeepTrackOfYourProfessionalAccomplishments": "Remember to keep track of your professional accomplishments.",
+  "@rememberToKeepTrackOfYourProfessionalAccomplishments": {
+    "description": "Remember to keep track of your professional accomplishments."
+  },
+  "stayOrganizedWithTeam": "Stay organized with team",
+  "@stayOrganizedWithTeam": {
+    "description": "Stay organized with team"
+  },
+  "butUnderstandingTheContributionsOurColleaguesMakeToOurTeamsAndCompanies": "But understanding the contributions our colleagues make to our teams and companies.",
+  "@butUnderstandingTheContributionsOurColleaguesMakeToOurTeamsAndCompanies": {
+    "description": "But understanding the contributions our colleagues make to our teams and companies."
+  },
+  "getNotifiedWhenWorkHappens": "Get notified when work happens",
+  "@getNotifiedWhenWorkHappens": {
+    "description": "Get notified when work happens"
+  },
+  "takeControlOfNotificationsCollaborateLiveOrOnYourOwnTime": "Take control of notifications, collaborate live or on your own time.",
+  "@takeControlOfNotificationsCollaborateLiveOrOnYourOwnTime": {
+    "description": "Take control of notifications, collaborate live or on your own time."
+  },
+  "start": "START",
+  "@start": {
+    "description": "START"
+  },
+  "skip": "SKIP",
+  "@skip": {
+    "description": "SKIP"
+  },
+  "next": "NEXT",
+  "@next": {
+    "description": "NEXT"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Home"
+  },
+  "trips": "Trips",
+  "@trips": {
+    "description": "Trips"
+  },
+  "messages": "Messages",
+  "@messages": {
+    "description": "Messages"
+  },
+  "you": "You",
+  "@you": {
+    "description": "You"
+  },
+  "driveOn": "Drive on",
+  "@driveOn": {
+    "description": "Drive on"
+  },
+  "driveApp": "DRIVER APP",
+  "@driveApp": {
+    "description": "DRIVER APP"
+  },
+  "totalMiles": "Total Miles",
+  "@totalMiles": {
+    "description": "Total Miles"
+  },
+  "checkCalls": "Check Calls",
+  "@checkCalls": {
+    "description": "Check Calls"
+  },
+  "driveTime": "Drive Time",
+  "@driveTime": {
+    "description": "Drive Time"
+  },
+  "k": "k",
+  "@k": {
+    "description": "k"
+  },
+  "m": "M",
+  "@m": {
+    "description": "M"
+  },
+  "mph": "Mph",
+  "@mph": {
+    "description": "Mph"
+  },
+  "h": "h",
+  "@h": {
+    "description": "h"
+  },
+  "totalTrips": "Total trips",
+  "@totalTrips": {
+    "description": "Total trips"
+  },
+  "totalStops": "Total Stops",
+  "@totalStops": {
+    "description": "Total Stops"
+  },
+  "shortestTrip": "Shortest Trip",
+  "@shortestTrip": {
+    "description": "Shortest Trip"
+  },
+  "longestTrip": "Longest Trip",
+  "@longestTrip": {
+    "description": "Longest Trip"
+  },
+  "averageSpeed": "Average Speed",
+  "@averageSpeed": {
+    "description": "Average Speed"
+  },
+  "milesToGo": "Miles to go",
+  "@milesToGo": {
+    "description": "Miles to go"
   }
+}
+

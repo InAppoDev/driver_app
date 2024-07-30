@@ -27,13 +27,13 @@ class ProfitDetails extends StatelessWidget {
               ],
             ),
           ),
-          const Wrap(
+          Wrap(
             children: [
               ProfitDetailsWidget(
                 isSelected: false,
                 icon: Icons.local_shipping,
                 amount: '35',
-                text: 'Trips',
+                text: context.localizations.trips,
                 showM: false,
                 showDollar: false,
               ),
@@ -41,7 +41,7 @@ class ProfitDetails extends StatelessWidget {
                 isSelected: true,
                 icon: Icons.speed,
                 amount: '4500',
-                text: 'Total Miles',
+                text: context.localizations.totalMiles,
                 showM: false,
                 showDollar: true,
               ),
@@ -49,7 +49,7 @@ class ProfitDetails extends StatelessWidget {
                 isSelected: false,
                 icon: Icons.checklist,
                 amount: '412',
-                text: 'Check Calls',
+                text: context.localizations.checkCalls,
                 showM: true,
                 showDollar: true,
               ),
@@ -57,7 +57,7 @@ class ProfitDetails extends StatelessWidget {
                 isSelected: false,
                 icon: Icons.people,
                 amount: '210',
-                text: 'Drive Time',
+                text: context.localizations.driveTime,
                 showM: false,
                 showDollar: false,
                 showHours: true,
