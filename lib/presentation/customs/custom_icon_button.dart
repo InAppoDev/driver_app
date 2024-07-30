@@ -10,6 +10,7 @@ class CustomIconButton extends StatelessWidget {
   final bool justIcon;
   final Color? borderColor;
   final double borderRadius;
+  final Color? iconColor;
 
   const CustomIconButton({
     super.key,
@@ -21,6 +22,7 @@ class CustomIconButton extends StatelessWidget {
     this.justIcon = false,
     this.borderColor,
     this.borderRadius = 9,
+    this.iconColor,
   });
 
   @override
@@ -48,7 +50,7 @@ class CustomIconButton extends StatelessWidget {
           'assets/images/$icon.svg',
           height: 20,
           width: 20,
-          colorFilter: ColorFilter.mode(theme.cardColor, BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(iconColor ?? theme.cardColor, BlendMode.srcIn),
         ),
       ),
     );

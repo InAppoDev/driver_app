@@ -7,6 +7,7 @@ final lightTheme = ThemeData(
   canvasColor: AppColors.white,
   focusColor: AppColors.black,
   secondaryHeaderColor: AppColors.borderOrange,
+  dividerColor: AppColors.mainGray,
   bottomAppBarTheme: const BottomAppBarTheme(
     color: AppColors.mainWhite,
     shape: CircularNotchedRectangle(),

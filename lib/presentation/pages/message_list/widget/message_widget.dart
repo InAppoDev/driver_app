@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/pages/message_list/widget/chat_image.dart';
@@ -12,9 +11,10 @@ class MessageWidget extends StatelessWidget {
       onTap: (){
         context.go('/chat');
       },
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 13, vertical: 10),
-        child: Row(
+      child: Container(
+        color: Theme.of(context).canvasColor,
+        padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 10),
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

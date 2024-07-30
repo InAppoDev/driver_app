@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/data/models/message/message_model.dart';
+import 'package:tms_driver/presentation/pages/message_list/widget/message_list_widget.dart';
 
 class ChatWidget extends StatelessWidget {
-  const ChatWidget({super.key});
+  const ChatWidget({super.key, required this.messages});
+  final List<MessageModel> messages;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(8),
+    return Expanded(
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(8),
+          ),
+          color: theme.scaffoldBackgroundColor,
         ),
-        color: theme.scaffoldBackgroundColor,
+        child: MessageListWidget(messages: messages),
       ),
     );
   }

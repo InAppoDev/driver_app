@@ -9,9 +9,8 @@ class ChatBatInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: 15),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
             child: Row(
@@ -23,15 +22,18 @@ class ChatBatInfo extends StatelessWidget {
                     context.go('/main');
                   },
                 ),
-                const ChatImage(
-                  margin: 1,
-                  borderRadius: 5,
-                  mainImage: 'assets/images/temp_chat_image.jpeg',
-                  images: [
-                    'assets/images/temp_chat_image.jpeg',
-                    'assets/images/temp_chat_image.jpeg',
-                    'assets/images/temp_chat_image.jpeg'
-                  ],
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: ChatImage(
+                    margin: 1,
+                    borderRadius: 5,
+                    mainImage: 'assets/images/temp_chat_image.jpeg',
+                    images: [
+                      'assets/images/temp_chat_image.jpeg',
+                      'assets/images/temp_chat_image.jpeg',
+                      'assets/images/temp_chat_image.jpeg'
+                    ],
+                  ),
                 ),
                 const Flexible(
                   child: Text(
