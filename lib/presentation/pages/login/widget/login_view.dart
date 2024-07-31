@@ -94,7 +94,9 @@ class LoginView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 32),
                     child: CustomTextField(
+                      keyboardType: TextInputType.phone,
                       controller: _usernameController,
+                      maxLength: 10,
                       prefixIcon: Padding(
                         padding:
                             const EdgeInsets.only(left: 30, right: 21, top: 12),

@@ -6,7 +6,9 @@ class CustomTextField extends StatelessWidget {
   final Function(String)? onChanged;
   final Widget? prefixIcon;
   final double borderRadius;
-  final int? maxLines;
+  final int? maxLength;
+  final double height;
+  final TextInputType? keyboardType;
 
   const CustomTextField({
     super.key,
@@ -15,17 +17,18 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.prefixIcon,
     this.borderRadius = 8,
-    this.maxLines = 10,
+    this.maxLength,
+    this.height = 60,
+    this.keyboardType,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      height: 60,
-      alignment: Alignment.center,
+    return SizedBox(
+      height: height,
       child: TextField(
-        maxLength: maxLines,
+        maxLength: maxLength,
         maxLines: null,
         expands: true,
         onChanged: onChanged,
@@ -34,19 +37,21 @@ class CustomTextField extends StatelessWidget {
           fontSize: 16,
           fontWeight: FontWeight.w600,
         ),
-        keyboardType: TextInputType.phone,
+        keyboardType: keyboardType,
+        textAlignVertical: TextAlignVertical.top,
         decoration: InputDecoration(
+          isDense: true,
           counterText: '',
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(borderRadius),
             borderSide:  BorderSide(color: theme.highlightColor),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(borderRadius),
             borderSide:  BorderSide(color: theme.highlightColor),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(borderRadius),
             borderSide:  BorderSide(color: theme.cardColor),
           ),
           hintText: hintText,
