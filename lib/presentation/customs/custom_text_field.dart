@@ -30,10 +30,7 @@ class CustomTextField extends StatelessWidget {
         expands: true,
         onChanged: onChanged,
         controller: controller,
-        style: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
+        style: theme.textTheme.labelMedium,
         keyboardType: TextInputType.phone,
         decoration: InputDecoration(
           counterText: '',

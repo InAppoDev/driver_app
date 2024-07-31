@@ -89,6 +89,7 @@ class MainPageState extends State<MainPage> {
 
   Widget _buildNavItem(
       BuildContext context, IconData icon, String label, int index) {
+    final theme = Theme.of(context);
     final isSelected = _selectedIndex == index;
     final color = isSelected
         ? Theme.of(context).primaryColor
@@ -102,7 +103,9 @@ class MainPageState extends State<MainPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(icon, color: color),
-          Text(label, style: TextStyle(color: color, fontWeight: fontWeight)),
+          Text(label,
+              style: theme.textTheme.titleLarge!
+                  .copyWith(color: color, fontWeight: fontWeight)),
         ],
       ),
     );

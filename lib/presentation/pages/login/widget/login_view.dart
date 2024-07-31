@@ -63,10 +63,10 @@ class LoginView extends StatelessWidget {
                           ),
                           Text(
                             context.localizations.driveApp,
-                            style: TextStyle(
+                            style: theme.textTheme.titleLarge!.copyWith(
                               letterSpacing: 7,
-                              fontWeight: FontWeight.w600,
                               color: theme.cardColor,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ],
@@ -76,17 +76,12 @@ class LoginView extends StatelessWidget {
                   const SizedBox(height: 42),
                   Text(
                     context.localizations.getStarted,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: theme.textTheme.headlineLarge,
                   ),
                   const SizedBox(height: 10),
                   Text(
                     context.localizations.enterYourPhoneNumberToLoginAnAccount,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
+                    style: theme.textTheme.titleLarge!.copyWith(
                       color: theme.hintColor,
                     ),
                   ),
@@ -100,9 +95,7 @@ class LoginView extends StatelessWidget {
                             const EdgeInsets.only(left: 30, right: 21, top: 12),
                         child: Text(
                           '+1',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
+                          style: theme.textTheme.labelMedium!.copyWith(
                             color: theme.hintColor,
                           ),
                         ),
@@ -139,10 +132,10 @@ class LoginView extends StatelessWidget {
                                   ),
                                   child: Text(
                                     context.localizations.requestCode,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
+                                    style:
+                                        theme.textTheme.labelMedium!.copyWith(
                                       color: theme.scaffoldBackgroundColor,
+                                      fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                 ),
@@ -156,7 +149,8 @@ class LoginView extends StatelessWidget {
                                   const SizedBox(height: 10),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 32),
+                                      horizontal: 32,
+                                    ),
                                     child: CustomTextField(
                                       controller: _codeController,
                                       hintText: context.localizations.enterCode,
@@ -187,11 +181,11 @@ class LoginView extends StatelessWidget {
                                           ),
                                           child: Text(
                                             context.localizations.verifyCode,
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
+                                            style: theme.textTheme.labelMedium!
+                                                .copyWith(
                                               color:
                                                   theme.scaffoldBackgroundColor,
+                                              fontWeight: FontWeight.w400,
                                             ),
                                           ),
                                         ),

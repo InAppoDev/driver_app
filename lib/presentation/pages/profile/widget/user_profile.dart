@@ -11,6 +11,7 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(16),
@@ -63,18 +64,14 @@ class UserProfile extends StatelessWidget {
                     children: [
                       Text(
                         '${user.firstName} ${user.lastName}',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
+                        style: theme.textTheme.headlineSmall!
+                            .copyWith(fontSize: 18),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         user.email,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
+                        style:
+                            theme.textTheme.labelSmall!.copyWith(fontSize: 16),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -88,8 +85,9 @@ class UserProfile extends StatelessWidget {
                             },
                             child: Text(
                               context.localizations.logout,
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor),
+                              style: theme.textTheme.titleLarge!.copyWith(
+                                color: Theme.of(context).primaryColor,
+                              ),
                             ),
                           ),
                         ],
@@ -104,11 +102,7 @@ class UserProfile extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             context.localizations.accountInformation,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-          ),
+              style: theme.textTheme.headlineSmall!.copyWith(fontSize: 18)),
           const SizedBox(height: 16),
           _buildUserInfo(context,
               title: context.localizations.phone, value: user.phone),
@@ -133,6 +127,7 @@ class UserProfile extends StatelessWidget {
   }
 
   Widget _buildUserInfo(BuildContext context, {String? title, String? value}) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       child: Column(
@@ -142,17 +137,13 @@ class UserProfile extends StatelessWidget {
           if (title != null)
             Text(
               '$title: ',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-              ),
+              style: theme.textTheme.labelSmall,
             ),
           if (value != null)
             Text(
               value,
-              style: TextStyle(
+              style: theme.textTheme.labelMedium!.copyWith(
                 fontWeight: FontWeight.w400,
-                fontSize: 16,
                 color: Theme.of(context).shadowColor,
               ),
             ),

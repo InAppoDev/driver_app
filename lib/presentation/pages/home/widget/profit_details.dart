@@ -7,6 +7,7 @@ class ProfitDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -16,13 +17,14 @@ class ProfitDetails extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'July 2024',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  style: theme.textTheme.labelSmall!.copyWith(fontSize: 15),
                 ),
                 Text(
                   context.localizations.belowIsAShortSummaryOfYourMonth,
-                  style: const TextStyle(fontSize: 12),
+                  style: theme.textTheme.titleSmall!
+                      .copyWith(fontWeight: FontWeight.w400),
                 ),
               ],
             ),

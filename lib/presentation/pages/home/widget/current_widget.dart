@@ -19,6 +19,7 @@ class CurrentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       padding: const EdgeInsets.all(15),
@@ -44,14 +45,11 @@ class CurrentWidget extends StatelessWidget {
                 children: [
                   Text(
                     topic,
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: theme.textTheme.labelLarge!.copyWith(fontSize: 22),
                   ),
                   Text(
                     description,
-                    style: const TextStyle(fontSize: 12),
+                    style: theme.textTheme.bodySmall,
                   ),
                 ],
               ),
@@ -69,14 +67,11 @@ class CurrentWidget extends StatelessWidget {
                 children: [
                   Text(
                     value,
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: theme.textTheme.labelLarge!.copyWith(fontSize: 22),
                   ),
                   Text(
                     valueDescription,
-                    style: const TextStyle(fontSize: 12),
+                    style: theme.textTheme.bodySmall,
                   ),
                 ],
               ),
@@ -84,14 +79,11 @@ class CurrentWidget extends StatelessWidget {
                 children: [
                   Text(
                     milesToGo.toString(),
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: theme.textTheme.labelLarge!.copyWith(fontSize: 22),
                   ),
                   Text(
                     context.localizations.milesToGo,
-                    style: TextStyle(fontSize: 12),
+                    style: theme.textTheme.bodySmall,
                   ),
                 ],
               ),

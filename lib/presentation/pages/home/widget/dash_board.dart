@@ -7,6 +7,7 @@ class DashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -17,15 +18,13 @@ class DashBoard extends StatelessWidget {
             children: [
               Text(
                 context.localizations.lifetimeStats,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: theme.textTheme.labelMedium!.copyWith(fontSize: 18),
               ),
               Text(
                 context.localizations.hereIsASummaryOfYourOverallPerformance,
-                style: const TextStyle(fontSize: 12),
-              ),
+                  style: theme.textTheme.titleSmall!.copyWith(
+                    fontWeight: FontWeight.w400,
+                  )),
             ],
           ),
         ),
