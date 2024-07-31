@@ -12,15 +12,16 @@ class DriverApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Driver App',
       theme: lightTheme,
+      debugShowCheckedModeBanner: false,
       routerDelegate: router.routerDelegate,
       routeInformationParser: router.routeInformationParser,
       routeInformationProvider: router.routeInformationProvider,
-      localizationsDelegates:  const [
+      localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
-        ],
+      ],
       locale: const Locale('en'),
       supportedLocales: const [
         Locale('en', 'US'),

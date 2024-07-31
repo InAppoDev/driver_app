@@ -19,6 +19,7 @@ class TabWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     final theme = Theme.of(context);
     return GestureDetector(
       onTap: onPressed,
@@ -35,7 +36,7 @@ class TabWidget extends StatelessWidget {
             Text(
               name,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: width >= 410 ? 14 : 10,
                 fontWeight: FontWeight.w400,
                 color: isSelected
                     ? theme.scaffoldBackgroundColor

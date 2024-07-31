@@ -22,7 +22,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     // _usernameController.text = '9993335111'; // Val
-    // _usernameController.text = '9991451655'; // Max
+    _usernameController.text = '9991451655'; // Max
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state.status == LoginStatus.authenticated) {
@@ -156,47 +156,37 @@ class LoginView extends StatelessWidget {
                               Column(
                                 children: [
                                   const SizedBox(height: 10),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 32),
-                                    child: CustomTextField(
-                                      keyboardType: TextInputType.phone,
-                                      maxLength: 10,
-                                      controller: _codeController,
-                                      hintText: context.localizations.enterCode,
-                                    ),
+                                  CustomTextField(
+                                    controller: _codeController,
+                                    hintText: context.localizations.enterCode,
                                   ),
                                   const SizedBox(height: 30),
                                   if (state.status != LoginStatus.loading)
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 45),
-                                      child: SizedBox(
-                                        height: 48,
-                                        width: double.infinity,
-                                        child: ElevatedButton(
-                                          onPressed: () {
-                                            context.read<LoginBloc>().add(
-                                                  LoginEvent.verifyCode(
-                                                    code: _codeController.text,
-                                                  ),
-                                                );
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: theme.cardColor,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                            ),
+                                    SizedBox(
+                                      height: 48,
+                                      width: double.infinity,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          context.read<LoginBloc>().add(
+                                                LoginEvent.verifyCode(
+                                                  code: _codeController.text,
+                                                ),
+                                              );
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: theme.cardColor,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
                                           ),
-                                          child: Text(
-                                            context.localizations.verifyCode,
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
-                                              color:
-                                                  theme.scaffoldBackgroundColor,
-                                            ),
+                                        ),
+                                        child: Text(
+                                          context.localizations.verifyCode,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color:
+                                                theme.scaffoldBackgroundColor,
                                           ),
                                         ),
                                       ),
@@ -210,7 +200,7 @@ class LoginView extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 45),
+                    padding: const EdgeInsets.symmetric(horizontal: 32),
                     child: Text(
                       context.localizations.yourDataIsProtected,
                       textAlign: TextAlign.center,

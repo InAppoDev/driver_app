@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/customs/custom_app_bar.dart';
+import 'package:tms_driver/data/services/my_localtion_services.dart';
 import 'package:tms_driver/presentation/pages/home/home_page.dart';
 import 'package:tms_driver/presentation/pages/home/widget/home_bottom_sheet.dart';
 import 'package:tms_driver/presentation/pages/message_list/message_list.dart';
@@ -15,6 +16,7 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
+  MyLocationService? _locationService;
 
   static const List<Widget> _routes = [
     HomePage(),
@@ -26,6 +28,8 @@ class MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
+    _locationService = MyLocationService();
+    _locationService?.startTracking();
   }
 
   void _onItemTapped(int index) {
