@@ -6,6 +6,7 @@ import 'package:tms_driver/data/data_source/api_data_source.dart';
 import 'package:tms_driver/data/data_source/auth_data_source.dart';
 import 'package:tms_driver/data/data_source/ds_impl/api_data_source_impl.dart';
 import 'package:tms_driver/data/data_source/ds_impl/auth_data_source_impl.dart';
+import 'package:tms_driver/data/services/my_localtion_services.dart';
 import 'package:tms_driver/domain/repositories/auth_repository.dart';
 import 'package:tms_driver/domain/repositories/impl/auth_repository_impl.dart';
 import 'package:tms_driver/domain/repositories/impl/user_repository_impl.dart';
@@ -15,6 +16,7 @@ import 'package:tms_driver/presentation/utils/error_handler/error_handler_impl.d
 
 Future<void> initApp() async {
   final Dio dio = Dio();
+  final MyLocationService locationService = MyLocationService();
 
   final ErrorHandler errorHandler =
       GetIt.instance.registerSingleton<ErrorHandler>(
@@ -52,4 +54,6 @@ Future<void> initApp() async {
       authDataSource: authDataSource,
     ),
   );
+
+  GetIt.instance.registerSingleton<MyLocationService>(locationService);
 }

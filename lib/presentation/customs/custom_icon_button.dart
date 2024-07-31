@@ -6,39 +6,52 @@ class CustomIconButton extends StatelessWidget {
   final VoidCallback onPressed;
   final double height;
   final double width;
-  final bool isTransparent;
-  final double transparency;
+  final double? transparency;
   final bool justIcon;
+  final Color? borderColor;
+  final double borderRadius;
+  final Color? iconColor;
 
   const CustomIconButton({
     super.key,
     required this.icon,
     required this.onPressed,
-    this.isTransparent = false,
     this.height = 47,
     this.width = 47,
-    this.transparency = 0.8,
+    this.transparency,
     this.justIcon = false,
+    this.borderColor,
+    this.borderRadius = 9,
+    this.iconColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      width: width,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: justIcon
-            ? null
-            : ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context)
-                    .cardColor
-                    .withOpacity(isTransparent ? transparency : 1),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8), // Border radius
+    final theme = Theme.of(context);
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        height: height,
+        width: width,
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(borderRadius),
+          ),
+          border: justIcon
+              ? null
+              : Border.all(
+                  color: borderColor ??
+                      theme.cardColor.withOpacity(transparency ?? 1),
                 ),
-              ),
-        child: SvgPicture.asset('assets/images/$icon.svg'),
+          color: justIcon ? null : theme.cardColor.withOpacity(transparency ?? 1),
+        ),
+        child: SvgPicture.asset(
+          'assets/images/$icon.svg',
+          height: 20,
+          width: 20,
+          colorFilter: ColorFilter.mode(iconColor ?? theme.cardColor, BlendMode.srcIn),
+        ),
       ),
     );
   }
