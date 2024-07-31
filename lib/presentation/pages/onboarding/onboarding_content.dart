@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
+
 class OnboardingContents {
   final String title;
   final String image;
@@ -10,22 +13,25 @@ class OnboardingContents {
   });
 }
 
-List<OnboardingContents> contents = [
-  OnboardingContents(
-    title: "Track Your work and get the result",
-    image: "assets/images/logo.png",
-    desc: "Remember to keep track of your professional accomplishments.",
-  ),
-  OnboardingContents(
-    title: "Stay organized with team",
-    image: "assets/images/logo.png",
-    desc:
-        "But understanding the contributions our colleagues make to our teams and companies.",
-  ),
-  OnboardingContents(
-    title: "Get notified when work happens",
-    image: "assets/images/logo.png",
-    desc:
-        "Take control of notifications, collaborate live or on your own time.",
-  ),
-];
+List<OnboardingContents> contents(BuildContext context) {
+  return [
+    OnboardingContents(
+      title: context.localizations.trackYourWorkAndGetTheResult,
+      image: "assets/images/logo.png",
+      desc: context
+          .localizations.rememberToKeepTrackOfYourProfessionalAccomplishments,
+    ),
+    OnboardingContents(
+      title: context.localizations.stayOrganizedWithTeam,
+      image: "assets/images/logo.png",
+      desc: context.localizations
+          .butUnderstandingTheContributionsOurColleaguesMakeToOurTeamsAndCompanies,
+    ),
+    OnboardingContents(
+      title: context.localizations.getNotifiedWhenWorkHappens,
+      image: "assets/images/logo.png",
+      desc: context.localizations
+          .takeControlOfNotificationsCollaborateLiveOrOnYourOwnTime,
+    ),
+  ];
+}

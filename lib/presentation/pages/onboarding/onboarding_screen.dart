@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/pages/onboarding/onboarding_content.dart';
 import 'package:tms_driver/presentation/pages/onboarding/size_config.dart';
 import 'package:tms_driver/presentation/theme/app_colors.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class OnboardingScreen extends StatefulWidget {
   final VoidCallback onCompleted;
@@ -51,6 +52,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     SizeConfig().init(context);
     double width = SizeConfig.screenW!;
     double height = SizeConfig.screenH!;
@@ -66,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 physics: const BouncingScrollPhysics(),
                 controller: _controller,
                 onPageChanged: (value) => setState(() => _currentPage = value),
-                itemCount: contents.length,
+                itemCount: contents(context).length,
                 itemBuilder: (context, i) {
                   return Padding(
                     padding: const EdgeInsets.all(40.0),
@@ -74,16 +76,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          contents[i].image,
+                          contents(context)[i].image,
                           height: SizeConfig.blockV! * 5,
                         ),
                         SizedBox(
                           height: (height >= 840) ? 60 : 30,
                         ),
                         Text(
-                          contents[i].title,
+                          contents(context)[i].title,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: theme.textTheme.headlineMedium!.copyWith(
                             fontFamily: "Mulish",
                             fontWeight: FontWeight.w600,
                             fontSize: (width <= 550) ? 30 : 35,
@@ -91,8 +93,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         const SizedBox(height: 15),
                         Text(
-                          contents[i].desc,
-                          style: TextStyle(
+                          contents(context)[i].desc,
+                          style: theme.textTheme.headlineMedium!.copyWith(
                             fontFamily: "Mulish",
                             fontWeight: FontWeight.w300,
                             fontSize: (width <= 550) ? 17 : 25,
@@ -113,14 +115,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
-                      contents.length,
+                      contents(context).length,
                       (int index) => _buildDots(
                         context: context,
                         index: index,
                       ),
                     ),
                   ),
-                  _currentPage + 1 == contents.length
+                  _currentPage + 1 == contents(context).length
                       ? Padding(
                           padding: const EdgeInsets.all(30),
                           child: ElevatedButton(
@@ -135,12 +137,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       horizontal: 100, vertical: 20)
                                   : EdgeInsets.symmetric(
                                       horizontal: width * 0.2, vertical: 25),
-                              textStyle:
-                                  TextStyle(fontSize: (width <= 550) ? 13 : 17),
+                              textStyle: theme.textTheme.titleLarge!
+                                  .copyWith(fontSize: (width <= 550) ? 13 : 17),
                             ),
                             child: Text(
-                              "START",
-                              style: TextStyle(
+                              context.localizations.start,
+                              style: theme.textTheme.titleLarge!.copyWith(
                                   color: Theme.of(context)
                                       .scaffoldBackgroundColor),
                             ),
@@ -157,14 +159,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 },
                                 style: TextButton.styleFrom(
                                   elevation: 0,
-                                  textStyle: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: (width <= 550) ? 13 : 17,
-                                  ),
+                                  textStyle: theme.textTheme.labelSmall!
+                                      .copyWith(
+                                          fontSize: (width <= 550) ? 13 : 17),
                                 ),
                                 child: Text(
-                                  "SKIP",
-                                  style: TextStyle(
+                                  context.localizations.skip,
+                                  style: theme.textTheme.titleLarge!.copyWith(
                                       color: Theme.of(context).primaryColor),
                                 ),
                               ),
@@ -187,14 +188,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                             horizontal: 30, vertical: 20)
                                         : const EdgeInsets.symmetric(
                                             horizontal: 30, vertical: 25),
-                                    textStyle: TextStyle(
+                                    textStyle:
+                                        theme.textTheme.titleLarge!.copyWith(
                                       fontSize: (width <= 550) ? 13 : 17,
                                     )),
                                 child: Text(
-                                  "NEXT",
-                                  style: TextStyle(
-                                      color: Theme.of(context)
-                                          .scaffoldBackgroundColor),
+                                  context.localizations.next,
+                                  style: theme.textTheme.titleLarge!.copyWith(
+                                    color: Theme.of(context)
+                                        .scaffoldBackgroundColor,
+                                  ),
                                 ),
                               ),
                             ],

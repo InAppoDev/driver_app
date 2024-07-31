@@ -12,11 +12,11 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   final AuthRepository authRepo = GetIt.instance<AuthRepository>();
 
   SplashBloc() : super(SplashState.initial()) {
-    _initialize();
-    on<SplashEvent>(_startAnimation);
+    on<Initialize>(_initialize);
+    on<StartAnimation>(_startAnimation);
   }
 
-  Future<void> _initialize() async {
+  Future<void> _initialize(event, emit) async {
     try {
       final token = await authRepo.getAuthToken();
       if (token != null) {
@@ -40,7 +40,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     }
   }
 
-  void _startAnimation(SplashEvent event, Emitter<SplashState> emit) {
+  void _startAnimation(event, Emitter<SplashState> emit) {
     emit(state.copyWith(startAnimation: event.startAnimation));
   }
 }

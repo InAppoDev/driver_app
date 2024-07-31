@@ -35,9 +35,8 @@ class TabWidget extends StatelessWidget {
           children: [
             Text(
               name,
-              style: TextStyle(
+              style: theme.textTheme.titleLarge!.copyWith(
                 fontSize: width >= 410 ? 14 : 10,
-                fontWeight: FontWeight.w400,
                 color: isSelected
                     ? theme.scaffoldBackgroundColor
                     : theme.focusColor,
@@ -46,7 +45,10 @@ class TabWidget extends StatelessWidget {
             if (showMessageCount) ...[
               const SizedBox(width: 8),
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 7.5),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 2,
+                  horizontal: 7.5,
+                ),
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(
                     Radius.circular(50),
@@ -57,7 +59,7 @@ class TabWidget extends StatelessWidget {
                 ),
                 child: Text(
                   '1',
-                  style: TextStyle(
+                  style: theme.textTheme.titleLarge!.copyWith(
                     color: isSelected
                         ? theme.focusColor
                         : theme.scaffoldBackgroundColor,

@@ -9,7 +9,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SplashBloc(),
+      create: (context) => SplashBloc()..add(const SplashEvent.initialize()),
       child: BlocListener<SplashBloc, SplashState>(
         listener: (context, listenerState) async {
           if (listenerState.status == SplashStatus.authenticated) {

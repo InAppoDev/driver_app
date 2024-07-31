@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tms_driver/data/models/user_model.dart';
 import 'package:tms_driver/presentation/blocks/user/user_bloc.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class UserProfile extends StatelessWidget {
   final UserModel user;
@@ -10,6 +11,7 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(16),
@@ -62,18 +64,14 @@ class UserProfile extends StatelessWidget {
                     children: [
                       Text(
                         '${user.firstName} ${user.lastName}',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
+                        style: theme.textTheme.headlineSmall!
+                            .copyWith(fontSize: 18),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         user.email,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
+                        style:
+                            theme.textTheme.labelSmall!.copyWith(fontSize: 16),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -86,9 +84,10 @@ class UserProfile extends StatelessWidget {
                                   .add(const UserEvent.logout());
                             },
                             child: Text(
-                              'Logout',
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor),
+                              context.localizations.logout,
+                              style: theme.textTheme.titleLarge!.copyWith(
+                                color: Theme.of(context).primaryColor,
+                              ),
                             ),
                           ),
                         ],
@@ -101,21 +100,24 @@ class UserProfile extends StatelessWidget {
           const SizedBox(height: 16),
           const Divider(),
           const SizedBox(height: 16),
-          const Text(
-            'Account Information',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-          ),
+          Text(
+            context.localizations.accountInformation,
+              style: theme.textTheme.headlineSmall!.copyWith(fontSize: 18)),
           const SizedBox(height: 16),
-          _buildUserInfo(context, title: 'Phone', value: user.phone),
-          _buildUserInfo(context, title: 'Address', value: user.address),
-          _buildUserInfo(context, title: 'City', value: user.city),
-          _buildUserInfo(context, title: 'State Code', value: user.stateCode),
-          _buildUserInfo(context, title: 'State Code', value: user.stateCode),
-          _buildUserInfo(context, title: 'Zip Code', value: user.zipCode),
-          _buildUserInfo(context, title: 'Zip Code', value: user.zipCode),
+          _buildUserInfo(context,
+              title: context.localizations.phone, value: user.phone),
+          _buildUserInfo(context,
+              title: context.localizations.address, value: user.address),
+          _buildUserInfo(context,
+              title: context.localizations.city, value: user.city),
+          _buildUserInfo(context,
+              title: context.localizations.stateCode, value: user.stateCode),
+          _buildUserInfo(context,
+              title: context.localizations.stateCode, value: user.stateCode),
+          _buildUserInfo(context,
+              title: context.localizations.zipCode, value: user.zipCode),
+          _buildUserInfo(context,
+              title: context.localizations.zipCode, value: user.zipCode),
           _buildUserInfo(context,
               title: 'Emergency Phone', value: user.emergencyPhone ?? 'N/A'),
           const SizedBox(height: 20),
@@ -125,6 +127,7 @@ class UserProfile extends StatelessWidget {
   }
 
   Widget _buildUserInfo(BuildContext context, {String? title, String? value}) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       child: Column(
@@ -134,17 +137,13 @@ class UserProfile extends StatelessWidget {
           if (title != null)
             Text(
               '$title: ',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
-              ),
+              style: theme.textTheme.labelSmall,
             ),
           if (value != null)
             Text(
               value,
-              style: TextStyle(
+              style: theme.textTheme.labelMedium!.copyWith(
                 fontWeight: FontWeight.w400,
-                fontSize: 16,
                 color: Theme.of(context).shadowColor,
               ),
             ),

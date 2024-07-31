@@ -7,6 +7,7 @@ class DashBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -17,47 +18,48 @@ class DashBoard extends StatelessWidget {
             children: [
               Text(
                 context.localizations.lifetimeStats,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: theme.textTheme.labelMedium!.copyWith(fontSize: 18),
               ),
               Text(
                 context.localizations.hereIsASummaryOfYourOverallPerformance,
-                style: const TextStyle(fontSize: 12),
-              ),
+                  style: theme.textTheme.titleSmall!.copyWith(
+                    fontWeight: FontWeight.w400,
+                  )),
             ],
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 7),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 7),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                SummaryOfTheDayWidget(value: 1086, text: 'Total trips'),
+                SummaryOfTheDayWidget(
+                  value: 1086,
+                  text: context.localizations.totalTrips,
+                ),
                 SummaryOfTheDayWidget(
                   value: 610,
-                  text: 'Total Miles',
+                  text: context.localizations.totalMiles,
                   showK: true,
                 ),
                 SummaryOfTheDayWidget(
                   value: 2361,
-                  text: 'Total Stops',
+                  text: context.localizations.totalStops,
                 ),
                 SummaryOfTheDayWidget(
                   value: 30,
-                  text: 'Shortest Trip',
+                  text: context.localizations.shortestTrip,
                   showMi: true,
                 ),
                 SummaryOfTheDayWidget(
                   value: 6155,
-                  text: 'Longest Trip',
+                  text: context.localizations.longestTrip,
                   showMi: true,
                 ),
                 SummaryOfTheDayWidget(
                   value: 51,
-                  text: 'Average Speed',
+                  text: context.localizations.averageSpeed,
                   showMph: true,
                 ),
               ],

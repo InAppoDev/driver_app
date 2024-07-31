@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ProfitDetailsWidget extends StatelessWidget {
   const ProfitDetailsWidget({
@@ -22,6 +23,7 @@ class ProfitDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       width: 150,
       padding: const EdgeInsets.all(25),
@@ -42,12 +44,11 @@ class ProfitDetailsWidget extends StatelessWidget {
           Text(
             (showDollar ? '\$$amount' : amount) +
                 (showHours
-                    ? 'h'
+                    ? context.localizations.h
                     : showM
-                        ? 'M'
-                        : 'k'),
-            style: TextStyle(
-              fontSize: 20,
+                        ? context.localizations.m
+                        : context.localizations.k),
+            style: theme.textTheme.headlineMedium!.copyWith(
               fontWeight: FontWeight.w700,
               color: isSelected ? Colors.white : Colors.black,
             ),
@@ -55,8 +56,7 @@ class ProfitDetailsWidget extends StatelessWidget {
           const SizedBox(height: 7),
           Text(
             text,
-            style: TextStyle(
-              fontSize: 12,
+            style: theme.textTheme.titleSmall!.copyWith(
               fontWeight: FontWeight.w600,
               color: isSelected ? Colors.white : Colors.black,
             ),

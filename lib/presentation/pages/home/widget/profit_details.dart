@@ -7,6 +7,7 @@ class ProfitDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -16,24 +17,25 @@ class ProfitDetails extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'July 2024',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  style: theme.textTheme.labelSmall!.copyWith(fontSize: 15),
                 ),
                 Text(
                   context.localizations.belowIsAShortSummaryOfYourMonth,
-                  style: const TextStyle(fontSize: 12),
+                  style: theme.textTheme.titleSmall!
+                      .copyWith(fontWeight: FontWeight.w400),
                 ),
               ],
             ),
           ),
-          const Wrap(
+          Wrap(
             children: [
               ProfitDetailsWidget(
                 isSelected: false,
                 icon: Icons.local_shipping,
                 amount: '35',
-                text: 'Trips',
+                text: context.localizations.trips,
                 showM: false,
                 showDollar: false,
               ),
@@ -41,7 +43,7 @@ class ProfitDetails extends StatelessWidget {
                 isSelected: true,
                 icon: Icons.speed,
                 amount: '4500',
-                text: 'Total Miles',
+                text: context.localizations.totalMiles,
                 showM: false,
                 showDollar: true,
               ),
@@ -49,7 +51,7 @@ class ProfitDetails extends StatelessWidget {
                 isSelected: false,
                 icon: Icons.checklist,
                 amount: '412',
-                text: 'Check Calls',
+                text: context.localizations.checkCalls,
                 showM: true,
                 showDollar: true,
               ),
@@ -57,7 +59,7 @@ class ProfitDetails extends StatelessWidget {
                 isSelected: false,
                 icon: Icons.people,
                 amount: '210',
-                text: 'Drive Time',
+                text: context.localizations.driveTime,
                 showM: false,
                 showDollar: false,
                 showHours: true,

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/blocks/user/user_bloc.dart';
 import 'package:tms_driver/presentation/pages/profile/widget/user_profile.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -28,7 +29,7 @@ class ProfileView extends StatelessWidget {
                     orElse: () => const SizedBox.shrink(),
                   ),
                   state.when(
-                    initial: () => const Text('Initializing...'),
+                    initial: () =>  Text(context.localizations.initializing),
                     loading: () => const CircularProgressIndicator(),
                     loaded: (user) => Container(),
                     error: (message) => Text('Error: $message'),

@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SplashEvent {
-  bool get startAnimation => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool startAnimation) startAnimation,
+    required TResult Function() initialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool startAnimation)? startAnimation,
+    TResult? Function()? initialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool startAnimation)? startAnimation,
+    TResult Function()? initialize,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StartAnimation value) startAnimation,
+    required TResult Function(StartAnimation value) startAnimation,
+    required TResult Function(Initialize value) initialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StartAnimation value)? startAnimation,
+    TResult? Function(StartAnimation value)? startAnimation,
+    TResult? Function(Initialize value)? initialize,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StartAnimation value)? startAnimation,
+    TResult Function(StartAnimation value)? startAnimation,
+    TResult Function(Initialize value)? initialize,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $SplashEventCopyWith<SplashEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +61,6 @@ abstract class $SplashEventCopyWith<$Res> {
   factory $SplashEventCopyWith(
           SplashEvent value, $Res Function(SplashEvent) then) =
       _$SplashEventCopyWithImpl<$Res, SplashEvent>;
-  @useResult
-  $Res call({bool startAnimation});
 }
 
 /// @nodoc
@@ -73,28 +72,13 @@ class _$SplashEventCopyWithImpl<$Res, $Val extends SplashEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? startAnimation = null,
-  }) {
-    return _then(_value.copyWith(
-      startAnimation: null == startAnimation
-          ? _value.startAnimation
-          : startAnimation // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$StartAnimationImplCopyWith<$Res>
-    implements $SplashEventCopyWith<$Res> {
+abstract class _$$StartAnimationImplCopyWith<$Res> {
   factory _$$StartAnimationImplCopyWith(_$StartAnimationImpl value,
           $Res Function(_$StartAnimationImpl) then) =
       __$$StartAnimationImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({bool startAnimation});
 }
@@ -125,7 +109,7 @@ class __$$StartAnimationImplCopyWithImpl<$Res>
 
 class _$StartAnimationImpl
     with DiagnosticableTreeMixin
-    implements _StartAnimation {
+    implements StartAnimation {
   const _$StartAnimationImpl({required this.startAnimation});
 
   @override
@@ -167,6 +151,7 @@ class _$StartAnimationImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool startAnimation) startAnimation,
+    required TResult Function() initialize,
   }) {
     return startAnimation(this.startAnimation);
   }
@@ -175,6 +160,7 @@ class _$StartAnimationImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(bool startAnimation)? startAnimation,
+    TResult? Function()? initialize,
   }) {
     return startAnimation?.call(this.startAnimation);
   }
@@ -183,6 +169,7 @@ class _$StartAnimationImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool startAnimation)? startAnimation,
+    TResult Function()? initialize,
     required TResult orElse(),
   }) {
     if (startAnimation != null) {
@@ -194,7 +181,8 @@ class _$StartAnimationImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StartAnimation value) startAnimation,
+    required TResult Function(StartAnimation value) startAnimation,
+    required TResult Function(Initialize value) initialize,
   }) {
     return startAnimation(this);
   }
@@ -202,7 +190,8 @@ class _$StartAnimationImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StartAnimation value)? startAnimation,
+    TResult? Function(StartAnimation value)? startAnimation,
+    TResult? Function(Initialize value)? initialize,
   }) {
     return startAnimation?.call(this);
   }
@@ -210,7 +199,8 @@ class _$StartAnimationImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StartAnimation value)? startAnimation,
+    TResult Function(StartAnimation value)? startAnimation,
+    TResult Function(Initialize value)? initialize,
     required TResult orElse(),
   }) {
     if (startAnimation != null) {
@@ -220,16 +210,122 @@ class _$StartAnimationImpl
   }
 }
 
-abstract class _StartAnimation implements SplashEvent {
-  const factory _StartAnimation({required final bool startAnimation}) =
+abstract class StartAnimation implements SplashEvent {
+  const factory StartAnimation({required final bool startAnimation}) =
       _$StartAnimationImpl;
 
-  @override
   bool get startAnimation;
-  @override
   @JsonKey(ignore: true)
   _$$StartAnimationImplCopyWith<_$StartAnimationImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InitializeImplCopyWith<$Res> {
+  factory _$$InitializeImplCopyWith(
+          _$InitializeImpl value, $Res Function(_$InitializeImpl) then) =
+      __$$InitializeImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitializeImplCopyWithImpl<$Res>
+    extends _$SplashEventCopyWithImpl<$Res, _$InitializeImpl>
+    implements _$$InitializeImplCopyWith<$Res> {
+  __$$InitializeImplCopyWithImpl(
+      _$InitializeImpl _value, $Res Function(_$InitializeImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InitializeImpl with DiagnosticableTreeMixin implements Initialize {
+  const _$InitializeImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SplashEvent.initialize()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'SplashEvent.initialize'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitializeImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool startAnimation) startAnimation,
+    required TResult Function() initialize,
+  }) {
+    return initialize();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(bool startAnimation)? startAnimation,
+    TResult? Function()? initialize,
+  }) {
+    return initialize?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool startAnimation)? startAnimation,
+    TResult Function()? initialize,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartAnimation value) startAnimation,
+    required TResult Function(Initialize value) initialize,
+  }) {
+    return initialize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StartAnimation value)? startAnimation,
+    TResult? Function(Initialize value)? initialize,
+  }) {
+    return initialize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartAnimation value)? startAnimation,
+    TResult Function(Initialize value)? initialize,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Initialize implements SplashEvent {
+  const factory Initialize() = _$InitializeImpl;
 }
 
 /// @nodoc
