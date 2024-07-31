@@ -17,7 +17,7 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
-  MyLocationService? _locationService;
+  late MyLocationService _locationService;
 
   static const List<Widget> _routes = [
     HomePage(),
@@ -30,7 +30,13 @@ class MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
     _locationService = MyLocationService();
-    _locationService?.startTracking();
+    _locationService.startTracking();
+  }
+
+  @override
+  void dispose() {
+    _locationService.stopTracking();
+    super.dispose();
   }
 
   void _onItemTapped(int index) {
