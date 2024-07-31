@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tms_driver/data/services/my_location_service.dart';
+import 'package:tms_driver/data/services/my_localtion_services.dart';
 import 'package:tms_driver/presentation/pages/home/home_page.dart';
 import 'package:tms_driver/presentation/pages/home/widget/home_bottom_sheet.dart';
 import 'package:tms_driver/presentation/pages/trip_list/trip_list.dart';
