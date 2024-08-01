@@ -3,6 +3,7 @@ import 'package:tms_driver/presentation/pages/login/login_page.dart';
 import 'package:tms_driver/presentation/pages/main/main_page.dart';
 import 'package:tms_driver/presentation/pages/message_list/widget/chat_screen.dart';
 import 'package:tms_driver/presentation/pages/splash/splash_screen.dart';
+import 'package:tms_driver/presentation/pages/trip_list/widget/active_trip_widget.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/splash',
@@ -22,6 +23,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/chat',
       builder: (context, state) => const ChatScreen(),
+    ),
+    GoRoute(
+      path: '/activeTrip',
+      builder: (context, state) => const ActiveTrip(),
     ),
   ],
 );

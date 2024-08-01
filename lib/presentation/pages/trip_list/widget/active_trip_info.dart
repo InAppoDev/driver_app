@@ -1,0 +1,158 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class ActiveTripInfo extends StatelessWidget {
+  const ActiveTripInfo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        color: theme.scaffoldBackgroundColor,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'TRIP INFO',
+                style: theme.textTheme.titleSmall!.copyWith(
+                  color: theme.dividerColor,
+                ),
+              ),
+              Row(
+                children: [
+                  SvgPicture.asset('assets/images/distance.svg'),
+                  Text(
+                    '300km',
+                    style: theme.textTheme.titleSmall!.copyWith(
+                      color: theme.dividerColor,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 22),
+          Text(
+            'Pick up #2133123',
+            style: theme.textTheme.bodySmall!.copyWith(
+              color: theme.disabledColor,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(height: 15),
+          Text(
+            'Hours of operation:',
+            style: theme.textTheme.bodySmall!.copyWith(
+              color: theme.disabledColor,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          const SizedBox(height: 5),
+          Row(
+            children: [
+              SvgPicture.asset('assets/images/clock.svg'),
+              const SizedBox(width: 5),
+              Text(
+                '10:00 am - 19:00 PM',
+                style: theme.textTheme.titleSmall!.copyWith(
+                  fontWeight: FontWeight.w400,
+                  color: theme.dividerColor,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 15),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'WEIGHT:',
+                    style: theme.textTheme.bodySmall!.copyWith(
+                      color: theme.dividerColor,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    '25 Tons',
+                    style: theme.textTheme.titleSmall!.copyWith(
+                      fontWeight: FontWeight.w400,
+                      color: theme.dividerColor,
+                    ),
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Commodity:',
+                    style: theme.textTheme.bodySmall!.copyWith(
+                      color: theme.dividerColor,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    'Meat',
+                    style: theme.textTheme.titleSmall!.copyWith(
+                      fontWeight: FontWeight.w400,
+                      color: theme.dividerColor,
+                    ),
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Pallets:',
+                    style: theme.textTheme.bodySmall!.copyWith(
+                      color: theme.dividerColor,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    '5',
+                    style: theme.textTheme.titleSmall!.copyWith(
+                      fontWeight: FontWeight.w400,
+                      color: theme.dividerColor,
+                    ),
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Temperature:',
+                    style: theme.textTheme.bodySmall!.copyWith(
+                      color: theme.dividerColor,
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    '- 5 C',
+                    style: theme.textTheme.titleSmall!.copyWith(
+                      fontWeight: FontWeight.w400,
+                      color: theme.dividerColor,
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

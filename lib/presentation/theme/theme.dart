@@ -8,6 +8,7 @@ final lightTheme = ThemeData(
   focusColor: AppColors.black,
   secondaryHeaderColor: AppColors.borderOrange,
   dividerColor: AppColors.mainGray,
+  disabledColor: AppColors.gray,
   bottomAppBarTheme: const BottomAppBarTheme(
     color: AppColors.mainWhite,
     shape: CircularNotchedRectangle(),
@@ -15,6 +16,7 @@ final lightTheme = ThemeData(
   ),
   hintColor: AppColors.textGray,
   highlightColor: AppColors.lightGray,
+  indicatorColor: AppColors.error,
   iconButtonTheme: IconButtonThemeData(
     style: ButtonStyle(
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
