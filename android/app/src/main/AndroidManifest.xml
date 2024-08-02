@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:minSdkVersion="34" android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:minSdkVersion="34" android:name="android.permission.USE_EXACT_ALARM"/>
     <application
         tools:replace="android:label"
         android:label="tms_driver"
@@ -32,5 +36,22 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+            <!-- Background location service -->
+        <service
+            android:name=".MyLocationService"
+            android:foregroundServiceType="location"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true"/>
+            <!-- Receiver for Boot Completed -->
+        <receiver
+            android:name=".MyBootReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.RESTART"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>
