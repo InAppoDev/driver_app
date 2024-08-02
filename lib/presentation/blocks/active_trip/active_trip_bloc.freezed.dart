@@ -19,32 +19,38 @@ mixin _$ActiveTripEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
+    required TResult Function(String dateTime) getDateAndTime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
+    TResult? Function(String dateTime)? getDateAndTime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
+    TResult Function(String dateTime)? getDateAndTime,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialize value) initialize,
+    required TResult Function(GetDateAndTime value) getDateAndTime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initialize value)? initialize,
+    TResult? Function(GetDateAndTime value)? getDateAndTime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialize value)? initialize,
+    TResult Function(GetDateAndTime value)? getDateAndTime,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$InitializeImpl implements Initialize {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
+    required TResult Function(String dateTime) getDateAndTime,
   }) {
     return initialize();
   }
@@ -115,6 +122,7 @@ class _$InitializeImpl implements Initialize {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialize,
+    TResult? Function(String dateTime)? getDateAndTime,
   }) {
     return initialize?.call();
   }
@@ -123,6 +131,7 @@ class _$InitializeImpl implements Initialize {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialize,
+    TResult Function(String dateTime)? getDateAndTime,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -135,6 +144,7 @@ class _$InitializeImpl implements Initialize {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initialize value) initialize,
+    required TResult Function(GetDateAndTime value) getDateAndTime,
   }) {
     return initialize(this);
   }
@@ -143,6 +153,7 @@ class _$InitializeImpl implements Initialize {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initialize value)? initialize,
+    TResult? Function(GetDateAndTime value)? getDateAndTime,
   }) {
     return initialize?.call(this);
   }
@@ -151,6 +162,7 @@ class _$InitializeImpl implements Initialize {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialize value)? initialize,
+    TResult Function(GetDateAndTime value)? getDateAndTime,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -165,8 +177,145 @@ abstract class Initialize implements ActiveTripEvent {
 }
 
 /// @nodoc
+abstract class _$$GetDateAndTimeImplCopyWith<$Res> {
+  factory _$$GetDateAndTimeImplCopyWith(_$GetDateAndTimeImpl value,
+          $Res Function(_$GetDateAndTimeImpl) then) =
+      __$$GetDateAndTimeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String dateTime});
+}
+
+/// @nodoc
+class __$$GetDateAndTimeImplCopyWithImpl<$Res>
+    extends _$ActiveTripEventCopyWithImpl<$Res, _$GetDateAndTimeImpl>
+    implements _$$GetDateAndTimeImplCopyWith<$Res> {
+  __$$GetDateAndTimeImplCopyWithImpl(
+      _$GetDateAndTimeImpl _value, $Res Function(_$GetDateAndTimeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dateTime = null,
+  }) {
+    return _then(_$GetDateAndTimeImpl(
+      dateTime: null == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetDateAndTimeImpl implements GetDateAndTime {
+  const _$GetDateAndTimeImpl({required this.dateTime});
+
+  @override
+  final String dateTime;
+
+  @override
+  String toString() {
+    return 'ActiveTripEvent.getDateAndTime(dateTime: $dateTime)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetDateAndTimeImpl &&
+            (identical(other.dateTime, dateTime) ||
+                other.dateTime == dateTime));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, dateTime);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetDateAndTimeImplCopyWith<_$GetDateAndTimeImpl> get copyWith =>
+      __$$GetDateAndTimeImplCopyWithImpl<_$GetDateAndTimeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(String dateTime) getDateAndTime,
+  }) {
+    return getDateAndTime(dateTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(String dateTime)? getDateAndTime,
+  }) {
+    return getDateAndTime?.call(dateTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(String dateTime)? getDateAndTime,
+    required TResult orElse(),
+  }) {
+    if (getDateAndTime != null) {
+      return getDateAndTime(dateTime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(GetDateAndTime value) getDateAndTime,
+  }) {
+    return getDateAndTime(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(GetDateAndTime value)? getDateAndTime,
+  }) {
+    return getDateAndTime?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(GetDateAndTime value)? getDateAndTime,
+    required TResult orElse(),
+  }) {
+    if (getDateAndTime != null) {
+      return getDateAndTime(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetDateAndTime implements ActiveTripEvent {
+  const factory GetDateAndTime({required final String dateTime}) =
+      _$GetDateAndTimeImpl;
+
+  String get dateTime;
+  @JsonKey(ignore: true)
+  _$$GetDateAndTimeImplCopyWith<_$GetDateAndTimeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ActiveTripState {
   ActiveTripStatus get status => throw _privateConstructorUsedError;
+  String? get dateTime => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -180,7 +329,7 @@ abstract class $ActiveTripStateCopyWith<$Res> {
           ActiveTripState value, $Res Function(ActiveTripState) then) =
       _$ActiveTripStateCopyWithImpl<$Res, ActiveTripState>;
   @useResult
-  $Res call({ActiveTripStatus status, String? errorMessage});
+  $Res call({ActiveTripStatus status, String? dateTime, String? errorMessage});
 }
 
 /// @nodoc
@@ -197,6 +346,7 @@ class _$ActiveTripStateCopyWithImpl<$Res, $Val extends ActiveTripState>
   @override
   $Res call({
     Object? status = null,
+    Object? dateTime = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -204,6 +354,10 @@ class _$ActiveTripStateCopyWithImpl<$Res, $Val extends ActiveTripState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ActiveTripStatus,
+      dateTime: freezed == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as String?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -220,7 +374,7 @@ abstract class _$$ActiveTripStateImplCopyWith<$Res>
       __$$ActiveTripStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ActiveTripStatus status, String? errorMessage});
+  $Res call({ActiveTripStatus status, String? dateTime, String? errorMessage});
 }
 
 /// @nodoc
@@ -235,6 +389,7 @@ class __$$ActiveTripStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? dateTime = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_$ActiveTripStateImpl(
@@ -242,6 +397,10 @@ class __$$ActiveTripStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ActiveTripStatus,
+      dateTime: freezed == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as String?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -253,16 +412,19 @@ class __$$ActiveTripStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ActiveTripStateImpl implements _ActiveTripState {
-  const _$ActiveTripStateImpl({required this.status, this.errorMessage});
+  const _$ActiveTripStateImpl(
+      {required this.status, this.dateTime, this.errorMessage});
 
   @override
   final ActiveTripStatus status;
+  @override
+  final String? dateTime;
   @override
   final String? errorMessage;
 
   @override
   String toString() {
-    return 'ActiveTripState(status: $status, errorMessage: $errorMessage)';
+    return 'ActiveTripState(status: $status, dateTime: $dateTime, errorMessage: $errorMessage)';
   }
 
   @override
@@ -271,12 +433,14 @@ class _$ActiveTripStateImpl implements _ActiveTripState {
         (other.runtimeType == runtimeType &&
             other is _$ActiveTripStateImpl &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.dateTime, dateTime) ||
+                other.dateTime == dateTime) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, errorMessage);
+  int get hashCode => Object.hash(runtimeType, status, dateTime, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -289,10 +453,13 @@ class _$ActiveTripStateImpl implements _ActiveTripState {
 abstract class _ActiveTripState implements ActiveTripState {
   const factory _ActiveTripState(
       {required final ActiveTripStatus status,
+      final String? dateTime,
       final String? errorMessage}) = _$ActiveTripStateImpl;
 
   @override
   ActiveTripStatus get status;
+  @override
+  String? get dateTime;
   @override
   String? get errorMessage;
   @override

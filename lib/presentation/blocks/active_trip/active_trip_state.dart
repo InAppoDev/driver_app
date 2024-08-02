@@ -9,6 +9,7 @@ enum ActiveTripStatus {
 class ActiveTripState with _$ActiveTripState {
   const factory ActiveTripState({
     required ActiveTripStatus status,
+    String? dateTime,
     String? errorMessage,
   }) = _ActiveTripState;
 

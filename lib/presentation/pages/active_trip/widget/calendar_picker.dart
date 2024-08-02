@@ -3,15 +3,25 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_dialog.dart';
 
-class CalendarPickerBs extends StatelessWidget {
-  const CalendarPickerBs({super.key});
+class CalendarPicker extends StatelessWidget {
+  const CalendarPicker({
+    super.key,
+    required this.onCalendarResponse,
+    required this.dateTime,
+  });
+
+  final Function(String) onCalendarResponse;
+  final String dateTime;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16.5, vertical: 15),
-      color: theme.scaffoldBackgroundColor,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        color: theme.scaffoldBackgroundColor,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -23,10 +33,11 @@ class CalendarPickerBs extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {
-              showDialog(
+            onTap: () async {
+              final resp = await showDialog(
                   context: context,
-                  builder: (context) => const CalendarDialog());
+                  builder: (context) =>  CalendarDialog());
+              onCalendarResponse(resp);
             },
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 26),
@@ -69,6 +80,13 @@ class CalendarPickerBs extends StatelessWidget {
               ),
             ),
           ),
+          if (dateTime.isNotEmpty) ...[
+            Text(
+              dateTime,
+              style: theme.textTheme.titleSmall,
+            ),
+            const SizedBox(height: 10),
+          ],
           CustomButton(
             label: 'SELECT',
             onPressed: () {},

@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/custom_time_picker.dart';
 
-class CalendarDialog extends StatelessWidget {
+class CalendarDialog extends StatefulWidget {
   const CalendarDialog({super.key});
+
+  @override
+  State<CalendarDialog> createState() => _CalendarDialogState();
+}
+
+class _CalendarDialogState extends State<CalendarDialog> {
+  String date = DateFormat('yyyy-MM-dd').format(DateTime.now());
+  String time = '0 H 0 m AM';
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +54,17 @@ class CalendarDialog extends StatelessWidget {
                   ],
                 ),
                 child: TableCalendar(
+                  onDaySelected: (selectedDay, focusedDay) {
+                    DateTime dateTime = DateTime.parse(selectedDay.toString());
+                    String formattedDate =
+                        DateFormat('yyyy-MM-dd').format(dateTime);
+                    setState(() {
+                      date = formattedDate;
+                    });
+                  },
+                  selectedDayPredicate: (day) {
+                    return isSameDay(DateTime.parse(date), day);
+                  },
                   availableGestures: AvailableGestures.none,
                   headerStyle: HeaderStyle(
                     formatButtonVisible: false,
@@ -64,6 +84,10 @@ class CalendarDialog extends StatelessWidget {
                     ),
                   ),
                   calendarStyle: CalendarStyle(
+                    selectedDecoration: const BoxDecoration(
+                      color: Colors.blue,
+                      shape: BoxShape.circle,
+                    ),
                     outsideDaysVisible: false,
                     todayDecoration: const BoxDecoration(),
                     todayTextStyle: theme.textTheme.titleSmall!.copyWith(
@@ -71,9 +95,10 @@ class CalendarDialog extends StatelessWidget {
                       color: theme.cardColor,
                     ),
                   ),
-                  focusedDay: DateTime.now(),
-                  firstDay: DateTime.utc(2010, 10, 16),
-                  lastDay: DateTime.utc(2030, 3, 14),
+                  focusedDay: DateTime.parse(date),
+                  firstDay: DateTime.now().subtract(const Duration(days: 0)),
+                  lastDay: DateTime.utc(2035, 3, 14),
+                  currentDay: DateTime.now(),
                 ),
               ),
               const SizedBox(height: 11),
@@ -95,7 +120,13 @@ class CalendarDialog extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: CustomTimePicker(onTimeChanged: (h, m, isAm) {}),
+                child: CustomTimePicker(
+                  onTimeChanged: (h, m, isAm) {
+                    setState(() {
+                      time = '$h H $m m  ${isAm ? 'AM' : 'PM'}';
+                    });
+                  }, providedDate: date.isNotEmpty ? DateTime.parse(date) : DateTime.now(),
+                ),
               ),
               const SizedBox(height: 26),
               Padding(
@@ -103,7 +134,9 @@ class CalendarDialog extends StatelessWidget {
                 child: CustomButton(
                   height: 36,
                   label: 'SELECT',
-                  onPressed: context.pop,
+                  onPressed: () {
+                    context.pop('$date  $time');
+                  },
                 ),
               ),
             ],
