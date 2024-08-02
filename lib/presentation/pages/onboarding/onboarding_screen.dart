@@ -28,7 +28,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   List colors = const [
     AppColors.palePink,
     AppColors.white,
-    AppColors.lightGray,
+    AppColors.whiteGray,
   ];
 
   AnimatedContainer _buildDots({

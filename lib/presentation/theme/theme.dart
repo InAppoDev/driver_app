@@ -9,13 +9,17 @@ final lightTheme = ThemeData(
   secondaryHeaderColor: AppColors.borderOrange,
   dividerColor: AppColors.mainGray,
   disabledColor: AppColors.gray,
+  primaryColorDark: AppColors.lightGray,
+  unselectedWidgetColor: AppColors.blackGray,
+  splashColor: AppColors.lightRed,
+  hoverColor: AppColors.lightBlack,
   bottomAppBarTheme: const BottomAppBarTheme(
     color: AppColors.mainWhite,
     shape: CircularNotchedRectangle(),
     elevation: 10,
   ),
   hintColor: AppColors.textGray,
-  highlightColor: AppColors.lightGray,
+  highlightColor: AppColors.whiteGray,
   indicatorColor: AppColors.error,
   iconButtonTheme: IconButtonThemeData(
     style: ButtonStyle(

@@ -16,8 +16,8 @@ class CustomIconButton extends StatelessWidget {
     super.key,
     required this.icon,
     required this.onPressed,
-    this.height = 47,
-    this.width = 47,
+    this.height = 20,
+    this.width = 20,
     this.transparency,
     this.justIcon = false,
     this.borderColor,
@@ -31,8 +31,6 @@ class CustomIconButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: height,
-        width: width,
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(
@@ -48,8 +46,8 @@ class CustomIconButton extends StatelessWidget {
         ),
         child: SvgPicture.asset(
           'assets/images/$icon.svg',
-          height: 20,
-          width: 20,
+          height: height,
+          width: height,
           colorFilter: ColorFilter.mode(iconColor ?? theme.cardColor, BlendMode.srcIn),
         ),
       ),
