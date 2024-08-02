@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 
 class ActiveTripData extends StatelessWidget {
@@ -28,21 +29,24 @@ class ActiveTripData extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomIconButton(
-                    height: 28,
-                    width: 28,
+                    height: 12,
                     icon: 'ios_arrow',
                     iconColor: theme.scaffoldBackgroundColor,
-                    onPressed: onPressed,
+                    onPressed: () {
+                      context.go('/main');
+                    },
                   ),
                   Text(
-                    'trip № 12321312312232',
+                    'Trip № 12321312312232',
                     style: theme.textTheme.titleSmall!.copyWith(
                       color: theme.disabledColor,
                     ),
                   ),
                   Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 4,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(
                         Radius.circular(4),
@@ -51,7 +55,8 @@ class ActiveTripData extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        SvgPicture.asset('assets/images/load_box.svg'),
+                        SvgPicture.asset(
+                            'assets/images/load_box.svg'),
                         const SizedBox(width: 6),
                         Text(
                           'Load damage',

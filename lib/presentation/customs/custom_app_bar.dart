@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -7,12 +8,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
             height: 30,
             child: Image.asset(
               'assets/images/logo.png',
             ),
+          ),
+          CustomIconButton(
+            height: 18,
+            icon: 'bell',
+            onPressed: () {},
+            justIcon: true,
+            iconColor: Theme.of(context).dividerColor,
           ),
         ],
       ),
