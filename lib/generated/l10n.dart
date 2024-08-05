@@ -524,6 +524,246 @@ class S {
       args: [],
     );
   }
+
+  /// `Trip № 12321312312232`
+  String get tripNumber {
+    return Intl.message(
+      'Trip № 12321312312232',
+      name: 'tripNumber',
+      desc: 'Trip № 12321312312232',
+      args: [],
+    );
+  }
+
+  /// `Load damage`
+  String get loadDamage {
+    return Intl.message(
+      'Load damage',
+      name: 'loadDamage',
+      desc: 'Load damage',
+      args: [],
+    );
+  }
+
+  /// `Starting point`
+  String get startingPoint {
+    return Intl.message(
+      'Starting point',
+      name: 'startingPoint',
+      desc: 'Starting point',
+      args: [],
+    );
+  }
+
+  /// `You haven't yet started the trip.`
+  String get youHaventYetStartedTheTrip {
+    return Intl.message(
+      'You haven`t yet started the trip.',
+      name: 'youHaventYetStartedTheTrip',
+      desc: 'You haven`t yet started the trip.',
+      args: [],
+    );
+  }
+
+  /// `Pick up #2133123`
+  String get pickUp {
+    return Intl.message(
+      'Pick up #2133123',
+      name: 'pickUp',
+      desc: 'Pick up #2133123',
+      args: [],
+    );
+  }
+
+  /// `All Stops`
+  String get allStops {
+    return Intl.message(
+      'All Stops',
+      name: 'allStops',
+      desc: 'All Stops',
+      args: [],
+    );
+  }
+
+  /// `TRIP INFO`
+  String get tripInfo {
+    return Intl.message(
+      'TRIP INFO',
+      name: 'tripInfo',
+      desc: 'TRIP INFO',
+      args: [],
+    );
+  }
+
+  /// `Hours of operation:`
+  String get hoursOfOperation {
+    return Intl.message(
+      'Hours of operation:',
+      name: 'hoursOfOperation',
+      desc: 'Hours of operation:',
+      args: [],
+    );
+  }
+
+  /// `WEIGHT:`
+  String get weight {
+    return Intl.message(
+      'WEIGHT:',
+      name: 'weight',
+      desc: 'WEIGHT:',
+      args: [],
+    );
+  }
+
+  /// `Tons:`
+  String get tons {
+    return Intl.message(
+      'Tons:',
+      name: 'tons',
+      desc: 'Tons:',
+      args: [],
+    );
+  }
+
+  /// `Commodity:`
+  String get commodity {
+    return Intl.message(
+      'Commodity:',
+      name: 'commodity',
+      desc: 'Commodity:',
+      args: [],
+    );
+  }
+
+  /// `Pallets:`
+  String get pallets {
+    return Intl.message(
+      'Pallets:',
+      name: 'pallets',
+      desc: 'Pallets:',
+      args: [],
+    );
+  }
+
+  /// `Temperature:`
+  String get temperature {
+    return Intl.message(
+      'Temperature:',
+      name: 'temperature',
+      desc: 'Temperature:',
+      args: [],
+    );
+  }
+
+  /// `Select the date and time of arrival at PICK UP #1:`
+  String get selectTheDateAndTimeOfArrivalAt {
+    return Intl.message(
+      'Select the date and time of arrival at PICK UP #1:',
+      name: 'selectTheDateAndTimeOfArrivalAt',
+      desc: 'Select the date and time of arrival at PICK UP #1:',
+      args: [],
+    );
+  }
+
+  /// `Select Date\ Time`
+  String get selectDateTime {
+    return Intl.message(
+      'Select Date\\ Time',
+      name: 'selectDateTime',
+      desc: 'Select Date\\ Time',
+      args: [],
+    );
+  }
+
+  /// `SELECT`
+  String get select {
+    return Intl.message(
+      'SELECT',
+      name: 'select',
+      desc: 'SELECT',
+      args: [],
+    );
+  }
+
+  /// `Select ETA at PICK UP#1:`
+  String get selectETAAt {
+    return Intl.message(
+      'Select ETA at PICK UP#1:',
+      name: 'selectETAAt',
+      desc: 'Select ETA at PICK UP#1:',
+      args: [],
+    );
+  }
+
+  /// `BOL document:`
+  String get bolDocument {
+    return Intl.message(
+      'BOL document:',
+      name: 'bolDocument',
+      desc: 'BOL document:',
+      args: [],
+    );
+  }
+
+  /// `Upload files`
+  String get uploadFiles {
+    return Intl.message(
+      'Upload files',
+      name: 'uploadFiles',
+      desc: 'Upload files',
+      args: [],
+    );
+  }
+
+  /// `or`
+  String get or {
+    return Intl.message(
+      'or',
+      name: 'or',
+      desc: 'or',
+      args: [],
+    );
+  }
+
+  /// `Upload the BOL document or you can scan it.`
+  String get uploadTheBOLDocumentOrYouCanScanIt {
+    return Intl.message(
+      'Upload the BOL document or you can scan it.',
+      name: 'uploadTheBOLDocumentOrYouCanScanIt',
+      desc: 'Upload the BOL document or you can scan it.',
+      args: [],
+    );
+  }
+
+  /// `UPLOAD`
+  String get upload {
+    return Intl.message(
+      'UPLOAD',
+      name: 'upload',
+      desc: 'UPLOAD',
+      args: [],
+    );
+  }
+
+  /// `Confirm that you have embarked on this trip:`
+  String get confirmThatYouHaveEmbarkedOnThisTrip {
+    return Intl.message(
+      'Confirm that you have embarked on this trip:',
+      name: 'confirmThatYouHaveEmbarkedOnThisTrip',
+      desc: 'Confirm that you have embarked on this trip:',
+      args: [],
+    );
+  }
+
+  /// `Approved trip`
+  String get approvedTrip {
+    return Intl.message(
+      'Approved trip',
+      name: 'approvedTrip',
+      desc: 'Approved trip',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

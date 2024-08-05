@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/custom_time_picker.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class CalendarDialog extends StatefulWidget {
   const CalendarDialog({super.key});
@@ -30,7 +31,7 @@ class _CalendarDialogState extends State<CalendarDialog> {
           child: Column(
             children: [
               Text(
-                'Select  ETA at PICK UP#1:',
+                context.localizations.selectETAAt,
                 style: theme.textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.w400,
                   color: theme.dividerColor,
@@ -133,7 +134,7 @@ class _CalendarDialogState extends State<CalendarDialog> {
                 padding: const EdgeInsets.symmetric(horizontal: 27),
                 child: CustomButton(
                   height: 36,
-                  label: 'SELECT',
+                  label: context.localizations.select,
                   onPressed: () {
                     context.pop('$date  $time');
                   },

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/selected_file_widget.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class UploadScanFiles extends StatelessWidget {
   const UploadScanFiles({
@@ -31,7 +32,7 @@ class UploadScanFiles extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'BOL document:',
+            context.localizations.bolDocument,
             style: theme.textTheme.labelSmall!.copyWith(
               fontWeight: FontWeight.w700,
               color: theme.dividerColor,
@@ -73,7 +74,7 @@ class UploadScanFiles extends StatelessWidget {
                       child: SvgPicture.asset('assets/images/add_file.svg'),
                     ),
                     Text(
-                      'Upload files',
+                      context.localizations.uploadFiles,
                       style: theme.textTheme.labelSmall!.copyWith(
                         fontSize: 13,
                         color: theme.primaryColorLight,
@@ -85,7 +86,7 @@ class UploadScanFiles extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  'or',
+                  context.localizations.or,
                   style: theme.textTheme.titleLarge!.copyWith(fontSize: 13),
                 ),
               ),
@@ -96,7 +97,7 @@ class UploadScanFiles extends StatelessWidget {
                     SvgPicture.asset('assets/images/scan.svg'),
                     const SizedBox(height: 5),
                     Text(
-                      'Upload files',
+                      context.localizations.uploadFiles,
                       style: theme.textTheme.labelSmall!.copyWith(
                         fontSize: 13,
                         color: theme.primaryColorLight,
@@ -109,7 +110,7 @@ class UploadScanFiles extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Text(
-            'Upload the BOL document or you can scan it.',
+            context.localizations.uploadTheBOLDocumentOrYouCanScanIt,
             style: theme.textTheme.labelSmall!.copyWith(
               fontSize: 12,
               color: theme.dividerColor,
@@ -118,7 +119,7 @@ class UploadScanFiles extends StatelessWidget {
           const SizedBox(height: 16),
           CustomButton(
             height: 36,
-            label: 'UPLOAD',
+            label: context.localizations.upload,
             onPressed: () {},
           ),
         ],

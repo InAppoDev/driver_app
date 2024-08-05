@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ActiveTripData extends StatelessWidget {
   const ActiveTripData({super.key, required this.onPressed});
@@ -37,7 +38,7 @@ class ActiveTripData extends StatelessWidget {
                     },
                   ),
                   Text(
-                    'Trip № 12321312312232',
+                    context.localizations.tripNumber,
                     style: theme.textTheme.titleSmall!.copyWith(
                       color: theme.disabledColor,
                     ),
@@ -56,10 +57,11 @@ class ActiveTripData extends StatelessWidget {
                     child: Row(
                       children: [
                         SvgPicture.asset(
-                            'assets/images/load_box.svg'),
+                          'assets/images/load_box.svg',
+                        ),
                         const SizedBox(width: 6),
                         Text(
-                          'Load damage',
+                          context.localizations.loadDamage,
                           style: theme.textTheme.bodySmall!
                               .copyWith(fontWeight: FontWeight.w600),
                         ),
@@ -75,7 +77,7 @@ class ActiveTripData extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Starting point',
+                    context.localizations.startingPoint,
                     style: theme.textTheme.titleSmall!
                         .copyWith(color: theme.dividerColor),
                   ),
@@ -100,7 +102,7 @@ class ActiveTripData extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'You haven`t yet started the trip.',
+                 context.localizations.youHaventYetStartedTheTrip,
                   style: theme.textTheme.titleSmall!.copyWith(
                     fontWeight: FontWeight.w400,
                     color: theme.indicatorColor,
@@ -112,7 +114,7 @@ class ActiveTripData extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Pick up #2133123',
+                    context.localizations.pickUp,
                     style: theme.textTheme.titleSmall!
                         .copyWith(color: theme.dividerColor),
                   ),
@@ -144,7 +146,7 @@ class ActiveTripData extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'All Stops',
+                context.localizations.allStops,
                 style: theme.textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.w600,
                   color: theme.scaffoldBackgroundColor,

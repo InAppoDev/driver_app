@@ -186,6 +186,102 @@
   "milesToGo": "Miles to go",
   "@milesToGo": {
     "description": "Miles to go"
+  },
+  "tripNumber": "Trip № 12321312312232",
+  "@tripNumber": {
+    "description": "Trip № 12321312312232"
+  },
+  "loadDamage": "Load damage",
+  "@loadDamage": {
+    "description": "Load damage"
+  },
+  "startingPoint": "Starting point",
+  "@startingPoint": {
+    "description": "Starting point"
+  },
+  "youHaventYetStartedTheTrip": "You haven`t yet started the trip.",
+  "@youHaventYetStartedTheTrip": {
+    "description": "You haven`t yet started the trip."
+  },
+  "pickUp": "Pick up #2133123",
+  "@pickUp": {
+    "description": "Pick up #2133123"
+  },
+  "allStops": "All Stops",
+  "@allStops": {
+    "description": "All Stops"
+  },
+  "tripInfo": "TRIP INFO",
+  "@tripInfo": {
+    "description": "TRIP INFO"
+  },
+  "hoursOfOperation": "Hours of operation:",
+  "@hoursOfOperation": {
+    "description": "Hours of operation:"
+  },
+  "weight": "WEIGHT:",
+  "@weight": {
+    "description": "WEIGHT:"
+  },
+  "tons": "Tons:",
+  "@tons": {
+    "description": "Tons:"
+  },
+  "commodity": "Commodity:",
+  "@commodity": {
+    "description": "Commodity:"
+  },
+  "pallets": "Pallets:",
+  "@pallets": {
+    "description": "Pallets:"
+  },
+  "temperature": "Temperature:",
+  "@temperature": {
+    "description": "Temperature:"
+  },
+  "selectTheDateAndTimeOfArrivalAt": "Select the date and time of arrival at PICK UP #1:",
+  "@selectTheDateAndTimeOfArrivalAt": {
+    "description": "Select the date and time of arrival at PICK UP #1:"
+  },
+  "selectDateTime": "Select Date\\ Time",
+  "@selectDateTime": {
+    "description": "Select Date\\ Time"
+  },
+  "select": "SELECT",
+  "@select": {
+    "description": "SELECT"
+  },
+  "selectETAAt": "Select ETA at PICK UP#1:",
+  "@selectETAAt": {
+    "description": "Select ETA at PICK UP#1:"
+  },
+  "bolDocument": "BOL document:",
+  "@bolDocument": {
+    "description": "BOL document:"
+  },
+  "uploadFiles": "Upload files",
+  "@uploadFiles": {
+    "description": "Upload files"
+  },
+  "or": "or",
+  "@or": {
+    "description": "or"
+  },
+  "uploadTheBOLDocumentOrYouCanScanIt": "Upload the BOL document or you can scan it.",
+  "@uploadTheBOLDocumentOrYouCanScanIt": {
+    "description": "Upload the BOL document or you can scan it."
+  },
+  "upload": "UPLOAD",
+  "@upload": {
+    "description": "UPLOAD"
+  },
+  "confirmThatYouHaveEmbarkedOnThisTrip": "Confirm that you have embarked on this trip:",
+  "@confirmThatYouHaveEmbarkedOnThisTrip": {
+    "description": "Confirm that you have embarked on this trip:"
+  },
+  "approvedTrip": "Approved trip",
+  "@approvedTrip": {
+    "description": "Approved trip"
   }
 }
 

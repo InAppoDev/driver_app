@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_dialog.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class CalendarPicker extends StatelessWidget {
   const CalendarPicker({
@@ -26,7 +27,7 @@ class CalendarPicker extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'Select the date and time of arrival at PICK UP #1:',
+            context.localizations.selectTheDateAndTimeOfArrivalAt,
             style: theme.textTheme.titleSmall!.copyWith(
               fontWeight: FontWeight.w400,
               color: theme.dividerColor,
@@ -60,7 +61,7 @@ class CalendarPicker extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Select Date\\ Time',
+                    context.localizations.selectDateTime,
                     style: theme.textTheme.labelSmall!.copyWith(
                       fontWeight: FontWeight.w700,
                       color: theme.primaryColorDark.withOpacity(0.5),
@@ -89,7 +90,7 @@ class CalendarPicker extends StatelessWidget {
           ],
           CustomButton(
             height: 36,
-            label: 'SELECT',
+            label: context.localizations.select,
             onPressed: () {},
           ),
         ],
