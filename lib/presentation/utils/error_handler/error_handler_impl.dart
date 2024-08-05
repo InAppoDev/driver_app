@@ -37,14 +37,6 @@ class ErrorHandlerImpl implements ErrorHandler {
             );
             return validationException;
           }
-        case ExceptionType.unauth:
-          {
-            _showErrorMessage(
-              'Error',
-              'An unknown error occurred. Please try again.',
-            );
-            break;
-          }
       }
     } else {
       _showErrorMessage(
