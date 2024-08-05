@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print //TODO remove print
+
 import 'dart:async';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -68,10 +70,10 @@ class MyLocationService {
       ongoing: true,
     );
 
-    final DarwinNotificationDetails iOSPlatformChannelSpecifics =
+    const DarwinNotificationDetails iOSPlatformChannelSpecifics =
         DarwinNotificationDetails();
 
-    final NotificationDetails platformChannelSpecifics = NotificationDetails(
+    const NotificationDetails platformChannelSpecifics = NotificationDetails(
         android: androidPlatformChannelSpecifics,
         iOS: iOSPlatformChannelSpecifics);
     print('_showNotification');
@@ -94,10 +96,10 @@ class MyLocationService {
       ongoing: false,
     );
 
-    final DarwinNotificationDetails iOSPlatformChannelSpecifics =
+    const DarwinNotificationDetails iOSPlatformChannelSpecifics =
         DarwinNotificationDetails();
 
-    final NotificationDetails platformChannelSpecifics = NotificationDetails(
+    const NotificationDetails platformChannelSpecifics = NotificationDetails(
         android: androidPlatformChannelSpecifics,
         iOS: iOSPlatformChannelSpecifics);
 
@@ -149,7 +151,7 @@ class MyLocationService {
     });
 
     // Timer for active mode every 15 minutes
-    _timer = Timer.periodic(Duration(minutes: 15), (timer) async {
+    _timer = Timer.periodic(const Duration(minutes: 15), (timer) async {
       print('Timer event received');
       bool hasPermission = await _requestPermissions();
       if (!hasPermission) {

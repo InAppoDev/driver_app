@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tms_driver/presentation/blocks/message/message_bloc.dart';
@@ -16,7 +15,7 @@ class MessageView extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
                 content:
-                Text(listenerState.errorMessage ?? 'An error occurred')),
+                    Text(listenerState.errorMessage ?? 'An error occurred')),
           );
         }
       },
