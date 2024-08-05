@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tms_driver/presentation/blocks/active_trip/active_trip_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_app_bar.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_picker.dart';
+import 'package:tms_driver/presentation/pages/active_trip/widget/upload_scan_files.dart';
 
 import 'active_trip_data.dart';
 import 'active_trip_info.dart';
@@ -39,6 +40,25 @@ class ActiveTripView extends StatelessWidget {
                             ActiveTripEvent.getDateAndTime(dateTime: resp));
                       },
                       dateTime: state.dateTime ?? '',
+                    ),
+                    const SizedBox(height: 11),
+                    UploadScanFiles(
+                      onUploadFile: () {
+                        context
+                            .read<ActiveTripBloc>()
+                            .add(const ActiveTripEvent.pickFile());
+                      },
+                      onScanFile: () {
+                        context
+                            .read<ActiveTripBloc>()
+                            .add(const ActiveTripEvent.pickImage());
+                      },
+                      selectedFiles: state.selectedFiles,
+                      onFileRemove: (file) {
+                        context
+                            .read<ActiveTripBloc>()
+                            .add(ActiveTripEvent.removeFile(file: file));
+                      },
                     ),
                     const SizedBox(height: 30),
                   ],

@@ -11,6 +11,7 @@ class CustomIconButton extends StatelessWidget {
   final Color? borderColor;
   final double borderRadius;
   final Color? iconColor;
+  final EdgeInsetsGeometry? padding;
 
   const CustomIconButton({
     super.key,
@@ -23,6 +24,7 @@ class CustomIconButton extends StatelessWidget {
     this.borderColor,
     this.borderRadius = 9,
     this.iconColor,
+    this.padding,
   });
 
   @override
@@ -31,7 +33,8 @@ class CustomIconButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        padding:
+            padding ?? const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular(borderRadius),

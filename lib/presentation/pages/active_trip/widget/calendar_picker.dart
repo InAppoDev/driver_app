@@ -36,8 +36,8 @@ class CalendarPicker extends StatelessWidget {
             onTap: () async {
               final resp = await showDialog(
                   context: context,
-                  builder: (context) =>  CalendarDialog());
-              onCalendarResponse(resp);
+                  builder: (context) => const CalendarDialog());
+              onCalendarResponse(resp ?? '');
             },
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 26),
@@ -88,6 +88,7 @@ class CalendarPicker extends StatelessWidget {
             const SizedBox(height: 10),
           ],
           CustomButton(
+            height: 36,
             label: 'SELECT',
             onPressed: () {},
           ),
