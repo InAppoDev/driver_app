@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ApprovedTripBs extends StatelessWidget {
   const ApprovedTripBs({super.key});
@@ -17,14 +18,17 @@ class ApprovedTripBs extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Confirm that you have embarked on this trip:',
+              context.localizations.confirmThatYouHaveEmbarkedOnThisTrip,
               style: theme.textTheme.bodySmall!.copyWith(fontSize: 12),
             ),
             const SizedBox(height: 5),
-            CustomButton(label: 'Approved trip', onPressed: (){},),
+            CustomButton(
+              label: context.localizations.approvedTrip,
+              onPressed: () {},
+            ),
           ],
         ),
-      ));
-
+      ),
+    );
   }
 }

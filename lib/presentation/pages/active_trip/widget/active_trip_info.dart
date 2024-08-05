@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ActiveTripInfo extends StatelessWidget {
   const ActiveTripInfo({super.key});
@@ -20,7 +21,7 @@ class ActiveTripInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'TRIP INFO',
+                context.localizations.tripInfo,
                 style: theme.textTheme.titleSmall!.copyWith(
                   color: theme.dividerColor,
                 ),
@@ -41,7 +42,7 @@ class ActiveTripInfo extends StatelessWidget {
           ),
           const SizedBox(height: 22),
           Text(
-            'Pick up #2133123',
+            context.localizations.pickUp,
             style: theme.textTheme.bodySmall!.copyWith(
               color: theme.disabledColor,
               fontWeight: FontWeight.w600,
@@ -49,7 +50,7 @@ class ActiveTripInfo extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           Text(
-            'Hours of operation:',
+            context.localizations.hoursOfOperation,
             style: theme.textTheme.bodySmall!.copyWith(
               color: theme.disabledColor,
               fontWeight: FontWeight.w400,
@@ -77,14 +78,14 @@ class ActiveTripInfo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'WEIGHT:',
+                    context.localizations.weight,
                     style: theme.textTheme.bodySmall!.copyWith(
                       color: theme.dividerColor,
                     ),
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    '25 Tons',
+                    '25 ${context.localizations.tons}',
                     style: theme.textTheme.titleSmall!.copyWith(
                       fontWeight: FontWeight.w400,
                       color: theme.dividerColor,
@@ -96,7 +97,7 @@ class ActiveTripInfo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Commodity:',
+                    context.localizations.commodity,
                     style: theme.textTheme.bodySmall!.copyWith(
                       color: theme.dividerColor,
                     ),
@@ -115,7 +116,7 @@ class ActiveTripInfo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Pallets:',
+                    context.localizations.pallets,
                     style: theme.textTheme.bodySmall!.copyWith(
                       color: theme.dividerColor,
                     ),
@@ -134,7 +135,7 @@ class ActiveTripInfo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Temperature:',
+                    context.localizations.temperature,
                     style: theme.textTheme.bodySmall!.copyWith(
                       color: theme.dividerColor,
                     ),
