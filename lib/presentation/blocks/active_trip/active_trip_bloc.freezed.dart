@@ -90,6 +90,9 @@ class _$ActiveTripEventCopyWithImpl<$Res, $Val extends ActiveTripEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ActiveTripEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -106,6 +109,9 @@ class __$$InitializeImplCopyWithImpl<$Res>
   __$$InitializeImplCopyWithImpl(
       _$InitializeImpl _value, $Res Function(_$InitializeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ActiveTripEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -229,6 +235,8 @@ class __$$GetDateAndTimeImplCopyWithImpl<$Res>
       _$GetDateAndTimeImpl _value, $Res Function(_$GetDateAndTimeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ActiveTripEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -268,7 +276,9 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
   @override
   int get hashCode => Object.hash(runtimeType, dateTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ActiveTripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetDateAndTimeImplCopyWith<_$GetDateAndTimeImpl> get copyWith =>
@@ -361,7 +371,10 @@ abstract class GetDateAndTime implements ActiveTripEvent {
       _$GetDateAndTimeImpl;
 
   String get dateTime;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ActiveTripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetDateAndTimeImplCopyWith<_$GetDateAndTimeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -380,6 +393,9 @@ class __$$PickFileImplCopyWithImpl<$Res>
   __$$PickFileImplCopyWithImpl(
       _$PickFileImpl _value, $Res Function(_$PickFileImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ActiveTripEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -503,6 +519,8 @@ class __$$RemoveFileImplCopyWithImpl<$Res>
       _$RemoveFileImpl _value, $Res Function(_$RemoveFileImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ActiveTripEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -541,7 +559,9 @@ class _$RemoveFileImpl implements RemoveFile {
   @override
   int get hashCode => Object.hash(runtimeType, file);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ActiveTripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RemoveFileImplCopyWith<_$RemoveFileImpl> get copyWith =>
@@ -632,7 +652,10 @@ abstract class RemoveFile implements ActiveTripEvent {
   const factory RemoveFile({required final File file}) = _$RemoveFileImpl;
 
   File get file;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ActiveTripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RemoveFileImplCopyWith<_$RemoveFileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -651,6 +674,9 @@ class __$$PickImageImplCopyWithImpl<$Res>
   __$$PickImageImplCopyWithImpl(
       _$PickImageImpl _value, $Res Function(_$PickImageImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ActiveTripEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -764,7 +790,9 @@ mixin _$ActiveTripState {
   List<File> get selectedFiles => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ActiveTripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ActiveTripStateCopyWith<ActiveTripState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -792,6 +820,8 @@ class _$ActiveTripStateCopyWithImpl<$Res, $Val extends ActiveTripState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ActiveTripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -844,6 +874,8 @@ class __$$ActiveTripStateImplCopyWithImpl<$Res>
       _$ActiveTripStateImpl _value, $Res Function(_$ActiveTripStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ActiveTripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -922,7 +954,9 @@ class _$ActiveTripStateImpl implements _ActiveTripState {
   int get hashCode => Object.hash(runtimeType, status, dateTime,
       const DeepCollectionEquality().hash(_selectedFiles), errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ActiveTripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ActiveTripStateImplCopyWith<_$ActiveTripStateImpl> get copyWith =>
@@ -945,8 +979,11 @@ abstract class _ActiveTripState implements ActiveTripState {
   List<File> get selectedFiles;
   @override
   String? get errorMessage;
+
+  /// Create a copy of ActiveTripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ActiveTripStateImplCopyWith<_$ActiveTripStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

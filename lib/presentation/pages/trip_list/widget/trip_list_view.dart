@@ -30,7 +30,7 @@ class TripListView extends StatelessWidget {
                 if (state.tabStatus == TabStatus.newTrips)
                   NewTrips(
                     onPressed: () {
-                     context.go('/activeTrip');
+                      context.push('/activeTrip');
                     },
                   ),
               ],

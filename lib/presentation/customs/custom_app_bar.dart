@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -19,7 +20,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           CustomIconButton(
             height: 18,
             icon: 'bell',
-            onPressed: () {},
+            onPressed: () {
+              context.push('/notification');
+            },
             justIcon: true,
             iconColor: Theme.of(context).dividerColor,
           ),

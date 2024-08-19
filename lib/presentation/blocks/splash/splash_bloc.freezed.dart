@@ -72,6 +72,9 @@ class _$SplashEventCopyWithImpl<$Res, $Val extends SplashEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SplashEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -91,6 +94,8 @@ class __$$StartAnimationImplCopyWithImpl<$Res>
       _$StartAnimationImpl _value, $Res Function(_$StartAnimationImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SplashEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,7 +145,9 @@ class _$StartAnimationImpl
   @override
   int get hashCode => Object.hash(runtimeType, startAnimation);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SplashEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StartAnimationImplCopyWith<_$StartAnimationImpl> get copyWith =>
@@ -215,7 +222,10 @@ abstract class StartAnimation implements SplashEvent {
       _$StartAnimationImpl;
 
   bool get startAnimation;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SplashEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StartAnimationImplCopyWith<_$StartAnimationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -234,6 +244,9 @@ class __$$InitializeImplCopyWithImpl<$Res>
   __$$InitializeImplCopyWithImpl(
       _$InitializeImpl _value, $Res Function(_$InitializeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SplashEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -334,7 +347,9 @@ mixin _$SplashState {
   bool get startAnimation => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SplashStateCopyWith<SplashState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -358,6 +373,8 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -401,6 +418,8 @@ class __$$SplashStateImplCopyWithImpl<$Res>
       _$SplashStateImpl _value, $Res Function(_$SplashStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -470,7 +489,9 @@ class _$SplashStateImpl with DiagnosticableTreeMixin implements _SplashState {
   int get hashCode =>
       Object.hash(runtimeType, status, startAnimation, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SplashStateImplCopyWith<_$SplashStateImpl> get copyWith =>
@@ -489,8 +510,11 @@ abstract class _SplashState implements SplashState {
   bool get startAnimation;
   @override
   String? get errorMessage;
+
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SplashStateImplCopyWith<_$SplashStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

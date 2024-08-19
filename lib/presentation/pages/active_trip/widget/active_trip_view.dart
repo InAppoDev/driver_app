@@ -21,7 +21,7 @@ class ActiveTripView extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             backgroundColor: theme.canvasColor,
-            appBar: const CustomAppBar(),
+            // appBar: const CustomAppBar(),
             body: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
