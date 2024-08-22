@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:tms_driver/presentation/blocks/main/bloc/main_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_app_bar.dart';
 import 'package:tms_driver/presentation/pages/home/home_page.dart';
@@ -31,50 +33,44 @@ class MainView extends StatelessWidget {
         extendBody: true,
         body: _buildBody(state.selectedPage),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: state.showNavBar ? SizedBox(
-          height: 130,
-          width: 80,
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: FloatingActionButton(
-              elevation: 2,
+        floatingActionButton: state.showNavBar
+            ? Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: FloatingActionButton(
+                    elevation: 2,
               isExtended: true,
               onPressed: () {},
-              child: const Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(Icons.play_arrow),
-                  Text('play'),
-                ],
-              ),
-            ),
-          ),
-        ) : null,
-        bottomNavigationBar:  state.showNavBar ? BottomAppBar(
-          elevation: 2,
-          shape: CustomNotchedShape(),
-          notchMargin: 3,
-          child: Container(
-            height: 60,
-            color: Colors.transparent,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildNavItem(context, Icons.home, 'Home', MainPageEnum.home),
-                _buildNavItem(
-                    context, Icons.place_outlined, 'Trips', MainPageEnum.trips),
-                const SizedBox(
-                  width: 40,
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text('play'),
+                      ],
+                    ),
+                  ),
                 ),
-                _buildNavItem(context, Icons.message_outlined, 'Messages',
-                    MainPageEnum.messages),
-                _buildNavItem(
-                    context, Icons.person, 'You', MainPageEnum.profile),
-              ],
-            ),
-          ),
         ) : null,
+        bottomNavigationBar: state.showNavBar
+            ? CustomPaint(
+                painter: BottomNavBarPainter(),
+                child: SizedBox(
+                  height: 70,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      _buildNavItem(context, 'home', 'Home', MainPageEnum.home),
+                      _buildNavItem(
+                          context, 'point', 'Trips', MainPageEnum.trips),
+                      const SizedBox(width: 40), // Space for the FAB
+                      _buildNavItem(context, 'message', 'Messages',
+                          MainPageEnum.messages),
+                      _buildNavItem(context, '', 'You', MainPageEnum.profile),
+                    ],
+                  ),
+                ),
+              ) : null,
       );
     });
   }
@@ -92,8 +88,8 @@ class MainView extends StatelessWidget {
     }
   }
 
-  Widget _buildNavItem(
-      BuildContext context, IconData icon, String label, MainPageEnum page) {
+  Widget _buildNavItem(BuildContext context, String iconName, String label,
+      MainPageEnum page) {
     final theme = Theme.of(context);
     final isSelected = context.watch<MainBloc>().state.selectedPage == page;
     final color = isSelected ? theme.primaryColor : theme.shadowColor;
@@ -105,7 +101,12 @@ class MainView extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, color: color),
+          iconName.isNotEmpty
+              ? SvgPicture.asset(
+                  'assets/images/$iconName.svg',
+                  colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+                )
+              : Icon(Icons.person, color: color),
           Text(label, style: TextStyle(color: color, fontWeight: fontWeight)),
         ],
       ),
@@ -113,24 +114,58 @@ class MainView extends StatelessWidget {
   }
 }
 
-class CustomNotchedShape extends NotchedShape {
+class BottomNavBarPainter extends CustomPainter {
   @override
-  Path getOuterPath(Rect host, Rect? guest) {
-    Path path = Path()..addRect(host);
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white
+      ..style = PaintingStyle.fill;
 
-    if (guest == null) {
-      return path;
-    }
+    final path = Path();
 
-    final double notchWidth = guest.width;
-    final double notchHeight = guest.height * 2;
-    final double notchCenterX = guest.center.dx;
+    // Start from the left of the screen
+    path.moveTo(0, 0);
 
-    path.moveTo(notchCenterX - notchWidth / 2, host.top);
-    path.lineTo(notchCenterX + notchWidth / 2, host.top);
-    path.lineTo(notchCenterX, host.top + notchHeight);
+    // Left side straight part
+    path.lineTo(size.width * 0.35, 0);
+
+    // Left curve of the notch
+    path.quadraticBezierTo(
+      size.width * 0.4, 0,
+      size.width * 0.4, 25, // Deeper curve
+    );
+
+    // Center cutout
+    path.arcToPoint(
+      Offset(size.width * 0.6, 27), // Deep and wide notch
+      radius: const Radius.circular(33.0), // Increased radius for deeper notch
+      clockwise: false,
+    );
+
+    // Right curve of the notch
+    path.quadraticBezierTo(
+      size.width * 0.6,
+      0,
+      size.width * 0.65,
+      0,
+    );
+
+    // Right side straight part
+    path.lineTo(size.width, 0);
+
+    // Bottom edges
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
+
+    // Close the path
     path.close();
 
-    return path;
+    // Draw the path
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
