@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:tms_driver/presentation/blocks/main/bloc/main_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_app_bar.dart';
 import 'package:tms_driver/presentation/pages/home/home_page.dart';
@@ -51,11 +53,11 @@ class MainView extends StatelessWidget {
             elevation: 2,
             onPressed: () {},
             backgroundColor: Theme.of(context).cardColor,
-            child: const Column(
+            child:  Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.play_arrow, size: 30), // Adjusted icon size
-                Text('Play', style: TextStyle(fontSize: 12)),
+                SvgPicture.asset('assets/images/play.svg', height: 30, width: 30,),
+                const Text('Play', style: TextStyle(fontSize: 12)),
               ],
             ),
           ),
@@ -68,14 +70,12 @@ class MainView extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem(context, Icons.home, 'Home', MainPageEnum.home),
-              _buildNavItem(
-                  context, Icons.place_outlined, 'Trips', MainPageEnum.trips),
+              _buildNavItem(context, 'home', 'Home', MainPageEnum.home),
+              _buildNavItem(context, 'point', 'Trips', MainPageEnum.trips),
               const SizedBox(width: 40), // Space for the FAB
-              _buildNavItem(context, Icons.message_outlined, 'Messages',
-                  MainPageEnum.messages),
               _buildNavItem(
-                  context, Icons.person, 'You', MainPageEnum.profile),
+                  context, 'message', 'Messages', MainPageEnum.messages),
+              _buildNavItem(context, '', 'You', MainPageEnum.profile),
             ],
           ),
         ),
@@ -83,8 +83,8 @@ class MainView extends StatelessWidget {
     );
   }
 
-  Widget _buildNavItem(
-      BuildContext context, IconData icon, String label, MainPageEnum page) {
+  Widget _buildNavItem(BuildContext context, String iconName, String label,
+      MainPageEnum page) {
     final theme = Theme.of(context);
     final isSelected = context.watch<MainBloc>().state.selectedPage == page;
     final color = isSelected ? theme.primaryColor : theme.shadowColor;
@@ -96,7 +96,15 @@ class MainView extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, color: color),
+          iconName.isEmpty
+              ? Icon(
+                  Icons.person,
+                  color: color,
+                )
+              : SvgPicture.asset(
+                  'assets/images/$iconName.svg',
+                  colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+                ),
           Text(label, style: TextStyle(color: color, fontWeight: fontWeight)),
         ],
       ),
