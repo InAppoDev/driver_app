@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tms_driver/presentation/blocks/active_trip/active_trip_bloc.dart';
-import 'package:tms_driver/presentation/customs/custom_app_bar.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_picker.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/upload_scan_files.dart';
 

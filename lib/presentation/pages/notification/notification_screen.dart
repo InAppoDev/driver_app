@@ -22,7 +22,6 @@ class NotificationScreen extends StatelessWidget {
                   height: 18,
                   icon: 'arrow',
                   onPressed: () {
-                    print('object');
                     context.pop();
                   },
                   justIcon: true,
@@ -41,7 +40,22 @@ class NotificationScreen extends StatelessWidget {
               body: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 12),
                 child: Column(
-                  children: [],
+                  children: [
+                    Card(
+                      child: ListTile(
+                        leading: Icon(Icons.notifications_sharp),
+                        title: Text('Notification 1'),
+                        subtitle: Text('This is a notification'),
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        leading: Icon(Icons.notifications_sharp),
+                        title: Text('Notification 2'),
+                        subtitle: Text('This is a notification'),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             );

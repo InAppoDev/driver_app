@@ -71,23 +71,20 @@ final lightTheme = ThemeData(
   ),
   primaryColor: AppColors.orange,
   shadowColor: AppColors.darkGray,
-  floatingActionButtonTheme: FloatingActionButtonThemeData(
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: AppColors.orange,
     foregroundColor: AppColors.white,
-    elevation: 6,
-    sizeConstraints: const BoxConstraints.tightFor(
-      width: 70,
-      height: 70,
-    ),
-    hoverElevation: 8,
-    focusElevation: 8,
+    elevation: 0,
+    hoverElevation: 10,
+    focusElevation: 10,
     disabledElevation: 0,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12),
+    shape: CircleBorder(),
+    sizeConstraints: BoxConstraints.tightFor(
+      width: 72,
+      height: 72,
     ),
   ),
   textTheme: const TextTheme(
-    // Numbers fields
     headlineLarge: TextStyle(
       fontSize: 24,
       color: AppColors.black,
