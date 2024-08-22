@@ -1,110 +1,133 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tms_driver/presentation/blocks/main/bloc/main_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_app_bar.dart';
-import 'package:tms_driver/data/services/my_localtion_services.dart';
 import 'package:tms_driver/presentation/pages/home/home_page.dart';
-import 'package:tms_driver/presentation/pages/home/widget/home_bottom_sheet.dart';
 import 'package:tms_driver/presentation/pages/message_list/message_list.dart';
 import 'package:tms_driver/presentation/pages/profile/profile.dart';
 import 'package:tms_driver/presentation/pages/trip_list/trip_list.dart';
-import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
-class MainPage extends StatefulWidget {
+class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   @override
-  MainPageState createState() => MainPageState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => MainBloc(),
+      child: const MainView(),
+    );
+  }
 }
 
-class MainPageState extends State<MainPage> {
-  int _selectedIndex = 0;
-  late MyLocationService _locationService;
-
-  static const List<Widget> _routes = [
-    HomePage(),
-    TripListPage(),
-    MessageListPage(),
-    ProfilePage(),
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-    _locationService = MyLocationService();
-    _locationService.startTracking();
-  }
-
-  @override
-  void dispose() {
-    _locationService.stopTracking();
-    super.dispose();
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class MainView extends StatelessWidget {
+  const MainView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).canvasColor,
       appBar: const CustomAppBar(),
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _routes,
-      ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 5.0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildNavItem(context, Icons.home, context.localizations.home, 0),
-            _buildNavItem(
-                context, Icons.place_outlined, context.localizations.trips, 1),
-            const SizedBox(width: 30), // Space for the FAB
-            _buildNavItem(context, Icons.message_outlined,
-                context.localizations.messages, 2),
-            _buildNavItem(context, Icons.person, context.localizations.you, 3),
-          ],
-        ),
+      extendBody: true,
+      body: BlocBuilder<MainBloc, MainState>(
+        builder: (context, state) {
+          switch (state.selectedPage) {
+            case MainPageEnum.home:
+              return const HomePage();
+            case MainPageEnum.trips:
+              return const TripListPage();
+            case MainPageEnum.messages:
+              return const MessageListPage();
+            case MainPageEnum.profile:
+              return const ProfilePage();
+          }
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return const HomeBottomSheet();
-            },
-          );
-        },
-        child: Text(context.localizations.driveOn),
+      floatingActionButton: SizedBox(
+        height: 130,
+        width: 80,
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: FloatingActionButton(
+            elevation: 2,
+            isExtended: true,
+            onPressed: () {},
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(Icons.play_arrow),
+                Text('play'),
+              ],
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        elevation: 2,
+        shape: CustomNotchedShape(),
+        notchMargin: 3,
+        child: Container(
+          height: 60,
+          color: Colors.transparent,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildNavItem(context, Icons.home, 'Home', MainPageEnum.home),
+              _buildNavItem(
+                  context, Icons.place_outlined, 'Trips', MainPageEnum.trips),
+              const SizedBox(
+                width: 40,
+              ),
+              _buildNavItem(context, Icons.message_outlined, 'Messages',
+                  MainPageEnum.messages),
+              _buildNavItem(context, Icons.person, 'You', MainPageEnum.profile),
+            ],
+          ),
+        ),
       ),
     );
   }
 
   Widget _buildNavItem(
-      BuildContext context, IconData icon, String label, int index) {
+      BuildContext context, IconData icon, String label, MainPageEnum page) {
     final theme = Theme.of(context);
-    final isSelected = _selectedIndex == index;
-    final color = isSelected
-        ? Theme.of(context).primaryColor
-        : Theme.of(context).shadowColor;
+    final isSelected = context.watch<MainBloc>().state.selectedPage == page;
+    final color = isSelected ? theme.primaryColor : theme.shadowColor;
     final fontWeight = isSelected ? FontWeight.w600 : FontWeight.w400;
 
     return GestureDetector(
-      onTap: () => _onItemTapped(index),
+      onTap: () => context.read<MainBloc>().add(MainEvent.pageChanged(page)),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(icon, color: color),
-          Text(label,
-              style: theme.textTheme.titleLarge!
-                  .copyWith(color: color, fontWeight: fontWeight)),
+          Text(label, style: TextStyle(color: color, fontWeight: fontWeight)),
         ],
       ),
     );
+  }
+}
+
+class CustomNotchedShape extends NotchedShape {
+  @override
+  Path getOuterPath(Rect host, Rect? guest) {
+    Path path = Path()..addRect(host);
+
+    if (guest == null) {
+      return path;
+    }
+
+    final double notchWidth = guest.width;
+    final double notchHeight = guest.height * 2;
+    final double notchCenterX = guest.center.dx;
+
+    path.moveTo(notchCenterX - notchWidth / 2, host.top);
+    path.lineTo(notchCenterX + notchWidth / 2, host.top);
+    path.lineTo(notchCenterX, host.top + notchHeight);
+    path.close();
+
+    return path;
   }
 }

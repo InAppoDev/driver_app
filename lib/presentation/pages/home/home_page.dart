@@ -7,16 +7,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: Theme.of(context).canvasColor),
-      child: const SingleChildScrollView(
-        child: Column(
-          children: [
-            ProfitDashboard(),
-            Currents(),
-            SizedBox(height: 50),
-          ],
-        ),
+    return const SingleChildScrollView(
+      child: Column(
+        children: [
+          ProfitDashboard(),
+          Currents(),
+          // SizedBox(height: 50),
+        ],
       ),
     );
   }
