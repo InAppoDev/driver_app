@@ -64,6 +64,7 @@ dependencies:
   permission_handler: ^11.3.1
   file_picker: ^8.0.6
   image_picker: ^1.1.2
+  circle_nav_bar: ^2.1.0+1
 
 dev_dependencies:
   flutter_test:

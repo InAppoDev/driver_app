@@ -13,7 +13,7 @@ class NewTrips extends StatelessWidget {
       child: ListView.builder(
         padding: const EdgeInsets.only(bottom: 50),
         shrinkWrap: true,
-        itemCount: 4,
+        itemCount: 8,
         itemBuilder: (context, index) => NewTripsWidget(onPressed: onPressed),
       ),
     );

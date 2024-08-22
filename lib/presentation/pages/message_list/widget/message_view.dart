@@ -21,14 +21,11 @@ class MessageView extends StatelessWidget {
       },
       child: BlocBuilder<MessageBloc, MessageState>(
         builder: (context, state) {
-          return Container(
-            decoration: BoxDecoration(color: Theme.of(context).canvasColor),
-            child: ListView.builder(
-              itemCount: 12,
-              itemBuilder: (context, index) {
-                return const MessageWidget();
-              },
-            ),
+          return ListView.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return const MessageWidget();
+            },
           );
         },
       ),

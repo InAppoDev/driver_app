@@ -15,26 +15,23 @@ class TripListView extends StatelessWidget {
       listener: (context, listenerState) {},
       child: BlocBuilder<TripBloc, TripState>(
         builder: (context, state) {
-          return Container(
-            decoration: BoxDecoration(color: Theme.of(context).canvasColor),
-            child: Column(
-              children: [
-                Tabs(
-                  status: state.tabStatus,
-                  onPressed: (status) {
-                    context
-                        .read<TripBloc>()
-                        .add(TripEvent.changeTab(status: status));
+          return Column(
+            children: [
+              Tabs(
+                status: state.tabStatus,
+                onPressed: (status) {
+                  context
+                      .read<TripBloc>()
+                      .add(TripEvent.changeTab(status: status));
+                },
+              ),
+              if (state.tabStatus == TabStatus.newTrips)
+                NewTrips(
+                  onPressed: () {
+                    context.push('/activeTrip');
                   },
                 ),
-                if (state.tabStatus == TabStatus.newTrips)
-                  NewTrips(
-                    onPressed: () {
-                     context.go('/activeTrip');
-                    },
-                  ),
-              ],
-            ),
+            ],
           );
         },
       ),

@@ -50,7 +50,9 @@ mixin _$TripEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TripEventCopyWith<TripEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -73,6 +75,8 @@ class _$TripEventCopyWithImpl<$Res, $Val extends TripEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +110,8 @@ class __$$ChangeTabPressedImplCopyWithImpl<$Res>
       $Res Function(_$ChangeTabPressedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,7 +150,9 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
   @override
   int get hashCode => Object.hash(runtimeType, status);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeTabPressedImplCopyWith<_$ChangeTabPressedImpl> get copyWith =>
@@ -214,8 +222,11 @@ abstract class _ChangeTabPressed implements TripEvent {
 
   @override
   TabStatus get status;
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeTabPressedImplCopyWith<_$ChangeTabPressedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -226,7 +237,9 @@ mixin _$TripState {
   TabStatus get tabStatus => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TripStateCopyWith<TripState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -249,6 +262,8 @@ class _$TripStateCopyWithImpl<$Res, $Val extends TripState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -292,6 +307,8 @@ class __$$TripStateImplCopyWithImpl<$Res>
       _$TripStateImpl _value, $Res Function(_$TripStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -352,7 +369,9 @@ class _$TripStateImpl implements _TripState {
   @override
   int get hashCode => Object.hash(runtimeType, status, tabStatus, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripStateImplCopyWith<_$TripStateImpl> get copyWith =>
@@ -371,8 +390,11 @@ abstract class _TripState implements TripState {
   TabStatus get tabStatus;
   @override
   String? get errorMessage;
+
+  /// Create a copy of TripState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripStateImplCopyWith<_$TripStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
