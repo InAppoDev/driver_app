@@ -43,45 +43,39 @@ class MainView extends StatelessWidget {
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: SizedBox(
-        height: 130,
-        width: 80,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
         child: Align(
           alignment: Alignment.bottomCenter,
           child: FloatingActionButton(
             elevation: 2,
-            isExtended: true,
             onPressed: () {},
+            backgroundColor: Theme.of(context).cardColor,
             child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.play_arrow),
-                Text('play'),
+                Icon(Icons.play_arrow, size: 30), // Adjusted icon size
+                Text('Play', style: TextStyle(fontSize: 12)),
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        elevation: 2,
-        shape: CustomNotchedShape(),
-        notchMargin: 3,
-        child: Container(
-          height: 60,
-          color: Colors.transparent,
+      bottomNavigationBar: CustomPaint(
+        painter: BottomNavBarPainter(),
+        child: SizedBox(
+          height: 70,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildNavItem(context, Icons.home, 'Home', MainPageEnum.home),
               _buildNavItem(
                   context, Icons.place_outlined, 'Trips', MainPageEnum.trips),
-              const SizedBox(
-                width: 40,
-              ),
+              const SizedBox(width: 40), // Space for the FAB
               _buildNavItem(context, Icons.message_outlined, 'Messages',
                   MainPageEnum.messages),
-              _buildNavItem(context, Icons.person, 'You', MainPageEnum.profile),
+              _buildNavItem(
+                  context, Icons.person, 'You', MainPageEnum.profile),
             ],
           ),
         ),
@@ -110,24 +104,56 @@ class MainView extends StatelessWidget {
   }
 }
 
-class CustomNotchedShape extends NotchedShape {
+class BottomNavBarPainter extends CustomPainter {
   @override
-  Path getOuterPath(Rect host, Rect? guest) {
-    Path path = Path()..addRect(host);
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white
+      ..style = PaintingStyle.fill;
 
-    if (guest == null) {
-      return path;
-    }
+    final path = Path();
 
-    final double notchWidth = guest.width;
-    final double notchHeight = guest.height * 2;
-    final double notchCenterX = guest.center.dx;
+    // Start from the left of the screen
+    path.moveTo(0, 0);
 
-    path.moveTo(notchCenterX - notchWidth / 2, host.top);
-    path.lineTo(notchCenterX + notchWidth / 2, host.top);
-    path.lineTo(notchCenterX, host.top + notchHeight);
+    // Left side straight part
+    path.lineTo(size.width * 0.35, 0);
+
+    // Left curve of the notch
+    path.quadraticBezierTo(
+      size.width * 0.4, 0,
+      size.width * 0.4, 25,  // Deeper curve
+    );
+
+    // Center cutout
+    path.arcToPoint(
+      Offset(size.width * 0.6, 27),  // Deep and wide notch
+      radius: const Radius.circular(33.0), // Increased radius for deeper notch
+      clockwise: false,
+    );
+
+    // Right curve of the notch
+    path.quadraticBezierTo(
+      size.width * 0.6, 0,
+      size.width * 0.65, 0,
+    );
+
+    // Right side straight part
+    path.lineTo(size.width, 0);
+
+    // Bottom edges
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
+
+    // Close the path
     path.close();
 
-    return path;
+    // Draw the path
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
