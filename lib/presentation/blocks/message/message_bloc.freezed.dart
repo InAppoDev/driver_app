@@ -50,9 +50,7 @@ mixin _$MessageEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  /// Create a copy of MessageEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $MessageEventCopyWith<MessageEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -76,8 +74,6 @@ class _$MessageEventCopyWithImpl<$Res, $Val extends MessageEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MessageEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -111,8 +107,6 @@ class __$$MessageEventImplCopyWithImpl<$Res>
       _$MessageEventImpl _value, $Res Function(_$MessageEventImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MessageEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,9 +153,7 @@ class _$MessageEventImpl with DiagnosticableTreeMixin implements _MessageEvent {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of MessageEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MessageEventImplCopyWith<_$MessageEventImpl> get copyWith =>
@@ -230,11 +222,8 @@ abstract class _MessageEvent implements MessageEvent {
 
   @override
   String get message;
-
-  /// Create a copy of MessageEvent
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$MessageEventImplCopyWith<_$MessageEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -246,9 +235,7 @@ mixin _$MessageState {
   dynamic get message => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
-  /// Create a copy of MessageState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $MessageStateCopyWith<MessageState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -276,8 +263,6 @@ class _$MessageStateCopyWithImpl<$Res, $Val extends MessageState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MessageState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -330,8 +315,6 @@ class __$$MessageStateImplCopyWithImpl<$Res>
       _$MessageStateImpl _value, $Res Function(_$MessageStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MessageState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -422,9 +405,7 @@ class _$MessageStateImpl with DiagnosticableTreeMixin implements _MessageState {
       const DeepCollectionEquality().hash(message),
       errorMessage);
 
-  /// Create a copy of MessageState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MessageStateImplCopyWith<_$MessageStateImpl> get copyWith =>
@@ -446,11 +427,8 @@ abstract class _MessageState implements MessageState {
   dynamic get message;
   @override
   String? get errorMessage;
-
-  /// Create a copy of MessageState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$MessageStateImplCopyWith<_$MessageStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

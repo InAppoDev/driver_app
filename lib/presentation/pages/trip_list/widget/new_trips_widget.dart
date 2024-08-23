@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_info_widget.dart';
 
 class NewTripsWidget extends StatelessWidget {
-  const NewTripsWidget({super.key, required this.onPressed});
+  const NewTripsWidget({
+    super.key,
+    required this.onPressed,
+    required this.tripModel,
+  });
   final VoidCallback onPressed;
+  final TripModel tripModel;
 
   @override
   Widget build(BuildContext context) {

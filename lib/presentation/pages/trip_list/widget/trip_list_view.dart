@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/blocks/trip_list/trip_bloc.dart';
+import 'package:tms_driver/presentation/pages/trip_list/widget/conrim_dialog.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/new_trips.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/tabs.dart';
 import 'package:tms_driver/presentation/utils/enums/enums.dart';
+
+import '../../../blocks/main/bloc/main_bloc.dart';
 
 class TripListView extends StatelessWidget {
   const TripListView({super.key});
@@ -27,8 +29,21 @@ class TripListView extends StatelessWidget {
               ),
               if (state.tabStatus == TabStatus.newTrips)
                 NewTrips(
-                  onPressed: () {
-                    context.push('/activeTrip');
+                  trips: context.read<TripBloc>().trips,
+                  onPressed: () async {
+                    context
+                        .read<MainBloc>()
+                        .add(const MainEvent.hideShowNavBar(false));
+                    await showModalBottomSheet(
+                      barrierColor: Colors.black.withAlpha(1),
+                      context: context,
+                      builder: (context) => const ConfirmDialog(),
+                    );
+                    if (context.mounted) {
+                      context
+                          .read<MainBloc>()
+                          .add(const MainEvent.hideShowNavBar(true));
+                    }
                   },
                 ),
             ],

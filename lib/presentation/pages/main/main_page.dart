@@ -24,69 +24,72 @@ class MainView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).canvasColor,
-      appBar: const CustomAppBar(),
-      extendBody: true,
-      body: BlocBuilder<MainBloc, MainState>(
-        builder: (context, state) {
-          switch (state.selectedPage) {
-            case MainPageEnum.home:
-              return const HomePage();
-            case MainPageEnum.trips:
-              return const TripListPage();
-            case MainPageEnum.messages:
-              return const MessageListPage();
-            case MainPageEnum.profile:
-              return const ProfilePage();
-          }
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: SizedBox(
-        height: 130,
-        width: 80,
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: FloatingActionButton(
-            elevation: 2,
-            isExtended: true,
-            onPressed: () {},
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+    return BlocBuilder<MainBloc, MainState>(builder: (context, state) {
+      return Scaffold(
+        backgroundColor: Theme.of(context).canvasColor,
+        appBar: const CustomAppBar(),
+        extendBody: true,
+        body: _buildBody(state.selectedPage),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: state.showNavBar ? SizedBox(
+          height: 130,
+          width: 80,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: FloatingActionButton(
+              elevation: 2,
+              isExtended: true,
+              onPressed: () {},
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Icons.play_arrow),
+                  Text('play'),
+                ],
+              ),
+            ),
+          ),
+        ) : null,
+        bottomNavigationBar:  state.showNavBar ? BottomAppBar(
+          elevation: 2,
+          shape: CustomNotchedShape(),
+          notchMargin: 3,
+          child: Container(
+            height: 60,
+            color: Colors.transparent,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Icon(Icons.play_arrow),
-                Text('play'),
+                _buildNavItem(context, Icons.home, 'Home', MainPageEnum.home),
+                _buildNavItem(
+                    context, Icons.place_outlined, 'Trips', MainPageEnum.trips),
+                const SizedBox(
+                  width: 40,
+                ),
+                _buildNavItem(context, Icons.message_outlined, 'Messages',
+                    MainPageEnum.messages),
+                _buildNavItem(
+                    context, Icons.person, 'You', MainPageEnum.profile),
               ],
             ),
           ),
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        elevation: 2,
-        shape: CustomNotchedShape(),
-        notchMargin: 3,
-        child: Container(
-          height: 60,
-          color: Colors.transparent,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildNavItem(context, Icons.home, 'Home', MainPageEnum.home),
-              _buildNavItem(
-                  context, Icons.place_outlined, 'Trips', MainPageEnum.trips),
-              const SizedBox(
-                width: 40,
-              ),
-              _buildNavItem(context, Icons.message_outlined, 'Messages',
-                  MainPageEnum.messages),
-              _buildNavItem(context, Icons.person, 'You', MainPageEnum.profile),
-            ],
-          ),
-        ),
-      ),
-    );
+        ) : null,
+      );
+    });
+  }
+
+  Widget _buildBody(MainPageEnum selectedPage) {
+    switch (selectedPage) {
+      case MainPageEnum.home:
+        return const HomePage();
+      case MainPageEnum.trips:
+        return const TripListPage();
+      case MainPageEnum.messages:
+        return const MessageListPage();
+      case MainPageEnum.profile:
+        return const ProfilePage();
+    }
   }
 
   Widget _buildNavItem(
