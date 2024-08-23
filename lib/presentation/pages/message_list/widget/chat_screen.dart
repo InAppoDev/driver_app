@@ -19,18 +19,18 @@ class ChatScreen extends StatelessWidget {
           return Scaffold(
             backgroundColor: theme.canvasColor,
             appBar: const CustomAppBar(),
-            body: Stack(
+            body: const Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  padding: EdgeInsets.symmetric(horizontal: 12),
                   child: Column(
                     children: [
-                      const ChatBatInfo(),
+                      ChatBatInfo(),
                       // ChatWidget(messages: state.messageList),
                     ],
                   ),
                 ),
-                const Positioned(
+                Positioned(
                   left: 0,
                   right: 0,
                   bottom: 0,

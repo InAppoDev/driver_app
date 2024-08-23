@@ -13,7 +13,6 @@ class MyLocationService {
   MyLocationService() {
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     _initializeNotifications();
-    _checkPermissions();
     startTracking();
   }
 
@@ -36,18 +35,6 @@ class MyLocationService {
     print('_initializeNotifications');
   }
 
-  Future<void> _checkPermissions() async {
-    var status = await Permission.location.status;
-    if (status.isDenied) {
-      if (await Permission.location.request().isGranted) {
-        print('Location permission granted');
-      } else {
-        print('Location permission denied');
-      }
-    } else if (status.isPermanentlyDenied) {
-      openAppSettings();
-    }
-  }
 
   Future<bool> _requestPermissions() async {
     var status = await Permission.location.status;

@@ -125,44 +125,35 @@ class BottomNavBarPainter extends CustomPainter {
 
     final path = Path();
 
-    // Start from the left of the screen
     path.moveTo(0, 0);
 
-    // Left side straight part
     path.lineTo(size.width * 0.35, 0);
 
-    // Left curve of the notch
     path.quadraticBezierTo(
-      size.width * 0.4, 0,
-      size.width * 0.4, 25, // Deeper curve
+      size.width * 0.4,
+      0,
+      size.width * 0.4,
+      25,
     );
 
-    // Center cutout
     path.arcToPoint(
-      Offset(size.width * 0.6, 27), // Deep and wide notch
-      radius: const Radius.circular(33.0), // Increased radius for deeper notch
+      Offset(size.width * 0.6, 27),
+      radius: const Radius.circular(33.0),
       clockwise: false,
     );
 
-    // Right curve of the notch
     path.quadraticBezierTo(
       size.width * 0.6,
       0,
       size.width * 0.65,
       0,
     );
-
-    // Right side straight part
     path.lineTo(size.width, 0);
-
-    // Bottom edges
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
 
-    // Close the path
     path.close();
 
-    // Draw the path
     canvas.drawPath(path, paint);
   }
 

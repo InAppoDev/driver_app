@@ -10,5 +10,10 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     on<_PageChanged>((event, emit) {
       emit(state.copyWith(selectedPage: event.page));
     });
+    on<_HideShowNavBar>((event, emit){
+      emit(state.copyWith(showNavBar: event.hideShowNavBar));
+    });
   }
+
+
 }

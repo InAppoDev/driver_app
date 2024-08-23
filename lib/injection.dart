@@ -65,6 +65,4 @@ Future<void> initApp() async {
       authDataSource: authDataSource,
     ),
   );
-
-  GetIt.instance.registerSingleton<MyLocationService>(locationService);
 }

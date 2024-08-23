@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ActiveTripInfo extends StatelessWidget {
-  const ActiveTripInfo({super.key});
+  const ActiveTripInfo({super.key, required this.trip});
+  final TripModel trip;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class ActiveTripInfo extends StatelessWidget {
           ),
           const SizedBox(height: 22),
           Text(
-            context.localizations.pickUp,
+            trip.details.first.name ?? '',
             style: theme.textTheme.bodySmall!.copyWith(
               color: theme.disabledColor,
               fontWeight: FontWeight.w600,

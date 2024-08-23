@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/customs/custom_text_field.dart';
-import 'package:tms_driver/presentation/pages/message_list/widget/eta_widget.dart';
+import 'package:tms_driver/presentation/customs/eta_widget.dart';
 
 class ChatBottomInput extends StatefulWidget {
   const ChatBottomInput({super.key});
