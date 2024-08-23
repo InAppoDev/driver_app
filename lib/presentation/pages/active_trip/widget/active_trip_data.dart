@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ActiveTripData extends StatelessWidget {
-  const ActiveTripData({super.key, required this.onPressed});
+  const ActiveTripData({super.key, required this.onPressed, required this.trip});
 
   final VoidCallback onPressed;
+  final TripModel trip;
 
   @override
   Widget build(BuildContext context) {
@@ -114,12 +116,12 @@ class ActiveTripData extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    context.localizations.pickUp,
+                    trip.details.first.name ?? '',
                     style: theme.textTheme.titleSmall!
                         .copyWith(color: theme.dividerColor),
                   ),
                   Text(
-                    '08/11/23 10:00 AM',
+                    trip.details.first.data ?? '',
                     style: theme.textTheme.titleSmall!
                         .copyWith(color: theme.dividerColor),
                   ),
@@ -127,7 +129,7 @@ class ActiveTripData extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                'Viena, Mariahilfer Straße 123,  Wien, Österreich',
+                trip.details.first.address ?? '',
                 style: theme.textTheme.titleSmall!
                     .copyWith(color: theme.dividerColor),
               ),

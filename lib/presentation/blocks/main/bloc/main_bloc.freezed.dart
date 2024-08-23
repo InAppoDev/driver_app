@@ -16,44 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MainEvent {
-  MainPageEnum get page => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(MainPageEnum page) pageChanged,
+    required TResult Function(bool hideShowNavBar) hideShowNavBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MainPageEnum page)? pageChanged,
+    TResult? Function(bool hideShowNavBar)? hideShowNavBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainPageEnum page)? pageChanged,
+    TResult Function(bool hideShowNavBar)? hideShowNavBar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PageChanged value) pageChanged,
+    required TResult Function(_HideShowNavBar value) hideShowNavBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PageChanged value)? pageChanged,
+    TResult? Function(_HideShowNavBar value)? hideShowNavBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PageChanged value)? pageChanged,
+    TResult Function(_HideShowNavBar value)? hideShowNavBar,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of MainEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MainEventCopyWith<MainEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,8 +60,6 @@ mixin _$MainEvent {
 abstract class $MainEventCopyWith<$Res> {
   factory $MainEventCopyWith(MainEvent value, $Res Function(MainEvent) then) =
       _$MainEventCopyWithImpl<$Res, MainEvent>;
-  @useResult
-  $Res call({MainPageEnum page});
 }
 
 /// @nodoc
@@ -74,30 +71,13 @@ class _$MainEventCopyWithImpl<$Res, $Val extends MainEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of MainEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? page = null,
-  }) {
-    return _then(_value.copyWith(
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as MainPageEnum,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$PageChangedImplCopyWith<$Res>
-    implements $MainEventCopyWith<$Res> {
+abstract class _$$PageChangedImplCopyWith<$Res> {
   factory _$$PageChangedImplCopyWith(
           _$PageChangedImpl value, $Res Function(_$PageChangedImpl) then) =
       __$$PageChangedImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({MainPageEnum page});
 }
@@ -110,8 +90,6 @@ class __$$PageChangedImplCopyWithImpl<$Res>
       _$PageChangedImpl _value, $Res Function(_$PageChangedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MainEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,9 +128,7 @@ class _$PageChangedImpl implements _PageChanged {
   @override
   int get hashCode => Object.hash(runtimeType, page);
 
-  /// Create a copy of MainEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$PageChangedImplCopyWith<_$PageChangedImpl> get copyWith =>
@@ -162,6 +138,7 @@ class _$PageChangedImpl implements _PageChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(MainPageEnum page) pageChanged,
+    required TResult Function(bool hideShowNavBar) hideShowNavBar,
   }) {
     return pageChanged(page);
   }
@@ -170,6 +147,7 @@ class _$PageChangedImpl implements _PageChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MainPageEnum page)? pageChanged,
+    TResult? Function(bool hideShowNavBar)? hideShowNavBar,
   }) {
     return pageChanged?.call(page);
   }
@@ -178,6 +156,7 @@ class _$PageChangedImpl implements _PageChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainPageEnum page)? pageChanged,
+    TResult Function(bool hideShowNavBar)? hideShowNavBar,
     required TResult orElse(),
   }) {
     if (pageChanged != null) {
@@ -190,6 +169,7 @@ class _$PageChangedImpl implements _PageChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PageChanged value) pageChanged,
+    required TResult Function(_HideShowNavBar value) hideShowNavBar,
   }) {
     return pageChanged(this);
   }
@@ -198,6 +178,7 @@ class _$PageChangedImpl implements _PageChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PageChanged value)? pageChanged,
+    TResult? Function(_HideShowNavBar value)? hideShowNavBar,
   }) {
     return pageChanged?.call(this);
   }
@@ -206,6 +187,7 @@ class _$PageChangedImpl implements _PageChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PageChanged value)? pageChanged,
+    TResult Function(_HideShowNavBar value)? hideShowNavBar,
     required TResult orElse(),
   }) {
     if (pageChanged != null) {
@@ -218,24 +200,154 @@ class _$PageChangedImpl implements _PageChanged {
 abstract class _PageChanged implements MainEvent {
   const factory _PageChanged(final MainPageEnum page) = _$PageChangedImpl;
 
-  @override
   MainPageEnum get page;
-
-  /// Create a copy of MainEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$PageChangedImplCopyWith<_$PageChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$HideShowNavBarImplCopyWith<$Res> {
+  factory _$$HideShowNavBarImplCopyWith(_$HideShowNavBarImpl value,
+          $Res Function(_$HideShowNavBarImpl) then) =
+      __$$HideShowNavBarImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool hideShowNavBar});
+}
+
+/// @nodoc
+class __$$HideShowNavBarImplCopyWithImpl<$Res>
+    extends _$MainEventCopyWithImpl<$Res, _$HideShowNavBarImpl>
+    implements _$$HideShowNavBarImplCopyWith<$Res> {
+  __$$HideShowNavBarImplCopyWithImpl(
+      _$HideShowNavBarImpl _value, $Res Function(_$HideShowNavBarImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? hideShowNavBar = null,
+  }) {
+    return _then(_$HideShowNavBarImpl(
+      null == hideShowNavBar
+          ? _value.hideShowNavBar
+          : hideShowNavBar // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$HideShowNavBarImpl implements _HideShowNavBar {
+  const _$HideShowNavBarImpl(this.hideShowNavBar);
+
+  @override
+  final bool hideShowNavBar;
+
+  @override
+  String toString() {
+    return 'MainEvent.hideShowNavBar(hideShowNavBar: $hideShowNavBar)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HideShowNavBarImpl &&
+            (identical(other.hideShowNavBar, hideShowNavBar) ||
+                other.hideShowNavBar == hideShowNavBar));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, hideShowNavBar);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HideShowNavBarImplCopyWith<_$HideShowNavBarImpl> get copyWith =>
+      __$$HideShowNavBarImplCopyWithImpl<_$HideShowNavBarImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(MainPageEnum page) pageChanged,
+    required TResult Function(bool hideShowNavBar) hideShowNavBar,
+  }) {
+    return hideShowNavBar(this.hideShowNavBar);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(MainPageEnum page)? pageChanged,
+    TResult? Function(bool hideShowNavBar)? hideShowNavBar,
+  }) {
+    return hideShowNavBar?.call(this.hideShowNavBar);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(MainPageEnum page)? pageChanged,
+    TResult Function(bool hideShowNavBar)? hideShowNavBar,
+    required TResult orElse(),
+  }) {
+    if (hideShowNavBar != null) {
+      return hideShowNavBar(this.hideShowNavBar);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PageChanged value) pageChanged,
+    required TResult Function(_HideShowNavBar value) hideShowNavBar,
+  }) {
+    return hideShowNavBar(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PageChanged value)? pageChanged,
+    TResult? Function(_HideShowNavBar value)? hideShowNavBar,
+  }) {
+    return hideShowNavBar?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PageChanged value)? pageChanged,
+    TResult Function(_HideShowNavBar value)? hideShowNavBar,
+    required TResult orElse(),
+  }) {
+    if (hideShowNavBar != null) {
+      return hideShowNavBar(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HideShowNavBar implements MainEvent {
+  const factory _HideShowNavBar(final bool hideShowNavBar) =
+      _$HideShowNavBarImpl;
+
+  bool get hideShowNavBar;
+  @JsonKey(ignore: true)
+  _$$HideShowNavBarImplCopyWith<_$HideShowNavBarImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$MainState {
   MainPageEnum get selectedPage => throw _privateConstructorUsedError;
+  bool get showNavBar => throw _privateConstructorUsedError;
 
-  /// Create a copy of MainState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $MainStateCopyWith<MainState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -245,7 +357,7 @@ abstract class $MainStateCopyWith<$Res> {
   factory $MainStateCopyWith(MainState value, $Res Function(MainState) then) =
       _$MainStateCopyWithImpl<$Res, MainState>;
   @useResult
-  $Res call({MainPageEnum selectedPage});
+  $Res call({MainPageEnum selectedPage, bool showNavBar});
 }
 
 /// @nodoc
@@ -258,18 +370,21 @@ class _$MainStateCopyWithImpl<$Res, $Val extends MainState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MainState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? selectedPage = null,
+    Object? showNavBar = null,
   }) {
     return _then(_value.copyWith(
       selectedPage: null == selectedPage
           ? _value.selectedPage
           : selectedPage // ignore: cast_nullable_to_non_nullable
               as MainPageEnum,
+      showNavBar: null == showNavBar
+          ? _value.showNavBar
+          : showNavBar // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -282,7 +397,7 @@ abstract class _$$MainStateImplCopyWith<$Res>
       __$$MainStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MainPageEnum selectedPage});
+  $Res call({MainPageEnum selectedPage, bool showNavBar});
 }
 
 /// @nodoc
@@ -293,18 +408,21 @@ class __$$MainStateImplCopyWithImpl<$Res>
       _$MainStateImpl _value, $Res Function(_$MainStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MainState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? selectedPage = null,
+    Object? showNavBar = null,
   }) {
     return _then(_$MainStateImpl(
       selectedPage: null == selectedPage
           ? _value.selectedPage
           : selectedPage // ignore: cast_nullable_to_non_nullable
               as MainPageEnum,
+      showNavBar: null == showNavBar
+          ? _value.showNavBar
+          : showNavBar // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -312,14 +430,17 @@ class __$$MainStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MainStateImpl implements _MainState {
-  const _$MainStateImpl({required this.selectedPage});
+  const _$MainStateImpl({required this.selectedPage, this.showNavBar = true});
 
   @override
   final MainPageEnum selectedPage;
+  @override
+  @JsonKey()
+  final bool showNavBar;
 
   @override
   String toString() {
-    return 'MainState(selectedPage: $selectedPage)';
+    return 'MainState(selectedPage: $selectedPage, showNavBar: $showNavBar)';
   }
 
   @override
@@ -328,15 +449,15 @@ class _$MainStateImpl implements _MainState {
         (other.runtimeType == runtimeType &&
             other is _$MainStateImpl &&
             (identical(other.selectedPage, selectedPage) ||
-                other.selectedPage == selectedPage));
+                other.selectedPage == selectedPage) &&
+            (identical(other.showNavBar, showNavBar) ||
+                other.showNavBar == showNavBar));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectedPage);
+  int get hashCode => Object.hash(runtimeType, selectedPage, showNavBar);
 
-  /// Create a copy of MainState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MainStateImplCopyWith<_$MainStateImpl> get copyWith =>
@@ -344,16 +465,16 @@ class _$MainStateImpl implements _MainState {
 }
 
 abstract class _MainState implements MainState {
-  const factory _MainState({required final MainPageEnum selectedPage}) =
-      _$MainStateImpl;
+  const factory _MainState(
+      {required final MainPageEnum selectedPage,
+      final bool showNavBar}) = _$MainStateImpl;
 
   @override
   MainPageEnum get selectedPage;
-
-  /// Create a copy of MainState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool get showNavBar;
+  @override
+  @JsonKey(ignore: true)
   _$$MainStateImplCopyWith<_$MainStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

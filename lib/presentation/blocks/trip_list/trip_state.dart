@@ -11,6 +11,7 @@ class TripState with _$TripState {
     required TripStatus status,
     @Default(TabStatus.newTrips) TabStatus tabStatus,
     String? errorMessage,
+    TripModel? trip,
   }) = _TripState;
 
   factory TripState.initial() => const TripState(
