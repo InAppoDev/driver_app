@@ -6,7 +6,7 @@ import 'new_trips_widget.dart';
 class NewTrips extends StatelessWidget {
   const NewTrips({super.key, required this.onPressed, required this.trips,});
 
-  final VoidCallback onPressed;
+  final Function(TripModel) onPressed;
   final List<TripModel> trips;
 
   @override

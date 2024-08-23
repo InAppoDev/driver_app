@@ -1,5 +1,4 @@
 import 'package:go_router/go_router.dart';
-import 'package:tms_driver/presentation/pages/active_trip/active_trip.dart';
 import 'package:tms_driver/presentation/pages/login/login_page.dart';
 import 'package:tms_driver/presentation/pages/main/main_page.dart';
 import 'package:tms_driver/presentation/pages/message_list/widget/chat_screen.dart';
@@ -28,10 +27,6 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/notification',
       builder: (context, state) => const NotificationScreen(),
-    ),
-    GoRoute(
-      path: '/activeTrip',
-      builder: (context, state) => const ActiveTrip(),
     ),
   ],
 );

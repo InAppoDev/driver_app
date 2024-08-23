@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
 
 class ConfirmDialog extends StatelessWidget {
-  const ConfirmDialog({super.key});
+  const ConfirmDialog({
+    super.key,
+    required this.onConfirmPressed,
+  });
+
+  final VoidCallback onConfirmPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -78,9 +82,7 @@ class ConfirmDialog extends StatelessWidget {
           const SizedBox(height: 15),
           CustomButton(
             label: 'CONFIRM',
-            onPressed: () {
-              context.push('/activeTrip');
-            },
+            onPressed: onConfirmPressed,
           ),
         ],
       ),

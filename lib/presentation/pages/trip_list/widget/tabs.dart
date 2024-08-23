@@ -16,7 +16,7 @@ class Tabs extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      margin: const EdgeInsets.all(11),
+      margin: const EdgeInsets.symmetric(vertical: 11),
       padding: const EdgeInsets.all(10),
       width: double.infinity,
       decoration: BoxDecoration(
