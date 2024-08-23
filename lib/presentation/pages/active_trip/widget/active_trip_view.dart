@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/blocks/active_trip/active_trip_bloc.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_picker.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/upload_scan_files.dart';
@@ -8,30 +9,26 @@ import 'active_trip_data.dart';
 import 'active_trip_info.dart';
 
 class ActiveTripView extends StatelessWidget {
-  const ActiveTripView({super.key});
+  const ActiveTripView({super.key, required this.trip});
+
+  final TripModel trip;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
 
     return BlocListener<ActiveTripBloc, ActiveTripState>(
       listener: (context, listenerState) {},
       child: BlocBuilder<ActiveTripBloc, ActiveTripState>(
         builder: (context, state) {
-          return Scaffold(
-            backgroundColor: theme.canvasColor,
-            // appBar: const CustomAppBar(),
-            body: SingleChildScrollView(
+          return Expanded(
+            child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 30,
-                ),
+                padding: const EdgeInsets.only(bottom: 60),
                 child: Column(
                   children: [
-                    ActiveTripData(onPressed: () {}),
+                    ActiveTripData(onPressed: () {}, trip: trip),
                     const SizedBox(height: 11),
-                    const ActiveTripInfo(),
+                     ActiveTripInfo(trip: trip),
                     const SizedBox(height: 11),
                     CalendarPicker(
                       onCalendarResponse: (resp) {

@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:tms_driver/data/models/trip/trip_model.dart';
 
 import 'new_trips_widget.dart';
 
 class NewTrips extends StatelessWidget {
-  const NewTrips({super.key, required this.onPressed});
+  const NewTrips({super.key, required this.onPressed, required this.trips,});
 
-  final VoidCallback onPressed;
+  final Function(TripModel) onPressed;
+  final List<TripModel> trips;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +15,9 @@ class NewTrips extends StatelessWidget {
       child: ListView.builder(
         padding: const EdgeInsets.only(bottom: 50),
         shrinkWrap: true,
-        itemCount: 8,
-        itemBuilder: (context, index) => NewTripsWidget(onPressed: onPressed),
+        itemCount: trips.length,
+        itemBuilder: (context, index) =>
+            NewTripsWidget(onPressed: onPressed, tripModel: trips[index],),
       ),
     );
   }

@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_info_widget.dart';
 
 class NewTripsWidget extends StatelessWidget {
-  const NewTripsWidget({super.key, required this.onPressed});
-  final VoidCallback onPressed;
+  const NewTripsWidget({
+    super.key,
+    required this.onPressed,
+    required this.tripModel,
+  });
+  final Function(TripModel) onPressed;
+  final TripModel tripModel;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return GestureDetector(
-      onTap: onPressed,
+      onTap: () {
+        onPressed.call(tripModel);
+      },
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
           color: theme.cardColor,
           borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -30,35 +38,17 @@ class NewTripsWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const TripInfoWidget(
-                      topic: 'Pick UP #1',
-                      address: 'Viena, Österreich, 37240 , Ch',
-                      time: '08/11/23 10:00 AM',
-                    ),
-                    const TripInfoWidget(
-                      topic: 'Pick UP #2',
-                      address: 'Viena, Österreich, 37240 , Ch',
-                      time: '08/11/23 10:00 AM',
-                    ),
-                    const TripInfoWidget(
-                      topic: 'Pick UP #3',
-                      address: 'Viena, Österreich, 37240 , Ch',
-                      time: '08/11/23 10:00 AM',
-                    ),
-                    const TripInfoWidget(
-                      topic: 'Delivery #1',
-                      address: 'Viena, Österreich, 37240 , Ch',
-                      time: '08/11/23 10:00 AM',
-                    ),
-                    const TripInfoWidget(
-                      topic: 'Delivery #2',
-                      address: 'Viena, Österreich, 37240 , Ch',
-                      time: "08/11/23 10:00 AM",
+                    ...tripModel.details.map(
+                      (detail) => TripInfoWidget(
+                        topic: detail.name ?? '',
+                        address: detail.address ?? '',
+                        time: detail.data ?? '',
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10, bottom: 10),
                       child: Text(
-                        'Total miles: 300 miles',
+                        'Total miles: ${tripModel.miles ?? 0} miles',
                         style: theme.textTheme.labelSmall!.copyWith(
                           fontSize: 8,
                           color: theme.dividerColor,
