@@ -1,4 +1,6 @@
-import 'package:tms_driver/data/models/user_model.dart';
+import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
+import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
+import 'package:tms_driver/data/models/user/user_model.dart';
 
 abstract class ApiDataSource {
   Future<String> ping();
@@ -15,4 +17,11 @@ abstract class ApiDataSource {
     required String verificationCode,
   });
   Future<UserModel> getUser();
+
+  Future<List<ChatModel>> getChats();
+
+  Future<ChatDetailModel> getChatDetails(int chatId);
+
+  Future<void> sendMessage(int chatId, String content,
+      {List<String>? documentUploadIds});
 }

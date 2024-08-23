@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:tms_driver/data/models/user_model.dart';
+import 'package:tms_driver/data/models/user/user_model.dart';
 import 'package:tms_driver/domain/repositories/auth_repository.dart';
 import 'package:tms_driver/domain/repositories/user_repository.dart';
 

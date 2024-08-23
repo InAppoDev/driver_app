@@ -1,32 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tms_driver/presentation/blocks/message/message_bloc.dart';
-
-import 'message_widget.dart';
+import 'package:tms_driver/presentation/blocks/message_list/message_list_bloc.dart';
+import 'package:tms_driver/presentation/pages/message_list/widget/message_widget.dart';
 
 class MessageView extends StatelessWidget {
   const MessageView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<MessageBloc, MessageState>(
-      listener: (context, listenerState) {
-        if (listenerState.status == MessageStatus.failure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-                content:
-                    Text(listenerState.errorMessage ?? 'An error occurred')),
+    return BlocListener<MessageListBloc, MessageListState>(
+      listener: (context, state) {
+        if (state.status == MessageListStatus.failure) {
+          ScaffoldMessenger.of(context).showMaterialBanner(
+            MaterialBanner(
+              content: Text(state.errorMessage ?? 'An error occurred'),
+              backgroundColor: Colors.redAccent,
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+                  },
+                  child: const Text(
+                    'DISMISS',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
           );
+        } else {
+          ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
         }
       },
-      child: BlocBuilder<MessageBloc, MessageState>(
+      child: BlocBuilder<MessageListBloc, MessageListState>(
         builder: (context, state) {
-          return ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return const MessageWidget();
-            },
-          );
+          if (state.status == MessageListStatus.loading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state.status == MessageListStatus.loaded) {
+            if (state.chatList.isEmpty) {
+              return RefreshIndicator(
+                onRefresh: () async {
+                  context
+                      .read<MessageListBloc>()
+                      .add(const MessageListEvent.getChats());
+                },
+                child: const Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Text(
+                      "You have no messages yet, pull to refresh the page",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            } else {
+              return RefreshIndicator(
+                onRefresh: () async {
+                  context
+                      .read<MessageListBloc>()
+                      .add(const MessageListEvent.getChats());
+                },
+                child: ListView.builder(
+                  itemCount: state.chatList.length,
+                  itemBuilder: (context, index) {
+                    final chat = state.chatList[index];
+                    return MessageWidget(chat: chat);
+                  },
+                ),
+              );
+            }
+          } else {
+            return const SizedBox.shrink();
+          }
         },
       ),
     );

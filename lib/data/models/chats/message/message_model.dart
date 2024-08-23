@@ -1,12 +1,10 @@
-// ignore_for_file: invalid_annotation_target
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'message_model.freezed.dart';
-
 part 'message_model.g.dart';
 
 @freezed
+@JsonSerializable(explicitToJson: true)
 class MessageModel with _$MessageModel {
   const factory MessageModel({
     @Default('') String name,

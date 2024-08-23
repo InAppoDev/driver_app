@@ -6,7 +6,7 @@ part 'notification_state.dart';
 part 'notification_bloc.freezed.dart';
 
 class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
-  NotificationBloc() : super(_Initial()) {
+  NotificationBloc() : super(const _Initial()) {
     on<NotificationEvent>((event, emit) {
       // TODO: implement event handler
     });

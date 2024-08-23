@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tms_driver/data/models/message/message_model.dart';
+import 'package:tms_driver/data/models/chats/message/message_model.dart';
 import 'package:tms_driver/presentation/pages/message_list/widget/message_list_widget.dart';
 
 class ChatWidget extends StatelessWidget {

@@ -50,9 +50,7 @@ mixin _$MainEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  /// Create a copy of MainEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $MainEventCopyWith<MainEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,8 +73,6 @@ class _$MainEventCopyWithImpl<$Res, $Val extends MainEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MainEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,8 +106,6 @@ class __$$PageChangedImplCopyWithImpl<$Res>
       _$PageChangedImpl _value, $Res Function(_$PageChangedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MainEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,9 +144,7 @@ class _$PageChangedImpl implements _PageChanged {
   @override
   int get hashCode => Object.hash(runtimeType, page);
 
-  /// Create a copy of MainEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$PageChangedImplCopyWith<_$PageChangedImpl> get copyWith =>
@@ -220,11 +212,8 @@ abstract class _PageChanged implements MainEvent {
 
   @override
   MainPageEnum get page;
-
-  /// Create a copy of MainEvent
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$PageChangedImplCopyWith<_$PageChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -233,9 +222,7 @@ abstract class _PageChanged implements MainEvent {
 mixin _$MainState {
   MainPageEnum get selectedPage => throw _privateConstructorUsedError;
 
-  /// Create a copy of MainState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $MainStateCopyWith<MainState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -258,8 +245,6 @@ class _$MainStateCopyWithImpl<$Res, $Val extends MainState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MainState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -293,8 +278,6 @@ class __$$MainStateImplCopyWithImpl<$Res>
       _$MainStateImpl _value, $Res Function(_$MainStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MainState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -334,9 +317,7 @@ class _$MainStateImpl implements _MainState {
   @override
   int get hashCode => Object.hash(runtimeType, selectedPage);
 
-  /// Create a copy of MainState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MainStateImplCopyWith<_$MainStateImpl> get copyWith =>
@@ -349,11 +330,8 @@ abstract class _MainState implements MainState {
 
   @override
   MainPageEnum get selectedPage;
-
-  /// Create a copy of MainState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$MainStateImplCopyWith<_$MainStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

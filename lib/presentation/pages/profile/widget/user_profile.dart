@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tms_driver/data/models/user_model.dart';
+import 'package:tms_driver/data/models/user/user_model.dart';
 import 'package:tms_driver/presentation/blocks/user/user_bloc.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
@@ -100,8 +100,7 @@ class UserProfile extends StatelessWidget {
           const SizedBox(height: 16),
           const Divider(),
           const SizedBox(height: 16),
-          Text(
-            context.localizations.accountInformation,
+          Text(context.localizations.accountInformation,
               style: theme.textTheme.headlineSmall!.copyWith(fontSize: 18)),
           const SizedBox(height: 16),
           _buildUserInfo(context,

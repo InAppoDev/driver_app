@@ -1,4 +1,4 @@
-import 'package:tms_driver/data/models/user_model.dart';
+import 'package:tms_driver/data/models/user/user_model.dart';
 
 abstract class UserRepository {
   Future<UserModel> getUser();

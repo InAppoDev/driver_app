@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tms_driver/presentation/blocks/message/message_bloc.dart';
+import 'package:tms_driver/presentation/blocks/message_list/message_list_bloc.dart';
 import 'package:tms_driver/presentation/pages/message_list/widget/message_view.dart';
 
 class MessageListPage extends StatelessWidget {
@@ -9,7 +9,8 @@ class MessageListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MessageBloc(),
+      create: (context) =>
+          MessageListBloc()..add(const MessageListEvent.getChats()),
       child: const MessageView(),
     );
   }

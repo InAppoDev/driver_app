@@ -4,7 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:tms_driver/data/data_source/api_data_source.dart';
 import 'package:tms_driver/data/data_source/api_interceptor.dart';
 import 'package:tms_driver/data/data_source/auth_data_source.dart';
-import 'package:tms_driver/data/models/user_model.dart';
+import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
+import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
+import 'package:tms_driver/data/models/user/user_model.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler.dart';
 
 class ApiDataSourceImpl implements ApiDataSource {
@@ -88,5 +90,29 @@ class ApiDataSourceImpl implements ApiDataSource {
       print(response.data);
     }
     return UserModel.fromJson(response.data);
+  }
+
+  @override
+  Future<List<ChatModel>> getChats() async {
+    final response = await _makeRequest(() => dio.get('/chats'));
+    return (response.data['chats'] as List)
+        .map((chat) => ChatModel.fromJson(chat))
+        .toList();
+  }
+
+  @override
+  Future<ChatDetailModel> getChatDetails(int chatId) async {
+    final response = await _makeRequest(() => dio.get('/chats/$chatId'));
+    return ChatDetailModel.fromJson(response.data);
+  }
+
+  @override
+  Future<void> sendMessage(int chatId, String content,
+      {List<String>? documentUploadIds}) async {
+    await _makeRequest(() => dio.post('/chats/$chatId/messages', data: {
+          'content': content,
+          if (documentUploadIds != null)
+            'document_upload_ids': documentUploadIds,
+        }));
   }
 }

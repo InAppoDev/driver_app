@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tms_driver/data/models/message/message_model.dart';
+import 'package:tms_driver/data/models/chats/message/message_model.dart';
 
 class MessageItemWidget extends StatelessWidget {
   const MessageItemWidget({super.key, required this.messageModel});
@@ -37,7 +37,8 @@ class MessageItemWidget extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-          ),const SizedBox(width: 7),
+          ),
+          const SizedBox(width: 7),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

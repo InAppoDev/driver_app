@@ -53,10 +53,14 @@ class MainView extends StatelessWidget {
             elevation: 2,
             onPressed: () {},
             backgroundColor: Theme.of(context).cardColor,
-            child:  Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset('assets/images/play.svg', height: 30, width: 30,),
+                SvgPicture.asset(
+                  'assets/images/play.svg',
+                  height: 30,
+                  width: 30,
+                ),
                 const Text('Play', style: TextStyle(fontSize: 12)),
               ],
             ),
@@ -83,8 +87,8 @@ class MainView extends StatelessWidget {
     );
   }
 
-  Widget _buildNavItem(BuildContext context, String iconName, String label,
-      MainPageEnum page) {
+  Widget _buildNavItem(
+      BuildContext context, String iconName, String label, MainPageEnum page) {
     final theme = Theme.of(context);
     final isSelected = context.watch<MainBloc>().state.selectedPage == page;
     final color = isSelected ? theme.primaryColor : theme.shadowColor;
@@ -130,20 +134,22 @@ class BottomNavBarPainter extends CustomPainter {
     // Left curve of the notch
     path.quadraticBezierTo(
       size.width * 0.4, 0,
-      size.width * 0.4, 25,  // Deeper curve
+      size.width * 0.4, 25, // Deeper curve
     );
 
     // Center cutout
     path.arcToPoint(
-      Offset(size.width * 0.6, 27),  // Deep and wide notch
+      Offset(size.width * 0.6, 27), // Deep and wide notch
       radius: const Radius.circular(33.0), // Increased radius for deeper notch
       clockwise: false,
     );
 
     // Right curve of the notch
     path.quadraticBezierTo(
-      size.width * 0.6, 0,
-      size.width * 0.65, 0,
+      size.width * 0.6,
+      0,
+      size.width * 0.65,
+      0,
     );
 
     // Right side straight part

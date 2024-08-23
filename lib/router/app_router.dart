@@ -22,8 +22,11 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
-      path: '/chat',
-      builder: (context, state) => const ChatScreen(),
+      path: '/chat/:chatId',
+      builder: (context, state) {
+        final chatId = int.parse(state.pathParameters['chatId']!);
+        return ChatScreen(chatId: chatId);
+      },
     ),
     GoRoute(
       path: '/notification',
