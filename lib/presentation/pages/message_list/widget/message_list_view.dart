@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tms_driver/presentation/blocks/message_list/message_list_bloc.dart';
-import 'package:tms_driver/presentation/pages/message_list/widget/message_widget.dart';
+import 'package:tms_driver/presentation/pages/message_list/widget/message_list_item_widget.dart';
 
-class MessageView extends StatelessWidget {
-  const MessageView({super.key});
+class MessageListView extends StatelessWidget {
+  const MessageListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,7 @@ class MessageView extends StatelessWidget {
                   itemCount: state.chatList.length,
                   itemBuilder: (context, index) {
                     final chat = state.chatList[index];
-                    return MessageWidget(chat: chat);
+                    return MessageListItemWidget(chat: chat);
                   },
                 ),
               );

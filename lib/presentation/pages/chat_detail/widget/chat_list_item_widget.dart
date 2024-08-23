@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tms_driver/data/models/chats/message/message_model.dart';
 
-class MessageItemWidget extends StatelessWidget {
-  const MessageItemWidget({super.key, required this.messageModel});
+class ChatListItemWidget extends StatelessWidget {
+  const ChatListItemWidget({super.key, required this.messageModel});
 
   final MessageModel messageModel;
 
@@ -28,15 +28,15 @@ class MessageItemWidget extends StatelessWidget {
                 ),
               ],
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(3),
-              child: Image.asset(
-                messageModel.image,
-                width: 16,
-                height: 16,
-                fit: BoxFit.cover,
-              ),
-            ),
+            // child: ClipRRect(
+            //   borderRadius: BorderRadius.circular(3),
+            //   child: Image.asset(
+            //     messageModel.image,
+            //     width: 16,
+            //     height: 16,
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
           ),
           const SizedBox(width: 7),
           Flexible(
@@ -46,7 +46,7 @@ class MessageItemWidget extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      messageModel.name,
+                      messageModel.sender.name,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
@@ -55,7 +55,7 @@ class MessageItemWidget extends StatelessWidget {
                     ),
                     const SizedBox(width: 9),
                     Text(
-                      messageModel.role,
+                      messageModel.sender.senderType,
                       style: TextStyle(
                         fontSize: 8,
                         fontWeight: FontWeight.w400,
@@ -66,7 +66,7 @@ class MessageItemWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  messageModel.message,
+                  messageModel.content,
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
@@ -77,7 +77,7 @@ class MessageItemWidget extends StatelessWidget {
             ),
           ),
           Text(
-            messageModel.time,
+            messageModel.sentAt.toString(),
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w400,

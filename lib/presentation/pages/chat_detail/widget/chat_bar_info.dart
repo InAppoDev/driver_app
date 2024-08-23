@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
-import 'package:tms_driver/presentation/pages/message_list/widget/chat_image.dart';
+import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_image.dart';
 
 class ChatBatInfo extends StatelessWidget {
   const ChatBatInfo({super.key});
@@ -9,7 +9,7 @@ class ChatBatInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15),
+      padding: const EdgeInsets.symmetric(vertical: 0),
       child: Row(
         children: [
           Expanded(
@@ -19,7 +19,7 @@ class ChatBatInfo extends StatelessWidget {
                   justIcon: true,
                   icon: 'arrow',
                   onPressed: () {
-                    context.go('/main');
+                    context.pop();
                   },
                 ),
                 const Padding(

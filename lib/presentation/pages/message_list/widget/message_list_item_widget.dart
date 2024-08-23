@@ -2,17 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
 
-class MessageWidget extends StatelessWidget {
+class MessageListItemWidget extends StatelessWidget {
   final ChatModel chat;
 
-  const MessageWidget({super.key, required this.chat});
+  const MessageListItemWidget({super.key, required this.chat});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Передаємо ID чату через роутер
-        context.go('/chat', extra: chat.id);
+        context.push('/chat/${chat.id}');
       },
       child: Container(
         color: Theme.of(context).canvasColor,

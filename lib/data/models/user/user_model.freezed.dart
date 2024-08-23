@@ -20,19 +20,28 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
+  @JsonKey(name: 'first_name')
   String get firstName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'last_name')
   String get lastName => throw _privateConstructorUsedError;
   String? get photo => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
+  @JsonKey(name: 'state_code')
   String get stateCode => throw _privateConstructorUsedError;
+  @JsonKey(name: 'zip_code')
   String get zipCode => throw _privateConstructorUsedError;
+  @JsonKey(name: 'emergency_phone')
   String? get emergencyPhone => throw _privateConstructorUsedError;
 
+  /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserModelCopyWith<UserModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,16 +52,16 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String firstName,
-      String lastName,
+      {@JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
       String? photo,
       String phone,
       String email,
       String address,
       String city,
-      String stateCode,
-      String zipCode,
-      String? emergencyPhone});
+      @JsonKey(name: 'state_code') String stateCode,
+      @JsonKey(name: 'zip_code') String zipCode,
+      @JsonKey(name: 'emergency_phone') String? emergencyPhone});
 }
 
 /// @nodoc
@@ -65,6 +74,8 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,16 +144,16 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String firstName,
-      String lastName,
+      {@JsonKey(name: 'first_name') String firstName,
+      @JsonKey(name: 'last_name') String lastName,
       String? photo,
       String phone,
       String email,
       String address,
       String city,
-      String stateCode,
-      String zipCode,
-      String? emergencyPhone});
+      @JsonKey(name: 'state_code') String stateCode,
+      @JsonKey(name: 'zip_code') String zipCode,
+      @JsonKey(name: 'emergency_phone') String? emergencyPhone});
 }
 
 /// @nodoc
@@ -153,6 +164,8 @@ class __$$UserModelImplCopyWithImpl<$Res>
       _$UserModelImpl _value, $Res Function(_$UserModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -216,23 +229,25 @@ class __$$UserModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl(
-      {required this.firstName,
-      required this.lastName,
+      {@JsonKey(name: 'first_name') required this.firstName,
+      @JsonKey(name: 'last_name') required this.lastName,
       this.photo,
       required this.phone,
       required this.email,
       required this.address,
       required this.city,
-      required this.stateCode,
-      required this.zipCode,
-      this.emergencyPhone});
+      @JsonKey(name: 'state_code') required this.stateCode,
+      @JsonKey(name: 'zip_code') required this.zipCode,
+      @JsonKey(name: 'emergency_phone') this.emergencyPhone});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
 
   @override
+  @JsonKey(name: 'first_name')
   final String firstName;
   @override
+  @JsonKey(name: 'last_name')
   final String lastName;
   @override
   final String? photo;
@@ -245,10 +260,13 @@ class _$UserModelImpl implements _UserModel {
   @override
   final String city;
   @override
+  @JsonKey(name: 'state_code')
   final String stateCode;
   @override
+  @JsonKey(name: 'zip_code')
   final String zipCode;
   @override
+  @JsonKey(name: 'emergency_phone')
   final String? emergencyPhone;
 
   @override
@@ -277,12 +295,14 @@ class _$UserModelImpl implements _UserModel {
                 other.emergencyPhone == emergencyPhone));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, firstName, lastName, photo,
       phone, email, address, city, stateCode, zipCode, emergencyPhone);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
@@ -298,23 +318,26 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {required final String firstName,
-      required final String lastName,
-      final String? photo,
-      required final String phone,
-      required final String email,
-      required final String address,
-      required final String city,
-      required final String stateCode,
-      required final String zipCode,
-      final String? emergencyPhone}) = _$UserModelImpl;
+          {@JsonKey(name: 'first_name') required final String firstName,
+          @JsonKey(name: 'last_name') required final String lastName,
+          final String? photo,
+          required final String phone,
+          required final String email,
+          required final String address,
+          required final String city,
+          @JsonKey(name: 'state_code') required final String stateCode,
+          @JsonKey(name: 'zip_code') required final String zipCode,
+          @JsonKey(name: 'emergency_phone') final String? emergencyPhone}) =
+      _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
 
   @override
+  @JsonKey(name: 'first_name')
   String get firstName;
   @override
+  @JsonKey(name: 'last_name')
   String get lastName;
   @override
   String? get photo;
@@ -327,13 +350,19 @@ abstract class _UserModel implements UserModel {
   @override
   String get city;
   @override
+  @JsonKey(name: 'state_code')
   String get stateCode;
   @override
+  @JsonKey(name: 'zip_code')
   String get zipCode;
   @override
+  @JsonKey(name: 'emergency_phone')
   String? get emergencyPhone;
+
+  /// Create a copy of UserModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

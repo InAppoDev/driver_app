@@ -8,18 +8,20 @@ part of 'message_model.dart';
 
 _$MessageModelImpl _$$MessageModelImplFromJson(Map<String, dynamic> json) =>
     _$MessageModelImpl(
-      name: json['name'] as String? ?? '',
-      message: json['message'] as String? ?? '',
-      image: json['image'] as String? ?? '',
-      role: json['role'] as String? ?? '',
-      time: json['time'] as String? ?? '7:33 AM',
+      id: (json['id'] as num).toInt(),
+      sender: ChatParticipant.fromJson(json['sender'] as Map<String, dynamic>),
+      content: json['content'] as String,
+      documents: (json['documents'] as List<dynamic>?)
+          ?.map((e) => ChatDocument.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      sentAt: (json['sent_at'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$MessageModelImplToJson(_$MessageModelImpl instance) =>
     <String, dynamic>{
-      'name': instance.name,
-      'message': instance.message,
-      'image': instance.image,
-      'role': instance.role,
-      'time': instance.time,
+      'id': instance.id,
+      'sender': instance.sender,
+      'content': instance.content,
+      'documents': instance.documents,
+      'sent_at': instance.sentAt,
     };

@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/pages/login/login_page.dart';
 import 'package:tms_driver/presentation/pages/main/main_page.dart';
-import 'package:tms_driver/presentation/pages/message_list/widget/chat_screen.dart';
+import 'package:tms_driver/presentation/pages/chat_detail/chat_screen.dart';
 import 'package:tms_driver/presentation/pages/notification/notification_screen.dart';
 import 'package:tms_driver/presentation/pages/splash/splash_screen.dart';
 

@@ -20,14 +20,19 @@ MessageModel _$MessageModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MessageModel {
-  String get name => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
-  String get role => throw _privateConstructorUsedError;
-  String get time => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  ChatParticipant get sender => throw _privateConstructorUsedError;
+  String get content => throw _privateConstructorUsedError;
+  List<ChatDocument>? get documents => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sent_at')
+  int get sentAt => throw _privateConstructorUsedError;
 
+  /// Serializes this MessageModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MessageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MessageModelCopyWith<MessageModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -39,7 +44,13 @@ abstract class $MessageModelCopyWith<$Res> {
       _$MessageModelCopyWithImpl<$Res, MessageModel>;
   @useResult
   $Res call(
-      {String name, String message, String image, String role, String time});
+      {int id,
+      ChatParticipant sender,
+      String content,
+      List<ChatDocument>? documents,
+      @JsonKey(name: 'sent_at') int sentAt});
+
+  $ChatParticipantCopyWith<$Res> get sender;
 }
 
 /// @nodoc
@@ -52,37 +63,49 @@ class _$MessageModelCopyWithImpl<$Res, $Val extends MessageModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MessageModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? message = null,
-    Object? image = null,
-    Object? role = null,
-    Object? time = null,
+    Object? id = null,
+    Object? sender = null,
+    Object? content = null,
+    Object? documents = freezed,
+    Object? sentAt = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      sender: null == sender
+          ? _value.sender
+          : sender // ignore: cast_nullable_to_non_nullable
+              as ChatParticipant,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
               as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      role: null == role
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as String,
-      time: null == time
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
-              as String,
+      documents: freezed == documents
+          ? _value.documents
+          : documents // ignore: cast_nullable_to_non_nullable
+              as List<ChatDocument>?,
+      sentAt: null == sentAt
+          ? _value.sentAt
+          : sentAt // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
+  }
+
+  /// Create a copy of MessageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ChatParticipantCopyWith<$Res> get sender {
+    return $ChatParticipantCopyWith<$Res>(_value.sender, (value) {
+      return _then(_value.copyWith(sender: value) as $Val);
+    });
   }
 }
 
@@ -95,7 +118,14 @@ abstract class _$$MessageModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name, String message, String image, String role, String time});
+      {int id,
+      ChatParticipant sender,
+      String content,
+      List<ChatDocument>? documents,
+      @JsonKey(name: 'sent_at') int sentAt});
+
+  @override
+  $ChatParticipantCopyWith<$Res> get sender;
 }
 
 /// @nodoc
@@ -106,36 +136,38 @@ class __$$MessageModelImplCopyWithImpl<$Res>
       _$MessageModelImpl _value, $Res Function(_$MessageModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MessageModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? message = null,
-    Object? image = null,
-    Object? role = null,
-    Object? time = null,
+    Object? id = null,
+    Object? sender = null,
+    Object? content = null,
+    Object? documents = freezed,
+    Object? sentAt = null,
   }) {
     return _then(_$MessageModelImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      sender: null == sender
+          ? _value.sender
+          : sender // ignore: cast_nullable_to_non_nullable
+              as ChatParticipant,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
               as String,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String,
-      role: null == role
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as String,
-      time: null == time
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
-              as String,
+      documents: freezed == documents
+          ? _value._documents
+          : documents // ignore: cast_nullable_to_non_nullable
+              as List<ChatDocument>?,
+      sentAt: null == sentAt
+          ? _value.sentAt
+          : sentAt // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -144,34 +176,39 @@ class __$$MessageModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MessageModelImpl implements _MessageModel {
   const _$MessageModelImpl(
-      {this.name = '',
-      this.message = '',
-      this.image = '',
-      this.role = '',
-      this.time = '7:33 AM'});
+      {required this.id,
+      required this.sender,
+      required this.content,
+      final List<ChatDocument>? documents,
+      @JsonKey(name: 'sent_at') required this.sentAt})
+      : _documents = documents;
 
   factory _$MessageModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$MessageModelImplFromJson(json);
 
   @override
-  @JsonKey()
-  final String name;
+  final int id;
   @override
-  @JsonKey()
-  final String message;
+  final ChatParticipant sender;
   @override
-  @JsonKey()
-  final String image;
+  final String content;
+  final List<ChatDocument>? _documents;
   @override
-  @JsonKey()
-  final String role;
+  List<ChatDocument>? get documents {
+    final value = _documents;
+    if (value == null) return null;
+    if (_documents is EqualUnmodifiableListView) return _documents;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
-  @JsonKey()
-  final String time;
+  @JsonKey(name: 'sent_at')
+  final int sentAt;
 
   @override
   String toString() {
-    return 'MessageModel(name: $name, message: $message, image: $image, role: $role, time: $time)';
+    return 'MessageModel(id: $id, sender: $sender, content: $content, documents: $documents, sentAt: $sentAt)';
   }
 
   @override
@@ -179,19 +216,22 @@ class _$MessageModelImpl implements _MessageModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MessageModelImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.role, role) || other.role == role) &&
-            (identical(other.time, time) || other.time == time));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.sender, sender) || other.sender == sender) &&
+            (identical(other.content, content) || other.content == content) &&
+            const DeepCollectionEquality()
+                .equals(other._documents, _documents) &&
+            (identical(other.sentAt, sentAt) || other.sentAt == sentAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, message, image, role, time);
+  int get hashCode => Object.hash(runtimeType, id, sender, content,
+      const DeepCollectionEquality().hash(_documents), sentAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MessageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MessageModelImplCopyWith<_$MessageModelImpl> get copyWith =>
@@ -207,27 +247,32 @@ class _$MessageModelImpl implements _MessageModel {
 
 abstract class _MessageModel implements MessageModel {
   const factory _MessageModel(
-      {final String name,
-      final String message,
-      final String image,
-      final String role,
-      final String time}) = _$MessageModelImpl;
+          {required final int id,
+          required final ChatParticipant sender,
+          required final String content,
+          final List<ChatDocument>? documents,
+          @JsonKey(name: 'sent_at') required final int sentAt}) =
+      _$MessageModelImpl;
 
   factory _MessageModel.fromJson(Map<String, dynamic> json) =
       _$MessageModelImpl.fromJson;
 
   @override
-  String get name;
+  int get id;
   @override
-  String get message;
+  ChatParticipant get sender;
   @override
-  String get image;
+  String get content;
   @override
-  String get role;
+  List<ChatDocument>? get documents;
   @override
-  String get time;
+  @JsonKey(name: 'sent_at')
+  int get sentAt;
+
+  /// Create a copy of MessageModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MessageModelImplCopyWith<_$MessageModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

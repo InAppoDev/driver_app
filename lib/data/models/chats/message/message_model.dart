@@ -1,17 +1,18 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:tms_driver/data/models/chats/chat_document/chat_document.dart';
+import 'package:tms_driver/data/models/chats/chat_participant/chat_participant.dart';
 
 part 'message_model.freezed.dart';
 part 'message_model.g.dart';
 
 @freezed
-@JsonSerializable(explicitToJson: true)
 class MessageModel with _$MessageModel {
   const factory MessageModel({
-    @Default('') String name,
-    @Default('') String message,
-    @Default('') String image,
-    @Default('') String role,
-    @Default('7:33 AM') String time,
+    required int id,
+    required ChatParticipant sender,
+    required String content,
+    List<ChatDocument>? documents,
+    @JsonKey(name: 'sent_at') required int sentAt,
   }) = _MessageModel;
 
   factory MessageModel.fromJson(Map<String, dynamic> json) =>

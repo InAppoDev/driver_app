@@ -23,8 +23,12 @@ mixin _$TripModel {
   double? get miles => throw _privateConstructorUsedError;
   List<TripDetailsModel> get details => throw _privateConstructorUsedError;
 
+  /// Serializes this TripModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TripModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TripModelCopyWith<TripModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$TripModelCopyWithImpl<$Res, $Val extends TripModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TripModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class __$$TripModelImplCopyWithImpl<$Res>
       _$TripModelImpl _value, $Res Function(_$TripModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TripModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,12 +147,14 @@ class _$TripModelImpl implements _TripModel {
             const DeepCollectionEquality().equals(other._details, _details));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, miles, const DeepCollectionEquality().hash(_details));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TripModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TripModelImplCopyWith<_$TripModelImpl> get copyWith =>
@@ -170,8 +180,11 @@ abstract class _TripModel implements TripModel {
   double? get miles;
   @override
   List<TripDetailsModel> get details;
+
+  /// Create a copy of TripModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TripModelImplCopyWith<_$TripModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
