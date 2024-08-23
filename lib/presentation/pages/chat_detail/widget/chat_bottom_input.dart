@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tms_driver/presentation/blocks/message/message_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/customs/custom_text_field.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
@@ -68,9 +66,9 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                 iconColor: theme.scaffoldBackgroundColor,
                 icon: 'send',
                 onPressed: () {
-                  context.read<MessageBloc>().add(MessageEvent.sendMessage(
-                        message: messageController.text.trim(),
-                      ));
+                  // context.read<ChatDetailBloc>().add(MessageListEvent.sendMessage(
+                  //       message: messageController.text.trim(),
+                  //     ));
                   messageController.clear();
                 },
               ),

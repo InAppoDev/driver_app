@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/pages/login/login_page.dart';
 import 'package:tms_driver/presentation/pages/main/main_page.dart';
-import 'package:tms_driver/presentation/pages/message_list/widget/chat_screen.dart';
+import 'package:tms_driver/presentation/pages/chat_detail/chat_screen.dart';
 import 'package:tms_driver/presentation/pages/notification/notification_screen.dart';
 import 'package:tms_driver/presentation/pages/splash/splash_screen.dart';
 
@@ -21,8 +21,11 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
-      path: '/chat',
-      builder: (context, state) => const ChatScreen(),
+      path: '/chat/:chatId',
+      builder: (context, state) {
+        final chatId = int.parse(state.pathParameters['chatId']!);
+        return ChatScreen(chatId: chatId);
+      },
     ),
     GoRoute(
       path: '/notification',

@@ -1,5 +1,5 @@
 import 'package:tms_driver/data/data_source/api_data_source.dart';
-import 'package:tms_driver/data/models/user_model.dart';
+import 'package:tms_driver/data/models/user/user_model.dart';
 import 'package:tms_driver/domain/repositories/user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {

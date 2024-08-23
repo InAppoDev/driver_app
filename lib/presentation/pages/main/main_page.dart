@@ -26,70 +26,69 @@ class MainView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MainBloc, MainState>(builder: (context, state) {
-      return Scaffold(
-        backgroundColor: Theme.of(context).canvasColor,
-        appBar: const CustomAppBar(),
-        extendBody: true,
-        body: _buildBody(state.selectedPage),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: state.showNavBar
-            ? Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: FloatingActionButton(
-                    elevation: 2,
-              isExtended: true,
-              onPressed: () {},
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text('play'),
-                      ],
-                    ),
-                  ),
+    return Scaffold(
+      backgroundColor: Theme.of(context).canvasColor,
+      appBar: const CustomAppBar(),
+      extendBody: true,
+      body: BlocBuilder<MainBloc, MainState>(
+        builder: (context, state) {
+          switch (state.selectedPage) {
+            case MainPageEnum.home:
+              return const HomePage();
+            case MainPageEnum.trips:
+              return const TripListPage();
+            case MainPageEnum.messages:
+              return const MessageListPage();
+            case MainPageEnum.profile:
+              return const ProfilePage();
+          }
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: FloatingActionButton(
+            elevation: 2,
+            onPressed: () {},
+            backgroundColor: Theme.of(context).cardColor,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  'assets/images/play.svg',
+                  height: 30,
+                  width: 30,
                 ),
-        ) : null,
-        bottomNavigationBar: state.showNavBar
-            ? CustomPaint(
-                painter: BottomNavBarPainter(),
-                child: SizedBox(
-                  height: 70,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      _buildNavItem(context, 'home', 'Home', MainPageEnum.home),
-                      _buildNavItem(
-                          context, 'point', 'Trips', MainPageEnum.trips),
-                      const SizedBox(width: 40), // Space for the FAB
-                      _buildNavItem(context, 'message', 'Messages',
-                          MainPageEnum.messages),
-                      _buildNavItem(context, '', 'You', MainPageEnum.profile),
-                    ],
-                  ),
-                ),
-              ) : null,
-      );
-    });
+                const Text('Play', style: TextStyle(fontSize: 12)),
+              ],
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: CustomPaint(
+        painter: BottomNavBarPainter(),
+        child: SizedBox(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildNavItem(context, 'home', 'Home', MainPageEnum.home),
+              _buildNavItem(context, 'point', 'Trips', MainPageEnum.trips),
+              const SizedBox(width: 40), // Space for the FAB
+              _buildNavItem(
+                  context, 'message', 'Messages', MainPageEnum.messages),
+              _buildNavItem(context, '', 'You', MainPageEnum.profile),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
-  Widget _buildBody(MainPageEnum selectedPage) {
-    switch (selectedPage) {
-      case MainPageEnum.home:
-        return const HomePage();
-      case MainPageEnum.trips:
-        return const TripListPage();
-      case MainPageEnum.messages:
-        return const MessageListPage();
-      case MainPageEnum.profile:
-        return const ProfilePage();
-    }
-  }
-
-  Widget _buildNavItem(BuildContext context, String iconName, String label,
-      MainPageEnum page) {
+  Widget _buildNavItem(
+      BuildContext context, String iconName, String label, MainPageEnum page) {
     final theme = Theme.of(context);
     final isSelected = context.watch<MainBloc>().state.selectedPage == page;
     final color = isSelected ? theme.primaryColor : theme.shadowColor;
@@ -101,12 +100,15 @@ class MainView extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          iconName.isNotEmpty
-              ? SvgPicture.asset(
+          iconName.isEmpty
+              ? Icon(
+                  Icons.person,
+                  color: color,
+                )
+              : SvgPicture.asset(
                   'assets/images/$iconName.svg',
                   colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-                )
-              : Icon(Icons.person, color: color),
+                ),
           Text(label, style: TextStyle(color: color, fontWeight: fontWeight)),
         ],
       ),
@@ -123,44 +125,35 @@ class BottomNavBarPainter extends CustomPainter {
 
     final path = Path();
 
-    // Start from the left of the screen
     path.moveTo(0, 0);
 
-    // Left side straight part
     path.lineTo(size.width * 0.35, 0);
 
-    // Left curve of the notch
     path.quadraticBezierTo(
-      size.width * 0.4, 0,
-      size.width * 0.4, 25, // Deeper curve
+      size.width * 0.4,
+      0,
+      size.width * 0.4,
+      25,
     );
 
-    // Center cutout
     path.arcToPoint(
-      Offset(size.width * 0.6, 27), // Deep and wide notch
-      radius: const Radius.circular(33.0), // Increased radius for deeper notch
+      Offset(size.width * 0.6, 27),
+      radius: const Radius.circular(33.0),
       clockwise: false,
     );
 
-    // Right curve of the notch
     path.quadraticBezierTo(
       size.width * 0.6,
       0,
       size.width * 0.65,
       0,
     );
-
-    // Right side straight part
     path.lineTo(size.width, 0);
-
-    // Bottom edges
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
 
-    // Close the path
     path.close();
 
-    // Draw the path
     canvas.drawPath(path, paint);
   }
 
