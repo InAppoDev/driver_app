@@ -42,6 +42,7 @@ class TripListView extends StatelessWidget {
                         barrierColor: Colors.black.withAlpha(1),
                         context: context,
                         builder: (_) => ConfirmDialog(
+                          trip: trip,
                           onConfirmPressed: () {
                             context.read<TripBloc>().add(
                                   TripEvent.changeTab(

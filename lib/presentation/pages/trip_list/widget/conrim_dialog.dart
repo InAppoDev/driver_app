@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
 
 class ConfirmDialog extends StatelessWidget {
   const ConfirmDialog({
     super.key,
-    required this.onConfirmPressed,
+    required this.onConfirmPressed, required this.trip,
   });
 
   final VoidCallback onConfirmPressed;
+  final  TripModel trip;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class ConfirmDialog extends StatelessWidget {
               SvgPicture.asset('assets/images/arrow_truck.svg'),
               const SizedBox(width: 8),
               Text(
-                'Pick up #2133123',
+                trip.details.first.name ?? '',
                 style: theme.textTheme.bodySmall!
                     .copyWith(color: theme.secondaryHeaderColor),
               ),
@@ -46,7 +48,7 @@ class ConfirmDialog extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           Text(
-            'Viena, Mariahilfer Straße 123,  Wien, Österreich',
+            trip.details.first.address ?? '',
             style: theme.textTheme.titleSmall!.copyWith(
                 fontWeight: FontWeight.w600, color: theme.dividerColor),
           ),
@@ -58,7 +60,7 @@ class ConfirmDialog extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            '08/11/23 10:00 AM',
+            trip.details.first.data ?? '',
             style: theme.textTheme.titleSmall!.copyWith(
                 fontWeight: FontWeight.w600, color: theme.dividerColor),
           ),

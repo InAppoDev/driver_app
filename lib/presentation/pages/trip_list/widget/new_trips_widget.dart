@@ -15,7 +15,9 @@ class NewTripsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return GestureDetector(
-      onTap: onPressed.call(tripModel),
+      onTap: () {
+        onPressed.call(tripModel);
+      },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
