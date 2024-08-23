@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:tms_driver/data/services/my_localtion_services.dart';
+import 'package:tms_driver/domain/repositories/impl/tracking_repository_impl.dart';
+import 'package:tms_driver/domain/repositories/tracking_repository.dart';
+import 'package:tms_driver/presentation/customs/custom_check_box.dart';
 import 'package:tms_driver/presentation/pages/onboarding/onboarding_content.dart';
 import 'package:tms_driver/presentation/pages/onboarding/size_config.dart';
 import 'package:tms_driver/presentation/theme/app_colors.dart';
@@ -17,11 +23,41 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   late PageController _controller;
+  bool isChecked = false;
 
   @override
   void initState() {
     _controller = PageController();
     super.initState();
+  }
+
+  String permissionStatus = "Press the button to request permission";
+
+  Future<void> requestPermission() async {
+    final MyLocationService locationService = MyLocationService();
+
+    if (!isChecked) {
+      PermissionStatus status = await Permission.location.request();
+
+      if (status.isGranted) {
+        setState(() {
+          permissionStatus = "Permission granted";
+          isChecked = !isChecked;
+        });
+        GetIt.instance.registerSingleton<TrackingRepository>(
+            TrackingRepositoryImpl(locationService));
+        GetIt.instance.registerSingleton<MyLocationService>(locationService);
+      } else if (status.isDenied) {
+        setState(() {
+          permissionStatus = "Permission denied";
+        });
+      } else if (status.isPermanentlyDenied) {
+        setState(() {
+          permissionStatus = "Permission permanently denied";
+        });
+        openAppSettings();
+      }
+    }
   }
 
   int _currentPage = 0;
@@ -73,7 +109,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   return Padding(
                     padding: const EdgeInsets.all(40.0),
                     child: Column(
-                     mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: _currentPage == 2
+                          ? MainAxisAlignment.end
+                          : MainAxisAlignment.center,
                       children: [
                         Image.asset(
                           contents(context)[i].image,
@@ -100,7 +138,37 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             fontSize: (width <= 550) ? 17 : 25,
                           ),
                           textAlign: TextAlign.center,
-                        )
+                        ),
+                        if (_currentPage == 2) ...[
+                          const SizedBox(height: 100),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: theme.secondaryHeaderColor,
+                            ),
+                            padding: const EdgeInsets.all(10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Permissions',
+                                  style:
+                                      theme.textTheme.headlineMedium!.copyWith(
+                                    fontFamily: "Mulish",
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: (width <= 550) ? 17 : 23,
+                                  ),
+                                ),
+                                CustomCheckBox(
+                                  value: isChecked,
+                                  onChanged: (value) {
+                                    requestPermission();
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ]
                       ],
                     ),
                   );
@@ -126,7 +194,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ? Padding(
                           padding: const EdgeInsets.all(30),
                           child: ElevatedButton(
-                            onPressed: widget.onCompleted,
+                            onPressed: isChecked ? widget.onCompleted : null,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Theme.of(context).primaryColor,
                               shape: RoundedRectangleBorder(
