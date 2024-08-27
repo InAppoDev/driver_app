@@ -24,10 +24,10 @@ class ChatListView extends StatelessWidget {
                   child: Column(
                     children: [
                       const SizedBox(height: 40),
-                      const ChatBatInfo(),
+                      ChatBarInfo(chatDetails: chatDetails),
                       Expanded(
                         child: ListView.builder(
-                          padding: const EdgeInsets.symmetric(vertical: 18),
+                          padding: const EdgeInsets.only(top: 18, bottom: 45),
                           itemCount: messages.length,
                           itemBuilder: (context, index) => ChatListItemWidget(
                             messageModel: messages[index],

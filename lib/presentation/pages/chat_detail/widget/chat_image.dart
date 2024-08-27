@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/data/models/chats/chat_participant/chat_participant.dart';
 
 class ChatImage extends StatelessWidget {
   const ChatImage({
     super.key,
     required this.mainImage,
-    required this.images,
+    required this.participants,
     this.borderRadius = 50,
     this.margin,
   });
 
-  final String mainImage;
-  final List<String> images;
+  final String? mainImage;
+  final List<ChatParticipant> participants;
   final double borderRadius;
   final double? margin;
 
@@ -34,23 +35,25 @@ class ChatImage extends StatelessWidget {
                 ),
               ],
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(borderRadius),
-              child: Image.asset(
-                mainImage,
-                width: 40,
-                height: 39,
-                fit: BoxFit.cover,
-              ),
-            ),
+            child: mainImage != null
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(borderRadius),
+                    child: Image.network(
+                      mainImage!,
+                      width: 40,
+                      height: 39,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : const SizedBox.shrink(),
           ),
           Positioned(
             top: 26,
             right: margin != null ? 6 : 8,
             child: Row(
               children: [
-                ...images.map(
-                  (image) => Container(
+                ...participants.map(
+                  (participant) => Container(
                     margin: EdgeInsets.symmetric(horizontal: margin ?? 0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(borderRadius),
@@ -63,15 +66,18 @@ class ChatImage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(borderRadius),
-                      child: Image.asset(
-                        image,
-                        height: 16,
-                        width: 16,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                    child: participant.avatarUrl != null &&
+                            participant.avatarUrl!.isNotEmpty
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.circular(borderRadius),
+                            child: Image.network(
+                              participant.avatarUrl!,
+                              height: 16,
+                              width: 16,
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        : const SizedBox.shrink(),
                   ),
                 ),
               ],

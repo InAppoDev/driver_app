@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
+import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_image.dart';
 
 class MessageListItemWidget extends StatelessWidget {
   final ChatModel chat;
@@ -20,19 +21,13 @@ class MessageListItemWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 7),
-            //   child: ChatImage(
-            //     mainImage:
-            //         chat.photoUrl ?? 'assets/images/temp_chat_image.jpeg',
-            //     images: chat.participants
-            //         .take(3)
-            //         .map((participant) =>
-            //             participant.avatarUrl ??
-            //             'assets/images/temp_chat_image.jpeg')
-            //         .toList(),
-            //   ),
-            // ),
+            Padding(
+              padding: const EdgeInsets.only(top: 7),
+              child: ChatImage(
+                mainImage: chat.photoUrl,
+                participants: chat.participants,
+              ),
+            ),
             const SizedBox(width: 10),
             Flexible(
               child: Column(

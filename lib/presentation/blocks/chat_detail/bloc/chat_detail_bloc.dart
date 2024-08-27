@@ -5,9 +5,9 @@ import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart'
 import 'package:tms_driver/data/models/chats/message/message_model.dart';
 import 'package:tms_driver/domain/repositories/messages_repository.dart';
 
+part 'chat_detail_bloc.freezed.dart';
 part 'chat_detail_event.dart';
 part 'chat_detail_state.dart';
-part 'chat_detail_bloc.freezed.dart';
 
 class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
   final MessagesRepository messagesRepository =
