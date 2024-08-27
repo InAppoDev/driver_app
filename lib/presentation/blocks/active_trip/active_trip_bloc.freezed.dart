@@ -23,6 +23,7 @@ mixin _$ActiveTripEvent {
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
     required TResult Function() pickImage,
+    required TResult Function() uploadFiles,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$ActiveTripEvent {
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
     TResult? Function()? pickImage,
+    TResult? Function()? uploadFiles,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$ActiveTripEvent {
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
     TResult Function()? pickImage,
+    TResult Function()? uploadFiles,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$ActiveTripEvent {
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(PickImage value) pickImage,
+    required TResult Function(UploadFiles value) uploadFiles,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$ActiveTripEvent {
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(PickImage value)? pickImage,
+    TResult? Function(UploadFiles value)? uploadFiles,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$ActiveTripEvent {
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(PickImage value)? pickImage,
+    TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +141,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
     required TResult Function() pickImage,
+    required TResult Function() uploadFiles,
   }) {
     return initialize();
   }
@@ -147,6 +154,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
     TResult? Function()? pickImage,
+    TResult? Function()? uploadFiles,
   }) {
     return initialize?.call();
   }
@@ -159,6 +167,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
     TResult Function()? pickImage,
+    TResult Function()? uploadFiles,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -175,6 +184,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(PickImage value) pickImage,
+    required TResult Function(UploadFiles value) uploadFiles,
   }) {
     return initialize(this);
   }
@@ -187,6 +197,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(PickImage value)? pickImage,
+    TResult? Function(UploadFiles value)? uploadFiles,
   }) {
     return initialize?.call(this);
   }
@@ -199,6 +210,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(PickImage value)? pickImage,
+    TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -283,6 +295,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
     required TResult Function() pickImage,
+    required TResult Function() uploadFiles,
   }) {
     return getDateAndTime(dateTime);
   }
@@ -295,6 +308,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
     TResult? Function()? pickImage,
+    TResult? Function()? uploadFiles,
   }) {
     return getDateAndTime?.call(dateTime);
   }
@@ -307,6 +321,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
     TResult Function()? pickImage,
+    TResult Function()? uploadFiles,
     required TResult orElse(),
   }) {
     if (getDateAndTime != null) {
@@ -323,6 +338,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(PickImage value) pickImage,
+    required TResult Function(UploadFiles value) uploadFiles,
   }) {
     return getDateAndTime(this);
   }
@@ -335,6 +351,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(PickImage value)? pickImage,
+    TResult? Function(UploadFiles value)? uploadFiles,
   }) {
     return getDateAndTime?.call(this);
   }
@@ -347,6 +364,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(PickImage value)? pickImage,
+    TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) {
     if (getDateAndTime != null) {
@@ -409,6 +427,7 @@ class _$PickFileImpl implements PickFile {
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
     required TResult Function() pickImage,
+    required TResult Function() uploadFiles,
   }) {
     return pickFile();
   }
@@ -421,6 +440,7 @@ class _$PickFileImpl implements PickFile {
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
     TResult? Function()? pickImage,
+    TResult? Function()? uploadFiles,
   }) {
     return pickFile?.call();
   }
@@ -433,6 +453,7 @@ class _$PickFileImpl implements PickFile {
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
     TResult Function()? pickImage,
+    TResult Function()? uploadFiles,
     required TResult orElse(),
   }) {
     if (pickFile != null) {
@@ -449,6 +470,7 @@ class _$PickFileImpl implements PickFile {
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(PickImage value) pickImage,
+    required TResult Function(UploadFiles value) uploadFiles,
   }) {
     return pickFile(this);
   }
@@ -461,6 +483,7 @@ class _$PickFileImpl implements PickFile {
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(PickImage value)? pickImage,
+    TResult? Function(UploadFiles value)? uploadFiles,
   }) {
     return pickFile?.call(this);
   }
@@ -473,6 +496,7 @@ class _$PickFileImpl implements PickFile {
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(PickImage value)? pickImage,
+    TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) {
     if (pickFile != null) {
@@ -555,6 +579,7 @@ class _$RemoveFileImpl implements RemoveFile {
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
     required TResult Function() pickImage,
+    required TResult Function() uploadFiles,
   }) {
     return removeFile(file);
   }
@@ -567,6 +592,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
     TResult? Function()? pickImage,
+    TResult? Function()? uploadFiles,
   }) {
     return removeFile?.call(file);
   }
@@ -579,6 +605,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
     TResult Function()? pickImage,
+    TResult Function()? uploadFiles,
     required TResult orElse(),
   }) {
     if (removeFile != null) {
@@ -595,6 +622,7 @@ class _$RemoveFileImpl implements RemoveFile {
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(PickImage value) pickImage,
+    required TResult Function(UploadFiles value) uploadFiles,
   }) {
     return removeFile(this);
   }
@@ -607,6 +635,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(PickImage value)? pickImage,
+    TResult? Function(UploadFiles value)? uploadFiles,
   }) {
     return removeFile?.call(this);
   }
@@ -619,6 +648,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(PickImage value)? pickImage,
+    TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) {
     if (removeFile != null) {
@@ -680,6 +710,7 @@ class _$PickImageImpl implements PickImage {
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
     required TResult Function() pickImage,
+    required TResult Function() uploadFiles,
   }) {
     return pickImage();
   }
@@ -692,6 +723,7 @@ class _$PickImageImpl implements PickImage {
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
     TResult? Function()? pickImage,
+    TResult? Function()? uploadFiles,
   }) {
     return pickImage?.call();
   }
@@ -704,6 +736,7 @@ class _$PickImageImpl implements PickImage {
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
     TResult Function()? pickImage,
+    TResult Function()? uploadFiles,
     required TResult orElse(),
   }) {
     if (pickImage != null) {
@@ -720,6 +753,7 @@ class _$PickImageImpl implements PickImage {
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(PickImage value) pickImage,
+    required TResult Function(UploadFiles value) uploadFiles,
   }) {
     return pickImage(this);
   }
@@ -732,6 +766,7 @@ class _$PickImageImpl implements PickImage {
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(PickImage value)? pickImage,
+    TResult? Function(UploadFiles value)? uploadFiles,
   }) {
     return pickImage?.call(this);
   }
@@ -744,6 +779,7 @@ class _$PickImageImpl implements PickImage {
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(PickImage value)? pickImage,
+    TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) {
     if (pickImage != null) {
@@ -758,11 +794,138 @@ abstract class PickImage implements ActiveTripEvent {
 }
 
 /// @nodoc
+abstract class _$$UploadFilesImplCopyWith<$Res> {
+  factory _$$UploadFilesImplCopyWith(
+          _$UploadFilesImpl value, $Res Function(_$UploadFilesImpl) then) =
+      __$$UploadFilesImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UploadFilesImplCopyWithImpl<$Res>
+    extends _$ActiveTripEventCopyWithImpl<$Res, _$UploadFilesImpl>
+    implements _$$UploadFilesImplCopyWith<$Res> {
+  __$$UploadFilesImplCopyWithImpl(
+      _$UploadFilesImpl _value, $Res Function(_$UploadFilesImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UploadFilesImpl implements UploadFiles {
+  const _$UploadFilesImpl();
+
+  @override
+  String toString() {
+    return 'ActiveTripEvent.uploadFiles()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UploadFilesImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function() pickImage,
+    required TResult Function() uploadFiles,
+  }) {
+    return uploadFiles();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function()? pickImage,
+    TResult? Function()? uploadFiles,
+  }) {
+    return uploadFiles?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function()? pickImage,
+    TResult Function()? uploadFiles,
+    required TResult orElse(),
+  }) {
+    if (uploadFiles != null) {
+      return uploadFiles();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(GetDateAndTime value) getDateAndTime,
+    required TResult Function(PickFile value) pickFile,
+    required TResult Function(RemoveFile value) removeFile,
+    required TResult Function(PickImage value) pickImage,
+    required TResult Function(UploadFiles value) uploadFiles,
+  }) {
+    return uploadFiles(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(GetDateAndTime value)? getDateAndTime,
+    TResult? Function(PickFile value)? pickFile,
+    TResult? Function(RemoveFile value)? removeFile,
+    TResult? Function(PickImage value)? pickImage,
+    TResult? Function(UploadFiles value)? uploadFiles,
+  }) {
+    return uploadFiles?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(GetDateAndTime value)? getDateAndTime,
+    TResult Function(PickFile value)? pickFile,
+    TResult Function(RemoveFile value)? removeFile,
+    TResult Function(PickImage value)? pickImage,
+    TResult Function(UploadFiles value)? uploadFiles,
+    required TResult orElse(),
+  }) {
+    if (uploadFiles != null) {
+      return uploadFiles(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UploadFiles implements ActiveTripEvent {
+  const factory UploadFiles() = _$UploadFilesImpl;
+}
+
+/// @nodoc
 mixin _$ActiveTripState {
   ActiveTripStatus get status => throw _privateConstructorUsedError;
   String? get dateTime => throw _privateConstructorUsedError;
-  List<File> get selectedFiles => throw _privateConstructorUsedError;
+  File? get selectedFile => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  bool get isFileLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ActiveTripStateCopyWith<ActiveTripState> get copyWith =>
@@ -778,8 +941,9 @@ abstract class $ActiveTripStateCopyWith<$Res> {
   $Res call(
       {ActiveTripStatus status,
       String? dateTime,
-      List<File> selectedFiles,
-      String? errorMessage});
+      File? selectedFile,
+      String? errorMessage,
+      bool isFileLoading});
 }
 
 /// @nodoc
@@ -797,8 +961,9 @@ class _$ActiveTripStateCopyWithImpl<$Res, $Val extends ActiveTripState>
   $Res call({
     Object? status = null,
     Object? dateTime = freezed,
-    Object? selectedFiles = null,
+    Object? selectedFile = freezed,
     Object? errorMessage = freezed,
+    Object? isFileLoading = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -809,14 +974,18 @@ class _$ActiveTripStateCopyWithImpl<$Res, $Val extends ActiveTripState>
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      selectedFiles: null == selectedFiles
-          ? _value.selectedFiles
-          : selectedFiles // ignore: cast_nullable_to_non_nullable
-              as List<File>,
+      selectedFile: freezed == selectedFile
+          ? _value.selectedFile
+          : selectedFile // ignore: cast_nullable_to_non_nullable
+              as File?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      isFileLoading: null == isFileLoading
+          ? _value.isFileLoading
+          : isFileLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -832,8 +1001,9 @@ abstract class _$$ActiveTripStateImplCopyWith<$Res>
   $Res call(
       {ActiveTripStatus status,
       String? dateTime,
-      List<File> selectedFiles,
-      String? errorMessage});
+      File? selectedFile,
+      String? errorMessage,
+      bool isFileLoading});
 }
 
 /// @nodoc
@@ -849,8 +1019,9 @@ class __$$ActiveTripStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? dateTime = freezed,
-    Object? selectedFiles = null,
+    Object? selectedFile = freezed,
     Object? errorMessage = freezed,
+    Object? isFileLoading = null,
   }) {
     return _then(_$ActiveTripStateImpl(
       status: null == status
@@ -861,14 +1032,18 @@ class __$$ActiveTripStateImplCopyWithImpl<$Res>
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      selectedFiles: null == selectedFiles
-          ? _value._selectedFiles
-          : selectedFiles // ignore: cast_nullable_to_non_nullable
-              as List<File>,
+      selectedFile: freezed == selectedFile
+          ? _value.selectedFile
+          : selectedFile // ignore: cast_nullable_to_non_nullable
+              as File?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      isFileLoading: null == isFileLoading
+          ? _value.isFileLoading
+          : isFileLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -879,29 +1054,25 @@ class _$ActiveTripStateImpl implements _ActiveTripState {
   const _$ActiveTripStateImpl(
       {required this.status,
       this.dateTime,
-      final List<File> selectedFiles = const [],
-      this.errorMessage})
-      : _selectedFiles = selectedFiles;
+      this.selectedFile,
+      this.errorMessage,
+      this.isFileLoading = false});
 
   @override
   final ActiveTripStatus status;
   @override
   final String? dateTime;
-  final List<File> _selectedFiles;
   @override
-  @JsonKey()
-  List<File> get selectedFiles {
-    if (_selectedFiles is EqualUnmodifiableListView) return _selectedFiles;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_selectedFiles);
-  }
-
+  final File? selectedFile;
   @override
   final String? errorMessage;
+  @override
+  @JsonKey()
+  final bool isFileLoading;
 
   @override
   String toString() {
-    return 'ActiveTripState(status: $status, dateTime: $dateTime, selectedFiles: $selectedFiles, errorMessage: $errorMessage)';
+    return 'ActiveTripState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading)';
   }
 
   @override
@@ -912,15 +1083,17 @@ class _$ActiveTripStateImpl implements _ActiveTripState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime) &&
-            const DeepCollectionEquality()
-                .equals(other._selectedFiles, _selectedFiles) &&
+            (identical(other.selectedFile, selectedFile) ||
+                other.selectedFile == selectedFile) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.isFileLoading, isFileLoading) ||
+                other.isFileLoading == isFileLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, dateTime,
-      const DeepCollectionEquality().hash(_selectedFiles), errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, status, dateTime, selectedFile, errorMessage, isFileLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -934,17 +1107,20 @@ abstract class _ActiveTripState implements ActiveTripState {
   const factory _ActiveTripState(
       {required final ActiveTripStatus status,
       final String? dateTime,
-      final List<File> selectedFiles,
-      final String? errorMessage}) = _$ActiveTripStateImpl;
+      final File? selectedFile,
+      final String? errorMessage,
+      final bool isFileLoading}) = _$ActiveTripStateImpl;
 
   @override
   ActiveTripStatus get status;
   @override
   String? get dateTime;
   @override
-  List<File> get selectedFiles;
+  File? get selectedFile;
   @override
   String? get errorMessage;
+  @override
+  bool get isFileLoading;
   @override
   @JsonKey(ignore: true)
   _$$ActiveTripStateImplCopyWith<_$ActiveTripStateImpl> get copyWith =>

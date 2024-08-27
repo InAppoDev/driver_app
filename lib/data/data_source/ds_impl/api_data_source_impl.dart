@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -6,6 +8,7 @@ import 'package:tms_driver/data/data_source/api_interceptor.dart';
 import 'package:tms_driver/data/data_source/auth_data_source.dart';
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
+import 'package:tms_driver/data/models/document/upload_document_response.dart';
 import 'package:tms_driver/data/models/user/user_model.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler.dart';
 
@@ -114,5 +117,31 @@ class ApiDataSourceImpl implements ApiDataSource {
           if (documentUploadIds != null)
             'document_upload_ids': documentUploadIds,
         }));
+  }
+
+  @override
+  Future<UploadDocumentResponse> uploadDocument(File file, String name) async {
+    try {
+      FormData formData = FormData.fromMap({
+        'file': await MultipartFile.fromFile(file.path, filename: name),
+        'name': name,
+      });
+
+      final response = await _makeRequest(
+          () => dio.post('/documents/upload', data: formData));
+
+      if (response.data['success'] == true) {
+        return UploadDocumentResponse.fromJson(response.data);
+      } else {
+        throw Exception(
+            'Failed to upload file: ${response.data['error_message'] ?? 'Unknown error'}');
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error uploading document: $e');
+      }
+      errorHandler.handleException(e as Exception);
+      throw Exception('Error uploading file');
+    }
   }
 }

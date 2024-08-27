@@ -5,18 +5,23 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tms_driver/domain/repositories/trip_repository.dart';
 
 part 'active_trip_bloc.freezed.dart';
 part 'active_trip_event.dart';
 part 'active_trip_state.dart';
 
 class ActiveTripBloc extends Bloc<ActiveTripEvent, ActiveTripState> {
+  final TripRepository tripRepository = GetIt.instance<TripRepository>();
+
   ActiveTripBloc() : super(ActiveTripState.initial()) {
     on<GetDateAndTime>(_getDataAndTime);
     on<PickFile>(_getFile);
     on<RemoveFile>(_removeFile);
     on<PickImage>(_pickImage);
+    on<UploadFiles>(_uploadFiles);
   }
 
   void _getDataAndTime(event, Emitter<ActiveTripState> emit) {
@@ -24,8 +29,6 @@ class ActiveTripBloc extends Bloc<ActiveTripEvent, ActiveTripState> {
   }
 
   void _getFile(event, Emitter<ActiveTripState> emit) async {
-    final List<File> files = [];
-    files.addAll(state.selectedFiles);
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
@@ -33,37 +36,42 @@ class ActiveTripBloc extends Bloc<ActiveTripEvent, ActiveTripState> {
       );
       if (result == null) return;
       final file = File(result.files.single.path!);
-      files.add(file);
-      emit(state.copyWith(selectedFiles: files));
+      emit(state.copyWith(selectedFile: file));
     } on PlatformException catch (e) {
       log('Failed pick file - $e, name:  VerifyNotifier');
     }
   }
 
   void _removeFile(event, Emitter<ActiveTripState> emit) async {
-    final List<File> files = [];
-    files.addAll(state.selectedFiles);
-
-    for (int i = 0; i < files.length; i++) {
-      if (files[i] == event.file) {
-        files.removeAt(i);
-      }
-    }
-
-    emit(state.copyWith(selectedFiles: files));
+    emit(state.copyWith(selectedFile: null));
   }
 
   void _pickImage(event, Emitter<ActiveTripState> emit) async {
-    final List<File> files = [];
-    files.addAll(state.selectedFiles);
-
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.camera);
+
       if (image == null) return;
-      files.add(File(image.path));
-      emit(state.copyWith(selectedFiles: files));
+
+      emit(state.copyWith(selectedFile: File(image.path)));
     } on PlatformException catch (e) {
-      log('Failed pick image - $e, name:  VerifyNotifier');
+      log('Failed to pick image - $e');
+    }
+  }
+
+  void _uploadFiles(event, Emitter<ActiveTripState> emit) async {
+    if (state.selectedFile == null) return;
+
+    try {
+      emit(state.copyWith(isFileLoading: true));
+      final file = state.selectedFile!;
+      log('Uploading file: ${file.path}');
+
+      await tripRepository.uploadDocument(file, file.path.split('/').last);
+
+      emit(state.copyWith(isFileLoading: false, selectedFile: null));
+    } catch (e) {
+      emit(state.copyWith(isFileLoading: false, errorMessage: e.toString()));
+      log('Failed to upload files - $e');
     }
   }
 }
