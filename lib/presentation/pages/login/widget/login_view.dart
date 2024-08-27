@@ -22,7 +22,6 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final theme = Theme.of(context);
-    // print('height - ${height * 0.3}');
     // _usernameController.text = '9993335111'; // Val
     _usernameController.text = '9991451655'; // Max
     return BlocListener<LoginBloc, LoginState>(
@@ -54,7 +53,7 @@ class LoginView extends StatelessWidget {
                   ClipPath(
                     clipper: CustomShape(),
                     child: Container(
-                      height: 230,
+                      height: height * 0.326,
                       width: double.infinity,
                       color: theme.scaffoldBackgroundColor,
                       child: Column(
