@@ -32,12 +32,8 @@ mixin _$UploadDocumentResponse {
   @JsonKey(name: 'thumbnail_url')
   String get thumbnailUrl => throw _privateConstructorUsedError;
 
-  /// Serializes this UploadDocumentResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of UploadDocumentResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $UploadDocumentResponseCopyWith<UploadDocumentResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,8 +64,6 @@ class _$UploadDocumentResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of UploadDocumentResponse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,8 +131,6 @@ class __$$UploadDocumentResponseImplCopyWithImpl<$Res>
       $Res Function(_$UploadDocumentResponseImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of UploadDocumentResponse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -231,14 +223,12 @@ class _$UploadDocumentResponseImpl implements _UploadDocumentResponse {
                 other.thumbnailUrl == thumbnailUrl));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, success, uploadId, name,
       originalFilename, sizeInBytes, thumbnailUrl);
 
-  /// Create a copy of UploadDocumentResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$UploadDocumentResponseImplCopyWith<_$UploadDocumentResponseImpl>
@@ -283,11 +273,8 @@ abstract class _UploadDocumentResponse implements UploadDocumentResponse {
   @override
   @JsonKey(name: 'thumbnail_url')
   String get thumbnailUrl;
-
-  /// Create a copy of UploadDocumentResponse
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$UploadDocumentResponseImplCopyWith<_$UploadDocumentResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

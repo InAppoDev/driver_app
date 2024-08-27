@@ -2,16 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/customs/custom_text_field.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
+import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_dialog.dart';
 
 class ChatBottomInput extends StatefulWidget {
-  const ChatBottomInput({super.key});
+  const ChatBottomInput({
+    super.key,
+    required this.onTextSend,
+  });
+
+  final Function(String) onTextSend;
 
   @override
   State<ChatBottomInput> createState() => _ChatBottomInputState();
 }
 
 class _ChatBottomInputState extends State<ChatBottomInput> {
-  final messageController = TextEditingController();
+  final TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +44,26 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
               ),
               EtaWidget(
                 text: '+ 30 min',
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    textEditingController.text += '30 min';
+                  });
+                },
               ),
               EtaWidget(
                 text: '+ 1 hour',
-                onPressed: () {},
+                onPressed: () {
+                  textEditingController.text += '1 hour';
+                },
               ),
               EtaWidget(
                 text: 'Set Value',
-                onPressed: () {},
+                onPressed: () async {
+                  final resp = await showDialog(
+                      context: context,
+                      builder: (context) => const CalendarDialog());
+                  textEditingController.text += resp;
+                },
               ),
             ],
           ),
@@ -56,7 +73,8 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
             children: [
               Expanded(
                 child: CustomTextField(
-                  controller: messageController,
+                  keyboardType: TextInputType.text,
+                  controller: textEditingController,
                   height: 45,
                   borderRadius: 20,
                 ),
@@ -66,10 +84,8 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                 iconColor: theme.scaffoldBackgroundColor,
                 icon: 'send',
                 onPressed: () {
-                  // context.read<ChatDetailBloc>().add(MessageListEvent.sendMessage(
-                  //       message: messageController.text.trim(),
-                  //     ));
-                  messageController.clear();
+                  textEditingController.clear();
+                  widget.onTextSend(textEditingController.text.trim());
                 },
               ),
             ],

@@ -32,12 +32,8 @@ mixin _$ChatDocument {
   @JsonKey(name: 'download_url')
   String? get downloadUrl => throw _privateConstructorUsedError;
 
-  /// Serializes this ChatDocument to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ChatDocument
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ChatDocumentCopyWith<ChatDocument> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,8 +64,6 @@ class _$ChatDocumentCopyWithImpl<$Res, $Val extends ChatDocument>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ChatDocument
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,8 +134,6 @@ class __$$ChatDocumentImplCopyWithImpl<$Res>
       _$ChatDocumentImpl _value, $Res Function(_$ChatDocumentImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ChatDocument
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -243,14 +235,12 @@ class _$ChatDocumentImpl implements _ChatDocument {
                 other.downloadUrl == downloadUrl));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, originalFilename,
       sizeInBytes, ext, thumbnailUrl, downloadUrl);
 
-  /// Create a copy of ChatDocument
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ChatDocumentImplCopyWith<_$ChatDocumentImpl> get copyWith =>
@@ -296,11 +286,8 @@ abstract class _ChatDocument implements ChatDocument {
   @override
   @JsonKey(name: 'download_url')
   String? get downloadUrl;
-
-  /// Create a copy of ChatDocument
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ChatDocumentImplCopyWith<_$ChatDocumentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

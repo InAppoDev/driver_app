@@ -2,10 +2,10 @@ part of 'chat_detail_bloc.dart';
 
 @freezed
 class ChatDetailState with _$ChatDetailState {
-  const factory ChatDetailState.initial() = _Initial;
-  const factory ChatDetailState.loading() = _Loading;
-  const factory ChatDetailState.loaded(ChatDetailModel chatDetails) = _Loaded;
-  const factory ChatDetailState.sendingMessage() = _SendingMessage;
-  const factory ChatDetailState.messageSent() = _MessageSent;
-  const factory ChatDetailState.failure(String errorMessage) = _Failure;
+  const factory ChatDetailState.initial() = Initial;
+  const factory ChatDetailState.loading() = Loading;
+  const factory ChatDetailState.loaded(ChatDetailModel chatDetails) = Loaded;
+  const factory ChatDetailState.sendingMessage() = SendingMessage;
+  const factory ChatDetailState.messageSent() = MessageSent;
+  const factory ChatDetailState.failure(String errorMessage) = Failure;
 }

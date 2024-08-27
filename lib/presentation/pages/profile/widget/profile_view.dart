@@ -29,8 +29,13 @@ class ProfileView extends StatelessWidget {
                     orElse: () => const SizedBox.shrink(),
                   ),
                   state.when(
-                    initial: () =>  Text(context.localizations.initializing),
-                    loading: () => const CircularProgressIndicator(),
+                    initial: () => Text(context.localizations.initializing),
+                    loading: () => const SizedBox(
+                      height: 300,
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
                     loaded: (user) => Container(),
                     error: (message) => Text('Error: $message'),
                   ),
