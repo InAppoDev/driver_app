@@ -7,18 +7,22 @@ import 'package:tms_driver/presentation/pages/active_trip/widget/selected_file_w
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class UploadScanFiles extends StatelessWidget {
-  const UploadScanFiles({
-    super.key,
-    required this.onUploadFile,
-    required this.onScanFile,
-    required this.selectedFiles,
-    required this.onFileRemove,
-  });
-
-  final VoidCallback onUploadFile;
+  final VoidCallback onAddFile;
   final VoidCallback onScanFile;
   final Function(File) onFileRemove;
-  final List<File> selectedFiles;
+  final File? selectedFile;
+  final VoidCallback onUploadPressed;
+  final bool isFileLoading;
+
+  const UploadScanFiles({
+    super.key,
+    required this.onAddFile,
+    required this.onScanFile,
+    required this.selectedFile,
+    required this.onFileRemove,
+    required this.onUploadPressed,
+    this.isFileLoading = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,20 +43,10 @@ class UploadScanFiles extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          if (selectedFiles.isNotEmpty) ...[
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ...selectedFiles.map(
-                    (file) => SelectedFileWidget(
-                      selectedFile: file,
-                      onFileRemove: onFileRemove,
-                    ),
-                  ),
-                ],
-              ),
+          if (selectedFile != null) ...[
+            SelectedFileWidget(
+              selectedFile: selectedFile!,
+              onFileRemove: onFileRemove,
             ),
             const SizedBox(height: 16),
           ],
@@ -60,7 +54,7 @@ class UploadScanFiles extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GestureDetector(
-                onTap: onUploadFile,
+                onTap: onAddFile,
                 child: Column(
                   children: [
                     Container(
@@ -120,7 +114,8 @@ class UploadScanFiles extends StatelessWidget {
           CustomButton(
             height: 36,
             label: context.localizations.upload,
-            onPressed: () {},
+            onPressed: onUploadPressed,
+            isLoading: isFileLoading,
           ),
         ],
       ),

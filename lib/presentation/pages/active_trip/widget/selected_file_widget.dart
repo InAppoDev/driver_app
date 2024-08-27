@@ -55,14 +55,14 @@ class SelectedFileWidget extends StatelessWidget {
                   style: theme.textTheme.bodySmall!.copyWith(fontSize: 8),
                 ),
                 const SizedBox(width: 15),
-                CustomIconButton(
-                  padding: EdgeInsets.zero,
-                  height: 13,
-                  icon: 'upload',
-                  onPressed: () {},
-                  justIcon: true,
-                  iconColor: theme.canvasColor,
-                ),
+                // CustomIconButton(
+                //   padding: EdgeInsets.zero,
+                //   height: 13,
+                //   icon: 'upload',
+                //   onPressed: () {},
+                //   justIcon: true,
+                //   iconColor: theme.canvasColor,
+                // ),
                 const SizedBox(width: 10),
                 CustomIconButton(
                   padding: EdgeInsets.zero,

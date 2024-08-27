@@ -15,7 +15,6 @@ class ActiveTripView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocListener<ActiveTripBloc, ActiveTripState>(
       listener: (context, listenerState) {},
       child: BlocBuilder<ActiveTripBloc, ActiveTripState>(
@@ -28,7 +27,7 @@ class ActiveTripView extends StatelessWidget {
                   children: [
                     ActiveTripData(onPressed: () {}, trip: trip),
                     const SizedBox(height: 11),
-                     ActiveTripInfo(trip: trip),
+                    ActiveTripInfo(trip: trip),
                     const SizedBox(height: 11),
                     CalendarPicker(
                       onCalendarResponse: (resp) {
@@ -39,7 +38,7 @@ class ActiveTripView extends StatelessWidget {
                     ),
                     const SizedBox(height: 11),
                     UploadScanFiles(
-                      onUploadFile: () {
+                      onAddFile: () {
                         context
                             .read<ActiveTripBloc>()
                             .add(const ActiveTripEvent.pickFile());
@@ -49,12 +48,18 @@ class ActiveTripView extends StatelessWidget {
                             .read<ActiveTripBloc>()
                             .add(const ActiveTripEvent.pickImage());
                       },
-                      selectedFiles: state.selectedFiles,
+                      selectedFile: state.selectedFile,
                       onFileRemove: (file) {
                         context
                             .read<ActiveTripBloc>()
                             .add(ActiveTripEvent.removeFile(file: file));
                       },
+                      onUploadPressed: () {
+                        context
+                            .read<ActiveTripBloc>()
+                            .add(const ActiveTripEvent.uploadFiles());
+                      },
+                      isFileLoading: state.isFileLoading,
                     ),
                     const SizedBox(height: 30),
                   ],

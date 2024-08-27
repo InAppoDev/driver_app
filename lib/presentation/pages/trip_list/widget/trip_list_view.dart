@@ -16,7 +16,10 @@ class TripListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<TripBloc, TripState>(
-      listener: (context, listenerState) {},
+      listener: (context, listenerState) {
+        if (listenerState.tabStatus == TabStatus.activeTrip &&
+            listenerState.trip != null) {}
+      },
       child: BlocBuilder<TripBloc, TripState>(
         builder: (context, state) {
           return Padding(
@@ -26,9 +29,9 @@ class TripListView extends StatelessWidget {
                 Tabs(
                   status: state.tabStatus,
                   onPressed: (status) {
-                    context
-                        .read<TripBloc>()
-                        .add(TripEvent.changeTab(status: status));
+                    context.read<TripBloc>().add(
+                          TripEvent.changeTab(status: status),
+                        );
                   },
                 ),
                 if (state.tabStatus == TabStatus.newTrips)

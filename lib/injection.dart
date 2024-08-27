@@ -11,9 +11,11 @@ import 'package:tms_driver/domain/repositories/auth_repository.dart';
 import 'package:tms_driver/domain/repositories/impl/auth_repository_impl.dart';
 import 'package:tms_driver/domain/repositories/impl/messages_repositpry_impl.dart';
 import 'package:tms_driver/domain/repositories/impl/tracking_repository_impl.dart';
+import 'package:tms_driver/domain/repositories/impl/trip_repository_impl.dart';
 import 'package:tms_driver/domain/repositories/impl/user_repository_impl.dart';
 import 'package:tms_driver/domain/repositories/messages_repository.dart';
 import 'package:tms_driver/domain/repositories/tracking_repository.dart';
+import 'package:tms_driver/domain/repositories/trip_repository.dart';
 import 'package:tms_driver/domain/repositories/user_repository.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler_impl.dart';
@@ -49,6 +51,11 @@ Future<void> initApp() async {
 
   GetIt.instance.registerSingleton<UserRepository>(
     UserRepositoryImpl(
+      apiDataSource: apiDataSource,
+    ),
+  );
+  GetIt.instance.registerSingleton<TripRepository>(
+    TripRepositoryImpl(
       apiDataSource: apiDataSource,
     ),
   );
