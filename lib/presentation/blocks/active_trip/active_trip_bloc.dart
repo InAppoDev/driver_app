@@ -66,10 +66,8 @@ class ActiveTripBloc extends Bloc<ActiveTripEvent, ActiveTripState> {
       final file = state.selectedFile!;
       log('Uploading file: ${file.path}');
 
-      final response =
-          await tripRepository.uploadDocument(file, file.path.split('/').last);
+      await tripRepository.uploadDocument(file, file.path.split('/').last);
 
-      // File uploaded successfully, remove it from the UI
       emit(state.copyWith(isFileLoading: false, selectedFile: null));
     } catch (e) {
       emit(state.copyWith(isFileLoading: false, errorMessage: e.toString()));
