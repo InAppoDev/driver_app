@@ -27,7 +27,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
 
   Future<void> _fetchChatDetails(
       _FetchChatDetails event, Emitter<ChatDetailState> emit) async {
-    emit(const ChatDetailState.loading());
+    // emit(const ChatDetailState.loading());
     try {
       final chatDetails = await messagesRepository.getChatDetails(event.chatId);
       emit(ChatDetailState.loaded(chatDetails));
@@ -38,10 +38,9 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
 
   Future<void> _sendMessage(
       _SendMessage event, Emitter<ChatDetailState> emit) async {
-    emit(const ChatDetailState.sendingMessage());
     try {
       await messagesRepository.sendMessage(chatId, event.messageContent);
-      emit(const ChatDetailState.messageSent());
+      emit(ChatDetailState.loaded(event.chatDetails));
       add(ChatDetailEvent.fetchChatDetails(chatId));
     } catch (e) {
       emit(ChatDetailState.failure(e.toString()));

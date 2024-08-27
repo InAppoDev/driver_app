@@ -19,7 +19,7 @@ class CustomTextField extends StatelessWidget {
     this.borderRadius = 8,
     this.maxLength,
     this.height = 60,
-    this.keyboardType,
+    this.keyboardType = TextInputType.phone,
   });
 
   @override
@@ -34,7 +34,7 @@ class CustomTextField extends StatelessWidget {
         onChanged: onChanged,
         controller: controller,
         style: theme.textTheme.labelMedium,
-        keyboardType: TextInputType.phone,
+        keyboardType: keyboardType,
         decoration: InputDecoration(
           isDense: true,
           counterText: '',

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
+import 'package:tms_driver/presentation/blocks/chat_detail/bloc/chat_detail_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/customs/custom_text_field.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
 
 class ChatBottomInput extends StatefulWidget {
-  const ChatBottomInput({super.key});
+  const ChatBottomInput({super.key, required this.chatDetail});
+
+  final ChatDetailModel chatDetail;
 
   @override
   State<ChatBottomInput> createState() => _ChatBottomInputState();
@@ -56,6 +61,7 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
             children: [
               Expanded(
                 child: CustomTextField(
+                  keyboardType: TextInputType.text,
                   controller: messageController,
                   height: 45,
                   borderRadius: 20,
@@ -66,9 +72,12 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                 iconColor: theme.scaffoldBackgroundColor,
                 icon: 'send',
                 onPressed: () {
-                  // context.read<ChatDetailBloc>().add(MessageListEvent.sendMessage(
-                  //       message: messageController.text.trim(),
-                  //     ));
+                  context.read<ChatDetailBloc>().add(
+                        ChatDetailEvent.sendMessage(
+                          messageController.text.trim(),
+                          widget.chatDetail,
+                        ),
+                      );
                   messageController.clear();
                 },
               ),

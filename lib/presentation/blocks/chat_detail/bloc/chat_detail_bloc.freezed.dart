@@ -18,21 +18,25 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChatDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String messageContent) sendMessage,
+    required TResult Function(
+            String messageContent, ChatDetailModel chatDetails)
+        sendMessage,
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String messageContent)? sendMessage,
+    TResult? Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String messageContent)? sendMessage,
+    TResult Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     required TResult orElse(),
@@ -78,9 +82,6 @@ class _$ChatDetailEventCopyWithImpl<$Res, $Val extends ChatDetailEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ChatDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -89,7 +90,9 @@ abstract class _$$SendMessageImplCopyWith<$Res> {
           _$SendMessageImpl value, $Res Function(_$SendMessageImpl) then) =
       __$$SendMessageImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String messageContent});
+  $Res call({String messageContent, ChatDetailModel chatDetails});
+
+  $ChatDetailModelCopyWith<$Res> get chatDetails;
 }
 
 /// @nodoc
@@ -100,33 +103,46 @@ class __$$SendMessageImplCopyWithImpl<$Res>
       _$SendMessageImpl _value, $Res Function(_$SendMessageImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ChatDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? messageContent = null,
+    Object? chatDetails = null,
   }) {
     return _then(_$SendMessageImpl(
       null == messageContent
           ? _value.messageContent
           : messageContent // ignore: cast_nullable_to_non_nullable
               as String,
+      null == chatDetails
+          ? _value.chatDetails
+          : chatDetails // ignore: cast_nullable_to_non_nullable
+              as ChatDetailModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ChatDetailModelCopyWith<$Res> get chatDetails {
+    return $ChatDetailModelCopyWith<$Res>(_value.chatDetails, (value) {
+      return _then(_value.copyWith(chatDetails: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$SendMessageImpl implements _SendMessage {
-  const _$SendMessageImpl(this.messageContent);
+  const _$SendMessageImpl(this.messageContent, this.chatDetails);
 
   @override
   final String messageContent;
+  @override
+  final ChatDetailModel chatDetails;
 
   @override
   String toString() {
-    return 'ChatDetailEvent.sendMessage(messageContent: $messageContent)';
+    return 'ChatDetailEvent.sendMessage(messageContent: $messageContent, chatDetails: $chatDetails)';
   }
 
   @override
@@ -135,15 +151,15 @@ class _$SendMessageImpl implements _SendMessage {
         (other.runtimeType == runtimeType &&
             other is _$SendMessageImpl &&
             (identical(other.messageContent, messageContent) ||
-                other.messageContent == messageContent));
+                other.messageContent == messageContent) &&
+            (identical(other.chatDetails, chatDetails) ||
+                other.chatDetails == chatDetails));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, messageContent);
+  int get hashCode => Object.hash(runtimeType, messageContent, chatDetails);
 
-  /// Create a copy of ChatDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
@@ -152,33 +168,37 @@ class _$SendMessageImpl implements _SendMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String messageContent) sendMessage,
+    required TResult Function(
+            String messageContent, ChatDetailModel chatDetails)
+        sendMessage,
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
   }) {
-    return sendMessage(messageContent);
+    return sendMessage(messageContent, chatDetails);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String messageContent)? sendMessage,
+    TResult? Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
   }) {
-    return sendMessage?.call(messageContent);
+    return sendMessage?.call(messageContent, chatDetails);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String messageContent)? sendMessage,
+    TResult Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
-      return sendMessage(messageContent);
+      return sendMessage(messageContent, chatDetails);
     }
     return orElse();
   }
@@ -219,13 +239,13 @@ class _$SendMessageImpl implements _SendMessage {
 }
 
 abstract class _SendMessage implements ChatDetailEvent {
-  const factory _SendMessage(final String messageContent) = _$SendMessageImpl;
+  const factory _SendMessage(
+          final String messageContent, final ChatDetailModel chatDetails) =
+      _$SendMessageImpl;
 
   String get messageContent;
-
-  /// Create a copy of ChatDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  ChatDetailModel get chatDetails;
+  @JsonKey(ignore: true)
   _$$SendMessageImplCopyWith<_$SendMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -247,8 +267,6 @@ class __$$FetchChatDetailsImplCopyWithImpl<$Res>
       $Res Function(_$FetchChatDetailsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ChatDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -287,9 +305,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
   @override
   int get hashCode => Object.hash(runtimeType, chatId);
 
-  /// Create a copy of ChatDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FetchChatDetailsImplCopyWith<_$FetchChatDetailsImpl> get copyWith =>
@@ -299,7 +315,9 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String messageContent) sendMessage,
+    required TResult Function(
+            String messageContent, ChatDetailModel chatDetails)
+        sendMessage,
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
   }) {
@@ -309,7 +327,8 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String messageContent)? sendMessage,
+    TResult? Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
   }) {
@@ -319,7 +338,8 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String messageContent)? sendMessage,
+    TResult Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     required TResult orElse(),
@@ -369,10 +389,7 @@ abstract class _FetchChatDetails implements ChatDetailEvent {
   const factory _FetchChatDetails(final int chatId) = _$FetchChatDetailsImpl;
 
   int get chatId;
-
-  /// Create a copy of ChatDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FetchChatDetailsImplCopyWith<_$FetchChatDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -396,8 +413,6 @@ class __$$ReceiveNewMessageImplCopyWithImpl<$Res>
       $Res Function(_$ReceiveNewMessageImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ChatDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -411,8 +426,6 @@ class __$$ReceiveNewMessageImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of ChatDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MessageModelCopyWith<$Res> get newMessage {
@@ -447,9 +460,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
   @override
   int get hashCode => Object.hash(runtimeType, newMessage);
 
-  /// Create a copy of ChatDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ReceiveNewMessageImplCopyWith<_$ReceiveNewMessageImpl> get copyWith =>
@@ -459,7 +470,9 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String messageContent) sendMessage,
+    required TResult Function(
+            String messageContent, ChatDetailModel chatDetails)
+        sendMessage,
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
   }) {
@@ -469,7 +482,8 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String messageContent)? sendMessage,
+    TResult? Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
   }) {
@@ -479,7 +493,8 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String messageContent)? sendMessage,
+    TResult Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     required TResult orElse(),
@@ -530,10 +545,7 @@ abstract class _ReceiveNewMessage implements ChatDetailEvent {
       _$ReceiveNewMessageImpl;
 
   MessageModel get newMessage;
-
-  /// Create a copy of ChatDetailEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ReceiveNewMessageImplCopyWith<_$ReceiveNewMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -573,32 +585,32 @@ mixin _$ChatDetailState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_SendingMessage value) sendingMessage,
-    required TResult Function(_MessageSent value) messageSent,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(SendingMessage value) sendingMessage,
+    required TResult Function(MessageSent value) messageSent,
+    required TResult Function(Failure value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_SendingMessage value)? sendingMessage,
-    TResult? Function(_MessageSent value)? messageSent,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(SendingMessage value)? sendingMessage,
+    TResult? Function(MessageSent value)? messageSent,
+    TResult? Function(Failure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_SendingMessage value)? sendingMessage,
-    TResult Function(_MessageSent value)? messageSent,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(SendingMessage value)? sendingMessage,
+    TResult Function(MessageSent value)? messageSent,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -620,9 +632,6 @@ class _$ChatDetailStateCopyWithImpl<$Res, $Val extends ChatDetailState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ChatDetailState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -639,14 +648,11 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of ChatDetailState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
+class _$InitialImpl implements Initial {
   const _$InitialImpl();
 
   @override
@@ -709,12 +715,12 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_SendingMessage value) sendingMessage,
-    required TResult Function(_MessageSent value) messageSent,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(SendingMessage value) sendingMessage,
+    required TResult Function(MessageSent value) messageSent,
+    required TResult Function(Failure value) failure,
   }) {
     return initial(this);
   }
@@ -722,12 +728,12 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_SendingMessage value)? sendingMessage,
-    TResult? Function(_MessageSent value)? messageSent,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(SendingMessage value)? sendingMessage,
+    TResult? Function(MessageSent value)? messageSent,
+    TResult? Function(Failure value)? failure,
   }) {
     return initial?.call(this);
   }
@@ -735,12 +741,12 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_SendingMessage value)? sendingMessage,
-    TResult Function(_MessageSent value)? messageSent,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(SendingMessage value)? sendingMessage,
+    TResult Function(MessageSent value)? messageSent,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -750,8 +756,8 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements ChatDetailState {
-  const factory _Initial() = _$InitialImpl;
+abstract class Initial implements ChatDetailState {
+  const factory Initial() = _$InitialImpl;
 }
 
 /// @nodoc
@@ -768,14 +774,11 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of ChatDetailState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
+class _$LoadingImpl implements Loading {
   const _$LoadingImpl();
 
   @override
@@ -838,12 +841,12 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_SendingMessage value) sendingMessage,
-    required TResult Function(_MessageSent value) messageSent,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(SendingMessage value) sendingMessage,
+    required TResult Function(MessageSent value) messageSent,
+    required TResult Function(Failure value) failure,
   }) {
     return loading(this);
   }
@@ -851,12 +854,12 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_SendingMessage value)? sendingMessage,
-    TResult? Function(_MessageSent value)? messageSent,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(SendingMessage value)? sendingMessage,
+    TResult? Function(MessageSent value)? messageSent,
+    TResult? Function(Failure value)? failure,
   }) {
     return loading?.call(this);
   }
@@ -864,12 +867,12 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_SendingMessage value)? sendingMessage,
-    TResult Function(_MessageSent value)? messageSent,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(SendingMessage value)? sendingMessage,
+    TResult Function(MessageSent value)? messageSent,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -879,8 +882,8 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements ChatDetailState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class Loading implements ChatDetailState {
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -902,8 +905,6 @@ class __$$LoadedImplCopyWithImpl<$Res>
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ChatDetailState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -917,8 +918,6 @@ class __$$LoadedImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of ChatDetailState
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ChatDetailModelCopyWith<$Res> get chatDetails {
@@ -930,7 +929,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadedImpl implements _Loaded {
+class _$LoadedImpl implements Loaded {
   const _$LoadedImpl(this.chatDetails);
 
   @override
@@ -953,9 +952,7 @@ class _$LoadedImpl implements _Loaded {
   @override
   int get hashCode => Object.hash(runtimeType, chatDetails);
 
-  /// Create a copy of ChatDetailState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
@@ -1007,12 +1004,12 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_SendingMessage value) sendingMessage,
-    required TResult Function(_MessageSent value) messageSent,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(SendingMessage value) sendingMessage,
+    required TResult Function(MessageSent value) messageSent,
+    required TResult Function(Failure value) failure,
   }) {
     return loaded(this);
   }
@@ -1020,12 +1017,12 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_SendingMessage value)? sendingMessage,
-    TResult? Function(_MessageSent value)? messageSent,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(SendingMessage value)? sendingMessage,
+    TResult? Function(MessageSent value)? messageSent,
+    TResult? Function(Failure value)? failure,
   }) {
     return loaded?.call(this);
   }
@@ -1033,12 +1030,12 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_SendingMessage value)? sendingMessage,
-    TResult Function(_MessageSent value)? messageSent,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(SendingMessage value)? sendingMessage,
+    TResult Function(MessageSent value)? messageSent,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1048,14 +1045,11 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements ChatDetailState {
-  const factory _Loaded(final ChatDetailModel chatDetails) = _$LoadedImpl;
+abstract class Loaded implements ChatDetailState {
+  const factory Loaded(final ChatDetailModel chatDetails) = _$LoadedImpl;
 
   ChatDetailModel get chatDetails;
-
-  /// Create a copy of ChatDetailState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1074,14 +1068,11 @@ class __$$SendingMessageImplCopyWithImpl<$Res>
   __$$SendingMessageImplCopyWithImpl(
       _$SendingMessageImpl _value, $Res Function(_$SendingMessageImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of ChatDetailState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$SendingMessageImpl implements _SendingMessage {
+class _$SendingMessageImpl implements SendingMessage {
   const _$SendingMessageImpl();
 
   @override
@@ -1144,12 +1135,12 @@ class _$SendingMessageImpl implements _SendingMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_SendingMessage value) sendingMessage,
-    required TResult Function(_MessageSent value) messageSent,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(SendingMessage value) sendingMessage,
+    required TResult Function(MessageSent value) messageSent,
+    required TResult Function(Failure value) failure,
   }) {
     return sendingMessage(this);
   }
@@ -1157,12 +1148,12 @@ class _$SendingMessageImpl implements _SendingMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_SendingMessage value)? sendingMessage,
-    TResult? Function(_MessageSent value)? messageSent,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(SendingMessage value)? sendingMessage,
+    TResult? Function(MessageSent value)? messageSent,
+    TResult? Function(Failure value)? failure,
   }) {
     return sendingMessage?.call(this);
   }
@@ -1170,12 +1161,12 @@ class _$SendingMessageImpl implements _SendingMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_SendingMessage value)? sendingMessage,
-    TResult Function(_MessageSent value)? messageSent,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(SendingMessage value)? sendingMessage,
+    TResult Function(MessageSent value)? messageSent,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (sendingMessage != null) {
@@ -1185,8 +1176,8 @@ class _$SendingMessageImpl implements _SendingMessage {
   }
 }
 
-abstract class _SendingMessage implements ChatDetailState {
-  const factory _SendingMessage() = _$SendingMessageImpl;
+abstract class SendingMessage implements ChatDetailState {
+  const factory SendingMessage() = _$SendingMessageImpl;
 }
 
 /// @nodoc
@@ -1203,14 +1194,11 @@ class __$$MessageSentImplCopyWithImpl<$Res>
   __$$MessageSentImplCopyWithImpl(
       _$MessageSentImpl _value, $Res Function(_$MessageSentImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of ChatDetailState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$MessageSentImpl implements _MessageSent {
+class _$MessageSentImpl implements MessageSent {
   const _$MessageSentImpl();
 
   @override
@@ -1273,12 +1261,12 @@ class _$MessageSentImpl implements _MessageSent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_SendingMessage value) sendingMessage,
-    required TResult Function(_MessageSent value) messageSent,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(SendingMessage value) sendingMessage,
+    required TResult Function(MessageSent value) messageSent,
+    required TResult Function(Failure value) failure,
   }) {
     return messageSent(this);
   }
@@ -1286,12 +1274,12 @@ class _$MessageSentImpl implements _MessageSent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_SendingMessage value)? sendingMessage,
-    TResult? Function(_MessageSent value)? messageSent,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(SendingMessage value)? sendingMessage,
+    TResult? Function(MessageSent value)? messageSent,
+    TResult? Function(Failure value)? failure,
   }) {
     return messageSent?.call(this);
   }
@@ -1299,12 +1287,12 @@ class _$MessageSentImpl implements _MessageSent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_SendingMessage value)? sendingMessage,
-    TResult Function(_MessageSent value)? messageSent,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(SendingMessage value)? sendingMessage,
+    TResult Function(MessageSent value)? messageSent,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (messageSent != null) {
@@ -1314,8 +1302,8 @@ class _$MessageSentImpl implements _MessageSent {
   }
 }
 
-abstract class _MessageSent implements ChatDetailState {
-  const factory _MessageSent() = _$MessageSentImpl;
+abstract class MessageSent implements ChatDetailState {
+  const factory MessageSent() = _$MessageSentImpl;
 }
 
 /// @nodoc
@@ -1335,8 +1323,6 @@ class __$$FailureImplCopyWithImpl<$Res>
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ChatDetailState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1353,7 +1339,7 @@ class __$$FailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailureImpl implements _Failure {
+class _$FailureImpl implements Failure {
   const _$FailureImpl(this.errorMessage);
 
   @override
@@ -1376,9 +1362,7 @@ class _$FailureImpl implements _Failure {
   @override
   int get hashCode => Object.hash(runtimeType, errorMessage);
 
-  /// Create a copy of ChatDetailState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
@@ -1430,12 +1414,12 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_SendingMessage value) sendingMessage,
-    required TResult Function(_MessageSent value) messageSent,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(SendingMessage value) sendingMessage,
+    required TResult Function(MessageSent value) messageSent,
+    required TResult Function(Failure value) failure,
   }) {
     return failure(this);
   }
@@ -1443,12 +1427,12 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_SendingMessage value)? sendingMessage,
-    TResult? Function(_MessageSent value)? messageSent,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(SendingMessage value)? sendingMessage,
+    TResult? Function(MessageSent value)? messageSent,
+    TResult? Function(Failure value)? failure,
   }) {
     return failure?.call(this);
   }
@@ -1456,12 +1440,12 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_SendingMessage value)? sendingMessage,
-    TResult Function(_MessageSent value)? messageSent,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(SendingMessage value)? sendingMessage,
+    TResult Function(MessageSent value)? messageSent,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -1471,14 +1455,11 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements ChatDetailState {
-  const factory _Failure(final String errorMessage) = _$FailureImpl;
+abstract class Failure implements ChatDetailState {
+  const factory Failure(final String errorMessage) = _$FailureImpl;
 
   String get errorMessage;
-
-  /// Create a copy of ChatDetailState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,50 +12,48 @@ class ChatListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ChatDetailBloc, ChatDetailState>(
       builder: (context, state) {
-        return state.when(
-          initial: () => const Center(child: CircularProgressIndicator()),
-          loading: () => const Center(child: CircularProgressIndicator()),
-          loaded: (chatDetails) {
-            final messages = chatDetails.messages;
-            return Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 40),
-                      ChatBarInfo(chatDetails: chatDetails),
-                      Expanded(
-                        child: ListView.builder(
-                          padding: const EdgeInsets.only(top: 18, bottom: 45),
-                          itemCount: messages.length,
-                          itemBuilder: (context, index) => ChatListItemWidget(
-                            messageModel: messages[index],
-                          ),
-                        ),
-                      ),
-                    ],
+        if (state is Initial || state is Loading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (state is Loaded) {
+          final chatDetails = (state as dynamic).chatDetails;
+          final messages = chatDetails.messages;
+          return Column(
+            children: [
+              const SizedBox(height: 15),
+              ChatBarInfo(chatDetails: chatDetails),
+              const SizedBox(height: 14),
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 12),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      topRight: Radius.circular(8),
+                    ),
+                  ),
+                  child: ListView.builder(
+                    itemCount: messages.length,
+                    itemBuilder: (context, index) => ChatListItemWidget(
+                      messageModel: messages[index],
+                    ),
                   ),
                 ),
-                const Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  child: ChatBottomInput(),
-                ),
-              ],
-            );
-          },
-          failure: (errorMessage) => Center(
+              ),
+              ChatBottomInput(chatDetail: chatDetails),
+            ],
+          );
+        }
+        if (state is Failure) {
+          return Center(
             child: Text(
-              errorMessage,
+              state.errorMessage,
               style: const TextStyle(color: Colors.red),
             ),
-          ),
-          sendingMessage: () =>
-              const Center(child: CircularProgressIndicator()),
-          messageSent: () => const SizedBox.shrink(),
-        );
+          );
+        }
+        return const SizedBox.shrink();
       },
     );
   }
