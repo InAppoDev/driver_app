@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_image.dart';
 
-class ChatBatInfo extends StatelessWidget {
-  const ChatBatInfo({super.key});
+class ChatBarInfo extends StatelessWidget {
+  const ChatBarInfo({super.key, required this.chatDetails});
+
+  final ChatDetailModel chatDetails;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Row(
         children: [
           Expanded(
@@ -22,17 +25,13 @@ class ChatBatInfo extends StatelessWidget {
                     context.pop();
                   },
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: ChatImage(
                     margin: 1,
                     borderRadius: 5,
-                    mainImage: 'assets/images/temp_chat_image.jpeg',
-                    images: [
-                      'assets/images/temp_chat_image.jpeg',
-                      'assets/images/temp_chat_image.jpeg',
-                      'assets/images/temp_chat_image.jpeg'
-                    ],
+                    mainImage: chatDetails.photoUrl,
+                    participants: chatDetails.participants,
                   ),
                 ),
                 const Flexible(
@@ -45,7 +44,10 @@ class ChatBatInfo extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(width: 10),
+          if (chatDetails.actionButtonType == 'call' &&
+              chatDetails.actionButtonValue != null &&
+              chatDetails.actionButtonValue!.isNotEmpty)
+            const SizedBox(width: 10),
           CustomIconButton(
             borderColor: Theme.of(context).indicatorColor.withOpacity(0.2),
             transparency: 0.2,

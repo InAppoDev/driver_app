@@ -196,7 +196,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           child: ElevatedButton(
                             onPressed: isChecked ? widget.onCompleted : null,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Theme.of(context).primaryColor,
+                              backgroundColor: theme.primaryColor,
+                              disabledBackgroundColor: theme.hintColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),

@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:background_fetch/background_fetch.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class MyLocationService {
   late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
@@ -36,16 +35,16 @@ class MyLocationService {
   }
 
 
-  Future<bool> _requestPermissions() async {
-    var status = await Permission.location.status;
-    if (status.isGranted) {
-      return true;
-    } else if (status.isDenied || status.isPermanentlyDenied) {
-      var result = await Permission.location.request();
-      return result.isGranted;
-    }
-    return false;
-  }
+  // Future<bool> _requestPermissions() async {
+  //   var status = await Permission.location.status;
+  //   if (status.isGranted) {
+  //     return true;
+  //   } else if (status.isDenied || status.isPermanentlyDenied) {
+  //     var result = await Permission.location.request();
+  //     return result.isGranted;
+  //   }
+  //   return false;
+  // }
 
   void _showNotification(String location) async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
@@ -106,12 +105,6 @@ class MyLocationService {
   }
 
   void startTracking() async {
-    // Check and request permissions
-    bool hasPermission = await _requestPermissions();
-    if (!hasPermission) {
-      print('User denied permissions to access the device\'s location.');
-      return;
-    }
 
     // Background task every 15 minutes
     print('BackgroundFetch startTracking');
@@ -140,11 +133,6 @@ class MyLocationService {
     // Timer for active mode every 15 minutes
     _timer = Timer.periodic(const Duration(minutes: 15), (timer) async {
       print('Timer event received');
-      bool hasPermission = await _requestPermissions();
-      if (!hasPermission) {
-        print('User denied permissions to access the device\'s location.');
-        return;
-      }
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
       _sendLocation(position);

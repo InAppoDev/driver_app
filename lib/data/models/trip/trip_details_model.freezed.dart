@@ -24,12 +24,8 @@ mixin _$TripDetailsModel {
   String? get address => throw _privateConstructorUsedError;
   String? get data => throw _privateConstructorUsedError;
 
-  /// Serializes this TripDetailsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of TripDetailsModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $TripDetailsModelCopyWith<TripDetailsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,8 +49,6 @@ class _$TripDetailsModelCopyWithImpl<$Res, $Val extends TripDetailsModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TripDetailsModel
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,8 +92,6 @@ class __$$TripDetailsModelImplCopyWithImpl<$Res>
       $Res Function(_$TripDetailsModelImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TripDetailsModel
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,13 +146,11 @@ class _$TripDetailsModelImpl implements _TripDetailsModel {
             (identical(other.data, data) || other.data == data));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, address, data);
 
-  /// Create a copy of TripDetailsModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$TripDetailsModelImplCopyWith<_$TripDetailsModelImpl> get copyWith =>
@@ -190,11 +180,8 @@ abstract class _TripDetailsModel implements TripDetailsModel {
   String? get address;
   @override
   String? get data;
-
-  /// Create a copy of TripDetailsModel
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$TripDetailsModelImplCopyWith<_$TripDetailsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

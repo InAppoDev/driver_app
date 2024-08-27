@@ -20,6 +20,7 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     final theme = Theme.of(context);
     // _usernameController.text = '9993335111'; // Val
     _usernameController.text = '9991451655'; // Max
@@ -52,7 +53,7 @@ class LoginView extends StatelessWidget {
                   ClipPath(
                     clipper: CustomShape(),
                     child: Container(
-                      height: 230,
+                      height: height * 0.326,
                       width: double.infinity,
                       color: theme.scaffoldBackgroundColor,
                       child: Column(
