@@ -65,11 +65,14 @@ class MessageListItemWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        chat.lastMessage?.previewText ?? '',
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
+                      Expanded(
+                        child: Text(
+                          chat.lastMessage?.previewText ?? '',
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                          ),
                         ),
                       ),
                       if (chat.unreadMessagesCount != null &&
