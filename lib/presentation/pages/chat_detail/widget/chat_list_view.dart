@@ -16,7 +16,7 @@ class ChatListView extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
         if (state is Loaded) {
-          final chatDetails = (state as dynamic).chatDetails;
+          final chatDetails = state.chatDetails;
           final messages = chatDetails.messages;
           return Column(
             children: [
@@ -41,7 +41,16 @@ class ChatListView extends StatelessWidget {
                   ),
                 ),
               ),
-              ChatBottomInput(chatDetail: chatDetails),
+              ChatBottomInput(
+                onTextSend: (value) {
+                  context.read<ChatDetailBloc>().add(
+                        ChatDetailEvent.sendMessage(
+                          value,
+                          chatDetails,
+                        ),
+                      );
+                },
+              ),
             ],
           );
         }
