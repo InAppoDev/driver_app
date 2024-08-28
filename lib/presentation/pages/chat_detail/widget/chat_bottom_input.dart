@@ -73,7 +73,7 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
             children: [
               Expanded(
                 child: CustomTextField(
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.multiline,
                   controller: textEditingController,
                   height: 45,
                   borderRadius: 20,
