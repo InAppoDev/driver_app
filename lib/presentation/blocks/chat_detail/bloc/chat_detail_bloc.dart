@@ -1,4 +1,6 @@
+import 'package:downloadsfolder/downloadsfolder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
@@ -21,6 +23,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
         sendMessage: (e) async => _sendMessage(e, emit),
         fetchChatDetails: (e) async => _fetchChatDetails(e, emit),
         receiveNewMessage: (e) async => _receiveNewMessage(e, emit),
+        downloadFile: (e) async => _downLoadFile(e, emit),
       );
     });
   }
@@ -35,11 +38,37 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
     }
   }
 
+  Future<void> _downLoadFile(
+      _DownloadFile event, Emitter<ChatDetailState> emit) async {
+    try {
+      final downloadDirectory = await getDownloadDirectory();
+      await FlutterDownloader.enqueue(
+        url: event.url,
+        savedDir: downloadDirectory.path,
+        fileName: event.fileName,
+        showNotification: true,
+        openFileFromNotification: true,
+      );
+    } catch (e) {
+      print("Error downloading file: $e");
+    }
+  }
+
   Future<void> _sendMessage(
       _SendMessage event, Emitter<ChatDetailState> emit) async {
     try {
+      final List<MessageModel> messages = [];
+      messages.addAll(event.chatDetails.messages);
+      messages.add(MessageModel(
+        id: messages.first.id,
+        sender: messages.first.sender,
+        content: event.messageContent,
+        sentAt: DateTime.now().millisecondsSinceEpoch,
+      ));
+      final chatDetails = event.chatDetails.copyWith(messages: messages);
       await messagesRepository.sendMessage(chatId, event.messageContent);
-      emit(ChatDetailState.loaded(event.chatDetails));
+
+      emit(ChatDetailState.loaded(chatDetails));
       add(ChatDetailEvent.fetchChatDetails(chatId));
     } catch (e) {
       emit(ChatDetailState.failure(e.toString()));

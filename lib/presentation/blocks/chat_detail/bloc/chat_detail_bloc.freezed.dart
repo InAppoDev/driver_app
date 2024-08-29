@@ -23,6 +23,7 @@ mixin _$ChatDetailEvent {
         sendMessage,
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
+    required TResult Function(String url, String fileName) downloadFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,6 +32,7 @@ mixin _$ChatDetailEvent {
         sendMessage,
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
+    TResult? Function(String url, String fileName)? downloadFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +41,7 @@ mixin _$ChatDetailEvent {
         sendMessage,
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
+    TResult Function(String url, String fileName)? downloadFile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$ChatDetailEvent {
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_FetchChatDetails value) fetchChatDetails,
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
+    required TResult Function(_DownloadFile value) downloadFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +58,7 @@ mixin _$ChatDetailEvent {
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_FetchChatDetails value)? fetchChatDetails,
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult? Function(_DownloadFile value)? downloadFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +66,7 @@ mixin _$ChatDetailEvent {
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_FetchChatDetails value)? fetchChatDetails,
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult Function(_DownloadFile value)? downloadFile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -182,6 +188,7 @@ class _$SendMessageImpl implements _SendMessage {
         sendMessage,
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
+    required TResult Function(String url, String fileName) downloadFile,
   }) {
     return sendMessage(messageContent, chatDetails);
   }
@@ -193,6 +200,7 @@ class _$SendMessageImpl implements _SendMessage {
         sendMessage,
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
+    TResult? Function(String url, String fileName)? downloadFile,
   }) {
     return sendMessage?.call(messageContent, chatDetails);
   }
@@ -204,6 +212,7 @@ class _$SendMessageImpl implements _SendMessage {
         sendMessage,
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
+    TResult Function(String url, String fileName)? downloadFile,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -218,6 +227,7 @@ class _$SendMessageImpl implements _SendMessage {
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_FetchChatDetails value) fetchChatDetails,
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
+    required TResult Function(_DownloadFile value) downloadFile,
   }) {
     return sendMessage(this);
   }
@@ -228,6 +238,7 @@ class _$SendMessageImpl implements _SendMessage {
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_FetchChatDetails value)? fetchChatDetails,
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult? Function(_DownloadFile value)? downloadFile,
   }) {
     return sendMessage?.call(this);
   }
@@ -238,6 +249,7 @@ class _$SendMessageImpl implements _SendMessage {
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_FetchChatDetails value)? fetchChatDetails,
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult Function(_DownloadFile value)? downloadFile,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -336,6 +348,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
         sendMessage,
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
+    required TResult Function(String url, String fileName) downloadFile,
   }) {
     return fetchChatDetails(chatId);
   }
@@ -347,6 +360,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
         sendMessage,
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
+    TResult? Function(String url, String fileName)? downloadFile,
   }) {
     return fetchChatDetails?.call(chatId);
   }
@@ -358,6 +372,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
         sendMessage,
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
+    TResult Function(String url, String fileName)? downloadFile,
     required TResult orElse(),
   }) {
     if (fetchChatDetails != null) {
@@ -372,6 +387,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_FetchChatDetails value) fetchChatDetails,
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
+    required TResult Function(_DownloadFile value) downloadFile,
   }) {
     return fetchChatDetails(this);
   }
@@ -382,6 +398,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_FetchChatDetails value)? fetchChatDetails,
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult? Function(_DownloadFile value)? downloadFile,
   }) {
     return fetchChatDetails?.call(this);
   }
@@ -392,6 +409,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_FetchChatDetails value)? fetchChatDetails,
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult Function(_DownloadFile value)? downloadFile,
     required TResult orElse(),
   }) {
     if (fetchChatDetails != null) {
@@ -500,6 +518,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
         sendMessage,
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
+    required TResult Function(String url, String fileName) downloadFile,
   }) {
     return receiveNewMessage(newMessage);
   }
@@ -511,6 +530,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
         sendMessage,
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
+    TResult? Function(String url, String fileName)? downloadFile,
   }) {
     return receiveNewMessage?.call(newMessage);
   }
@@ -522,6 +542,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
         sendMessage,
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
+    TResult Function(String url, String fileName)? downloadFile,
     required TResult orElse(),
   }) {
     if (receiveNewMessage != null) {
@@ -536,6 +557,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     required TResult Function(_SendMessage value) sendMessage,
     required TResult Function(_FetchChatDetails value) fetchChatDetails,
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
+    required TResult Function(_DownloadFile value) downloadFile,
   }) {
     return receiveNewMessage(this);
   }
@@ -546,6 +568,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     TResult? Function(_SendMessage value)? sendMessage,
     TResult? Function(_FetchChatDetails value)? fetchChatDetails,
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult? Function(_DownloadFile value)? downloadFile,
   }) {
     return receiveNewMessage?.call(this);
   }
@@ -556,6 +579,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     TResult Function(_SendMessage value)? sendMessage,
     TResult Function(_FetchChatDetails value)? fetchChatDetails,
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult Function(_DownloadFile value)? downloadFile,
     required TResult orElse(),
   }) {
     if (receiveNewMessage != null) {
@@ -575,6 +599,166 @@ abstract class _ReceiveNewMessage implements ChatDetailEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReceiveNewMessageImplCopyWith<_$ReceiveNewMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DownloadFileImplCopyWith<$Res> {
+  factory _$$DownloadFileImplCopyWith(
+          _$DownloadFileImpl value, $Res Function(_$DownloadFileImpl) then) =
+      __$$DownloadFileImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String url, String fileName});
+}
+
+/// @nodoc
+class __$$DownloadFileImplCopyWithImpl<$Res>
+    extends _$ChatDetailEventCopyWithImpl<$Res, _$DownloadFileImpl>
+    implements _$$DownloadFileImplCopyWith<$Res> {
+  __$$DownloadFileImplCopyWithImpl(
+      _$DownloadFileImpl _value, $Res Function(_$DownloadFileImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? url = null,
+    Object? fileName = null,
+  }) {
+    return _then(_$DownloadFileImpl(
+      null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == fileName
+          ? _value.fileName
+          : fileName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DownloadFileImpl implements _DownloadFile {
+  const _$DownloadFileImpl(this.url, this.fileName);
+
+  @override
+  final String url;
+  @override
+  final String fileName;
+
+  @override
+  String toString() {
+    return 'ChatDetailEvent.downloadFile(url: $url, fileName: $fileName)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DownloadFileImpl &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.fileName, fileName) ||
+                other.fileName == fileName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, url, fileName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DownloadFileImplCopyWith<_$DownloadFileImpl> get copyWith =>
+      __$$DownloadFileImplCopyWithImpl<_$DownloadFileImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String messageContent, ChatDetailModel chatDetails)
+        sendMessage,
+    required TResult Function(int chatId) fetchChatDetails,
+    required TResult Function(MessageModel newMessage) receiveNewMessage,
+    required TResult Function(String url, String fileName) downloadFile,
+  }) {
+    return downloadFile(url, fileName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult? Function(int chatId)? fetchChatDetails,
+    TResult? Function(MessageModel newMessage)? receiveNewMessage,
+    TResult? Function(String url, String fileName)? downloadFile,
+  }) {
+    return downloadFile?.call(url, fileName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult Function(int chatId)? fetchChatDetails,
+    TResult Function(MessageModel newMessage)? receiveNewMessage,
+    TResult Function(String url, String fileName)? downloadFile,
+    required TResult orElse(),
+  }) {
+    if (downloadFile != null) {
+      return downloadFile(url, fileName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_FetchChatDetails value) fetchChatDetails,
+    required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
+    required TResult Function(_DownloadFile value) downloadFile,
+  }) {
+    return downloadFile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_FetchChatDetails value)? fetchChatDetails,
+    TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult? Function(_DownloadFile value)? downloadFile,
+  }) {
+    return downloadFile?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_FetchChatDetails value)? fetchChatDetails,
+    TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult Function(_DownloadFile value)? downloadFile,
+    required TResult orElse(),
+  }) {
+    if (downloadFile != null) {
+      return downloadFile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DownloadFile implements ChatDetailEvent {
+  const factory _DownloadFile(final String url, final String fileName) =
+      _$DownloadFileImpl;
+
+  String get url;
+  String get fileName;
+  @JsonKey(ignore: true)
+  _$$DownloadFileImplCopyWith<_$DownloadFileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

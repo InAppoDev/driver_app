@@ -73,7 +73,7 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
             children: [
               Expanded(
                 child: CustomTextField(
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.multiline,
                   controller: textEditingController,
                   height: 45,
                   borderRadius: 20,
@@ -84,8 +84,8 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                 iconColor: theme.scaffoldBackgroundColor,
                 icon: 'send',
                 onPressed: () {
-                  textEditingController.clear();
                   widget.onTextSend(textEditingController.text.trim());
+                  textEditingController.clear();
                 },
               ),
             ],
