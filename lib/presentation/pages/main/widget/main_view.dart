@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -111,6 +113,9 @@ class MainView extends StatelessWidget {
         context.watch<MainBloc>().state.selectedPage == MainPageEnum.profile;
     final color = isSelected ? theme.primaryColor : theme.shadowColor;
     final fontWeight = isSelected ? FontWeight.w600 : FontWeight.w400;
+    const localPhotoPath =
+        '/data/user/0/com.example.tms_driver/app_flutter/user_photo.jpg';
+    final localPhotoFile = File(localPhotoPath);
 
     return GestureDetector(
       onTap: () => context
@@ -138,24 +143,32 @@ class MainView extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: SizedBox(
-                          width: 22,
-                          height: 22,
-                          child: loadedState.user.photo != null
-                              ? Image.network(
-                                  loadedState.user.photo!,
+                            width: 22,
+                            height: 22,
+                            child: Image.network(
+                              loadedState.user.photo!,
+                              fit: BoxFit.cover,
+                              width: 22,
+                              height: 22,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Image.file(
+                                  localPhotoFile,
                                   fit: BoxFit.cover,
-                                  width: 22,
-                                  height: 22,
-                                )
-                              : Icon(
-                                  Icons.person,
-                                  size: 22,
-                                  color: Colors.grey[400],
-                                ),
-                        ),
+                                  width: 100,
+                                  height: 100,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Icon(
+                                      Icons.person,
+                                      size: 22,
+                                      color: Colors.grey[400],
+                                    );
+                                  },
+                                );
+                              },
+                            )),
                       ),
                       Text(
-                        loadedState.user.firstName + loadedState.user.lastName,
+                        loadedState.user.firstName,
                         style: TextStyle(
                           color: color,
                           fontWeight: fontWeight,

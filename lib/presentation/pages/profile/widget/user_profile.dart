@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tms_driver/data/models/user/user_model.dart';
@@ -12,6 +14,9 @@ class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    const localPhotoPath =
+        '/data/user/0/com.example.tms_driver/app_flutter/user_photo.jpg';
+    final localPhotoFile = File(localPhotoPath);
     return Container(
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(16),
@@ -41,18 +46,27 @@ class UserProfile extends StatelessWidget {
                     width: 100,
                     height: 100,
                     color: Colors.grey[200],
-                    child: user.photo != null
-                        ? Image.network(
-                            user.photo!,
-                            fit: BoxFit.cover,
-                            width: 100,
-                            height: 100,
-                          )
-                        : Icon(
-                            Icons.person,
-                            size: 50,
-                            color: Colors.grey[400],
-                          ),
+                    child: Image.network(
+                      user.photo!,
+                      fit: BoxFit.cover,
+                      width: 100,
+                      height: 100,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.file(
+                          localPhotoFile,
+                          fit: BoxFit.cover,
+                          width: 100,
+                          height: 100,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Icon(
+                              Icons.person,
+                              size: 50,
+                              color: Colors.grey[400],
+                            );
+                          },
+                        );
+                      },
+                    ),
                   ),
                 ),
                 const SizedBox(width: 10),

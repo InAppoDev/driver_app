@@ -62,6 +62,7 @@ class UserRepositoryImpl implements UserRepository {
 
   Future<String> _getLocalImagePath() async {
     final directory = await getApplicationDocumentsDirectory();
+    print('picture _getLocalImagePath ${directory.path}/user_photo.jpg');
     return '${directory.path}/user_photo.jpg';
   }
 
@@ -73,7 +74,9 @@ class UserRepositoryImpl implements UserRepository {
       );
 
       final imagePath = await _getLocalImagePath();
+      print('picture _saveImageLocally ${imagePath}');
       final file = File(imagePath);
+
       await file.writeAsBytes(response.data!);
     } catch (e) {
       print('Error saving image locally: $e');
