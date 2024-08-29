@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-//TODO remove print
 import 'dart:async';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -33,7 +31,6 @@ class MyLocationService {
         onDidReceiveNotificationResponse: _onSelectNotification);
     print('_initializeNotifications');
   }
-
 
   // Future<bool> _requestPermissions() async {
   //   var status = await Permission.location.status;
@@ -105,7 +102,6 @@ class MyLocationService {
   }
 
   void startTracking() async {
-
     // Background task every 15 minutes
     print('BackgroundFetch startTracking');
     BackgroundFetch.configure(
