@@ -42,21 +42,25 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
       _isAm = now.hour < 12;
 
       availableHours = List.generate(12, (index) => index)
-          .where((hour) => (hour >= currentHour) || (hour == currentHour && now.minute >= 0))
+          .where((hour) => hour >= currentHour)
           .toList();
 
-      availableMinutes = List.generate(60, (index) => index)
-          .where((minute) => minute >= _selectedMinute)
-          .toList();
-
-      availableAmPm = now.hour < 12 ? [true] : [false];
+      if (_isAm) {
+        availableMinutes = List.generate(60, (index) => index)
+            .where((minute) => minute >= _selectedMinute)
+            .toList();
+         availableAmPm = [true, false];
+      } else {
+        availableMinutes = List.generate(60, (index) => index);
+        availableAmPm = [false, true];
+      }
     } else {
       _selectedHour = 0;
       _selectedMinute = 0;
       _isAm = true;
       availableHours = List.generate(12, (index) => index);
       availableMinutes = List.generate(60, (index) => index);
-      availableAmPm = [true, false]; // AM, PM
+      availableAmPm = [true, false];
     }
   }
 
@@ -174,17 +178,21 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
       final currentHour = now.hour % 12;
       final currentMinute = now.minute;
 
-      if ((_isAm && _selectedHour == currentHour) || (!_isAm && _selectedHour == currentHour )) {
+      if (_isAm) {
+        availableHours = List.generate(12, (index) => index)
+            .where((hour) => hour >= currentHour)
+            .toList();
         availableMinutes = List.generate(60, (index) => index)
             .where((minute) => minute >= currentMinute)
             .toList();
       } else {
+        availableHours = List.generate(12, (index) => index);
         availableMinutes = List.generate(60, (index) => index);
       }
     } else {
       availableHours = List.generate(12, (index) => index);
       availableMinutes = List.generate(60, (index) => index);
-      availableAmPm = [true, false]; // AM, PM
+      availableAmPm = [true, false]; // AM and PM
     }
   }
 
