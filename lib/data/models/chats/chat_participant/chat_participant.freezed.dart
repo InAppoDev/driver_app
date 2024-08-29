@@ -28,8 +28,12 @@ mixin _$ChatParticipant {
   @JsonKey(name: 'avatar_url')
   String? get avatarUrl => throw _privateConstructorUsedError;
 
+  /// Serializes this ChatParticipant to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChatParticipant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChatParticipantCopyWith<ChatParticipant> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$ChatParticipantCopyWithImpl<$Res, $Val extends ChatParticipant>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChatParticipant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +115,8 @@ class __$$ChatParticipantImplCopyWithImpl<$Res>
       _$ChatParticipantImpl _value, $Res Function(_$ChatParticipantImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChatParticipant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -181,12 +189,14 @@ class _$ChatParticipantImpl implements _ChatParticipant {
                 other.avatarUrl == avatarUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, senderId, senderType, name, avatarUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatParticipant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChatParticipantImplCopyWith<_$ChatParticipantImpl> get copyWith =>
@@ -223,8 +233,11 @@ abstract class _ChatParticipant implements ChatParticipant {
   @override
   @JsonKey(name: 'avatar_url')
   String? get avatarUrl;
+
+  /// Create a copy of ChatParticipant
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChatParticipantImplCopyWith<_$ChatParticipantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
