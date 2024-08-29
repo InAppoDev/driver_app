@@ -1,10 +1,8 @@
-import 'dart:io';
-
-import 'package:dio/dio.dart';
+import 'package:downloadsfolder/downloadsfolder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
 import 'package:tms_driver/data/models/chats/message/message_model.dart';
 import 'package:tms_driver/domain/repositories/messages_repository.dart';
@@ -40,17 +38,19 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
     }
   }
 
-  Future<File?> _downLoadFile(
+  Future<void> _downLoadFile(
       _DownloadFile event, Emitter<ChatDetailState> emit) async {
     try {
-      Dio dio = Dio();
-      var dir = await getApplicationDocumentsDirectory();
-      var filePath = "${dir.path}/$event";
-      await dio.download(event.url, filePath);
-      return File(filePath);
+      final downloadDirectory = await getDownloadDirectory();
+      await FlutterDownloader.enqueue(
+        url: event.url,
+        savedDir: downloadDirectory.path,
+        fileName: event.fileName,
+        showNotification: true,
+        openFileFromNotification: true,
+      );
     } catch (e) {
       print("Error downloading file: $e");
-      return null;
     }
   }
 
@@ -60,10 +60,11 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
       final List<MessageModel> messages = [];
       messages.addAll(event.chatDetails.messages);
       messages.add(MessageModel(
-          id: 0,
-          sender: messages.first.sender,
-          content: event.messageContent,
-          sentAt: messages.first.sentAt));
+        id: messages.first.id,
+        sender: messages.first.sender,
+        content: event.messageContent,
+        sentAt: messages.first.sentAt,
+      ));
       final chatDetails = event.chatDetails.copyWith(messages: messages);
       await messagesRepository.sendMessage(chatId, event.messageContent);
 

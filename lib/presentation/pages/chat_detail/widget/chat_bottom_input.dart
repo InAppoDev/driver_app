@@ -84,8 +84,8 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                 iconColor: theme.scaffoldBackgroundColor,
                 icon: 'send',
                 onPressed: () {
-                  textEditingController.clear();
                   widget.onTextSend(textEditingController.text.trim());
+                  textEditingController.clear();
                 },
               ),
             ],

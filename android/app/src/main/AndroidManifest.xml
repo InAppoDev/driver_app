@@ -4,12 +4,22 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28"/>
     <uses-permission android:minSdkVersion="34" android:name="android.permission.USE_EXACT_ALARM"/>
     <application
         tools:replace="android:label"
         android:label="tms_driver"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <provider
+            android:name="vn.hunghd.flutterdownloader.DownloadedFileProvider"
+            android:authorities="com.example.tms_driver.flutter_downloader.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
         <activity
             android:name=".MainActivity"
             android:exported="true"
