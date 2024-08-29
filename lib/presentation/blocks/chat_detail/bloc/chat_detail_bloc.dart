@@ -63,7 +63,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
         id: messages.first.id,
         sender: messages.first.sender,
         content: event.messageContent,
-        sentAt: messages.first.sentAt,
+        sentAt: DateTime.now().millisecondsSinceEpoch,
       ));
       final chatDetails = event.chatDetails.copyWith(messages: messages);
       await messagesRepository.sendMessage(chatId, event.messageContent);
