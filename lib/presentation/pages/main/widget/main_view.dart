@@ -1,0 +1,227 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:tms_driver/presentation/blocks/main/bloc/main_bloc.dart';
+import 'package:tms_driver/presentation/blocks/user/user_bloc.dart';
+import 'package:tms_driver/presentation/customs/custom_app_bar.dart';
+import 'package:tms_driver/presentation/pages/home/home_page.dart';
+import 'package:tms_driver/presentation/pages/message_list/widget/message_list_view.dart';
+import 'package:tms_driver/presentation/pages/profile/widget/profile_view.dart';
+import 'package:tms_driver/presentation/pages/trip_list/widget/trip_list_view.dart';
+
+class MainView extends StatelessWidget {
+  const MainView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).canvasColor,
+      appBar: const CustomAppBar(),
+      extendBody: true,
+      body: BlocBuilder<MainBloc, MainState>(
+        builder: (context, state) {
+          switch (state.selectedPage) {
+            case MainPageEnum.home:
+              return const HomePage();
+            case MainPageEnum.trips:
+              return const TripListView();
+            case MainPageEnum.messages:
+              return const MessageListView();
+            case MainPageEnum.profile:
+              return const ProfileView();
+          }
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: FloatingActionButton(
+            elevation: 2,
+            onPressed: () {},
+            backgroundColor: Theme.of(context).cardColor,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  'assets/images/play.svg',
+                  height: 30,
+                  width: 30,
+                ),
+                const Text('Play', style: TextStyle(fontSize: 12)),
+              ],
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: CustomPaint(
+        painter: BottomNavBarPainter(),
+        child: SizedBox(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildNavItem(context, 'home', 'Home', MainPageEnum.home),
+              _buildNavItem(context, 'point', 'Trips', MainPageEnum.trips),
+              const SizedBox(width: 40), // Space for the FAB
+              _buildNavItem(
+                  context, 'message', 'Messages', MainPageEnum.messages),
+              _buildProfileNavItem(context),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavItem(
+      BuildContext context, String iconName, String label, MainPageEnum page) {
+    final theme = Theme.of(context);
+    final isSelected = context.watch<MainBloc>().state.selectedPage == page;
+    final color = isSelected ? theme.primaryColor : theme.shadowColor;
+    final fontWeight = isSelected ? FontWeight.w500 : FontWeight.w400;
+
+    return GestureDetector(
+      onTap: () => context.read<MainBloc>().add(MainEvent.pageChanged(page)),
+      child: SizedBox(
+        width: 68,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 22,
+              height: 22,
+              child: SvgPicture.asset(
+                'assets/images/$iconName.svg',
+                colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+              ),
+            ),
+            Text(label, style: TextStyle(color: color, fontWeight: fontWeight)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildProfileNavItem(BuildContext context) {
+    final theme = Theme.of(context);
+    final isSelected =
+        context.watch<MainBloc>().state.selectedPage == MainPageEnum.profile;
+    final color = isSelected ? theme.primaryColor : theme.shadowColor;
+    final fontWeight = isSelected ? FontWeight.w600 : FontWeight.w400;
+
+    return GestureDetector(
+      onTap: () => context
+          .read<MainBloc>()
+          .add(const MainEvent.pageChanged(MainPageEnum.profile)),
+      child: SizedBox(
+        width: 70,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BlocBuilder<UserBloc, UserState>(
+              builder: (context, state) {
+                return state.map(
+                  initial: (_) => Icon(
+                    Icons.person,
+                    color: color,
+                  ),
+                  loading: (_) => CircularProgressIndicator(
+                    color: color,
+                    strokeWidth: 2,
+                  ),
+                  loaded: (loadedState) => Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: SizedBox(
+                          width: 22,
+                          height: 22,
+                          child: loadedState.user.photo != null
+                              ? Image.network(
+                                  loadedState.user.photo!,
+                                  fit: BoxFit.cover,
+                                  width: 22,
+                                  height: 22,
+                                )
+                              : Icon(
+                                  Icons.person,
+                                  size: 22,
+                                  color: Colors.grey[400],
+                                ),
+                        ),
+                      ),
+                      Text(
+                        loadedState.user.firstName + loadedState.user.lastName,
+                        style: TextStyle(
+                          color: color,
+                          fontWeight: fontWeight,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                    ],
+                  ),
+                  error: (_) => const Icon(
+                    Icons.error,
+                    color: Colors.red,
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BottomNavBarPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white
+      ..style = PaintingStyle.fill;
+
+    final path = Path();
+
+    path.moveTo(0, 0);
+
+    path.lineTo(size.width * 0.35, 0);
+
+    path.quadraticBezierTo(
+      size.width * 0.4,
+      0,
+      size.width * 0.4,
+      25,
+    );
+
+    path.arcToPoint(
+      Offset(size.width * 0.6, 27),
+      radius: const Radius.circular(33.0),
+      clockwise: false,
+    );
+
+    path.quadraticBezierTo(
+      size.width * 0.6,
+      0,
+      size.width * 0.65,
+      0,
+    );
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
+
+    path.close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
