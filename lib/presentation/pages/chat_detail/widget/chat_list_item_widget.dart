@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tms_driver/data/models/chats/message/message_model.dart';
+import 'package:tms_driver/presentation/blocks/chat_detail/bloc/chat_detail_bloc.dart';
+import 'package:tms_driver/presentation/consts/consts.dart';
+import 'package:tms_driver/presentation/pages/active_trip/widget/selected_file_widget.dart';
 
 class ChatListItemWidget extends StatelessWidget {
   const ChatListItemWidget({super.key, required this.messageModel});
@@ -19,24 +23,28 @@ class ChatListItemWidget extends StatelessWidget {
             margin: const EdgeInsets.only(top: 2),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(3),
-              boxShadow: [
-                BoxShadow(
-                  color: theme.focusColor.withOpacity(0.2),
-                  spreadRadius: 2,
-                  blurRadius: 2,
-                  offset: const Offset(0, 2),
+              boxShadow: messageModel.sender.avatarUrl != null
+                  ? [
+                      BoxShadow(
+                        color: theme.focusColor.withOpacity(0.2),
+                        spreadRadius: 2,
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
                 ),
-              ],
+                    ]
+                  : null,
             ),
-            // child: ClipRRect(
-            //   borderRadius: BorderRadius.circular(3),
-            //   child: Image.asset(
-            //     messageModel.image,
-            //     width: 16,
-            //     height: 16,
-            //     fit: BoxFit.cover,
-            //   ),
-            // ),
+            child: messageModel.sender.avatarUrl != null
+                ? ClipRRect(
+                    borderRadius: BorderRadius.circular(3),
+                    child: Image.network(
+                      messageModel.sender.avatarUrl!,
+                      width: 16,
+                      height: 16,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : const SizedBox.shrink(),
           ),
           const SizedBox(width: 7),
           Flexible(
@@ -73,11 +81,42 @@ class ChatListItemWidget extends StatelessWidget {
                     color: theme.dividerColor,
                   ),
                 ),
+                if (messageModel.documents != null)
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        ...messageModel.documents!.map(
+                          (doc) {
+                            if (doc.ext == 'pdf') {
+                              return Text(subLongFileName(doc.name),
+                                  style: theme.textTheme.labelSmall!.copyWith(
+                                      decoration: TextDecoration.underline));
+                            } else {
+                              return SelectedFileWidget(
+                                fileFromNetwork: doc.downloadUrl,
+                                onDownLoad: () {
+                                  if (doc.downloadUrl != null) {
+                                    context.read<ChatDetailBloc>().add(
+                                          ChatDetailEvent.downloadFile(
+                                            doc.downloadUrl!,
+                                            doc.name,
+                                          ),
+                                        );
+                                  }
+                                },
+                              );
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
               ],
             ),
           ),
           Text(
-            messageModel.sentAt.toString(),
+            formatTimestamp(messageModel.sentAt),
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w400,

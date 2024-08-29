@@ -47,6 +47,7 @@ class UploadScanFiles extends StatelessWidget {
             SelectedFileWidget(
               selectedFile: selectedFile!,
               onFileRemove: onFileRemove,
+              onDownLoad: (){},
             ),
             const SizedBox(height: 16),
           ],

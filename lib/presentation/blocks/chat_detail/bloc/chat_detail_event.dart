@@ -8,4 +8,6 @@ class ChatDetailEvent with _$ChatDetailEvent {
       _FetchChatDetails;
   const factory ChatDetailEvent.receiveNewMessage(MessageModel newMessage) =
       _ReceiveNewMessage;
+  const factory ChatDetailEvent.downloadFile(String url, String fileName) =
+      _DownloadFile;
 }
