@@ -20,9 +20,16 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
   List<int> availableMinutes = [];
   List<bool> availableAmPm = [true, false]; // AM, PM
 
+  late FixedExtentScrollController hourController;
+  late FixedExtentScrollController minuteController;
+
   @override
   void initState() {
     super.initState();
+    hourController = FixedExtentScrollController(
+        initialItem: availableHours.indexOf(_selectedHour));
+    minuteController = FixedExtentScrollController(
+        initialItem: availableMinutes.indexOf(_selectedMinute));
     _initializeAvailableTimes();
   }
 
@@ -31,6 +38,7 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
     super.didUpdateWidget(oldWidget);
     if (widget.providedDate != oldWidget.providedDate) {
       _initializeAvailableTimes();
+      _scrollToTop();
     }
   }
 
@@ -45,27 +53,64 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
           .where((hour) => hour >= currentHour)
           .toList();
 
-      if (_isAm) {
-        availableMinutes = List.generate(60, (index) => index)
-            .where((minute) => minute >= _selectedMinute)
-            .toList();
-         availableAmPm = [true, false];
-      } else {
-        availableMinutes = List.generate(60, (index) => index);
-        availableAmPm = [false, true];
-      }
+      availableMinutes = List.generate(60, (index) => index)
+          .where((minute) => minute >= _selectedMinute)
+          .toList();
     } else {
       _selectedHour = 0;
       _selectedMinute = 0;
       _isAm = true;
       availableHours = List.generate(12, (index) => index);
       availableMinutes = List.generate(60, (index) => index);
-      availableAmPm = [true, false];
     }
+
+    hourController.jumpToItem(availableHours.indexOf(_selectedHour));
+    minuteController.jumpToItem(availableMinutes.indexOf(_selectedMinute));
   }
 
   bool isToday(DateTime date) {
     return date.year == now.year && date.month == now.month && date.day == now.day;
+  }
+
+  void _updateAvailableTimes() {
+    if (isToday(widget.providedDate)) {
+      final currentHour = now.hour % 12;
+      final currentMinute = now.minute;
+
+      if (_isAm) {
+        availableHours = List.generate(12, (index) => index)
+            .where((hour) => hour >= currentHour)
+            .toList();
+        availableMinutes = List.generate(60, (index) => index)
+            .where((minute) => minute >= currentMinute)
+            .toList();
+      } else {
+        availableHours = List.generate(12, (index) => index);
+        availableMinutes = List.generate(60, (index) => index);
+      }
+
+      _selectedHour = availableHours.first;
+      _selectedMinute = availableMinutes.first;
+    } else {
+      availableHours = List.generate(12, (index) => index);
+      availableMinutes = List.generate(60, (index) => index);
+      availableAmPm = [true, false]; // AM and PM
+
+      _selectedHour = availableHours.first;
+      _selectedMinute = availableMinutes.first;
+    }
+
+    // Scroll to the first items in the lists
+    hourController.jumpToItem(availableHours.indexOf(_selectedHour));
+    minuteController.jumpToItem(availableMinutes.indexOf(_selectedMinute));
+
+    // Notify the parent widget about the change
+    widget.onTimeChanged(_selectedHour, _selectedMinute, _isAm);
+  }
+
+  void _scrollToTop() {
+    hourController.jumpToItem(availableHours.indexOf(_selectedHour));
+    minuteController.jumpToItem(availableMinutes.indexOf(_selectedMinute));
   }
 
   @override
@@ -96,13 +141,12 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _buildPicker(
+              controller: hourController,
               itemCount: availableHours.length,
               selectedItem: availableHours.indexOf(_selectedHour),
               onSelectedItemChanged: (index) {
-                int newHour = availableHours[index];
                 setState(() {
-                  _selectedHour = newHour;
-                  _updateAvailableTimes();
+                  _selectedHour = availableHours[index];
                   widget.onTimeChanged(_selectedHour, _selectedMinute, _isAm);
                 });
               },
@@ -121,6 +165,7 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
             ),
             _buildMiddleDivider(),
             _buildPicker(
+              controller: minuteController,
               itemCount: availableMinutes.length,
               selectedItem: availableMinutes.indexOf(_selectedMinute),
               onSelectedItemChanged: (index) {
@@ -150,7 +195,6 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
                 setState(() {
                   _isAm = availableAmPm[index];
                   _updateAvailableTimes();
-                  widget.onTimeChanged(_selectedHour, _selectedMinute, _isAm);
                 });
               },
               itemBuilder: (context, index) {
@@ -173,29 +217,6 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
     );
   }
 
-  void _updateAvailableTimes() {
-    if (isToday(widget.providedDate)) {
-      final currentHour = now.hour % 12;
-      final currentMinute = now.minute;
-
-      if (_isAm) {
-        availableHours = List.generate(12, (index) => index)
-            .where((hour) => hour >= currentHour)
-            .toList();
-        availableMinutes = List.generate(60, (index) => index)
-            .where((minute) => minute >= currentMinute)
-            .toList();
-      } else {
-        availableHours = List.generate(12, (index) => index);
-        availableMinutes = List.generate(60, (index) => index);
-      }
-    } else {
-      availableHours = List.generate(12, (index) => index);
-      availableMinutes = List.generate(60, (index) => index);
-      availableAmPm = [true, false]; // AM and PM
-    }
-  }
-
   Widget _buildMiddleDivider() {
     return SizedBox(
       width: 30,
@@ -215,12 +236,14 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
     required int selectedItem,
     required ValueChanged<int> onSelectedItemChanged,
     required IndexedWidgetBuilder itemBuilder,
+    FixedExtentScrollController? controller,
   }) {
     final height = MediaQuery.of(context).size.height;
     return SizedBox(
       height: height * 0.25,
       width: 50,
       child: ListWheelScrollView.useDelegate(
+        controller: controller,
         itemExtent: 50,
         onSelectedItemChanged: onSelectedItemChanged,
         physics: const FixedExtentScrollPhysics(),
