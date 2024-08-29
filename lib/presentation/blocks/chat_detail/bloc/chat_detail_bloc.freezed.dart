@@ -24,6 +24,7 @@ mixin _$ChatDetailEvent {
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
     required TResult Function(String url, String fileName) downloadFile,
+    required TResult Function(String number) tapToCall,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,6 +34,7 @@ mixin _$ChatDetailEvent {
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
     TResult? Function(String url, String fileName)? downloadFile,
+    TResult? Function(String number)? tapToCall,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +44,7 @@ mixin _$ChatDetailEvent {
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     TResult Function(String url, String fileName)? downloadFile,
+    TResult Function(String number)? tapToCall,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$ChatDetailEvent {
     required TResult Function(_FetchChatDetails value) fetchChatDetails,
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
     required TResult Function(_DownloadFile value) downloadFile,
+    required TResult Function(_TapToCall value) tapToCall,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +63,7 @@ mixin _$ChatDetailEvent {
     TResult? Function(_FetchChatDetails value)? fetchChatDetails,
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult? Function(_DownloadFile value)? downloadFile,
+    TResult? Function(_TapToCall value)? tapToCall,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +72,7 @@ mixin _$ChatDetailEvent {
     TResult Function(_FetchChatDetails value)? fetchChatDetails,
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult Function(_DownloadFile value)? downloadFile,
+    TResult Function(_TapToCall value)? tapToCall,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -189,6 +195,7 @@ class _$SendMessageImpl implements _SendMessage {
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
     required TResult Function(String url, String fileName) downloadFile,
+    required TResult Function(String number) tapToCall,
   }) {
     return sendMessage(messageContent, chatDetails);
   }
@@ -201,6 +208,7 @@ class _$SendMessageImpl implements _SendMessage {
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
     TResult? Function(String url, String fileName)? downloadFile,
+    TResult? Function(String number)? tapToCall,
   }) {
     return sendMessage?.call(messageContent, chatDetails);
   }
@@ -213,6 +221,7 @@ class _$SendMessageImpl implements _SendMessage {
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     TResult Function(String url, String fileName)? downloadFile,
+    TResult Function(String number)? tapToCall,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -228,6 +237,7 @@ class _$SendMessageImpl implements _SendMessage {
     required TResult Function(_FetchChatDetails value) fetchChatDetails,
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
     required TResult Function(_DownloadFile value) downloadFile,
+    required TResult Function(_TapToCall value) tapToCall,
   }) {
     return sendMessage(this);
   }
@@ -239,6 +249,7 @@ class _$SendMessageImpl implements _SendMessage {
     TResult? Function(_FetchChatDetails value)? fetchChatDetails,
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult? Function(_DownloadFile value)? downloadFile,
+    TResult? Function(_TapToCall value)? tapToCall,
   }) {
     return sendMessage?.call(this);
   }
@@ -250,6 +261,7 @@ class _$SendMessageImpl implements _SendMessage {
     TResult Function(_FetchChatDetails value)? fetchChatDetails,
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult Function(_DownloadFile value)? downloadFile,
+    TResult Function(_TapToCall value)? tapToCall,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -349,6 +361,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
     required TResult Function(String url, String fileName) downloadFile,
+    required TResult Function(String number) tapToCall,
   }) {
     return fetchChatDetails(chatId);
   }
@@ -361,6 +374,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
     TResult? Function(String url, String fileName)? downloadFile,
+    TResult? Function(String number)? tapToCall,
   }) {
     return fetchChatDetails?.call(chatId);
   }
@@ -373,6 +387,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     TResult Function(String url, String fileName)? downloadFile,
+    TResult Function(String number)? tapToCall,
     required TResult orElse(),
   }) {
     if (fetchChatDetails != null) {
@@ -388,6 +403,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     required TResult Function(_FetchChatDetails value) fetchChatDetails,
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
     required TResult Function(_DownloadFile value) downloadFile,
+    required TResult Function(_TapToCall value) tapToCall,
   }) {
     return fetchChatDetails(this);
   }
@@ -399,6 +415,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     TResult? Function(_FetchChatDetails value)? fetchChatDetails,
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult? Function(_DownloadFile value)? downloadFile,
+    TResult? Function(_TapToCall value)? tapToCall,
   }) {
     return fetchChatDetails?.call(this);
   }
@@ -410,6 +427,7 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     TResult Function(_FetchChatDetails value)? fetchChatDetails,
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult Function(_DownloadFile value)? downloadFile,
+    TResult Function(_TapToCall value)? tapToCall,
     required TResult orElse(),
   }) {
     if (fetchChatDetails != null) {
@@ -519,6 +537,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
     required TResult Function(String url, String fileName) downloadFile,
+    required TResult Function(String number) tapToCall,
   }) {
     return receiveNewMessage(newMessage);
   }
@@ -531,6 +550,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
     TResult? Function(String url, String fileName)? downloadFile,
+    TResult? Function(String number)? tapToCall,
   }) {
     return receiveNewMessage?.call(newMessage);
   }
@@ -543,6 +563,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     TResult Function(String url, String fileName)? downloadFile,
+    TResult Function(String number)? tapToCall,
     required TResult orElse(),
   }) {
     if (receiveNewMessage != null) {
@@ -558,6 +579,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     required TResult Function(_FetchChatDetails value) fetchChatDetails,
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
     required TResult Function(_DownloadFile value) downloadFile,
+    required TResult Function(_TapToCall value) tapToCall,
   }) {
     return receiveNewMessage(this);
   }
@@ -569,6 +591,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     TResult? Function(_FetchChatDetails value)? fetchChatDetails,
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult? Function(_DownloadFile value)? downloadFile,
+    TResult? Function(_TapToCall value)? tapToCall,
   }) {
     return receiveNewMessage?.call(this);
   }
@@ -580,6 +603,7 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     TResult Function(_FetchChatDetails value)? fetchChatDetails,
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult Function(_DownloadFile value)? downloadFile,
+    TResult Function(_TapToCall value)? tapToCall,
     required TResult orElse(),
   }) {
     if (receiveNewMessage != null) {
@@ -619,6 +643,8 @@ class __$$DownloadFileImplCopyWithImpl<$Res>
       _$DownloadFileImpl _value, $Res Function(_$DownloadFileImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -666,7 +692,9 @@ class _$DownloadFileImpl implements _DownloadFile {
   @override
   int get hashCode => Object.hash(runtimeType, url, fileName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DownloadFileImplCopyWith<_$DownloadFileImpl> get copyWith =>
@@ -681,6 +709,7 @@ class _$DownloadFileImpl implements _DownloadFile {
     required TResult Function(int chatId) fetchChatDetails,
     required TResult Function(MessageModel newMessage) receiveNewMessage,
     required TResult Function(String url, String fileName) downloadFile,
+    required TResult Function(String number) tapToCall,
   }) {
     return downloadFile(url, fileName);
   }
@@ -693,6 +722,7 @@ class _$DownloadFileImpl implements _DownloadFile {
     TResult? Function(int chatId)? fetchChatDetails,
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
     TResult? Function(String url, String fileName)? downloadFile,
+    TResult? Function(String number)? tapToCall,
   }) {
     return downloadFile?.call(url, fileName);
   }
@@ -705,6 +735,7 @@ class _$DownloadFileImpl implements _DownloadFile {
     TResult Function(int chatId)? fetchChatDetails,
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     TResult Function(String url, String fileName)? downloadFile,
+    TResult Function(String number)? tapToCall,
     required TResult orElse(),
   }) {
     if (downloadFile != null) {
@@ -720,6 +751,7 @@ class _$DownloadFileImpl implements _DownloadFile {
     required TResult Function(_FetchChatDetails value) fetchChatDetails,
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
     required TResult Function(_DownloadFile value) downloadFile,
+    required TResult Function(_TapToCall value) tapToCall,
   }) {
     return downloadFile(this);
   }
@@ -731,6 +763,7 @@ class _$DownloadFileImpl implements _DownloadFile {
     TResult? Function(_FetchChatDetails value)? fetchChatDetails,
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult? Function(_DownloadFile value)? downloadFile,
+    TResult? Function(_TapToCall value)? tapToCall,
   }) {
     return downloadFile?.call(this);
   }
@@ -742,6 +775,7 @@ class _$DownloadFileImpl implements _DownloadFile {
     TResult Function(_FetchChatDetails value)? fetchChatDetails,
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult Function(_DownloadFile value)? downloadFile,
+    TResult Function(_TapToCall value)? tapToCall,
     required TResult orElse(),
   }) {
     if (downloadFile != null) {
@@ -757,8 +791,173 @@ abstract class _DownloadFile implements ChatDetailEvent {
 
   String get url;
   String get fileName;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DownloadFileImplCopyWith<_$DownloadFileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$TapToCallImplCopyWith<$Res> {
+  factory _$$TapToCallImplCopyWith(
+          _$TapToCallImpl value, $Res Function(_$TapToCallImpl) then) =
+      __$$TapToCallImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String number});
+}
+
+/// @nodoc
+class __$$TapToCallImplCopyWithImpl<$Res>
+    extends _$ChatDetailEventCopyWithImpl<$Res, _$TapToCallImpl>
+    implements _$$TapToCallImplCopyWith<$Res> {
+  __$$TapToCallImplCopyWithImpl(
+      _$TapToCallImpl _value, $Res Function(_$TapToCallImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? number = null,
+  }) {
+    return _then(_$TapToCallImpl(
+      null == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TapToCallImpl implements _TapToCall {
+  const _$TapToCallImpl(this.number);
+
+  @override
+  final String number;
+
+  @override
+  String toString() {
+    return 'ChatDetailEvent.tapToCall(number: $number)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TapToCallImpl &&
+            (identical(other.number, number) || other.number == number));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, number);
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TapToCallImplCopyWith<_$TapToCallImpl> get copyWith =>
+      __$$TapToCallImplCopyWithImpl<_$TapToCallImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String messageContent, ChatDetailModel chatDetails)
+        sendMessage,
+    required TResult Function(int chatId) fetchChatDetails,
+    required TResult Function(MessageModel newMessage) receiveNewMessage,
+    required TResult Function(String url, String fileName) downloadFile,
+    required TResult Function(String number) tapToCall,
+  }) {
+    return tapToCall(number);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult? Function(int chatId)? fetchChatDetails,
+    TResult? Function(MessageModel newMessage)? receiveNewMessage,
+    TResult? Function(String url, String fileName)? downloadFile,
+    TResult? Function(String number)? tapToCall,
+  }) {
+    return tapToCall?.call(number);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult Function(int chatId)? fetchChatDetails,
+    TResult Function(MessageModel newMessage)? receiveNewMessage,
+    TResult Function(String url, String fileName)? downloadFile,
+    TResult Function(String number)? tapToCall,
+    required TResult orElse(),
+  }) {
+    if (tapToCall != null) {
+      return tapToCall(number);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_FetchChatDetails value) fetchChatDetails,
+    required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
+    required TResult Function(_DownloadFile value) downloadFile,
+    required TResult Function(_TapToCall value) tapToCall,
+  }) {
+    return tapToCall(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_FetchChatDetails value)? fetchChatDetails,
+    TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult? Function(_DownloadFile value)? downloadFile,
+    TResult? Function(_TapToCall value)? tapToCall,
+  }) {
+    return tapToCall?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_FetchChatDetails value)? fetchChatDetails,
+    TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult Function(_DownloadFile value)? downloadFile,
+    TResult Function(_TapToCall value)? tapToCall,
+    required TResult orElse(),
+  }) {
+    if (tapToCall != null) {
+      return tapToCall(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TapToCall implements ChatDetailEvent {
+  const factory _TapToCall(final String number) = _$TapToCallImpl;
+
+  String get number;
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TapToCallImplCopyWith<_$TapToCallImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

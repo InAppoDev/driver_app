@@ -10,4 +10,6 @@ class ChatDetailEvent with _$ChatDetailEvent {
       _ReceiveNewMessage;
   const factory ChatDetailEvent.downloadFile(String url, String fileName) =
       _DownloadFile;
+  const factory ChatDetailEvent.tapToCall(String number) =
+  _TapToCall;
 }

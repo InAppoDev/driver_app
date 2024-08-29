@@ -6,6 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
 import 'package:tms_driver/data/models/chats/message/message_model.dart';
 import 'package:tms_driver/domain/repositories/messages_repository.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 part 'chat_detail_bloc.freezed.dart';
 part 'chat_detail_event.dart';
@@ -24,6 +25,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
         fetchChatDetails: (e) async => _fetchChatDetails(e, emit),
         receiveNewMessage: (e) async => _receiveNewMessage(e, emit),
         downloadFile: (e) async => _downLoadFile(e, emit),
+        tapToCall: (e) async => _tapToCall(e, emit),
       );
     });
   }
@@ -51,6 +53,15 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
       );
     } catch (e) {
       print("Error downloading file: $e");
+    }
+  }
+
+  Future<void> _tapToCall(
+      _TapToCall event, Emitter<ChatDetailState> emit) async {
+    try {
+      launchUrlString("tel://21213123123");
+    } catch (e) {
+      print("Error _tapToCall: $e");
     }
   }
 

@@ -21,7 +21,14 @@ class ChatListView extends StatelessWidget {
           return Column(
             children: [
               const SizedBox(height: 15),
-              ChatBarInfo(chatDetails: chatDetails),
+              ChatBarInfo(
+                chatDetails: chatDetails,
+                onPhonePressed: (number) {
+                  context
+                      .read<ChatDetailBloc>()
+                      .add(ChatDetailEvent.tapToCall(number));
+                },
+              ),
               const SizedBox(height: 14),
               Expanded(
                 child: Container(
