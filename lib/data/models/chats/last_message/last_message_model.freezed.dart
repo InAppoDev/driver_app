@@ -23,8 +23,12 @@ mixin _$LastMessageModel {
   @JsonKey(name: 'preview_text')
   String get previewText => throw _privateConstructorUsedError;
 
+  /// Serializes this LastMessageModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LastMessageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LastMessageModelCopyWith<LastMessageModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$LastMessageModelCopyWithImpl<$Res, $Val extends LastMessageModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LastMessageModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +87,8 @@ class __$$LastMessageModelImplCopyWithImpl<$Res>
       $Res Function(_$LastMessageModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LastMessageModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,11 +130,13 @@ class _$LastMessageModelImpl implements _LastMessageModel {
                 other.previewText == previewText));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, previewText);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LastMessageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LastMessageModelImplCopyWith<_$LastMessageModelImpl> get copyWith =>
@@ -152,8 +162,11 @@ abstract class _LastMessageModel implements LastMessageModel {
   @override
   @JsonKey(name: 'preview_text')
   String get previewText;
+
+  /// Create a copy of LastMessageModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LastMessageModelImplCopyWith<_$LastMessageModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
