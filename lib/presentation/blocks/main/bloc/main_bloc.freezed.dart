@@ -20,18 +20,21 @@ mixin _$MainEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(MainPageEnum page) pageChanged,
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
+    required TResult Function() checkConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MainPageEnum page)? pageChanged,
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
+    TResult? Function()? checkConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainPageEnum page)? pageChanged,
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
+    TResult Function()? checkConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$MainEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_PageChanged value) pageChanged,
     required TResult Function(_HideShowNavBar value) hideShowNavBar,
+    required TResult Function(_CheckConnection value) checkConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PageChanged value)? pageChanged,
     TResult? Function(_HideShowNavBar value)? hideShowNavBar,
+    TResult? Function(_CheckConnection value)? checkConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PageChanged value)? pageChanged,
     TResult Function(_HideShowNavBar value)? hideShowNavBar,
+    TResult Function(_CheckConnection value)? checkConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,6 +152,7 @@ class _$PageChangedImpl implements _PageChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(MainPageEnum page) pageChanged,
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
+    required TResult Function() checkConnection,
   }) {
     return pageChanged(page);
   }
@@ -155,6 +162,7 @@ class _$PageChangedImpl implements _PageChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MainPageEnum page)? pageChanged,
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
+    TResult? Function()? checkConnection,
   }) {
     return pageChanged?.call(page);
   }
@@ -164,6 +172,7 @@ class _$PageChangedImpl implements _PageChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainPageEnum page)? pageChanged,
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
+    TResult Function()? checkConnection,
     required TResult orElse(),
   }) {
     if (pageChanged != null) {
@@ -177,6 +186,7 @@ class _$PageChangedImpl implements _PageChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(_PageChanged value) pageChanged,
     required TResult Function(_HideShowNavBar value) hideShowNavBar,
+    required TResult Function(_CheckConnection value) checkConnection,
   }) {
     return pageChanged(this);
   }
@@ -186,6 +196,7 @@ class _$PageChangedImpl implements _PageChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PageChanged value)? pageChanged,
     TResult? Function(_HideShowNavBar value)? hideShowNavBar,
+    TResult? Function(_CheckConnection value)? checkConnection,
   }) {
     return pageChanged?.call(this);
   }
@@ -195,6 +206,7 @@ class _$PageChangedImpl implements _PageChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PageChanged value)? pageChanged,
     TResult Function(_HideShowNavBar value)? hideShowNavBar,
+    TResult Function(_CheckConnection value)? checkConnection,
     required TResult orElse(),
   }) {
     if (pageChanged != null) {
@@ -288,6 +300,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
   TResult when<TResult extends Object?>({
     required TResult Function(MainPageEnum page) pageChanged,
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
+    required TResult Function() checkConnection,
   }) {
     return hideShowNavBar(this.hideShowNavBar);
   }
@@ -297,6 +310,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MainPageEnum page)? pageChanged,
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
+    TResult? Function()? checkConnection,
   }) {
     return hideShowNavBar?.call(this.hideShowNavBar);
   }
@@ -306,6 +320,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainPageEnum page)? pageChanged,
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
+    TResult Function()? checkConnection,
     required TResult orElse(),
   }) {
     if (hideShowNavBar != null) {
@@ -319,6 +334,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
   TResult map<TResult extends Object?>({
     required TResult Function(_PageChanged value) pageChanged,
     required TResult Function(_HideShowNavBar value) hideShowNavBar,
+    required TResult Function(_CheckConnection value) checkConnection,
   }) {
     return hideShowNavBar(this);
   }
@@ -328,6 +344,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PageChanged value)? pageChanged,
     TResult? Function(_HideShowNavBar value)? hideShowNavBar,
+    TResult? Function(_CheckConnection value)? checkConnection,
   }) {
     return hideShowNavBar?.call(this);
   }
@@ -337,6 +354,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PageChanged value)? pageChanged,
     TResult Function(_HideShowNavBar value)? hideShowNavBar,
+    TResult Function(_CheckConnection value)? checkConnection,
     required TResult orElse(),
   }) {
     if (hideShowNavBar != null) {
@@ -360,9 +378,121 @@ abstract class _HideShowNavBar implements MainEvent {
 }
 
 /// @nodoc
+abstract class _$$CheckConnectionImplCopyWith<$Res> {
+  factory _$$CheckConnectionImplCopyWith(_$CheckConnectionImpl value,
+          $Res Function(_$CheckConnectionImpl) then) =
+      __$$CheckConnectionImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CheckConnectionImplCopyWithImpl<$Res>
+    extends _$MainEventCopyWithImpl<$Res, _$CheckConnectionImpl>
+    implements _$$CheckConnectionImplCopyWith<$Res> {
+  __$$CheckConnectionImplCopyWithImpl(
+      _$CheckConnectionImpl _value, $Res Function(_$CheckConnectionImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MainEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CheckConnectionImpl implements _CheckConnection {
+  const _$CheckConnectionImpl();
+
+  @override
+  String toString() {
+    return 'MainEvent.checkConnection()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CheckConnectionImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(MainPageEnum page) pageChanged,
+    required TResult Function(bool hideShowNavBar) hideShowNavBar,
+    required TResult Function() checkConnection,
+  }) {
+    return checkConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(MainPageEnum page)? pageChanged,
+    TResult? Function(bool hideShowNavBar)? hideShowNavBar,
+    TResult? Function()? checkConnection,
+  }) {
+    return checkConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(MainPageEnum page)? pageChanged,
+    TResult Function(bool hideShowNavBar)? hideShowNavBar,
+    TResult Function()? checkConnection,
+    required TResult orElse(),
+  }) {
+    if (checkConnection != null) {
+      return checkConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PageChanged value) pageChanged,
+    required TResult Function(_HideShowNavBar value) hideShowNavBar,
+    required TResult Function(_CheckConnection value) checkConnection,
+  }) {
+    return checkConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PageChanged value)? pageChanged,
+    TResult? Function(_HideShowNavBar value)? hideShowNavBar,
+    TResult? Function(_CheckConnection value)? checkConnection,
+  }) {
+    return checkConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PageChanged value)? pageChanged,
+    TResult Function(_HideShowNavBar value)? hideShowNavBar,
+    TResult Function(_CheckConnection value)? checkConnection,
+    required TResult orElse(),
+  }) {
+    if (checkConnection != null) {
+      return checkConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CheckConnection implements MainEvent {
+  const factory _CheckConnection() = _$CheckConnectionImpl;
+}
+
+/// @nodoc
 mixin _$MainState {
   MainPageEnum get selectedPage => throw _privateConstructorUsedError;
   bool get showNavBar => throw _privateConstructorUsedError;
+  bool get isConnected => throw _privateConstructorUsedError;
 
   /// Create a copy of MainState
   /// with the given fields replaced by the non-null parameter values.
@@ -376,7 +506,7 @@ abstract class $MainStateCopyWith<$Res> {
   factory $MainStateCopyWith(MainState value, $Res Function(MainState) then) =
       _$MainStateCopyWithImpl<$Res, MainState>;
   @useResult
-  $Res call({MainPageEnum selectedPage, bool showNavBar});
+  $Res call({MainPageEnum selectedPage, bool showNavBar, bool isConnected});
 }
 
 /// @nodoc
@@ -396,6 +526,7 @@ class _$MainStateCopyWithImpl<$Res, $Val extends MainState>
   $Res call({
     Object? selectedPage = null,
     Object? showNavBar = null,
+    Object? isConnected = null,
   }) {
     return _then(_value.copyWith(
       selectedPage: null == selectedPage
@@ -405,6 +536,10 @@ class _$MainStateCopyWithImpl<$Res, $Val extends MainState>
       showNavBar: null == showNavBar
           ? _value.showNavBar
           : showNavBar // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isConnected: null == isConnected
+          ? _value.isConnected
+          : isConnected // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -418,7 +553,7 @@ abstract class _$$MainStateImplCopyWith<$Res>
       __$$MainStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({MainPageEnum selectedPage, bool showNavBar});
+  $Res call({MainPageEnum selectedPage, bool showNavBar, bool isConnected});
 }
 
 /// @nodoc
@@ -436,6 +571,7 @@ class __$$MainStateImplCopyWithImpl<$Res>
   $Res call({
     Object? selectedPage = null,
     Object? showNavBar = null,
+    Object? isConnected = null,
   }) {
     return _then(_$MainStateImpl(
       selectedPage: null == selectedPage
@@ -446,6 +582,10 @@ class __$$MainStateImplCopyWithImpl<$Res>
           ? _value.showNavBar
           : showNavBar // ignore: cast_nullable_to_non_nullable
               as bool,
+      isConnected: null == isConnected
+          ? _value.isConnected
+          : isConnected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -453,17 +593,21 @@ class __$$MainStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MainStateImpl implements _MainState {
-  const _$MainStateImpl({required this.selectedPage, this.showNavBar = true});
+  const _$MainStateImpl(
+      {required this.selectedPage,
+      required this.showNavBar,
+      required this.isConnected});
 
   @override
   final MainPageEnum selectedPage;
   @override
-  @JsonKey()
   final bool showNavBar;
+  @override
+  final bool isConnected;
 
   @override
   String toString() {
-    return 'MainState(selectedPage: $selectedPage, showNavBar: $showNavBar)';
+    return 'MainState(selectedPage: $selectedPage, showNavBar: $showNavBar, isConnected: $isConnected)';
   }
 
   @override
@@ -474,11 +618,14 @@ class _$MainStateImpl implements _MainState {
             (identical(other.selectedPage, selectedPage) ||
                 other.selectedPage == selectedPage) &&
             (identical(other.showNavBar, showNavBar) ||
-                other.showNavBar == showNavBar));
+                other.showNavBar == showNavBar) &&
+            (identical(other.isConnected, isConnected) ||
+                other.isConnected == isConnected));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectedPage, showNavBar);
+  int get hashCode =>
+      Object.hash(runtimeType, selectedPage, showNavBar, isConnected);
 
   /// Create a copy of MainState
   /// with the given fields replaced by the non-null parameter values.
@@ -492,12 +639,15 @@ class _$MainStateImpl implements _MainState {
 abstract class _MainState implements MainState {
   const factory _MainState(
       {required final MainPageEnum selectedPage,
-      final bool showNavBar}) = _$MainStateImpl;
+      required final bool showNavBar,
+      required final bool isConnected}) = _$MainStateImpl;
 
   @override
   MainPageEnum get selectedPage;
   @override
   bool get showNavBar;
+  @override
+  bool get isConnected;
 
   /// Create a copy of MainState
   /// with the given fields replaced by the non-null parameter values.

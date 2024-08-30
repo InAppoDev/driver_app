@@ -28,7 +28,7 @@ class MessageListView extends StatelessWidget {
               ],
             ),
           );
-        } else {
+        } else if (state.status == MessageListStatus.loaded) {
           ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
         }
       },

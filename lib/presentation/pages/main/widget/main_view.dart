@@ -22,6 +22,28 @@ class MainView extends StatelessWidget {
       extendBody: true,
       body: BlocBuilder<MainBloc, MainState>(
         builder: (context, state) {
+          if (!state.isConnected) {
+            ScaffoldMessenger.of(context).showMaterialBanner(
+              MaterialBanner(
+                content: Text('No internet connection'),
+                backgroundColor: Colors.redAccent,
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+                    },
+                    child: const Text(
+                      'DISMISS',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          } else {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          }
+
           switch (state.selectedPage) {
             case MainPageEnum.home:
               return const HomePage();

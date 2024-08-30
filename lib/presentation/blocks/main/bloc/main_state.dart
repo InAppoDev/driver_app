@@ -6,11 +6,13 @@ enum MainPageEnum { home, trips, messages, profile }
 class MainState with _$MainState {
   const factory MainState({
     required MainPageEnum selectedPage,
-    @Default(true) bool showNavBar,
+    required bool showNavBar,
+    required bool isConnected,
   }) = _MainState;
 
   factory MainState.initial() => const MainState(
         selectedPage: MainPageEnum.home,
         showNavBar: true,
+        isConnected: true,
       );
 }

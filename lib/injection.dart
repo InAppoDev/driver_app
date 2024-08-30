@@ -66,6 +66,8 @@ Future<void> initApp() async {
   GetIt.instance.registerSingleton<MessagesRepository>(
     MessagesRepositoryImpl(
       apiDataSource: apiDataSource,
+      hiveService: hiveService,
+      connectivity: connectivity,
     ),
   );
   GetIt.instance.registerSingleton<AuthRepository>(

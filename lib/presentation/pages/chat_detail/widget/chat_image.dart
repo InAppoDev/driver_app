@@ -41,8 +41,14 @@ class ChatImage extends StatelessWidget {
                     child: Image.network(
                       mainImage!,
                       width: 40,
-                      height: 39,
+                      height: 40,
                       fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const SizedBox(
+                          width: 40,
+                          height: 40,
+                        );
+                      },
                     ),
                   )
                 : const SizedBox.shrink(),
@@ -75,6 +81,12 @@ class ChatImage extends StatelessWidget {
                               height: 16,
                               width: 16,
                               fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return const SizedBox(
+                                  width: 16,
+                                  height: 16,
+                                );
+                              },
                             ),
                           )
                         : const SizedBox.shrink(),

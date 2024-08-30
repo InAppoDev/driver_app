@@ -1,17 +1,66 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:get_it/get_it.dart';
+import 'package:tms_driver/domain/repositories/auth_repository.dart';
 
 part 'main_event.dart';
 part 'main_state.dart';
 part 'main_bloc.freezed.dart';
 
 class MainBloc extends Bloc<MainEvent, MainState> {
+  final AuthRepository authRepo = GetIt.instance<AuthRepository>();
+  final Connectivity connectivity = Connectivity();
+
+  List<ConnectivityResult> _lastResults = [ConnectivityResult.none];
+  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
+
   MainBloc() : super(MainState.initial()) {
-    on<_PageChanged>((event, emit) {
-      emit(state.copyWith(selectedPage: event.page));
+    on<_PageChanged>(_onPageChanged);
+    on<_HideShowNavBar>(_onHideShowNavBar);
+    on<_CheckConnection>(_checkConnection);
+
+    _connectivitySubscription = connectivity.onConnectivityChanged
+        .listen((List<ConnectivityResult> results) {
+      _updateConnectionStatus(results);
+      add(const MainEvent.checkConnection());
     });
-    on<_HideShowNavBar>((event, emit) {
-      emit(state.copyWith(showNavBar: event.hideShowNavBar));
-    });
+  }
+
+  Future<void> _onPageChanged(
+      _PageChanged event, Emitter<MainState> emit) async {
+    emit(state.copyWith(selectedPage: event.page));
+  }
+
+  Future<void> _onHideShowNavBar(
+      _HideShowNavBar event, Emitter<MainState> emit) async {
+    emit(state.copyWith(showNavBar: event.hideShowNavBar));
+  }
+
+  Future<void> _checkConnection(
+      _CheckConnection event, Emitter<MainState> emit) async {
+    if (!_lastResults.contains(ConnectivityResult.none)) {
+      try {
+        print('authRepo.ping();');
+        await authRepo.ping();
+        emit(state.copyWith(isConnected: true));
+      } catch (e) {
+        emit(state.copyWith(isConnected: false));
+      }
+    } else {
+      emit(state.copyWith(isConnected: false));
+    }
+  }
+
+  void _updateConnectionStatus(List<ConnectivityResult> results) {
+    _lastResults = results;
+  }
+
+  @override
+  Future<void> close() {
+    _connectivitySubscription.cancel();
+    return super.close();
   }
 }

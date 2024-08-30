@@ -619,6 +619,8 @@ class __$$DownloadFileImplCopyWithImpl<$Res>
       _$DownloadFileImpl _value, $Res Function(_$DownloadFileImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -666,7 +668,9 @@ class _$DownloadFileImpl implements _DownloadFile {
   @override
   int get hashCode => Object.hash(runtimeType, url, fileName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DownloadFileImplCopyWith<_$DownloadFileImpl> get copyWith =>
@@ -757,7 +761,10 @@ abstract class _DownloadFile implements ChatDetailEvent {
 
   String get url;
   String get fileName;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DownloadFileImplCopyWith<_$DownloadFileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
