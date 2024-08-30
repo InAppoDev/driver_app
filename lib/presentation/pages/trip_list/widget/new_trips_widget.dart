@@ -1,7 +1,7 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_info_widget.dart';
-
 class NewTripsWidget extends StatelessWidget {
   const NewTripsWidget({
     super.key,
@@ -35,27 +35,41 @@ class NewTripsWidget extends StatelessWidget {
                     bottomLeft: Radius.circular(8),
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ...tripModel.details.map(
-                      (detail) => TripInfoWidget(
-                        topic: detail.name ?? '',
-                        address: detail.address ?? '',
-                        time: detail.data ?? '',
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ...tripModel.details.mapIndexed(
+                        (index, detail) {
+                          final customItem = tripModel.details[tripModel.details
+                                  .indexOf(tripModel.details.skip(1).firstWhere(
+                                      (item) => item.name != null
+                                          ? item.name!.contains('1')
+                                          : false)) -
+                              1];
+                          return TripInfoWidget(
+                            topic: detail.name ?? '',
+                            address: detail.address ?? '',
+                            time: detail.data ?? '',
+                            showMidlLine: detail == customItem,
+                            showTipImage:
+                                index > tripModel.details.indexOf(customItem),
+                          );
+                        },
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10, bottom: 10),
-                      child: Text(
-                        'Total miles: ${tripModel.miles ?? 0} miles',
-                        style: theme.textTheme.labelSmall!.copyWith(
-                          fontSize: 8,
-                          color: theme.dividerColor,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, bottom: 10),
+                        child: Text(
+                          'Total miles: ${tripModel.miles ?? 0} miles',
+                          style: theme.textTheme.labelSmall!.copyWith(
+                            fontSize: 8,
+                            color: theme.dividerColor,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
