@@ -10,13 +10,13 @@ class SelectedFileWidget extends StatelessWidget {
     this.selectedFile,
     this.onFileRemove,
     this.fileFromNetwork,
-    required this.onDownLoad,
+    this.onDownLoad,
   });
 
   final File? selectedFile;
   final String? fileFromNetwork;
   final Function(File)? onFileRemove;
-  final VoidCallback onDownLoad;
+  final VoidCallback? onDownLoad;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class SelectedFileWidget extends StatelessWidget {
                     width: width * 0.23,
                     fit: BoxFit.fitWidth,
                   )
-                : fileFromNetwork != null
+                : fileFromNetwork == null
                     ? Image.file(
                         selectedFile!,
                         height: height * 0.1,
@@ -70,12 +70,15 @@ class SelectedFileWidget extends StatelessWidget {
                   ),
                   const SizedBox(width: 15),
                 ],
-                CustomIconButton(
-                  padding: EdgeInsets.zero,
+                if (onDownLoad != null)
+                  CustomIconButton(
+                    padding: EdgeInsets.zero,
                   height: 13,
                   icon: 'upload',
-                  onPressed: onDownLoad,
-                  justIcon: true,
+                    onPressed: () {
+                      onDownLoad!.call();
+                    },
+                    justIcon: true,
                   iconColor: theme.canvasColor,
                 ),
                 if (fileFromNetwork == null) ...[
@@ -85,9 +88,7 @@ class SelectedFileWidget extends StatelessWidget {
                     height: 13,
                     icon: 'delete',
                   onPressed: () {
-                      if (fileFromNetwork != null) {
-                        onFileRemove?.call(selectedFile!);
-                      }
+                      onFileRemove?.call(selectedFile!);
                     },
                     justIcon: true,
                     iconColor: theme.canvasColor,

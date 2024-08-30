@@ -57,6 +57,19 @@ class ChatListView extends StatelessWidget {
                         ),
                       );
                 },
+                documents: state.documents ?? [],
+                onPinPressed: () {
+                  context.read<ChatDetailBloc>().add(
+                        ChatDetailEvent.addDocument(chatDetails),
+                      );
+                },
+                onFileRemove: (file)
+                {
+                  print('pressed; file- $file');
+                  context.read<ChatDetailBloc>().add(
+                        ChatDetailEvent.removeDocument(chatDetails, file),
+                      );
+                },
               ),
             ],
           );

@@ -25,6 +25,9 @@ mixin _$ChatDetailEvent {
     required TResult Function(MessageModel newMessage) receiveNewMessage,
     required TResult Function(String url, String fileName) downloadFile,
     required TResult Function(String number) tapToCall,
+    required TResult Function(ChatDetailModel chatDetails) addDocument,
+    required TResult Function(ChatDetailModel chatDetails, File file)
+        removeDocument,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +38,8 @@ mixin _$ChatDetailEvent {
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
     TResult? Function(String url, String fileName)? downloadFile,
     TResult? Function(String number)? tapToCall,
+    TResult? Function(ChatDetailModel chatDetails)? addDocument,
+    TResult? Function(ChatDetailModel chatDetails, File file)? removeDocument,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,6 +50,8 @@ mixin _$ChatDetailEvent {
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     TResult Function(String url, String fileName)? downloadFile,
     TResult Function(String number)? tapToCall,
+    TResult Function(ChatDetailModel chatDetails)? addDocument,
+    TResult Function(ChatDetailModel chatDetails, File file)? removeDocument,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +62,8 @@ mixin _$ChatDetailEvent {
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
     required TResult Function(_DownloadFile value) downloadFile,
     required TResult Function(_TapToCall value) tapToCall,
+    required TResult Function(_AddDocument value) addDocument,
+    required TResult Function(_RemoveDocument value) removeDocument,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +73,8 @@ mixin _$ChatDetailEvent {
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult? Function(_DownloadFile value)? downloadFile,
     TResult? Function(_TapToCall value)? tapToCall,
+    TResult? Function(_AddDocument value)? addDocument,
+    TResult? Function(_RemoveDocument value)? removeDocument,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +84,8 @@ mixin _$ChatDetailEvent {
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult Function(_DownloadFile value)? downloadFile,
     TResult Function(_TapToCall value)? tapToCall,
+    TResult Function(_AddDocument value)? addDocument,
+    TResult Function(_RemoveDocument value)? removeDocument,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -196,6 +209,9 @@ class _$SendMessageImpl implements _SendMessage {
     required TResult Function(MessageModel newMessage) receiveNewMessage,
     required TResult Function(String url, String fileName) downloadFile,
     required TResult Function(String number) tapToCall,
+    required TResult Function(ChatDetailModel chatDetails) addDocument,
+    required TResult Function(ChatDetailModel chatDetails, File file)
+        removeDocument,
   }) {
     return sendMessage(messageContent, chatDetails);
   }
@@ -209,6 +225,8 @@ class _$SendMessageImpl implements _SendMessage {
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
     TResult? Function(String url, String fileName)? downloadFile,
     TResult? Function(String number)? tapToCall,
+    TResult? Function(ChatDetailModel chatDetails)? addDocument,
+    TResult? Function(ChatDetailModel chatDetails, File file)? removeDocument,
   }) {
     return sendMessage?.call(messageContent, chatDetails);
   }
@@ -222,6 +240,8 @@ class _$SendMessageImpl implements _SendMessage {
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     TResult Function(String url, String fileName)? downloadFile,
     TResult Function(String number)? tapToCall,
+    TResult Function(ChatDetailModel chatDetails)? addDocument,
+    TResult Function(ChatDetailModel chatDetails, File file)? removeDocument,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -238,6 +258,8 @@ class _$SendMessageImpl implements _SendMessage {
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
     required TResult Function(_DownloadFile value) downloadFile,
     required TResult Function(_TapToCall value) tapToCall,
+    required TResult Function(_AddDocument value) addDocument,
+    required TResult Function(_RemoveDocument value) removeDocument,
   }) {
     return sendMessage(this);
   }
@@ -250,6 +272,8 @@ class _$SendMessageImpl implements _SendMessage {
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult? Function(_DownloadFile value)? downloadFile,
     TResult? Function(_TapToCall value)? tapToCall,
+    TResult? Function(_AddDocument value)? addDocument,
+    TResult? Function(_RemoveDocument value)? removeDocument,
   }) {
     return sendMessage?.call(this);
   }
@@ -262,6 +286,8 @@ class _$SendMessageImpl implements _SendMessage {
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult Function(_DownloadFile value)? downloadFile,
     TResult Function(_TapToCall value)? tapToCall,
+    TResult Function(_AddDocument value)? addDocument,
+    TResult Function(_RemoveDocument value)? removeDocument,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -362,6 +388,9 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     required TResult Function(MessageModel newMessage) receiveNewMessage,
     required TResult Function(String url, String fileName) downloadFile,
     required TResult Function(String number) tapToCall,
+    required TResult Function(ChatDetailModel chatDetails) addDocument,
+    required TResult Function(ChatDetailModel chatDetails, File file)
+        removeDocument,
   }) {
     return fetchChatDetails(chatId);
   }
@@ -375,6 +404,8 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
     TResult? Function(String url, String fileName)? downloadFile,
     TResult? Function(String number)? tapToCall,
+    TResult? Function(ChatDetailModel chatDetails)? addDocument,
+    TResult? Function(ChatDetailModel chatDetails, File file)? removeDocument,
   }) {
     return fetchChatDetails?.call(chatId);
   }
@@ -388,6 +419,8 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     TResult Function(String url, String fileName)? downloadFile,
     TResult Function(String number)? tapToCall,
+    TResult Function(ChatDetailModel chatDetails)? addDocument,
+    TResult Function(ChatDetailModel chatDetails, File file)? removeDocument,
     required TResult orElse(),
   }) {
     if (fetchChatDetails != null) {
@@ -404,6 +437,8 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
     required TResult Function(_DownloadFile value) downloadFile,
     required TResult Function(_TapToCall value) tapToCall,
+    required TResult Function(_AddDocument value) addDocument,
+    required TResult Function(_RemoveDocument value) removeDocument,
   }) {
     return fetchChatDetails(this);
   }
@@ -416,6 +451,8 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult? Function(_DownloadFile value)? downloadFile,
     TResult? Function(_TapToCall value)? tapToCall,
+    TResult? Function(_AddDocument value)? addDocument,
+    TResult? Function(_RemoveDocument value)? removeDocument,
   }) {
     return fetchChatDetails?.call(this);
   }
@@ -428,6 +465,8 @@ class _$FetchChatDetailsImpl implements _FetchChatDetails {
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult Function(_DownloadFile value)? downloadFile,
     TResult Function(_TapToCall value)? tapToCall,
+    TResult Function(_AddDocument value)? addDocument,
+    TResult Function(_RemoveDocument value)? removeDocument,
     required TResult orElse(),
   }) {
     if (fetchChatDetails != null) {
@@ -538,6 +577,9 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     required TResult Function(MessageModel newMessage) receiveNewMessage,
     required TResult Function(String url, String fileName) downloadFile,
     required TResult Function(String number) tapToCall,
+    required TResult Function(ChatDetailModel chatDetails) addDocument,
+    required TResult Function(ChatDetailModel chatDetails, File file)
+        removeDocument,
   }) {
     return receiveNewMessage(newMessage);
   }
@@ -551,6 +593,8 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
     TResult? Function(String url, String fileName)? downloadFile,
     TResult? Function(String number)? tapToCall,
+    TResult? Function(ChatDetailModel chatDetails)? addDocument,
+    TResult? Function(ChatDetailModel chatDetails, File file)? removeDocument,
   }) {
     return receiveNewMessage?.call(newMessage);
   }
@@ -564,6 +608,8 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     TResult Function(String url, String fileName)? downloadFile,
     TResult Function(String number)? tapToCall,
+    TResult Function(ChatDetailModel chatDetails)? addDocument,
+    TResult Function(ChatDetailModel chatDetails, File file)? removeDocument,
     required TResult orElse(),
   }) {
     if (receiveNewMessage != null) {
@@ -580,6 +626,8 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
     required TResult Function(_DownloadFile value) downloadFile,
     required TResult Function(_TapToCall value) tapToCall,
+    required TResult Function(_AddDocument value) addDocument,
+    required TResult Function(_RemoveDocument value) removeDocument,
   }) {
     return receiveNewMessage(this);
   }
@@ -592,6 +640,8 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult? Function(_DownloadFile value)? downloadFile,
     TResult? Function(_TapToCall value)? tapToCall,
+    TResult? Function(_AddDocument value)? addDocument,
+    TResult? Function(_RemoveDocument value)? removeDocument,
   }) {
     return receiveNewMessage?.call(this);
   }
@@ -604,6 +654,8 @@ class _$ReceiveNewMessageImpl implements _ReceiveNewMessage {
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult Function(_DownloadFile value)? downloadFile,
     TResult Function(_TapToCall value)? tapToCall,
+    TResult Function(_AddDocument value)? addDocument,
+    TResult Function(_RemoveDocument value)? removeDocument,
     required TResult orElse(),
   }) {
     if (receiveNewMessage != null) {
@@ -710,6 +762,9 @@ class _$DownloadFileImpl implements _DownloadFile {
     required TResult Function(MessageModel newMessage) receiveNewMessage,
     required TResult Function(String url, String fileName) downloadFile,
     required TResult Function(String number) tapToCall,
+    required TResult Function(ChatDetailModel chatDetails) addDocument,
+    required TResult Function(ChatDetailModel chatDetails, File file)
+        removeDocument,
   }) {
     return downloadFile(url, fileName);
   }
@@ -723,6 +778,8 @@ class _$DownloadFileImpl implements _DownloadFile {
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
     TResult? Function(String url, String fileName)? downloadFile,
     TResult? Function(String number)? tapToCall,
+    TResult? Function(ChatDetailModel chatDetails)? addDocument,
+    TResult? Function(ChatDetailModel chatDetails, File file)? removeDocument,
   }) {
     return downloadFile?.call(url, fileName);
   }
@@ -736,6 +793,8 @@ class _$DownloadFileImpl implements _DownloadFile {
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     TResult Function(String url, String fileName)? downloadFile,
     TResult Function(String number)? tapToCall,
+    TResult Function(ChatDetailModel chatDetails)? addDocument,
+    TResult Function(ChatDetailModel chatDetails, File file)? removeDocument,
     required TResult orElse(),
   }) {
     if (downloadFile != null) {
@@ -752,6 +811,8 @@ class _$DownloadFileImpl implements _DownloadFile {
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
     required TResult Function(_DownloadFile value) downloadFile,
     required TResult Function(_TapToCall value) tapToCall,
+    required TResult Function(_AddDocument value) addDocument,
+    required TResult Function(_RemoveDocument value) removeDocument,
   }) {
     return downloadFile(this);
   }
@@ -764,6 +825,8 @@ class _$DownloadFileImpl implements _DownloadFile {
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult? Function(_DownloadFile value)? downloadFile,
     TResult? Function(_TapToCall value)? tapToCall,
+    TResult? Function(_AddDocument value)? addDocument,
+    TResult? Function(_RemoveDocument value)? removeDocument,
   }) {
     return downloadFile?.call(this);
   }
@@ -776,6 +839,8 @@ class _$DownloadFileImpl implements _DownloadFile {
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult Function(_DownloadFile value)? downloadFile,
     TResult Function(_TapToCall value)? tapToCall,
+    TResult Function(_AddDocument value)? addDocument,
+    TResult Function(_RemoveDocument value)? removeDocument,
     required TResult orElse(),
   }) {
     if (downloadFile != null) {
@@ -874,6 +939,9 @@ class _$TapToCallImpl implements _TapToCall {
     required TResult Function(MessageModel newMessage) receiveNewMessage,
     required TResult Function(String url, String fileName) downloadFile,
     required TResult Function(String number) tapToCall,
+    required TResult Function(ChatDetailModel chatDetails) addDocument,
+    required TResult Function(ChatDetailModel chatDetails, File file)
+        removeDocument,
   }) {
     return tapToCall(number);
   }
@@ -887,6 +955,8 @@ class _$TapToCallImpl implements _TapToCall {
     TResult? Function(MessageModel newMessage)? receiveNewMessage,
     TResult? Function(String url, String fileName)? downloadFile,
     TResult? Function(String number)? tapToCall,
+    TResult? Function(ChatDetailModel chatDetails)? addDocument,
+    TResult? Function(ChatDetailModel chatDetails, File file)? removeDocument,
   }) {
     return tapToCall?.call(number);
   }
@@ -900,6 +970,8 @@ class _$TapToCallImpl implements _TapToCall {
     TResult Function(MessageModel newMessage)? receiveNewMessage,
     TResult Function(String url, String fileName)? downloadFile,
     TResult Function(String number)? tapToCall,
+    TResult Function(ChatDetailModel chatDetails)? addDocument,
+    TResult Function(ChatDetailModel chatDetails, File file)? removeDocument,
     required TResult orElse(),
   }) {
     if (tapToCall != null) {
@@ -916,6 +988,8 @@ class _$TapToCallImpl implements _TapToCall {
     required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
     required TResult Function(_DownloadFile value) downloadFile,
     required TResult Function(_TapToCall value) tapToCall,
+    required TResult Function(_AddDocument value) addDocument,
+    required TResult Function(_RemoveDocument value) removeDocument,
   }) {
     return tapToCall(this);
   }
@@ -928,6 +1002,8 @@ class _$TapToCallImpl implements _TapToCall {
     TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult? Function(_DownloadFile value)? downloadFile,
     TResult? Function(_TapToCall value)? tapToCall,
+    TResult? Function(_AddDocument value)? addDocument,
+    TResult? Function(_RemoveDocument value)? removeDocument,
   }) {
     return tapToCall?.call(this);
   }
@@ -940,6 +1016,8 @@ class _$TapToCallImpl implements _TapToCall {
     TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
     TResult Function(_DownloadFile value)? downloadFile,
     TResult Function(_TapToCall value)? tapToCall,
+    TResult Function(_AddDocument value)? addDocument,
+    TResult Function(_RemoveDocument value)? removeDocument,
     required TResult orElse(),
   }) {
     if (tapToCall != null) {
@@ -962,12 +1040,403 @@ abstract class _TapToCall implements ChatDetailEvent {
 }
 
 /// @nodoc
+abstract class _$$AddDocumentImplCopyWith<$Res> {
+  factory _$$AddDocumentImplCopyWith(
+          _$AddDocumentImpl value, $Res Function(_$AddDocumentImpl) then) =
+      __$$AddDocumentImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ChatDetailModel chatDetails});
+
+  $ChatDetailModelCopyWith<$Res> get chatDetails;
+}
+
+/// @nodoc
+class __$$AddDocumentImplCopyWithImpl<$Res>
+    extends _$ChatDetailEventCopyWithImpl<$Res, _$AddDocumentImpl>
+    implements _$$AddDocumentImplCopyWith<$Res> {
+  __$$AddDocumentImplCopyWithImpl(
+      _$AddDocumentImpl _value, $Res Function(_$AddDocumentImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chatDetails = null,
+  }) {
+    return _then(_$AddDocumentImpl(
+      null == chatDetails
+          ? _value.chatDetails
+          : chatDetails // ignore: cast_nullable_to_non_nullable
+              as ChatDetailModel,
+    ));
+  }
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ChatDetailModelCopyWith<$Res> get chatDetails {
+    return $ChatDetailModelCopyWith<$Res>(_value.chatDetails, (value) {
+      return _then(_value.copyWith(chatDetails: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AddDocumentImpl implements _AddDocument {
+  const _$AddDocumentImpl(this.chatDetails);
+
+  @override
+  final ChatDetailModel chatDetails;
+
+  @override
+  String toString() {
+    return 'ChatDetailEvent.addDocument(chatDetails: $chatDetails)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddDocumentImpl &&
+            (identical(other.chatDetails, chatDetails) ||
+                other.chatDetails == chatDetails));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, chatDetails);
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddDocumentImplCopyWith<_$AddDocumentImpl> get copyWith =>
+      __$$AddDocumentImplCopyWithImpl<_$AddDocumentImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String messageContent, ChatDetailModel chatDetails)
+        sendMessage,
+    required TResult Function(int chatId) fetchChatDetails,
+    required TResult Function(MessageModel newMessage) receiveNewMessage,
+    required TResult Function(String url, String fileName) downloadFile,
+    required TResult Function(String number) tapToCall,
+    required TResult Function(ChatDetailModel chatDetails) addDocument,
+    required TResult Function(ChatDetailModel chatDetails, File file)
+        removeDocument,
+  }) {
+    return addDocument(chatDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult? Function(int chatId)? fetchChatDetails,
+    TResult? Function(MessageModel newMessage)? receiveNewMessage,
+    TResult? Function(String url, String fileName)? downloadFile,
+    TResult? Function(String number)? tapToCall,
+    TResult? Function(ChatDetailModel chatDetails)? addDocument,
+    TResult? Function(ChatDetailModel chatDetails, File file)? removeDocument,
+  }) {
+    return addDocument?.call(chatDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult Function(int chatId)? fetchChatDetails,
+    TResult Function(MessageModel newMessage)? receiveNewMessage,
+    TResult Function(String url, String fileName)? downloadFile,
+    TResult Function(String number)? tapToCall,
+    TResult Function(ChatDetailModel chatDetails)? addDocument,
+    TResult Function(ChatDetailModel chatDetails, File file)? removeDocument,
+    required TResult orElse(),
+  }) {
+    if (addDocument != null) {
+      return addDocument(chatDetails);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_FetchChatDetails value) fetchChatDetails,
+    required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
+    required TResult Function(_DownloadFile value) downloadFile,
+    required TResult Function(_TapToCall value) tapToCall,
+    required TResult Function(_AddDocument value) addDocument,
+    required TResult Function(_RemoveDocument value) removeDocument,
+  }) {
+    return addDocument(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_FetchChatDetails value)? fetchChatDetails,
+    TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult? Function(_DownloadFile value)? downloadFile,
+    TResult? Function(_TapToCall value)? tapToCall,
+    TResult? Function(_AddDocument value)? addDocument,
+    TResult? Function(_RemoveDocument value)? removeDocument,
+  }) {
+    return addDocument?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_FetchChatDetails value)? fetchChatDetails,
+    TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult Function(_DownloadFile value)? downloadFile,
+    TResult Function(_TapToCall value)? tapToCall,
+    TResult Function(_AddDocument value)? addDocument,
+    TResult Function(_RemoveDocument value)? removeDocument,
+    required TResult orElse(),
+  }) {
+    if (addDocument != null) {
+      return addDocument(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddDocument implements ChatDetailEvent {
+  const factory _AddDocument(final ChatDetailModel chatDetails) =
+      _$AddDocumentImpl;
+
+  ChatDetailModel get chatDetails;
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddDocumentImplCopyWith<_$AddDocumentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveDocumentImplCopyWith<$Res> {
+  factory _$$RemoveDocumentImplCopyWith(_$RemoveDocumentImpl value,
+          $Res Function(_$RemoveDocumentImpl) then) =
+      __$$RemoveDocumentImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ChatDetailModel chatDetails, File file});
+
+  $ChatDetailModelCopyWith<$Res> get chatDetails;
+}
+
+/// @nodoc
+class __$$RemoveDocumentImplCopyWithImpl<$Res>
+    extends _$ChatDetailEventCopyWithImpl<$Res, _$RemoveDocumentImpl>
+    implements _$$RemoveDocumentImplCopyWith<$Res> {
+  __$$RemoveDocumentImplCopyWithImpl(
+      _$RemoveDocumentImpl _value, $Res Function(_$RemoveDocumentImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chatDetails = null,
+    Object? file = null,
+  }) {
+    return _then(_$RemoveDocumentImpl(
+      null == chatDetails
+          ? _value.chatDetails
+          : chatDetails // ignore: cast_nullable_to_non_nullable
+              as ChatDetailModel,
+      null == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File,
+    ));
+  }
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ChatDetailModelCopyWith<$Res> get chatDetails {
+    return $ChatDetailModelCopyWith<$Res>(_value.chatDetails, (value) {
+      return _then(_value.copyWith(chatDetails: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$RemoveDocumentImpl implements _RemoveDocument {
+  const _$RemoveDocumentImpl(this.chatDetails, this.file);
+
+  @override
+  final ChatDetailModel chatDetails;
+  @override
+  final File file;
+
+  @override
+  String toString() {
+    return 'ChatDetailEvent.removeDocument(chatDetails: $chatDetails, file: $file)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveDocumentImpl &&
+            (identical(other.chatDetails, chatDetails) ||
+                other.chatDetails == chatDetails) &&
+            (identical(other.file, file) || other.file == file));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, chatDetails, file);
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemoveDocumentImplCopyWith<_$RemoveDocumentImpl> get copyWith =>
+      __$$RemoveDocumentImplCopyWithImpl<_$RemoveDocumentImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String messageContent, ChatDetailModel chatDetails)
+        sendMessage,
+    required TResult Function(int chatId) fetchChatDetails,
+    required TResult Function(MessageModel newMessage) receiveNewMessage,
+    required TResult Function(String url, String fileName) downloadFile,
+    required TResult Function(String number) tapToCall,
+    required TResult Function(ChatDetailModel chatDetails) addDocument,
+    required TResult Function(ChatDetailModel chatDetails, File file)
+        removeDocument,
+  }) {
+    return removeDocument(chatDetails, file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult? Function(int chatId)? fetchChatDetails,
+    TResult? Function(MessageModel newMessage)? receiveNewMessage,
+    TResult? Function(String url, String fileName)? downloadFile,
+    TResult? Function(String number)? tapToCall,
+    TResult? Function(ChatDetailModel chatDetails)? addDocument,
+    TResult? Function(ChatDetailModel chatDetails, File file)? removeDocument,
+  }) {
+    return removeDocument?.call(chatDetails, file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult Function(int chatId)? fetchChatDetails,
+    TResult Function(MessageModel newMessage)? receiveNewMessage,
+    TResult Function(String url, String fileName)? downloadFile,
+    TResult Function(String number)? tapToCall,
+    TResult Function(ChatDetailModel chatDetails)? addDocument,
+    TResult Function(ChatDetailModel chatDetails, File file)? removeDocument,
+    required TResult orElse(),
+  }) {
+    if (removeDocument != null) {
+      return removeDocument(chatDetails, file);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SendMessage value) sendMessage,
+    required TResult Function(_FetchChatDetails value) fetchChatDetails,
+    required TResult Function(_ReceiveNewMessage value) receiveNewMessage,
+    required TResult Function(_DownloadFile value) downloadFile,
+    required TResult Function(_TapToCall value) tapToCall,
+    required TResult Function(_AddDocument value) addDocument,
+    required TResult Function(_RemoveDocument value) removeDocument,
+  }) {
+    return removeDocument(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SendMessage value)? sendMessage,
+    TResult? Function(_FetchChatDetails value)? fetchChatDetails,
+    TResult? Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult? Function(_DownloadFile value)? downloadFile,
+    TResult? Function(_TapToCall value)? tapToCall,
+    TResult? Function(_AddDocument value)? addDocument,
+    TResult? Function(_RemoveDocument value)? removeDocument,
+  }) {
+    return removeDocument?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SendMessage value)? sendMessage,
+    TResult Function(_FetchChatDetails value)? fetchChatDetails,
+    TResult Function(_ReceiveNewMessage value)? receiveNewMessage,
+    TResult Function(_DownloadFile value)? downloadFile,
+    TResult Function(_TapToCall value)? tapToCall,
+    TResult Function(_AddDocument value)? addDocument,
+    TResult Function(_RemoveDocument value)? removeDocument,
+    required TResult orElse(),
+  }) {
+    if (removeDocument != null) {
+      return removeDocument(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveDocument implements ChatDetailEvent {
+  const factory _RemoveDocument(
+          final ChatDetailModel chatDetails, final File file) =
+      _$RemoveDocumentImpl;
+
+  ChatDetailModel get chatDetails;
+  File get file;
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RemoveDocumentImplCopyWith<_$RemoveDocumentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ChatDetailState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails) loaded,
+    required TResult Function(
+            ChatDetailModel chatDetails, List<File>? documents)
+        loaded,
     required TResult Function() sendingMessage,
     required TResult Function() messageSent,
     required TResult Function(String errorMessage) failure,
@@ -977,7 +1446,8 @@ mixin _$ChatDetailState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails)? loaded,
+    TResult? Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult? Function()? sendingMessage,
     TResult? Function()? messageSent,
     TResult? Function(String errorMessage)? failure,
@@ -987,7 +1457,8 @@ mixin _$ChatDetailState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails)? loaded,
+    TResult Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult Function()? sendingMessage,
     TResult Function()? messageSent,
     TResult Function(String errorMessage)? failure,
@@ -1091,7 +1562,9 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails) loaded,
+    required TResult Function(
+            ChatDetailModel chatDetails, List<File>? documents)
+        loaded,
     required TResult Function() sendingMessage,
     required TResult Function() messageSent,
     required TResult Function(String errorMessage) failure,
@@ -1104,7 +1577,8 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails)? loaded,
+    TResult? Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult? Function()? sendingMessage,
     TResult? Function()? messageSent,
     TResult? Function(String errorMessage)? failure,
@@ -1117,7 +1591,8 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails)? loaded,
+    TResult Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult Function()? sendingMessage,
     TResult Function()? messageSent,
     TResult Function(String errorMessage)? failure,
@@ -1220,7 +1695,9 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails) loaded,
+    required TResult Function(
+            ChatDetailModel chatDetails, List<File>? documents)
+        loaded,
     required TResult Function() sendingMessage,
     required TResult Function() messageSent,
     required TResult Function(String errorMessage) failure,
@@ -1233,7 +1710,8 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails)? loaded,
+    TResult? Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult? Function()? sendingMessage,
     TResult? Function()? messageSent,
     TResult? Function(String errorMessage)? failure,
@@ -1246,7 +1724,8 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails)? loaded,
+    TResult Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult Function()? sendingMessage,
     TResult Function()? messageSent,
     TResult Function(String errorMessage)? failure,
@@ -1312,7 +1791,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ChatDetailModel chatDetails});
+  $Res call({ChatDetailModel chatDetails, List<File>? documents});
 
   $ChatDetailModelCopyWith<$Res> get chatDetails;
 }
@@ -1331,12 +1810,17 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? chatDetails = null,
+    Object? documents = freezed,
   }) {
     return _then(_$LoadedImpl(
       null == chatDetails
           ? _value.chatDetails
           : chatDetails // ignore: cast_nullable_to_non_nullable
               as ChatDetailModel,
+      freezed == documents
+          ? _value._documents
+          : documents // ignore: cast_nullable_to_non_nullable
+              as List<File>?,
     ));
   }
 
@@ -1354,14 +1838,24 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements Loaded {
-  const _$LoadedImpl(this.chatDetails);
+  const _$LoadedImpl(this.chatDetails, [final List<File>? documents])
+      : _documents = documents;
 
   @override
   final ChatDetailModel chatDetails;
+  final List<File>? _documents;
+  @override
+  List<File>? get documents {
+    final value = _documents;
+    if (value == null) return null;
+    if (_documents is EqualUnmodifiableListView) return _documents;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ChatDetailState.loaded(chatDetails: $chatDetails)';
+    return 'ChatDetailState.loaded(chatDetails: $chatDetails, documents: $documents)';
   }
 
   @override
@@ -1370,11 +1864,14 @@ class _$LoadedImpl implements Loaded {
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
             (identical(other.chatDetails, chatDetails) ||
-                other.chatDetails == chatDetails));
+                other.chatDetails == chatDetails) &&
+            const DeepCollectionEquality()
+                .equals(other._documents, _documents));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, chatDetails);
+  int get hashCode => Object.hash(runtimeType, chatDetails,
+      const DeepCollectionEquality().hash(_documents));
 
   /// Create a copy of ChatDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -1389,12 +1886,14 @@ class _$LoadedImpl implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails) loaded,
+    required TResult Function(
+            ChatDetailModel chatDetails, List<File>? documents)
+        loaded,
     required TResult Function() sendingMessage,
     required TResult Function() messageSent,
     required TResult Function(String errorMessage) failure,
   }) {
-    return loaded(chatDetails);
+    return loaded(chatDetails, documents);
   }
 
   @override
@@ -1402,12 +1901,13 @@ class _$LoadedImpl implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails)? loaded,
+    TResult? Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult? Function()? sendingMessage,
     TResult? Function()? messageSent,
     TResult? Function(String errorMessage)? failure,
   }) {
-    return loaded?.call(chatDetails);
+    return loaded?.call(chatDetails, documents);
   }
 
   @override
@@ -1415,14 +1915,15 @@ class _$LoadedImpl implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails)? loaded,
+    TResult Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult Function()? sendingMessage,
     TResult Function()? messageSent,
     TResult Function(String errorMessage)? failure,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(chatDetails);
+      return loaded(chatDetails, documents);
     }
     return orElse();
   }
@@ -1472,9 +1973,11 @@ class _$LoadedImpl implements Loaded {
 }
 
 abstract class Loaded implements ChatDetailState {
-  const factory Loaded(final ChatDetailModel chatDetails) = _$LoadedImpl;
+  const factory Loaded(final ChatDetailModel chatDetails,
+      [final List<File>? documents]) = _$LoadedImpl;
 
   ChatDetailModel get chatDetails;
+  List<File>? get documents;
 
   /// Create a copy of ChatDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -1526,7 +2029,9 @@ class _$SendingMessageImpl implements SendingMessage {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails) loaded,
+    required TResult Function(
+            ChatDetailModel chatDetails, List<File>? documents)
+        loaded,
     required TResult Function() sendingMessage,
     required TResult Function() messageSent,
     required TResult Function(String errorMessage) failure,
@@ -1539,7 +2044,8 @@ class _$SendingMessageImpl implements SendingMessage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails)? loaded,
+    TResult? Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult? Function()? sendingMessage,
     TResult? Function()? messageSent,
     TResult? Function(String errorMessage)? failure,
@@ -1552,7 +2058,8 @@ class _$SendingMessageImpl implements SendingMessage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails)? loaded,
+    TResult Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult Function()? sendingMessage,
     TResult Function()? messageSent,
     TResult Function(String errorMessage)? failure,
@@ -1655,7 +2162,9 @@ class _$MessageSentImpl implements MessageSent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails) loaded,
+    required TResult Function(
+            ChatDetailModel chatDetails, List<File>? documents)
+        loaded,
     required TResult Function() sendingMessage,
     required TResult Function() messageSent,
     required TResult Function(String errorMessage) failure,
@@ -1668,7 +2177,8 @@ class _$MessageSentImpl implements MessageSent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails)? loaded,
+    TResult? Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult? Function()? sendingMessage,
     TResult? Function()? messageSent,
     TResult? Function(String errorMessage)? failure,
@@ -1681,7 +2191,8 @@ class _$MessageSentImpl implements MessageSent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails)? loaded,
+    TResult Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult Function()? sendingMessage,
     TResult Function()? messageSent,
     TResult Function(String errorMessage)? failure,
@@ -1812,7 +2323,9 @@ class _$FailureImpl implements Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails) loaded,
+    required TResult Function(
+            ChatDetailModel chatDetails, List<File>? documents)
+        loaded,
     required TResult Function() sendingMessage,
     required TResult Function() messageSent,
     required TResult Function(String errorMessage) failure,
@@ -1825,7 +2338,8 @@ class _$FailureImpl implements Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails)? loaded,
+    TResult? Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult? Function()? sendingMessage,
     TResult? Function()? messageSent,
     TResult? Function(String errorMessage)? failure,
@@ -1838,7 +2352,8 @@ class _$FailureImpl implements Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails)? loaded,
+    TResult Function(ChatDetailModel chatDetails, List<File>? documents)?
+        loaded,
     TResult Function()? sendingMessage,
     TResult Function()? messageSent,
     TResult Function(String errorMessage)? failure,

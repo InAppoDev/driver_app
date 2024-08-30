@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
-import 'package:tms_driver/presentation/pages/active_trip/widget/selected_file_widget.dart';
+import 'package:tms_driver/presentation/customs/selected_file_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class UploadScanFiles extends StatelessWidget {

@@ -12,4 +12,10 @@ class ChatDetailEvent with _$ChatDetailEvent {
       _DownloadFile;
   const factory ChatDetailEvent.tapToCall(String number) =
   _TapToCall;
+
+  const factory ChatDetailEvent.addDocument(ChatDetailModel chatDetails) =
+      _AddDocument;
+
+  const factory ChatDetailEvent.removeDocument(
+      ChatDetailModel chatDetails, File file) = _RemoveDocument;
 }
