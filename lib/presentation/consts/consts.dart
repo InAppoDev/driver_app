@@ -15,7 +15,7 @@ String formatTimestamp(int timestamp) {
 }
 
 String subLongFileName(String name) {
-  if (name.length > 20) {
+  if (name.length > 17) {
     final start = name.substring(0, 14);
     final end = name.substring(
       name.length - 3,

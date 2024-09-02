@@ -9,6 +9,6 @@ class ActiveTripEvent with _$ActiveTripEvent {
 
   const factory ActiveTripEvent.pickFile() = PickFile;
   const factory ActiveTripEvent.removeFile({required File file}) = RemoveFile;
-  const factory ActiveTripEvent.pickImage() = PickImage;
+  const factory ActiveTripEvent.scanDoc(String image) = ScanDoc;
   const factory ActiveTripEvent.uploadFiles() = UploadFiles;
 }
