@@ -251,6 +251,10 @@
   "@select": {
     "description": "SELECT"
   },
+  "confirm": "CONFIRM",
+  "@confirm": {
+    "description": "CONFIRM"
+  },
   "selectETAAt": "Select ETA at PICK UP#1:",
   "@selectETAAt": {
     "description": "Select ETA at PICK UP#1:"

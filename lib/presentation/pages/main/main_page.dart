@@ -61,7 +61,7 @@ class MainView extends StatelessWidget {
                   height: 30,
                   width: 30,
                 ),
-                const Text('Play', style: TextStyle(fontSize: 12)),
+                const Text('Drive', style: TextStyle(fontSize: 12)),
               ],
             ),
           ),
