@@ -8,6 +8,7 @@ import 'package:tms_driver/presentation/pages/home/home_page.dart';
 import 'package:tms_driver/presentation/pages/message_list/message_list.dart';
 import 'package:tms_driver/presentation/pages/profile/profile.dart';
 import 'package:tms_driver/presentation/pages/trip_list/trip_list.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -74,12 +75,15 @@ class MainView extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem(context, 'home', 'Home', MainPageEnum.home),
-              _buildNavItem(context, 'point', 'Trips', MainPageEnum.trips),
+              _buildNavItem(context, 'home', context.localizations.home,
+                  MainPageEnum.home),
+              _buildNavItem(context, 'point', context.localizations.trips,
+                  MainPageEnum.trips),
               const SizedBox(width: 40), // Space for the FAB
+              _buildNavItem(context, 'message', context.localizations.messages,
+                  MainPageEnum.messages),
               _buildNavItem(
-                  context, 'message', 'Messages', MainPageEnum.messages),
-              _buildNavItem(context, '', 'You', MainPageEnum.profile),
+                  context, '', context.localizations.you, MainPageEnum.profile),
             ],
           ),
         ),

@@ -65,7 +65,6 @@ class ChatListView extends StatelessWidget {
                 },
                 onFileRemove: (file)
                 {
-                  print('pressed; file- $file');
                   context.read<ChatDetailBloc>().add(
                         ChatDetailEvent.removeDocument(chatDetails, file),
                       );

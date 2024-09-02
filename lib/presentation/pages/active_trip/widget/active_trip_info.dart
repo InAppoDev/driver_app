@@ -32,7 +32,7 @@ class ActiveTripInfo extends StatelessWidget {
                 children: [
                   SvgPicture.asset('assets/images/distance.svg'),
                   Text(
-                    '300km',
+                    context.localizations.distanceKm(300),
                     style: theme.textTheme.titleSmall!.copyWith(
                       color: theme.dividerColor,
                       fontWeight: FontWeight.w400,
@@ -64,7 +64,7 @@ class ActiveTripInfo extends StatelessWidget {
               SvgPicture.asset('assets/images/clock.svg'),
               const SizedBox(width: 5),
               Text(
-                '10:00 am - 19:00 PM',
+                '10:00 AM - 19:00 PM',
                 style: theme.textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.w400,
                   color: theme.dividerColor,

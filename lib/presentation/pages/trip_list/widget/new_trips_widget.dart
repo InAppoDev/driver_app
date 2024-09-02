@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_info_widget.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 class NewTripsWidget extends StatelessWidget {
   const NewTripsWidget({
     super.key,
@@ -61,7 +62,8 @@ class NewTripsWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 10, bottom: 10),
                         child: Text(
-                          'Total miles: ${tripModel.miles ?? 0} miles',
+                          context.localizations.totalMilesMiles(
+                              (tripModel.miles ?? 0).toInt()),
                           style: theme.textTheme.labelSmall!.copyWith(
                             fontSize: 8,
                             color: theme.dividerColor,

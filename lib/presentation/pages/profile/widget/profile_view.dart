@@ -37,7 +37,8 @@ class ProfileView extends StatelessWidget {
                       ),
                     ),
                     loaded: (user) => Container(),
-                    error: (message) => Text('Error: $message'),
+                    error: (message) =>
+                        Text(context.localizations.errorMessage(message)),
                   ),
                 ],
               ),
