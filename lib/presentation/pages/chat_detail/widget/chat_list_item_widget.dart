@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tms_driver/data/models/chats/message/message_model.dart';
 import 'package:tms_driver/presentation/blocks/chat_detail/bloc/chat_detail_bloc.dart';
 import 'package:tms_driver/presentation/consts/consts.dart';
-import 'package:tms_driver/presentation/pages/active_trip/widget/selected_file_widget.dart';
+import 'package:tms_driver/presentation/customs/selected_file_widget.dart';
 
 class ChatListItemWidget extends StatelessWidget {
   const ChatListItemWidget({super.key, required this.messageModel});

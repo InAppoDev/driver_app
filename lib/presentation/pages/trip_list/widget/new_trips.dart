@@ -17,7 +17,7 @@ class NewTrips extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        padding: const EdgeInsets.only(bottom: 50),
+        padding: const EdgeInsets.only(bottom: 80),
         shrinkWrap: true,
         itemCount: trips.length,
         itemBuilder: (context, index) => NewTripsWidget(
