@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tms_driver/data/data_source/api_data_source.dart';
 import 'package:tms_driver/data/models/user/user_model.dart';
+import 'package:tms_driver/data/services/connectivity_service.dart';
 import 'package:tms_driver/data/services/hive_service.dart';
 import 'package:tms_driver/domain/repositories/user_repository.dart';
 import 'dart:async';
@@ -13,7 +14,7 @@ import 'dart:async';
 class UserRepositoryImpl implements UserRepository {
   final ApiDataSource apiDataSource;
   final HiveService hiveService;
-  final Connectivity connectivity;
+  final ConnectivityService connectivityService;
 
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
   List<ConnectivityResult> _lastResults = [ConnectivityResult.none];
@@ -21,16 +22,19 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl({
     required this.apiDataSource,
     required this.hiveService,
-    required this.connectivity,
+    required this.connectivityService,
   }) {
-    _connectivitySubscription = connectivity.onConnectivityChanged
+    _connectivitySubscription = connectivityService.connectivityStream
         .listen((List<ConnectivityResult> results) {
       _updateConnectionStatus(results);
     });
   }
-
   void _updateConnectionStatus(List<ConnectivityResult> results) {
     _lastResults = results;
+  }
+
+  void dispose() {
+    _connectivitySubscription.cancel();
   }
 
   @override
@@ -54,10 +58,6 @@ class UserRepositoryImpl implements UserRepository {
       await hiveService.saveUser(userModel);
       return userModel;
     }
-  }
-
-  void dispose() {
-    _connectivitySubscription.cancel();
   }
 
   Future<String> _getLocalImagePath() async {

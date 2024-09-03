@@ -23,25 +23,31 @@ class MainView extends StatelessWidget {
       body: BlocBuilder<MainBloc, MainState>(
         builder: (context, state) {
           if (!state.isConnected) {
-            ScaffoldMessenger.of(context).showMaterialBanner(
-              MaterialBanner(
-                content: Text('No internet connection'),
-                backgroundColor: Colors.redAccent,
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-                    },
-                    child: const Text(
-                      'DISMISS',
-                      style: TextStyle(color: Colors.white),
+            print('Displaying no internet connection message');
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              ScaffoldMessenger.of(context).showMaterialBanner(
+                MaterialBanner(
+                  content: Text('No internet connection'),
+                  backgroundColor: Colors.redAccent,
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        ScaffoldMessenger.of(context)
+                            .hideCurrentMaterialBanner();
+                      },
+                      child: const Text(
+                        'DISMISS',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            );
+                  ],
+                ),
+              );
+            });
           } else {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+            });
           }
 
           switch (state.selectedPage) {

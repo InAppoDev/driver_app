@@ -1,4 +1,3 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -7,6 +6,7 @@ import 'package:tms_driver/data/data_source/api_data_source.dart';
 import 'package:tms_driver/data/data_source/auth_data_source.dart';
 import 'package:tms_driver/data/data_source/ds_impl/api_data_source_impl.dart';
 import 'package:tms_driver/data/data_source/ds_impl/auth_data_source_impl.dart';
+import 'package:tms_driver/data/services/connectivity_service.dart';
 import 'package:tms_driver/data/services/hive_service.dart';
 import 'package:tms_driver/domain/repositories/auth_repository.dart';
 import 'package:tms_driver/domain/repositories/impl/auth_repository_impl.dart';
@@ -25,7 +25,10 @@ Future<void> initApp() async {
   final hiveService = HiveService();
   await FlutterDownloader.initialize();
   await hiveService.init();
-  final Connectivity connectivity = Connectivity();
+
+  final ConnectivityService connectivityService = ConnectivityService();
+  GetIt.instance.registerSingleton<ConnectivityService>(connectivityService);
+
   final ErrorHandler errorHandler =
       GetIt.instance.registerSingleton<ErrorHandler>(
     ErrorHandlerImpl(),
@@ -55,7 +58,7 @@ Future<void> initApp() async {
     UserRepositoryImpl(
       apiDataSource: apiDataSource,
       hiveService: hiveService,
-      connectivity: connectivity,
+      connectivityService: connectivityService,
     ),
   );
   GetIt.instance.registerSingleton<TripRepository>(
@@ -67,7 +70,7 @@ Future<void> initApp() async {
     MessagesRepositoryImpl(
       apiDataSource: apiDataSource,
       hiveService: hiveService,
-      connectivity: connectivity,
+      connectivityService: connectivityService,
     ),
   );
   GetIt.instance.registerSingleton<AuthRepository>(

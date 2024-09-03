@@ -5,13 +5,14 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:tms_driver/data/data_source/api_data_source.dart';
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
+import 'package:tms_driver/data/services/connectivity_service.dart';
 import 'package:tms_driver/data/services/hive_service.dart';
 import 'package:tms_driver/domain/repositories/messages_repository.dart';
 
 class MessagesRepositoryImpl implements MessagesRepository {
   final ApiDataSource apiDataSource;
   final HiveService hiveService;
-  final Connectivity connectivity;
+  final ConnectivityService connectivityService;
 
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
   List<ConnectivityResult> _lastResults = [ConnectivityResult.none];
@@ -19,9 +20,9 @@ class MessagesRepositoryImpl implements MessagesRepository {
   MessagesRepositoryImpl({
     required this.apiDataSource,
     required this.hiveService,
-    required this.connectivity,
+    required this.connectivityService,
   }) {
-    _connectivitySubscription = connectivity.onConnectivityChanged
+    _connectivitySubscription = connectivityService.connectivityStream
         .listen((List<ConnectivityResult> results) {
       _updateConnectionStatus(results);
     });

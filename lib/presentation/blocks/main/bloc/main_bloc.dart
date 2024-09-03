@@ -4,6 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:tms_driver/data/services/connectivity_service.dart';
 import 'package:tms_driver/domain/repositories/auth_repository.dart';
 
 part 'main_event.dart';
@@ -12,18 +13,21 @@ part 'main_bloc.freezed.dart';
 
 class MainBloc extends Bloc<MainEvent, MainState> {
   final AuthRepository authRepo = GetIt.instance<AuthRepository>();
-  final Connectivity connectivity = Connectivity();
+  final ConnectivityService connectivityService =
+      GetIt.instance<ConnectivityService>();
 
   List<ConnectivityResult> _lastResults = [ConnectivityResult.none];
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
 
   MainBloc() : super(MainState.initial()) {
+    print('Initializing MainBloc...');
     on<_PageChanged>(_onPageChanged);
     on<_HideShowNavBar>(_onHideShowNavBar);
     on<_CheckConnection>(_checkConnection);
 
-    _connectivitySubscription = connectivity.onConnectivityChanged
+    _connectivitySubscription = connectivityService.connectivityStream
         .listen((List<ConnectivityResult> results) {
+      print('Received connectivity results: $results');
       _updateConnectionStatus(results);
       add(const MainEvent.checkConnection());
     });
@@ -41,12 +45,14 @@ class MainBloc extends Bloc<MainEvent, MainState> {
 
   Future<void> _checkConnection(
       _CheckConnection event, Emitter<MainState> emit) async {
+    print('Checking connection...');
     if (!_lastResults.contains(ConnectivityResult.none)) {
       try {
         print('authRepo.ping();');
         await authRepo.ping();
         emit(state.copyWith(isConnected: true));
       } catch (e) {
+        print('Ping failed: $e');
         emit(state.copyWith(isConnected: false));
       }
     } else {
@@ -55,6 +61,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   }
 
   void _updateConnectionStatus(List<ConnectivityResult> results) {
+    print('Connection status updated: $results');
     _lastResults = results;
   }
 
