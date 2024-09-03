@@ -14,7 +14,9 @@ class SplashScreen extends StatelessWidget {
         listener: (context, listenerState) async {
           if (listenerState.status == SplashStatus.authenticated) {
             Future.delayed(const Duration(milliseconds: 1500), () {
-              context.go('/main');
+              if(context.mounted){
+                context.go('/main');
+              }
             });
           }
           if (listenerState.status == SplashStatus.unauthenticated) {

@@ -5,9 +5,11 @@ import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_image.dart';
 
 class ChatBarInfo extends StatelessWidget {
-  const ChatBarInfo({super.key, required this.chatDetails});
+  const ChatBarInfo(
+      {super.key, required this.chatDetails, required this.onPhonePressed});
 
   final ChatDetailModel chatDetails;
+  final Function(String) onPhonePressed;
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +48,17 @@ class ChatBarInfo extends StatelessWidget {
           ),
           if (chatDetails.actionButtonType == 'call' &&
               chatDetails.actionButtonValue != null &&
-              chatDetails.actionButtonValue!.isNotEmpty)
+              chatDetails.actionButtonValue!.isNotEmpty) ...[
             const SizedBox(width: 10),
           CustomIconButton(
             borderColor: Theme.of(context).indicatorColor.withOpacity(0.2),
             transparency: 0.2,
             icon: 'phone',
-            onPressed: () {},
-          ),
+              onPressed: () {
+                onPhonePressed(chatDetails.actionButtonValue!);
+              },
+            ),
+          ],
         ],
       ),
     );

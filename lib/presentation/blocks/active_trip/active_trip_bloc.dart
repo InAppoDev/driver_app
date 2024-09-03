@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:tms_driver/domain/repositories/trip_repository.dart';
 
 part 'active_trip_bloc.freezed.dart';
@@ -20,7 +19,7 @@ class ActiveTripBloc extends Bloc<ActiveTripEvent, ActiveTripState> {
     on<GetDateAndTime>(_getDataAndTime);
     on<PickFile>(_getFile);
     on<RemoveFile>(_removeFile);
-    on<PickImage>(_pickImage);
+    on<ScanDoc>(_scanDoc);
     on<UploadFiles>(_uploadFiles);
   }
 
@@ -46,13 +45,9 @@ class ActiveTripBloc extends Bloc<ActiveTripEvent, ActiveTripState> {
     emit(state.copyWith(selectedFile: null));
   }
 
-  void _pickImage(event, Emitter<ActiveTripState> emit) async {
+  void _scanDoc(event, Emitter<ActiveTripState> emit) async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.camera);
-
-      if (image == null) return;
-
-      emit(state.copyWith(selectedFile: File(image.path)));
+      emit(state.copyWith(selectedFile: File(event.image)));
     } on PlatformException catch (e) {
       log('Failed to pick image - $e');
     }

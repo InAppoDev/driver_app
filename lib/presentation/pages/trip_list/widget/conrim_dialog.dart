@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ConfirmDialog extends StatelessWidget {
   const ConfirmDialog({
@@ -30,7 +31,7 @@ class ConfirmDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'Current Stop',
+            context.localizations.currentStop,
             style:
                 theme.textTheme.bodySmall!.copyWith(color: theme.dividerColor),
           ),
@@ -68,22 +69,22 @@ class ConfirmDialog extends StatelessWidget {
           Row(
             children: [
               EtaWidget(
-                text: '+ 30 min',
+                text: '+ 30 ${context.localizations.min}',
                 onPressed: () {},
               ),
               EtaWidget(
-                text: '+ 1 hour',
+                text: '+ 1 ${context.localizations.hour}',
                 onPressed: () {},
               ),
               EtaWidget(
-                text: 'Custom',
+                text: context.localizations.custom,
                 onPressed: () {},
               ),
             ],
           ),
           const SizedBox(height: 15),
           CustomButton(
-            label: 'CONFIRM',
+            label: context.localizations.confirm,
             onPressed: onConfirmPressed,
           ),
         ],

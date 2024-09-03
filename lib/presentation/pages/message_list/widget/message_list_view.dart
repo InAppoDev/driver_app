@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tms_driver/presentation/blocks/message_list/message_list_bloc.dart';
 import 'package:tms_driver/presentation/pages/message_list/widget/message_list_item_widget.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class MessageListView extends StatelessWidget {
   const MessageListView({super.key});
@@ -20,9 +21,9 @@ class MessageListView extends StatelessWidget {
                   onPressed: () {
                     ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
                   },
-                  child: const Text(
-                    'DISMISS',
-                    style: TextStyle(color: Colors.white),
+                  child: Text(
+                    context.localizations.dismiss,
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
               ],
@@ -46,13 +47,13 @@ class MessageListView extends StatelessWidget {
                       .read<MessageListBloc>()
                       .add(const MessageListEvent.getChats());
                 },
-                child: const Center(
+                child:  Center(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: Text(
-                      "You have no messages yet, pull to refresh the page",
+                      context.localizations.youHaveNoMessagesYetPullToRefresh,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),

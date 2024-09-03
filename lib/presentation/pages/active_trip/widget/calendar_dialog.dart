@@ -134,7 +134,7 @@ class _CalendarDialogState extends State<CalendarDialog> {
                 padding: const EdgeInsets.symmetric(horizontal: 27),
                 child: CustomButton(
                   height: 36,
-                  label: context.localizations.select,
+                  label: context.localizations.confirm,
                   onPressed: () {
                     context.pop('$date  $time');
                   },

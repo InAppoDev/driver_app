@@ -43,10 +43,10 @@ class ActiveTripView extends StatelessWidget {
                             .read<ActiveTripBloc>()
                             .add(const ActiveTripEvent.pickFile());
                       },
-                      onScanFile: () {
+                      onScanFile: (image) {
                         context
                             .read<ActiveTripBloc>()
-                            .add(const ActiveTripEvent.pickImage());
+                            .add(ActiveTripEvent.scanDoc(image));
                       },
                       selectedFile: state.selectedFile,
                       onFileRemove: (file) {

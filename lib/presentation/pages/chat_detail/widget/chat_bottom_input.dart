@@ -1,16 +1,26 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/customs/custom_text_field.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
+import 'package:tms_driver/presentation/customs/selected_file_widget.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_dialog.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ChatBottomInput extends StatefulWidget {
   const ChatBottomInput({
     super.key,
     required this.onTextSend,
+    required this.documents,
+    required this.onPinPressed,
+    required this.onFileRemove,
   });
 
   final Function(String) onTextSend;
+  final VoidCallback onPinPressed;
+  final List<File> documents;
+  final Function(File) onFileRemove;
 
   @override
   State<ChatBottomInput> createState() => _ChatBottomInputState();
@@ -31,11 +41,12 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
         color: theme.scaffoldBackgroundColor,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               Text(
-                'Edit ETA:',
+                context.localizations.editETA,
                 style: TextStyle(
                   color: theme.cardColor,
                   fontSize: 13,
@@ -43,7 +54,7 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                 ),
               ),
               EtaWidget(
-                text: '+ 30 min',
+                text: '+ 30 ${context.localizations.min}',
                 onPressed: () {
                   setState(() {
                     textEditingController.text += '30 min';
@@ -51,13 +62,15 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                 },
               ),
               EtaWidget(
-                text: '+ 1 hour',
+                text: '+ 1 ${context.localizations.hour}',
                 onPressed: () {
-                  textEditingController.text += '1 hour';
+                  setState(() {
+                    textEditingController.text += '1 hour';
+                  });
                 },
               ),
               EtaWidget(
-                text: 'Set Value',
+                text: context.localizations.setValue,
                 onPressed: () async {
                   final resp = await showDialog(
                       context: context,
@@ -67,10 +80,31 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
               ),
             ],
           ),
+          const SizedBox(height: 5),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                ...widget.documents.map(
+                  (doc) => SelectedFileWidget(
+                    selectedFile: doc,
+                    onFileRemove: widget.onFileRemove,
+                  ),
+                ),
+              ],
+            ),
+          ),
           const SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              CustomIconButton(
+                justIcon: true,
+                iconColor: theme.dividerColor,
+                icon: 'pin',
+                onPressed: widget.onPinPressed,
+              ),
+              const SizedBox(width: 5),
               Expanded(
                 child: CustomTextField(
                   keyboardType: TextInputType.multiline,
@@ -84,8 +118,10 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                 iconColor: theme.scaffoldBackgroundColor,
                 icon: 'send',
                 onPressed: () {
-                  widget.onTextSend(textEditingController.text.trim());
-                  textEditingController.clear();
+                  if (textEditingController.text.isNotEmpty) {
+                    widget.onTextSend(textEditingController.text.trim());
+                    textEditingController.clear();
+                  }
                 },
               ),
             ],

@@ -22,7 +22,7 @@ mixin _$ActiveTripEvent {
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
-    required TResult Function() pickImage,
+    required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +32,7 @@ mixin _$ActiveTripEvent {
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
-    TResult? Function()? pickImage,
+    TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ mixin _$ActiveTripEvent {
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
-    TResult Function()? pickImage,
+    TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     required TResult orElse(),
   }) =>
@@ -53,7 +53,7 @@ mixin _$ActiveTripEvent {
     required TResult Function(GetDateAndTime value) getDateAndTime,
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
-    required TResult Function(PickImage value) pickImage,
+    required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +63,7 @@ mixin _$ActiveTripEvent {
     TResult? Function(GetDateAndTime value)? getDateAndTime,
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
-    TResult? Function(PickImage value)? pickImage,
+    TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
   }) =>
       throw _privateConstructorUsedError;
@@ -73,7 +73,7 @@ mixin _$ActiveTripEvent {
     TResult Function(GetDateAndTime value)? getDateAndTime,
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
-    TResult Function(PickImage value)? pickImage,
+    TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) =>
@@ -146,7 +146,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
-    required TResult Function() pickImage,
+    required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
   }) {
     return initialize();
@@ -159,7 +159,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
-    TResult? Function()? pickImage,
+    TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
   }) {
     return initialize?.call();
@@ -172,7 +172,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
-    TResult Function()? pickImage,
+    TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     required TResult orElse(),
   }) {
@@ -189,7 +189,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(GetDateAndTime value) getDateAndTime,
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
-    required TResult Function(PickImage value) pickImage,
+    required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
   }) {
     return initialize(this);
@@ -202,7 +202,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(GetDateAndTime value)? getDateAndTime,
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
-    TResult? Function(PickImage value)? pickImage,
+    TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
   }) {
     return initialize?.call(this);
@@ -215,7 +215,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function(GetDateAndTime value)? getDateAndTime,
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
-    TResult Function(PickImage value)? pickImage,
+    TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) {
@@ -304,7 +304,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
-    required TResult Function() pickImage,
+    required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
   }) {
     return getDateAndTime(dateTime);
@@ -317,7 +317,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
-    TResult? Function()? pickImage,
+    TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
   }) {
     return getDateAndTime?.call(dateTime);
@@ -330,7 +330,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
-    TResult Function()? pickImage,
+    TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     required TResult orElse(),
   }) {
@@ -347,7 +347,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     required TResult Function(GetDateAndTime value) getDateAndTime,
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
-    required TResult Function(PickImage value) pickImage,
+    required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
   }) {
     return getDateAndTime(this);
@@ -360,7 +360,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult? Function(GetDateAndTime value)? getDateAndTime,
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
-    TResult? Function(PickImage value)? pickImage,
+    TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
   }) {
     return getDateAndTime?.call(this);
@@ -373,7 +373,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult Function(GetDateAndTime value)? getDateAndTime,
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
-    TResult Function(PickImage value)? pickImage,
+    TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) {
@@ -442,7 +442,7 @@ class _$PickFileImpl implements PickFile {
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
-    required TResult Function() pickImage,
+    required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
   }) {
     return pickFile();
@@ -455,7 +455,7 @@ class _$PickFileImpl implements PickFile {
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
-    TResult? Function()? pickImage,
+    TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
   }) {
     return pickFile?.call();
@@ -468,7 +468,7 @@ class _$PickFileImpl implements PickFile {
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
-    TResult Function()? pickImage,
+    TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     required TResult orElse(),
   }) {
@@ -485,7 +485,7 @@ class _$PickFileImpl implements PickFile {
     required TResult Function(GetDateAndTime value) getDateAndTime,
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
-    required TResult Function(PickImage value) pickImage,
+    required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
   }) {
     return pickFile(this);
@@ -498,7 +498,7 @@ class _$PickFileImpl implements PickFile {
     TResult? Function(GetDateAndTime value)? getDateAndTime,
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
-    TResult? Function(PickImage value)? pickImage,
+    TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
   }) {
     return pickFile?.call(this);
@@ -511,7 +511,7 @@ class _$PickFileImpl implements PickFile {
     TResult Function(GetDateAndTime value)? getDateAndTime,
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
-    TResult Function(PickImage value)? pickImage,
+    TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) {
@@ -598,7 +598,7 @@ class _$RemoveFileImpl implements RemoveFile {
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
-    required TResult Function() pickImage,
+    required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
   }) {
     return removeFile(file);
@@ -611,7 +611,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
-    TResult? Function()? pickImage,
+    TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
   }) {
     return removeFile?.call(file);
@@ -624,7 +624,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
-    TResult Function()? pickImage,
+    TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     required TResult orElse(),
   }) {
@@ -641,7 +641,7 @@ class _$RemoveFileImpl implements RemoveFile {
     required TResult Function(GetDateAndTime value) getDateAndTime,
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
-    required TResult Function(PickImage value) pickImage,
+    required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
   }) {
     return removeFile(this);
@@ -654,7 +654,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult? Function(GetDateAndTime value)? getDateAndTime,
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
-    TResult? Function(PickImage value)? pickImage,
+    TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
   }) {
     return removeFile?.call(this);
@@ -667,7 +667,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult Function(GetDateAndTime value)? getDateAndTime,
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
-    TResult Function(PickImage value)? pickImage,
+    TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) {
@@ -691,42 +691,69 @@ abstract class RemoveFile implements ActiveTripEvent {
 }
 
 /// @nodoc
-abstract class _$$PickImageImplCopyWith<$Res> {
-  factory _$$PickImageImplCopyWith(
-          _$PickImageImpl value, $Res Function(_$PickImageImpl) then) =
-      __$$PickImageImplCopyWithImpl<$Res>;
+abstract class _$$ScanDocImplCopyWith<$Res> {
+  factory _$$ScanDocImplCopyWith(
+          _$ScanDocImpl value, $Res Function(_$ScanDocImpl) then) =
+      __$$ScanDocImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String image});
 }
 
 /// @nodoc
-class __$$PickImageImplCopyWithImpl<$Res>
-    extends _$ActiveTripEventCopyWithImpl<$Res, _$PickImageImpl>
-    implements _$$PickImageImplCopyWith<$Res> {
-  __$$PickImageImplCopyWithImpl(
-      _$PickImageImpl _value, $Res Function(_$PickImageImpl) _then)
+class __$$ScanDocImplCopyWithImpl<$Res>
+    extends _$ActiveTripEventCopyWithImpl<$Res, _$ScanDocImpl>
+    implements _$$ScanDocImplCopyWith<$Res> {
+  __$$ScanDocImplCopyWithImpl(
+      _$ScanDocImpl _value, $Res Function(_$ScanDocImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ActiveTripEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? image = null,
+  }) {
+    return _then(_$ScanDocImpl(
+      null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$PickImageImpl implements PickImage {
-  const _$PickImageImpl();
+class _$ScanDocImpl implements ScanDoc {
+  const _$ScanDocImpl(this.image);
+
+  @override
+  final String image;
 
   @override
   String toString() {
-    return 'ActiveTripEvent.pickImage()';
+    return 'ActiveTripEvent.scanDoc(image: $image)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PickImageImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ScanDocImpl &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, image);
+
+  /// Create a copy of ActiveTripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ScanDocImplCopyWith<_$ScanDocImpl> get copyWith =>
+      __$$ScanDocImplCopyWithImpl<_$ScanDocImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -735,10 +762,10 @@ class _$PickImageImpl implements PickImage {
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
-    required TResult Function() pickImage,
+    required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
   }) {
-    return pickImage();
+    return scanDoc(image);
   }
 
   @override
@@ -748,10 +775,10 @@ class _$PickImageImpl implements PickImage {
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
-    TResult? Function()? pickImage,
+    TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
   }) {
-    return pickImage?.call();
+    return scanDoc?.call(image);
   }
 
   @override
@@ -761,12 +788,12 @@ class _$PickImageImpl implements PickImage {
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
-    TResult Function()? pickImage,
+    TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     required TResult orElse(),
   }) {
-    if (pickImage != null) {
-      return pickImage();
+    if (scanDoc != null) {
+      return scanDoc(image);
     }
     return orElse();
   }
@@ -778,10 +805,10 @@ class _$PickImageImpl implements PickImage {
     required TResult Function(GetDateAndTime value) getDateAndTime,
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
-    required TResult Function(PickImage value) pickImage,
+    required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
   }) {
-    return pickImage(this);
+    return scanDoc(this);
   }
 
   @override
@@ -791,10 +818,10 @@ class _$PickImageImpl implements PickImage {
     TResult? Function(GetDateAndTime value)? getDateAndTime,
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
-    TResult? Function(PickImage value)? pickImage,
+    TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
   }) {
-    return pickImage?.call(this);
+    return scanDoc?.call(this);
   }
 
   @override
@@ -804,19 +831,27 @@ class _$PickImageImpl implements PickImage {
     TResult Function(GetDateAndTime value)? getDateAndTime,
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
-    TResult Function(PickImage value)? pickImage,
+    TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) {
-    if (pickImage != null) {
-      return pickImage(this);
+    if (scanDoc != null) {
+      return scanDoc(this);
     }
     return orElse();
   }
 }
 
-abstract class PickImage implements ActiveTripEvent {
-  const factory PickImage() = _$PickImageImpl;
+abstract class ScanDoc implements ActiveTripEvent {
+  const factory ScanDoc(final String image) = _$ScanDocImpl;
+
+  String get image;
+
+  /// Create a copy of ActiveTripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ScanDocImplCopyWith<_$ScanDocImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -864,7 +899,7 @@ class _$UploadFilesImpl implements UploadFiles {
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() pickFile,
     required TResult Function(File file) removeFile,
-    required TResult Function() pickImage,
+    required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
   }) {
     return uploadFiles();
@@ -877,7 +912,7 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? pickFile,
     TResult? Function(File file)? removeFile,
-    TResult? Function()? pickImage,
+    TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
   }) {
     return uploadFiles?.call();
@@ -890,7 +925,7 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? pickFile,
     TResult Function(File file)? removeFile,
-    TResult Function()? pickImage,
+    TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     required TResult orElse(),
   }) {
@@ -907,7 +942,7 @@ class _$UploadFilesImpl implements UploadFiles {
     required TResult Function(GetDateAndTime value) getDateAndTime,
     required TResult Function(PickFile value) pickFile,
     required TResult Function(RemoveFile value) removeFile,
-    required TResult Function(PickImage value) pickImage,
+    required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
   }) {
     return uploadFiles(this);
@@ -920,7 +955,7 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult? Function(GetDateAndTime value)? getDateAndTime,
     TResult? Function(PickFile value)? pickFile,
     TResult? Function(RemoveFile value)? removeFile,
-    TResult? Function(PickImage value)? pickImage,
+    TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
   }) {
     return uploadFiles?.call(this);
@@ -933,7 +968,7 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult Function(GetDateAndTime value)? getDateAndTime,
     TResult Function(PickFile value)? pickFile,
     TResult Function(RemoveFile value)? removeFile,
-    TResult Function(PickImage value)? pickImage,
+    TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) {
