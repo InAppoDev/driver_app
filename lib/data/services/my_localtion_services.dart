@@ -32,17 +32,6 @@ class MyLocationService {
     print('_initializeNotifications');
   }
 
-  // Future<bool> _requestPermissions() async {
-  //   var status = await Permission.location.status;
-  //   if (status.isGranted) {
-  //     return true;
-  //   } else if (status.isDenied || status.isPermanentlyDenied) {
-  //     var result = await Permission.location.request();
-  //     return result.isGranted;
-  //   }
-  //   return false;
-  // }
-
   void _showNotification(String location) async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
