@@ -251,6 +251,10 @@
   "@select": {
     "description": "SELECT"
   },
+  "confirm": "CONFIRM",
+  "@confirm": {
+    "description": "CONFIRM"
+  },
   "selectETAAt": "Select ETA at PICK UP#1:",
   "@selectETAAt": {
     "description": "Select ETA at PICK UP#1:"
@@ -282,6 +286,78 @@
   "approvedTrip": "Approved trip",
   "@approvedTrip": {
     "description": "Approved trip"
+  },
+  "currentStop": "Current Stop",
+  "@currentStop": {
+    "description": "Current Stop"
+  },
+  "min": "min",
+  "@min": {
+    "description": "min"
+  },
+  "hour": "hour",
+  "@hour": {
+    "description": "hour"
+  },
+  "custom": "Custom",
+  "@custom": {
+    "description": "Custom"
+  },
+  "totalMilesMiles": "Total miles: {miles} miles",
+  "@totalMilesMiles": {
+    "description": "Text showing the total miles of a trip",
+    "placeholders": {
+      "miles": {
+        "type": "int"
+      }
+    }
+  },
+  "dateTime": "Date/time",
+  "@dateTime": {
+    "description": "Date/time"
+  },
+  "emergencyPhone": "Emergency Phone",
+  "@emergencyPhone": {
+    "description": "Emergency Phone"
+  },
+  "errorMessage": "Error: {message}",
+  "@errorMessage": {
+    "description": "Error message displayed when something goes wrong",
+    "placeholders": {
+      "message": {
+        "type": "String",
+        "example": "Network connection lost"
+      }
+    }
+  },
+  "permissions": "Permissions",
+  "@permissions": {
+    "description": "Permissions"
+  },
+  "dismiss": "DISMISS",
+  "@dismiss": {
+    "description": "DISMISS"
+  },
+  "youHaveNoMessagesYetPullToRefresh": "You have no messages yet, pull to refresh the page",
+  "@youHaveNoMessagesYetPullToRefresh": {
+    "description": "You have no messages yet, pull to refresh the page"
+  },
+  "editETA": "Edit ETA:",
+  "@editETA": {
+    "description": "Edit ETA:"
+  },
+  "setValue": "Set Value",
+  "@setValue": {
+    "description": "Set Value"
+  },
+  "distanceKm": "{distance}km",
+  "@distanceKm": {
+    "description": "Distance in kilometers",
+    "placeholders": {
+      "distance": {
+        "type": "int"
+      }
+    }
   }
 }
 

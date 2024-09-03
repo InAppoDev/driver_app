@@ -6,6 +6,7 @@ import 'package:tms_driver/presentation/customs/custom_text_field.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
 import 'package:tms_driver/presentation/customs/selected_file_widget.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_dialog.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ChatBottomInput extends StatefulWidget {
   const ChatBottomInput({
@@ -30,7 +31,6 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
 
   @override
   Widget build(BuildContext context) {
-    print('documents - ${widget.documents.length}');
     final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.fromLTRB(13, 15, 13, 11),
@@ -46,7 +46,7 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
           Row(
             children: [
               Text(
-                'Edit ETA:',
+                context.localizations.editETA,
                 style: TextStyle(
                   color: theme.cardColor,
                   fontSize: 13,
@@ -54,7 +54,7 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                 ),
               ),
               EtaWidget(
-                text: '+ 30 min',
+                text: '+ 30 ${context.localizations.min}',
                 onPressed: () {
                   setState(() {
                     textEditingController.text += '30 min';
@@ -62,7 +62,7 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                 },
               ),
               EtaWidget(
-                text: '+ 1 hour',
+                text: '+ 1 ${context.localizations.hour}',
                 onPressed: () {
                   setState(() {
                     textEditingController.text += '1 hour';
@@ -70,7 +70,7 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                 },
               ),
               EtaWidget(
-                text: 'Set Value',
+                text: context.localizations.setValue,
                 onPressed: () async {
                   final resp = await showDialog(
                       context: context,

@@ -151,7 +151,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Permissions',
+                                  context.localizations.permissions,
                                   style:
                                       theme.textTheme.headlineMedium!.copyWith(
                                     fontFamily: "Mulish",

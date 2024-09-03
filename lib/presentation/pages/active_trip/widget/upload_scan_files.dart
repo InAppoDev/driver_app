@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cunning_document_scanner/cunning_document_scanner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
@@ -8,7 +9,7 @@ import 'package:tms_driver/presentation/utils/extension/change_localization.dart
 
 class UploadScanFiles extends StatelessWidget {
   final VoidCallback onAddFile;
-  final VoidCallback onScanFile;
+  final Function(String) onScanFile;
   final Function(File) onFileRemove;
   final File? selectedFile;
   final VoidCallback onUploadPressed;
@@ -42,15 +43,6 @@ class UploadScanFiles extends StatelessWidget {
               color: theme.dividerColor,
             ),
           ),
-          const SizedBox(height: 16),
-          if (selectedFile != null) ...[
-            SelectedFileWidget(
-              selectedFile: selectedFile!,
-              onFileRemove: onFileRemove,
-              onDownLoad: (){},
-            ),
-            const SizedBox(height: 16),
-          ],
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -86,7 +78,14 @@ class UploadScanFiles extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: onScanFile,
+                onTap: () async {
+                  final pictures =
+                      await CunningDocumentScanner.getPictures(noOfPages: 1) ??
+                          [];
+                  if (pictures.isNotEmpty) {
+                    onScanFile(pictures.first);
+                  }
+                },
                 child: Column(
                   children: [
                     SvgPicture.asset('assets/images/scan.svg'),
@@ -112,6 +111,14 @@ class UploadScanFiles extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
+          if (selectedFile != null) ...[
+            SelectedFileWidget(
+              selectedFile: selectedFile!,
+              onFileRemove: onFileRemove,
+              onDownLoad: () {},
+            ),
+            const SizedBox(height: 16),
+          ],
           CustomButton(
             height: 36,
             label: context.localizations.upload,

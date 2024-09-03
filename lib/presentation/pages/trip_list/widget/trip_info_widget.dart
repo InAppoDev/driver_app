@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:r_dotted_line_border/r_dotted_line_border.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class TripInfoWidget extends StatelessWidget {
   const TripInfoWidget({
@@ -60,7 +61,7 @@ class TripInfoWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Date/time',
+                    context.localizations.dateTime,
                     style: theme.textTheme.bodySmall!
                         .copyWith(color: theme.disabledColor),
                   ),
