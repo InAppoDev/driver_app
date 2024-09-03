@@ -8,12 +8,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
-      child: Column(
-        children: [
-          ProfitDashboard(),
-          Currents(),
-          // SizedBox(height: 50),
-        ],
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 75),
+        child: Column(
+          children: [
+            ProfitDashboard(),
+            Currents(),
+          ],
+        ),
       ),
     );
   }

@@ -21,6 +21,7 @@ class ProfileView extends StatelessWidget {
           return Container(
             decoration: BoxDecoration(color: Theme.of(context).canvasColor),
             height: MediaQuery.of(context).size.height,
+            padding: const EdgeInsets.only(bottom: 75),
             child: SingleChildScrollView(
               child: Column(
                 children: [

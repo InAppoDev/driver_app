@@ -20,10 +20,12 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
 
   MainBloc() : super(MainState.initial()) {
-    print('Initializing MainBloc...');
     on<_PageChanged>(_onPageChanged);
     on<_HideShowNavBar>(_onHideShowNavBar);
     on<_CheckConnection>(_checkConnection);
+
+    _updateConnectionStatus(connectivityService.lastResults);
+    add(const MainEvent.checkConnection());
 
     _connectivitySubscription = connectivityService.connectivityStream
         .listen((List<ConnectivityResult> results) {
@@ -45,7 +47,6 @@ class MainBloc extends Bloc<MainEvent, MainState> {
 
   Future<void> _checkConnection(
       _CheckConnection event, Emitter<MainState> emit) async {
-    print('Checking connection...');
     if (!_lastResults.contains(ConnectivityResult.none)) {
       try {
         print('authRepo.ping();');

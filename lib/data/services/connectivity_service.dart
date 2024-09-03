@@ -16,6 +16,15 @@ class ConnectivityService {
 
   void _initialize() async {
     log('Initializing connectivity service...');
+    await checkInitialConnectivity();
+    _connectivitySubscription = _connectivity.onConnectivityChanged
+        .listen((List<ConnectivityResult> result) {
+      print('Connectivity changed: $result');
+      _updateConnectivityStatus(result);
+    });
+  }
+
+  Future<void> checkInitialConnectivity() async {
     try {
       final List<ConnectivityResult> result =
           await _connectivity.checkConnectivity();
@@ -25,12 +34,6 @@ class ConnectivityService {
       print('Error checking initial connectivity: $e');
       _updateConnectivityStatus([ConnectivityResult.none]);
     }
-
-    _connectivitySubscription = _connectivity.onConnectivityChanged
-        .listen((List<ConnectivityResult> result) {
-      print('Connectivity changed: $result');
-      _updateConnectivityStatus(result);
-    });
   }
 
   Stream<List<ConnectivityResult>> get connectivityStream =>
