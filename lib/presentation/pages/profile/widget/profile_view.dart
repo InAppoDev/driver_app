@@ -10,6 +10,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return BlocListener<UserBloc, UserState>(
       listener: (context, state) {
         if (state == const UserState.initial()) {
@@ -31,9 +32,9 @@ class ProfileView extends StatelessWidget {
                   ),
                   state.when(
                     initial: () => Text(context.localizations.initializing),
-                    loading: () => const SizedBox(
-                      height: 300,
-                      child: Center(
+                    loading: () => SizedBox(
+                      height: height * 0.425,
+                      child: const Center(
                         child: CircularProgressIndicator(),
                       ),
                     ),
@@ -41,6 +42,7 @@ class ProfileView extends StatelessWidget {
                     error: (message) =>
                         Text(context.localizations.errorMessage(message)),
                   ),
+                  const SizedBox(height: 30),
                 ],
               ),
             ),

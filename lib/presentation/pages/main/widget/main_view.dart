@@ -16,93 +16,103 @@ class MainView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).canvasColor,
-      appBar: const CustomAppBar(),
-      extendBody: true,
-      body: BlocBuilder<MainBloc, MainState>(
-        builder: (context, state) {
-          if (!state.isConnected) {
-            print('Displaying no internet connection message');
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              ScaffoldMessenger.of(context).showMaterialBanner(
-                MaterialBanner(
-                  content: Text('No internet connection'),
-                  backgroundColor: Colors.redAccent,
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context)
-                            .hideCurrentMaterialBanner();
-                      },
-                      child: const Text(
-                        'DISMISS',
-                        style: TextStyle(color: Colors.white),
+    return BlocBuilder<MainBloc, MainState>(builder: (context, state) {
+      return Scaffold(
+        backgroundColor: Theme.of(context).canvasColor,
+        appBar: const CustomAppBar(),
+        extendBody: true,
+        body: BlocBuilder<MainBloc, MainState>(
+          builder: (context, state) {
+            if (!state.isConnected) {
+              print('Displaying no internet connection message');
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                ScaffoldMessenger.of(context).showMaterialBanner(
+                  MaterialBanner(
+                    content: Text('No internet connection'),
+                    backgroundColor: Colors.redAccent,
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          ScaffoldMessenger.of(context)
+                              .hideCurrentMaterialBanner();
+                        },
+                        child: const Text(
+                          'DISMISS',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              );
-            });
-          } else {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-            });
-          }
+                    ],
+                  ),
+                );
+              });
+            } else {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+              });
+            }
 
-          switch (state.selectedPage) {
-            case MainPageEnum.home:
-              return const HomePage();
-            case MainPageEnum.trips:
-              return const TripListView();
-            case MainPageEnum.messages:
-              return const MessageListView();
-            case MainPageEnum.profile:
-              return const ProfileView();
-          }
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 10),
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: FloatingActionButton(
-            elevation: 2,
-            onPressed: () {},
-            backgroundColor: Theme.of(context).cardColor,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            switch (state.selectedPage) {
+              case MainPageEnum.home:
+                return const HomePage();
+              case MainPageEnum.trips:
+                return const TripListView();
+              case MainPageEnum.messages:
+                return const MessageListView();
+              case MainPageEnum.profile:
+                return const ProfileView();
+            }
+          },
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: FloatingActionButton(
+              elevation: 2,
+              onPressed: () {
+                context
+                    .read<MainBloc>()
+                    .add(const MainEvent.updateDriveButton());
+              },
+              backgroundColor: Theme.of(context).cardColor,
+              child:
+                  BlocBuilder<MainBloc, MainState>(builder: (context, state) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(
+                      'assets/images/${state.isDriveStarted ? 'pause' : 'play'}.svg',
+                      height: 30,
+                      width: 30,
+                    ),
+                    Text(state.isDriveStarted ? 'Pause' : 'Drive',
+                        style: const TextStyle(fontSize: 12)),
+                  ],
+                );
+              }),
+            ),
+          ),
+        ),
+        bottomNavigationBar: CustomPaint(
+          painter: BottomNavBarPainter(),
+          child: SizedBox(
+            height: 70,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                SvgPicture.asset(
-                  'assets/images/play.svg',
-                  height: 30,
-                  width: 30,
-                ),
-                const Text('Play', style: TextStyle(fontSize: 12)),
+                _buildNavItem(context, 'home', 'Home', MainPageEnum.home),
+                _buildNavItem(context, 'point', 'Trips', MainPageEnum.trips),
+                const SizedBox(width: 40), // Space for the FAB
+                _buildNavItem(
+                    context, 'message', 'Messages', MainPageEnum.messages),
+                _buildProfileNavItem(context),
               ],
             ),
           ),
         ),
-      ),
-      bottomNavigationBar: CustomPaint(
-        painter: BottomNavBarPainter(),
-        child: SizedBox(
-          height: 70,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildNavItem(context, 'home', 'Home', MainPageEnum.home),
-              _buildNavItem(context, 'point', 'Trips', MainPageEnum.trips),
-              const SizedBox(width: 40), // Space for the FAB
-              _buildNavItem(
-                  context, 'message', 'Messages', MainPageEnum.messages),
-              _buildProfileNavItem(context),
-            ],
-          ),
-        ),
-      ),
-    );
+      );
+    });
   }
 
   Widget _buildNavItem(
@@ -128,7 +138,9 @@ class MainView extends StatelessWidget {
                 colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
               ),
             ),
-            Text(label, style: TextStyle(color: color, fontWeight: fontWeight)),
+            Text(label,
+                style: TextStyle(
+                    color: color, fontWeight: fontWeight, fontSize: 12)),
           ],
         ),
       ),

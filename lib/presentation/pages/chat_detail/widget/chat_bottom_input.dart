@@ -30,6 +30,12 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
   final TextEditingController textEditingController = TextEditingController();
 
   @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
@@ -109,7 +115,7 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                 child: CustomTextField(
                   keyboardType: TextInputType.multiline,
                   controller: textEditingController,
-                  height: 45,
+                  height: 50,
                   borderRadius: 20,
                 ),
               ),

@@ -7,9 +7,9 @@ import 'package:get_it/get_it.dart';
 import 'package:tms_driver/data/services/connectivity_service.dart';
 import 'package:tms_driver/domain/repositories/auth_repository.dart';
 
+part 'main_bloc.freezed.dart';
 part 'main_event.dart';
 part 'main_state.dart';
-part 'main_bloc.freezed.dart';
 
 class MainBloc extends Bloc<MainEvent, MainState> {
   final AuthRepository authRepo = GetIt.instance<AuthRepository>();
@@ -23,6 +23,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     on<_PageChanged>(_onPageChanged);
     on<_HideShowNavBar>(_onHideShowNavBar);
     on<_CheckConnection>(_checkConnection);
+    on<_UpdateDriveButton>(_onUpdateDriveButton);
 
     _updateConnectionStatus(connectivityService.lastResults);
     add(const MainEvent.checkConnection());
@@ -43,6 +44,11 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   Future<void> _onHideShowNavBar(
       _HideShowNavBar event, Emitter<MainState> emit) async {
     emit(state.copyWith(showNavBar: event.hideShowNavBar));
+  }
+
+  Future<void> _onUpdateDriveButton(
+      _UpdateDriveButton event, Emitter<MainState> emit) async {
+    emit(state.copyWith(isDriveStarted: !state.isDriveStarted));
   }
 
   Future<void> _checkConnection(
