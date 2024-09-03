@@ -66,7 +66,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
   Future<void> _tapToCall(
       _TapToCall event, Emitter<ChatDetailState> emit) async {
     try {
-      launchUrlString("tel://21213123123");
+      launchUrlString("tel://${event.number}");
     } catch (e) {
       print("Error _tapToCall: $e");
     }
