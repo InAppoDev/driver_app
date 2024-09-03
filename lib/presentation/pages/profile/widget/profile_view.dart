@@ -42,7 +42,6 @@ class ProfileView extends StatelessWidget {
                     error: (message) =>
                         Text(context.localizations.errorMessage(message)),
                   ),
-                  const SizedBox(height: 30),
                 ],
               ),
             ),
