@@ -21,7 +21,7 @@ class ChatWidget extends StatelessWidget {
           ),
           color: theme.scaffoldBackgroundColor,
         ),
-        child: const ChatListView(),
+        child: ChatListView(),
       ),
     );
   }

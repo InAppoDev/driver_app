@@ -131,6 +131,7 @@ class ApiDataSourceImpl implements ApiDataSource {
           () => dio.post('/documents/upload', data: formData));
 
       if (response.data['success'] == true) {
+        print('UploadDocumentResponse success');
         return UploadDocumentResponse.fromJson(response.data);
       } else {
         throw Exception(

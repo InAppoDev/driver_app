@@ -73,21 +73,21 @@ class SelectedFileWidget extends StatelessWidget {
                 if (onDownLoad != null)
                   CustomIconButton(
                     padding: EdgeInsets.zero,
-                  height: 13,
-                  icon: 'upload',
+                    height: 13,
+                    icon: 'download',
                     onPressed: () {
                       onDownLoad!.call();
                     },
                     justIcon: true,
-                  iconColor: theme.canvasColor,
-                ),
+                    iconColor: theme.canvasColor,
+                  ),
                 if (fileFromNetwork == null) ...[
                   const SizedBox(width: 10),
                   CustomIconButton(
                     padding: EdgeInsets.zero,
                     height: 13,
                     icon: 'delete',
-                  onPressed: () {
+                    onPressed: () {
                       onFileRemove?.call(selectedFile!);
                     },
                     justIcon: true,

@@ -6,7 +6,10 @@ import 'package:tms_driver/presentation/consts/consts.dart';
 import 'package:tms_driver/presentation/customs/selected_file_widget.dart';
 
 class ChatListItemWidget extends StatelessWidget {
-  const ChatListItemWidget({super.key, required this.messageModel});
+  const ChatListItemWidget({
+    super.key,
+    required this.messageModel,
+  });
 
   final MessageModel messageModel;
 
@@ -30,7 +33,7 @@ class ChatListItemWidget extends StatelessWidget {
                         spreadRadius: 2,
                         blurRadius: 2,
                         offset: const Offset(0, 2),
-                ),
+                      ),
                     ]
                   : null,
             ),
@@ -70,6 +73,15 @@ class ChatListItemWidget extends StatelessWidget {
                         color: theme.cardColor,
                       ),
                     ),
+                    const Spacer(),
+                    Text(
+                      formatTimestamp(messageModel.sentAt),
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: theme.dividerColor,
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 5),
@@ -81,6 +93,12 @@ class ChatListItemWidget extends StatelessWidget {
                     color: theme.dividerColor,
                   ),
                 ),
+                if (messageModel.status == MessageStatus.sending)
+                  const SizedBox(
+                    width: 15,
+                    height: 15,
+                    child: CircularProgressIndicator(strokeWidth: 1.5),
+                  ),
                 if (messageModel.documents != null)
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -113,14 +131,6 @@ class ChatListItemWidget extends StatelessWidget {
                     ),
                   ),
               ],
-            ),
-          ),
-          Text(
-            formatTimestamp(messageModel.sentAt),
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: theme.dividerColor,
             ),
           ),
         ],

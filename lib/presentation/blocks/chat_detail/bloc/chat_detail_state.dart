@@ -4,7 +4,6 @@ part of 'chat_detail_bloc.dart';
 class ChatDetailState with _$ChatDetailState {
   const factory ChatDetailState.initial() = Initial;
   const factory ChatDetailState.loading() = Loading;
-
   const factory ChatDetailState.loaded(ChatDetailModel chatDetails,
       [List<File>? documents]) = Loaded;
   const factory ChatDetailState.sendingMessage() = SendingMessage;
