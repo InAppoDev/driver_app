@@ -25,20 +25,18 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
 
   ChatDetailBloc({required this.chatId})
       : super(const ChatDetailState.initial()) {
-    on<ChatDetailEvent>((event, emit) async {
-      await event.map(
-        sendMessage: (e) async => _sendMessage(e, emit),
-        fetchChatDetails: (e) async => _fetchChatDetails(e, emit),
-        receiveNewMessage: (e) async => _receiveNewMessage(e, emit),
-        downloadFile: (e) async => _downLoadFile(e, emit),
-        tapToCall: (e) async => _tapToCall(e, emit),
-          addDocument: (e) async => _addDocument(e, emit),
-          removeDocument: (e) async => _removeDocument(e, emit));
-    });
+    on<SendMessage>(_sendMessage);
+    on<FetchChatDetails>(_fetchChatDetails);
+    on<ReceiveNewMessage>(_receiveNewMessage);
+    on<DownloadFile>(_downloadFile);
+    on<TapToCall>(_tapToCall);
+    on<AddDocument>(_addDocument);
+    on<RemoveDocument>(_removeDocument);
   }
 
   Future<void> _fetchChatDetails(
-      _FetchChatDetails event, Emitter<ChatDetailState> emit) async {
+      FetchChatDetails event, Emitter<ChatDetailState> emit) async {
+    emit(const ChatDetailState.loading());
     try {
       final chatDetails = await messagesRepository.getChatDetails(event.chatId);
       emit(ChatDetailState.loaded(chatDetails));
@@ -47,8 +45,8 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
     }
   }
 
-  Future<void> _downLoadFile(
-      _DownloadFile event, Emitter<ChatDetailState> emit) async {
+  Future<void> _downloadFile(
+      DownloadFile event, Emitter<ChatDetailState> emit) async {
     try {
       final downloadDirectory = await getDownloadDirectory();
       await FlutterDownloader.enqueue(
@@ -64,7 +62,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
   }
 
   Future<void> _tapToCall(
-      _TapToCall event, Emitter<ChatDetailState> emit) async {
+      TapToCall event, Emitter<ChatDetailState> emit) async {
     try {
       launchUrlString("tel://${event.number}");
     } catch (e) {
@@ -73,35 +71,59 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
   }
 
   Future<void> _sendMessage(
-      _SendMessage event, Emitter<ChatDetailState> emit) async {
+      SendMessage event, Emitter<ChatDetailState> emit) async {
     try {
-      state.maybeWhen(
+      await state.maybeWhen(
         loaded: (chatDetails, docs) async {
           final List<MessageModel> messages = [];
-          final List<String> documents = [];
-          for (final file in docs ?? []) {
-            final resultDoc =
-                await tripRepository.uploadDocument(file, subFile(file));
-            if (resultDoc.success) {
-              documents.add(resultDoc.uploadId);
+          final List<String> documentIds = [];
+
+          if (event.messageContent.isNotEmpty ||
+              (docs != null && docs.isNotEmpty)) {
+            final newMessage = MessageModel(
+              id: chatDetails.messages.isEmpty
+                  ? 0
+                  : chatDetails.messages.first.id + 1,
+              sender: chatDetails.participants.first,
+              content: event.messageContent,
+              sentAt: DateTime.now().millisecondsSinceEpoch,
+              status: MessageStatus.sending,
+            );
+
+            messages.addAll(chatDetails.messages);
+            messages.add(newMessage);
+
+            final updatedChatDetails = chatDetails.copyWith(messages: messages);
+            emit(ChatDetailState.loaded(updatedChatDetails));
+
+            for (final file in docs ?? []) {
+              final resultDoc =
+                  await tripRepository.uploadDocument(file, subFile(file));
+              if (resultDoc.success) {
+                documentIds.add(resultDoc.uploadId);
+              } else {
+                final failedMessage =
+                    newMessage.copyWith(status: MessageStatus.failed);
+                messages[messages.length - 1] = failedMessage;
+                emit(ChatDetailState.loaded(updatedChatDetails));
+                return;
+              }
             }
+
+            await messagesRepository.sendMessage(
+                chatId, event.messageContent, documentIds);
+
+            final sentMessage = newMessage.copyWith(status: MessageStatus.sent);
+            messages[messages.length - 1] = sentMessage;
+            emit(ChatDetailState.loaded(updatedChatDetails));
+
+            add(ChatDetailEvent.fetchChatDetails(chatId));
+          } else {
+            emit(
+                const ChatDetailState.failure('Cannot send an empty message.'));
           }
-
-          messages.addAll(event.chatDetails.messages);
-          messages.add(MessageModel(
-            id: messages.first.id,
-            sender: messages.first.sender,
-            content: event.messageContent,
-            sentAt: DateTime.now().millisecondsSinceEpoch,
-          ));
-          final chatDetails = event.chatDetails.copyWith(messages: messages);
-          await messagesRepository.sendMessage(
-              chatId, event.messageContent, documents);
-
-          emit(ChatDetailState.loaded(chatDetails));
-          add(ChatDetailEvent.fetchChatDetails(chatId));
         },
-        orElse: () {},
+        orElse: () async {},
       );
     } catch (e) {
       emit(ChatDetailState.failure(e.toString()));
@@ -109,7 +131,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
   }
 
   Future<void> _addDocument(
-      _AddDocument event, Emitter<ChatDetailState> emit) async {
+      AddDocument event, Emitter<ChatDetailState> emit) async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
@@ -135,7 +157,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
   }
 
   Future<void> _removeDocument(
-      _RemoveDocument event, Emitter<ChatDetailState> emit) async {
+      RemoveDocument event, Emitter<ChatDetailState> emit) async {
     try {
       state.maybeWhen(
         loaded: (chatDetails, docs) {
@@ -154,7 +176,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
   }
 
   Future<void> _receiveNewMessage(
-      _ReceiveNewMessage event, Emitter<ChatDetailState> emit) async {
+      ReceiveNewMessage event, Emitter<ChatDetailState> emit) async {
     state.maybeWhen(
       loaded: (chatDetails, docs) {
         final updatedMessages = List<MessageModel>.from(chatDetails.messages)

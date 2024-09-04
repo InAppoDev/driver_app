@@ -5,6 +5,8 @@ import 'package:tms_driver/data/models/chats/chat_participant/chat_participant.d
 part 'message_model.freezed.dart';
 part 'message_model.g.dart';
 
+enum MessageStatus { sending, sent, failed }
+
 @freezed
 class MessageModel with _$MessageModel {
   const factory MessageModel({
@@ -13,6 +15,7 @@ class MessageModel with _$MessageModel {
     required String content,
     List<ChatDocument>? documents,
     @JsonKey(name: 'sent_at') required int sentAt,
+    @Default(MessageStatus.sent) MessageStatus status,
   }) = _MessageModel;
 
   factory MessageModel.fromJson(Map<String, dynamic> json) =>

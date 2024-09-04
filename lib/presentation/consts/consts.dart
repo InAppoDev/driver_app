@@ -9,9 +9,13 @@ String subFile(File file) {
 String formatTimestamp(int timestamp) {
   DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
 
-  DateFormat formatter = DateFormat('yyyy.MM.dd HH:mm');
+  DateFormat timeFormatter = DateFormat('HH:mm');
+  DateFormat amPmFormatter = DateFormat('a');
 
-  return formatter.format(dateTime);
+  String formattedTime = timeFormatter.format(dateTime);
+  String amPm = amPmFormatter.format(dateTime);
+
+  return '$formattedTime $amPm';
 }
 
 String subLongFileName(String name) {

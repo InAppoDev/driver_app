@@ -17,7 +17,7 @@ class ChatScreen extends StatelessWidget {
       body: BlocProvider(
         create: (context) => ChatDetailBloc(chatId: chatId)
           ..add(ChatDetailEvent.fetchChatDetails(chatId)),
-        child: const ChatListView(),
+        child: ChatListView(),
       ),
     );
   }

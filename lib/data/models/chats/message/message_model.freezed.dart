@@ -26,6 +26,7 @@ mixin _$MessageModel {
   List<ChatDocument>? get documents => throw _privateConstructorUsedError;
   @JsonKey(name: 'sent_at')
   int get sentAt => throw _privateConstructorUsedError;
+  MessageStatus get status => throw _privateConstructorUsedError;
 
   /// Serializes this MessageModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,7 +49,8 @@ abstract class $MessageModelCopyWith<$Res> {
       ChatParticipant sender,
       String content,
       List<ChatDocument>? documents,
-      @JsonKey(name: 'sent_at') int sentAt});
+      @JsonKey(name: 'sent_at') int sentAt,
+      MessageStatus status});
 
   $ChatParticipantCopyWith<$Res> get sender;
 }
@@ -73,6 +75,7 @@ class _$MessageModelCopyWithImpl<$Res, $Val extends MessageModel>
     Object? content = null,
     Object? documents = freezed,
     Object? sentAt = null,
+    Object? status = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -95,6 +98,10 @@ class _$MessageModelCopyWithImpl<$Res, $Val extends MessageModel>
           ? _value.sentAt
           : sentAt // ignore: cast_nullable_to_non_nullable
               as int,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as MessageStatus,
     ) as $Val);
   }
 
@@ -122,7 +129,8 @@ abstract class _$$MessageModelImplCopyWith<$Res>
       ChatParticipant sender,
       String content,
       List<ChatDocument>? documents,
-      @JsonKey(name: 'sent_at') int sentAt});
+      @JsonKey(name: 'sent_at') int sentAt,
+      MessageStatus status});
 
   @override
   $ChatParticipantCopyWith<$Res> get sender;
@@ -146,6 +154,7 @@ class __$$MessageModelImplCopyWithImpl<$Res>
     Object? content = null,
     Object? documents = freezed,
     Object? sentAt = null,
+    Object? status = null,
   }) {
     return _then(_$MessageModelImpl(
       id: null == id
@@ -168,6 +177,10 @@ class __$$MessageModelImplCopyWithImpl<$Res>
           ? _value.sentAt
           : sentAt // ignore: cast_nullable_to_non_nullable
               as int,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as MessageStatus,
     ));
   }
 }
@@ -180,7 +193,8 @@ class _$MessageModelImpl implements _MessageModel {
       required this.sender,
       required this.content,
       final List<ChatDocument>? documents,
-      @JsonKey(name: 'sent_at') required this.sentAt})
+      @JsonKey(name: 'sent_at') required this.sentAt,
+      this.status = MessageStatus.sent})
       : _documents = documents;
 
   factory _$MessageModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -205,10 +219,13 @@ class _$MessageModelImpl implements _MessageModel {
   @override
   @JsonKey(name: 'sent_at')
   final int sentAt;
+  @override
+  @JsonKey()
+  final MessageStatus status;
 
   @override
   String toString() {
-    return 'MessageModel(id: $id, sender: $sender, content: $content, documents: $documents, sentAt: $sentAt)';
+    return 'MessageModel(id: $id, sender: $sender, content: $content, documents: $documents, sentAt: $sentAt, status: $status)';
   }
 
   @override
@@ -221,13 +238,14 @@ class _$MessageModelImpl implements _MessageModel {
             (identical(other.content, content) || other.content == content) &&
             const DeepCollectionEquality()
                 .equals(other._documents, _documents) &&
-            (identical(other.sentAt, sentAt) || other.sentAt == sentAt));
+            (identical(other.sentAt, sentAt) || other.sentAt == sentAt) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, sender, content,
-      const DeepCollectionEquality().hash(_documents), sentAt);
+      const DeepCollectionEquality().hash(_documents), sentAt, status);
 
   /// Create a copy of MessageModel
   /// with the given fields replaced by the non-null parameter values.
@@ -247,12 +265,12 @@ class _$MessageModelImpl implements _MessageModel {
 
 abstract class _MessageModel implements MessageModel {
   const factory _MessageModel(
-          {required final int id,
-          required final ChatParticipant sender,
-          required final String content,
-          final List<ChatDocument>? documents,
-          @JsonKey(name: 'sent_at') required final int sentAt}) =
-      _$MessageModelImpl;
+      {required final int id,
+      required final ChatParticipant sender,
+      required final String content,
+      final List<ChatDocument>? documents,
+      @JsonKey(name: 'sent_at') required final int sentAt,
+      final MessageStatus status}) = _$MessageModelImpl;
 
   factory _MessageModel.fromJson(Map<String, dynamic> json) =
       _$MessageModelImpl.fromJson;
@@ -268,6 +286,8 @@ abstract class _MessageModel implements MessageModel {
   @override
   @JsonKey(name: 'sent_at')
   int get sentAt;
+  @override
+  MessageStatus get status;
 
   /// Create a copy of MessageModel
   /// with the given fields replaced by the non-null parameter values.
