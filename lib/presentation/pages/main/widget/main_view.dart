@@ -24,7 +24,6 @@ class MainView extends StatelessWidget {
         body: BlocBuilder<MainBloc, MainState>(
           builder: (context, state) {
             if (!state.isConnected) {
-              print('Displaying no internet connection message');
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 ScaffoldMessenger.of(context).showMaterialBanner(
                   MaterialBanner(
@@ -86,8 +85,10 @@ class MainView extends StatelessWidget {
                       height: 30,
                       width: 30,
                     ),
-                    Text(state.isDriveStarted ? 'Pause' : 'Drive',
-                        style: const TextStyle(fontSize: 12)),
+                    Text(
+                      state.isDriveStarted ? 'Pause' : 'Drive',
+                      style: const TextStyle(fontSize: 12),
+                    ),
                   ],
                 );
               }),
