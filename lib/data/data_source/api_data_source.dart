@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
 import 'package:tms_driver/data/models/document/upload_document_response.dart';
+import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
 import 'package:tms_driver/data/models/user/user_model.dart';
 
 abstract class ApiDataSource {
@@ -32,4 +33,6 @@ abstract class ApiDataSource {
   });
 
   Future<UploadDocumentResponse> uploadDocument(File file, String name);
+
+  Future<List<NotificationModel>> getNotifications();
 }
