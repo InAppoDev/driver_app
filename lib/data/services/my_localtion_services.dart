@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:developer';
+import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:background_fetch/background_fetch.dart';
@@ -6,6 +8,8 @@ import 'package:background_fetch/background_fetch.dart';
 class MyLocationService {
   late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
   Timer? _timer;
+  Timer? _driveTimer;
+  int _secondsElapsed = 0;
 
   MyLocationService() {
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -29,70 +33,18 @@ class MyLocationService {
 
     flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onDidReceiveNotificationResponse: _onSelectNotification);
-    print('_initializeNotifications');
-  }
-
-  void _showNotification(String location) async {
-    const AndroidNotificationDetails androidPlatformChannelSpecifics =
-        AndroidNotificationDetails(
-      'location_channel',
-      'Location Tracking',
-      importance: Importance.max,
-      priority: Priority.high,
-      ongoing: true,
-    );
-
-    const DarwinNotificationDetails iOSPlatformChannelSpecifics =
-        DarwinNotificationDetails();
-
-    const NotificationDetails platformChannelSpecifics = NotificationDetails(
-        android: androidPlatformChannelSpecifics,
-        iOS: iOSPlatformChannelSpecifics);
-    print('_showNotification');
-
-    await flutterLocalNotificationsPlugin.show(
-      0,
-      'Tracking Location',
-      location,
-      platformChannelSpecifics,
-    );
-  }
-
-  void showTestNotification() async {
-    const AndroidNotificationDetails androidPlatformChannelSpecifics =
-        AndroidNotificationDetails(
-      'test_channel',
-      'Test Notification',
-      importance: Importance.max,
-      priority: Priority.high,
-      ongoing: false,
-    );
-
-    const DarwinNotificationDetails iOSPlatformChannelSpecifics =
-        DarwinNotificationDetails();
-
-    const NotificationDetails platformChannelSpecifics = NotificationDetails(
-        android: androidPlatformChannelSpecifics,
-        iOS: iOSPlatformChannelSpecifics);
-
-    await flutterLocalNotificationsPlugin.show(
-      1,
-      'Test Notification',
-      'This is a test notification',
-      platformChannelSpecifics,
-    );
-    print('Test notification shown');
+    log('_initializeNotifications');
   }
 
   void _sendLocation(Position position) async {
-    // Log the location
-    print('Location: ${position.latitude}, ${position.longitude}');
-    _showNotification('Location: ${position.latitude}, ${position.longitude}');
+    if (kDebugMode) {
+      print('Location: ${position.latitude}, ${position.longitude}');
+    }
   }
 
   void startTracking() async {
     // Background task every 15 minutes
-    print('BackgroundFetch startTracking');
+    log('BackgroundFetch startTracking');
     BackgroundFetch.configure(
         BackgroundFetchConfig(
           minimumFetchInterval: 15,
@@ -105,13 +57,11 @@ class MyLocationService {
           requiredNetworkType: NetworkType.NONE,
           forceAlarmManager: true,
         ), (String taskId) async {
-      print('BackgroundFetch event received');
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
       _sendLocation(position);
       BackgroundFetch.finish(taskId);
     }, (String taskId) async {
-      print('BackgroundFetch task timeout');
       BackgroundFetch.finish(taskId);
     });
 
@@ -131,12 +81,66 @@ class MyLocationService {
 
   // Callback for iOS local notifications
   void _onDidReceiveLocalNotification(
-      int id, String? title, String? body, String? payload) async {
-    print('Received local notification: $title, $body');
-  }
+      int id, String? title, String? body, String? payload) async {}
 
   // Callback for iOS notification selection
-  void _onSelectNotification(NotificationResponse? response) async {
-    print('Notification selected: ${response?.payload}');
+  void _onSelectNotification(NotificationResponse? response) async {}
+
+  void startDriveTimer() {
+    _driveTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      _secondsElapsed++;
+      _updateDriveNotification();
+    });
+  }
+
+  void stopDriveTimer() {
+    _driveTimer?.cancel();
+  }
+
+  void resetDriveTimer() {
+    _secondsElapsed = 0;
+  }
+
+  void _updateDriveNotification() async {
+    final String elapsedTime =
+        _formatDuration(Duration(seconds: _secondsElapsed));
+    if (kDebugMode) {
+      print('_update Drive Notification $elapsedTime');
+    }
+
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+      'drive_channel',
+      'Drive Tracking',
+      importance: Importance.max,
+      priority: Priority.high,
+      ongoing: true,
+      sound: null,
+      playSound: false,
+      enableVibration: false,
+      silent: true,
+      autoCancel: false,
+    );
+
+    const DarwinNotificationDetails iOSPlatformChannelSpecifics =
+        DarwinNotificationDetails();
+
+    const NotificationDetails platformChannelSpecifics = NotificationDetails(
+        android: androidPlatformChannelSpecifics,
+        iOS: iOSPlatformChannelSpecifics);
+
+    await flutterLocalNotificationsPlugin.show(
+      2,
+      'Drive Time',
+      'Time: $elapsedTime',
+      platformChannelSpecifics,
+    );
+  }
+
+  String _formatDuration(Duration duration) {
+    String twoDigits(int n) => n.toString().padLeft(2, "0");
+    String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
+    String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60));
+    return "${twoDigits(duration.inHours)}:$twoDigitMinutes:$twoDigitSeconds";
   }
 }

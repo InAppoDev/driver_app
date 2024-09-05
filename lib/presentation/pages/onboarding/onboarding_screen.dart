@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:tms_driver/data/services/my_localtion_services.dart';
-import 'package:tms_driver/domain/repositories/impl/tracking_repository_impl.dart';
-import 'package:tms_driver/domain/repositories/tracking_repository.dart';
 import 'package:tms_driver/presentation/customs/custom_check_box.dart';
 import 'package:tms_driver/presentation/pages/onboarding/onboarding_content.dart';
 import 'package:tms_driver/presentation/pages/onboarding/size_config.dart';
@@ -34,8 +30,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   String permissionStatus = "Press the button to request permission";
 
   Future<void> requestPermission() async {
-    final MyLocationService locationService = MyLocationService();
-
     if (!isChecked) {
       PermissionStatus status = await Permission.location.request();
 
@@ -44,9 +38,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           permissionStatus = "Permission granted";
           isChecked = !isChecked;
         });
-        GetIt.instance.registerSingleton<TrackingRepository>(
-            TrackingRepositoryImpl(locationService));
-        GetIt.instance.registerSingleton<MyLocationService>(locationService);
       } else if (status.isDenied) {
         setState(() {
           permissionStatus = "Permission denied";
