@@ -17,7 +17,7 @@ class ActiveTripBloc extends Bloc<ActiveTripEvent, ActiveTripState> {
 
   ActiveTripBloc() : super(ActiveTripState.initial()) {
     on<GetDateAndTime>(_getDataAndTime);
-    on<PickFile>(_getFile);
+    on<PickFile>(_pickFile);
     on<RemoveFile>(_removeFile);
     on<ScanDoc>(_scanDoc);
     on<UploadFiles>(_uploadFiles);
@@ -27,7 +27,7 @@ class ActiveTripBloc extends Bloc<ActiveTripEvent, ActiveTripState> {
     emit(state.copyWith(dateTime: event.dateTime));
   }
 
-  void _getFile(event, Emitter<ActiveTripState> emit) async {
+  void _pickFile(event, Emitter<ActiveTripState> emit) async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,

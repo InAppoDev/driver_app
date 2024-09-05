@@ -12,7 +12,7 @@ class UploadScanFiles extends StatelessWidget {
   final Function(String) onScanFile;
   final Function(File) onFileRemove;
   final File? selectedFile;
-  final VoidCallback onUploadPressed;
+  final VoidCallback? onUploadPressed;
   final bool isFileLoading;
 
   const UploadScanFiles({
@@ -21,7 +21,7 @@ class UploadScanFiles extends StatelessWidget {
     required this.onScanFile,
     required this.selectedFile,
     required this.onFileRemove,
-    required this.onUploadPressed,
+    this.onUploadPressed,
     this.isFileLoading = false,
   });
 
@@ -35,6 +35,7 @@ class UploadScanFiles extends StatelessWidget {
         color: theme.scaffoldBackgroundColor,
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             context.localizations.bolDocument,
@@ -119,11 +120,14 @@ class UploadScanFiles extends StatelessWidget {
             ),
             const SizedBox(height: 16),
           ],
-          CustomButton(
-            height: 36,
+          if (onUploadPressed != null)
+            CustomButton(
+              height: 36,
             label: context.localizations.upload,
-            onPressed: onUploadPressed,
-            isLoading: isFileLoading,
+              onPressed: () {
+                onUploadPressed?.call();
+              },
+              isLoading: isFileLoading,
           ),
         ],
       ),
