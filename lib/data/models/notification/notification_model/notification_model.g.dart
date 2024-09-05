@@ -13,9 +13,9 @@ _$NotificationModelImpl _$$NotificationModelImplFromJson(
       type: json['type'] as String?,
       title: json['title'] as String?,
       description: json['description'] as String?,
-      eventAt: (json['eventAt'] as num?)?.toInt(),
-      entityType: json['entityType'] as String?,
-      entityId: (json['entityId'] as num?)?.toInt(),
+      eventAt: (json['event_at'] as num?)?.toInt(),
+      entityType: json['entity_type'] as String?,
+      entityId: (json['entity_id'] as num?)?.toInt(),
       data: json['data'] == null
           ? null
           : NotificationData.fromJson(json['data'] as Map<String, dynamic>),
@@ -28,8 +28,8 @@ Map<String, dynamic> _$$NotificationModelImplToJson(
       'type': instance.type,
       'title': instance.title,
       'description': instance.description,
-      'eventAt': instance.eventAt,
-      'entityType': instance.entityType,
-      'entityId': instance.entityId,
+      'event_at': instance.eventAt,
+      'entity_type': instance.entityType,
+      'entity_id': instance.entityId,
       'data': instance.data,
     };

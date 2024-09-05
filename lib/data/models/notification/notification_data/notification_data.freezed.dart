@@ -20,7 +20,9 @@ NotificationData _$NotificationDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NotificationData {
+  @JsonKey(name: 'chat_id')
   int? get chatId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'message_id')
   int? get messageId => throw _privateConstructorUsedError;
   NotificationSender? get sender => throw _privateConstructorUsedError;
 
@@ -40,7 +42,10 @@ abstract class $NotificationDataCopyWith<$Res> {
           NotificationData value, $Res Function(NotificationData) then) =
       _$NotificationDataCopyWithImpl<$Res, NotificationData>;
   @useResult
-  $Res call({int? chatId, int? messageId, NotificationSender? sender});
+  $Res call(
+      {@JsonKey(name: 'chat_id') int? chatId,
+      @JsonKey(name: 'message_id') int? messageId,
+      NotificationSender? sender});
 
   $NotificationSenderCopyWith<$Res>? get sender;
 }
@@ -103,7 +108,10 @@ abstract class _$$NotificationDataImplCopyWith<$Res>
       __$$NotificationDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? chatId, int? messageId, NotificationSender? sender});
+  $Res call(
+      {@JsonKey(name: 'chat_id') int? chatId,
+      @JsonKey(name: 'message_id') int? messageId,
+      NotificationSender? sender});
 
   @override
   $NotificationSenderCopyWith<$Res>? get sender;
@@ -146,14 +154,19 @@ class __$$NotificationDataImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$NotificationDataImpl implements _NotificationData {
-  const _$NotificationDataImpl({this.chatId, this.messageId, this.sender});
+  const _$NotificationDataImpl(
+      {@JsonKey(name: 'chat_id') this.chatId,
+      @JsonKey(name: 'message_id') this.messageId,
+      this.sender});
 
   factory _$NotificationDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$NotificationDataImplFromJson(json);
 
   @override
+  @JsonKey(name: 'chat_id')
   final int? chatId;
   @override
+  @JsonKey(name: 'message_id')
   final int? messageId;
   @override
   final NotificationSender? sender;
@@ -197,16 +210,18 @@ class _$NotificationDataImpl implements _NotificationData {
 
 abstract class _NotificationData implements NotificationData {
   const factory _NotificationData(
-      {final int? chatId,
-      final int? messageId,
+      {@JsonKey(name: 'chat_id') final int? chatId,
+      @JsonKey(name: 'message_id') final int? messageId,
       final NotificationSender? sender}) = _$NotificationDataImpl;
 
   factory _NotificationData.fromJson(Map<String, dynamic> json) =
       _$NotificationDataImpl.fromJson;
 
   @override
+  @JsonKey(name: 'chat_id')
   int? get chatId;
   @override
+  @JsonKey(name: 'message_id')
   int? get messageId;
   @override
   NotificationSender? get sender;

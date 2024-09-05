@@ -8,8 +8,8 @@ part 'notification_data.g.dart';
 @freezed
 class NotificationData with _$NotificationData {
   const factory NotificationData({
-    int? chatId,
-    int? messageId,
+    @JsonKey(name: 'chat_id')   int? chatId,
+    @JsonKey(name: 'message_id')   int? messageId,
     NotificationSender? sender,
   }) = _NotificationData;
 

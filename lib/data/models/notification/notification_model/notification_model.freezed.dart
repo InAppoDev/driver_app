@@ -24,8 +24,11 @@ mixin _$NotificationModel {
   String? get type => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'event_at')
   int? get eventAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'entity_type')
   String? get entityType => throw _privateConstructorUsedError;
+  @JsonKey(name: 'entity_id')
   int? get entityId => throw _privateConstructorUsedError;
   NotificationData? get data => throw _privateConstructorUsedError;
 
@@ -50,9 +53,9 @@ abstract class $NotificationModelCopyWith<$Res> {
       String? type,
       String? title,
       String? description,
-      int? eventAt,
-      String? entityType,
-      int? entityId,
+      @JsonKey(name: 'event_at') int? eventAt,
+      @JsonKey(name: 'entity_type') String? entityType,
+      @JsonKey(name: 'entity_id') int? entityId,
       NotificationData? data});
 
   $NotificationDataCopyWith<$Res>? get data;
@@ -146,9 +149,9 @@ abstract class _$$NotificationModelImplCopyWith<$Res>
       String? type,
       String? title,
       String? description,
-      int? eventAt,
-      String? entityType,
-      int? entityId,
+      @JsonKey(name: 'event_at') int? eventAt,
+      @JsonKey(name: 'entity_type') String? entityType,
+      @JsonKey(name: 'entity_id') int? entityId,
       NotificationData? data});
 
   @override
@@ -222,9 +225,9 @@ class _$NotificationModelImpl implements _NotificationModel {
       this.type,
       this.title,
       this.description,
-      this.eventAt,
-      this.entityType,
-      this.entityId,
+      @JsonKey(name: 'event_at') this.eventAt,
+      @JsonKey(name: 'entity_type') this.entityType,
+      @JsonKey(name: 'entity_id') this.entityId,
       this.data});
 
   factory _$NotificationModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -239,10 +242,13 @@ class _$NotificationModelImpl implements _NotificationModel {
   @override
   final String? description;
   @override
+  @JsonKey(name: 'event_at')
   final int? eventAt;
   @override
+  @JsonKey(name: 'entity_type')
   final String? entityType;
   @override
+  @JsonKey(name: 'entity_id')
   final int? entityId;
   @override
   final NotificationData? data;
@@ -298,9 +304,9 @@ abstract class _NotificationModel implements NotificationModel {
       final String? type,
       final String? title,
       final String? description,
-      final int? eventAt,
-      final String? entityType,
-      final int? entityId,
+      @JsonKey(name: 'event_at') final int? eventAt,
+      @JsonKey(name: 'entity_type') final String? entityType,
+      @JsonKey(name: 'entity_id') final int? entityId,
       final NotificationData? data}) = _$NotificationModelImpl;
 
   factory _NotificationModel.fromJson(Map<String, dynamic> json) =
@@ -315,10 +321,13 @@ abstract class _NotificationModel implements NotificationModel {
   @override
   String? get description;
   @override
+  @JsonKey(name: 'event_at')
   int? get eventAt;
   @override
+  @JsonKey(name: 'entity_type')
   String? get entityType;
   @override
+  @JsonKey(name: 'entity_id')
   int? get entityId;
   @override
   NotificationData? get data;

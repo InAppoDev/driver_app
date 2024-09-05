@@ -16,13 +16,15 @@ class NotificationListView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: ListView.builder(
                 itemCount: notifications.length,
-                itemBuilder: (context, index) => Card(
-                  child: ListTile(
-                    leading: const Icon(Icons.notifications_sharp),
-                    title: Text(notifications[index].title ?? ''),
-                    subtitle: Text(notifications[index].description ?? ''),
-                  ),
-                ),
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: ListTile(
+                      leading: const Icon(Icons.notifications_sharp),
+                      title: Text(notifications[index].title ?? ''),
+                      subtitle: Text(notifications[index].description ?? ''),
+                    ),
+                  );
+                },
               ),
             ),
           error: (errorMessage) => Center(
