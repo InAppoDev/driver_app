@@ -17,10 +17,13 @@ import 'package:tms_driver/domain/repositories/impl/trip_repository_impl.dart';
 import 'package:tms_driver/domain/repositories/impl/user_repository_impl.dart';
 import 'package:tms_driver/domain/repositories/messages_repository.dart';
 import 'package:tms_driver/domain/repositories/tracking_repository.dart';
+import 'package:tms_driver/domain/repositories/notification_repository.dart';
 import 'package:tms_driver/domain/repositories/trip_repository.dart';
 import 'package:tms_driver/domain/repositories/user_repository.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler_impl.dart';
+
+import 'domain/repositories/impl/notification_repository_impl.dart';
 
 Future<void> initApp() async {
   final Dio dio = Dio();
@@ -86,5 +89,8 @@ Future<void> initApp() async {
       apiDataSource: apiDataSource,
       authDataSource: authDataSource,
     ),
+  );
+  GetIt.instance.registerSingleton<NotificationRepository>(
+    NotificationRepositoryImpl(apiDataSource: apiDataSource),
   );
 }
