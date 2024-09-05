@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-
 import 'package:tms_driver/data/data_source/api_data_source.dart';
 import 'package:tms_driver/data/data_source/api_interceptor.dart';
 import 'package:tms_driver/data/data_source/auth_data_source.dart';
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
 import 'package:tms_driver/data/models/document/upload_document_response.dart';
+import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
 import 'package:tms_driver/data/models/user/user_model.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler.dart';
 
@@ -143,6 +143,25 @@ class ApiDataSourceImpl implements ApiDataSource {
       }
       errorHandler.handleException(e as Exception);
       throw Exception('Error uploading file');
+    }
+  }
+
+  @override
+  Future<List<NotificationModel>> getNotifications() async {
+    try {
+      final response = await _makeRequest(() => dio.get('/events'));
+      final List<NotificationModel> notifications = [];
+      final responseList = response.data;
+      for (final respNotification in responseList) {
+        notifications.add(NotificationModel.fromJson(respNotification));
+      }
+      return notifications;
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error getting notification: $e');
+      }
+      // errorHandler.handleException(e as Exception);
+      throw Exception('Error getting notifications');
     }
   }
 }

@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           CustomIconButton(
-            height: 18,
+            height: 40,
             icon: 'bell',
             onPressed: () {
               context.push('/notification');
