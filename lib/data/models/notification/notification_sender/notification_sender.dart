@@ -6,10 +6,10 @@ part 'notification_sender.g.dart';
 @freezed
 class NotificationSender with _$NotificationSender {
   const factory NotificationSender({
-    int? senderId,
-    String? senderType,
+    @JsonKey(name: 'sender_id') int? senderId,
+    @JsonKey(name: 'sender_type') String? senderType,
     String? name,
-    String? avatarUrl,
+    @JsonKey(name: 'avatar_url') String? avatarUrl,
   }) = _NotificationSender;
 
   factory NotificationSender.fromJson(Map<String, dynamic> json) =>

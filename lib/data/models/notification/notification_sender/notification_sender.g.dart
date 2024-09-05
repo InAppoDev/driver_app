@@ -9,17 +9,17 @@ part of 'notification_sender.dart';
 _$NotificationSenderImpl _$$NotificationSenderImplFromJson(
         Map<String, dynamic> json) =>
     _$NotificationSenderImpl(
-      senderId: (json['senderId'] as num?)?.toInt(),
-      senderType: json['senderType'] as String?,
+      senderId: (json['sender_id'] as num?)?.toInt(),
+      senderType: json['sender_type'] as String?,
       name: json['name'] as String?,
-      avatarUrl: json['avatarUrl'] as String?,
+      avatarUrl: json['avatar_url'] as String?,
     );
 
 Map<String, dynamic> _$$NotificationSenderImplToJson(
         _$NotificationSenderImpl instance) =>
     <String, dynamic>{
-      'senderId': instance.senderId,
-      'senderType': instance.senderType,
+      'sender_id': instance.senderId,
+      'sender_type': instance.senderType,
       'name': instance.name,
-      'avatarUrl': instance.avatarUrl,
+      'avatar_url': instance.avatarUrl,
     };

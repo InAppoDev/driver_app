@@ -4,7 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tms_driver/data/models/notification/notification_data/notification_data.dart';
 
 part 'notification_model.freezed.dart';
-
 part 'notification_model.g.dart';
 
 @freezed
@@ -14,9 +13,9 @@ class NotificationModel with _$NotificationModel {
     String? type,
     String? title,
     String? description,
-    int? eventAt,
-    String? entityType,
-    int? entityId,
+    @JsonKey(name: 'event_at') int? eventAt,
+    @JsonKey(name: 'entity_type') String? entityType,
+    @JsonKey(name: 'entity_id') int? entityId,
     NotificationData? data,
   }) = _NotificationModel;
 

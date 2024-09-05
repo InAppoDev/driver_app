@@ -20,9 +20,12 @@ NotificationSender _$NotificationSenderFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NotificationSender {
+  @JsonKey(name: 'sender_id')
   int? get senderId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sender_type')
   String? get senderType => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'avatar_url')
   String? get avatarUrl => throw _privateConstructorUsedError;
 
   /// Serializes this NotificationSender to a JSON map.
@@ -42,7 +45,10 @@ abstract class $NotificationSenderCopyWith<$Res> {
       _$NotificationSenderCopyWithImpl<$Res, NotificationSender>;
   @useResult
   $Res call(
-      {int? senderId, String? senderType, String? name, String? avatarUrl});
+      {@JsonKey(name: 'sender_id') int? senderId,
+      @JsonKey(name: 'sender_type') String? senderType,
+      String? name,
+      @JsonKey(name: 'avatar_url') String? avatarUrl});
 }
 
 /// @nodoc
@@ -95,7 +101,10 @@ abstract class _$$NotificationSenderImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? senderId, String? senderType, String? name, String? avatarUrl});
+      {@JsonKey(name: 'sender_id') int? senderId,
+      @JsonKey(name: 'sender_type') String? senderType,
+      String? name,
+      @JsonKey(name: 'avatar_url') String? avatarUrl});
 }
 
 /// @nodoc
@@ -141,18 +150,24 @@ class __$$NotificationSenderImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NotificationSenderImpl implements _NotificationSender {
   const _$NotificationSenderImpl(
-      {this.senderId, this.senderType, this.name, this.avatarUrl});
+      {@JsonKey(name: 'sender_id') this.senderId,
+      @JsonKey(name: 'sender_type') this.senderType,
+      this.name,
+      @JsonKey(name: 'avatar_url') this.avatarUrl});
 
   factory _$NotificationSenderImpl.fromJson(Map<String, dynamic> json) =>
       _$$NotificationSenderImplFromJson(json);
 
   @override
+  @JsonKey(name: 'sender_id')
   final int? senderId;
   @override
+  @JsonKey(name: 'sender_type')
   final String? senderType;
   @override
   final String? name;
   @override
+  @JsonKey(name: 'avatar_url')
   final String? avatarUrl;
 
   @override
@@ -198,21 +213,25 @@ class _$NotificationSenderImpl implements _NotificationSender {
 
 abstract class _NotificationSender implements NotificationSender {
   const factory _NotificationSender(
-      {final int? senderId,
-      final String? senderType,
-      final String? name,
-      final String? avatarUrl}) = _$NotificationSenderImpl;
+          {@JsonKey(name: 'sender_id') final int? senderId,
+          @JsonKey(name: 'sender_type') final String? senderType,
+          final String? name,
+          @JsonKey(name: 'avatar_url') final String? avatarUrl}) =
+      _$NotificationSenderImpl;
 
   factory _NotificationSender.fromJson(Map<String, dynamic> json) =
       _$NotificationSenderImpl.fromJson;
 
   @override
+  @JsonKey(name: 'sender_id')
   int? get senderId;
   @override
+  @JsonKey(name: 'sender_type')
   String? get senderType;
   @override
   String? get name;
   @override
+  @JsonKey(name: 'avatar_url')
   String? get avatarUrl;
 
   /// Create a copy of NotificationSender

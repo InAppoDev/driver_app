@@ -35,8 +35,7 @@ class NotificationScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: BlocProvider(
-        create: (BuildContext context) =>
-            NotificationBloc()..add(const NotificationEvent.started()),
+        create: (BuildContext context) => NotificationBloc(),
         child: const NotificationListView(),
       ),
     );

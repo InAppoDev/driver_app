@@ -9,8 +9,8 @@ part of 'notification_data.dart';
 _$NotificationDataImpl _$$NotificationDataImplFromJson(
         Map<String, dynamic> json) =>
     _$NotificationDataImpl(
-      chatId: (json['chatId'] as num?)?.toInt(),
-      messageId: (json['messageId'] as num?)?.toInt(),
+      chatId: (json['chat_id'] as num?)?.toInt(),
+      messageId: (json['message_id'] as num?)?.toInt(),
       sender: json['sender'] == null
           ? null
           : NotificationSender.fromJson(json['sender'] as Map<String, dynamic>),
@@ -19,7 +19,7 @@ _$NotificationDataImpl _$$NotificationDataImplFromJson(
 Map<String, dynamic> _$$NotificationDataImplToJson(
         _$NotificationDataImpl instance) =>
     <String, dynamic>{
-      'chatId': instance.chatId,
-      'messageId': instance.messageId,
+      'chat_id': instance.chatId,
+      'message_id': instance.messageId,
       'sender': instance.sender,
     };
