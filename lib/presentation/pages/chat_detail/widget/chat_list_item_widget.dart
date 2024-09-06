@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:tms_driver/data/models/chats/message/message_model.dart';
 import 'package:tms_driver/presentation/blocks/chat_detail/bloc/chat_detail_bloc.dart';
 import 'package:tms_driver/presentation/consts/consts.dart';
@@ -85,12 +86,14 @@ class ChatListItemWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 5),
-                Text(
-                  messageModel.content,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: theme.dividerColor,
+                MarkdownBody(
+                  data: messageModel.content,
+                  styleSheet: MarkdownStyleSheet(
+                    p: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: theme.dividerColor,
+                    ),
                   ),
                 ),
                 if (messageModel.status == MessageStatus.sending)
