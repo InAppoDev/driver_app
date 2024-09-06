@@ -35,8 +35,9 @@ class TripListView extends StatelessWidget {
                   NewTrips(
                     trips: context.read<TripBloc>().trips,
                     onPressed: (trip) async {
-                      await context.push('/confirmTrip', extra: trip);
-                      if (context.mounted) {
+                      final navigateToActiveTrip =
+                          await context.push('/confirmTrip', extra: trip);
+                      if (navigateToActiveTrip as bool && context.mounted) {
                         context.read<TripBloc>().add(
                               TripEvent.changeTab(
                                 status: TabStatus.activeTrip,
