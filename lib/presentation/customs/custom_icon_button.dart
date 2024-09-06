@@ -6,6 +6,8 @@ class CustomIconButton extends StatelessWidget {
   final VoidCallback onPressed;
   final double height;
   final double width;
+  final double iconHeight;
+  final double iconWidth;
   final double? transparency;
   final bool justIcon;
   final Color? borderColor;
@@ -19,6 +21,8 @@ class CustomIconButton extends StatelessWidget {
     required this.onPressed,
     this.height = 40,
     this.width = 40,
+    this.iconHeight = 40,
+    this.iconWidth = 40,
     this.transparency,
     this.justIcon = false,
     this.borderColor,

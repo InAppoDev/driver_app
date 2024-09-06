@@ -29,49 +29,19 @@ class TripData extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    context.localizations.tripNumber,
-                    style: theme.textTheme.titleSmall!.copyWith(
-                      color: theme.disabledColor,
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 4,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(4),
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/point.svg',
+                        height: 15,
                       ),
-                      color: theme.cardColor,
-                    ),
-                    child: Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/images/load_box.svg',
-                        ),
-                        const SizedBox(width: 6),
-                        Text(
-                          context.localizations.loadDamage,
-                          style: theme.textTheme.bodySmall!
-                              .copyWith(fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 30),
-              const Divider(),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    context.localizations.startingPoint,
-                    style: theme.textTheme.titleSmall!
-                        .copyWith(color: theme.dividerColor),
+                      const SizedBox(width: 15),
+                      Text(
+                        context.localizations.startingPoint,
+                        style: theme.textTheme.titleSmall!
+                            .copyWith(color: theme.dividerColor),
+                      ),
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 55),
@@ -84,31 +54,28 @@ class TripData extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 12),
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  border: Border.all(
-                    color: theme.indicatorColor,
-                  ),
-                ),
-                child: Text(
-                 context.localizations.youHaventYetStartedTheTrip,
-                  style: theme.textTheme.titleSmall!.copyWith(
-                    fontWeight: FontWeight.w400,
-                    color: theme.indicatorColor,
-                  ),
-                ),
+              Text(
+                trip.details.first.address ?? '',
+                style: theme.textTheme.titleSmall!
+                    .copyWith(color: theme.dividerColor),
               ),
               const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    trip.details.first.name ?? '',
-                    style: theme.textTheme.titleSmall!
-                        .copyWith(color: theme.dividerColor),
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/truck_pick_up.svg',
+                        height: 12,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        trip.details.first.name ?? '',
+                        style: theme.textTheme.titleSmall!
+                            .copyWith(color: theme.dividerColor),
+                      ),
+                    ],
                   ),
                   Text(
                     trip.details.first.data ?? '',

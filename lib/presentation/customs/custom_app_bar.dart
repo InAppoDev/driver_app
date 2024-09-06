@@ -27,6 +27,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   height: 30,
                   child: Image.asset('assets/images/logo.png'),
                 ),
+
           CustomIconButton(
             height: 40,
             icon: 'bell',
