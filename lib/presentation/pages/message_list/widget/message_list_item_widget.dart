@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
+import 'package:tms_driver/data/services/time_formatter.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_image.dart';
 import 'package:tms_driver/presentation/pages/message_list/widget/unread_count_widget.dart';
 
@@ -53,7 +54,7 @@ class MessageListItemWidget extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        _formatTime(chat.lastUpdatedAt),
+                        TimeFormatter.formatTimestamp(chat.lastUpdatedAt),
                         style: const TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w400,
@@ -87,13 +88,5 @@ class MessageListItemWidget extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String _formatTime(int? timestamp) {
-    if (timestamp == null) return '';
-    final DateTime date = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
-    final String formattedTime =
-        '${date.hour}:${date.minute} ${date.hour >= 12 ? 'PM' : 'AM'}';
-    return formattedTime;
   }
 }

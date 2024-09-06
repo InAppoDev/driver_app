@@ -1,21 +1,7 @@
 import 'dart:io';
 
-import 'package:intl/intl.dart';
-
 String subFile(File file) {
   return subLongFileName(file.path.substring(file.path.lastIndexOf('/') + 1));
-}
-
-String formatTimestamp(int timestamp) {
-  DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
-
-  DateFormat timeFormatter = DateFormat('HH:mm');
-  DateFormat amPmFormatter = DateFormat('a');
-
-  String formattedTime = timeFormatter.format(dateTime);
-  String amPm = amPmFormatter.format(dateTime);
-
-  return '$formattedTime $amPm';
 }
 
 String subLongFileName(String name) {
