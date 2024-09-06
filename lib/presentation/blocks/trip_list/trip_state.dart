@@ -12,6 +12,9 @@ class TripState with _$TripState {
     @Default(TabStatus.newTrips) TabStatus tabStatus,
     String? errorMessage,
     TripModel? trip,
+    String? dateTime,
+    File? selectedFile,
+    @Default(false) bool isFileLoading,
   }) = _TripState;
 
   factory TripState.initial() => const TripState(

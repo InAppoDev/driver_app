@@ -350,6 +350,10 @@
   "@setValue": {
     "description": "Set Value"
   },
+  "startDrive": "START DRIVE",
+  "@startDrive": {
+    "description": "START DRIVE"
+  },
   "distanceKm": "{distance}km",
   "@distanceKm": {
     "description": "Distance in kilometers",

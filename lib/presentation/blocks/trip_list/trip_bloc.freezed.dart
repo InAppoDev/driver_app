@@ -16,45 +16,67 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TripEvent {
-  TabStatus get status => throw _privateConstructorUsedError;
-  TripModel? get trip => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TabStatus status, TripModel? trip) changeTab,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function(String image) scanDoc,
+    required TResult Function() uploadFiles,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function(String image)? scanDoc,
+    TResult? Function()? uploadFiles,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function(String image)? scanDoc,
+    TResult Function()? uploadFiles,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ChangeTabPressed value) changeTab,
+    required TResult Function(_GetDateAndTime value) getDateAndTime,
+    required TResult Function(_PickFile value) pickFile,
+    required TResult Function(_RemoveFile value) removeFile,
+    required TResult Function(_ScanDoc value) scanDoc,
+    required TResult Function(_UploadFiles value) uploadFiles,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ChangeTabPressed value)? changeTab,
+    TResult? Function(_GetDateAndTime value)? getDateAndTime,
+    TResult? Function(_PickFile value)? pickFile,
+    TResult? Function(_RemoveFile value)? removeFile,
+    TResult? Function(_ScanDoc value)? scanDoc,
+    TResult? Function(_UploadFiles value)? uploadFiles,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ChangeTabPressed value)? changeTab,
+    TResult Function(_GetDateAndTime value)? getDateAndTime,
+    TResult Function(_PickFile value)? pickFile,
+    TResult Function(_RemoveFile value)? removeFile,
+    TResult Function(_ScanDoc value)? scanDoc,
+    TResult Function(_UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of TripEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $TripEventCopyWith<TripEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -62,10 +84,6 @@ mixin _$TripEvent {
 abstract class $TripEventCopyWith<$Res> {
   factory $TripEventCopyWith(TripEvent value, $Res Function(TripEvent) then) =
       _$TripEventCopyWithImpl<$Res, TripEvent>;
-  @useResult
-  $Res call({TabStatus status, TripModel? trip});
-
-  $TripModelCopyWith<$Res>? get trip;
 }
 
 /// @nodoc
@@ -80,50 +98,16 @@ class _$TripEventCopyWithImpl<$Res, $Val extends TripEvent>
 
   /// Create a copy of TripEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? trip = freezed,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as TabStatus,
-      trip: freezed == trip
-          ? _value.trip
-          : trip // ignore: cast_nullable_to_non_nullable
-              as TripModel?,
-    ) as $Val);
-  }
-
-  /// Create a copy of TripEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $TripModelCopyWith<$Res>? get trip {
-    if (_value.trip == null) {
-      return null;
-    }
-
-    return $TripModelCopyWith<$Res>(_value.trip!, (value) {
-      return _then(_value.copyWith(trip: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$ChangeTabPressedImplCopyWith<$Res>
-    implements $TripEventCopyWith<$Res> {
+abstract class _$$ChangeTabPressedImplCopyWith<$Res> {
   factory _$$ChangeTabPressedImplCopyWith(_$ChangeTabPressedImpl value,
           $Res Function(_$ChangeTabPressedImpl) then) =
       __$$ChangeTabPressedImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({TabStatus status, TripModel? trip});
 
-  @override
   $TripModelCopyWith<$Res>? get trip;
 }
 
@@ -153,6 +137,20 @@ class __$$ChangeTabPressedImplCopyWithImpl<$Res>
           : trip // ignore: cast_nullable_to_non_nullable
               as TripModel?,
     ));
+  }
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $TripModelCopyWith<$Res>? get trip {
+    if (_value.trip == null) {
+      return null;
+    }
+
+    return $TripModelCopyWith<$Res>(_value.trip!, (value) {
+      return _then(_value.copyWith(trip: value));
+    });
   }
 }
 
@@ -196,6 +194,11 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TabStatus status, TripModel? trip) changeTab,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function(String image) scanDoc,
+    required TResult Function() uploadFiles,
   }) {
     return changeTab(status, trip);
   }
@@ -204,6 +207,11 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function(String image)? scanDoc,
+    TResult? Function()? uploadFiles,
   }) {
     return changeTab?.call(status, trip);
   }
@@ -212,6 +220,11 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function(String image)? scanDoc,
+    TResult Function()? uploadFiles,
     required TResult orElse(),
   }) {
     if (changeTab != null) {
@@ -224,6 +237,11 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ChangeTabPressed value) changeTab,
+    required TResult Function(_GetDateAndTime value) getDateAndTime,
+    required TResult Function(_PickFile value) pickFile,
+    required TResult Function(_RemoveFile value) removeFile,
+    required TResult Function(_ScanDoc value) scanDoc,
+    required TResult Function(_UploadFiles value) uploadFiles,
   }) {
     return changeTab(this);
   }
@@ -232,6 +250,11 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ChangeTabPressed value)? changeTab,
+    TResult? Function(_GetDateAndTime value)? getDateAndTime,
+    TResult? Function(_PickFile value)? pickFile,
+    TResult? Function(_RemoveFile value)? removeFile,
+    TResult? Function(_ScanDoc value)? scanDoc,
+    TResult? Function(_UploadFiles value)? uploadFiles,
   }) {
     return changeTab?.call(this);
   }
@@ -240,6 +263,11 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ChangeTabPressed value)? changeTab,
+    TResult Function(_GetDateAndTime value)? getDateAndTime,
+    TResult Function(_PickFile value)? pickFile,
+    TResult Function(_RemoveFile value)? removeFile,
+    TResult Function(_ScanDoc value)? scanDoc,
+    TResult Function(_UploadFiles value)? uploadFiles,
     required TResult orElse(),
   }) {
     if (changeTab != null) {
@@ -254,17 +282,767 @@ abstract class _ChangeTabPressed implements TripEvent {
       {required final TabStatus status,
       final TripModel? trip}) = _$ChangeTabPressedImpl;
 
-  @override
   TabStatus get status;
-  @override
   TripModel? get trip;
 
   /// Create a copy of TripEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeTabPressedImplCopyWith<_$ChangeTabPressedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetDateAndTimeImplCopyWith<$Res> {
+  factory _$$GetDateAndTimeImplCopyWith(_$GetDateAndTimeImpl value,
+          $Res Function(_$GetDateAndTimeImpl) then) =
+      __$$GetDateAndTimeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String dateTime});
+}
+
+/// @nodoc
+class __$$GetDateAndTimeImplCopyWithImpl<$Res>
+    extends _$TripEventCopyWithImpl<$Res, _$GetDateAndTimeImpl>
+    implements _$$GetDateAndTimeImplCopyWith<$Res> {
+  __$$GetDateAndTimeImplCopyWithImpl(
+      _$GetDateAndTimeImpl _value, $Res Function(_$GetDateAndTimeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dateTime = null,
+  }) {
+    return _then(_$GetDateAndTimeImpl(
+      dateTime: null == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetDateAndTimeImpl implements _GetDateAndTime {
+  const _$GetDateAndTimeImpl({required this.dateTime});
+
+  @override
+  final String dateTime;
+
+  @override
+  String toString() {
+    return 'TripEvent.getDateAndTime(dateTime: $dateTime)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetDateAndTimeImpl &&
+            (identical(other.dateTime, dateTime) ||
+                other.dateTime == dateTime));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, dateTime);
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetDateAndTimeImplCopyWith<_$GetDateAndTimeImpl> get copyWith =>
+      __$$GetDateAndTimeImplCopyWithImpl<_$GetDateAndTimeImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TabStatus status, TripModel? trip) changeTab,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function(String image) scanDoc,
+    required TResult Function() uploadFiles,
+  }) {
+    return getDateAndTime(dateTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function(String image)? scanDoc,
+    TResult? Function()? uploadFiles,
+  }) {
+    return getDateAndTime?.call(dateTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function(String image)? scanDoc,
+    TResult Function()? uploadFiles,
+    required TResult orElse(),
+  }) {
+    if (getDateAndTime != null) {
+      return getDateAndTime(dateTime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeTabPressed value) changeTab,
+    required TResult Function(_GetDateAndTime value) getDateAndTime,
+    required TResult Function(_PickFile value) pickFile,
+    required TResult Function(_RemoveFile value) removeFile,
+    required TResult Function(_ScanDoc value) scanDoc,
+    required TResult Function(_UploadFiles value) uploadFiles,
+  }) {
+    return getDateAndTime(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeTabPressed value)? changeTab,
+    TResult? Function(_GetDateAndTime value)? getDateAndTime,
+    TResult? Function(_PickFile value)? pickFile,
+    TResult? Function(_RemoveFile value)? removeFile,
+    TResult? Function(_ScanDoc value)? scanDoc,
+    TResult? Function(_UploadFiles value)? uploadFiles,
+  }) {
+    return getDateAndTime?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeTabPressed value)? changeTab,
+    TResult Function(_GetDateAndTime value)? getDateAndTime,
+    TResult Function(_PickFile value)? pickFile,
+    TResult Function(_RemoveFile value)? removeFile,
+    TResult Function(_ScanDoc value)? scanDoc,
+    TResult Function(_UploadFiles value)? uploadFiles,
+    required TResult orElse(),
+  }) {
+    if (getDateAndTime != null) {
+      return getDateAndTime(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetDateAndTime implements TripEvent {
+  const factory _GetDateAndTime({required final String dateTime}) =
+      _$GetDateAndTimeImpl;
+
+  String get dateTime;
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetDateAndTimeImplCopyWith<_$GetDateAndTimeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PickFileImplCopyWith<$Res> {
+  factory _$$PickFileImplCopyWith(
+          _$PickFileImpl value, $Res Function(_$PickFileImpl) then) =
+      __$$PickFileImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PickFileImplCopyWithImpl<$Res>
+    extends _$TripEventCopyWithImpl<$Res, _$PickFileImpl>
+    implements _$$PickFileImplCopyWith<$Res> {
+  __$$PickFileImplCopyWithImpl(
+      _$PickFileImpl _value, $Res Function(_$PickFileImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$PickFileImpl implements _PickFile {
+  const _$PickFileImpl();
+
+  @override
+  String toString() {
+    return 'TripEvent.pickFile()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PickFileImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TabStatus status, TripModel? trip) changeTab,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function(String image) scanDoc,
+    required TResult Function() uploadFiles,
+  }) {
+    return pickFile();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function(String image)? scanDoc,
+    TResult? Function()? uploadFiles,
+  }) {
+    return pickFile?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function(String image)? scanDoc,
+    TResult Function()? uploadFiles,
+    required TResult orElse(),
+  }) {
+    if (pickFile != null) {
+      return pickFile();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeTabPressed value) changeTab,
+    required TResult Function(_GetDateAndTime value) getDateAndTime,
+    required TResult Function(_PickFile value) pickFile,
+    required TResult Function(_RemoveFile value) removeFile,
+    required TResult Function(_ScanDoc value) scanDoc,
+    required TResult Function(_UploadFiles value) uploadFiles,
+  }) {
+    return pickFile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeTabPressed value)? changeTab,
+    TResult? Function(_GetDateAndTime value)? getDateAndTime,
+    TResult? Function(_PickFile value)? pickFile,
+    TResult? Function(_RemoveFile value)? removeFile,
+    TResult? Function(_ScanDoc value)? scanDoc,
+    TResult? Function(_UploadFiles value)? uploadFiles,
+  }) {
+    return pickFile?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeTabPressed value)? changeTab,
+    TResult Function(_GetDateAndTime value)? getDateAndTime,
+    TResult Function(_PickFile value)? pickFile,
+    TResult Function(_RemoveFile value)? removeFile,
+    TResult Function(_ScanDoc value)? scanDoc,
+    TResult Function(_UploadFiles value)? uploadFiles,
+    required TResult orElse(),
+  }) {
+    if (pickFile != null) {
+      return pickFile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PickFile implements TripEvent {
+  const factory _PickFile() = _$PickFileImpl;
+}
+
+/// @nodoc
+abstract class _$$RemoveFileImplCopyWith<$Res> {
+  factory _$$RemoveFileImplCopyWith(
+          _$RemoveFileImpl value, $Res Function(_$RemoveFileImpl) then) =
+      __$$RemoveFileImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({File file});
+}
+
+/// @nodoc
+class __$$RemoveFileImplCopyWithImpl<$Res>
+    extends _$TripEventCopyWithImpl<$Res, _$RemoveFileImpl>
+    implements _$$RemoveFileImplCopyWith<$Res> {
+  __$$RemoveFileImplCopyWithImpl(
+      _$RemoveFileImpl _value, $Res Function(_$RemoveFileImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? file = null,
+  }) {
+    return _then(_$RemoveFileImpl(
+      file: null == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemoveFileImpl implements _RemoveFile {
+  const _$RemoveFileImpl({required this.file});
+
+  @override
+  final File file;
+
+  @override
+  String toString() {
+    return 'TripEvent.removeFile(file: $file)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveFileImpl &&
+            (identical(other.file, file) || other.file == file));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, file);
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemoveFileImplCopyWith<_$RemoveFileImpl> get copyWith =>
+      __$$RemoveFileImplCopyWithImpl<_$RemoveFileImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TabStatus status, TripModel? trip) changeTab,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function(String image) scanDoc,
+    required TResult Function() uploadFiles,
+  }) {
+    return removeFile(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function(String image)? scanDoc,
+    TResult? Function()? uploadFiles,
+  }) {
+    return removeFile?.call(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function(String image)? scanDoc,
+    TResult Function()? uploadFiles,
+    required TResult orElse(),
+  }) {
+    if (removeFile != null) {
+      return removeFile(file);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeTabPressed value) changeTab,
+    required TResult Function(_GetDateAndTime value) getDateAndTime,
+    required TResult Function(_PickFile value) pickFile,
+    required TResult Function(_RemoveFile value) removeFile,
+    required TResult Function(_ScanDoc value) scanDoc,
+    required TResult Function(_UploadFiles value) uploadFiles,
+  }) {
+    return removeFile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeTabPressed value)? changeTab,
+    TResult? Function(_GetDateAndTime value)? getDateAndTime,
+    TResult? Function(_PickFile value)? pickFile,
+    TResult? Function(_RemoveFile value)? removeFile,
+    TResult? Function(_ScanDoc value)? scanDoc,
+    TResult? Function(_UploadFiles value)? uploadFiles,
+  }) {
+    return removeFile?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeTabPressed value)? changeTab,
+    TResult Function(_GetDateAndTime value)? getDateAndTime,
+    TResult Function(_PickFile value)? pickFile,
+    TResult Function(_RemoveFile value)? removeFile,
+    TResult Function(_ScanDoc value)? scanDoc,
+    TResult Function(_UploadFiles value)? uploadFiles,
+    required TResult orElse(),
+  }) {
+    if (removeFile != null) {
+      return removeFile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveFile implements TripEvent {
+  const factory _RemoveFile({required final File file}) = _$RemoveFileImpl;
+
+  File get file;
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RemoveFileImplCopyWith<_$RemoveFileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ScanDocImplCopyWith<$Res> {
+  factory _$$ScanDocImplCopyWith(
+          _$ScanDocImpl value, $Res Function(_$ScanDocImpl) then) =
+      __$$ScanDocImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String image});
+}
+
+/// @nodoc
+class __$$ScanDocImplCopyWithImpl<$Res>
+    extends _$TripEventCopyWithImpl<$Res, _$ScanDocImpl>
+    implements _$$ScanDocImplCopyWith<$Res> {
+  __$$ScanDocImplCopyWithImpl(
+      _$ScanDocImpl _value, $Res Function(_$ScanDocImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? image = null,
+  }) {
+    return _then(_$ScanDocImpl(
+      null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ScanDocImpl implements _ScanDoc {
+  const _$ScanDocImpl(this.image);
+
+  @override
+  final String image;
+
+  @override
+  String toString() {
+    return 'TripEvent.scanDoc(image: $image)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ScanDocImpl &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, image);
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ScanDocImplCopyWith<_$ScanDocImpl> get copyWith =>
+      __$$ScanDocImplCopyWithImpl<_$ScanDocImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TabStatus status, TripModel? trip) changeTab,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function(String image) scanDoc,
+    required TResult Function() uploadFiles,
+  }) {
+    return scanDoc(image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function(String image)? scanDoc,
+    TResult? Function()? uploadFiles,
+  }) {
+    return scanDoc?.call(image);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function(String image)? scanDoc,
+    TResult Function()? uploadFiles,
+    required TResult orElse(),
+  }) {
+    if (scanDoc != null) {
+      return scanDoc(image);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeTabPressed value) changeTab,
+    required TResult Function(_GetDateAndTime value) getDateAndTime,
+    required TResult Function(_PickFile value) pickFile,
+    required TResult Function(_RemoveFile value) removeFile,
+    required TResult Function(_ScanDoc value) scanDoc,
+    required TResult Function(_UploadFiles value) uploadFiles,
+  }) {
+    return scanDoc(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeTabPressed value)? changeTab,
+    TResult? Function(_GetDateAndTime value)? getDateAndTime,
+    TResult? Function(_PickFile value)? pickFile,
+    TResult? Function(_RemoveFile value)? removeFile,
+    TResult? Function(_ScanDoc value)? scanDoc,
+    TResult? Function(_UploadFiles value)? uploadFiles,
+  }) {
+    return scanDoc?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeTabPressed value)? changeTab,
+    TResult Function(_GetDateAndTime value)? getDateAndTime,
+    TResult Function(_PickFile value)? pickFile,
+    TResult Function(_RemoveFile value)? removeFile,
+    TResult Function(_ScanDoc value)? scanDoc,
+    TResult Function(_UploadFiles value)? uploadFiles,
+    required TResult orElse(),
+  }) {
+    if (scanDoc != null) {
+      return scanDoc(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ScanDoc implements TripEvent {
+  const factory _ScanDoc(final String image) = _$ScanDocImpl;
+
+  String get image;
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ScanDocImplCopyWith<_$ScanDocImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UploadFilesImplCopyWith<$Res> {
+  factory _$$UploadFilesImplCopyWith(
+          _$UploadFilesImpl value, $Res Function(_$UploadFilesImpl) then) =
+      __$$UploadFilesImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UploadFilesImplCopyWithImpl<$Res>
+    extends _$TripEventCopyWithImpl<$Res, _$UploadFilesImpl>
+    implements _$$UploadFilesImplCopyWith<$Res> {
+  __$$UploadFilesImplCopyWithImpl(
+      _$UploadFilesImpl _value, $Res Function(_$UploadFilesImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UploadFilesImpl implements _UploadFiles {
+  const _$UploadFilesImpl();
+
+  @override
+  String toString() {
+    return 'TripEvent.uploadFiles()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UploadFilesImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TabStatus status, TripModel? trip) changeTab,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function(String image) scanDoc,
+    required TResult Function() uploadFiles,
+  }) {
+    return uploadFiles();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function(String image)? scanDoc,
+    TResult? Function()? uploadFiles,
+  }) {
+    return uploadFiles?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TabStatus status, TripModel? trip)? changeTab,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function(String image)? scanDoc,
+    TResult Function()? uploadFiles,
+    required TResult orElse(),
+  }) {
+    if (uploadFiles != null) {
+      return uploadFiles();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeTabPressed value) changeTab,
+    required TResult Function(_GetDateAndTime value) getDateAndTime,
+    required TResult Function(_PickFile value) pickFile,
+    required TResult Function(_RemoveFile value) removeFile,
+    required TResult Function(_ScanDoc value) scanDoc,
+    required TResult Function(_UploadFiles value) uploadFiles,
+  }) {
+    return uploadFiles(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeTabPressed value)? changeTab,
+    TResult? Function(_GetDateAndTime value)? getDateAndTime,
+    TResult? Function(_PickFile value)? pickFile,
+    TResult? Function(_RemoveFile value)? removeFile,
+    TResult? Function(_ScanDoc value)? scanDoc,
+    TResult? Function(_UploadFiles value)? uploadFiles,
+  }) {
+    return uploadFiles?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeTabPressed value)? changeTab,
+    TResult Function(_GetDateAndTime value)? getDateAndTime,
+    TResult Function(_PickFile value)? pickFile,
+    TResult Function(_RemoveFile value)? removeFile,
+    TResult Function(_ScanDoc value)? scanDoc,
+    TResult Function(_UploadFiles value)? uploadFiles,
+    required TResult orElse(),
+  }) {
+    if (uploadFiles != null) {
+      return uploadFiles(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UploadFiles implements TripEvent {
+  const factory _UploadFiles() = _$UploadFilesImpl;
 }
 
 /// @nodoc
@@ -273,6 +1051,9 @@ mixin _$TripState {
   TabStatus get tabStatus => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   TripModel? get trip => throw _privateConstructorUsedError;
+  String? get dateTime => throw _privateConstructorUsedError;
+  File? get selectedFile => throw _privateConstructorUsedError;
+  bool get isFileLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
@@ -290,7 +1071,10 @@ abstract class $TripStateCopyWith<$Res> {
       {TripStatus status,
       TabStatus tabStatus,
       String? errorMessage,
-      TripModel? trip});
+      TripModel? trip,
+      String? dateTime,
+      File? selectedFile,
+      bool isFileLoading});
 
   $TripModelCopyWith<$Res>? get trip;
 }
@@ -314,6 +1098,9 @@ class _$TripStateCopyWithImpl<$Res, $Val extends TripState>
     Object? tabStatus = null,
     Object? errorMessage = freezed,
     Object? trip = freezed,
+    Object? dateTime = freezed,
+    Object? selectedFile = freezed,
+    Object? isFileLoading = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -332,6 +1119,18 @@ class _$TripStateCopyWithImpl<$Res, $Val extends TripState>
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
               as TripModel?,
+      dateTime: freezed == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectedFile: freezed == selectedFile
+          ? _value.selectedFile
+          : selectedFile // ignore: cast_nullable_to_non_nullable
+              as File?,
+      isFileLoading: null == isFileLoading
+          ? _value.isFileLoading
+          : isFileLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -362,7 +1161,10 @@ abstract class _$$TripStateImplCopyWith<$Res>
       {TripStatus status,
       TabStatus tabStatus,
       String? errorMessage,
-      TripModel? trip});
+      TripModel? trip,
+      String? dateTime,
+      File? selectedFile,
+      bool isFileLoading});
 
   @override
   $TripModelCopyWith<$Res>? get trip;
@@ -385,6 +1187,9 @@ class __$$TripStateImplCopyWithImpl<$Res>
     Object? tabStatus = null,
     Object? errorMessage = freezed,
     Object? trip = freezed,
+    Object? dateTime = freezed,
+    Object? selectedFile = freezed,
+    Object? isFileLoading = null,
   }) {
     return _then(_$TripStateImpl(
       status: null == status
@@ -403,6 +1208,18 @@ class __$$TripStateImplCopyWithImpl<$Res>
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
               as TripModel?,
+      dateTime: freezed == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectedFile: freezed == selectedFile
+          ? _value.selectedFile
+          : selectedFile // ignore: cast_nullable_to_non_nullable
+              as File?,
+      isFileLoading: null == isFileLoading
+          ? _value.isFileLoading
+          : isFileLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -414,7 +1231,10 @@ class _$TripStateImpl implements _TripState {
       {required this.status,
       this.tabStatus = TabStatus.newTrips,
       this.errorMessage,
-      this.trip});
+      this.trip,
+      this.dateTime,
+      this.selectedFile,
+      this.isFileLoading = false});
 
   @override
   final TripStatus status;
@@ -425,10 +1245,17 @@ class _$TripStateImpl implements _TripState {
   final String? errorMessage;
   @override
   final TripModel? trip;
+  @override
+  final String? dateTime;
+  @override
+  final File? selectedFile;
+  @override
+  @JsonKey()
+  final bool isFileLoading;
 
   @override
   String toString() {
-    return 'TripState(status: $status, tabStatus: $tabStatus, errorMessage: $errorMessage, trip: $trip)';
+    return 'TripState(status: $status, tabStatus: $tabStatus, errorMessage: $errorMessage, trip: $trip, dateTime: $dateTime, selectedFile: $selectedFile, isFileLoading: $isFileLoading)';
   }
 
   @override
@@ -441,12 +1268,18 @@ class _$TripStateImpl implements _TripState {
                 other.tabStatus == tabStatus) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
-            (identical(other.trip, trip) || other.trip == trip));
+            (identical(other.trip, trip) || other.trip == trip) &&
+            (identical(other.dateTime, dateTime) ||
+                other.dateTime == dateTime) &&
+            (identical(other.selectedFile, selectedFile) ||
+                other.selectedFile == selectedFile) &&
+            (identical(other.isFileLoading, isFileLoading) ||
+                other.isFileLoading == isFileLoading));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, tabStatus, errorMessage, trip);
+  int get hashCode => Object.hash(runtimeType, status, tabStatus, errorMessage,
+      trip, dateTime, selectedFile, isFileLoading);
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.
@@ -462,7 +1295,10 @@ abstract class _TripState implements TripState {
       {required final TripStatus status,
       final TabStatus tabStatus,
       final String? errorMessage,
-      final TripModel? trip}) = _$TripStateImpl;
+      final TripModel? trip,
+      final String? dateTime,
+      final File? selectedFile,
+      final bool isFileLoading}) = _$TripStateImpl;
 
   @override
   TripStatus get status;
@@ -472,6 +1308,12 @@ abstract class _TripState implements TripState {
   String? get errorMessage;
   @override
   TripModel? get trip;
+  @override
+  String? get dateTime;
+  @override
+  File? get selectedFile;
+  @override
+  bool get isFileLoading;
 
   /// Create a copy of TripState
   /// with the given fields replaced by the non-null parameter values.

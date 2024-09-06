@@ -5,8 +5,8 @@ import 'package:tms_driver/presentation/blocks/active_trip/active_trip_bloc.dart
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_picker.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/upload_scan_files.dart';
 
-import 'active_trip_data.dart';
-import 'active_trip_info.dart';
+import '../../trip_list/widget/trip_data.dart';
+import '../../trip_list/widget/trip_detail_info.dart';
 
 class ActiveTripView extends StatelessWidget {
   const ActiveTripView({super.key, required this.trip});
@@ -25,9 +25,9 @@ class ActiveTripView extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 60),
                 child: Column(
                   children: [
-                    ActiveTripData(onPressed: () {}, trip: trip),
+                    TripData(onPressed: () {}, trip: trip),
                     const SizedBox(height: 11),
-                    ActiveTripInfo(trip: trip),
+                    TripDetailInfo(trip: trip),
                     const SizedBox(height: 11),
                     CalendarPicker(
                       onCalendarResponse: (resp) {
