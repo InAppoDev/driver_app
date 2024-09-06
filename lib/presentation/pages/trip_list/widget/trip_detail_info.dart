@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
-class ActiveTripInfo extends StatelessWidget {
-  const ActiveTripInfo({super.key, required this.trip});
+class TripDetailInfo extends StatelessWidget {
+  const TripDetailInfo({super.key, required this.trip});
   final TripModel trip;
 
   @override

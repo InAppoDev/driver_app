@@ -1,9 +1,11 @@
 import 'package:go_router/go_router.dart';
+import 'package:tms_driver/data/models/trip/trip_model.dart';
+import 'package:tms_driver/presentation/pages/chat_detail/chat_screen.dart';
 import 'package:tms_driver/presentation/pages/login/login_page.dart';
 import 'package:tms_driver/presentation/pages/main/main_page.dart';
-import 'package:tms_driver/presentation/pages/chat_detail/chat_screen.dart';
 import 'package:tms_driver/presentation/pages/notification/notification_screen.dart';
 import 'package:tms_driver/presentation/pages/splash/splash_screen.dart';
+import 'package:tms_driver/presentation/pages/trip_list/widget/confirm_trip_screen.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/splash',
@@ -19,6 +21,13 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/splash',
       builder: (context, state) => const SplashScreen(),
+    ),
+    GoRoute(
+      path: '/confirmTrip',
+      builder: (context, state) {
+        final trip = state.extra as TripModel;
+        return ConfirmTripScreen(trip: trip);
+      },
     ),
     GoRoute(
       path: '/chat/:chatId',

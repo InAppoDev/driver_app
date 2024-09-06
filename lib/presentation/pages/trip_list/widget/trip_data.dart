@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/trip/trip_model.dart';
-import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
-class ActiveTripData extends StatelessWidget {
-  const ActiveTripData({super.key, required this.onPressed, required this.trip});
+class TripData extends StatelessWidget {
+  const TripData({super.key, required this.onPressed, required this.trip});
 
   final VoidCallback onPressed;
   final TripModel trip;
@@ -31,14 +29,6 @@ class ActiveTripData extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CustomIconButton(
-                    height: 12,
-                    icon: 'ios_arrow',
-                    iconColor: theme.scaffoldBackgroundColor,
-                    onPressed: () {
-                      context.go('/main');
-                    },
-                  ),
                   Text(
                     context.localizations.tripNumber,
                     style: theme.textTheme.titleSmall!.copyWith(
