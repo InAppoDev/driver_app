@@ -2,10 +2,12 @@ import 'dart:io';
 
 import 'package:downloadsfolder/downloadsfolder.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
 import 'package:tms_driver/data/models/chats/message/message_model.dart';
 import 'package:tms_driver/domain/repositories/messages_repository.dart';
@@ -30,8 +32,11 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
     on<ReceiveNewMessage>(_receiveNewMessage);
     on<DownloadFile>(_downloadFile);
     on<TapToCall>(_tapToCall);
-    on<AddDocument>(_addDocument);
+    on<PickFile>(_pickFile);
     on<RemoveDocument>(_removeDocument);
+    on<AddDocument>(_addToDocumentList);
+    on<MakeNullSelectedFile>(_makeNullSelectedFile);
+    on<ScanDoc>(_scanDoc);
   }
 
   Future<void> _fetchChatDetails(
@@ -74,7 +79,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
       SendMessage event, Emitter<ChatDetailState> emit) async {
     try {
       await state.maybeWhen(
-        loaded: (chatDetails, docs) async {
+        loaded: (chatDetails, selectedFile, docs) async {
           final List<MessageModel> messages = [];
           final List<String> documentIds = [];
 
@@ -130,8 +135,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
     }
   }
 
-  Future<void> _addDocument(
-      AddDocument event, Emitter<ChatDetailState> emit) async {
+  Future<void> _pickFile(PickFile event, Emitter<ChatDetailState> emit) async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
@@ -141,13 +145,58 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
       final file = File(result.files.single.path!);
 
       state.maybeWhen(
-        loaded: (chatDetails, docs) {
+        loaded: (chatDetails, selectedFile, docs) {
+          emit(ChatDetailState.loaded(chatDetails, file, docs));
+          add(ChatDetailEvent.addDocument(event.context));
+        },
+        orElse: () {},
+      );
+    } catch (e) {
+      emit(ChatDetailState.failure(e.toString()));
+    }
+  }
+
+  void _scanDoc(ScanDoc event, Emitter<ChatDetailState> emit) async {
+    try {
+      state.maybeWhen(
+        loaded: (chatDetails, selectedFile, docs) {
+          emit(ChatDetailState.loaded(chatDetails, File(event.image), docs));
+          add(ChatDetailEvent.addDocument(event.context));
+        },
+        orElse: () {},
+      );
+    } catch (e) {
+      emit(ChatDetailState.failure(e.toString()));
+    }
+  }
+
+  Future<void> _addToDocumentList(
+      AddDocument event, Emitter<ChatDetailState> emit) async {
+    try {
+      state.maybeWhen(
+        loaded: (chatDetails, selectedFile, docs) {
           final List<File> documents = [];
           documents.clear();
           documents.addAll(docs ?? []);
-          documents.add(file);
+          if (selectedFile != null) {
+            documents.add(selectedFile);
+          }
+          emit(ChatDetailState.loaded(chatDetails, selectedFile, documents));
+          event.context.pop();
+        },
+        orElse: () {},
+      );
+    } catch (e) {
+      emit(ChatDetailState.failure(e.toString()));
+    }
+  }
 
-          emit(ChatDetailState.loaded(chatDetails, documents));
+  Future<void> _makeNullSelectedFile(
+      MakeNullSelectedFile event, Emitter<ChatDetailState> emit) async {
+    try {
+      state.maybeWhen(
+        loaded: (chatDetails, selectedFile, docs) {
+          emit(ChatDetailState.loaded(chatDetails, null, docs));
         },
         orElse: () {},
       );
@@ -160,13 +209,13 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
       RemoveDocument event, Emitter<ChatDetailState> emit) async {
     try {
       state.maybeWhen(
-        loaded: (chatDetails, docs) {
+        loaded: (chatDetails, selectedFile, docs) {
           final List<File> documents = [];
           documents.clear();
           documents.addAll(docs ?? []);
           documents.removeWhere((file) => file == event.file);
 
-          emit(ChatDetailState.loaded(chatDetails, documents));
+          emit(ChatDetailState.loaded(chatDetails, selectedFile, documents));
         },
         orElse: () {},
       );
@@ -178,7 +227,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
   Future<void> _receiveNewMessage(
       ReceiveNewMessage event, Emitter<ChatDetailState> emit) async {
     state.maybeWhen(
-      loaded: (chatDetails, docs) {
+      loaded: (chatDetails, selectedFile, docs) {
         final updatedMessages = List<MessageModel>.from(chatDetails.messages)
           ..add(event.newMessage);
 

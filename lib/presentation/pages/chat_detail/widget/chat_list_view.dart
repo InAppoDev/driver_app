@@ -4,6 +4,7 @@ import 'package:tms_driver/presentation/blocks/chat_detail/bloc/chat_detail_bloc
 import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_bar_info.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_bottom_input.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_list_item_widget.dart';
+import 'package:tms_driver/presentation/pages/chat_detail/widget/file_picker_dialog.dart';
 
 class ChatListView extends StatefulWidget {
   const ChatListView({super.key});
@@ -38,7 +39,7 @@ class ChatListViewState extends State<ChatListView> {
         return state.when(
           initial: () => const Center(child: CircularProgressIndicator()),
           loading: () => const Center(child: CircularProgressIndicator()),
-          loaded: (chatDetails, documents) {
+          loaded: (chatDetails, selectedFile, documents) {
             final messages = chatDetails.messages;
             WidgetsBinding.instance.addPostFrameCallback((_) {
               _scrollToBottom();
@@ -92,10 +93,29 @@ class ChatListViewState extends State<ChatListView> {
                     }
                   },
                   documents: documents ?? [],
-                  onPinPressed: () {
-                    context.read<ChatDetailBloc>().add(
-                          const ChatDetailEvent.addDocument(),
-                        );
+                  onPinPressed: () async {
+                    await showModalBottomSheet(
+                      barrierColor: Colors.black.withAlpha(1),
+                      context: context,
+                      builder: (_) => FilePickerDialog(
+                        onAddFile: () {
+                          context.read<ChatDetailBloc>().add(
+                                ChatDetailEvent.pickFile(context),
+                              );
+                        },
+                        onScanFile: (image) {
+                          context.read<ChatDetailBloc>().add(
+                                ChatDetailEvent.scanDoc(image, context),
+                              );
+                        },
+                        onFileRemove: (file) {
+                          context.read<ChatDetailBloc>().add(
+                                const ChatDetailEvent.makeNullSelectedFile(),
+                              );
+                        },
+                        isFileLoading: false,
+                      ),
+                    );
                   },
                   onFileRemove: (file) {
                     context.read<ChatDetailBloc>().add(
