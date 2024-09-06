@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_image.dart';
@@ -24,7 +23,7 @@ class ChatBarInfo extends StatelessWidget {
                   justIcon: true,
                   icon: 'arrow',
                   onPressed: () {
-                    context.pop();
+                    Navigator.of(context).pop();
                   },
                 ),
                 Padding(
@@ -50,10 +49,10 @@ class ChatBarInfo extends StatelessWidget {
               chatDetails.actionButtonValue != null &&
               chatDetails.actionButtonValue!.isNotEmpty) ...[
             const SizedBox(width: 10),
-          CustomIconButton(
-            borderColor: Theme.of(context).indicatorColor.withOpacity(0.2),
-            transparency: 0.2,
-            icon: 'phone',
+            CustomIconButton(
+              borderColor: Theme.of(context).indicatorColor.withOpacity(0.2),
+              transparency: 0.2,
+              icon: 'phone',
               onPressed: () {
                 onPhonePressed(chatDetails.actionButtonValue!);
               },

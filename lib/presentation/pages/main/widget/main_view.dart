@@ -104,7 +104,7 @@ class MainView extends StatelessWidget {
               children: [
                 _buildNavItem(context, 'home', 'Home', MainPageEnum.home),
                 _buildNavItem(context, 'point', 'Trips', MainPageEnum.trips),
-                const SizedBox(width: 40), // Space for the FAB
+                const SizedBox(width: 40),
                 _buildNavItem(
                     context, 'message', 'Messages', MainPageEnum.messages),
                 _buildProfileNavItem(context),

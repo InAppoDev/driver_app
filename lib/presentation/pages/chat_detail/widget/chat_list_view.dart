@@ -26,9 +26,17 @@ class ChatListViewState extends State<ChatListView> {
     }
   }
 
+//TODO remove initState in the future
+  @override
+  void initState() {
+    super.initState();
+    print('ChatDetail initState');
+  }
+
   @override
   void dispose() {
     _scrollController.dispose();
+    print('ChatDetail dispose');
     super.dispose();
   }
 

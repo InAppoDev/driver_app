@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/blocks/active_trip/active_trip_bloc.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_picker.dart';
@@ -25,6 +26,14 @@ class ActiveTripView extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 60),
                 child: Column(
                   children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        int chatId = 1;
+                        GoRouter.of(context).push('/chat/$chatId');
+                      },
+                      child: const Text('Experement\nGo to Chat id 1'),
+                    ),
+                    const SizedBox(height: 11),
                     TripData(onPressed: () {}, trip: trip),
                     const SizedBox(height: 11),
                     TripDetailInfo(trip: trip),
