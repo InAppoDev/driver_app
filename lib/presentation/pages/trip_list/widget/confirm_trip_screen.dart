@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/blocks/trip_list/trip_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
+import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_picker.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/upload_scan_files.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_data.dart';
@@ -22,6 +24,56 @@ class ConfirmTripScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
+      appBar: AppBar(
+        leading: const SizedBox.shrink(),
+        leadingWidth: 0,
+        backgroundColor: theme.scaffoldBackgroundColor,
+        scrolledUnderElevation: 0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CustomIconButton(
+              height: 30,
+              icon: 'ios_arrow',
+              iconColor: theme.scaffoldBackgroundColor,
+              onPressed: () {
+                context.pop(false);
+              },
+            ),
+            Text(
+              trip.details.first.name ?? '',
+              style: theme.textTheme.titleSmall!.copyWith(
+                color: theme.disabledColor,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 4,
+                vertical: 6,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(4),
+                ),
+                color: theme.cardColor,
+              ),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    'assets/images/load_box.svg',
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    context.localizations.loadDamage,
+                    style: theme.textTheme.bodySmall!
+                        .copyWith(fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
       backgroundColor: theme.canvasColor,
       body: BlocProvider(
         create: (context) => TripBloc(),
@@ -32,55 +84,49 @@ class ConfirmTripScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Column(
-                      children: [
-                        TripData(onPressed: () {}, trip: trip),
-                        const SizedBox(height: 11),
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                TripDetailInfo(trip: trip),
-                                const SizedBox(height: 11),
-                                CalendarPicker(
-                                  onCalendarResponse: (resp) {
-                                    context.read<TripBloc>().add(
-                                        TripEvent.getDateAndTime(
-                                            dateTime: resp));
-                                  },
-                                  dateTime: '',
-                                ),
-                                const SizedBox(height: 11),
-                                UploadScanFiles(
-                                  onAddFile: () {
-                                    context
-                                        .read<TripBloc>()
-                                        .add(const TripEvent.pickFile());
-                                  },
-                                  onScanFile: (image) {
-                                    context
-                                        .read<TripBloc>()
-                                        .add(TripEvent.scanDoc(image));
-                                  },
-                                  selectedFile: state.selectedFile,
-                                  onFileRemove: (file) {
-                                    context
-                                        .read<TripBloc>()
-                                        .add(TripEvent.removeFile(file: file));
-                                  },
-                                  onUploadPressed: () {
-                                    context
-                                        .read<TripBloc>()
-                                        .add(const TripEvent.uploadFiles());
-                                  },
-                                  isFileLoading: state.isFileLoading,
-                                ),
-                                const SizedBox(height: 100),
-                              ],
-                            ),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 11),
+                          TripData(onPressed: () {}, trip: trip),
+                          const SizedBox(height: 11),
+                          TripDetailInfo(trip: trip),
+                          const SizedBox(height: 11),
+                          CalendarPicker(
+                            onCalendarResponse: (resp) {
+                              context.read<TripBloc>().add(
+                                  TripEvent.getDateAndTime(dateTime: resp));
+                            },
+                            dateTime: '',
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 11),
+                          UploadScanFiles(
+                            onAddFile: () {
+                              context
+                                  .read<TripBloc>()
+                                  .add(const TripEvent.pickFile());
+                            },
+                            onScanFile: (image) {
+                              context
+                                  .read<TripBloc>()
+                                  .add(TripEvent.scanDoc(image));
+                            },
+                            selectedFile: state.selectedFile,
+                            onFileRemove: (file) {
+                              context
+                                  .read<TripBloc>()
+                                  .add(TripEvent.removeFile(file: file));
+                            },
+                            onUploadPressed: () {
+                              context
+                                  .read<TripBloc>()
+                                  .add(const TripEvent.uploadFiles());
+                            },
+                            isFileLoading: state.isFileLoading,
+                          ),
+                          const SizedBox(height: 100),
+                        ],
+                      ),
                     ),
                   ),
                   Positioned(

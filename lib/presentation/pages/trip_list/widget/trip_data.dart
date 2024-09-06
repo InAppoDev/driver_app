@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/trip/trip_model.dart';
-import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class TripData extends StatelessWidget {
@@ -28,53 +26,6 @@ class TripData extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomIconButton(
-                    height: 30,
-                    icon: 'ios_arrow',
-                    iconColor: theme.scaffoldBackgroundColor,
-                    onPressed: () {
-                      context.pop(false);
-                    },
-                  ),
-                  Text(
-                    trip.details.first.name ?? '',
-                    style: theme.textTheme.titleSmall!.copyWith(
-                      color: theme.disabledColor,
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 4,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(4),
-                      ),
-                      color: theme.cardColor,
-                    ),
-                    child: Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/images/load_box.svg',
-                        ),
-                        const SizedBox(width: 6),
-                        Text(
-                          context.localizations.loadDamage,
-                          style: theme.textTheme.bodySmall!
-                              .copyWith(fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 15),
-              const Divider(),
-              const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
