@@ -97,7 +97,7 @@ class ConfirmTripScreen extends StatelessWidget {
                               context.read<TripBloc>().add(
                                   TripEvent.getDateAndTime(dateTime: resp));
                             },
-                            dateTime: '',
+                            dateTime: state.dateTime ?? '',
                           ),
                           const SizedBox(height: 11),
                           UploadScanFiles(
