@@ -67,7 +67,7 @@ class TripInfoWidget extends StatelessWidget {
                         .copyWith(color: theme.disabledColor),
                   ),
                   CustomDateWidget(
-                    millisecondsSinceEpoch: time,
+                    date: time,
                     textStyle: theme.textTheme.bodySmall!.copyWith(
                       color: theme.dividerColor,
                       fontSize: 9,

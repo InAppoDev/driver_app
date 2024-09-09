@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
-import 'package:tms_driver/data/services/time_formatter.dart';
+import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_image.dart';
 import 'package:tms_driver/presentation/pages/message_list/widget/unread_count_widget.dart';
 
@@ -53,9 +53,10 @@ class MessageListItemWidget extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Text(
-                        TimeFormatter.formatTimestamp(chat.lastUpdatedAt),
-                        style: const TextStyle(
+                      CustomDateWidget(
+                        date: chat.lastUpdatedAt,
+                        useTimeFormater: true,
+                        textStyle: const TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w400,
                         ),
