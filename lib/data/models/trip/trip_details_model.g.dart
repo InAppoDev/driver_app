@@ -11,7 +11,7 @@ _$TripDetailsModelImpl _$$TripDetailsModelImplFromJson(
     _$TripDetailsModelImpl(
       name: json['name'] as String?,
       address: json['address'] as String?,
-      data: json['data'] as String?,
+      data: (json['data'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$TripDetailsModelImplToJson(
