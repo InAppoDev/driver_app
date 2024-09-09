@@ -97,10 +97,15 @@ class ApiDataSourceImpl implements ApiDataSource {
 
   @override
   Future<List<ChatModel>> getChats() async {
-    final response = await _makeRequest(() => dio.get('/chats'));
-    return (response.data['chats'] as List)
-        .map((chat) => ChatModel.fromJson(chat))
-        .toList();
+    try {
+      final response = await _makeRequest(() => dio.get('/chats'));
+      return (response.data['chats'] as List)
+          .map((chat) => ChatModel.fromJson(chat))
+          .toList();
+    } catch (e, s) {
+      print('errrrror - $e; stack - $s');
+      return [];
+    }
   }
 
   @override

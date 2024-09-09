@@ -11,7 +11,6 @@ class ChatParticipantAdapter extends TypeAdapter<ChatParticipant> {
       senderId: reader.readInt(),
       senderType: reader.readString(),
       name: reader.readString(),
-      avatarUrl: reader.read() as String?,
     );
   }
 
@@ -20,6 +19,5 @@ class ChatParticipantAdapter extends TypeAdapter<ChatParticipant> {
     writer.writeInt(obj.senderId);
     writer.writeString(obj.senderType);
     writer.writeString(obj.name);
-    writer.write(obj.avatarUrl);
   }
 }

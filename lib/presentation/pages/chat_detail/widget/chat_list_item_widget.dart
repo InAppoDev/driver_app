@@ -103,7 +103,8 @@ class ChatListItemWidget extends StatelessWidget {
                     height: 15,
                     child: CircularProgressIndicator(strokeWidth: 1.5),
                   ),
-                if (messageModel.documents != null)
+                if (messageModel.documents != null &&
+                    messageModel.documents!.isNotEmpty)
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
