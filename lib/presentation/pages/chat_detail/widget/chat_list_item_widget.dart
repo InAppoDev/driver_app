@@ -78,7 +78,6 @@ class ChatListItemWidget extends StatelessWidget {
                     const Spacer(),
                     CustomDateWidget(
                       date: messageModel.sentAt,
-                      useTimeFormater: true,
                       textStyle: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,

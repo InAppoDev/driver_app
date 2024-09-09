@@ -14,20 +14,18 @@ class CustomDateWidget extends StatelessWidget {
   });
 
   String formatDate() {
-    String formattedDate = '';
-    if (!useTimeFormater) {
-      final dateTime = DateTime.fromMillisecondsSinceEpoch(date!);
-
-      formattedDate = DateFormat('dd/MM/yy hh:mm a').format(dateTime);
-    } else {
-      if (date == null) return formattedDate = '';
+    if (useTimeFormater) {
+      if (date == null) return '';
       DateTime utcDate =
           DateTime.fromMillisecondsSinceEpoch(date! * 1000, isUtc: true);
       DateTime localDate = utcDate.toLocal();
 
-      formattedDate = DateFormat('hh:mm a').format(localDate);
+      return DateFormat('hh:mm a').format(localDate);
+    } else {
+      final dateTime = DateTime.fromMillisecondsSinceEpoch(date!);
+
+      return DateFormat('dd/MM/yy hh:mm a').format(dateTime);
     }
-    return formattedDate;
   }
 
   @override
