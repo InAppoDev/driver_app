@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:tms_driver/data/models/chats/message/message_model.dart';
-import 'package:tms_driver/data/services/time_formatter.dart';
 import 'package:tms_driver/presentation/blocks/chat_detail/bloc/chat_detail_bloc.dart';
 import 'package:tms_driver/presentation/consts/consts.dart';
+import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 import 'package:tms_driver/presentation/customs/selected_file_widget.dart';
 
 class ChatListItemWidget extends StatelessWidget {
@@ -76,9 +76,10 @@ class ChatListItemWidget extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    Text(
-                      TimeFormatter.formatTimestamp(messageModel.sentAt),
-                      style: TextStyle(
+                    CustomDateWidget(
+                      date: messageModel.sentAt,
+                      useTimeFormater: true,
+                      textStyle: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                         color: theme.dividerColor,

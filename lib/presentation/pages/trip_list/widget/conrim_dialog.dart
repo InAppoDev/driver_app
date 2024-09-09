@@ -62,7 +62,7 @@ class ConfirmDialog extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           CustomDateWidget(
-            millisecondsSinceEpoch: trip.details.first.data ?? 1716562800000,
+            date: trip.details.first.data ?? 1716562800000,
             textStyle: theme.textTheme.titleSmall!.copyWith(
               fontWeight: FontWeight.w600,
               color: theme.dividerColor,

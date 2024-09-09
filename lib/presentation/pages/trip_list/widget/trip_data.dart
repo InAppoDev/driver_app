@@ -79,7 +79,7 @@ class TripData extends StatelessWidget {
                     ],
                   ),
                   CustomDateWidget(
-                    millisecondsSinceEpoch:
+                    date:
                         trip.details.first.data ?? 1716562800000,
                   ),
                 ],
