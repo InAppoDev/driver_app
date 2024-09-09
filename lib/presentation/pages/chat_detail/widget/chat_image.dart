@@ -18,25 +18,25 @@ class ChatImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 60,
+      width: mainImage != null ? 60 : 0,
       height: 45,
       child: Stack(
         children: [
-          Container(
-            margin: const EdgeInsets.only(left: 7),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadius),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
+          mainImage != null
+              ? Container(
+                  margin: const EdgeInsets.only(left: 7),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(borderRadius),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
                   spreadRadius: 2,
                   blurRadius: 2,
                   offset: const Offset(0, 2),
                 ),
               ],
             ),
-            child: mainImage != null
-                ? ClipRRect(
+                  child: ClipRRect(
                     borderRadius: BorderRadius.circular(borderRadius),
                     child: Image.network(
                       mainImage!,
@@ -50,31 +50,31 @@ class ChatImage extends StatelessWidget {
                         );
                       },
                     ),
-                  )
-                : const SizedBox.shrink(),
-          ),
+                  ),
+                )
+              : const SizedBox.shrink(),
           Positioned(
             top: 26,
             right: margin != null ? 6 : 8,
             child: Row(
               children: [
                 ...participants.map(
-                  (participant) => Container(
-                    margin: EdgeInsets.symmetric(horizontal: margin ?? 0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(borderRadius),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          spreadRadius: 2,
+                  (participant) => participant.avatarUrl != null &&
+                          participant.avatarUrl!.isNotEmpty
+                      ? Container(
+                          margin: EdgeInsets.symmetric(horizontal: margin ?? 0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(borderRadius),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.4),
+                                spreadRadius: 2,
                           blurRadius: 2,
                           offset: const Offset(0, 2),
                         ),
                       ],
                     ),
-                    child: participant.avatarUrl != null &&
-                            participant.avatarUrl!.isNotEmpty
-                        ? ClipRRect(
+                          child: ClipRRect(
                             borderRadius: BorderRadius.circular(borderRadius),
                             child: Image.network(
                               participant.avatarUrl!,
@@ -88,9 +88,9 @@ class ChatImage extends StatelessWidget {
                                 );
                               },
                             ),
-                          )
-                        : const SizedBox.shrink(),
-                  ),
+                          ),
+                        )
+                      : const SizedBox.shrink(),
                 ),
               ],
             ),

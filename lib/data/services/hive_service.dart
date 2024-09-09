@@ -2,10 +2,14 @@ import 'dart:developer';
 
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
+import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
 import 'package:tms_driver/data/models/user/user_model.dart';
 import 'package:tms_driver/data/services/adapter/chat_model_adapter.dart';
 import 'package:tms_driver/data/services/adapter/chat_participant_adapter.dart';
 import 'package:tms_driver/data/services/adapter/user_model_adapter.dart';
+
+import 'adapter/chat_detail_adapter.dart';
+import 'adapter/message_adapter.dart';
 
 class HiveService {
   static final HiveService _instance = HiveService._internal();
@@ -18,6 +22,7 @@ class HiveService {
 
   late Box<UserModel> userBox;
   late Box<ChatModel> chatBox;
+  late Box<ChatDetailModel> chatDetailBox;
 
   Future<void> init() async {
     log('Initializing Hive...', name: 'HiveService');
@@ -26,12 +31,16 @@ class HiveService {
     log('Registering adapters...', name: 'HiveService');
     Hive.registerAdapter(UserModelAdapter());
     Hive.registerAdapter(ChatModelAdapter());
+    Hive.registerAdapter(ChatDetailModelAdapter());
     Hive.registerAdapter(ChatParticipantAdapter());
+    Hive.registerAdapter(MessageAdapter());
 
     log('Opening userBox...', name: 'HiveService');
     userBox = await Hive.openBox<UserModel>('userBox');
     log('Opening chatBox...', name: 'HiveService');
     chatBox = await Hive.openBox<ChatModel>('chatBox');
+    log('Opening chatDetailBox...', name: 'HiveService');
+    chatDetailBox = await Hive.openBox<ChatDetailModel>('chatDetailBox');
 
     if (userBox.isOpen) {
       log('userBox successfully opened.', name: 'HiveService');
@@ -43,6 +52,12 @@ class HiveService {
       log('chatBox successfully opened.', name: 'HiveService');
     } else {
       log('Failed to open chatBox.', name: 'HiveService');
+    }
+
+    if (chatDetailBox.isOpen) {
+      log('chatDetailBox successfully opened.', name: 'HiveService');
+    } else {
+      log('Failed to open chatDetailBox.', name: 'HiveService');
     }
   }
 
@@ -79,5 +94,26 @@ class HiveService {
       log('No chats found in chatBox.', name: 'HiveService');
     }
     return chats;
+  }
+
+  Future<void> saveChatDetails(ChatDetailModel chatDetails) async {
+    log('Saving chat details to chatDetailBox...', name: 'HiveService');
+
+    await chatDetailBox.clear();
+    await chatDetailBox.put(chatDetails.id, chatDetails);
+
+    log('Chat details were saved successfully.', name: 'HiveService');
+  }
+
+  List<ChatDetailModel> getChatDetails() {
+    log('Retrieving chats from chatBox...', name: 'HiveService');
+    final List<ChatDetailModel> chatDetails = chatDetailBox.values.toList();
+    if (chatDetails.isNotEmpty) {
+      log('Chat details are retrieved successfully.', name: 'HiveService');
+    } else {
+      log('No chat details found in chatDetailBox.', name: 'HiveService');
+    }
+
+    return chatDetails;
   }
 }

@@ -37,7 +37,34 @@ class MessagesRepositoryImpl implements MessagesRepository {
 
   @override
   Future<ChatDetailModel> getChatDetails(int chatId) async {
-    return await apiDataSource.getChatDetails(chatId);
+    try {
+      if (_lastResults.contains(ConnectivityResult.none)) {
+        final chatDetailsFromDb = hiveService.getChatDetails();
+        if (chatDetailsFromDb.isNotEmpty) {
+          developer.log('Retrieved chat details from local database',
+              name: 'MessagesRepositoryImpl');
+
+          return chatDetailsFromDb.firstWhere((chat) => chat.id == chatId);
+        } else {
+          throw Exception(
+              'No internet connection and no local chat data available');
+        }
+      } else {
+        final chatDetails = await apiDataSource.getChatDetails(chatId);
+        await hiveService.saveChatDetails(chatDetails);
+        return chatDetails;
+      }
+    } catch (e, s) {
+      print('getChatDetails error - $e; stack - $s');
+      return const ChatDetailModel(
+        id: 0,
+        subjectType: '',
+        subjectId: 0,
+        title: '',
+        participants: [],
+        messages: [],
+      );
+    }
   }
 
   @override
