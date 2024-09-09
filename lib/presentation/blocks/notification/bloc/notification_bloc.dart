@@ -27,8 +27,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
         try {
           final notifications = await notificationRepo.getNotifications();
           emit(NotificationState.loaded(notifications: notifications));
-        } catch (e, s) {
-          print('errrror - $e; styack - $s');
+        } catch (e) {
           emit(NotificationState.error(message: e.toString()));
         }
       },

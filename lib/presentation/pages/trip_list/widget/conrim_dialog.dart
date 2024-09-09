@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tms_driver/data/models/trip/trip_model.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
+import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
@@ -60,10 +61,12 @@ class ConfirmDialog extends StatelessWidget {
                 theme.textTheme.bodySmall!.copyWith(color: theme.dividerColor),
           ),
           const SizedBox(height: 10),
-          Text(
-            trip.details.first.data ?? '',
-            style: theme.textTheme.titleSmall!.copyWith(
-                fontWeight: FontWeight.w600, color: theme.dividerColor),
+          CustomDateWidget(
+            millisecondsSinceEpoch: trip.details.first.data ?? 1716562800000,
+            textStyle: theme.textTheme.titleSmall!.copyWith(
+              fontWeight: FontWeight.w600,
+              color: theme.dividerColor,
+            ),
           ),
           const SizedBox(height: 15),
           Row(

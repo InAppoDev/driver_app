@@ -126,7 +126,9 @@ class _CalendarDialogState extends State<CalendarDialog> {
                     setState(() {
                       time = '$h H $m m  ${isAm ? 'AM' : 'PM'}';
                     });
-                  }, providedDate: date.isNotEmpty ? DateTime.parse(date) : DateTime.now(),
+                  },
+                  providedDate:
+                      date.isNotEmpty ? DateTime.parse(date) : DateTime.now(),
                 ),
               ),
               const SizedBox(height: 26),
@@ -136,7 +138,14 @@ class _CalendarDialogState extends State<CalendarDialog> {
                   height: 36,
                   label: context.localizations.confirm,
                   onPressed: () {
-                    context.pop('$date  $time');
+                    DateTime selectedDateTime = DateTime.parse(date).add(
+                        Duration(
+                            hours: int.parse(time.split(' ')[0]),
+                            minutes: int.parse(time.split(' ')[2])));
+                    String formattedDateTime =
+                        DateFormat('dd/MM/yy hh:mm a').format(selectedDateTime);
+
+                    context.pop(formattedDateTime);
                   },
                 ),
               ),

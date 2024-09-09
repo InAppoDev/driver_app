@@ -52,7 +52,7 @@ class NewTripsWidget extends StatelessWidget {
                           return TripInfoWidget(
                             topic: detail.name ?? '',
                             address: detail.address ?? '',
-                            time: detail.data ?? '',
+                            time: detail.data ?? 1716562800000,
                             showMidlLine: detail == customItem,
                             showTipImage:
                                 index > tripModel.details.indexOf(customItem),

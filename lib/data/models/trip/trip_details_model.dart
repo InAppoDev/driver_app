@@ -11,7 +11,7 @@ class TripDetailsModel with _$TripDetailsModel {
   const factory TripDetailsModel({
     String? name,
     String? address,
-    String? data,
+    int? data,
   }) = _TripDetailsModel;
 
   factory TripDetailsModel.fromJson(Map<String, dynamic> json) =>

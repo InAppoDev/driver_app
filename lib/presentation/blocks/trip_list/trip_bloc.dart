@@ -32,81 +32,81 @@ class TripBloc extends Bloc<TripEvent, TripState> {
       TripDetailsModel(
         name: 'Pick UP #1',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
       TripDetailsModel(
         name: 'Pick UP #2',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
       TripDetailsModel(
         name: 'Pick UP #3',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
       TripDetailsModel(
         name: 'Delivery #1',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
       TripDetailsModel(
         name: 'Delivery #2',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
     ]),
     const TripModel(miles: 300, details: [
       TripDetailsModel(
         name: 'Pick UP #1',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
       TripDetailsModel(
         name: 'Pick UP #2',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
       TripDetailsModel(
         name: 'Pick UP #3',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
       TripDetailsModel(
         name: 'Delivery #1',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
       TripDetailsModel(
         name: 'Delivery #2',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
     ]),
     const TripModel(miles: 300, details: [
       TripDetailsModel(
         name: 'Pick UP #1',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
       TripDetailsModel(
         name: 'Pick UP #2',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
       TripDetailsModel(
         name: 'Pick UP #3',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
       TripDetailsModel(
         name: 'Delivery #1',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
       TripDetailsModel(
         name: 'Delivery #2',
         address: 'Viena, Österreich, 37240 , Ch',
-        data: '08/11/23 10:00 AM',
+        data: 1716562800000 ,
       ),
     ]),
   ];

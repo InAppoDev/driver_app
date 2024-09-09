@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tms_driver/data/models/trip/trip_model.dart';
+import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class TripData extends StatelessWidget {
@@ -77,10 +78,9 @@ class TripData extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Text(
-                    trip.details.first.data ?? '',
-                    style: theme.textTheme.titleSmall!
-                        .copyWith(color: theme.dividerColor),
+                  CustomDateWidget(
+                    millisecondsSinceEpoch:
+                        trip.details.first.data ?? 1716562800000,
                   ),
                 ],
               ),

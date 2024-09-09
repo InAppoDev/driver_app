@@ -22,7 +22,7 @@ TripDetailsModel _$TripDetailsModelFromJson(Map<String, dynamic> json) {
 mixin _$TripDetailsModel {
   String? get name => throw _privateConstructorUsedError;
   String? get address => throw _privateConstructorUsedError;
-  String? get data => throw _privateConstructorUsedError;
+  int? get data => throw _privateConstructorUsedError;
 
   /// Serializes this TripDetailsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $TripDetailsModelCopyWith<$Res> {
           TripDetailsModel value, $Res Function(TripDetailsModel) then) =
       _$TripDetailsModelCopyWithImpl<$Res, TripDetailsModel>;
   @useResult
-  $Res call({String? name, String? address, String? data});
+  $Res call({String? name, String? address, int? data});
 }
 
 /// @nodoc
@@ -74,7 +74,7 @@ class _$TripDetailsModelCopyWithImpl<$Res, $Val extends TripDetailsModel>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
     ) as $Val);
   }
 }
@@ -87,7 +87,7 @@ abstract class _$$TripDetailsModelImplCopyWith<$Res>
       __$$TripDetailsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? name, String? address, String? data});
+  $Res call({String? name, String? address, int? data});
 }
 
 /// @nodoc
@@ -119,7 +119,7 @@ class __$$TripDetailsModelImplCopyWithImpl<$Res>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
     ));
   }
 }
@@ -137,7 +137,7 @@ class _$TripDetailsModelImpl implements _TripDetailsModel {
   @override
   final String? address;
   @override
-  final String? data;
+  final int? data;
 
   @override
   String toString() {
@@ -179,7 +179,7 @@ abstract class _TripDetailsModel implements TripDetailsModel {
   const factory _TripDetailsModel(
       {final String? name,
       final String? address,
-      final String? data}) = _$TripDetailsModelImpl;
+      final int? data}) = _$TripDetailsModelImpl;
 
   factory _TripDetailsModel.fromJson(Map<String, dynamic> json) =
       _$TripDetailsModelImpl.fromJson;
@@ -189,7 +189,7 @@ abstract class _TripDetailsModel implements TripDetailsModel {
   @override
   String? get address;
   @override
-  String? get data;
+  int? get data;
 
   /// Create a copy of TripDetailsModel
   /// with the given fields replaced by the non-null parameter values.
