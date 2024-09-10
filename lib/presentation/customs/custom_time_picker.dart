@@ -4,7 +4,11 @@ class CustomTimePicker extends StatefulWidget {
   final Function(int hour, int minute, bool isAm) onTimeChanged;
   final DateTime providedDate;
 
-  const CustomTimePicker({super.key, required this.onTimeChanged, required this.providedDate});
+  const CustomTimePicker({
+    super.key,
+    required this.onTimeChanged,
+    required this.providedDate,
+  });
 
   @override
   State<CustomTimePicker> createState() => _CustomTimePickerState();
@@ -20,16 +24,13 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
   List<int> availableMinutes = [];
   List<bool> availableAmPm = [true, false]; // AM, PM
 
-  late FixedExtentScrollController hourController;
-  late FixedExtentScrollController minuteController;
+  FixedExtentScrollController hourController = FixedExtentScrollController();
+  FixedExtentScrollController minuteController = FixedExtentScrollController();
+  FixedExtentScrollController amPmController = FixedExtentScrollController();
 
   @override
   void initState() {
     super.initState();
-    hourController = FixedExtentScrollController(
-        initialItem: availableHours.indexOf(_selectedHour));
-    minuteController = FixedExtentScrollController(
-        initialItem: availableMinutes.indexOf(_selectedMinute));
     _initializeAvailableTimes();
   }
 
@@ -38,89 +39,148 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
     super.didUpdateWidget(oldWidget);
     if (widget.providedDate != oldWidget.providedDate) {
       _initializeAvailableTimes();
-      _scrollToTop();
     }
   }
-
   void _initializeAvailableTimes() {
-    if (isToday(widget.providedDate)) {
-      int currentHour = now.hour % 12;
+    final isTodayDate = isToday(widget.providedDate);
+    if (isTodayDate) {
+      _isAm = now.hour < 12;
+      int currentHour = now.hour == 0 ? 12 : (now.hour % 12 == 0 ? 12 : now.hour % 12);
       _selectedHour = currentHour;
       _selectedMinute = now.minute;
-      _isAm = now.hour < 12;
+      if (_isAm) {
+        // AM logic for today
+        availableHours = List.generate(12, (index) => index + 1)
+            .where((hour) => hour >= currentHour)
+            .toList();
+        if (_selectedHour == currentHour) {
+          availableMinutes = List.generate(60, (index) => index)
+              .where((minute) => minute >= now.minute)
+              .toList();
+        } else {
+          availableMinutes = List.generate(60, (index) => index);
+        }
+        availableAmPm = [true, false];
+      } else {
+        availableHours = List.generate(12, (index) => index + 1);
+        availableMinutes = List.generate(60, (index) => index);
+      }
+      if(now.hour > 12){
+        // PM logic: restrict to current and next hour
+        availableHours = List.generate(12, (index) => index + 1)
+            .where((hour) => hour >= currentHour)
+            .toList();
+        if (_selectedHour == currentHour) {
+          availableMinutes = List.generate(60, (index) => index)
+              .where((minute) => minute >= now.minute)
+              .toList();
+        } else {
+          availableMinutes = List.generate(60, (index) => index);
+        }
+        availableAmPm = [false];
+      }
 
-      availableHours = List.generate(12, (index) => index)
-          .where((hour) => hour >= currentHour)
-          .toList();
-
-      availableMinutes = List.generate(60, (index) => index)
-          .where((minute) => minute >= _selectedMinute)
-          .toList();
     } else {
-      _selectedHour = 0;
+      // Non-today date, show all hours and minutes
+      _isAm = true; // Default to AM for non-today dates
+      _selectedHour = 12; // Default to 12 AM
       _selectedMinute = 0;
-      _isAm = true;
-      availableHours = List.generate(12, (index) => index);
-      availableMinutes = List.generate(60, (index) => index);
+      availableHours = List.generate(12, (index) => index + 1); // All hours from 1 to 12
+      availableMinutes = List.generate(60, (index) => index); // All minutes
+      availableAmPm = [true, false]; // Both AM and PM
     }
 
-    hourController.jumpToItem(availableHours.indexOf(_selectedHour));
-    minuteController.jumpToItem(availableMinutes.indexOf(_selectedMinute));
-  }
-
-  bool isToday(DateTime date) {
-    return date.year == now.year && date.month == now.month && date.day == now.day;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        hourController.jumpToItem(availableHours.indexOf(_selectedHour));
+        minuteController.jumpToItem(availableMinutes.indexOf(_selectedMinute));
+        amPmController.jumpToItem(availableAmPm.indexOf(_isAm));
+      }
+    });
   }
 
   void _updateAvailableTimes() {
-    if (isToday(widget.providedDate)) {
-      final currentHour = now.hour % 12;
-      final currentMinute = now.minute;
+    final currentHour = now.hour == 0 ? 12 : (now.hour % 12 == 0 ? 12 : now.hour % 12);
+    final currentMinute = now.minute;
 
+    if (isToday(widget.providedDate)) {
       if (_isAm) {
-        availableHours = List.generate(12, (index) => index)
+        // AM logic for today
+        availableHours = List.generate(12, (index) => index + 1)
             .where((hour) => hour >= currentHour)
             .toList();
-        availableMinutes = List.generate(60, (index) => index)
-            .where((minute) => minute >= currentMinute)
-            .toList();
+        if (_selectedHour == currentHour) {
+          availableMinutes = List.generate(60, (index) => index)
+              .where((minute) => minute >= currentMinute)
+              .toList();
+        } else {
+          availableMinutes = List.generate(60, (index) => index);
+        }
       } else {
-        availableHours = List.generate(12, (index) => index);
+        availableHours = List.generate(12, (index) => index + 1);
         availableMinutes = List.generate(60, (index) => index);
       }
-
-      _selectedHour = availableHours.first;
-      _selectedMinute = availableMinutes.first;
+      if(now.hour > 12){
+        // PM logic: restrict to current and next hour
+        availableHours = List.generate(12, (index) => index + 1)
+            .where((hour) => hour >= currentHour)
+            .toList();
+        if (_selectedHour == currentHour) {
+          availableMinutes = List.generate(60, (index) => index)
+              .where((minute) => minute >= currentMinute)
+              .toList();
+        } else {
+          availableMinutes = List.generate(60, (index) => index);
+        }
+      }
     } else {
-      availableHours = List.generate(12, (index) => index);
-      availableMinutes = List.generate(60, (index) => index);
-      availableAmPm = [true, false]; // AM and PM
-
-      _selectedHour = availableHours.first;
-      _selectedMinute = availableMinutes.first;
+      availableHours = List.generate(12, (index) => index + 1); // All hours from 1 to 12
+      availableMinutes = List.generate(60, (index) => index); // All minutes
     }
 
-    // Scroll to the first items in the lists
-    hourController.jumpToItem(availableHours.indexOf(_selectedHour));
-    minuteController.jumpToItem(availableMinutes.indexOf(_selectedMinute));
-
-    // Notify the parent widget about the change
     widget.onTimeChanged(_selectedHour, _selectedMinute, _isAm);
   }
 
-  void _scrollToTop() {
-    hourController.jumpToItem(availableHours.indexOf(_selectedHour));
-    minuteController.jumpToItem(availableMinutes.indexOf(_selectedMinute));
+  bool isToday(DateTime date) {
+    return date.year == now.year &&
+        date.month == now.month &&
+        date.day == now.day;
+  }
+
+  void updateMinutes() {
+    final currentHour = now.hour % 12 == 0 ? 12 : now.hour % 12;
+    final currentMinute = now.minute;
+    if (isToday(widget.providedDate)) {
+      if ((now.hour < 12 && _isAm) || now.hour > 12) {
+        if (_selectedHour != currentHour) {
+          _selectedMinute = 0;
+        } else {
+          _selectedMinute = currentMinute;
+        }
+      }
+    }
+  }
+
+  void updateToDayPmTimeTime() {
+    if (isToday(widget.providedDate)) {
+      if (!_isAm) {
+        _selectedHour = 12;
+        _selectedMinute = 0;
+        hourController.jumpToItem(12);
+        minuteController.jumpToItem(0);
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     final theme = Theme.of(context);
     return Stack(
       alignment: Alignment.center,
       children: <Widget>[
         Positioned(
-          top: 50,
+          top: height * 0.09,
           left: 0,
           right: 0,
           child: Container(
@@ -129,7 +189,7 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
           ),
         ),
         Positioned(
-          bottom: 50,
+          bottom: height * 0.09,
           left: 0,
           right: 0,
           child: Container(
@@ -147,7 +207,8 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
               onSelectedItemChanged: (index) {
                 setState(() {
                   _selectedHour = availableHours[index];
-                  widget.onTimeChanged(_selectedHour, _selectedMinute, _isAm);
+                  _updateAvailableTimes();
+                  updateMinutes();
                 });
               },
               itemBuilder: (context, index) {
@@ -189,12 +250,20 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
             ),
             const SizedBox(width: 35),
             _buildPicker(
+              controller: amPmController,
               itemCount: availableAmPm.length,
               selectedItem: availableAmPm.indexOf(_isAm),
               onSelectedItemChanged: (index) {
                 setState(() {
                   _isAm = availableAmPm[index];
                   _updateAvailableTimes();
+                  if (isToday(widget.providedDate) && _isAm) {
+                    // If switching back to AM, set to current hour and minutes
+                    _selectedHour = now.hour % 12 == 0 ? 0 : now.hour % 12;
+                    _selectedMinute = now.minute;
+                    _initializeAvailableTimes();
+                  }
+                  updateToDayPmTimeTime();
                 });
               },
               itemBuilder: (context, index) {
@@ -232,11 +301,11 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
   }
 
   Widget _buildPicker({
+    required FixedExtentScrollController? controller,
     required int itemCount,
     required int selectedItem,
     required ValueChanged<int> onSelectedItemChanged,
     required IndexedWidgetBuilder itemBuilder,
-    FixedExtentScrollController? controller,
   }) {
     final height = MediaQuery.of(context).size.height;
     return SizedBox(
@@ -247,11 +316,9 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
         itemExtent: 50,
         onSelectedItemChanged: onSelectedItemChanged,
         physics: const FixedExtentScrollPhysics(),
-        perspective: 0.005,
-        diameterRatio: 1.5,
         childDelegate: ListWheelChildBuilderDelegate(
-          builder: itemBuilder,
           childCount: itemCount,
+          builder: itemBuilder,
         ),
       ),
     );
