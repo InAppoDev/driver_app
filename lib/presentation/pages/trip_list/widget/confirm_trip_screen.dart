@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
-import 'package:tms_driver/presentation/blocks/trip_list/trip_bloc.dart';
+import 'package:tms_driver/presentation/blocks/active_trip/trip_detail_bloc.dart';
+import 'package:tms_driver/presentation/blocks/trip_list/trip_list_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_picker.dart';
@@ -76,8 +77,8 @@ class ConfirmTripScreen extends StatelessWidget {
       ),
       backgroundColor: theme.canvasColor,
       body: BlocProvider(
-        create: (context) => TripBloc(),
-        child: BlocBuilder<TripBloc, TripState>(
+        create: (context) => TripListBloc(),
+        child: BlocBuilder<TripDetailBloc, TripDetailState>(
           builder: (context, state) {
             return SafeArea(
               child: Stack(
@@ -94,8 +95,8 @@ class ConfirmTripScreen extends StatelessWidget {
                           const SizedBox(height: 11),
                           CalendarPicker(
                             onCalendarResponse: (resp) {
-                              context.read<TripBloc>().add(
-                                  TripEvent.getDateAndTime(dateTime: resp));
+                              context.read<TripListBloc>().add(
+                                  TripListEvent.getDateAndTime(dateTime: resp));
                             },
                             dateTime: state.dateTime ?? '',
                           ),
@@ -103,24 +104,24 @@ class ConfirmTripScreen extends StatelessWidget {
                           UploadScanFiles(
                             onAddFile: () {
                               context
-                                  .read<TripBloc>()
-                                  .add(const TripEvent.pickFile());
+                                  .read<TripDetailBloc>()
+                                  .add(const TripDetailEvent.pickFile());
                             },
                             onScanFile: (image) {
                               context
-                                  .read<TripBloc>()
-                                  .add(TripEvent.scanDoc(image));
+                                  .read<TripDetailBloc>()
+                                  .add(TripDetailEvent.scanDoc(image));
                             },
                             selectedFile: state.selectedFile,
                             onFileRemove: (file) {
                               context
-                                  .read<TripBloc>()
-                                  .add(TripEvent.removeFile(file: file));
+                                  .read<TripDetailBloc>()
+                                  .add(TripDetailEvent.removeFile(file: file));
                             },
                             onUploadPressed: () {
                               context
-                                  .read<TripBloc>()
-                                  .add(const TripEvent.uploadFiles());
+                                  .read<TripDetailBloc>()
+                                  .add(const TripDetailEvent.uploadFiles());
                             },
                             isFileLoading: state.isFileLoading,
                           ),

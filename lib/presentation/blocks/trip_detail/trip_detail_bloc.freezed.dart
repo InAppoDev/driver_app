@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'active_trip_bloc.dart';
+part of 'trip_detail_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ActiveTripEvent {
+mixin _$TripDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialize,
@@ -81,23 +81,23 @@ mixin _$ActiveTripEvent {
 }
 
 /// @nodoc
-abstract class $ActiveTripEventCopyWith<$Res> {
-  factory $ActiveTripEventCopyWith(
-          ActiveTripEvent value, $Res Function(ActiveTripEvent) then) =
-      _$ActiveTripEventCopyWithImpl<$Res, ActiveTripEvent>;
+abstract class $TripDetailEventCopyWith<$Res> {
+  factory $TripDetailEventCopyWith(
+          TripDetailEvent value, $Res Function(TripDetailEvent) then) =
+      _$TripDetailEventCopyWithImpl<$Res, TripDetailEvent>;
 }
 
 /// @nodoc
-class _$ActiveTripEventCopyWithImpl<$Res, $Val extends ActiveTripEvent>
-    implements $ActiveTripEventCopyWith<$Res> {
-  _$ActiveTripEventCopyWithImpl(this._value, this._then);
+class _$TripDetailEventCopyWithImpl<$Res, $Val extends TripDetailEvent>
+    implements $TripDetailEventCopyWith<$Res> {
+  _$TripDetailEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -110,13 +110,13 @@ abstract class _$$InitializeImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitializeImplCopyWithImpl<$Res>
-    extends _$ActiveTripEventCopyWithImpl<$Res, _$InitializeImpl>
+    extends _$TripDetailEventCopyWithImpl<$Res, _$InitializeImpl>
     implements _$$InitializeImplCopyWith<$Res> {
   __$$InitializeImplCopyWithImpl(
       _$InitializeImpl _value, $Res Function(_$InitializeImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -127,7 +127,7 @@ class _$InitializeImpl implements Initialize {
 
   @override
   String toString() {
-    return 'ActiveTripEvent.initialize()';
+    return 'TripDetailEvent.initialize()';
   }
 
   @override
@@ -226,7 +226,7 @@ class _$InitializeImpl implements Initialize {
   }
 }
 
-abstract class Initialize implements ActiveTripEvent {
+abstract class Initialize implements TripDetailEvent {
   const factory Initialize() = _$InitializeImpl;
 }
 
@@ -241,13 +241,13 @@ abstract class _$$GetDateAndTimeImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$GetDateAndTimeImplCopyWithImpl<$Res>
-    extends _$ActiveTripEventCopyWithImpl<$Res, _$GetDateAndTimeImpl>
+    extends _$TripDetailEventCopyWithImpl<$Res, _$GetDateAndTimeImpl>
     implements _$$GetDateAndTimeImplCopyWith<$Res> {
   __$$GetDateAndTimeImplCopyWithImpl(
       _$GetDateAndTimeImpl _value, $Res Function(_$GetDateAndTimeImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -273,7 +273,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
 
   @override
   String toString() {
-    return 'ActiveTripEvent.getDateAndTime(dateTime: $dateTime)';
+    return 'TripDetailEvent.getDateAndTime(dateTime: $dateTime)';
   }
 
   @override
@@ -288,7 +288,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
   @override
   int get hashCode => Object.hash(runtimeType, dateTime);
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -384,13 +384,13 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
   }
 }
 
-abstract class GetDateAndTime implements ActiveTripEvent {
+abstract class GetDateAndTime implements TripDetailEvent {
   const factory GetDateAndTime({required final String dateTime}) =
       _$GetDateAndTimeImpl;
 
   String get dateTime;
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetDateAndTimeImplCopyWith<_$GetDateAndTimeImpl> get copyWith =>
@@ -406,13 +406,13 @@ abstract class _$$PickFileImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$PickFileImplCopyWithImpl<$Res>
-    extends _$ActiveTripEventCopyWithImpl<$Res, _$PickFileImpl>
+    extends _$TripDetailEventCopyWithImpl<$Res, _$PickFileImpl>
     implements _$$PickFileImplCopyWith<$Res> {
   __$$PickFileImplCopyWithImpl(
       _$PickFileImpl _value, $Res Function(_$PickFileImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -423,7 +423,7 @@ class _$PickFileImpl implements PickFile {
 
   @override
   String toString() {
-    return 'ActiveTripEvent.pickFile()';
+    return 'TripDetailEvent.pickFile()';
   }
 
   @override
@@ -522,7 +522,7 @@ class _$PickFileImpl implements PickFile {
   }
 }
 
-abstract class PickFile implements ActiveTripEvent {
+abstract class PickFile implements TripDetailEvent {
   const factory PickFile() = _$PickFileImpl;
 }
 
@@ -537,13 +537,13 @@ abstract class _$$RemoveFileImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$RemoveFileImplCopyWithImpl<$Res>
-    extends _$ActiveTripEventCopyWithImpl<$Res, _$RemoveFileImpl>
+    extends _$TripDetailEventCopyWithImpl<$Res, _$RemoveFileImpl>
     implements _$$RemoveFileImplCopyWith<$Res> {
   __$$RemoveFileImplCopyWithImpl(
       _$RemoveFileImpl _value, $Res Function(_$RemoveFileImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -569,7 +569,7 @@ class _$RemoveFileImpl implements RemoveFile {
 
   @override
   String toString() {
-    return 'ActiveTripEvent.removeFile(file: $file)';
+    return 'TripDetailEvent.removeFile(file: $file)';
   }
 
   @override
@@ -583,7 +583,7 @@ class _$RemoveFileImpl implements RemoveFile {
   @override
   int get hashCode => Object.hash(runtimeType, file);
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -678,12 +678,12 @@ class _$RemoveFileImpl implements RemoveFile {
   }
 }
 
-abstract class RemoveFile implements ActiveTripEvent {
+abstract class RemoveFile implements TripDetailEvent {
   const factory RemoveFile({required final File file}) = _$RemoveFileImpl;
 
   File get file;
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RemoveFileImplCopyWith<_$RemoveFileImpl> get copyWith =>
@@ -701,13 +701,13 @@ abstract class _$$ScanDocImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ScanDocImplCopyWithImpl<$Res>
-    extends _$ActiveTripEventCopyWithImpl<$Res, _$ScanDocImpl>
+    extends _$TripDetailEventCopyWithImpl<$Res, _$ScanDocImpl>
     implements _$$ScanDocImplCopyWith<$Res> {
   __$$ScanDocImplCopyWithImpl(
       _$ScanDocImpl _value, $Res Function(_$ScanDocImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -733,7 +733,7 @@ class _$ScanDocImpl implements ScanDoc {
 
   @override
   String toString() {
-    return 'ActiveTripEvent.scanDoc(image: $image)';
+    return 'TripDetailEvent.scanDoc(image: $image)';
   }
 
   @override
@@ -747,7 +747,7 @@ class _$ScanDocImpl implements ScanDoc {
   @override
   int get hashCode => Object.hash(runtimeType, image);
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -842,12 +842,12 @@ class _$ScanDocImpl implements ScanDoc {
   }
 }
 
-abstract class ScanDoc implements ActiveTripEvent {
+abstract class ScanDoc implements TripDetailEvent {
   const factory ScanDoc(final String image) = _$ScanDocImpl;
 
   String get image;
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ScanDocImplCopyWith<_$ScanDocImpl> get copyWith =>
@@ -863,13 +863,13 @@ abstract class _$$UploadFilesImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$UploadFilesImplCopyWithImpl<$Res>
-    extends _$ActiveTripEventCopyWithImpl<$Res, _$UploadFilesImpl>
+    extends _$TripDetailEventCopyWithImpl<$Res, _$UploadFilesImpl>
     implements _$$UploadFilesImplCopyWith<$Res> {
   __$$UploadFilesImplCopyWithImpl(
       _$UploadFilesImpl _value, $Res Function(_$UploadFilesImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ActiveTripEvent
+  /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -880,7 +880,7 @@ class _$UploadFilesImpl implements UploadFiles {
 
   @override
   String toString() {
-    return 'ActiveTripEvent.uploadFiles()';
+    return 'TripDetailEvent.uploadFiles()';
   }
 
   @override
@@ -979,30 +979,30 @@ class _$UploadFilesImpl implements UploadFiles {
   }
 }
 
-abstract class UploadFiles implements ActiveTripEvent {
+abstract class UploadFiles implements TripDetailEvent {
   const factory UploadFiles() = _$UploadFilesImpl;
 }
 
 /// @nodoc
-mixin _$ActiveTripState {
+mixin _$TripDetailState {
   ActiveTripStatus get status => throw _privateConstructorUsedError;
   String? get dateTime => throw _privateConstructorUsedError;
   File? get selectedFile => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   bool get isFileLoading => throw _privateConstructorUsedError;
 
-  /// Create a copy of ActiveTripState
+  /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ActiveTripStateCopyWith<ActiveTripState> get copyWith =>
+  $TripDetailStateCopyWith<TripDetailState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ActiveTripStateCopyWith<$Res> {
-  factory $ActiveTripStateCopyWith(
-          ActiveTripState value, $Res Function(ActiveTripState) then) =
-      _$ActiveTripStateCopyWithImpl<$Res, ActiveTripState>;
+abstract class $TripDetailStateCopyWith<$Res> {
+  factory $TripDetailStateCopyWith(
+          TripDetailState value, $Res Function(TripDetailState) then) =
+      _$TripDetailStateCopyWithImpl<$Res, TripDetailState>;
   @useResult
   $Res call(
       {ActiveTripStatus status,
@@ -1013,16 +1013,16 @@ abstract class $ActiveTripStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ActiveTripStateCopyWithImpl<$Res, $Val extends ActiveTripState>
-    implements $ActiveTripStateCopyWith<$Res> {
-  _$ActiveTripStateCopyWithImpl(this._value, this._then);
+class _$TripDetailStateCopyWithImpl<$Res, $Val extends TripDetailState>
+    implements $TripDetailStateCopyWith<$Res> {
+  _$TripDetailStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ActiveTripState
+  /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1059,11 +1059,11 @@ class _$ActiveTripStateCopyWithImpl<$Res, $Val extends ActiveTripState>
 }
 
 /// @nodoc
-abstract class _$$ActiveTripStateImplCopyWith<$Res>
-    implements $ActiveTripStateCopyWith<$Res> {
-  factory _$$ActiveTripStateImplCopyWith(_$ActiveTripStateImpl value,
-          $Res Function(_$ActiveTripStateImpl) then) =
-      __$$ActiveTripStateImplCopyWithImpl<$Res>;
+abstract class _$$TripDetailStateImplCopyWith<$Res>
+    implements $TripDetailStateCopyWith<$Res> {
+  factory _$$TripDetailStateImplCopyWith(_$TripDetailStateImpl value,
+          $Res Function(_$TripDetailStateImpl) then) =
+      __$$TripDetailStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1075,14 +1075,14 @@ abstract class _$$ActiveTripStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ActiveTripStateImplCopyWithImpl<$Res>
-    extends _$ActiveTripStateCopyWithImpl<$Res, _$ActiveTripStateImpl>
-    implements _$$ActiveTripStateImplCopyWith<$Res> {
-  __$$ActiveTripStateImplCopyWithImpl(
-      _$ActiveTripStateImpl _value, $Res Function(_$ActiveTripStateImpl) _then)
+class __$$TripDetailStateImplCopyWithImpl<$Res>
+    extends _$TripDetailStateCopyWithImpl<$Res, _$TripDetailStateImpl>
+    implements _$$TripDetailStateImplCopyWith<$Res> {
+  __$$TripDetailStateImplCopyWithImpl(
+      _$TripDetailStateImpl _value, $Res Function(_$TripDetailStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ActiveTripState
+  /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -1093,7 +1093,7 @@ class __$$ActiveTripStateImplCopyWithImpl<$Res>
     Object? errorMessage = freezed,
     Object? isFileLoading = null,
   }) {
-    return _then(_$ActiveTripStateImpl(
+    return _then(_$TripDetailStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -1120,8 +1120,8 @@ class __$$ActiveTripStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ActiveTripStateImpl implements _ActiveTripState {
-  const _$ActiveTripStateImpl(
+class _$TripDetailStateImpl implements _TripDetailState {
+  const _$TripDetailStateImpl(
       {required this.status,
       this.dateTime,
       this.selectedFile,
@@ -1142,14 +1142,14 @@ class _$ActiveTripStateImpl implements _ActiveTripState {
 
   @override
   String toString() {
-    return 'ActiveTripState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading)';
+    return 'TripDetailState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ActiveTripStateImpl &&
+            other is _$TripDetailStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime) &&
@@ -1165,23 +1165,23 @@ class _$ActiveTripStateImpl implements _ActiveTripState {
   int get hashCode => Object.hash(
       runtimeType, status, dateTime, selectedFile, errorMessage, isFileLoading);
 
-  /// Create a copy of ActiveTripState
+  /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ActiveTripStateImplCopyWith<_$ActiveTripStateImpl> get copyWith =>
-      __$$ActiveTripStateImplCopyWithImpl<_$ActiveTripStateImpl>(
+  _$$TripDetailStateImplCopyWith<_$TripDetailStateImpl> get copyWith =>
+      __$$TripDetailStateImplCopyWithImpl<_$TripDetailStateImpl>(
           this, _$identity);
 }
 
-abstract class _ActiveTripState implements ActiveTripState {
-  const factory _ActiveTripState(
+abstract class _TripDetailState implements TripDetailState {
+  const factory _TripDetailState(
       {required final ActiveTripStatus status,
       final String? dateTime,
       final File? selectedFile,
       final String? errorMessage,
-      final bool isFileLoading}) = _$ActiveTripStateImpl;
+      final bool isFileLoading}) = _$TripDetailStateImpl;
 
   @override
   ActiveTripStatus get status;
@@ -1194,10 +1194,10 @@ abstract class _ActiveTripState implements ActiveTripState {
   @override
   bool get isFileLoading;
 
-  /// Create a copy of ActiveTripState
+  /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ActiveTripStateImplCopyWith<_$ActiveTripStateImpl> get copyWith =>
+  _$$TripDetailStateImplCopyWith<_$TripDetailStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

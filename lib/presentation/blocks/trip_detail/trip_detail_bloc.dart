@@ -8,14 +8,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tms_driver/domain/repositories/trip_repository.dart';
 
-part 'active_trip_bloc.freezed.dart';
-part 'active_trip_event.dart';
-part 'active_trip_state.dart';
+part 'trip_detail_bloc.freezed.dart';
+part 'trip_detail_event.dart';
+part 'trip_detail_state.dart';
 
-class ActiveTripBloc extends Bloc<ActiveTripEvent, ActiveTripState> {
+class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
   final TripRepository tripRepository = GetIt.instance<TripRepository>();
 
-  ActiveTripBloc() : super(ActiveTripState.initial()) {
+  TripDetailBloc() : super(TripDetailState.initial()) {
     on<GetDateAndTime>(_getDataAndTime);
     on<PickFile>(_pickFile);
     on<RemoveFile>(_removeFile);
@@ -23,11 +23,11 @@ class ActiveTripBloc extends Bloc<ActiveTripEvent, ActiveTripState> {
     on<UploadFiles>(_uploadFiles);
   }
 
-  void _getDataAndTime(event, Emitter<ActiveTripState> emit) {
+  void _getDataAndTime(GetDateAndTime event, Emitter<TripDetailState> emit) {
     emit(state.copyWith(dateTime: event.dateTime));
   }
 
-  void _pickFile(event, Emitter<ActiveTripState> emit) async {
+  void _pickFile(PickFile event, Emitter<TripDetailState> emit) async {
     try {
       FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
@@ -41,11 +41,11 @@ class ActiveTripBloc extends Bloc<ActiveTripEvent, ActiveTripState> {
     }
   }
 
-  void _removeFile(event, Emitter<ActiveTripState> emit) async {
+  void _removeFile(RemoveFile event, Emitter<TripDetailState> emit) async {
     emit(state.copyWith(selectedFile: null));
   }
 
-  void _scanDoc(event, Emitter<ActiveTripState> emit) async {
+  void _scanDoc(ScanDoc event, Emitter<TripDetailState> emit) async {
     try {
       emit(state.copyWith(selectedFile: File(event.image)));
     } on PlatformException catch (e) {
@@ -53,7 +53,7 @@ class ActiveTripBloc extends Bloc<ActiveTripEvent, ActiveTripState> {
     }
   }
 
-  void _uploadFiles(event, Emitter<ActiveTripState> emit) async {
+  void _uploadFiles(UploadFiles event, Emitter<TripDetailState> emit) async {
     if (state.selectedFile == null) return;
 
     try {

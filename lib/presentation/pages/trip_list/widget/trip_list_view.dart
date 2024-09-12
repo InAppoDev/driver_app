@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tms_driver/presentation/blocks/trip_list/trip_bloc.dart';
+import 'package:tms_driver/presentation/blocks/trip_list/trip_list_bloc.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/new_trips.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/tabs.dart';
 import 'package:tms_driver/presentation/utils/enums/enums.dart';
@@ -11,12 +11,11 @@ class TripListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<TripBloc, TripState>(
+    return BlocListener<TripListBloc, TripListState>(
       listener: (context, listenerState) {
-        if (listenerState.tabStatus == TabStatus.activeTrip &&
-            listenerState.trip != null) {}
+        if (listenerState.tabStatus == TabStatus.activeTrip) {}
       },
-      child: BlocBuilder<TripBloc, TripState>(
+      child: BlocBuilder<TripListBloc, TripListState>(
         builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -25,8 +24,8 @@ class TripListView extends StatelessWidget {
                 Tabs(
                   status: state.tabStatus,
                   onPressed: (status) {
-                    context.read<TripBloc>().add(
-                          TripEvent.changeTab(status: status),
+                    context.read<TripListBloc>().add(
+                          TripListEvent.changeTab(status: status),
                         );
                   },
                 ),
@@ -37,8 +36,8 @@ class TripListView extends StatelessWidget {
                       final navigateToActiveTrip =
                           await context.push('/confirmTrip', extra: trip);
                       if (navigateToActiveTrip as bool && context.mounted) {
-                        context.read<TripBloc>().add(
-                              TripEvent.changeTab(
+                        context.read<TripListBloc>().add(
+                              TripListEvent.changeTab(
                                 status: TabStatus.activeTrip,
                                 trip: trip,
                               ),
