@@ -308,7 +308,7 @@
     "description": "Text showing the total miles of a trip",
     "placeholders": {
       "miles": {
-        "type": "int"
+        "type": "String"
       }
     }
   },

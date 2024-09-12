@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tms_driver/data/models/trip/trip_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/presentation/blocks/trip_list/trip_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
@@ -18,7 +18,7 @@ class ConfirmTripScreen extends StatelessWidget {
     required this.trip,
   });
 
-  final TripModel trip;
+  final DispatchModel trip;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class ConfirmTripScreen extends StatelessWidget {
               },
             ),
             Text(
-              trip.details.first.name ?? '',
+              trip.waypoints.first.type,
               style: theme.textTheme.titleSmall!.copyWith(
                 color: theme.disabledColor,
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tms_driver/data/models/trip/trip_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/presentation/blocks/active_trip/active_trip_bloc.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_picker.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/upload_scan_files.dart';
@@ -12,7 +12,7 @@ import '../../trip_list/widget/trip_detail_info.dart';
 class ActiveTripView extends StatelessWidget {
   const ActiveTripView({super.key, required this.trip});
 
-  final TripModel trip;
+  final DispatchModel trip;
 
   @override
   Widget build(BuildContext context) {

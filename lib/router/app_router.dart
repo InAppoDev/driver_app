@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:tms_driver/data/models/trip/trip_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/chat_screen.dart';
 import 'package:tms_driver/presentation/pages/login/login_page.dart';
 import 'package:tms_driver/presentation/pages/main/main_page.dart';
@@ -25,7 +25,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/confirmTrip',
       builder: (context, state) {
-        final trip = state.extra as TripModel;
+        final trip = state.extra as DispatchModel;
         return ConfirmTripScreen(trip: trip);
       },
     ),

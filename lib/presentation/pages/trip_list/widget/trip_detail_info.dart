@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tms_driver/data/models/trip/trip_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class TripDetailInfo extends StatelessWidget {
   const TripDetailInfo({super.key, required this.trip});
-  final TripModel trip;
+  final DispatchModel trip;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class TripDetailInfo extends StatelessWidget {
           ),
           const SizedBox(height: 22),
           Text(
-            trip.details.first.name ?? '',
+            trip.waypoints.first.typeTitle,
             style: theme.textTheme.bodySmall!.copyWith(
               color: theme.disabledColor,
               fontWeight: FontWeight.w600,

@@ -6,8 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:tms_driver/data/models/trip/trip_details_model.dart';
-import 'package:tms_driver/data/models/trip/trip_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_list_model/dispatch_list_model.dart';
 import 'package:tms_driver/domain/repositories/trip_repository.dart';
 import 'package:tms_driver/presentation/utils/enums/enums.dart';
 
@@ -25,91 +24,8 @@ class TripBloc extends Bloc<TripEvent, TripState> {
     on<_RemoveFile>(_removeFile);
     on<_ScanDoc>(_scanDoc);
     on<_UploadFiles>(_uploadFiles);
+    on<_FetchTrips>(_fetchTrips);
   }
-
-  final List<TripModel> trips = [
-    const TripModel(miles: 300, details: [
-      TripDetailsModel(
-        name: 'Pick UP #1',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-      TripDetailsModel(
-        name: 'Pick UP #2',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-      TripDetailsModel(
-        name: 'Pick UP #3',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-      TripDetailsModel(
-        name: 'Delivery #1',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-      TripDetailsModel(
-        name: 'Delivery #2',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-    ]),
-    const TripModel(miles: 300, details: [
-      TripDetailsModel(
-        name: 'Pick UP #1',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-      TripDetailsModel(
-        name: 'Pick UP #2',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-      TripDetailsModel(
-        name: 'Pick UP #3',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-      TripDetailsModel(
-        name: 'Delivery #1',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-      TripDetailsModel(
-        name: 'Delivery #2',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-    ]),
-    const TripModel(miles: 300, details: [
-      TripDetailsModel(
-        name: 'Pick UP #1',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-      TripDetailsModel(
-        name: 'Pick UP #2',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-      TripDetailsModel(
-        name: 'Pick UP #3',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-      TripDetailsModel(
-        name: 'Delivery #1',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-      TripDetailsModel(
-        name: 'Delivery #2',
-        address: 'Viena, Österreich, 37240 , Ch',
-        data: 1716562800000 ,
-      ),
-    ]),
-  ];
 
   void _changeTabEvent(_ChangeTabPressed event, Emitter<TripState> emit) {
     if (event.status == TabStatus.activeTrip) {
@@ -117,6 +33,22 @@ class TripBloc extends Bloc<TripEvent, TripState> {
       emit(state.copyWith(tabStatus: event.status, trip: trip));
     } else {
       emit(state.copyWith(tabStatus: event.status));
+    }
+  }
+
+  void _fetchTrips(_FetchTrips event, Emitter<TripState> emit) async {
+    emit(state.copyWith(status: TripStatus.loading));
+    try {
+      final trips = await tripRepository.getTrips();
+      emit(state.copyWith(
+        status: TripStatus.initial,
+        trips: trips,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: TripStatus.initial,
+        errorMessage: e.toString(),
+      ));
     }
   }
 

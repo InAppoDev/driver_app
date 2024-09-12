@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:tms_driver/data/models/trip/trip_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_list_model/dispatch_list_model.dart';
 
 import 'new_trips_widget.dart';
 
@@ -10,8 +10,8 @@ class NewTrips extends StatelessWidget {
     required this.trips,
   });
 
-  final Function(TripModel) onPressed;
-  final List<TripModel> trips;
+  final Function(DispatchListModel) onPressed;
+  final List<DispatchListModel> trips;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class NewTrips extends StatelessWidget {
         itemCount: trips.length,
         itemBuilder: (context, index) => NewTripsWidget(
           onPressed: onPressed,
-          tripModel: trips[index],
+          tripListModel: trips[index],
         ),
       ),
     );

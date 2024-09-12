@@ -1,23 +1,23 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:tms_driver/data/models/trip/trip_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_list_model/dispatch_list_model.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_info_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
+
 class NewTripsWidget extends StatelessWidget {
   const NewTripsWidget({
     super.key,
     required this.onPressed,
-    required this.tripModel,
+    required this.tripListModel,
   });
-  final Function(TripModel) onPressed;
-  final TripModel tripModel;
+  final Function(DispatchListModel) onPressed;
+  final DispatchListModel tripListModel;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
-        onPressed.call(tripModel);
+        onPressed.call(tripListModel);
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 5),
@@ -41,29 +41,20 @@ class NewTripsWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ...tripModel.details.mapIndexed(
-                        (index, detail) {
-                          final customItem = tripModel.details[tripModel.details
-                                  .indexOf(tripModel.details.skip(1).firstWhere(
-                                      (item) => item.name != null
-                                          ? item.name!.contains('1')
-                                          : false)) -
-                              1];
-                          return TripInfoWidget(
-                            topic: detail.name ?? '',
-                            address: detail.address ?? '',
-                            time: detail.data ?? 1716562800000,
-                            showMidlLine: detail == customItem,
-                            showTipImage:
-                                index > tripModel.details.indexOf(customItem),
-                          );
-                        },
-                      ),
+                      ...tripListModel.waypoints.map((detail) {
+                        return TripInfoWidget(
+                          topic: detail.typeTitle,
+                          address: detail.address,
+                          time: detail.apptFromTimestamp,
+                          showMidlLine: true,
+                          showTipImage: true,
+                        );
+                      }),
                       Padding(
                         padding: const EdgeInsets.only(left: 10, bottom: 10),
                         child: Text(
-                          context.localizations.totalMilesMiles(
-                              (tripModel.miles ?? 0).toInt()),
+                          context.localizations
+                              .totalMilesMiles(tripListModel.routeTotalMi),
                           style: theme.textTheme.labelSmall!.copyWith(
                             fontSize: 8,
                             color: theme.dividerColor,

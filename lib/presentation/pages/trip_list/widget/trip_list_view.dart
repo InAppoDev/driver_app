@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/blocks/trip_list/trip_bloc.dart';
-import 'package:tms_driver/presentation/pages/active_trip/active_trip.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/new_trips.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/tabs.dart';
 import 'package:tms_driver/presentation/utils/enums/enums.dart';
@@ -33,7 +32,7 @@ class TripListView extends StatelessWidget {
                 ),
                 if (state.tabStatus == TabStatus.newTrips)
                   NewTrips(
-                    trips: context.read<TripBloc>().trips,
+                    trips: state.trips,
                     onPressed: (trip) async {
                       final navigateToActiveTrip =
                           await context.push('/confirmTrip', extra: trip);
@@ -47,9 +46,9 @@ class TripListView extends StatelessWidget {
                       }
                     },
                   ),
-                if (state.tabStatus == TabStatus.activeTrip &&
-                    state.trip != null)
-                  ActiveTrip(trip: state.trip!),
+                // if (state.tabStatus == TabStatus.activeTrip &&
+                //     state.trip != null)
+                // ActiveTrip(trip: state.trip!),
               ],
             ),
           );

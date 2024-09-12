@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tms_driver/data/models/trip/trip_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
@@ -8,7 +8,7 @@ class TripData extends StatelessWidget {
   const TripData({super.key, required this.onPressed, required this.trip});
 
   final VoidCallback onPressed;
-  final TripModel trip;
+  final DispatchModel trip;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class TripData extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                trip.details.first.address ?? '',
+                trip.waypoints.first.address,
                 style: theme.textTheme.titleSmall!
                     .copyWith(color: theme.dividerColor),
               ),
@@ -72,21 +72,20 @@ class TripData extends StatelessWidget {
                       ),
                       const SizedBox(width: 5),
                       Text(
-                        trip.details.first.name ?? '',
+                        trip.waypoints.first.typeTitle,
                         style: theme.textTheme.titleSmall!
                             .copyWith(color: theme.dividerColor),
                       ),
                     ],
                   ),
                   CustomDateWidget(
-                    date:
-                        trip.details.first.data ?? 1716562800000,
+                    date: trip.waypoints.first.apptFromTimestamp, // check it
                   ),
                 ],
               ),
               const SizedBox(height: 16),
               Text(
-                trip.details.first.address ?? '',
+                trip.waypoints.first.address,
                 style: theme.textTheme.titleSmall!
                     .copyWith(color: theme.dividerColor),
               ),
