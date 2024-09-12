@@ -524,12 +524,8 @@ abstract class _FetchTrips implements TripListEvent {
 /// @nodoc
 mixin _$TripListState {
   TripStatus get status => throw _privateConstructorUsedError;
-  TabStatus get tabStatus =>
-      throw _privateConstructorUsedError; // String? errorMessage,
-// DispatchListModel? trip,
-  String? get dateTime =>
-      throw _privateConstructorUsedError; // File? selectedFile,
-// @Default(false) bool isFileLoading,
+  TabStatus get tabStatus => throw _privateConstructorUsedError;
+  String? get dateTime => throw _privateConstructorUsedError;
   List<DispatchListModel> get trips => throw _privateConstructorUsedError;
 
   /// Create a copy of TripListState
@@ -662,15 +658,9 @@ class _$TripStateImpl implements _TripState {
   @override
   @JsonKey()
   final TabStatus tabStatus;
-// String? errorMessage,
-// DispatchListModel? trip,
   @override
   final String? dateTime;
-// File? selectedFile,
-// @Default(false) bool isFileLoading,
   final List<DispatchListModel> _trips;
-// File? selectedFile,
-// @Default(false) bool isFileLoading,
   @override
   @JsonKey()
   List<DispatchListModel> get trips {
@@ -720,11 +710,9 @@ abstract class _TripState implements TripListState {
   @override
   TripStatus get status;
   @override
-  TabStatus get tabStatus; // String? errorMessage,
-// DispatchListModel? trip,
+  TabStatus get tabStatus;
   @override
-  String? get dateTime; // File? selectedFile,
-// @Default(false) bool isFileLoading,
+  String? get dateTime;
   @override
   List<DispatchListModel> get trips;
 

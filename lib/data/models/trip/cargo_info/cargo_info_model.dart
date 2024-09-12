@@ -7,7 +7,7 @@ part 'cargo_info_model.g.dart';
 class CargoInfoModel with _$CargoInfoModel {
   const factory CargoInfoModel({
     @JsonKey(name: 'commodity') required String commodity,
-    @JsonKey(name: 'total_pallets') required int totalPallets,
+    @JsonKey(name: 'total_pallets') int? totalPallets,
     @JsonKey(name: 'pcs') required int pcs,
     @JsonKey(name: 'total_weight') required int totalWeight,
   }) = _CargoInfoModel;

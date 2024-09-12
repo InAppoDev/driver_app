@@ -23,7 +23,7 @@ mixin _$CargoInfoModel {
   @JsonKey(name: 'commodity')
   String get commodity => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_pallets')
-  int get totalPallets => throw _privateConstructorUsedError;
+  int? get totalPallets => throw _privateConstructorUsedError;
   @JsonKey(name: 'pcs')
   int get pcs => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_weight')
@@ -47,7 +47,7 @@ abstract class $CargoInfoModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'commodity') String commodity,
-      @JsonKey(name: 'total_pallets') int totalPallets,
+      @JsonKey(name: 'total_pallets') int? totalPallets,
       @JsonKey(name: 'pcs') int pcs,
       @JsonKey(name: 'total_weight') int totalWeight});
 }
@@ -68,7 +68,7 @@ class _$CargoInfoModelCopyWithImpl<$Res, $Val extends CargoInfoModel>
   @override
   $Res call({
     Object? commodity = null,
-    Object? totalPallets = null,
+    Object? totalPallets = freezed,
     Object? pcs = null,
     Object? totalWeight = null,
   }) {
@@ -77,10 +77,10 @@ class _$CargoInfoModelCopyWithImpl<$Res, $Val extends CargoInfoModel>
           ? _value.commodity
           : commodity // ignore: cast_nullable_to_non_nullable
               as String,
-      totalPallets: null == totalPallets
+      totalPallets: freezed == totalPallets
           ? _value.totalPallets
           : totalPallets // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       pcs: null == pcs
           ? _value.pcs
           : pcs // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ abstract class _$$CargoInfoModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'commodity') String commodity,
-      @JsonKey(name: 'total_pallets') int totalPallets,
+      @JsonKey(name: 'total_pallets') int? totalPallets,
       @JsonKey(name: 'pcs') int pcs,
       @JsonKey(name: 'total_weight') int totalWeight});
 }
@@ -122,7 +122,7 @@ class __$$CargoInfoModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? commodity = null,
-    Object? totalPallets = null,
+    Object? totalPallets = freezed,
     Object? pcs = null,
     Object? totalWeight = null,
   }) {
@@ -131,10 +131,10 @@ class __$$CargoInfoModelImplCopyWithImpl<$Res>
           ? _value.commodity
           : commodity // ignore: cast_nullable_to_non_nullable
               as String,
-      totalPallets: null == totalPallets
+      totalPallets: freezed == totalPallets
           ? _value.totalPallets
           : totalPallets // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       pcs: null == pcs
           ? _value.pcs
           : pcs // ignore: cast_nullable_to_non_nullable
@@ -152,7 +152,7 @@ class __$$CargoInfoModelImplCopyWithImpl<$Res>
 class _$CargoInfoModelImpl implements _CargoInfoModel {
   const _$CargoInfoModelImpl(
       {@JsonKey(name: 'commodity') required this.commodity,
-      @JsonKey(name: 'total_pallets') required this.totalPallets,
+      @JsonKey(name: 'total_pallets') this.totalPallets,
       @JsonKey(name: 'pcs') required this.pcs,
       @JsonKey(name: 'total_weight') required this.totalWeight});
 
@@ -164,7 +164,7 @@ class _$CargoInfoModelImpl implements _CargoInfoModel {
   final String commodity;
   @override
   @JsonKey(name: 'total_pallets')
-  final int totalPallets;
+  final int? totalPallets;
   @override
   @JsonKey(name: 'pcs')
   final int pcs;
@@ -216,7 +216,7 @@ class _$CargoInfoModelImpl implements _CargoInfoModel {
 abstract class _CargoInfoModel implements CargoInfoModel {
   const factory _CargoInfoModel(
           {@JsonKey(name: 'commodity') required final String commodity,
-          @JsonKey(name: 'total_pallets') required final int totalPallets,
+          @JsonKey(name: 'total_pallets') final int? totalPallets,
           @JsonKey(name: 'pcs') required final int pcs,
           @JsonKey(name: 'total_weight') required final int totalWeight}) =
       _$CargoInfoModelImpl;
@@ -229,7 +229,7 @@ abstract class _CargoInfoModel implements CargoInfoModel {
   String get commodity;
   @override
   @JsonKey(name: 'total_pallets')
-  int get totalPallets;
+  int? get totalPallets;
   @override
   @JsonKey(name: 'pcs')
   int get pcs;

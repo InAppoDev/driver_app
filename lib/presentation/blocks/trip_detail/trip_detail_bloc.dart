@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/domain/repositories/trip_repository.dart';
 
 part 'trip_detail_bloc.freezed.dart';
@@ -21,6 +22,24 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
     on<RemoveFile>(_removeFile);
     on<ScanDoc>(_scanDoc);
     on<UploadFiles>(_uploadFiles);
+    on<FetchTripDetail>(_fetchTripDetail);
+  }
+
+  void _fetchTripDetail(
+      FetchTripDetail event, Emitter<TripDetailState> emit) async {
+    emit(state.copyWith(status: ActiveTripStatus.loading));
+    try {
+      final DispatchModel trip = await tripRepository.getTripById(event.tripId);
+      emit(state.copyWith(
+        status: ActiveTripStatus.success,
+        trip: trip,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: ActiveTripStatus.failure,
+        errorMessage: e.toString(),
+      ));
+    }
   }
 
   void _getDataAndTime(GetDateAndTime event, Emitter<TripDetailState> emit) {

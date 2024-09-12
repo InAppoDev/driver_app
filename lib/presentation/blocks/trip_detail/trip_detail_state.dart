@@ -1,6 +1,6 @@
 part of 'trip_detail_bloc.dart';
 
-enum ActiveTripStatus { initial, loading, failure }
+enum ActiveTripStatus { initial, loading, failure, success }
 
 @freezed
 class TripDetailState with _$TripDetailState {
@@ -10,6 +10,7 @@ class TripDetailState with _$TripDetailState {
     File? selectedFile,
     String? errorMessage,
     @Default(false) bool isFileLoading,
+    DispatchModel? trip,
   }) = _TripDetailState;
 
   factory TripDetailState.initial() => const TripDetailState(

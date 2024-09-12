@@ -21,7 +21,7 @@ _$DispatchDetailModelImpl _$$DispatchDetailModelImplFromJson(
       cargoInfo:
           CargoInfoModel.fromJson(json['cargo_info'] as Map<String, dynamic>),
       isFcfs: json['is_fcfs'] as bool,
-      shipmentReference: json['shipment_reference'] as String,
+      shipmentReference: json['shipment_reference'] as String?,
       notes: json['notes'] as String?,
       locationDetails: LocationDetailsModel.fromJson(
           json['location_details'] as Map<String, dynamic>),

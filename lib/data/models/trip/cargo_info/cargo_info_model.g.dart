@@ -9,7 +9,7 @@ part of 'cargo_info_model.dart';
 _$CargoInfoModelImpl _$$CargoInfoModelImplFromJson(Map<String, dynamic> json) =>
     _$CargoInfoModelImpl(
       commodity: json['commodity'] as String,
-      totalPallets: (json['total_pallets'] as num).toInt(),
+      totalPallets: (json['total_pallets'] as num?)?.toInt(),
       pcs: (json['pcs'] as num).toInt(),
       totalWeight: (json['total_weight'] as num).toInt(),
     );

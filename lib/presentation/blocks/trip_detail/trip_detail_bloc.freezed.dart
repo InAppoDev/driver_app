@@ -24,6 +24,7 @@ mixin _$TripDetailEvent {
     required TResult Function(File file) removeFile,
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
+    required TResult Function(int tripId) fetchTripDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$TripDetailEvent {
     TResult? Function(File file)? removeFile,
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
+    TResult? Function(int tripId)? fetchTripDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$TripDetailEvent {
     TResult Function(File file)? removeFile,
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
+    TResult Function(int tripId)? fetchTripDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$TripDetailEvent {
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
+    required TResult Function(FetchTripDetail value) fetchTripDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$TripDetailEvent {
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
+    TResult? Function(FetchTripDetail value)? fetchTripDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$TripDetailEvent {
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
+    TResult Function(FetchTripDetail value)? fetchTripDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,6 +154,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(File file) removeFile,
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
+    required TResult Function(int tripId) fetchTripDetail,
   }) {
     return initialize();
   }
@@ -161,6 +168,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(File file)? removeFile,
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
+    TResult? Function(int tripId)? fetchTripDetail,
   }) {
     return initialize?.call();
   }
@@ -174,6 +182,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function(File file)? removeFile,
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
+    TResult Function(int tripId)? fetchTripDetail,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -191,6 +200,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
+    required TResult Function(FetchTripDetail value) fetchTripDetail,
   }) {
     return initialize(this);
   }
@@ -204,6 +214,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
+    TResult? Function(FetchTripDetail value)? fetchTripDetail,
   }) {
     return initialize?.call(this);
   }
@@ -217,6 +228,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
+    TResult Function(FetchTripDetail value)? fetchTripDetail,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -306,6 +318,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     required TResult Function(File file) removeFile,
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
+    required TResult Function(int tripId) fetchTripDetail,
   }) {
     return getDateAndTime(dateTime);
   }
@@ -319,6 +332,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult? Function(File file)? removeFile,
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
+    TResult? Function(int tripId)? fetchTripDetail,
   }) {
     return getDateAndTime?.call(dateTime);
   }
@@ -332,6 +346,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult Function(File file)? removeFile,
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
+    TResult Function(int tripId)? fetchTripDetail,
     required TResult orElse(),
   }) {
     if (getDateAndTime != null) {
@@ -349,6 +364,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
+    required TResult Function(FetchTripDetail value) fetchTripDetail,
   }) {
     return getDateAndTime(this);
   }
@@ -362,6 +378,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
+    TResult? Function(FetchTripDetail value)? fetchTripDetail,
   }) {
     return getDateAndTime?.call(this);
   }
@@ -375,6 +392,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
+    TResult Function(FetchTripDetail value)? fetchTripDetail,
     required TResult orElse(),
   }) {
     if (getDateAndTime != null) {
@@ -444,6 +462,7 @@ class _$PickFileImpl implements PickFile {
     required TResult Function(File file) removeFile,
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
+    required TResult Function(int tripId) fetchTripDetail,
   }) {
     return pickFile();
   }
@@ -457,6 +476,7 @@ class _$PickFileImpl implements PickFile {
     TResult? Function(File file)? removeFile,
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
+    TResult? Function(int tripId)? fetchTripDetail,
   }) {
     return pickFile?.call();
   }
@@ -470,6 +490,7 @@ class _$PickFileImpl implements PickFile {
     TResult Function(File file)? removeFile,
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
+    TResult Function(int tripId)? fetchTripDetail,
     required TResult orElse(),
   }) {
     if (pickFile != null) {
@@ -487,6 +508,7 @@ class _$PickFileImpl implements PickFile {
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
+    required TResult Function(FetchTripDetail value) fetchTripDetail,
   }) {
     return pickFile(this);
   }
@@ -500,6 +522,7 @@ class _$PickFileImpl implements PickFile {
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
+    TResult? Function(FetchTripDetail value)? fetchTripDetail,
   }) {
     return pickFile?.call(this);
   }
@@ -513,6 +536,7 @@ class _$PickFileImpl implements PickFile {
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
+    TResult Function(FetchTripDetail value)? fetchTripDetail,
     required TResult orElse(),
   }) {
     if (pickFile != null) {
@@ -600,6 +624,7 @@ class _$RemoveFileImpl implements RemoveFile {
     required TResult Function(File file) removeFile,
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
+    required TResult Function(int tripId) fetchTripDetail,
   }) {
     return removeFile(file);
   }
@@ -613,6 +638,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult? Function(File file)? removeFile,
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
+    TResult? Function(int tripId)? fetchTripDetail,
   }) {
     return removeFile?.call(file);
   }
@@ -626,6 +652,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult Function(File file)? removeFile,
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
+    TResult Function(int tripId)? fetchTripDetail,
     required TResult orElse(),
   }) {
     if (removeFile != null) {
@@ -643,6 +670,7 @@ class _$RemoveFileImpl implements RemoveFile {
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
+    required TResult Function(FetchTripDetail value) fetchTripDetail,
   }) {
     return removeFile(this);
   }
@@ -656,6 +684,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
+    TResult? Function(FetchTripDetail value)? fetchTripDetail,
   }) {
     return removeFile?.call(this);
   }
@@ -669,6 +698,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
+    TResult Function(FetchTripDetail value)? fetchTripDetail,
     required TResult orElse(),
   }) {
     if (removeFile != null) {
@@ -764,6 +794,7 @@ class _$ScanDocImpl implements ScanDoc {
     required TResult Function(File file) removeFile,
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
+    required TResult Function(int tripId) fetchTripDetail,
   }) {
     return scanDoc(image);
   }
@@ -777,6 +808,7 @@ class _$ScanDocImpl implements ScanDoc {
     TResult? Function(File file)? removeFile,
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
+    TResult? Function(int tripId)? fetchTripDetail,
   }) {
     return scanDoc?.call(image);
   }
@@ -790,6 +822,7 @@ class _$ScanDocImpl implements ScanDoc {
     TResult Function(File file)? removeFile,
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
+    TResult Function(int tripId)? fetchTripDetail,
     required TResult orElse(),
   }) {
     if (scanDoc != null) {
@@ -807,6 +840,7 @@ class _$ScanDocImpl implements ScanDoc {
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
+    required TResult Function(FetchTripDetail value) fetchTripDetail,
   }) {
     return scanDoc(this);
   }
@@ -820,6 +854,7 @@ class _$ScanDocImpl implements ScanDoc {
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
+    TResult? Function(FetchTripDetail value)? fetchTripDetail,
   }) {
     return scanDoc?.call(this);
   }
@@ -833,6 +868,7 @@ class _$ScanDocImpl implements ScanDoc {
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
+    TResult Function(FetchTripDetail value)? fetchTripDetail,
     required TResult orElse(),
   }) {
     if (scanDoc != null) {
@@ -901,6 +937,7 @@ class _$UploadFilesImpl implements UploadFiles {
     required TResult Function(File file) removeFile,
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
+    required TResult Function(int tripId) fetchTripDetail,
   }) {
     return uploadFiles();
   }
@@ -914,6 +951,7 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult? Function(File file)? removeFile,
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
+    TResult? Function(int tripId)? fetchTripDetail,
   }) {
     return uploadFiles?.call();
   }
@@ -927,6 +965,7 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult Function(File file)? removeFile,
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
+    TResult Function(int tripId)? fetchTripDetail,
     required TResult orElse(),
   }) {
     if (uploadFiles != null) {
@@ -944,6 +983,7 @@ class _$UploadFilesImpl implements UploadFiles {
     required TResult Function(RemoveFile value) removeFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
+    required TResult Function(FetchTripDetail value) fetchTripDetail,
   }) {
     return uploadFiles(this);
   }
@@ -957,6 +997,7 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult? Function(RemoveFile value)? removeFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
+    TResult? Function(FetchTripDetail value)? fetchTripDetail,
   }) {
     return uploadFiles?.call(this);
   }
@@ -970,6 +1011,7 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult Function(RemoveFile value)? removeFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
+    TResult Function(FetchTripDetail value)? fetchTripDetail,
     required TResult orElse(),
   }) {
     if (uploadFiles != null) {
@@ -984,12 +1026,185 @@ abstract class UploadFiles implements TripDetailEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchTripDetailImplCopyWith<$Res> {
+  factory _$$FetchTripDetailImplCopyWith(_$FetchTripDetailImpl value,
+          $Res Function(_$FetchTripDetailImpl) then) =
+      __$$FetchTripDetailImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int tripId});
+}
+
+/// @nodoc
+class __$$FetchTripDetailImplCopyWithImpl<$Res>
+    extends _$TripDetailEventCopyWithImpl<$Res, _$FetchTripDetailImpl>
+    implements _$$FetchTripDetailImplCopyWith<$Res> {
+  __$$FetchTripDetailImplCopyWithImpl(
+      _$FetchTripDetailImpl _value, $Res Function(_$FetchTripDetailImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tripId = null,
+  }) {
+    return _then(_$FetchTripDetailImpl(
+      tripId: null == tripId
+          ? _value.tripId
+          : tripId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchTripDetailImpl implements FetchTripDetail {
+  const _$FetchTripDetailImpl({required this.tripId});
+
+  @override
+  final int tripId;
+
+  @override
+  String toString() {
+    return 'TripDetailEvent.fetchTripDetail(tripId: $tripId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchTripDetailImpl &&
+            (identical(other.tripId, tripId) || other.tripId == tripId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, tripId);
+
+  /// Create a copy of TripDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchTripDetailImplCopyWith<_$FetchTripDetailImpl> get copyWith =>
+      __$$FetchTripDetailImplCopyWithImpl<_$FetchTripDetailImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function(String image) scanDoc,
+    required TResult Function() uploadFiles,
+    required TResult Function(int tripId) fetchTripDetail,
+  }) {
+    return fetchTripDetail(tripId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function(String image)? scanDoc,
+    TResult? Function()? uploadFiles,
+    TResult? Function(int tripId)? fetchTripDetail,
+  }) {
+    return fetchTripDetail?.call(tripId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function(String image)? scanDoc,
+    TResult Function()? uploadFiles,
+    TResult Function(int tripId)? fetchTripDetail,
+    required TResult orElse(),
+  }) {
+    if (fetchTripDetail != null) {
+      return fetchTripDetail(tripId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(GetDateAndTime value) getDateAndTime,
+    required TResult Function(PickFile value) pickFile,
+    required TResult Function(RemoveFile value) removeFile,
+    required TResult Function(ScanDoc value) scanDoc,
+    required TResult Function(UploadFiles value) uploadFiles,
+    required TResult Function(FetchTripDetail value) fetchTripDetail,
+  }) {
+    return fetchTripDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(GetDateAndTime value)? getDateAndTime,
+    TResult? Function(PickFile value)? pickFile,
+    TResult? Function(RemoveFile value)? removeFile,
+    TResult? Function(ScanDoc value)? scanDoc,
+    TResult? Function(UploadFiles value)? uploadFiles,
+    TResult? Function(FetchTripDetail value)? fetchTripDetail,
+  }) {
+    return fetchTripDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(GetDateAndTime value)? getDateAndTime,
+    TResult Function(PickFile value)? pickFile,
+    TResult Function(RemoveFile value)? removeFile,
+    TResult Function(ScanDoc value)? scanDoc,
+    TResult Function(UploadFiles value)? uploadFiles,
+    TResult Function(FetchTripDetail value)? fetchTripDetail,
+    required TResult orElse(),
+  }) {
+    if (fetchTripDetail != null) {
+      return fetchTripDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchTripDetail implements TripDetailEvent {
+  const factory FetchTripDetail({required final int tripId}) =
+      _$FetchTripDetailImpl;
+
+  int get tripId;
+
+  /// Create a copy of TripDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FetchTripDetailImplCopyWith<_$FetchTripDetailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$TripDetailState {
   ActiveTripStatus get status => throw _privateConstructorUsedError;
   String? get dateTime => throw _privateConstructorUsedError;
   File? get selectedFile => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   bool get isFileLoading => throw _privateConstructorUsedError;
+  DispatchModel? get trip => throw _privateConstructorUsedError;
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -1009,7 +1224,10 @@ abstract class $TripDetailStateCopyWith<$Res> {
       String? dateTime,
       File? selectedFile,
       String? errorMessage,
-      bool isFileLoading});
+      bool isFileLoading,
+      DispatchModel? trip});
+
+  $DispatchModelCopyWith<$Res>? get trip;
 }
 
 /// @nodoc
@@ -1032,6 +1250,7 @@ class _$TripDetailStateCopyWithImpl<$Res, $Val extends TripDetailState>
     Object? selectedFile = freezed,
     Object? errorMessage = freezed,
     Object? isFileLoading = null,
+    Object? trip = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -1054,7 +1273,25 @@ class _$TripDetailStateCopyWithImpl<$Res, $Val extends TripDetailState>
           ? _value.isFileLoading
           : isFileLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      trip: freezed == trip
+          ? _value.trip
+          : trip // ignore: cast_nullable_to_non_nullable
+              as DispatchModel?,
     ) as $Val);
+  }
+
+  /// Create a copy of TripDetailState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DispatchModelCopyWith<$Res>? get trip {
+    if (_value.trip == null) {
+      return null;
+    }
+
+    return $DispatchModelCopyWith<$Res>(_value.trip!, (value) {
+      return _then(_value.copyWith(trip: value) as $Val);
+    });
   }
 }
 
@@ -1071,7 +1308,11 @@ abstract class _$$TripDetailStateImplCopyWith<$Res>
       String? dateTime,
       File? selectedFile,
       String? errorMessage,
-      bool isFileLoading});
+      bool isFileLoading,
+      DispatchModel? trip});
+
+  @override
+  $DispatchModelCopyWith<$Res>? get trip;
 }
 
 /// @nodoc
@@ -1092,6 +1333,7 @@ class __$$TripDetailStateImplCopyWithImpl<$Res>
     Object? selectedFile = freezed,
     Object? errorMessage = freezed,
     Object? isFileLoading = null,
+    Object? trip = freezed,
   }) {
     return _then(_$TripDetailStateImpl(
       status: null == status
@@ -1114,6 +1356,10 @@ class __$$TripDetailStateImplCopyWithImpl<$Res>
           ? _value.isFileLoading
           : isFileLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      trip: freezed == trip
+          ? _value.trip
+          : trip // ignore: cast_nullable_to_non_nullable
+              as DispatchModel?,
     ));
   }
 }
@@ -1126,7 +1372,8 @@ class _$TripDetailStateImpl implements _TripDetailState {
       this.dateTime,
       this.selectedFile,
       this.errorMessage,
-      this.isFileLoading = false});
+      this.isFileLoading = false,
+      this.trip});
 
   @override
   final ActiveTripStatus status;
@@ -1139,10 +1386,12 @@ class _$TripDetailStateImpl implements _TripDetailState {
   @override
   @JsonKey()
   final bool isFileLoading;
+  @override
+  final DispatchModel? trip;
 
   @override
   String toString() {
-    return 'TripDetailState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading)';
+    return 'TripDetailState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading, trip: $trip)';
   }
 
   @override
@@ -1158,12 +1407,13 @@ class _$TripDetailStateImpl implements _TripDetailState {
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.isFileLoading, isFileLoading) ||
-                other.isFileLoading == isFileLoading));
+                other.isFileLoading == isFileLoading) &&
+            (identical(other.trip, trip) || other.trip == trip));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, status, dateTime, selectedFile, errorMessage, isFileLoading);
+  int get hashCode => Object.hash(runtimeType, status, dateTime, selectedFile,
+      errorMessage, isFileLoading, trip);
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -1181,7 +1431,8 @@ abstract class _TripDetailState implements TripDetailState {
       final String? dateTime,
       final File? selectedFile,
       final String? errorMessage,
-      final bool isFileLoading}) = _$TripDetailStateImpl;
+      final bool isFileLoading,
+      final DispatchModel? trip}) = _$TripDetailStateImpl;
 
   @override
   ActiveTripStatus get status;
@@ -1193,6 +1444,8 @@ abstract class _TripDetailState implements TripDetailState {
   String? get errorMessage;
   @override
   bool get isFileLoading;
+  @override
+  DispatchModel? get trip;
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.

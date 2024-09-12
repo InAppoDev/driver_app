@@ -43,7 +43,7 @@ mixin _$DispatchDetailModel {
   @JsonKey(name: 'is_fcfs')
   bool get isFcfs => throw _privateConstructorUsedError;
   @JsonKey(name: 'shipment_reference')
-  String get shipmentReference => throw _privateConstructorUsedError;
+  String? get shipmentReference => throw _privateConstructorUsedError;
   @JsonKey(name: 'notes')
   String? get notes => throw _privateConstructorUsedError;
   @JsonKey(name: 'location_details')
@@ -78,7 +78,7 @@ abstract class $DispatchDetailModelCopyWith<$Res> {
       @JsonKey(name: 'appt_to_timestamp') int apptToTimestamp,
       @JsonKey(name: 'cargo_info') CargoInfoModel cargoInfo,
       @JsonKey(name: 'is_fcfs') bool isFcfs,
-      @JsonKey(name: 'shipment_reference') String shipmentReference,
+      @JsonKey(name: 'shipment_reference') String? shipmentReference,
       @JsonKey(name: 'notes') String? notes,
       @JsonKey(name: 'location_details') LocationDetailsModel locationDetails});
 
@@ -112,7 +112,7 @@ class _$DispatchDetailModelCopyWithImpl<$Res, $Val extends DispatchDetailModel>
     Object? apptToTimestamp = null,
     Object? cargoInfo = null,
     Object? isFcfs = null,
-    Object? shipmentReference = null,
+    Object? shipmentReference = freezed,
     Object? notes = freezed,
     Object? locationDetails = null,
   }) {
@@ -161,10 +161,10 @@ class _$DispatchDetailModelCopyWithImpl<$Res, $Val extends DispatchDetailModel>
           ? _value.isFcfs
           : isFcfs // ignore: cast_nullable_to_non_nullable
               as bool,
-      shipmentReference: null == shipmentReference
+      shipmentReference: freezed == shipmentReference
           ? _value.shipmentReference
           : shipmentReference // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       notes: freezed == notes
           ? _value.notes
           : notes // ignore: cast_nullable_to_non_nullable
@@ -217,7 +217,7 @@ abstract class _$$DispatchDetailModelImplCopyWith<$Res>
       @JsonKey(name: 'appt_to_timestamp') int apptToTimestamp,
       @JsonKey(name: 'cargo_info') CargoInfoModel cargoInfo,
       @JsonKey(name: 'is_fcfs') bool isFcfs,
-      @JsonKey(name: 'shipment_reference') String shipmentReference,
+      @JsonKey(name: 'shipment_reference') String? shipmentReference,
       @JsonKey(name: 'notes') String? notes,
       @JsonKey(name: 'location_details') LocationDetailsModel locationDetails});
 
@@ -251,7 +251,7 @@ class __$$DispatchDetailModelImplCopyWithImpl<$Res>
     Object? apptToTimestamp = null,
     Object? cargoInfo = null,
     Object? isFcfs = null,
-    Object? shipmentReference = null,
+    Object? shipmentReference = freezed,
     Object? notes = freezed,
     Object? locationDetails = null,
   }) {
@@ -300,10 +300,10 @@ class __$$DispatchDetailModelImplCopyWithImpl<$Res>
           ? _value.isFcfs
           : isFcfs // ignore: cast_nullable_to_non_nullable
               as bool,
-      shipmentReference: null == shipmentReference
+      shipmentReference: freezed == shipmentReference
           ? _value.shipmentReference
           : shipmentReference // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       notes: freezed == notes
           ? _value.notes
           : notes // ignore: cast_nullable_to_non_nullable
@@ -331,7 +331,7 @@ class _$DispatchDetailModelImpl implements _DispatchDetailModel {
       @JsonKey(name: 'appt_to_timestamp') required this.apptToTimestamp,
       @JsonKey(name: 'cargo_info') required this.cargoInfo,
       @JsonKey(name: 'is_fcfs') required this.isFcfs,
-      @JsonKey(name: 'shipment_reference') required this.shipmentReference,
+      @JsonKey(name: 'shipment_reference') this.shipmentReference,
       @JsonKey(name: 'notes') this.notes,
       @JsonKey(name: 'location_details') required this.locationDetails});
 
@@ -373,7 +373,7 @@ class _$DispatchDetailModelImpl implements _DispatchDetailModel {
   final bool isFcfs;
   @override
   @JsonKey(name: 'shipment_reference')
-  final String shipmentReference;
+  final String? shipmentReference;
   @override
   @JsonKey(name: 'notes')
   final String? notes;
@@ -464,8 +464,7 @@ abstract class _DispatchDetailModel implements DispatchDetailModel {
       @JsonKey(name: 'appt_to_timestamp') required final int apptToTimestamp,
       @JsonKey(name: 'cargo_info') required final CargoInfoModel cargoInfo,
       @JsonKey(name: 'is_fcfs') required final bool isFcfs,
-      @JsonKey(name: 'shipment_reference')
-      required final String shipmentReference,
+      @JsonKey(name: 'shipment_reference') final String? shipmentReference,
       @JsonKey(name: 'notes') final String? notes,
       @JsonKey(name: 'location_details')
       required final LocationDetailsModel
@@ -509,7 +508,7 @@ abstract class _DispatchDetailModel implements DispatchDetailModel {
   bool get isFcfs;
   @override
   @JsonKey(name: 'shipment_reference')
-  String get shipmentReference;
+  String? get shipmentReference;
   @override
   @JsonKey(name: 'notes')
   String? get notes;

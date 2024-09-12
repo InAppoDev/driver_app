@@ -11,4 +11,6 @@ class TripDetailEvent with _$TripDetailEvent {
   const factory TripDetailEvent.removeFile({required File file}) = RemoveFile;
   const factory TripDetailEvent.scanDoc(String image) = ScanDoc;
   const factory TripDetailEvent.uploadFiles() = UploadFiles;
+  const factory TripDetailEvent.fetchTripDetail({required int tripId}) =
+      FetchTripDetail;
 }

@@ -21,7 +21,7 @@ class DispatchDetailModel with _$DispatchDetailModel {
     @JsonKey(name: 'appt_to_timestamp') required int apptToTimestamp,
     @JsonKey(name: 'cargo_info') required CargoInfoModel cargoInfo,
     @JsonKey(name: 'is_fcfs') required bool isFcfs,
-    @JsonKey(name: 'shipment_reference') required String shipmentReference,
+    @JsonKey(name: 'shipment_reference') String? shipmentReference,
     @JsonKey(name: 'notes') String? notes,
     @JsonKey(name: 'location_details')
     required LocationDetailsModel locationDetails,
