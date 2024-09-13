@@ -30,59 +30,57 @@ class ActiveTripView extends StatelessWidget {
               child: Text('No active trip found'),
             );
           } else {
-            return Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 60),
-                  child: Column(
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          int chatId = 1;
-                          GoRouter.of(context).push('/chat/$chatId');
-                        },
-                        child: const Text('Experiment\nGo to Chat id 1'),
-                      ),
-                      const SizedBox(height: 10),
-                      TripData(trip: state.trip!),
-                      const SizedBox(height: 10),
-                      TripDetailInfo(trip: state.trip!),
-                      const SizedBox(height: 10),
-                      CalendarPicker(
-                        onCalendarResponse: (resp) {
-                          context.read<TripDetailBloc>().add(
-                              TripDetailEvent.getDateAndTime(dateTime: resp));
-                        },
-                        dateTime: state.dateTime ?? '',
-                      ),
-                      const SizedBox(height: 11),
-                      UploadScanFiles(
-                        onAddFile: () {
-                          context
-                              .read<TripDetailBloc>()
-                              .add(const TripDetailEvent.pickFile());
-                        },
-                        onScanFile: (image) {
-                          context
-                              .read<TripDetailBloc>()
-                              .add(TripDetailEvent.scanDoc(image));
-                        },
-                        selectedFile: state.selectedFile,
-                        onFileRemove: (file) {
-                          context
-                              .read<TripDetailBloc>()
-                              .add(TripDetailEvent.removeFile(file: file));
-                        },
-                        onUploadPressed: () {
-                          context
-                              .read<TripDetailBloc>()
-                              .add(const TripDetailEvent.uploadFiles());
-                        },
-                        isFileLoading: state.isFileLoading,
-                      ),
-                      const SizedBox(height: 30),
-                    ],
-                  ),
+            return SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 60),
+                child: Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        int chatId = 1;
+                        GoRouter.of(context).push('/chat/$chatId');
+                      },
+                      child: const Text('Experiment\nGo to Chat id 1'),
+                    ),
+                    const SizedBox(height: 10),
+                    TripData(trip: state.trip!),
+                    const SizedBox(height: 10),
+                    TripDetailInfo(trip: state.trip!),
+                    const SizedBox(height: 10),
+                    CalendarPicker(
+                      onCalendarResponse: (resp) {
+                        context.read<TripDetailBloc>().add(
+                            TripDetailEvent.getDateAndTime(dateTime: resp));
+                      },
+                      dateTime: state.dateTime ?? '',
+                    ),
+                    const SizedBox(height: 11),
+                    UploadScanFiles(
+                      onAddFile: () {
+                        context
+                            .read<TripDetailBloc>()
+                            .add(const TripDetailEvent.pickFile());
+                      },
+                      onScanFile: (image) {
+                        context
+                            .read<TripDetailBloc>()
+                            .add(TripDetailEvent.scanDoc(image));
+                      },
+                      selectedFile: state.selectedFile,
+                      onFileRemove: (file) {
+                        context
+                            .read<TripDetailBloc>()
+                            .add(TripDetailEvent.removeFile(file: file));
+                      },
+                      onUploadPressed: () {
+                        context
+                            .read<TripDetailBloc>()
+                            .add(const TripDetailEvent.uploadFiles());
+                      },
+                      isFileLoading: state.isFileLoading,
+                    ),
+                    const SizedBox(height: 30),
+                  ],
                 ),
               ),
             );

@@ -19,26 +19,24 @@ class TripItemsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: RefreshIndicator(
-        onRefresh: () async {
-          if (isHistoryWidget) {
-            context
-                .read<TripListBloc>()
-                .add(const TripListEvent.fetchHistoryTrips());
-          } else {
-            context.read<TripListBloc>().add(const TripListEvent.fetchTrips());
-          }
-        },
-        child: ListView.builder(
-          padding: const EdgeInsets.only(bottom: 80),
-          shrinkWrap: true,
-          itemCount: trips.length,
-          itemBuilder: (context, index) => TripItemWidget(
-            onPressed: onPressed,
-            tripListModel: trips[index],
-            isHistoryWidget: isHistoryWidget,
-          ),
+    return RefreshIndicator(
+      onRefresh: () async {
+        if (isHistoryWidget) {
+          context
+              .read<TripListBloc>()
+              .add(const TripListEvent.fetchHistoryTrips());
+        } else {
+          context.read<TripListBloc>().add(const TripListEvent.fetchTrips());
+        }
+      },
+      child: ListView.builder(
+        padding: const EdgeInsets.only(bottom: 80),
+        shrinkWrap: true,
+        itemCount: trips.length,
+        itemBuilder: (context, index) => TripItemWidget(
+          onPressed: onPressed,
+          tripListModel: trips[index],
+          isHistoryWidget: isHistoryWidget,
         ),
       ),
     );
