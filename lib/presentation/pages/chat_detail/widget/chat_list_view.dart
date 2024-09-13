@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tms_driver/presentation/blocks/chat_detail/bloc/chat_detail_bloc.dart';
+import 'package:tms_driver/presentation/blocks/chat_detail/chat_detail_bloc.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_bar_info.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_bottom_input.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_list_item_widget.dart';

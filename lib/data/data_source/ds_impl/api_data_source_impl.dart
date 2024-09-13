@@ -9,6 +9,8 @@ import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
 import 'package:tms_driver/data/models/document/upload_document_response.dart';
 import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_list_model/dispatch_list_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/data/models/user/user_model.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler.dart';
 
@@ -168,5 +170,31 @@ class ApiDataSourceImpl implements ApiDataSource {
       // errorHandler.handleException(e as Exception);
       throw Exception('Error getting notifications');
     }
+  }
+
+  @override
+  Future<List<DispatchListModel>> getTrips() async {
+    final response = await _makeRequest(() => dio.get('/dispatches'));
+    final tripsJson = response.data as List<dynamic>;
+    return tripsJson.map((json) => DispatchListModel.fromJson(json)).toList();
+  }
+
+  @override
+  Future<List<DispatchListModel>> getHistoryTrips() async {
+    final response = await _makeRequest(() => dio.get('/dispatches/history'));
+    final tripsJson = response.data as List<dynamic>;
+    return tripsJson.map((json) => DispatchListModel.fromJson(json)).toList();
+  }
+
+  @override
+  Future<DispatchModel> getTripById(int tripId) async {
+    final response = await _makeRequest(() => dio.get('/dispatches/$tripId'));
+    return DispatchModel.fromJson(response.data);
+  }
+
+  @override
+  Future<DispatchModel?> getActiveTrip() async {
+    final response = await _makeRequest(() => dio.get('/dispatches/active'));
+    return DispatchModel.fromJson(response.data);
   }
 }

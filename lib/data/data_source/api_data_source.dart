@@ -4,6 +4,8 @@ import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
 import 'package:tms_driver/data/models/document/upload_document_response.dart';
 import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_list_model/dispatch_list_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/data/models/user/user_model.dart';
 
 abstract class ApiDataSource {
@@ -35,4 +37,12 @@ abstract class ApiDataSource {
   Future<UploadDocumentResponse> uploadDocument(File file, String name);
 
   Future<List<NotificationModel>> getNotifications();
+
+  Future<List<DispatchListModel>> getTrips();
+
+  Future<DispatchModel> getTripById(int tripId);
+
+  Future<DispatchModel?> getActiveTrip();
+
+  Future<List<DispatchListModel>> getHistoryTrips();
 }

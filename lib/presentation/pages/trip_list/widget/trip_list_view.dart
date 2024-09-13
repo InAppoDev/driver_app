@@ -1,59 +1,194 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tms_driver/presentation/blocks/trip_list/trip_bloc.dart';
+import 'package:tms_driver/presentation/blocks/trip_list/trip_list_bloc.dart';
 import 'package:tms_driver/presentation/pages/active_trip/active_trip.dart';
-import 'package:tms_driver/presentation/pages/trip_list/widget/new_trips.dart';
-import 'package:tms_driver/presentation/pages/trip_list/widget/tabs.dart';
+import 'package:tms_driver/presentation/pages/trip_list/widget/trip_items_list.dart';
 import 'package:tms_driver/presentation/utils/enums/enums.dart';
 
-class TripListView extends StatelessWidget {
+class TripListView extends StatefulWidget {
   const TripListView({super.key});
 
   @override
+  TripListViewState createState() => TripListViewState();
+}
+
+class TripListViewState extends State<TripListView>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+
+    _tabController.addListener(() {
+      if (_tabController.indexIsChanging) {
+        final status = TabStatus.values[_tabController.index];
+        context
+            .read<TripListBloc>()
+            .add(TripListEvent.changeTab(status: status));
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocListener<TripBloc, TripState>(
-      listener: (context, listenerState) {
-        if (listenerState.tabStatus == TabStatus.activeTrip &&
-            listenerState.trip != null) {}
-      },
-      child: BlocBuilder<TripBloc, TripState>(
-        builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: Column(
-              children: [
-                Tabs(
-                  status: state.tabStatus,
-                  onPressed: (status) {
-                    context.read<TripBloc>().add(
-                          TripEvent.changeTab(status: status),
-                        );
-                  },
+    final theme = Theme.of(context);
+
+    return BlocBuilder<TripListBloc, TripListState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  color: theme.scaffoldBackgroundColor,
                 ),
-                if (state.tabStatus == TabStatus.newTrips)
-                  NewTrips(
-                    trips: context.read<TripBloc>().trips,
-                    onPressed: (trip) async {
-                      final navigateToActiveTrip =
-                          await context.push('/confirmTrip', extra: trip);
-                      if (navigateToActiveTrip as bool && context.mounted) {
-                        context.read<TripBloc>().add(
-                              TripEvent.changeTab(
-                                status: TabStatus.activeTrip,
-                                trip: trip,
-                              ),
-                            );
-                      }
-                    },
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                child: TabBar(
+                  controller: _tabController,
+                  indicator: BoxDecoration(
+                    color: theme.cardColor,
+                    borderRadius: const BorderRadius.all(Radius.circular(4)),
                   ),
-                if (state.tabStatus == TabStatus.activeTrip &&
-                    state.trip != null)
-                  ActiveTrip(trip: state.trip!),
-              ],
+                  labelColor: theme.scaffoldBackgroundColor,
+                  unselectedLabelColor: theme.focusColor,
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  dividerHeight: 0,
+                  indicatorWeight: 0,
+                  labelStyle:
+                      theme.textTheme.titleLarge!.copyWith(fontSize: 14),
+                  unselectedLabelStyle:
+                      theme.textTheme.titleLarge!.copyWith(fontSize: 10),
+                  tabs: [
+                    _buildTabWithCount(
+                      context: context,
+                      name: TabStatus.newTrips.label,
+                      isSelected: _tabController.index == 0,
+                      count: state.trips.length.toString(),
+                    ),
+                    _buildSimpleTab(
+                      context: context,
+                      name: TabStatus.activeTrip.label,
+                      isSelected: _tabController.index == 1,
+                    ),
+                    _buildSimpleTab(
+                      context: context,
+                      name: TabStatus.tripHistory.label,
+                      isSelected: _tabController.index == 2,
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    TripItemsList(
+                      trips: state.trips,
+                      onPressed: (trip) async {
+                        final navigateToActiveTrip =
+                            await context.push('/confirmTrip', extra: trip);
+                        if (navigateToActiveTrip as bool && context.mounted) {
+                          context.read<TripListBloc>().add(
+                                TripListEvent.changeTab(
+                                  status: TabStatus.activeTrip,
+                                  trip: trip,
+                                ),
+                              );
+                        }
+                      },
+                    ),
+                    const ActiveTrip(),
+                    TripItemsList(
+                      trips: state.historyTrips,
+                      onPressed: (_) {},
+                      isHistoryWidget: true,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildTabWithCount({
+    required BuildContext context,
+    required String name,
+    required bool isSelected,
+    required String count,
+  }) {
+    final theme = Theme.of(context);
+    final width = MediaQuery.of(context).size.width;
+    final double fontSize = width <= 410 ? 10 : 14;
+    return Tab(
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              name,
+              style: theme.textTheme.titleLarge!.copyWith(
+                fontSize: fontSize,
+                color: isSelected
+                    ? theme.scaffoldBackgroundColor
+                    : theme.focusColor,
+              ),
             ),
-          );
-        },
+            const SizedBox(width: 8),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 7.5),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(50)),
+                color: isSelected
+                    ? theme.scaffoldBackgroundColor
+                    : theme.cardColor,
+              ),
+              child: Text(
+                count,
+                style: theme.textTheme.titleLarge!.copyWith(
+                  fontSize: fontSize,
+                  color: isSelected
+                      ? theme.focusColor
+                      : theme.scaffoldBackgroundColor,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSimpleTab({
+    required BuildContext context,
+    required String name,
+    required bool isSelected,
+  }) {
+    final theme = Theme.of(context);
+    final width = MediaQuery.of(context).size.width;
+    final double fontSize = width <= 410 ? 10 : 12;
+    return Tab(
+      child: Text(
+        name,
+        style: theme.textTheme.titleLarge!.copyWith(
+          fontSize: fontSize,
+          color: isSelected ? theme.scaffoldBackgroundColor : theme.focusColor,
+        ),
       ),
     );
   }

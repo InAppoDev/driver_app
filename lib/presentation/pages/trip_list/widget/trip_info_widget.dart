@@ -37,46 +37,49 @@ class TripInfoWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
           margin: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    topic,
-                    style: theme.textTheme.bodySmall!
-                        .copyWith(color: theme.disabledColor),
-                  ),
-                  Text(
-                    address,
-                    style: theme.textTheme.bodySmall!.copyWith(
-                      color: theme.dividerColor,
-                      fontSize: 9,
-                      fontWeight: FontWeight.w800,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      topic,
+                      style: theme.textTheme.bodySmall!
+                          .copyWith(color: theme.disabledColor),
                     ),
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    context.localizations.dateTime,
-                    style: theme.textTheme.bodySmall!
-                        .copyWith(color: theme.disabledColor),
-                  ),
-                  CustomDateWidget(
-                    date: time,
-                    textStyle: theme.textTheme.bodySmall!.copyWith(
-                      color: theme.dividerColor,
-                      fontSize: 9,
-                      fontWeight: FontWeight.w800,
+                    Text(
+                      address,
+                      style: theme.textTheme.bodySmall!.copyWith(
+                        color: theme.dividerColor,
+                        fontSize: 9,
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      context.localizations.dateTime,
+                      style: theme.textTheme.bodySmall!
+                          .copyWith(color: theme.disabledColor),
+                    ),
+                    CustomDateWidget(
+                      date: time,
+                      textStyle: theme.textTheme.bodySmall!.copyWith(
+                        color: theme.dividerColor,
+                        fontSize: 9,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
         Padding(

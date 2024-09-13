@@ -1,9 +1,16 @@
 part of 'user_bloc.dart';
 
+enum UserStatus { initial, loading, loaded, error }
+
 @freezed
 class UserState with _$UserState {
-  const factory UserState.initial() = _Initial;
-  const factory UserState.loading() = _Loading;
-  const factory UserState.loaded({required UserModel user}) = _Loaded;
-  const factory UserState.error({required String message}) = _Error;
+  const factory UserState({
+    required UserStatus status,
+    UserModel? user,
+    String? errorMessage,
+  }) = _UserState;
+
+  factory UserState.initial() => const UserState(
+        status: UserStatus.initial,
+      );
 }

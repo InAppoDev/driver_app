@@ -1,325 +1,92 @@
 {
-    "profitDetails": "Profit Details",
-    "@profitDetails": {
-      "description": "Profit Details"
-    },
-    "belowIsAShortSummaryOfYourMonth": "Below is a short summary of your month",
-    "@belowIsAShortSummaryOfYourMonth": {
-      "description": "Below is a short summary of your mont"
-    },
-    "lifetimeStats": "Lifetime Stats",
-    "@lifetimeStats": {
-      "description": "Lifetime Stats"
-    },
-    "hereIsASummaryOfYourOverallPerformance": "Here is a summary of your overall\nperformance",
-    "@hereIsASummaryOfYourOverallPerformance": {
-      "description": "Here is a summary of your overall\nperformance"
-    },
-    "getStarted": "Get Started",
-    "@getStarted": {
-      "description": "Get Started"
-    },
-    "enterYourPhoneNumberToLoginAnAccount": "Enter your Phone number to login an account",
-    "@enterYourPhoneNumberToLoginAnAccount": {
-      "description": "Enter your Phone number to login an account"
-    },
-    "login": "Login",
-    "@login": {
-      "description": "Login"
-    },
-    "yourDataIsProtected": "Your data is protected and used solely for app authentication. We respect your privacy and security.",
-    "@yourDataIsProtected": {
-      "description": "Your data is protected and used solely for app authentication. We respect your privacy and security."
-    },
-    "verifyCode": "Verify Code",
-    "@verifyCode": {
-      "description": "Verify Code"
-    },
-    "enterCode": "Enter Code",
-    "@enterCode": {
-      "description": "Enter Codee"
-    },
-    "requestCode": "Request Code",
-    "@requestCode": {
-      "description": "Request Code"
-    },
+  "profitDetails": "Profit Details",
+  "belowIsAShortSummaryOfYourMonth": "Below is a short summary of your month",
+  "lifetimeStats": "Lifetime Stats",
+  "hereIsASummaryOfYourOverallPerformance": "Here is a summary of your overall\nperformance",
+  "getStarted": "Get Started",
+  "enterYourPhoneNumberToLoginAnAccount": "Enter your Phone number to login an account",
+  "login": "Login",
+  "yourDataIsProtected": "Your data is protected and used solely for app authentication. We respect your privacy and security.",
+  "verifyCode": "Verify Code",
+  "enterCode": "Enter Code",
+  "requestCode": "Request Code",
   "initializing": "Initializing...",
-  "@initializing": {
-    "description": "Initializing..."
-  },
   "logout": "Logout",
-  "@logout": {
-    "description": "Logout"
-  },
   "accountInformation": "Account Information",
-  "@accountInformation": {
-    "description": "Account Information"
-  },
   "phone": "Phone",
-  "@phone": {
-    "description": "Phone"
-  },
   "address": "Address",
-  "@address": {
-    "description": "Address"
-  },
   "city": "City",
-  "@city": {
-    "description": "City"
-  },
   "stateCode": "State Code",
-  "@stateCode": {
-    "description": "State Code"
-  },
   "zipCode": "Zip Code",
-  "@zipCode": {
-    "description": "Zip Code"
-  },
   "trackYourWorkAndGetTheResult": "Track Your work and get the result",
-  "@trackYourWorkAndGetTheResult": {
-    "description": "Track Your work and get the result"
-  },
   "rememberToKeepTrackOfYourProfessionalAccomplishments": "Remember to keep track of your professional accomplishments.",
-  "@rememberToKeepTrackOfYourProfessionalAccomplishments": {
-    "description": "Remember to keep track of your professional accomplishments."
-  },
   "stayOrganizedWithTeam": "Stay organized with team",
-  "@stayOrganizedWithTeam": {
-    "description": "Stay organized with team"
-  },
   "butUnderstandingTheContributionsOurColleaguesMakeToOurTeamsAndCompanies": "But understanding the contributions our colleagues make to our teams and companies.",
-  "@butUnderstandingTheContributionsOurColleaguesMakeToOurTeamsAndCompanies": {
-    "description": "But understanding the contributions our colleagues make to our teams and companies."
-  },
   "getNotifiedWhenWorkHappens": "Get notified when work happens",
-  "@getNotifiedWhenWorkHappens": {
-    "description": "Get notified when work happens"
-  },
   "takeControlOfNotificationsCollaborateLiveOrOnYourOwnTime": "Take control of notifications, collaborate live or on your own time.",
-  "@takeControlOfNotificationsCollaborateLiveOrOnYourOwnTime": {
-    "description": "Take control of notifications, collaborate live or on your own time."
-  },
   "start": "START",
-  "@start": {
-    "description": "START"
-  },
   "skip": "SKIP",
-  "@skip": {
-    "description": "SKIP"
-  },
   "next": "NEXT",
-  "@next": {
-    "description": "NEXT"
-  },
   "home": "Home",
-  "@home": {
-    "description": "Home"
-  },
   "trips": "Trips",
-  "@trips": {
-    "description": "Trips"
-  },
   "messages": "Messages",
-  "@messages": {
-    "description": "Messages"
-  },
   "you": "You",
-  "@you": {
-    "description": "You"
-  },
   "driveOn": "Drive on",
-  "@driveOn": {
-    "description": "Drive on"
-  },
   "driveApp": "DRIVER APP",
-  "@driveApp": {
-    "description": "DRIVER APP"
-  },
   "totalMiles": "Total Miles",
-  "@totalMiles": {
-    "description": "Total Miles"
-  },
   "checkCalls": "Check Calls",
-  "@checkCalls": {
-    "description": "Check Calls"
-  },
   "driveTime": "Drive Time",
-  "@driveTime": {
-    "description": "Drive Time"
-  },
   "k": "k",
-  "@k": {
-    "description": "k"
-  },
   "m": "M",
-  "@m": {
-    "description": "M"
-  },
   "mph": "Mph",
-  "@mph": {
-    "description": "Mph"
-  },
   "h": "h",
-  "@h": {
-    "description": "h"
-  },
   "totalTrips": "Total trips",
-  "@totalTrips": {
-    "description": "Total trips"
-  },
   "totalStops": "Total Stops",
-  "@totalStops": {
-    "description": "Total Stops"
-  },
   "shortestTrip": "Shortest Trip",
-  "@shortestTrip": {
-    "description": "Shortest Trip"
-  },
   "longestTrip": "Longest Trip",
-  "@longestTrip": {
-    "description": "Longest Trip"
-  },
   "averageSpeed": "Average Speed",
-  "@averageSpeed": {
-    "description": "Average Speed"
-  },
   "milesToGo": "Miles to go",
-  "@milesToGo": {
-    "description": "Miles to go"
-  },
   "tripNumber": "Trip № 12321312312232",
-  "@tripNumber": {
-    "description": "Trip № 12321312312232"
-  },
   "loadDamage": "Load damage",
-  "@loadDamage": {
-    "description": "Load damage"
-  },
   "startingPoint": "Starting point",
-  "@startingPoint": {
-    "description": "Starting point"
-  },
   "youHaventYetStartedTheTrip": "You haven`t yet started the trip.",
-  "@youHaventYetStartedTheTrip": {
-    "description": "You haven`t yet started the trip."
-  },
   "pickUp": "Pick up #2133123",
-  "@pickUp": {
-    "description": "Pick up #2133123"
-  },
   "allStops": "All Stops",
-  "@allStops": {
-    "description": "All Stops"
-  },
+  "hideStops": "Hide Stops",
   "tripInfo": "TRIP INFO",
-  "@tripInfo": {
-    "description": "TRIP INFO"
-  },
   "hoursOfOperation": "Hours of operation:",
-  "@hoursOfOperation": {
-    "description": "Hours of operation:"
-  },
   "weight": "WEIGHT:",
-  "@weight": {
-    "description": "WEIGHT:"
-  },
   "tons": "Tons:",
-  "@tons": {
-    "description": "Tons:"
-  },
   "commodity": "Commodity:",
-  "@commodity": {
-    "description": "Commodity:"
-  },
   "pallets": "Pallets:",
-  "@pallets": {
-    "description": "Pallets:"
-  },
   "temperature": "Temperature:",
-  "@temperature": {
-    "description": "Temperature:"
-  },
   "selectTheDateAndTimeOfArrivalAt": "Select the date and time of arrival at PICK UP #1:",
-  "@selectTheDateAndTimeOfArrivalAt": {
-    "description": "Select the date and time of arrival at PICK UP #1:"
-  },
   "selectDateTime": "Select Date\\ Time",
-  "@selectDateTime": {
-    "description": "Select Date\\ Time"
-  },
   "select": "SELECT",
-  "@select": {
-    "description": "SELECT"
-  },
   "confirm": "CONFIRM",
-  "@confirm": {
-    "description": "CONFIRM"
-  },
   "selectETAAt": "Select ETA at PICK UP#1:",
-  "@selectETAAt": {
-    "description": "Select ETA at PICK UP#1:"
-  },
   "bolDocument": "BOL document:",
-  "@bolDocument": {
-    "description": "BOL document:"
-  },
   "uploadFiles": "Upload files",
-  "@uploadFiles": {
-    "description": "Upload files"
-  },
   "or": "or",
-  "@or": {
-    "description": "or"
-  },
   "uploadTheBOLDocumentOrYouCanScanIt": "Upload the BOL document or you can scan it.",
-  "@uploadTheBOLDocumentOrYouCanScanIt": {
-    "description": "Upload the BOL document or you can scan it."
-  },
   "upload": "UPLOAD",
-  "@upload": {
-    "description": "UPLOAD"
-  },
   "confirmThatYouHaveEmbarkedOnThisTrip": "Confirm that you have embarked on this trip:",
-  "@confirmThatYouHaveEmbarkedOnThisTrip": {
-    "description": "Confirm that you have embarked on this trip:"
-  },
   "approvedTrip": "Approved trip",
-  "@approvedTrip": {
-    "description": "Approved trip"
-  },
   "currentStop": "Current Stop",
-  "@currentStop": {
-    "description": "Current Stop"
-  },
   "min": "min",
-  "@min": {
-    "description": "min"
-  },
   "hour": "hour",
-  "@hour": {
-    "description": "hour"
-  },
   "custom": "Custom",
-  "@custom": {
-    "description": "Custom"
-  },
-  "totalMilesMiles": "Total miles: {miles} miles",
+  "totalMilesMiles": "Total: {miles} miles",
   "@totalMilesMiles": {
     "description": "Text showing the total miles of a trip",
     "placeholders": {
       "miles": {
-        "type": "int"
+        "type": "String"
       }
     }
   },
   "dateTime": "Date/time",
-  "@dateTime": {
-    "description": "Date/time"
-  },
   "emergencyPhone": "Emergency Phone",
-  "@emergencyPhone": {
-    "description": "Emergency Phone"
-  },
   "errorMessage": "Error: {message}",
   "@errorMessage": {
     "description": "Error message displayed when something goes wrong",
@@ -331,29 +98,11 @@
     }
   },
   "permissions": "Permissions",
-  "@permissions": {
-    "description": "Permissions"
-  },
   "dismiss": "DISMISS",
-  "@dismiss": {
-    "description": "DISMISS"
-  },
   "youHaveNoMessagesYetPullToRefresh": "You have no messages yet, pull to refresh the page",
-  "@youHaveNoMessagesYetPullToRefresh": {
-    "description": "You have no messages yet, pull to refresh the page"
-  },
   "editETA": "Edit ETA:",
-  "@editETA": {
-    "description": "Edit ETA:"
-  },
   "setValue": "Set Value",
-  "@setValue": {
-    "description": "Set Value"
-  },
   "startDrive": "START DRIVE",
-  "@startDrive": {
-    "description": "START DRIVE"
-  },
   "distanceKm": "{distance}km",
   "@distanceKm": {
     "description": "Distance in kilometers",
@@ -362,6 +111,7 @@
         "type": "int"
       }
     }
-  }
+  },
+  "failedToLoadTrip": "Failed to load trip information. Please try again later or contact support."
 }
 

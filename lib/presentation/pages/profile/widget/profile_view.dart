@@ -10,42 +10,36 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
     return BlocListener<UserBloc, UserState>(
       listener: (context, state) {
-        if (state == const UserState.initial()) {
+        if (state.status == UserStatus.initial) {
           context.go('/splash');
         }
       },
       child: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
-          return Container(
-            decoration: BoxDecoration(color: Theme.of(context).canvasColor),
-            height: MediaQuery.of(context).size.height,
-            padding: const EdgeInsets.only(bottom: 75),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  state.maybeWhen(
-                    loaded: (user) => UserProfile(user: user),
-                    orElse: () => const SizedBox.shrink(),
-                  ),
-                  state.when(
-                    initial: () => Text(context.localizations.initializing),
-                    loading: () => SizedBox(
-                      height: height * 0.425,
-                      child: const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    ),
-                    loaded: (user) => Container(),
-                    error: (message) =>
-                        Text(context.localizations.errorMessage(message)),
-                  ),
-                ],
+          if (state.status == UserStatus.loading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (state.status == UserStatus.loaded) {
+            return SingleChildScrollView(
+              child: Container(
+                decoration: BoxDecoration(color: Theme.of(context).canvasColor),
+                child: Column(
+                  children: [
+                    UserProfile(user: state.user!),
+                    const SizedBox(height: 75),
+                  ],
+                ),
               ),
-            ),
-          );
+            );
+          }
+          if (state.status == UserStatus.error) {
+            Text(context.localizations.errorMessage(state.errorMessage!));
+          }
+          return const SizedBox.shrink();
         },
       ),
     );

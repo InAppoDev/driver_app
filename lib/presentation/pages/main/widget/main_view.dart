@@ -170,16 +170,14 @@ class MainView extends StatelessWidget {
           children: [
             BlocBuilder<UserBloc, UserState>(
               builder: (context, state) {
-                return state.map(
-                  initial: (_) => Icon(
-                    Icons.person,
-                    color: color,
-                  ),
-                  loading: (_) => CircularProgressIndicator(
+                if (state.status == UserStatus.loading) {
+                  return CircularProgressIndicator(
                     color: color,
                     strokeWidth: 2,
-                  ),
-                  loaded: (loadedState) => Column(
+                  );
+                }
+                if (state.status == UserStatus.loaded) {
+                  return Column(
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8),
@@ -187,7 +185,7 @@ class MainView extends StatelessWidget {
                             width: 22,
                             height: 22,
                             child: Image.network(
-                              loadedState.user.photo!,
+                              state.user!.photo!,
                               fit: BoxFit.cover,
                               width: 22,
                               height: 22,
@@ -209,7 +207,7 @@ class MainView extends StatelessWidget {
                             )),
                       ),
                       Text(
-                        loadedState.user.firstName,
+                        state.user!.firstName,
                         style: TextStyle(
                           color: color,
                           fontWeight: fontWeight,
@@ -218,12 +216,9 @@ class MainView extends StatelessWidget {
                         maxLines: 1,
                       ),
                     ],
-                  ),
-                  error: (_) => const Icon(
-                    Icons.error,
-                    color: Colors.red,
-                  ),
-                );
+                  );
+                }
+                return const SizedBox.shrink();
               },
             ),
           ],

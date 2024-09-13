@@ -1,4 +1,4 @@
-part of 'trip_bloc.dart';
+part of 'trip_list_bloc.dart';
 
 enum TripStatus {
   initial,
@@ -6,18 +6,16 @@ enum TripStatus {
 }
 
 @freezed
-class TripState with _$TripState {
-  const factory TripState({
+class TripListState with _$TripListState {
+  const factory TripListState({
     required TripStatus status,
     @Default(TabStatus.newTrips) TabStatus tabStatus,
-    String? errorMessage,
-    TripModel? trip,
     String? dateTime,
-    File? selectedFile,
-    @Default(false) bool isFileLoading,
+    @Default([]) List<DispatchListModel> trips,
+    @Default([]) List<DispatchListModel> historyTrips,
   }) = _TripState;
 
-  factory TripState.initial() => const TripState(
+  factory TripListState.initial() => const TripListState(
         status: TripStatus.initial,
         tabStatus: TabStatus.newTrips,
       );

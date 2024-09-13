@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tms_driver/data/models/trip/trip_model.dart';
+import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
@@ -9,11 +9,12 @@ import 'package:tms_driver/presentation/utils/extension/change_localization.dart
 class ConfirmDialog extends StatelessWidget {
   const ConfirmDialog({
     super.key,
-    required this.onConfirmPressed, required this.trip,
+    required this.onConfirmPressed,
+    required this.trip,
   });
 
   final VoidCallback onConfirmPressed;
-  final  TripModel trip;
+  final DispatchModel trip;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class ConfirmDialog extends StatelessWidget {
               SvgPicture.asset('assets/images/arrow_truck.svg'),
               const SizedBox(width: 8),
               Text(
-                trip.details.first.name ?? '',
+                trip.waypoints.first.type,
                 style: theme.textTheme.bodySmall!
                     .copyWith(color: theme.secondaryHeaderColor),
               ),
@@ -50,7 +51,7 @@ class ConfirmDialog extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           Text(
-            trip.details.first.address ?? '',
+            trip.waypoints.first.address,
             style: theme.textTheme.titleSmall!.copyWith(
                 fontWeight: FontWeight.w600, color: theme.dividerColor),
           ),
@@ -62,7 +63,7 @@ class ConfirmDialog extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           CustomDateWidget(
-            date: trip.details.first.data ?? 1716562800000,
+            date: trip.waypoints.first.apptFromTimestamp,
             textStyle: theme.textTheme.titleSmall!.copyWith(
               fontWeight: FontWeight.w600,
               color: theme.dividerColor,

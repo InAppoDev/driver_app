@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tms_driver/data/models/trip/trip_model.dart';
-import 'package:tms_driver/presentation/blocks/trip_list/trip_bloc.dart';
+import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_picker.dart';
-import 'package:tms_driver/presentation/pages/active_trip/widget/upload_scan_files.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_data.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_detail_info.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
@@ -15,151 +13,135 @@ import 'package:tms_driver/presentation/utils/extension/change_localization.dart
 class ConfirmTripScreen extends StatelessWidget {
   const ConfirmTripScreen({
     super.key,
-    required this.trip,
+    required this.tripId,
   });
 
-  final TripModel trip;
+  final int tripId;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        leading: const SizedBox.shrink(),
-        leadingWidth: 0,
-        backgroundColor: theme.scaffoldBackgroundColor,
-        scrolledUnderElevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CustomIconButton(
-              height: 30,
-              icon: 'ios_arrow',
-              iconColor: theme.scaffoldBackgroundColor,
-              onPressed: () {
-                context.pop(false);
-              },
-            ),
-            Text(
-              trip.details.first.name ?? '',
-              style: theme.textTheme.titleSmall!.copyWith(
-                color: theme.disabledColor,
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 4,
-                vertical: 6,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(4),
+
+    return BlocProvider(
+      create: (context) => TripDetailBloc()
+        ..add(TripDetailEvent.fetchTripDetail(tripId: tripId)),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: CustomIconButton(
+            icon: 'arrow',
+            onPressed: context.pop,
+            justIcon: true,
+            width: 20,
+            height: 20,
+            iconColor: Theme.of(context).dividerColor,
+          ),
+          leadingWidth: 40,
+          backgroundColor: theme.scaffoldBackgroundColor,
+          scrolledUnderElevation: 0,
+          centerTitle: true,
+          title: BlocBuilder<TripDetailBloc, TripDetailState>(
+            builder: (context, state) {
+              if (state.status == ActiveTripStatus.success &&
+                  state.trip != null) {
+                return Text(
+                  '${context.localizations.confirm} ID №${state.trip!.truckLoadId}',
+                  style: theme.textTheme.titleSmall!.copyWith(
+                    color: theme.disabledColor,
+                  ),
+                );
+              }
+              return Text(
+                context.localizations.confirm,
+                style: theme.textTheme.titleSmall!.copyWith(
+                  color: theme.disabledColor,
                 ),
-                color: theme.cardColor,
-              ),
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    'assets/images/load_box.svg',
-                  ),
-                  const SizedBox(width: 6),
-                  Text(
-                    context.localizations.loadDamage,
-                    style: theme.textTheme.bodySmall!
-                        .copyWith(fontWeight: FontWeight.w600),
-                  ),
-                ],
-              ),
-            ),
-          ],
+              );
+            },
+          ),
         ),
-      ),
-      backgroundColor: theme.canvasColor,
-      body: BlocProvider(
-        create: (context) => TripBloc(),
-        child: BlocBuilder<TripBloc, TripState>(
+        backgroundColor: theme.canvasColor,
+        body: BlocBuilder<TripDetailBloc, TripDetailState>(
           builder: (context, state) {
-            return SafeArea(
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: SingleChildScrollView(
+            if (state.status == ActiveTripStatus.loading) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (state.status == ActiveTripStatus.failure) {
+              return Center(
+                child: Text(
+                  context.localizations.failedToLoadTrip,
+                  style: TextStyle(color: theme.indicatorColor),
+                ),
+              );
+            } else if (state.status == ActiveTripStatus.success &&
+                state.trip != null) {
+              final DispatchModel trip = state.trip!;
+
+              return SafeArea(
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Column(
                         children: [
-                          const SizedBox(height: 11),
-                          TripData(onPressed: () {}, trip: trip),
-                          const SizedBox(height: 11),
-                          TripDetailInfo(trip: trip),
-                          const SizedBox(height: 11),
-                          CalendarPicker(
-                            onCalendarResponse: (resp) {
-                              context.read<TripBloc>().add(
-                                  TripEvent.getDateAndTime(dateTime: resp));
-                            },
-                            dateTime: state.dateTime ?? '',
-                          ),
-                          const SizedBox(height: 11),
-                          UploadScanFiles(
-                            onAddFile: () {
-                              context
-                                  .read<TripBloc>()
-                                  .add(const TripEvent.pickFile());
-                            },
-                            onScanFile: (image) {
-                              context
-                                  .read<TripBloc>()
-                                  .add(TripEvent.scanDoc(image));
-                            },
-                            selectedFile: state.selectedFile,
-                            onFileRemove: (file) {
-                              context
-                                  .read<TripBloc>()
-                                  .add(TripEvent.removeFile(file: file));
-                            },
-                            onUploadPressed: () {
-                              context
-                                  .read<TripBloc>()
-                                  .add(const TripEvent.uploadFiles());
-                            },
-                            isFileLoading: state.isFileLoading,
-                          ),
-                          const SizedBox(height: 100),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: Container(
-                      padding: const EdgeInsets.all(15),
-                      color: theme.scaffoldBackgroundColor,
-                      child: Column(
-                        children: [
-                          Text(
-                            context.localizations
-                                .confirmThatYouHaveEmbarkedOnThisTrip,
-                            style: theme.textTheme.titleSmall!.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: theme.dividerColor,
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  const SizedBox(height: 10),
+                                  TripData(trip: trip),
+                                  const SizedBox(height: 10),
+                                  TripDetailInfo(trip: trip),
+                                  const SizedBox(height: 10),
+                                  CalendarPicker(
+                                    onCalendarResponse: (resp) {
+                                      context.read<TripDetailBloc>().add(
+                                            TripDetailEvent.getDateAndTime(
+                                              dateTime: resp,
+                                            ),
+                                          );
+                                    },
+                                    dateTime: state.dateTime ?? '',
+                                  ),
+                                  const SizedBox(height: 100),
+                                ],
+                              ),
                             ),
                           ),
-                          const SizedBox(height: 10),
-                          CustomButton(
-                            label: context.localizations.startDrive,
-                            onPressed: () {
-                              context.pop(true);
-                            },
-                          ),
                         ],
                       ),
                     ),
-                  ),
-                ],
-              ),
-            );
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: Container(
+                        padding: const EdgeInsets.all(15),
+                        color: theme.scaffoldBackgroundColor,
+                        child: Column(
+                          children: [
+                            Text(
+                              context.localizations
+                                  .confirmThatYouHaveEmbarkedOnThisTrip,
+                              style: theme.textTheme.titleSmall!.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: theme.dividerColor,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            CustomButton(
+                              label: context.localizations.startDrive,
+                              onPressed: () {
+                                context.pop(true);
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }
+            return const SizedBox.shrink();
           },
         ),
       ),
