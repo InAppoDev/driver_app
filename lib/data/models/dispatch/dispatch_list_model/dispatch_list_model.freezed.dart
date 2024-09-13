@@ -25,7 +25,7 @@ mixin _$DispatchListModel {
   @JsonKey(name: 'route_total_mi')
   String get routeTotalMi => throw _privateConstructorUsedError;
   @JsonKey(name: 'waypoints')
-  List<DispatchListDetailModel> get waypoints =>
+  List<WaipointSummaryModel> get waypoints =>
       throw _privateConstructorUsedError;
 
   /// Serializes this DispatchListModel to a JSON map.
@@ -47,7 +47,7 @@ abstract class $DispatchListModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'route_total_mi') String routeTotalMi,
-      @JsonKey(name: 'waypoints') List<DispatchListDetailModel> waypoints});
+      @JsonKey(name: 'waypoints') List<WaipointSummaryModel> waypoints});
 }
 
 /// @nodoc
@@ -81,7 +81,7 @@ class _$DispatchListModelCopyWithImpl<$Res, $Val extends DispatchListModel>
       waypoints: null == waypoints
           ? _value.waypoints
           : waypoints // ignore: cast_nullable_to_non_nullable
-              as List<DispatchListDetailModel>,
+              as List<WaipointSummaryModel>,
     ) as $Val);
   }
 }
@@ -97,7 +97,7 @@ abstract class _$$DispatchListModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'route_total_mi') String routeTotalMi,
-      @JsonKey(name: 'waypoints') List<DispatchListDetailModel> waypoints});
+      @JsonKey(name: 'waypoints') List<WaipointSummaryModel> waypoints});
 }
 
 /// @nodoc
@@ -129,7 +129,7 @@ class __$$DispatchListModelImplCopyWithImpl<$Res>
       waypoints: null == waypoints
           ? _value._waypoints
           : waypoints // ignore: cast_nullable_to_non_nullable
-              as List<DispatchListDetailModel>,
+              as List<WaipointSummaryModel>,
     ));
   }
 }
@@ -141,7 +141,7 @@ class _$DispatchListModelImpl implements _DispatchListModel {
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'route_total_mi') required this.routeTotalMi,
       @JsonKey(name: 'waypoints')
-      required final List<DispatchListDetailModel> waypoints})
+      required final List<WaipointSummaryModel> waypoints})
       : _waypoints = waypoints;
 
   factory _$DispatchListModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -153,10 +153,10 @@ class _$DispatchListModelImpl implements _DispatchListModel {
   @override
   @JsonKey(name: 'route_total_mi')
   final String routeTotalMi;
-  final List<DispatchListDetailModel> _waypoints;
+  final List<WaipointSummaryModel> _waypoints;
   @override
   @JsonKey(name: 'waypoints')
-  List<DispatchListDetailModel> get waypoints {
+  List<WaipointSummaryModel> get waypoints {
     if (_waypoints is EqualUnmodifiableListView) return _waypoints;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_waypoints);
@@ -206,7 +206,7 @@ abstract class _DispatchListModel implements DispatchListModel {
           {@JsonKey(name: 'id') required final int id,
           @JsonKey(name: 'route_total_mi') required final String routeTotalMi,
           @JsonKey(name: 'waypoints')
-          required final List<DispatchListDetailModel> waypoints}) =
+          required final List<WaipointSummaryModel> waypoints}) =
       _$DispatchListModelImpl;
 
   factory _DispatchListModel.fromJson(Map<String, dynamic> json) =
@@ -220,7 +220,7 @@ abstract class _DispatchListModel implements DispatchListModel {
   String get routeTotalMi;
   @override
   @JsonKey(name: 'waypoints')
-  List<DispatchListDetailModel> get waypoints;
+  List<WaipointSummaryModel> get waypoints;
 
   /// Create a copy of DispatchListModel
   /// with the given fields replaced by the non-null parameter values.

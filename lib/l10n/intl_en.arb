@@ -108,7 +108,7 @@
     "description": "Distance in kilometers",
     "placeholders": {
       "distance": {
-        "type": "int"
+        "type": "String"
       }
     }
   },

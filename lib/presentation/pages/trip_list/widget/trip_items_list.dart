@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tms_driver/data/models/trip/dispatch_list_model/dispatch_list_model.dart';
+import 'package:tms_driver/data/models/dispatch/dispatch_list_model/dispatch_list_model.dart';
 import 'package:tms_driver/presentation/blocks/trip_list/trip_list_bloc.dart';
 
 import 'trip_item_widget.dart';

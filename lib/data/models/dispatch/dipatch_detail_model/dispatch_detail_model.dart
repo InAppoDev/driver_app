@@ -1,8 +1,8 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:tms_driver/data/models/trip/cargo_info/cargo_info_model.dart';
-import 'package:tms_driver/data/models/trip/location_details/location_details_model.dart';
+import 'package:tms_driver/data/models/dispatch/cargo_info/cargo_info_model.dart';
+import 'package:tms_driver/data/models/dispatch/location_details/location_details_model.dart';
 
 part 'dispatch_detail_model.freezed.dart';
 part 'dispatch_detail_model.g.dart';

@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'dispatch_list_detail_model.dart';
+part of 'waipoint_summary_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DispatchListDetailModelImpl _$$DispatchListDetailModelImplFromJson(
+_$WaipointSummaryModelImpl _$$WaipointSummaryModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$DispatchListDetailModelImpl(
+    _$WaipointSummaryModelImpl(
       id: (json['id'] as num).toInt(),
       type: json['type'] as String,
       typeTitle: json['type_title'] as String,
@@ -17,11 +17,11 @@ _$DispatchListDetailModelImpl _$$DispatchListDetailModelImplFromJson(
       stateCode: json['state_code'] as String,
       zipCode: json['zip_code'] as String,
       apptFromTimestamp: (json['appt_from_timestamp'] as num).toInt(),
-      apptToTimestamp: (json['appt_to_timestamp'] as num).toInt(),
+      apptToTimestamp: (json['appt_to_timestamp'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$DispatchListDetailModelImplToJson(
-        _$DispatchListDetailModelImpl instance) =>
+Map<String, dynamic> _$$WaipointSummaryModelImplToJson(
+        _$WaipointSummaryModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'type': instance.type,
