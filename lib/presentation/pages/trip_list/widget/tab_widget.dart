@@ -8,14 +8,14 @@ class TabWidget extends StatelessWidget {
     required this.isSelected,
     required this.onPressed,
     required this.name,
-    this.showMessageCount = false,
+    this.count,
   });
 
   final TabStatus status;
   final String name;
   final bool isSelected;
   final VoidCallback onPressed;
-  final bool showMessageCount;
+  final String? count;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class TabWidget extends StatelessWidget {
                     : theme.focusColor,
               ),
             ),
-            if (showMessageCount) ...[
+            if (count != null) ...[
               const SizedBox(width: 8),
               Container(
                 padding: const EdgeInsets.symmetric(
@@ -58,7 +58,7 @@ class TabWidget extends StatelessWidget {
                       : theme.cardColor,
                 ),
                 child: Text(
-                  '1',
+                  count!,
                   style: theme.textTheme.titleLarge!.copyWith(
                     color: isSelected
                         ? theme.focusColor

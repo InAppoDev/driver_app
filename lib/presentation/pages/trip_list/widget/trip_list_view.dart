@@ -19,6 +19,9 @@ class TripListView extends StatelessWidget {
           child: Column(
             children: [
               Tabs(
+                count: state.tabStatus == TabStatus.newTrips
+                    ? state.trips.length.toString()
+                    : null,
                 status: state.tabStatus,
                 onPressed: (status) {
                   context.read<TripListBloc>().add(

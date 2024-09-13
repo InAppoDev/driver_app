@@ -3,14 +3,15 @@ import 'package:tms_driver/presentation/pages/trip_list/widget/tab_widget.dart';
 import 'package:tms_driver/presentation/utils/enums/enums.dart';
 
 class Tabs extends StatelessWidget {
+  final TabStatus status;
+  final Function(TabStatus) onPressed;
+  final String? count;
   const Tabs({
     super.key,
     required this.status,
     required this.onPressed,
+    this.count,
   });
-
-  final TabStatus status;
-  final Function(TabStatus) onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class Tabs extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TabWidget(
-            showMessageCount: true,
+            count: count,
             status: status,
             isSelected: status == TabStatus.newTrips,
             onPressed: () {
