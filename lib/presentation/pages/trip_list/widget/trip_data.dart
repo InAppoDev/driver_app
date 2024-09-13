@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
+import 'package:tms_driver/presentation/pages/trip_list/widget/trip_info_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class TripData extends StatelessWidget {
@@ -115,27 +116,12 @@ class TripData extends StatelessWidget {
                             ? Column(
                                 children: [
                                   ...trip.waypoints.skip(1).map((waypoint) {
-                                    return ListTile(
-                                      contentPadding:
-                                          const EdgeInsets.symmetric(
-                                        horizontal: 16,
-                                        vertical: 0,
-                                      ),
-                                      title: Text(
-                                        waypoint.typeTitle,
-                                        style: theme.textTheme.bodySmall!
-                                            .copyWith(
-                                                color: theme.dividerColor),
-                                      ),
-                                      subtitle: Text(
-                                        waypoint.address,
-                                        style: theme.textTheme.bodySmall!
-                                            .copyWith(
-                                                color: theme.dividerColor),
-                                      ),
-                                      trailing: CustomDateWidget(
-                                        date: waypoint.apptFromTimestamp,
-                                      ),
+                                    return TripInfoWidget(
+                                      topic: waypoint.typeTitle,
+                                      address: waypoint.address,
+                                      time: waypoint.apptFromTimestamp,
+                                      showMidlLine: true,
+                                      showTipImage: true,
                                     );
                                   }),
                                 ],

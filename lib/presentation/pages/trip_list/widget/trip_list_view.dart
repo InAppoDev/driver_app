@@ -181,7 +181,7 @@ class TripListViewState extends State<TripListView>
   }) {
     final theme = Theme.of(context);
     final width = MediaQuery.of(context).size.width;
-    final double fontSize = width <= 410 ? 10 : 14;
+    final double fontSize = width <= 410 ? 10 : 12;
     return Tab(
       child: Text(
         name,

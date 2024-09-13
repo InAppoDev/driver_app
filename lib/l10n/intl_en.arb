@@ -76,7 +76,7 @@
   "min": "min",
   "hour": "hour",
   "custom": "Custom",
-  "totalMilesMiles": "Total miles: {miles} miles",
+  "totalMilesMiles": "Total: {miles} miles",
   "@totalMilesMiles": {
     "description": "Text showing the total miles of a trip",
     "placeholders": {

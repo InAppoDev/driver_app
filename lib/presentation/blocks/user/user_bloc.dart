@@ -14,25 +14,24 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   final UserRepository userRepo = GetIt.instance<UserRepository>();
   final AuthRepository authRepo = GetIt.instance<AuthRepository>();
 
-  UserBloc() : super(const UserState.initial()) {
-    on<UserEvent>(_userEvent);
+  UserBloc() : super(UserState.initial()) {
+    on<Started>(_userEvent);
+    on<Logout>(_logOutEvent);
   }
 
   FutureOr<void> _userEvent(event, emit) async {
-    await event.map(
-      started: (e) async {
-        emit(const UserState.loading());
-        try {
-          final user = await userRepo.getUser();
-          emit(UserState.loaded(user: user));
-        } catch (e) {
-          emit(UserState.error(message: e.toString()));
-        }
-      },
-      logout: (e) async {
-        await authRepo.clearTokens();
-        emit(const UserState.initial());
-      },
-    );
+    emit(state.copyWith(status: UserStatus.loading));
+    try {
+      final UserModel user = await userRepo.getUser();
+      emit(state.copyWith(status: UserStatus.loaded, user: user));
+    } catch (e) {
+      emit(
+          state.copyWith(status: UserStatus.error, errorMessage: e.toString()));
+    }
+  }
+
+  FutureOr<void> _logOutEvent(event, emit) async {
+    await authRepo.clearTokens();
+    emit(UserState.initial());
   }
 }

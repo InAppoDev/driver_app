@@ -56,7 +56,8 @@ class TripItemWidget extends StatelessWidget {
                         );
                       }),
                       Padding(
-                        padding: const EdgeInsets.only(left: 10, bottom: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 10),
                         child: Text(
                           context.localizations
                               .totalMilesMiles(tripListModel.routeTotalMi),
