@@ -10,4 +10,8 @@ abstract class TripRepository {
   Future<List<DispatchListModel>> getTrips();
 
   Future<DispatchModel> getTripById(int tripId);
+
+  Future<DispatchModel?> getActiveTrip();
+
+  Future<List<DispatchListModel>> getHistoryTrips();
 }

@@ -3,14 +3,17 @@ import 'package:tms_driver/data/models/trip/dispatch_list_model/dispatch_list_mo
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_info_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
-class NewTripsWidget extends StatelessWidget {
-  const NewTripsWidget({
+class TripItemWidget extends StatelessWidget {
+  final Function(DispatchListModel) onPressed;
+  final DispatchListModel tripListModel;
+  final bool isHistoryWidget;
+
+  const TripItemWidget({
     super.key,
     required this.onPressed,
     required this.tripListModel,
+    required this.isHistoryWidget,
   });
-  final Function(DispatchListModel) onPressed;
-  final DispatchListModel tripListModel;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +34,11 @@ class NewTripsWidget extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: theme.scaffoldBackgroundColor,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(8),
-                    bottomLeft: Radius.circular(8),
+                  borderRadius: BorderRadius.only(
+                    topLeft: const Radius.circular(8),
+                    bottomLeft: const Radius.circular(8),
+                    bottomRight: Radius.circular(isHistoryWidget ? 8 : 0),
+                    topRight: Radius.circular(isHistoryWidget ? 8 : 0),
                   ),
                 ),
                 child: Padding(
@@ -66,22 +71,23 @@ class NewTripsWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              width: 16,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(8),
-                  bottomRight: Radius.circular(8),
+            if (!isHistoryWidget)
+              Container(
+                width: 16,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(8),
+                    bottomRight: Radius.circular(8),
+                  ),
+                ),
+                child: Center(
+                  child: Icon(
+                    Icons.arrow_forward,
+                    size: 12,
+                    color: theme.scaffoldBackgroundColor,
+                  ),
                 ),
               ),
-              child: Center(
-                child: Icon(
-                  Icons.arrow_forward,
-                  size: 12,
-                  color: theme.scaffoldBackgroundColor,
-                ),
-              ),
-            ),
           ],
         ),
       ),

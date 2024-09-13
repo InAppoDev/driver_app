@@ -10,10 +10,13 @@ class TripDetailState with _$TripDetailState {
     File? selectedFile,
     String? errorMessage,
     @Default(false) bool isFileLoading,
+    @Default(false) bool isLoading,
     DispatchModel? trip,
+    @Default(false) bool areStopsVisible,
   }) = _TripDetailState;
 
   factory TripDetailState.initial() => const TripDetailState(
         status: ActiveTripStatus.initial,
+        isLoading: false,
       );
 }

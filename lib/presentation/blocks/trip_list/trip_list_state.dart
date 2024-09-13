@@ -12,6 +12,7 @@ class TripListState with _$TripListState {
     @Default(TabStatus.newTrips) TabStatus tabStatus,
     String? dateTime,
     @Default([]) List<DispatchListModel> trips,
+    @Default([]) List<DispatchListModel> historyTrips,
   }) = _TripState;
 
   factory TripListState.initial() => const TripListState(

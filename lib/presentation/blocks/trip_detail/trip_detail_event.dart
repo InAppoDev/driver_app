@@ -13,4 +13,6 @@ class TripDetailEvent with _$TripDetailEvent {
   const factory TripDetailEvent.uploadFiles() = UploadFiles;
   const factory TripDetailEvent.fetchTripDetail({required int tripId}) =
       FetchTripDetail;
+  const factory TripDetailEvent.toggleStopsVisibility() = ToggleStopsVisibility;
+  const factory TripDetailEvent.loadActiveTrip() = LoadActiveTrip;
 }

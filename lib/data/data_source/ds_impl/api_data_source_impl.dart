@@ -180,8 +180,21 @@ class ApiDataSourceImpl implements ApiDataSource {
   }
 
   @override
+  Future<List<DispatchListModel>> getHistoryTrips() async {
+    final response = await _makeRequest(() => dio.get('/dispatches/history'));
+    final tripsJson = response.data as List<dynamic>;
+    return tripsJson.map((json) => DispatchListModel.fromJson(json)).toList();
+  }
+
+  @override
   Future<DispatchModel> getTripById(int tripId) async {
     final response = await _makeRequest(() => dio.get('/dispatches/$tripId'));
+    return DispatchModel.fromJson(response.data);
+  }
+
+  @override
+  Future<DispatchModel?> getActiveTrip() async {
+    final response = await _makeRequest(() => dio.get('/dispatches/active'));
     return DispatchModel.fromJson(response.data);
   }
 }

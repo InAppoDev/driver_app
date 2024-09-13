@@ -25,6 +25,8 @@ mixin _$TripDetailEvent {
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
     required TResult Function(int tripId) fetchTripDetail,
+    required TResult Function() toggleStopsVisibility,
+    required TResult Function() loadActiveTrip,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,8 @@ mixin _$TripDetailEvent {
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
     TResult? Function(int tripId)? fetchTripDetail,
+    TResult? Function()? toggleStopsVisibility,
+    TResult? Function()? loadActiveTrip,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +51,8 @@ mixin _$TripDetailEvent {
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     TResult Function(int tripId)? fetchTripDetail,
+    TResult Function()? toggleStopsVisibility,
+    TResult Function()? loadActiveTrip,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +65,9 @@ mixin _$TripDetailEvent {
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
     required TResult Function(FetchTripDetail value) fetchTripDetail,
+    required TResult Function(ToggleStopsVisibility value)
+        toggleStopsVisibility,
+    required TResult Function(LoadActiveTrip value) loadActiveTrip,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +79,8 @@ mixin _$TripDetailEvent {
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
+    TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult? Function(LoadActiveTrip value)? loadActiveTrip,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +92,8 @@ mixin _$TripDetailEvent {
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     TResult Function(FetchTripDetail value)? fetchTripDetail,
+    TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult Function(LoadActiveTrip value)? loadActiveTrip,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +168,8 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
     required TResult Function(int tripId) fetchTripDetail,
+    required TResult Function() toggleStopsVisibility,
+    required TResult Function() loadActiveTrip,
   }) {
     return initialize();
   }
@@ -169,6 +184,8 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
     TResult? Function(int tripId)? fetchTripDetail,
+    TResult? Function()? toggleStopsVisibility,
+    TResult? Function()? loadActiveTrip,
   }) {
     return initialize?.call();
   }
@@ -183,6 +200,8 @@ class _$InitializeImpl implements Initialize {
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     TResult Function(int tripId)? fetchTripDetail,
+    TResult Function()? toggleStopsVisibility,
+    TResult Function()? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -201,6 +220,9 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
     required TResult Function(FetchTripDetail value) fetchTripDetail,
+    required TResult Function(ToggleStopsVisibility value)
+        toggleStopsVisibility,
+    required TResult Function(LoadActiveTrip value) loadActiveTrip,
   }) {
     return initialize(this);
   }
@@ -215,6 +237,8 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
+    TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult? Function(LoadActiveTrip value)? loadActiveTrip,
   }) {
     return initialize?.call(this);
   }
@@ -229,6 +253,8 @@ class _$InitializeImpl implements Initialize {
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     TResult Function(FetchTripDetail value)? fetchTripDetail,
+    TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult Function(LoadActiveTrip value)? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -319,6 +345,8 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
     required TResult Function(int tripId) fetchTripDetail,
+    required TResult Function() toggleStopsVisibility,
+    required TResult Function() loadActiveTrip,
   }) {
     return getDateAndTime(dateTime);
   }
@@ -333,6 +361,8 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
     TResult? Function(int tripId)? fetchTripDetail,
+    TResult? Function()? toggleStopsVisibility,
+    TResult? Function()? loadActiveTrip,
   }) {
     return getDateAndTime?.call(dateTime);
   }
@@ -347,6 +377,8 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     TResult Function(int tripId)? fetchTripDetail,
+    TResult Function()? toggleStopsVisibility,
+    TResult Function()? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (getDateAndTime != null) {
@@ -365,6 +397,9 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
     required TResult Function(FetchTripDetail value) fetchTripDetail,
+    required TResult Function(ToggleStopsVisibility value)
+        toggleStopsVisibility,
+    required TResult Function(LoadActiveTrip value) loadActiveTrip,
   }) {
     return getDateAndTime(this);
   }
@@ -379,6 +414,8 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
+    TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult? Function(LoadActiveTrip value)? loadActiveTrip,
   }) {
     return getDateAndTime?.call(this);
   }
@@ -393,6 +430,8 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     TResult Function(FetchTripDetail value)? fetchTripDetail,
+    TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult Function(LoadActiveTrip value)? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (getDateAndTime != null) {
@@ -463,6 +502,8 @@ class _$PickFileImpl implements PickFile {
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
     required TResult Function(int tripId) fetchTripDetail,
+    required TResult Function() toggleStopsVisibility,
+    required TResult Function() loadActiveTrip,
   }) {
     return pickFile();
   }
@@ -477,6 +518,8 @@ class _$PickFileImpl implements PickFile {
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
     TResult? Function(int tripId)? fetchTripDetail,
+    TResult? Function()? toggleStopsVisibility,
+    TResult? Function()? loadActiveTrip,
   }) {
     return pickFile?.call();
   }
@@ -491,6 +534,8 @@ class _$PickFileImpl implements PickFile {
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     TResult Function(int tripId)? fetchTripDetail,
+    TResult Function()? toggleStopsVisibility,
+    TResult Function()? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (pickFile != null) {
@@ -509,6 +554,9 @@ class _$PickFileImpl implements PickFile {
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
     required TResult Function(FetchTripDetail value) fetchTripDetail,
+    required TResult Function(ToggleStopsVisibility value)
+        toggleStopsVisibility,
+    required TResult Function(LoadActiveTrip value) loadActiveTrip,
   }) {
     return pickFile(this);
   }
@@ -523,6 +571,8 @@ class _$PickFileImpl implements PickFile {
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
+    TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult? Function(LoadActiveTrip value)? loadActiveTrip,
   }) {
     return pickFile?.call(this);
   }
@@ -537,6 +587,8 @@ class _$PickFileImpl implements PickFile {
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     TResult Function(FetchTripDetail value)? fetchTripDetail,
+    TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult Function(LoadActiveTrip value)? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (pickFile != null) {
@@ -625,6 +677,8 @@ class _$RemoveFileImpl implements RemoveFile {
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
     required TResult Function(int tripId) fetchTripDetail,
+    required TResult Function() toggleStopsVisibility,
+    required TResult Function() loadActiveTrip,
   }) {
     return removeFile(file);
   }
@@ -639,6 +693,8 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
     TResult? Function(int tripId)? fetchTripDetail,
+    TResult? Function()? toggleStopsVisibility,
+    TResult? Function()? loadActiveTrip,
   }) {
     return removeFile?.call(file);
   }
@@ -653,6 +709,8 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     TResult Function(int tripId)? fetchTripDetail,
+    TResult Function()? toggleStopsVisibility,
+    TResult Function()? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (removeFile != null) {
@@ -671,6 +729,9 @@ class _$RemoveFileImpl implements RemoveFile {
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
     required TResult Function(FetchTripDetail value) fetchTripDetail,
+    required TResult Function(ToggleStopsVisibility value)
+        toggleStopsVisibility,
+    required TResult Function(LoadActiveTrip value) loadActiveTrip,
   }) {
     return removeFile(this);
   }
@@ -685,6 +746,8 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
+    TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult? Function(LoadActiveTrip value)? loadActiveTrip,
   }) {
     return removeFile?.call(this);
   }
@@ -699,6 +762,8 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     TResult Function(FetchTripDetail value)? fetchTripDetail,
+    TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult Function(LoadActiveTrip value)? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (removeFile != null) {
@@ -795,6 +860,8 @@ class _$ScanDocImpl implements ScanDoc {
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
     required TResult Function(int tripId) fetchTripDetail,
+    required TResult Function() toggleStopsVisibility,
+    required TResult Function() loadActiveTrip,
   }) {
     return scanDoc(image);
   }
@@ -809,6 +876,8 @@ class _$ScanDocImpl implements ScanDoc {
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
     TResult? Function(int tripId)? fetchTripDetail,
+    TResult? Function()? toggleStopsVisibility,
+    TResult? Function()? loadActiveTrip,
   }) {
     return scanDoc?.call(image);
   }
@@ -823,6 +892,8 @@ class _$ScanDocImpl implements ScanDoc {
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     TResult Function(int tripId)? fetchTripDetail,
+    TResult Function()? toggleStopsVisibility,
+    TResult Function()? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (scanDoc != null) {
@@ -841,6 +912,9 @@ class _$ScanDocImpl implements ScanDoc {
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
     required TResult Function(FetchTripDetail value) fetchTripDetail,
+    required TResult Function(ToggleStopsVisibility value)
+        toggleStopsVisibility,
+    required TResult Function(LoadActiveTrip value) loadActiveTrip,
   }) {
     return scanDoc(this);
   }
@@ -855,6 +929,8 @@ class _$ScanDocImpl implements ScanDoc {
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
+    TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult? Function(LoadActiveTrip value)? loadActiveTrip,
   }) {
     return scanDoc?.call(this);
   }
@@ -869,6 +945,8 @@ class _$ScanDocImpl implements ScanDoc {
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     TResult Function(FetchTripDetail value)? fetchTripDetail,
+    TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult Function(LoadActiveTrip value)? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (scanDoc != null) {
@@ -938,6 +1016,8 @@ class _$UploadFilesImpl implements UploadFiles {
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
     required TResult Function(int tripId) fetchTripDetail,
+    required TResult Function() toggleStopsVisibility,
+    required TResult Function() loadActiveTrip,
   }) {
     return uploadFiles();
   }
@@ -952,6 +1032,8 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
     TResult? Function(int tripId)? fetchTripDetail,
+    TResult? Function()? toggleStopsVisibility,
+    TResult? Function()? loadActiveTrip,
   }) {
     return uploadFiles?.call();
   }
@@ -966,6 +1048,8 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     TResult Function(int tripId)? fetchTripDetail,
+    TResult Function()? toggleStopsVisibility,
+    TResult Function()? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (uploadFiles != null) {
@@ -984,6 +1068,9 @@ class _$UploadFilesImpl implements UploadFiles {
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
     required TResult Function(FetchTripDetail value) fetchTripDetail,
+    required TResult Function(ToggleStopsVisibility value)
+        toggleStopsVisibility,
+    required TResult Function(LoadActiveTrip value) loadActiveTrip,
   }) {
     return uploadFiles(this);
   }
@@ -998,6 +1085,8 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
+    TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult? Function(LoadActiveTrip value)? loadActiveTrip,
   }) {
     return uploadFiles?.call(this);
   }
@@ -1012,6 +1101,8 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     TResult Function(FetchTripDetail value)? fetchTripDetail,
+    TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult Function(LoadActiveTrip value)? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (uploadFiles != null) {
@@ -1101,6 +1192,8 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     required TResult Function(String image) scanDoc,
     required TResult Function() uploadFiles,
     required TResult Function(int tripId) fetchTripDetail,
+    required TResult Function() toggleStopsVisibility,
+    required TResult Function() loadActiveTrip,
   }) {
     return fetchTripDetail(tripId);
   }
@@ -1115,6 +1208,8 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     TResult? Function(String image)? scanDoc,
     TResult? Function()? uploadFiles,
     TResult? Function(int tripId)? fetchTripDetail,
+    TResult? Function()? toggleStopsVisibility,
+    TResult? Function()? loadActiveTrip,
   }) {
     return fetchTripDetail?.call(tripId);
   }
@@ -1129,6 +1224,8 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     TResult Function(String image)? scanDoc,
     TResult Function()? uploadFiles,
     TResult Function(int tripId)? fetchTripDetail,
+    TResult Function()? toggleStopsVisibility,
+    TResult Function()? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (fetchTripDetail != null) {
@@ -1147,6 +1244,9 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(UploadFiles value) uploadFiles,
     required TResult Function(FetchTripDetail value) fetchTripDetail,
+    required TResult Function(ToggleStopsVisibility value)
+        toggleStopsVisibility,
+    required TResult Function(LoadActiveTrip value) loadActiveTrip,
   }) {
     return fetchTripDetail(this);
   }
@@ -1161,6 +1261,8 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(UploadFiles value)? uploadFiles,
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
+    TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult? Function(LoadActiveTrip value)? loadActiveTrip,
   }) {
     return fetchTripDetail?.call(this);
   }
@@ -1175,6 +1277,8 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(UploadFiles value)? uploadFiles,
     TResult Function(FetchTripDetail value)? fetchTripDetail,
+    TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult Function(LoadActiveTrip value)? loadActiveTrip,
     required TResult orElse(),
   }) {
     if (fetchTripDetail != null) {
@@ -1198,13 +1302,313 @@ abstract class FetchTripDetail implements TripDetailEvent {
 }
 
 /// @nodoc
+abstract class _$$ToggleStopsVisibilityImplCopyWith<$Res> {
+  factory _$$ToggleStopsVisibilityImplCopyWith(
+          _$ToggleStopsVisibilityImpl value,
+          $Res Function(_$ToggleStopsVisibilityImpl) then) =
+      __$$ToggleStopsVisibilityImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ToggleStopsVisibilityImplCopyWithImpl<$Res>
+    extends _$TripDetailEventCopyWithImpl<$Res, _$ToggleStopsVisibilityImpl>
+    implements _$$ToggleStopsVisibilityImplCopyWith<$Res> {
+  __$$ToggleStopsVisibilityImplCopyWithImpl(_$ToggleStopsVisibilityImpl _value,
+      $Res Function(_$ToggleStopsVisibilityImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
+  const _$ToggleStopsVisibilityImpl();
+
+  @override
+  String toString() {
+    return 'TripDetailEvent.toggleStopsVisibility()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ToggleStopsVisibilityImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function(String image) scanDoc,
+    required TResult Function() uploadFiles,
+    required TResult Function(int tripId) fetchTripDetail,
+    required TResult Function() toggleStopsVisibility,
+    required TResult Function() loadActiveTrip,
+  }) {
+    return toggleStopsVisibility();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function(String image)? scanDoc,
+    TResult? Function()? uploadFiles,
+    TResult? Function(int tripId)? fetchTripDetail,
+    TResult? Function()? toggleStopsVisibility,
+    TResult? Function()? loadActiveTrip,
+  }) {
+    return toggleStopsVisibility?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function(String image)? scanDoc,
+    TResult Function()? uploadFiles,
+    TResult Function(int tripId)? fetchTripDetail,
+    TResult Function()? toggleStopsVisibility,
+    TResult Function()? loadActiveTrip,
+    required TResult orElse(),
+  }) {
+    if (toggleStopsVisibility != null) {
+      return toggleStopsVisibility();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(GetDateAndTime value) getDateAndTime,
+    required TResult Function(PickFile value) pickFile,
+    required TResult Function(RemoveFile value) removeFile,
+    required TResult Function(ScanDoc value) scanDoc,
+    required TResult Function(UploadFiles value) uploadFiles,
+    required TResult Function(FetchTripDetail value) fetchTripDetail,
+    required TResult Function(ToggleStopsVisibility value)
+        toggleStopsVisibility,
+    required TResult Function(LoadActiveTrip value) loadActiveTrip,
+  }) {
+    return toggleStopsVisibility(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(GetDateAndTime value)? getDateAndTime,
+    TResult? Function(PickFile value)? pickFile,
+    TResult? Function(RemoveFile value)? removeFile,
+    TResult? Function(ScanDoc value)? scanDoc,
+    TResult? Function(UploadFiles value)? uploadFiles,
+    TResult? Function(FetchTripDetail value)? fetchTripDetail,
+    TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+  }) {
+    return toggleStopsVisibility?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(GetDateAndTime value)? getDateAndTime,
+    TResult Function(PickFile value)? pickFile,
+    TResult Function(RemoveFile value)? removeFile,
+    TResult Function(ScanDoc value)? scanDoc,
+    TResult Function(UploadFiles value)? uploadFiles,
+    TResult Function(FetchTripDetail value)? fetchTripDetail,
+    TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    required TResult orElse(),
+  }) {
+    if (toggleStopsVisibility != null) {
+      return toggleStopsVisibility(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ToggleStopsVisibility implements TripDetailEvent {
+  const factory ToggleStopsVisibility() = _$ToggleStopsVisibilityImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadActiveTripImplCopyWith<$Res> {
+  factory _$$LoadActiveTripImplCopyWith(_$LoadActiveTripImpl value,
+          $Res Function(_$LoadActiveTripImpl) then) =
+      __$$LoadActiveTripImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadActiveTripImplCopyWithImpl<$Res>
+    extends _$TripDetailEventCopyWithImpl<$Res, _$LoadActiveTripImpl>
+    implements _$$LoadActiveTripImplCopyWith<$Res> {
+  __$$LoadActiveTripImplCopyWithImpl(
+      _$LoadActiveTripImpl _value, $Res Function(_$LoadActiveTripImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadActiveTripImpl implements LoadActiveTrip {
+  const _$LoadActiveTripImpl();
+
+  @override
+  String toString() {
+    return 'TripDetailEvent.loadActiveTrip()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadActiveTripImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function(String image) scanDoc,
+    required TResult Function() uploadFiles,
+    required TResult Function(int tripId) fetchTripDetail,
+    required TResult Function() toggleStopsVisibility,
+    required TResult Function() loadActiveTrip,
+  }) {
+    return loadActiveTrip();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function(String image)? scanDoc,
+    TResult? Function()? uploadFiles,
+    TResult? Function(int tripId)? fetchTripDetail,
+    TResult? Function()? toggleStopsVisibility,
+    TResult? Function()? loadActiveTrip,
+  }) {
+    return loadActiveTrip?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function(String image)? scanDoc,
+    TResult Function()? uploadFiles,
+    TResult Function(int tripId)? fetchTripDetail,
+    TResult Function()? toggleStopsVisibility,
+    TResult Function()? loadActiveTrip,
+    required TResult orElse(),
+  }) {
+    if (loadActiveTrip != null) {
+      return loadActiveTrip();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(GetDateAndTime value) getDateAndTime,
+    required TResult Function(PickFile value) pickFile,
+    required TResult Function(RemoveFile value) removeFile,
+    required TResult Function(ScanDoc value) scanDoc,
+    required TResult Function(UploadFiles value) uploadFiles,
+    required TResult Function(FetchTripDetail value) fetchTripDetail,
+    required TResult Function(ToggleStopsVisibility value)
+        toggleStopsVisibility,
+    required TResult Function(LoadActiveTrip value) loadActiveTrip,
+  }) {
+    return loadActiveTrip(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(GetDateAndTime value)? getDateAndTime,
+    TResult? Function(PickFile value)? pickFile,
+    TResult? Function(RemoveFile value)? removeFile,
+    TResult? Function(ScanDoc value)? scanDoc,
+    TResult? Function(UploadFiles value)? uploadFiles,
+    TResult? Function(FetchTripDetail value)? fetchTripDetail,
+    TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+  }) {
+    return loadActiveTrip?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(GetDateAndTime value)? getDateAndTime,
+    TResult Function(PickFile value)? pickFile,
+    TResult Function(RemoveFile value)? removeFile,
+    TResult Function(ScanDoc value)? scanDoc,
+    TResult Function(UploadFiles value)? uploadFiles,
+    TResult Function(FetchTripDetail value)? fetchTripDetail,
+    TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    required TResult orElse(),
+  }) {
+    if (loadActiveTrip != null) {
+      return loadActiveTrip(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadActiveTrip implements TripDetailEvent {
+  const factory LoadActiveTrip() = _$LoadActiveTripImpl;
+}
+
+/// @nodoc
 mixin _$TripDetailState {
   ActiveTripStatus get status => throw _privateConstructorUsedError;
   String? get dateTime => throw _privateConstructorUsedError;
   File? get selectedFile => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   bool get isFileLoading => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   DispatchModel? get trip => throw _privateConstructorUsedError;
+  bool get areStopsVisible => throw _privateConstructorUsedError;
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -1225,7 +1629,9 @@ abstract class $TripDetailStateCopyWith<$Res> {
       File? selectedFile,
       String? errorMessage,
       bool isFileLoading,
-      DispatchModel? trip});
+      bool isLoading,
+      DispatchModel? trip,
+      bool areStopsVisible});
 
   $DispatchModelCopyWith<$Res>? get trip;
 }
@@ -1250,7 +1656,9 @@ class _$TripDetailStateCopyWithImpl<$Res, $Val extends TripDetailState>
     Object? selectedFile = freezed,
     Object? errorMessage = freezed,
     Object? isFileLoading = null,
+    Object? isLoading = null,
     Object? trip = freezed,
+    Object? areStopsVisible = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -1273,10 +1681,18 @@ class _$TripDetailStateCopyWithImpl<$Res, $Val extends TripDetailState>
           ? _value.isFileLoading
           : isFileLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       trip: freezed == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
               as DispatchModel?,
+      areStopsVisible: null == areStopsVisible
+          ? _value.areStopsVisible
+          : areStopsVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -1309,7 +1725,9 @@ abstract class _$$TripDetailStateImplCopyWith<$Res>
       File? selectedFile,
       String? errorMessage,
       bool isFileLoading,
-      DispatchModel? trip});
+      bool isLoading,
+      DispatchModel? trip,
+      bool areStopsVisible});
 
   @override
   $DispatchModelCopyWith<$Res>? get trip;
@@ -1333,7 +1751,9 @@ class __$$TripDetailStateImplCopyWithImpl<$Res>
     Object? selectedFile = freezed,
     Object? errorMessage = freezed,
     Object? isFileLoading = null,
+    Object? isLoading = null,
     Object? trip = freezed,
+    Object? areStopsVisible = null,
   }) {
     return _then(_$TripDetailStateImpl(
       status: null == status
@@ -1356,10 +1776,18 @@ class __$$TripDetailStateImplCopyWithImpl<$Res>
           ? _value.isFileLoading
           : isFileLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       trip: freezed == trip
           ? _value.trip
           : trip // ignore: cast_nullable_to_non_nullable
               as DispatchModel?,
+      areStopsVisible: null == areStopsVisible
+          ? _value.areStopsVisible
+          : areStopsVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1373,7 +1801,9 @@ class _$TripDetailStateImpl implements _TripDetailState {
       this.selectedFile,
       this.errorMessage,
       this.isFileLoading = false,
-      this.trip});
+      this.isLoading = false,
+      this.trip,
+      this.areStopsVisible = false});
 
   @override
   final ActiveTripStatus status;
@@ -1387,11 +1817,17 @@ class _$TripDetailStateImpl implements _TripDetailState {
   @JsonKey()
   final bool isFileLoading;
   @override
+  @JsonKey()
+  final bool isLoading;
+  @override
   final DispatchModel? trip;
+  @override
+  @JsonKey()
+  final bool areStopsVisible;
 
   @override
   String toString() {
-    return 'TripDetailState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading, trip: $trip)';
+    return 'TripDetailState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading, isLoading: $isLoading, trip: $trip, areStopsVisible: $areStopsVisible)';
   }
 
   @override
@@ -1408,12 +1844,16 @@ class _$TripDetailStateImpl implements _TripDetailState {
                 other.errorMessage == errorMessage) &&
             (identical(other.isFileLoading, isFileLoading) ||
                 other.isFileLoading == isFileLoading) &&
-            (identical(other.trip, trip) || other.trip == trip));
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.trip, trip) || other.trip == trip) &&
+            (identical(other.areStopsVisible, areStopsVisible) ||
+                other.areStopsVisible == areStopsVisible));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, status, dateTime, selectedFile,
-      errorMessage, isFileLoading, trip);
+      errorMessage, isFileLoading, isLoading, trip, areStopsVisible);
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -1432,7 +1872,9 @@ abstract class _TripDetailState implements TripDetailState {
       final File? selectedFile,
       final String? errorMessage,
       final bool isFileLoading,
-      final DispatchModel? trip}) = _$TripDetailStateImpl;
+      final bool isLoading,
+      final DispatchModel? trip,
+      final bool areStopsVisible}) = _$TripDetailStateImpl;
 
   @override
   ActiveTripStatus get status;
@@ -1445,7 +1887,11 @@ abstract class _TripDetailState implements TripDetailState {
   @override
   bool get isFileLoading;
   @override
+  bool get isLoading;
+  @override
   DispatchModel? get trip;
+  @override
+  bool get areStopsVisible;
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.

@@ -15,17 +15,12 @@ class TripListBloc extends Bloc<TripListEvent, TripListState> {
   TripListBloc() : super(TripListState.initial()) {
     on<_ChangeTabPressed>(_changeTabEvent);
     on<_GetDateAndTime>(_getDataAndTime);
-
     on<_FetchTrips>(_fetchTrips);
+    on<_FetchHistoryTrips>(_fetchHistoryTrips);
   }
 
   void _changeTabEvent(_ChangeTabPressed event, Emitter<TripListState> emit) {
-    if (event.status == TabStatus.activeTrip) {
-      // final trip = event.trip;
-      emit(state.copyWith(tabStatus: event.status));
-    } else {
-      emit(state.copyWith(tabStatus: event.status));
-    }
+    emit(state.copyWith(tabStatus: event.status));
   }
 
   void _fetchTrips(_FetchTrips event, Emitter<TripListState> emit) async {
@@ -39,7 +34,23 @@ class TripListBloc extends Bloc<TripListEvent, TripListState> {
     } catch (e) {
       emit(state.copyWith(
         status: TripStatus.initial,
-        // errorMessage: e.toString(),
+      ));
+    }
+  }
+
+  void _fetchHistoryTrips(
+      _FetchHistoryTrips event, Emitter<TripListState> emit) async {
+    emit(state.copyWith(status: TripStatus.loading));
+    try {
+      final List<DispatchListModel> historyTrips =
+          await tripRepository.getHistoryTrips();
+      emit(state.copyWith(
+        status: TripStatus.initial,
+        historyTrips: historyTrips,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: TripStatus.initial,
       ));
     }
   }

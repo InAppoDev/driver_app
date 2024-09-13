@@ -22,6 +22,7 @@ mixin _$TripListEvent {
         changeTab,
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() fetchTrips,
+    required TResult Function() fetchHistoryTrips,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,6 +30,7 @@ mixin _$TripListEvent {
     TResult? Function(TabStatus status, DispatchListModel? trip)? changeTab,
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? fetchTrips,
+    TResult? Function()? fetchHistoryTrips,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,7 @@ mixin _$TripListEvent {
     TResult Function(TabStatus status, DispatchListModel? trip)? changeTab,
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? fetchTrips,
+    TResult Function()? fetchHistoryTrips,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$TripListEvent {
     required TResult Function(_ChangeTabPressed value) changeTab,
     required TResult Function(_GetDateAndTime value) getDateAndTime,
     required TResult Function(_FetchTrips value) fetchTrips,
+    required TResult Function(_FetchHistoryTrips value) fetchHistoryTrips,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +55,7 @@ mixin _$TripListEvent {
     TResult? Function(_ChangeTabPressed value)? changeTab,
     TResult? Function(_GetDateAndTime value)? getDateAndTime,
     TResult? Function(_FetchTrips value)? fetchTrips,
+    TResult? Function(_FetchHistoryTrips value)? fetchHistoryTrips,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +63,7 @@ mixin _$TripListEvent {
     TResult Function(_ChangeTabPressed value)? changeTab,
     TResult Function(_GetDateAndTime value)? getDateAndTime,
     TResult Function(_FetchTrips value)? fetchTrips,
+    TResult Function(_FetchHistoryTrips value)? fetchHistoryTrips,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -181,6 +187,7 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
         changeTab,
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() fetchTrips,
+    required TResult Function() fetchHistoryTrips,
   }) {
     return changeTab(status, trip);
   }
@@ -191,6 +198,7 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
     TResult? Function(TabStatus status, DispatchListModel? trip)? changeTab,
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? fetchTrips,
+    TResult? Function()? fetchHistoryTrips,
   }) {
     return changeTab?.call(status, trip);
   }
@@ -201,6 +209,7 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
     TResult Function(TabStatus status, DispatchListModel? trip)? changeTab,
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? fetchTrips,
+    TResult Function()? fetchHistoryTrips,
     required TResult orElse(),
   }) {
     if (changeTab != null) {
@@ -215,6 +224,7 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
     required TResult Function(_ChangeTabPressed value) changeTab,
     required TResult Function(_GetDateAndTime value) getDateAndTime,
     required TResult Function(_FetchTrips value) fetchTrips,
+    required TResult Function(_FetchHistoryTrips value) fetchHistoryTrips,
   }) {
     return changeTab(this);
   }
@@ -225,6 +235,7 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
     TResult? Function(_ChangeTabPressed value)? changeTab,
     TResult? Function(_GetDateAndTime value)? getDateAndTime,
     TResult? Function(_FetchTrips value)? fetchTrips,
+    TResult? Function(_FetchHistoryTrips value)? fetchHistoryTrips,
   }) {
     return changeTab?.call(this);
   }
@@ -235,6 +246,7 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
     TResult Function(_ChangeTabPressed value)? changeTab,
     TResult Function(_GetDateAndTime value)? getDateAndTime,
     TResult Function(_FetchTrips value)? fetchTrips,
+    TResult Function(_FetchHistoryTrips value)? fetchHistoryTrips,
     required TResult orElse(),
   }) {
     if (changeTab != null) {
@@ -333,6 +345,7 @@ class _$GetDateAndTimeImpl implements _GetDateAndTime {
         changeTab,
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() fetchTrips,
+    required TResult Function() fetchHistoryTrips,
   }) {
     return getDateAndTime(dateTime);
   }
@@ -343,6 +356,7 @@ class _$GetDateAndTimeImpl implements _GetDateAndTime {
     TResult? Function(TabStatus status, DispatchListModel? trip)? changeTab,
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? fetchTrips,
+    TResult? Function()? fetchHistoryTrips,
   }) {
     return getDateAndTime?.call(dateTime);
   }
@@ -353,6 +367,7 @@ class _$GetDateAndTimeImpl implements _GetDateAndTime {
     TResult Function(TabStatus status, DispatchListModel? trip)? changeTab,
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? fetchTrips,
+    TResult Function()? fetchHistoryTrips,
     required TResult orElse(),
   }) {
     if (getDateAndTime != null) {
@@ -367,6 +382,7 @@ class _$GetDateAndTimeImpl implements _GetDateAndTime {
     required TResult Function(_ChangeTabPressed value) changeTab,
     required TResult Function(_GetDateAndTime value) getDateAndTime,
     required TResult Function(_FetchTrips value) fetchTrips,
+    required TResult Function(_FetchHistoryTrips value) fetchHistoryTrips,
   }) {
     return getDateAndTime(this);
   }
@@ -377,6 +393,7 @@ class _$GetDateAndTimeImpl implements _GetDateAndTime {
     TResult? Function(_ChangeTabPressed value)? changeTab,
     TResult? Function(_GetDateAndTime value)? getDateAndTime,
     TResult? Function(_FetchTrips value)? fetchTrips,
+    TResult? Function(_FetchHistoryTrips value)? fetchHistoryTrips,
   }) {
     return getDateAndTime?.call(this);
   }
@@ -387,6 +404,7 @@ class _$GetDateAndTimeImpl implements _GetDateAndTime {
     TResult Function(_ChangeTabPressed value)? changeTab,
     TResult Function(_GetDateAndTime value)? getDateAndTime,
     TResult Function(_FetchTrips value)? fetchTrips,
+    TResult Function(_FetchHistoryTrips value)? fetchHistoryTrips,
     required TResult orElse(),
   }) {
     if (getDateAndTime != null) {
@@ -454,6 +472,7 @@ class _$FetchTripsImpl implements _FetchTrips {
         changeTab,
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() fetchTrips,
+    required TResult Function() fetchHistoryTrips,
   }) {
     return fetchTrips();
   }
@@ -464,6 +483,7 @@ class _$FetchTripsImpl implements _FetchTrips {
     TResult? Function(TabStatus status, DispatchListModel? trip)? changeTab,
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? fetchTrips,
+    TResult? Function()? fetchHistoryTrips,
   }) {
     return fetchTrips?.call();
   }
@@ -474,6 +494,7 @@ class _$FetchTripsImpl implements _FetchTrips {
     TResult Function(TabStatus status, DispatchListModel? trip)? changeTab,
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? fetchTrips,
+    TResult Function()? fetchHistoryTrips,
     required TResult orElse(),
   }) {
     if (fetchTrips != null) {
@@ -488,6 +509,7 @@ class _$FetchTripsImpl implements _FetchTrips {
     required TResult Function(_ChangeTabPressed value) changeTab,
     required TResult Function(_GetDateAndTime value) getDateAndTime,
     required TResult Function(_FetchTrips value) fetchTrips,
+    required TResult Function(_FetchHistoryTrips value) fetchHistoryTrips,
   }) {
     return fetchTrips(this);
   }
@@ -498,6 +520,7 @@ class _$FetchTripsImpl implements _FetchTrips {
     TResult? Function(_ChangeTabPressed value)? changeTab,
     TResult? Function(_GetDateAndTime value)? getDateAndTime,
     TResult? Function(_FetchTrips value)? fetchTrips,
+    TResult? Function(_FetchHistoryTrips value)? fetchHistoryTrips,
   }) {
     return fetchTrips?.call(this);
   }
@@ -508,6 +531,7 @@ class _$FetchTripsImpl implements _FetchTrips {
     TResult Function(_ChangeTabPressed value)? changeTab,
     TResult Function(_GetDateAndTime value)? getDateAndTime,
     TResult Function(_FetchTrips value)? fetchTrips,
+    TResult Function(_FetchHistoryTrips value)? fetchHistoryTrips,
     required TResult orElse(),
   }) {
     if (fetchTrips != null) {
@@ -522,11 +546,131 @@ abstract class _FetchTrips implements TripListEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchHistoryTripsImplCopyWith<$Res> {
+  factory _$$FetchHistoryTripsImplCopyWith(_$FetchHistoryTripsImpl value,
+          $Res Function(_$FetchHistoryTripsImpl) then) =
+      __$$FetchHistoryTripsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchHistoryTripsImplCopyWithImpl<$Res>
+    extends _$TripListEventCopyWithImpl<$Res, _$FetchHistoryTripsImpl>
+    implements _$$FetchHistoryTripsImplCopyWith<$Res> {
+  __$$FetchHistoryTripsImplCopyWithImpl(_$FetchHistoryTripsImpl _value,
+      $Res Function(_$FetchHistoryTripsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripListEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$FetchHistoryTripsImpl implements _FetchHistoryTrips {
+  const _$FetchHistoryTripsImpl();
+
+  @override
+  String toString() {
+    return 'TripListEvent.fetchHistoryTrips()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchHistoryTripsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TabStatus status, DispatchListModel? trip)
+        changeTab,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() fetchTrips,
+    required TResult Function() fetchHistoryTrips,
+  }) {
+    return fetchHistoryTrips();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TabStatus status, DispatchListModel? trip)? changeTab,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? fetchTrips,
+    TResult? Function()? fetchHistoryTrips,
+  }) {
+    return fetchHistoryTrips?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TabStatus status, DispatchListModel? trip)? changeTab,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? fetchTrips,
+    TResult Function()? fetchHistoryTrips,
+    required TResult orElse(),
+  }) {
+    if (fetchHistoryTrips != null) {
+      return fetchHistoryTrips();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeTabPressed value) changeTab,
+    required TResult Function(_GetDateAndTime value) getDateAndTime,
+    required TResult Function(_FetchTrips value) fetchTrips,
+    required TResult Function(_FetchHistoryTrips value) fetchHistoryTrips,
+  }) {
+    return fetchHistoryTrips(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeTabPressed value)? changeTab,
+    TResult? Function(_GetDateAndTime value)? getDateAndTime,
+    TResult? Function(_FetchTrips value)? fetchTrips,
+    TResult? Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+  }) {
+    return fetchHistoryTrips?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeTabPressed value)? changeTab,
+    TResult Function(_GetDateAndTime value)? getDateAndTime,
+    TResult Function(_FetchTrips value)? fetchTrips,
+    TResult Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    required TResult orElse(),
+  }) {
+    if (fetchHistoryTrips != null) {
+      return fetchHistoryTrips(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchHistoryTrips implements TripListEvent {
+  const factory _FetchHistoryTrips() = _$FetchHistoryTripsImpl;
+}
+
+/// @nodoc
 mixin _$TripListState {
   TripStatus get status => throw _privateConstructorUsedError;
   TabStatus get tabStatus => throw _privateConstructorUsedError;
   String? get dateTime => throw _privateConstructorUsedError;
   List<DispatchListModel> get trips => throw _privateConstructorUsedError;
+  List<DispatchListModel> get historyTrips =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of TripListState
   /// with the given fields replaced by the non-null parameter values.
@@ -545,7 +689,8 @@ abstract class $TripListStateCopyWith<$Res> {
       {TripStatus status,
       TabStatus tabStatus,
       String? dateTime,
-      List<DispatchListModel> trips});
+      List<DispatchListModel> trips,
+      List<DispatchListModel> historyTrips});
 }
 
 /// @nodoc
@@ -567,6 +712,7 @@ class _$TripListStateCopyWithImpl<$Res, $Val extends TripListState>
     Object? tabStatus = null,
     Object? dateTime = freezed,
     Object? trips = null,
+    Object? historyTrips = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -585,6 +731,10 @@ class _$TripListStateCopyWithImpl<$Res, $Val extends TripListState>
           ? _value.trips
           : trips // ignore: cast_nullable_to_non_nullable
               as List<DispatchListModel>,
+      historyTrips: null == historyTrips
+          ? _value.historyTrips
+          : historyTrips // ignore: cast_nullable_to_non_nullable
+              as List<DispatchListModel>,
     ) as $Val);
   }
 }
@@ -601,7 +751,8 @@ abstract class _$$TripStateImplCopyWith<$Res>
       {TripStatus status,
       TabStatus tabStatus,
       String? dateTime,
-      List<DispatchListModel> trips});
+      List<DispatchListModel> trips,
+      List<DispatchListModel> historyTrips});
 }
 
 /// @nodoc
@@ -621,6 +772,7 @@ class __$$TripStateImplCopyWithImpl<$Res>
     Object? tabStatus = null,
     Object? dateTime = freezed,
     Object? trips = null,
+    Object? historyTrips = null,
   }) {
     return _then(_$TripStateImpl(
       status: null == status
@@ -639,6 +791,10 @@ class __$$TripStateImplCopyWithImpl<$Res>
           ? _value._trips
           : trips // ignore: cast_nullable_to_non_nullable
               as List<DispatchListModel>,
+      historyTrips: null == historyTrips
+          ? _value._historyTrips
+          : historyTrips // ignore: cast_nullable_to_non_nullable
+              as List<DispatchListModel>,
     ));
   }
 }
@@ -650,8 +806,10 @@ class _$TripStateImpl implements _TripState {
       {required this.status,
       this.tabStatus = TabStatus.newTrips,
       this.dateTime,
-      final List<DispatchListModel> trips = const []})
-      : _trips = trips;
+      final List<DispatchListModel> trips = const [],
+      final List<DispatchListModel> historyTrips = const []})
+      : _trips = trips,
+        _historyTrips = historyTrips;
 
   @override
   final TripStatus status;
@@ -669,9 +827,18 @@ class _$TripStateImpl implements _TripState {
     return EqualUnmodifiableListView(_trips);
   }
 
+  final List<DispatchListModel> _historyTrips;
+  @override
+  @JsonKey()
+  List<DispatchListModel> get historyTrips {
+    if (_historyTrips is EqualUnmodifiableListView) return _historyTrips;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_historyTrips);
+  }
+
   @override
   String toString() {
-    return 'TripListState(status: $status, tabStatus: $tabStatus, dateTime: $dateTime, trips: $trips)';
+    return 'TripListState(status: $status, tabStatus: $tabStatus, dateTime: $dateTime, trips: $trips, historyTrips: $historyTrips)';
   }
 
   @override
@@ -684,12 +851,19 @@ class _$TripStateImpl implements _TripState {
                 other.tabStatus == tabStatus) &&
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime) &&
-            const DeepCollectionEquality().equals(other._trips, _trips));
+            const DeepCollectionEquality().equals(other._trips, _trips) &&
+            const DeepCollectionEquality()
+                .equals(other._historyTrips, _historyTrips));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, tabStatus, dateTime,
-      const DeepCollectionEquality().hash(_trips));
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      tabStatus,
+      dateTime,
+      const DeepCollectionEquality().hash(_trips),
+      const DeepCollectionEquality().hash(_historyTrips));
 
   /// Create a copy of TripListState
   /// with the given fields replaced by the non-null parameter values.
@@ -705,7 +879,8 @@ abstract class _TripState implements TripListState {
       {required final TripStatus status,
       final TabStatus tabStatus,
       final String? dateTime,
-      final List<DispatchListModel> trips}) = _$TripStateImpl;
+      final List<DispatchListModel> trips,
+      final List<DispatchListModel> historyTrips}) = _$TripStateImpl;
 
   @override
   TripStatus get status;
@@ -715,6 +890,8 @@ abstract class _TripState implements TripListState {
   String? get dateTime;
   @override
   List<DispatchListModel> get trips;
+  @override
+  List<DispatchListModel> get historyTrips;
 
   /// Create a copy of TripListState
   /// with the given fields replaced by the non-null parameter values.

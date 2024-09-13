@@ -18,8 +18,9 @@ class MainPage extends StatelessWidget {
           create: (context) => MainBloc(),
         ),
         BlocProvider(
-          create: (context) =>
-              TripListBloc()..add(const TripListEvent.fetchTrips()),
+          create: (context) => TripListBloc()
+            ..add(const TripListEvent.fetchTrips())
+            ..add(const TripListEvent.fetchHistoryTrips()),
         ),
         BlocProvider(
           create: (context) =>

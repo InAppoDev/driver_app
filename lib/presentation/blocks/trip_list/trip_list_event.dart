@@ -11,4 +11,5 @@ class TripListEvent with _$TripListEvent {
       _GetDateAndTime;
 
   const factory TripListEvent.fetchTrips() = _FetchTrips;
+  const factory TripListEvent.fetchHistoryTrips() = _FetchHistoryTrips;
 }

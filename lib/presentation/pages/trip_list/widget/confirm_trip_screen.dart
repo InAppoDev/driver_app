@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
+import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_picker.dart';
-import 'package:tms_driver/presentation/pages/active_trip/widget/upload_scan_files.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_data.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_detail_info.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
@@ -12,7 +12,7 @@ import 'package:tms_driver/presentation/utils/extension/change_localization.dart
 class ConfirmTripScreen extends StatelessWidget {
   const ConfirmTripScreen({
     super.key,
-    required this.tripId, // Приймаємо тільки ID, а не модель
+    required this.tripId,
   });
 
   final int tripId;
@@ -23,12 +23,20 @@ class ConfirmTripScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: const SizedBox.shrink(),
-        leadingWidth: 0,
+        leading: CustomIconButton(
+          icon: 'arrow',
+          onPressed: context.pop,
+          justIcon: true,
+          width: 20,
+          height: 20,
+          iconColor: Theme.of(context).dividerColor,
+        ),
+        leadingWidth: 40,
         backgroundColor: theme.scaffoldBackgroundColor,
         scrolledUnderElevation: 0,
+        centerTitle: true,
         title: Text(
-          'context.localizations.confirmTrip',
+          context.localizations.confirm,
           style: theme.textTheme.titleSmall!.copyWith(
             color: theme.disabledColor,
           ),
@@ -45,8 +53,8 @@ class ConfirmTripScreen extends StatelessWidget {
             } else if (state.status == ActiveTripStatus.failure) {
               return Center(
                 child: Text(
-                  'context.localizations.failedToLoadTrip',
-                  // style: TextStyle(color: theme.errorColor),
+                  context.localizations.failedToLoadTrip,
+                  style: TextStyle(color: theme.indicatorColor),
                 ),
               );
             } else if (state.status == ActiveTripStatus.success &&
@@ -61,42 +69,20 @@ class ConfirmTripScreen extends StatelessWidget {
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
-                            const SizedBox(height: 11),
-                            TripData(onPressed: () {}, trip: trip),
-                            const SizedBox(height: 11),
+                            const SizedBox(height: 10),
+                            TripData(trip: trip),
+                            const SizedBox(height: 10),
                             TripDetailInfo(trip: trip),
-                            const SizedBox(height: 11),
+                            const SizedBox(height: 10),
                             CalendarPicker(
                               onCalendarResponse: (resp) {
                                 context.read<TripDetailBloc>().add(
-                                    TripDetailEvent.getDateAndTime(
-                                        dateTime: resp));
+                                      TripDetailEvent.getDateAndTime(
+                                        dateTime: resp,
+                                      ),
+                                    );
                               },
                               dateTime: state.dateTime ?? '',
-                            ),
-                            const SizedBox(height: 11),
-                            UploadScanFiles(
-                              onAddFile: () {
-                                context
-                                    .read<TripDetailBloc>()
-                                    .add(const TripDetailEvent.pickFile());
-                              },
-                              onScanFile: (image) {
-                                context
-                                    .read<TripDetailBloc>()
-                                    .add(TripDetailEvent.scanDoc(image));
-                              },
-                              selectedFile: state.selectedFile,
-                              onFileRemove: (file) {
-                                context.read<TripDetailBloc>().add(
-                                    TripDetailEvent.removeFile(file: file));
-                              },
-                              onUploadPressed: () {
-                                context
-                                    .read<TripDetailBloc>()
-                                    .add(const TripDetailEvent.uploadFiles());
-                              },
-                              isFileLoading: state.isFileLoading,
                             ),
                             const SizedBox(height: 100),
                           ],

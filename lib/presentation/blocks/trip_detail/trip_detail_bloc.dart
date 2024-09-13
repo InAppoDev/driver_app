@@ -23,6 +23,8 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
     on<ScanDoc>(_scanDoc);
     on<UploadFiles>(_uploadFiles);
     on<FetchTripDetail>(_fetchTripDetail);
+    on<ToggleStopsVisibility>(_toggleStopsVisibility);
+    on<LoadActiveTrip>(_loadActiveTrip);
   }
 
   void _fetchTripDetail(
@@ -40,6 +42,27 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
         errorMessage: e.toString(),
       ));
     }
+  }
+
+  void _loadActiveTrip(
+      LoadActiveTrip event, Emitter<TripDetailState> emit) async {
+    emit(state.copyWith(isLoading: true));
+    try {
+      final DispatchModel? trip = await tripRepository.getActiveTrip();
+      if (trip != null) {
+        emit(state.copyWith(trip: trip, isLoading: false));
+      } else {
+        emit(state.copyWith(
+            isLoading: false, errorMessage: 'No active trip found'));
+      }
+    } catch (e) {
+      emit(state.copyWith(isLoading: false, errorMessage: e.toString()));
+    }
+  }
+
+  void _toggleStopsVisibility(
+      ToggleStopsVisibility event, Emitter<TripDetailState> emit) {
+    emit(state.copyWith(areStopsVisible: !state.areStopsVisible));
   }
 
   void _getDataAndTime(GetDateAndTime event, Emitter<TripDetailState> emit) {

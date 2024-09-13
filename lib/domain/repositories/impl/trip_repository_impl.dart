@@ -21,7 +21,17 @@ class TripRepositoryImpl implements TripRepository {
   }
 
   @override
+  Future<List<DispatchListModel>> getHistoryTrips() {
+    return apiDataSource.getHistoryTrips();
+  }
+
+  @override
   Future<DispatchModel> getTripById(int tripId) {
     return apiDataSource.getTripById(tripId);
+  }
+
+  @override
+  Future<DispatchModel?> getActiveTrip() {
+    return apiDataSource.getActiveTrip();
   }
 }
