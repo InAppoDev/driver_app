@@ -21,13 +21,13 @@ CargoInfoModel _$CargoInfoModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CargoInfoModel {
   @JsonKey(name: 'commodity')
-  String get commodity => throw _privateConstructorUsedError;
+  String? get commodity => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_pallets')
   int? get totalPallets => throw _privateConstructorUsedError;
   @JsonKey(name: 'pcs')
-  int get pcs => throw _privateConstructorUsedError;
+  int? get pcs => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_weight')
-  int get totalWeight => throw _privateConstructorUsedError;
+  int? get totalWeight => throw _privateConstructorUsedError;
 
   /// Serializes this CargoInfoModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,10 +46,10 @@ abstract class $CargoInfoModelCopyWith<$Res> {
       _$CargoInfoModelCopyWithImpl<$Res, CargoInfoModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'commodity') String commodity,
+      {@JsonKey(name: 'commodity') String? commodity,
       @JsonKey(name: 'total_pallets') int? totalPallets,
-      @JsonKey(name: 'pcs') int pcs,
-      @JsonKey(name: 'total_weight') int totalWeight});
+      @JsonKey(name: 'pcs') int? pcs,
+      @JsonKey(name: 'total_weight') int? totalWeight});
 }
 
 /// @nodoc
@@ -67,28 +67,28 @@ class _$CargoInfoModelCopyWithImpl<$Res, $Val extends CargoInfoModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? commodity = null,
+    Object? commodity = freezed,
     Object? totalPallets = freezed,
-    Object? pcs = null,
-    Object? totalWeight = null,
+    Object? pcs = freezed,
+    Object? totalWeight = freezed,
   }) {
     return _then(_value.copyWith(
-      commodity: null == commodity
+      commodity: freezed == commodity
           ? _value.commodity
           : commodity // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       totalPallets: freezed == totalPallets
           ? _value.totalPallets
           : totalPallets // ignore: cast_nullable_to_non_nullable
               as int?,
-      pcs: null == pcs
+      pcs: freezed == pcs
           ? _value.pcs
           : pcs // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalWeight: null == totalWeight
+              as int?,
+      totalWeight: freezed == totalWeight
           ? _value.totalWeight
           : totalWeight // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -102,10 +102,10 @@ abstract class _$$CargoInfoModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'commodity') String commodity,
+      {@JsonKey(name: 'commodity') String? commodity,
       @JsonKey(name: 'total_pallets') int? totalPallets,
-      @JsonKey(name: 'pcs') int pcs,
-      @JsonKey(name: 'total_weight') int totalWeight});
+      @JsonKey(name: 'pcs') int? pcs,
+      @JsonKey(name: 'total_weight') int? totalWeight});
 }
 
 /// @nodoc
@@ -121,28 +121,28 @@ class __$$CargoInfoModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? commodity = null,
+    Object? commodity = freezed,
     Object? totalPallets = freezed,
-    Object? pcs = null,
-    Object? totalWeight = null,
+    Object? pcs = freezed,
+    Object? totalWeight = freezed,
   }) {
     return _then(_$CargoInfoModelImpl(
-      commodity: null == commodity
+      commodity: freezed == commodity
           ? _value.commodity
           : commodity // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       totalPallets: freezed == totalPallets
           ? _value.totalPallets
           : totalPallets // ignore: cast_nullable_to_non_nullable
               as int?,
-      pcs: null == pcs
+      pcs: freezed == pcs
           ? _value.pcs
           : pcs // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalWeight: null == totalWeight
+              as int?,
+      totalWeight: freezed == totalWeight
           ? _value.totalWeight
           : totalWeight // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -151,26 +151,26 @@ class __$$CargoInfoModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CargoInfoModelImpl implements _CargoInfoModel {
   const _$CargoInfoModelImpl(
-      {@JsonKey(name: 'commodity') required this.commodity,
+      {@JsonKey(name: 'commodity') this.commodity,
       @JsonKey(name: 'total_pallets') this.totalPallets,
-      @JsonKey(name: 'pcs') required this.pcs,
-      @JsonKey(name: 'total_weight') required this.totalWeight});
+      @JsonKey(name: 'pcs') this.pcs,
+      @JsonKey(name: 'total_weight') this.totalWeight});
 
   factory _$CargoInfoModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CargoInfoModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'commodity')
-  final String commodity;
+  final String? commodity;
   @override
   @JsonKey(name: 'total_pallets')
   final int? totalPallets;
   @override
   @JsonKey(name: 'pcs')
-  final int pcs;
+  final int? pcs;
   @override
   @JsonKey(name: 'total_weight')
-  final int totalWeight;
+  final int? totalWeight;
 
   @override
   String toString() {
@@ -215,10 +215,10 @@ class _$CargoInfoModelImpl implements _CargoInfoModel {
 
 abstract class _CargoInfoModel implements CargoInfoModel {
   const factory _CargoInfoModel(
-          {@JsonKey(name: 'commodity') required final String commodity,
+          {@JsonKey(name: 'commodity') final String? commodity,
           @JsonKey(name: 'total_pallets') final int? totalPallets,
-          @JsonKey(name: 'pcs') required final int pcs,
-          @JsonKey(name: 'total_weight') required final int totalWeight}) =
+          @JsonKey(name: 'pcs') final int? pcs,
+          @JsonKey(name: 'total_weight') final int? totalWeight}) =
       _$CargoInfoModelImpl;
 
   factory _CargoInfoModel.fromJson(Map<String, dynamic> json) =
@@ -226,16 +226,16 @@ abstract class _CargoInfoModel implements CargoInfoModel {
 
   @override
   @JsonKey(name: 'commodity')
-  String get commodity;
+  String? get commodity;
   @override
   @JsonKey(name: 'total_pallets')
   int? get totalPallets;
   @override
   @JsonKey(name: 'pcs')
-  int get pcs;
+  int? get pcs;
   @override
   @JsonKey(name: 'total_weight')
-  int get totalWeight;
+  int? get totalWeight;
 
   /// Create a copy of CargoInfoModel
   /// with the given fields replaced by the non-null parameter values.

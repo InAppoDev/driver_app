@@ -12,8 +12,7 @@ _$DispatchListModelImpl _$$DispatchListModelImplFromJson(
       id: (json['id'] as num).toInt(),
       routeTotalMi: json['route_total_mi'] as String,
       waypoints: (json['waypoints'] as List<dynamic>)
-          .map((e) =>
-              DispatchListDetailModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => WaipointSummaryModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

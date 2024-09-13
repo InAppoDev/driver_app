@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tms_driver/data/models/trip/dispatch_list_model/dispatch_list_model.dart';
+import 'package:tms_driver/data/models/dispatch/dispatch_list_model/dispatch_list_model.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_info_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 

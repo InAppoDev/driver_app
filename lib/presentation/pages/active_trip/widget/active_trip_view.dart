@@ -37,15 +37,16 @@ class ActiveTripView extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        int chatId = 1;
+                        int chatId = state.trip!.chatId;
                         GoRouter.of(context).push('/chat/$chatId');
                       },
-                      child: const Text('Experiment\nGo to Chat id 1'),
+                      child: Text(
+                          'Experiment\nGo to Chat id ${state.trip!.chatId}'),
                     ),
                     const SizedBox(height: 10),
-                    TripData(trip: state.trip!),
+                    if (state.trip != null) TripData(trip: state.trip!),
                     const SizedBox(height: 10),
-                    TripDetailInfo(trip: state.trip!),
+                    if (state.trip != null) TripDetailInfo(trip: state.trip!),
                     const SizedBox(height: 10),
                     CalendarPicker(
                       onCalendarResponse: (resp) {

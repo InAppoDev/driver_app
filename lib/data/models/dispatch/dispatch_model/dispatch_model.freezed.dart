@@ -33,15 +33,15 @@ mixin _$DispatchModel {
   @JsonKey(name: 'is_finished')
   bool get isFinished => throw _privateConstructorUsedError;
   @JsonKey(name: 'temperature_maintain_type')
-  String get temperatureMaintainType => throw _privateConstructorUsedError;
+  String? get temperatureMaintainType => throw _privateConstructorUsedError;
   @JsonKey(name: 'temperature_maintain_from')
-  int get temperatureMaintainFrom => throw _privateConstructorUsedError;
+  int? get temperatureMaintainFrom => throw _privateConstructorUsedError;
   @JsonKey(name: 'temperature_maintain_to')
-  int get temperatureMaintainTo => throw _privateConstructorUsedError;
+  int? get temperatureMaintainTo => throw _privateConstructorUsedError;
   @JsonKey(name: 'cargo_info')
   CargoInfoModel get cargoInfo => throw _privateConstructorUsedError;
   @JsonKey(name: 'next_mandatory_check_call_type')
-  String get nextMandatoryCheckCallType => throw _privateConstructorUsedError;
+  String? get nextMandatoryCheckCallType => throw _privateConstructorUsedError;
   @JsonKey(name: 'chat_id')
   int get chatId => throw _privateConstructorUsedError;
   @JsonKey(name: 'route_total_mi')
@@ -71,12 +71,12 @@ abstract class $DispatchModelCopyWith<$Res> {
       @JsonKey(name: 'is_tonu_declared') bool isTonuDeclared,
       @JsonKey(name: 'is_finished') bool isFinished,
       @JsonKey(name: 'temperature_maintain_type')
-      String temperatureMaintainType,
-      @JsonKey(name: 'temperature_maintain_from') int temperatureMaintainFrom,
-      @JsonKey(name: 'temperature_maintain_to') int temperatureMaintainTo,
+      String? temperatureMaintainType,
+      @JsonKey(name: 'temperature_maintain_from') int? temperatureMaintainFrom,
+      @JsonKey(name: 'temperature_maintain_to') int? temperatureMaintainTo,
       @JsonKey(name: 'cargo_info') CargoInfoModel cargoInfo,
       @JsonKey(name: 'next_mandatory_check_call_type')
-      String nextMandatoryCheckCallType,
+      String? nextMandatoryCheckCallType,
       @JsonKey(name: 'chat_id') int chatId,
       @JsonKey(name: 'route_total_mi') String routeTotalMi});
 
@@ -104,11 +104,11 @@ class _$DispatchModelCopyWithImpl<$Res, $Val extends DispatchModel>
     Object? nextWaypointId = null,
     Object? isTonuDeclared = null,
     Object? isFinished = null,
-    Object? temperatureMaintainType = null,
-    Object? temperatureMaintainFrom = null,
-    Object? temperatureMaintainTo = null,
+    Object? temperatureMaintainType = freezed,
+    Object? temperatureMaintainFrom = freezed,
+    Object? temperatureMaintainTo = freezed,
     Object? cargoInfo = null,
-    Object? nextMandatoryCheckCallType = null,
+    Object? nextMandatoryCheckCallType = freezed,
     Object? chatId = null,
     Object? routeTotalMi = null,
   }) {
@@ -137,26 +137,26 @@ class _$DispatchModelCopyWithImpl<$Res, $Val extends DispatchModel>
           ? _value.isFinished
           : isFinished // ignore: cast_nullable_to_non_nullable
               as bool,
-      temperatureMaintainType: null == temperatureMaintainType
+      temperatureMaintainType: freezed == temperatureMaintainType
           ? _value.temperatureMaintainType
           : temperatureMaintainType // ignore: cast_nullable_to_non_nullable
-              as String,
-      temperatureMaintainFrom: null == temperatureMaintainFrom
+              as String?,
+      temperatureMaintainFrom: freezed == temperatureMaintainFrom
           ? _value.temperatureMaintainFrom
           : temperatureMaintainFrom // ignore: cast_nullable_to_non_nullable
-              as int,
-      temperatureMaintainTo: null == temperatureMaintainTo
+              as int?,
+      temperatureMaintainTo: freezed == temperatureMaintainTo
           ? _value.temperatureMaintainTo
           : temperatureMaintainTo // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       cargoInfo: null == cargoInfo
           ? _value.cargoInfo
           : cargoInfo // ignore: cast_nullable_to_non_nullable
               as CargoInfoModel,
-      nextMandatoryCheckCallType: null == nextMandatoryCheckCallType
+      nextMandatoryCheckCallType: freezed == nextMandatoryCheckCallType
           ? _value.nextMandatoryCheckCallType
           : nextMandatoryCheckCallType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       chatId: null == chatId
           ? _value.chatId
           : chatId // ignore: cast_nullable_to_non_nullable
@@ -195,12 +195,12 @@ abstract class _$$DispatchModelImplCopyWith<$Res>
       @JsonKey(name: 'is_tonu_declared') bool isTonuDeclared,
       @JsonKey(name: 'is_finished') bool isFinished,
       @JsonKey(name: 'temperature_maintain_type')
-      String temperatureMaintainType,
-      @JsonKey(name: 'temperature_maintain_from') int temperatureMaintainFrom,
-      @JsonKey(name: 'temperature_maintain_to') int temperatureMaintainTo,
+      String? temperatureMaintainType,
+      @JsonKey(name: 'temperature_maintain_from') int? temperatureMaintainFrom,
+      @JsonKey(name: 'temperature_maintain_to') int? temperatureMaintainTo,
       @JsonKey(name: 'cargo_info') CargoInfoModel cargoInfo,
       @JsonKey(name: 'next_mandatory_check_call_type')
-      String nextMandatoryCheckCallType,
+      String? nextMandatoryCheckCallType,
       @JsonKey(name: 'chat_id') int chatId,
       @JsonKey(name: 'route_total_mi') String routeTotalMi});
 
@@ -227,11 +227,11 @@ class __$$DispatchModelImplCopyWithImpl<$Res>
     Object? nextWaypointId = null,
     Object? isTonuDeclared = null,
     Object? isFinished = null,
-    Object? temperatureMaintainType = null,
-    Object? temperatureMaintainFrom = null,
-    Object? temperatureMaintainTo = null,
+    Object? temperatureMaintainType = freezed,
+    Object? temperatureMaintainFrom = freezed,
+    Object? temperatureMaintainTo = freezed,
     Object? cargoInfo = null,
-    Object? nextMandatoryCheckCallType = null,
+    Object? nextMandatoryCheckCallType = freezed,
     Object? chatId = null,
     Object? routeTotalMi = null,
   }) {
@@ -260,26 +260,26 @@ class __$$DispatchModelImplCopyWithImpl<$Res>
           ? _value.isFinished
           : isFinished // ignore: cast_nullable_to_non_nullable
               as bool,
-      temperatureMaintainType: null == temperatureMaintainType
+      temperatureMaintainType: freezed == temperatureMaintainType
           ? _value.temperatureMaintainType
           : temperatureMaintainType // ignore: cast_nullable_to_non_nullable
-              as String,
-      temperatureMaintainFrom: null == temperatureMaintainFrom
+              as String?,
+      temperatureMaintainFrom: freezed == temperatureMaintainFrom
           ? _value.temperatureMaintainFrom
           : temperatureMaintainFrom // ignore: cast_nullable_to_non_nullable
-              as int,
-      temperatureMaintainTo: null == temperatureMaintainTo
+              as int?,
+      temperatureMaintainTo: freezed == temperatureMaintainTo
           ? _value.temperatureMaintainTo
           : temperatureMaintainTo // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       cargoInfo: null == cargoInfo
           ? _value.cargoInfo
           : cargoInfo // ignore: cast_nullable_to_non_nullable
               as CargoInfoModel,
-      nextMandatoryCheckCallType: null == nextMandatoryCheckCallType
+      nextMandatoryCheckCallType: freezed == nextMandatoryCheckCallType
           ? _value.nextMandatoryCheckCallType
           : nextMandatoryCheckCallType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       chatId: null == chatId
           ? _value.chatId
           : chatId // ignore: cast_nullable_to_non_nullable
@@ -303,15 +303,12 @@ class _$DispatchModelImpl implements _DispatchModel {
       @JsonKey(name: 'next_waypoint_id') required this.nextWaypointId,
       @JsonKey(name: 'is_tonu_declared') required this.isTonuDeclared,
       @JsonKey(name: 'is_finished') required this.isFinished,
-      @JsonKey(name: 'temperature_maintain_type')
-      required this.temperatureMaintainType,
-      @JsonKey(name: 'temperature_maintain_from')
-      required this.temperatureMaintainFrom,
-      @JsonKey(name: 'temperature_maintain_to')
-      required this.temperatureMaintainTo,
+      @JsonKey(name: 'temperature_maintain_type') this.temperatureMaintainType,
+      @JsonKey(name: 'temperature_maintain_from') this.temperatureMaintainFrom,
+      @JsonKey(name: 'temperature_maintain_to') this.temperatureMaintainTo,
       @JsonKey(name: 'cargo_info') required this.cargoInfo,
       @JsonKey(name: 'next_mandatory_check_call_type')
-      required this.nextMandatoryCheckCallType,
+      this.nextMandatoryCheckCallType,
       @JsonKey(name: 'chat_id') required this.chatId,
       @JsonKey(name: 'route_total_mi') required this.routeTotalMi})
       : _waypoints = waypoints;
@@ -345,19 +342,19 @@ class _$DispatchModelImpl implements _DispatchModel {
   final bool isFinished;
   @override
   @JsonKey(name: 'temperature_maintain_type')
-  final String temperatureMaintainType;
+  final String? temperatureMaintainType;
   @override
   @JsonKey(name: 'temperature_maintain_from')
-  final int temperatureMaintainFrom;
+  final int? temperatureMaintainFrom;
   @override
   @JsonKey(name: 'temperature_maintain_to')
-  final int temperatureMaintainTo;
+  final int? temperatureMaintainTo;
   @override
   @JsonKey(name: 'cargo_info')
   final CargoInfoModel cargoInfo;
   @override
   @JsonKey(name: 'next_mandatory_check_call_type')
-  final String nextMandatoryCheckCallType;
+  final String? nextMandatoryCheckCallType;
   @override
   @JsonKey(name: 'chat_id')
   final int chatId;
@@ -449,14 +446,14 @@ abstract class _DispatchModel implements DispatchModel {
       @JsonKey(name: 'is_tonu_declared') required final bool isTonuDeclared,
       @JsonKey(name: 'is_finished') required final bool isFinished,
       @JsonKey(name: 'temperature_maintain_type')
-      required final String temperatureMaintainType,
+      final String? temperatureMaintainType,
       @JsonKey(name: 'temperature_maintain_from')
-      required final int temperatureMaintainFrom,
+      final int? temperatureMaintainFrom,
       @JsonKey(name: 'temperature_maintain_to')
-      required final int temperatureMaintainTo,
+      final int? temperatureMaintainTo,
       @JsonKey(name: 'cargo_info') required final CargoInfoModel cargoInfo,
       @JsonKey(name: 'next_mandatory_check_call_type')
-      required final String nextMandatoryCheckCallType,
+      final String? nextMandatoryCheckCallType,
       @JsonKey(name: 'chat_id') required final int chatId,
       @JsonKey(name: 'route_total_mi')
       required final String routeTotalMi}) = _$DispatchModelImpl;
@@ -484,19 +481,19 @@ abstract class _DispatchModel implements DispatchModel {
   bool get isFinished;
   @override
   @JsonKey(name: 'temperature_maintain_type')
-  String get temperatureMaintainType;
+  String? get temperatureMaintainType;
   @override
   @JsonKey(name: 'temperature_maintain_from')
-  int get temperatureMaintainFrom;
+  int? get temperatureMaintainFrom;
   @override
   @JsonKey(name: 'temperature_maintain_to')
-  int get temperatureMaintainTo;
+  int? get temperatureMaintainTo;
   @override
   @JsonKey(name: 'cargo_info')
   CargoInfoModel get cargoInfo;
   @override
   @JsonKey(name: 'next_mandatory_check_call_type')
-  String get nextMandatoryCheckCallType;
+  String? get nextMandatoryCheckCallType;
   @override
   @JsonKey(name: 'chat_id')
   int get chatId;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';

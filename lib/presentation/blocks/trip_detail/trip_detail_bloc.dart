@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/domain/repositories/trip_repository.dart';
 
 part 'trip_detail_bloc.freezed.dart';

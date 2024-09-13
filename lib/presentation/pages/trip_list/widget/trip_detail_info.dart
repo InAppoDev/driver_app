@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tms_driver/data/models/trip/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class TripDetailInfo extends StatelessWidget {
-  const TripDetailInfo({super.key, required this.trip});
+  const TripDetailInfo({
+    super.key,
+    required this.trip,
+  });
   final DispatchModel trip;
 
   @override
@@ -32,7 +35,7 @@ class TripDetailInfo extends StatelessWidget {
                 children: [
                   SvgPicture.asset('assets/images/distance.svg'),
                   Text(
-                    context.localizations.distanceKm(300),
+                    context.localizations.distanceKm(trip.routeTotalMi),
                     style: theme.textTheme.titleSmall!.copyWith(
                       color: theme.dividerColor,
                       fontWeight: FontWeight.w400,
@@ -51,24 +54,29 @@ class TripDetailInfo extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 15),
-          Text(
-            context.localizations.hoursOfOperation,
-            style: theme.textTheme.bodySmall!.copyWith(
-              color: theme.disabledColor,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-          const SizedBox(height: 5),
-          Row(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SvgPicture.asset('assets/images/clock.svg'),
-              const SizedBox(width: 5),
               Text(
-                '10:00 AM - 19:00 PM',
-                style: theme.textTheme.titleSmall!.copyWith(
+                context.localizations.hoursOfOperation,
+                style: theme.textTheme.bodySmall!.copyWith(
+                  color: theme.disabledColor,
                   fontWeight: FontWeight.w400,
-                  color: theme.dividerColor,
                 ),
+              ),
+              const SizedBox(height: 5),
+              Row(
+                children: [
+                  SvgPicture.asset('assets/images/clock.svg'),
+                  const SizedBox(width: 5),
+                  Text(
+                    '10:00 AM - 19:00 PM', // TODO check it on backend
+                    style: theme.textTheme.titleSmall!.copyWith(
+                      fontWeight: FontWeight.w400,
+                      color: theme.dividerColor,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -76,82 +84,87 @@ class TripDetailInfo extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    context.localizations.weight,
-                    style: theme.textTheme.bodySmall!.copyWith(
-                      color: theme.dividerColor,
+              if (trip.cargoInfo.totalWeight != null)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      context.localizations.weight,
+                      style: theme.textTheme.bodySmall!.copyWith(
+                        color: theme.dividerColor,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    '25 ${context.localizations.tons}',
-                    style: theme.textTheme.titleSmall!.copyWith(
-                      fontWeight: FontWeight.w400,
-                      color: theme.dividerColor,
+                    const SizedBox(height: 5),
+                    Text(
+                      '${trip.cargoInfo.totalWeight} ${context.localizations.tons}',
+                      style: theme.textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w400,
+                        color: theme.dividerColor,
+                      ),
+                    )
+                  ],
+                ),
+              if (trip.cargoInfo.commodity != null)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      context.localizations.commodity,
+                      style: theme.textTheme.bodySmall!.copyWith(
+                        color: theme.dividerColor,
+                      ),
                     ),
-                  )
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    context.localizations.commodity,
-                    style: theme.textTheme.bodySmall!.copyWith(
-                      color: theme.dividerColor,
+                    const SizedBox(height: 5),
+                    Text(
+                      trip.cargoInfo.commodity!,
+                      style: theme.textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w400,
+                        color: theme.dividerColor,
+                      ),
+                    )
+                  ],
+                ),
+              if (trip.cargoInfo.totalPallets != null)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      context.localizations.pallets,
+                      style: theme.textTheme.bodySmall!.copyWith(
+                        color: theme.dividerColor,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    'Meat',
-                    style: theme.textTheme.titleSmall!.copyWith(
-                      fontWeight: FontWeight.w400,
-                      color: theme.dividerColor,
+                    const SizedBox(height: 5),
+                    Text(
+                      trip.cargoInfo.totalPallets!.toString(),
+                      style: theme.textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w400,
+                        color: theme.dividerColor,
+                      ),
+                    )
+                  ],
+                ),
+              if (trip.temperatureMaintainFrom != null &&
+                  trip.temperatureMaintainTo != null)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      context.localizations.temperature,
+                      style: theme.textTheme.bodySmall!.copyWith(
+                        color: theme.dividerColor,
+                      ),
                     ),
-                  )
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    context.localizations.pallets,
-                    style: theme.textTheme.bodySmall!.copyWith(
-                      color: theme.dividerColor,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    '5',
-                    style: theme.textTheme.titleSmall!.copyWith(
-                      fontWeight: FontWeight.w400,
-                      color: theme.dividerColor,
-                    ),
-                  )
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    context.localizations.temperature,
-                    style: theme.textTheme.bodySmall!.copyWith(
-                      color: theme.dividerColor,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    '- 5 C',
-                    style: theme.textTheme.titleSmall!.copyWith(
-                      fontWeight: FontWeight.w400,
-                      color: theme.dividerColor,
-                    ),
-                  )
-                ],
-              ),
+                    const SizedBox(height: 5),
+                    Text(
+                      'from ${trip.temperatureMaintainFrom} to ${trip.temperatureMaintainTo}',
+                      style: theme.textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w400,
+                        color: theme.dividerColor,
+                      ),
+                    )
+                  ],
+                ),
             ],
           ),
         ],

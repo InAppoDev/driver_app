@@ -52,6 +52,14 @@ class TripListViewState extends State<TripListView>
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   color: theme.scaffoldBackgroundColor,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 4,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
                 ),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
@@ -90,6 +98,7 @@ class TripListViewState extends State<TripListView>
                   ],
                 ),
               ),
+              const SizedBox(height: 8),
               Expanded(
                 child: TabBarView(
                   controller: _tabController,

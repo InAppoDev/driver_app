@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:tms_driver/data/models/trip/dispatch_list_model/dispatch_list_model.dart';
+import 'package:tms_driver/data/models/dispatch/dispatch_list_model/dispatch_list_model.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/chat_screen.dart';
 import 'package:tms_driver/presentation/pages/login/login_page.dart';
 import 'package:tms_driver/presentation/pages/main/main_page.dart';

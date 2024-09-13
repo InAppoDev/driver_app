@@ -16,14 +16,14 @@ _$DispatchModelImpl _$$DispatchModelImplFromJson(Map<String, dynamic> json) =>
       nextWaypointId: (json['next_waypoint_id'] as num).toInt(),
       isTonuDeclared: json['is_tonu_declared'] as bool,
       isFinished: json['is_finished'] as bool,
-      temperatureMaintainType: json['temperature_maintain_type'] as String,
+      temperatureMaintainType: json['temperature_maintain_type'] as String?,
       temperatureMaintainFrom:
-          (json['temperature_maintain_from'] as num).toInt(),
-      temperatureMaintainTo: (json['temperature_maintain_to'] as num).toInt(),
+          (json['temperature_maintain_from'] as num?)?.toInt(),
+      temperatureMaintainTo: (json['temperature_maintain_to'] as num?)?.toInt(),
       cargoInfo:
           CargoInfoModel.fromJson(json['cargo_info'] as Map<String, dynamic>),
       nextMandatoryCheckCallType:
-          json['next_mandatory_check_call_type'] as String,
+          json['next_mandatory_check_call_type'] as String?,
       chatId: (json['chat_id'] as num).toInt(),
       routeTotalMi: json['route_total_mi'] as String,
     );
