@@ -3,18 +3,21 @@ import 'package:flutter_svg/svg.dart';
 import 'package:r_dotted_line_border/r_dotted_line_border.dart';
 import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
+import 'package:tms_driver/presentation/utils/extension/waypoint_type.dart';
 
 class TripInfoWidget extends StatelessWidget {
   const TripInfoWidget({
     super.key,
-    required this.topic,
+    required this.type,
+    // required this.typeTitle,
     required this.address,
     required this.time,
     required this.showMidlLine,
     required this.showTipImage,
   });
 
-  final String topic;
+  final String type;
+  // final String typeTitle;
   final String address;
   final int time;
   final bool showMidlLine;
@@ -46,7 +49,7 @@ class TripInfoWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      topic,
+                      type.displayText,
                       style: theme.textTheme.bodySmall!
                           .copyWith(color: theme.disabledColor),
                     ),

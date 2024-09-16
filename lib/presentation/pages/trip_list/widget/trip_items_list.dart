@@ -35,7 +35,7 @@ class TripItemsList extends StatelessWidget {
         itemCount: trips.length,
         itemBuilder: (context, index) => TripItemWidget(
           onPressed: onPressed,
-          tripListModel: trips[index],
+          trip: trips[index],
           isHistoryWidget: isHistoryWidget,
         ),
       ),

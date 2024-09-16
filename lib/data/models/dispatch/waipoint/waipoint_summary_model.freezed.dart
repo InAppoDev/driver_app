@@ -37,7 +37,7 @@ mixin _$WaipointSummaryModel {
   @JsonKey(name: 'appt_from_timestamp')
   int get apptFromTimestamp => throw _privateConstructorUsedError;
   @JsonKey(name: 'appt_to_timestamp')
-  int? get apptToTimestamp => throw _privateConstructorUsedError;
+  int get apptToTimestamp => throw _privateConstructorUsedError;
 
   /// Serializes this WaipointSummaryModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -64,7 +64,7 @@ abstract class $WaipointSummaryModelCopyWith<$Res> {
       @JsonKey(name: 'state_code') String stateCode,
       @JsonKey(name: 'zip_code') String zipCode,
       @JsonKey(name: 'appt_from_timestamp') int apptFromTimestamp,
-      @JsonKey(name: 'appt_to_timestamp') int? apptToTimestamp});
+      @JsonKey(name: 'appt_to_timestamp') int apptToTimestamp});
 }
 
 /// @nodoc
@@ -91,7 +91,7 @@ class _$WaipointSummaryModelCopyWithImpl<$Res,
     Object? stateCode = null,
     Object? zipCode = null,
     Object? apptFromTimestamp = null,
-    Object? apptToTimestamp = freezed,
+    Object? apptToTimestamp = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -126,10 +126,10 @@ class _$WaipointSummaryModelCopyWithImpl<$Res,
           ? _value.apptFromTimestamp
           : apptFromTimestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      apptToTimestamp: freezed == apptToTimestamp
+      apptToTimestamp: null == apptToTimestamp
           ? _value.apptToTimestamp
           : apptToTimestamp // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
     ) as $Val);
   }
 }
@@ -151,7 +151,7 @@ abstract class _$$WaipointSummaryModelImplCopyWith<$Res>
       @JsonKey(name: 'state_code') String stateCode,
       @JsonKey(name: 'zip_code') String zipCode,
       @JsonKey(name: 'appt_from_timestamp') int apptFromTimestamp,
-      @JsonKey(name: 'appt_to_timestamp') int? apptToTimestamp});
+      @JsonKey(name: 'appt_to_timestamp') int apptToTimestamp});
 }
 
 /// @nodoc
@@ -175,7 +175,7 @@ class __$$WaipointSummaryModelImplCopyWithImpl<$Res>
     Object? stateCode = null,
     Object? zipCode = null,
     Object? apptFromTimestamp = null,
-    Object? apptToTimestamp = freezed,
+    Object? apptToTimestamp = null,
   }) {
     return _then(_$WaipointSummaryModelImpl(
       id: null == id
@@ -210,10 +210,10 @@ class __$$WaipointSummaryModelImplCopyWithImpl<$Res>
           ? _value.apptFromTimestamp
           : apptFromTimestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      apptToTimestamp: freezed == apptToTimestamp
+      apptToTimestamp: null == apptToTimestamp
           ? _value.apptToTimestamp
           : apptToTimestamp // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
     ));
   }
 }
@@ -230,7 +230,7 @@ class _$WaipointSummaryModelImpl implements _WaipointSummaryModel {
       @JsonKey(name: 'state_code') required this.stateCode,
       @JsonKey(name: 'zip_code') required this.zipCode,
       @JsonKey(name: 'appt_from_timestamp') required this.apptFromTimestamp,
-      @JsonKey(name: 'appt_to_timestamp') this.apptToTimestamp});
+      @JsonKey(name: 'appt_to_timestamp') required this.apptToTimestamp});
 
   factory _$WaipointSummaryModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$WaipointSummaryModelImplFromJson(json);
@@ -261,7 +261,7 @@ class _$WaipointSummaryModelImpl implements _WaipointSummaryModel {
   final int apptFromTimestamp;
   @override
   @JsonKey(name: 'appt_to_timestamp')
-  final int? apptToTimestamp;
+  final int apptToTimestamp;
 
   @override
   String toString() {
@@ -313,17 +313,17 @@ class _$WaipointSummaryModelImpl implements _WaipointSummaryModel {
 
 abstract class _WaipointSummaryModel implements WaipointSummaryModel {
   const factory _WaipointSummaryModel(
-          {@JsonKey(name: 'id') required final int id,
-          @JsonKey(name: 'type') required final String type,
-          @JsonKey(name: 'type_title') required final String typeTitle,
-          @JsonKey(name: 'address') required final String address,
-          @JsonKey(name: 'city') required final String city,
-          @JsonKey(name: 'state_code') required final String stateCode,
-          @JsonKey(name: 'zip_code') required final String zipCode,
-          @JsonKey(name: 'appt_from_timestamp')
-          required final int apptFromTimestamp,
-          @JsonKey(name: 'appt_to_timestamp') final int? apptToTimestamp}) =
-      _$WaipointSummaryModelImpl;
+      {@JsonKey(name: 'id') required final int id,
+      @JsonKey(name: 'type') required final String type,
+      @JsonKey(name: 'type_title') required final String typeTitle,
+      @JsonKey(name: 'address') required final String address,
+      @JsonKey(name: 'city') required final String city,
+      @JsonKey(name: 'state_code') required final String stateCode,
+      @JsonKey(name: 'zip_code') required final String zipCode,
+      @JsonKey(name: 'appt_from_timestamp')
+      required final int apptFromTimestamp,
+      @JsonKey(name: 'appt_to_timestamp')
+      required final int apptToTimestamp}) = _$WaipointSummaryModelImpl;
 
   factory _WaipointSummaryModel.fromJson(Map<String, dynamic> json) =
       _$WaipointSummaryModelImpl.fromJson;
@@ -354,7 +354,7 @@ abstract class _WaipointSummaryModel implements WaipointSummaryModel {
   int get apptFromTimestamp;
   @override
   @JsonKey(name: 'appt_to_timestamp')
-  int? get apptToTimestamp;
+  int get apptToTimestamp;
 
   /// Create a copy of WaipointSummaryModel
   /// with the given fields replaced by the non-null parameter values.

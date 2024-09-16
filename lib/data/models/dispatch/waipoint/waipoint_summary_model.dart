@@ -16,7 +16,7 @@ class WaipointSummaryModel with _$WaipointSummaryModel {
     @JsonKey(name: 'state_code') required String stateCode,
     @JsonKey(name: 'zip_code') required String zipCode,
     @JsonKey(name: 'appt_from_timestamp') required int apptFromTimestamp,
-    @JsonKey(name: 'appt_to_timestamp') int? apptToTimestamp,
+    @JsonKey(name: 'appt_to_timestamp') required int apptToTimestamp,
   }) = _WaipointSummaryModel;
 
   factory WaipointSummaryModel.fromJson(Map<String, dynamic> json) =>

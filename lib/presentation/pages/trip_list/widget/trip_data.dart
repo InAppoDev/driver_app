@@ -51,7 +51,7 @@ class TripData extends StatelessWidget {
                             ),
                             const SizedBox(width: 15),
                             Text(
-                              context.localizations.startingPoint,
+                              'check text', //TODO
                               style: theme.textTheme.titleSmall!
                                   .copyWith(color: theme.dividerColor),
                             ),
@@ -117,7 +117,8 @@ class TripData extends StatelessWidget {
                                 children: [
                                   ...trip.waypoints.skip(1).map((waypoint) {
                                     return TripInfoWidget(
-                                      topic: waypoint.typeTitle,
+                                      type: waypoint.type,
+                                      // typeTitle: waypoint.typeTitle,
                                       address: waypoint.address,
                                       time: waypoint.apptFromTimestamp,
                                       showMidlLine: true,

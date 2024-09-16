@@ -17,7 +17,7 @@ _$WaipointSummaryModelImpl _$$WaipointSummaryModelImplFromJson(
       stateCode: json['state_code'] as String,
       zipCode: json['zip_code'] as String,
       apptFromTimestamp: (json['appt_from_timestamp'] as num).toInt(),
-      apptToTimestamp: (json['appt_to_timestamp'] as num?)?.toInt(),
+      apptToTimestamp: (json['appt_to_timestamp'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$WaipointSummaryModelImplToJson(
