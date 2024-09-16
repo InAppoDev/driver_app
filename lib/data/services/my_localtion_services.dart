@@ -4,14 +4,17 @@ import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:background_fetch/background_fetch.dart';
+import 'package:tms_driver/data/services/foreground_service.dart';
 
 class MyLocationService {
   late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+
   Timer? _timer;
   Timer? _driveTimer;
   int _secondsElapsed = 0;
+  final ForegroundService foregroundService;
 
-  MyLocationService() {
+  MyLocationService({required this.foregroundService}) {
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     _initializeNotifications();
     startTracking();
@@ -86,14 +89,16 @@ class MyLocationService {
   // Callback for iOS notification selection
   void _onSelectNotification(NotificationResponse? response) async {}
 
-  void startDriveTimer() {
+  void startDriveTimer() async {
+    await foregroundService.startService();
     _driveTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _secondsElapsed++;
       _updateDriveNotification();
     });
   }
 
-  void stopDriveTimer() {
+  void stopDriveTimer() async {
+    await foregroundService.stopService();
     _driveTimer?.cancel();
   }
 
@@ -104,9 +109,6 @@ class MyLocationService {
   void _updateDriveNotification() async {
     final String elapsedTime =
         _formatDuration(Duration(seconds: _secondsElapsed));
-    if (kDebugMode) {
-      print('_update Drive Notification $elapsedTime');
-    }
 
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
