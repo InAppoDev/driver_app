@@ -44,19 +44,29 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
     }
   }
 
-  void _loadActiveTrip(
+  Future<void> _loadActiveTrip(
       LoadActiveTrip event, Emitter<TripDetailState> emit) async {
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(status: ActiveTripStatus.loading));
+
     try {
-      final DispatchModel? trip = await tripRepository.getActiveTrip();
-      if (trip != null) {
-        emit(state.copyWith(trip: trip, isLoading: false));
+      final DispatchModel? activeTrip = await tripRepository.getActiveTrip();
+
+      if (activeTrip != null) {
+        emit(state.copyWith(
+          status: ActiveTripStatus.success,
+          trip: activeTrip,
+        ));
       } else {
         emit(state.copyWith(
-            isLoading: false, errorMessage: 'No active trip found'));
+          status: ActiveTripStatus.success,
+          trip: null,
+        ));
       }
     } catch (e) {
-      emit(state.copyWith(isLoading: false, errorMessage: e.toString()));
+      emit(state.copyWith(
+        status: ActiveTripStatus.failure,
+        errorMessage: e.toString(),
+      ));
     }
   }
 

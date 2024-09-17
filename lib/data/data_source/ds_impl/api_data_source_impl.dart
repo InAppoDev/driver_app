@@ -195,6 +195,10 @@ class ApiDataSourceImpl implements ApiDataSource {
   @override
   Future<DispatchModel?> getActiveTrip() async {
     final response = await _makeRequest(() => dio.get('/dispatches/active'));
+    // 204 no active dispatch found
+    if (response.statusCode == 204) {
+      return null;
+    }
     return DispatchModel.fromJson(response.data);
   }
 }
