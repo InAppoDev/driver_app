@@ -1803,7 +1803,7 @@ class _$TripDetailStateImpl implements _TripDetailState {
       this.isFileLoading = false,
       this.isLoading = false,
       this.trip,
-      this.areStopsVisible = false});
+      this.areStopsVisible = true});
 
   @override
   final ActiveTripStatus status;

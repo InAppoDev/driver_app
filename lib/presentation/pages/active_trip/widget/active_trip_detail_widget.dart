@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
-import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_picker.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/upload_scan_files.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_data.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_detail_info.dart';
@@ -31,14 +30,14 @@ class ActiveTripDetailWidget extends StatelessWidget {
             const SizedBox(height: 10),
             if (state.trip != null) TripDetailInfo(trip: state.trip!),
             const SizedBox(height: 10),
-            CalendarPicker(
-              onCalendarResponse: (resp) {
-                context
-                    .read<TripDetailBloc>()
-                    .add(TripDetailEvent.getDateAndTime(dateTime: resp));
-              },
-              dateTime: state.dateTime ?? '',
-            ),
+            // CalendarPicker(
+            //   onCalendarResponse: (resp) {
+            //     context
+            //         .read<TripDetailBloc>()
+            //         .add(TripDetailEvent.getDateAndTime(dateTime: resp));
+            //   },
+            //   dateTime: state.dateTime ?? '',
+            // ),
             const SizedBox(height: 11),
             UploadScanFiles(
               onAddFile: () {

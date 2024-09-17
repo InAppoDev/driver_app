@@ -91,9 +91,10 @@ class TripData extends StatelessWidget {
                             ),
                           ],
                         ),
-                        CustomDateWidget(
-                          date: trip.waypoints.first.apptFromTimestamp,
-                        ),
+                        if (trip.nextEtaTimestamp != null)
+                          CustomDateWidget(
+                            date: trip.nextEtaTimestamp!,
+                          ),
                       ],
                     ),
                     const SizedBox(height: 16),
