@@ -22,6 +22,7 @@ mixin _$MainEvent {
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
     required TResult Function() updateDriveButton,
     required TResult Function() checkConnection,
+    required TResult Function() initializeApp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$MainEvent {
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
     TResult? Function()? updateDriveButton,
     TResult? Function()? checkConnection,
+    TResult? Function()? initializeApp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$MainEvent {
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
     TResult Function()? updateDriveButton,
     TResult Function()? checkConnection,
+    TResult Function()? initializeApp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$MainEvent {
     required TResult Function(_HideShowNavBar value) hideShowNavBar,
     required TResult Function(_UpdateDriveButton value) updateDriveButton,
     required TResult Function(_CheckConnection value) checkConnection,
+    required TResult Function(_InitializeApp value) initializeApp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$MainEvent {
     TResult? Function(_HideShowNavBar value)? hideShowNavBar,
     TResult? Function(_UpdateDriveButton value)? updateDriveButton,
     TResult? Function(_CheckConnection value)? checkConnection,
+    TResult? Function(_InitializeApp value)? initializeApp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$MainEvent {
     TResult Function(_HideShowNavBar value)? hideShowNavBar,
     TResult Function(_UpdateDriveButton value)? updateDriveButton,
     TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_InitializeApp value)? initializeApp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -160,6 +166,7 @@ class _$PageChangedImpl implements _PageChanged {
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
     required TResult Function() updateDriveButton,
     required TResult Function() checkConnection,
+    required TResult Function() initializeApp,
   }) {
     return pageChanged(page);
   }
@@ -171,6 +178,7 @@ class _$PageChangedImpl implements _PageChanged {
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
     TResult? Function()? updateDriveButton,
     TResult? Function()? checkConnection,
+    TResult? Function()? initializeApp,
   }) {
     return pageChanged?.call(page);
   }
@@ -182,6 +190,7 @@ class _$PageChangedImpl implements _PageChanged {
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
     TResult Function()? updateDriveButton,
     TResult Function()? checkConnection,
+    TResult Function()? initializeApp,
     required TResult orElse(),
   }) {
     if (pageChanged != null) {
@@ -197,6 +206,7 @@ class _$PageChangedImpl implements _PageChanged {
     required TResult Function(_HideShowNavBar value) hideShowNavBar,
     required TResult Function(_UpdateDriveButton value) updateDriveButton,
     required TResult Function(_CheckConnection value) checkConnection,
+    required TResult Function(_InitializeApp value) initializeApp,
   }) {
     return pageChanged(this);
   }
@@ -208,6 +218,7 @@ class _$PageChangedImpl implements _PageChanged {
     TResult? Function(_HideShowNavBar value)? hideShowNavBar,
     TResult? Function(_UpdateDriveButton value)? updateDriveButton,
     TResult? Function(_CheckConnection value)? checkConnection,
+    TResult? Function(_InitializeApp value)? initializeApp,
   }) {
     return pageChanged?.call(this);
   }
@@ -219,6 +230,7 @@ class _$PageChangedImpl implements _PageChanged {
     TResult Function(_HideShowNavBar value)? hideShowNavBar,
     TResult Function(_UpdateDriveButton value)? updateDriveButton,
     TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_InitializeApp value)? initializeApp,
     required TResult orElse(),
   }) {
     if (pageChanged != null) {
@@ -314,6 +326,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
     required TResult Function() updateDriveButton,
     required TResult Function() checkConnection,
+    required TResult Function() initializeApp,
   }) {
     return hideShowNavBar(this.hideShowNavBar);
   }
@@ -325,6 +338,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
     TResult? Function()? updateDriveButton,
     TResult? Function()? checkConnection,
+    TResult? Function()? initializeApp,
   }) {
     return hideShowNavBar?.call(this.hideShowNavBar);
   }
@@ -336,6 +350,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
     TResult Function()? updateDriveButton,
     TResult Function()? checkConnection,
+    TResult Function()? initializeApp,
     required TResult orElse(),
   }) {
     if (hideShowNavBar != null) {
@@ -351,6 +366,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
     required TResult Function(_HideShowNavBar value) hideShowNavBar,
     required TResult Function(_UpdateDriveButton value) updateDriveButton,
     required TResult Function(_CheckConnection value) checkConnection,
+    required TResult Function(_InitializeApp value) initializeApp,
   }) {
     return hideShowNavBar(this);
   }
@@ -362,6 +378,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
     TResult? Function(_HideShowNavBar value)? hideShowNavBar,
     TResult? Function(_UpdateDriveButton value)? updateDriveButton,
     TResult? Function(_CheckConnection value)? checkConnection,
+    TResult? Function(_InitializeApp value)? initializeApp,
   }) {
     return hideShowNavBar?.call(this);
   }
@@ -373,6 +390,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
     TResult Function(_HideShowNavBar value)? hideShowNavBar,
     TResult Function(_UpdateDriveButton value)? updateDriveButton,
     TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_InitializeApp value)? initializeApp,
     required TResult orElse(),
   }) {
     if (hideShowNavBar != null) {
@@ -440,6 +458,7 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
     required TResult Function() updateDriveButton,
     required TResult Function() checkConnection,
+    required TResult Function() initializeApp,
   }) {
     return updateDriveButton();
   }
@@ -451,6 +470,7 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
     TResult? Function()? updateDriveButton,
     TResult? Function()? checkConnection,
+    TResult? Function()? initializeApp,
   }) {
     return updateDriveButton?.call();
   }
@@ -462,6 +482,7 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
     TResult Function()? updateDriveButton,
     TResult Function()? checkConnection,
+    TResult Function()? initializeApp,
     required TResult orElse(),
   }) {
     if (updateDriveButton != null) {
@@ -477,6 +498,7 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
     required TResult Function(_HideShowNavBar value) hideShowNavBar,
     required TResult Function(_UpdateDriveButton value) updateDriveButton,
     required TResult Function(_CheckConnection value) checkConnection,
+    required TResult Function(_InitializeApp value) initializeApp,
   }) {
     return updateDriveButton(this);
   }
@@ -488,6 +510,7 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
     TResult? Function(_HideShowNavBar value)? hideShowNavBar,
     TResult? Function(_UpdateDriveButton value)? updateDriveButton,
     TResult? Function(_CheckConnection value)? checkConnection,
+    TResult? Function(_InitializeApp value)? initializeApp,
   }) {
     return updateDriveButton?.call(this);
   }
@@ -499,6 +522,7 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
     TResult Function(_HideShowNavBar value)? hideShowNavBar,
     TResult Function(_UpdateDriveButton value)? updateDriveButton,
     TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_InitializeApp value)? initializeApp,
     required TResult orElse(),
   }) {
     if (updateDriveButton != null) {
@@ -557,6 +581,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
     required TResult Function() updateDriveButton,
     required TResult Function() checkConnection,
+    required TResult Function() initializeApp,
   }) {
     return checkConnection();
   }
@@ -568,6 +593,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
     TResult? Function()? updateDriveButton,
     TResult? Function()? checkConnection,
+    TResult? Function()? initializeApp,
   }) {
     return checkConnection?.call();
   }
@@ -579,6 +605,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
     TResult Function()? updateDriveButton,
     TResult Function()? checkConnection,
+    TResult Function()? initializeApp,
     required TResult orElse(),
   }) {
     if (checkConnection != null) {
@@ -594,6 +621,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
     required TResult Function(_HideShowNavBar value) hideShowNavBar,
     required TResult Function(_UpdateDriveButton value) updateDriveButton,
     required TResult Function(_CheckConnection value) checkConnection,
+    required TResult Function(_InitializeApp value) initializeApp,
   }) {
     return checkConnection(this);
   }
@@ -605,6 +633,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
     TResult? Function(_HideShowNavBar value)? hideShowNavBar,
     TResult? Function(_UpdateDriveButton value)? updateDriveButton,
     TResult? Function(_CheckConnection value)? checkConnection,
+    TResult? Function(_InitializeApp value)? initializeApp,
   }) {
     return checkConnection?.call(this);
   }
@@ -616,6 +645,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
     TResult Function(_HideShowNavBar value)? hideShowNavBar,
     TResult Function(_UpdateDriveButton value)? updateDriveButton,
     TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_InitializeApp value)? initializeApp,
     required TResult orElse(),
   }) {
     if (checkConnection != null) {
@@ -627,6 +657,129 @@ class _$CheckConnectionImpl implements _CheckConnection {
 
 abstract class _CheckConnection implements MainEvent {
   const factory _CheckConnection() = _$CheckConnectionImpl;
+}
+
+/// @nodoc
+abstract class _$$InitializeAppImplCopyWith<$Res> {
+  factory _$$InitializeAppImplCopyWith(
+          _$InitializeAppImpl value, $Res Function(_$InitializeAppImpl) then) =
+      __$$InitializeAppImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitializeAppImplCopyWithImpl<$Res>
+    extends _$MainEventCopyWithImpl<$Res, _$InitializeAppImpl>
+    implements _$$InitializeAppImplCopyWith<$Res> {
+  __$$InitializeAppImplCopyWithImpl(
+      _$InitializeAppImpl _value, $Res Function(_$InitializeAppImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MainEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$InitializeAppImpl implements _InitializeApp {
+  const _$InitializeAppImpl();
+
+  @override
+  String toString() {
+    return 'MainEvent.initializeApp()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitializeAppImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(MainPageEnum page) pageChanged,
+    required TResult Function(bool hideShowNavBar) hideShowNavBar,
+    required TResult Function() updateDriveButton,
+    required TResult Function() checkConnection,
+    required TResult Function() initializeApp,
+  }) {
+    return initializeApp();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(MainPageEnum page)? pageChanged,
+    TResult? Function(bool hideShowNavBar)? hideShowNavBar,
+    TResult? Function()? updateDriveButton,
+    TResult? Function()? checkConnection,
+    TResult? Function()? initializeApp,
+  }) {
+    return initializeApp?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(MainPageEnum page)? pageChanged,
+    TResult Function(bool hideShowNavBar)? hideShowNavBar,
+    TResult Function()? updateDriveButton,
+    TResult Function()? checkConnection,
+    TResult Function()? initializeApp,
+    required TResult orElse(),
+  }) {
+    if (initializeApp != null) {
+      return initializeApp();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PageChanged value) pageChanged,
+    required TResult Function(_HideShowNavBar value) hideShowNavBar,
+    required TResult Function(_UpdateDriveButton value) updateDriveButton,
+    required TResult Function(_CheckConnection value) checkConnection,
+    required TResult Function(_InitializeApp value) initializeApp,
+  }) {
+    return initializeApp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PageChanged value)? pageChanged,
+    TResult? Function(_HideShowNavBar value)? hideShowNavBar,
+    TResult? Function(_UpdateDriveButton value)? updateDriveButton,
+    TResult? Function(_CheckConnection value)? checkConnection,
+    TResult? Function(_InitializeApp value)? initializeApp,
+  }) {
+    return initializeApp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PageChanged value)? pageChanged,
+    TResult Function(_HideShowNavBar value)? hideShowNavBar,
+    TResult Function(_UpdateDriveButton value)? updateDriveButton,
+    TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_InitializeApp value)? initializeApp,
+    required TResult orElse(),
+  }) {
+    if (initializeApp != null) {
+      return initializeApp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InitializeApp implements MainEvent {
+  const factory _InitializeApp() = _$InitializeAppImpl;
 }
 
 /// @nodoc

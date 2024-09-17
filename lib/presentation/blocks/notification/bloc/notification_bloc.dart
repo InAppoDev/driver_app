@@ -14,23 +14,24 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   final NotificationRepository notificationRepo =
       GetIt.instance<NotificationRepository>();
 
-  NotificationBloc() : super(const _Initial()) {
-    on<NotificationEvent>((event, emit) async {
-      await _getNotification(event, emit);
-    });
+  NotificationBloc() : super(NotificationState.initial()) {
+    on<Started>(_getNotification);
   }
 
-  FutureOr<void> _getNotification(event, emit) async {
-    await event.map(
-      started: (e) async {
-        emit(const NotificationState.loading());
-        try {
-          final notifications = await notificationRepo.getNotifications();
-          emit(NotificationState.loaded(notifications: notifications));
-        } catch (e) {
-          emit(NotificationState.error(message: e.toString()));
-        }
-      },
-    );
+  FutureOr<void> _getNotification(
+      Started event, Emitter<NotificationState> emit) async {
+    emit(state.copyWith(status: NotificationStatus.loading));
+    try {
+      final notifications = await notificationRepo.getNotifications();
+      emit(state.copyWith(
+        status: NotificationStatus.loaded,
+        notifications: notifications,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: NotificationStatus.error,
+        errorMessage: e.toString(),
+      ));
+    }
   }
 }

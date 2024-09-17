@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/active_trip_view.dart';
 
 class ActiveTrip extends StatelessWidget {
@@ -10,10 +8,6 @@ class ActiveTrip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          TripDetailBloc()..add(const TripDetailEvent.loadActiveTrip()),
-      child: const ActiveTripView(),
-    );
+    return const ActiveTripView();
   }
 }
