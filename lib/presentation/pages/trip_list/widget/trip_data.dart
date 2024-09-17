@@ -118,7 +118,6 @@ class TripData extends StatelessWidget {
                                   ...trip.waypoints.skip(1).map((waypoint) {
                                     return TripInfoWidget(
                                       type: waypoint.type,
-                                      // typeTitle: waypoint.typeTitle,
                                       address: waypoint.address,
                                       time: waypoint.apptFromTimestamp,
                                       showMidlLine: true,

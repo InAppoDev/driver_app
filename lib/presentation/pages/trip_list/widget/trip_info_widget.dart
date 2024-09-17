@@ -9,17 +9,15 @@ class TripInfoWidget extends StatelessWidget {
   const TripInfoWidget({
     super.key,
     required this.type,
-    // required this.typeTitle,
     required this.address,
-    required this.time,
+    this.time,
     required this.showMidlLine,
     required this.showTipImage,
   });
 
   final String type;
-  // final String typeTitle;
   final String address;
-  final int time;
+  final int? time;
   final bool showMidlLine;
   final bool showTipImage;
 

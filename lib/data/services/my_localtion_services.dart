@@ -110,7 +110,7 @@ class MyLocationService {
     final String elapsedTime =
         _formatDuration(Duration(seconds: _secondsElapsed));
 
-    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+    AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
       'drive_channel',
       'Drive Tracking',
@@ -122,19 +122,22 @@ class MyLocationService {
       enableVibration: false,
       silent: true,
       autoCancel: false,
+      styleInformation: BigTextStyleInformation(
+        'Auto-sharing location every 15 minutes \nTime: $elapsedTime',
+      ),
     );
 
     const DarwinNotificationDetails iOSPlatformChannelSpecifics =
         DarwinNotificationDetails();
 
-    const NotificationDetails platformChannelSpecifics = NotificationDetails(
+    NotificationDetails platformChannelSpecifics = NotificationDetails(
         android: androidPlatformChannelSpecifics,
         iOS: iOSPlatformChannelSpecifics);
 
     await flutterLocalNotificationsPlugin.show(
       2,
-      'Drive Time',
-      'Time: $elapsedTime',
+      'Drive Mode Active',
+      'Auto-sharing location every 15 minutes \n Time: $elapsedTime',
       platformChannelSpecifics,
     );
   }

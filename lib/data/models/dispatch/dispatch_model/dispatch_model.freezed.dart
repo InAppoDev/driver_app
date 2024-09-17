@@ -25,9 +25,16 @@ mixin _$DispatchModel {
   @JsonKey(name: 'truck_load_id')
   int get truckLoadId => throw _privateConstructorUsedError;
   @JsonKey(name: 'waypoints')
-  List<DispatchDetailModel> get waypoints => throw _privateConstructorUsedError;
-  @JsonKey(name: 'next_waypoint_id')
-  int get nextWaypointId => throw _privateConstructorUsedError;
+  List<WaypointDetailModel> get waypoints => throw _privateConstructorUsedError;
+  @JsonKey(name: 'started_moving_timestamp')
+  int? get startedMovingTimestamp => throw _privateConstructorUsedError;
+  @JsonKey(name: 'next_waypoint')
+  WaypointDetailModel? get nextWaypoint => throw _privateConstructorUsedError;
+  @JsonKey(name: 'next_eta_waypoint')
+  WaypointDetailModel? get nextEtaWaypoint =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'next_eta_timestamp')
+  int? get nextEtaTimestamp => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_tonu_declared')
   bool get isTonuDeclared => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_finished')
@@ -66,8 +73,11 @@ abstract class $DispatchModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'truck_load_id') int truckLoadId,
-      @JsonKey(name: 'waypoints') List<DispatchDetailModel> waypoints,
-      @JsonKey(name: 'next_waypoint_id') int nextWaypointId,
+      @JsonKey(name: 'waypoints') List<WaypointDetailModel> waypoints,
+      @JsonKey(name: 'started_moving_timestamp') int? startedMovingTimestamp,
+      @JsonKey(name: 'next_waypoint') WaypointDetailModel? nextWaypoint,
+      @JsonKey(name: 'next_eta_waypoint') WaypointDetailModel? nextEtaWaypoint,
+      @JsonKey(name: 'next_eta_timestamp') int? nextEtaTimestamp,
       @JsonKey(name: 'is_tonu_declared') bool isTonuDeclared,
       @JsonKey(name: 'is_finished') bool isFinished,
       @JsonKey(name: 'temperature_maintain_type')
@@ -80,6 +90,8 @@ abstract class $DispatchModelCopyWith<$Res> {
       @JsonKey(name: 'chat_id') int chatId,
       @JsonKey(name: 'route_total_mi') String routeTotalMi});
 
+  $WaypointDetailModelCopyWith<$Res>? get nextWaypoint;
+  $WaypointDetailModelCopyWith<$Res>? get nextEtaWaypoint;
   $CargoInfoModelCopyWith<$Res> get cargoInfo;
 }
 
@@ -101,7 +113,10 @@ class _$DispatchModelCopyWithImpl<$Res, $Val extends DispatchModel>
     Object? id = null,
     Object? truckLoadId = null,
     Object? waypoints = null,
-    Object? nextWaypointId = null,
+    Object? startedMovingTimestamp = freezed,
+    Object? nextWaypoint = freezed,
+    Object? nextEtaWaypoint = freezed,
+    Object? nextEtaTimestamp = freezed,
     Object? isTonuDeclared = null,
     Object? isFinished = null,
     Object? temperatureMaintainType = freezed,
@@ -124,11 +139,23 @@ class _$DispatchModelCopyWithImpl<$Res, $Val extends DispatchModel>
       waypoints: null == waypoints
           ? _value.waypoints
           : waypoints // ignore: cast_nullable_to_non_nullable
-              as List<DispatchDetailModel>,
-      nextWaypointId: null == nextWaypointId
-          ? _value.nextWaypointId
-          : nextWaypointId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as List<WaypointDetailModel>,
+      startedMovingTimestamp: freezed == startedMovingTimestamp
+          ? _value.startedMovingTimestamp
+          : startedMovingTimestamp // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nextWaypoint: freezed == nextWaypoint
+          ? _value.nextWaypoint
+          : nextWaypoint // ignore: cast_nullable_to_non_nullable
+              as WaypointDetailModel?,
+      nextEtaWaypoint: freezed == nextEtaWaypoint
+          ? _value.nextEtaWaypoint
+          : nextEtaWaypoint // ignore: cast_nullable_to_non_nullable
+              as WaypointDetailModel?,
+      nextEtaTimestamp: freezed == nextEtaTimestamp
+          ? _value.nextEtaTimestamp
+          : nextEtaTimestamp // ignore: cast_nullable_to_non_nullable
+              as int?,
       isTonuDeclared: null == isTonuDeclared
           ? _value.isTonuDeclared
           : isTonuDeclared // ignore: cast_nullable_to_non_nullable
@@ -172,6 +199,34 @@ class _$DispatchModelCopyWithImpl<$Res, $Val extends DispatchModel>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $WaypointDetailModelCopyWith<$Res>? get nextWaypoint {
+    if (_value.nextWaypoint == null) {
+      return null;
+    }
+
+    return $WaypointDetailModelCopyWith<$Res>(_value.nextWaypoint!, (value) {
+      return _then(_value.copyWith(nextWaypoint: value) as $Val);
+    });
+  }
+
+  /// Create a copy of DispatchModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $WaypointDetailModelCopyWith<$Res>? get nextEtaWaypoint {
+    if (_value.nextEtaWaypoint == null) {
+      return null;
+    }
+
+    return $WaypointDetailModelCopyWith<$Res>(_value.nextEtaWaypoint!, (value) {
+      return _then(_value.copyWith(nextEtaWaypoint: value) as $Val);
+    });
+  }
+
+  /// Create a copy of DispatchModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $CargoInfoModelCopyWith<$Res> get cargoInfo {
     return $CargoInfoModelCopyWith<$Res>(_value.cargoInfo, (value) {
       return _then(_value.copyWith(cargoInfo: value) as $Val);
@@ -190,8 +245,11 @@ abstract class _$$DispatchModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'truck_load_id') int truckLoadId,
-      @JsonKey(name: 'waypoints') List<DispatchDetailModel> waypoints,
-      @JsonKey(name: 'next_waypoint_id') int nextWaypointId,
+      @JsonKey(name: 'waypoints') List<WaypointDetailModel> waypoints,
+      @JsonKey(name: 'started_moving_timestamp') int? startedMovingTimestamp,
+      @JsonKey(name: 'next_waypoint') WaypointDetailModel? nextWaypoint,
+      @JsonKey(name: 'next_eta_waypoint') WaypointDetailModel? nextEtaWaypoint,
+      @JsonKey(name: 'next_eta_timestamp') int? nextEtaTimestamp,
       @JsonKey(name: 'is_tonu_declared') bool isTonuDeclared,
       @JsonKey(name: 'is_finished') bool isFinished,
       @JsonKey(name: 'temperature_maintain_type')
@@ -204,6 +262,10 @@ abstract class _$$DispatchModelImplCopyWith<$Res>
       @JsonKey(name: 'chat_id') int chatId,
       @JsonKey(name: 'route_total_mi') String routeTotalMi});
 
+  @override
+  $WaypointDetailModelCopyWith<$Res>? get nextWaypoint;
+  @override
+  $WaypointDetailModelCopyWith<$Res>? get nextEtaWaypoint;
   @override
   $CargoInfoModelCopyWith<$Res> get cargoInfo;
 }
@@ -224,7 +286,10 @@ class __$$DispatchModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? truckLoadId = null,
     Object? waypoints = null,
-    Object? nextWaypointId = null,
+    Object? startedMovingTimestamp = freezed,
+    Object? nextWaypoint = freezed,
+    Object? nextEtaWaypoint = freezed,
+    Object? nextEtaTimestamp = freezed,
     Object? isTonuDeclared = null,
     Object? isFinished = null,
     Object? temperatureMaintainType = freezed,
@@ -247,11 +312,23 @@ class __$$DispatchModelImplCopyWithImpl<$Res>
       waypoints: null == waypoints
           ? _value._waypoints
           : waypoints // ignore: cast_nullable_to_non_nullable
-              as List<DispatchDetailModel>,
-      nextWaypointId: null == nextWaypointId
-          ? _value.nextWaypointId
-          : nextWaypointId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as List<WaypointDetailModel>,
+      startedMovingTimestamp: freezed == startedMovingTimestamp
+          ? _value.startedMovingTimestamp
+          : startedMovingTimestamp // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nextWaypoint: freezed == nextWaypoint
+          ? _value.nextWaypoint
+          : nextWaypoint // ignore: cast_nullable_to_non_nullable
+              as WaypointDetailModel?,
+      nextEtaWaypoint: freezed == nextEtaWaypoint
+          ? _value.nextEtaWaypoint
+          : nextEtaWaypoint // ignore: cast_nullable_to_non_nullable
+              as WaypointDetailModel?,
+      nextEtaTimestamp: freezed == nextEtaTimestamp
+          ? _value.nextEtaTimestamp
+          : nextEtaTimestamp // ignore: cast_nullable_to_non_nullable
+              as int?,
       isTonuDeclared: null == isTonuDeclared
           ? _value.isTonuDeclared
           : isTonuDeclared // ignore: cast_nullable_to_non_nullable
@@ -299,8 +376,11 @@ class _$DispatchModelImpl implements _DispatchModel {
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'truck_load_id') required this.truckLoadId,
       @JsonKey(name: 'waypoints')
-      required final List<DispatchDetailModel> waypoints,
-      @JsonKey(name: 'next_waypoint_id') required this.nextWaypointId,
+      required final List<WaypointDetailModel> waypoints,
+      @JsonKey(name: 'started_moving_timestamp') this.startedMovingTimestamp,
+      @JsonKey(name: 'next_waypoint') this.nextWaypoint,
+      @JsonKey(name: 'next_eta_waypoint') this.nextEtaWaypoint,
+      @JsonKey(name: 'next_eta_timestamp') this.nextEtaTimestamp,
       @JsonKey(name: 'is_tonu_declared') required this.isTonuDeclared,
       @JsonKey(name: 'is_finished') required this.isFinished,
       @JsonKey(name: 'temperature_maintain_type') this.temperatureMaintainType,
@@ -322,18 +402,27 @@ class _$DispatchModelImpl implements _DispatchModel {
   @override
   @JsonKey(name: 'truck_load_id')
   final int truckLoadId;
-  final List<DispatchDetailModel> _waypoints;
+  final List<WaypointDetailModel> _waypoints;
   @override
   @JsonKey(name: 'waypoints')
-  List<DispatchDetailModel> get waypoints {
+  List<WaypointDetailModel> get waypoints {
     if (_waypoints is EqualUnmodifiableListView) return _waypoints;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_waypoints);
   }
 
   @override
-  @JsonKey(name: 'next_waypoint_id')
-  final int nextWaypointId;
+  @JsonKey(name: 'started_moving_timestamp')
+  final int? startedMovingTimestamp;
+  @override
+  @JsonKey(name: 'next_waypoint')
+  final WaypointDetailModel? nextWaypoint;
+  @override
+  @JsonKey(name: 'next_eta_waypoint')
+  final WaypointDetailModel? nextEtaWaypoint;
+  @override
+  @JsonKey(name: 'next_eta_timestamp')
+  final int? nextEtaTimestamp;
   @override
   @JsonKey(name: 'is_tonu_declared')
   final bool isTonuDeclared;
@@ -364,7 +453,7 @@ class _$DispatchModelImpl implements _DispatchModel {
 
   @override
   String toString() {
-    return 'DispatchModel(id: $id, truckLoadId: $truckLoadId, waypoints: $waypoints, nextWaypointId: $nextWaypointId, isTonuDeclared: $isTonuDeclared, isFinished: $isFinished, temperatureMaintainType: $temperatureMaintainType, temperatureMaintainFrom: $temperatureMaintainFrom, temperatureMaintainTo: $temperatureMaintainTo, cargoInfo: $cargoInfo, nextMandatoryCheckCallType: $nextMandatoryCheckCallType, chatId: $chatId, routeTotalMi: $routeTotalMi)';
+    return 'DispatchModel(id: $id, truckLoadId: $truckLoadId, waypoints: $waypoints, startedMovingTimestamp: $startedMovingTimestamp, nextWaypoint: $nextWaypoint, nextEtaWaypoint: $nextEtaWaypoint, nextEtaTimestamp: $nextEtaTimestamp, isTonuDeclared: $isTonuDeclared, isFinished: $isFinished, temperatureMaintainType: $temperatureMaintainType, temperatureMaintainFrom: $temperatureMaintainFrom, temperatureMaintainTo: $temperatureMaintainTo, cargoInfo: $cargoInfo, nextMandatoryCheckCallType: $nextMandatoryCheckCallType, chatId: $chatId, routeTotalMi: $routeTotalMi)';
   }
 
   @override
@@ -377,8 +466,14 @@ class _$DispatchModelImpl implements _DispatchModel {
                 other.truckLoadId == truckLoadId) &&
             const DeepCollectionEquality()
                 .equals(other._waypoints, _waypoints) &&
-            (identical(other.nextWaypointId, nextWaypointId) ||
-                other.nextWaypointId == nextWaypointId) &&
+            (identical(other.startedMovingTimestamp, startedMovingTimestamp) ||
+                other.startedMovingTimestamp == startedMovingTimestamp) &&
+            (identical(other.nextWaypoint, nextWaypoint) ||
+                other.nextWaypoint == nextWaypoint) &&
+            (identical(other.nextEtaWaypoint, nextEtaWaypoint) ||
+                other.nextEtaWaypoint == nextEtaWaypoint) &&
+            (identical(other.nextEtaTimestamp, nextEtaTimestamp) ||
+                other.nextEtaTimestamp == nextEtaTimestamp) &&
             (identical(other.isTonuDeclared, isTonuDeclared) ||
                 other.isTonuDeclared == isTonuDeclared) &&
             (identical(other.isFinished, isFinished) ||
@@ -409,7 +504,10 @@ class _$DispatchModelImpl implements _DispatchModel {
       id,
       truckLoadId,
       const DeepCollectionEquality().hash(_waypoints),
-      nextWaypointId,
+      startedMovingTimestamp,
+      nextWaypoint,
+      nextEtaWaypoint,
+      nextEtaTimestamp,
       isTonuDeclared,
       isFinished,
       temperatureMaintainType,
@@ -441,8 +539,13 @@ abstract class _DispatchModel implements DispatchModel {
       {@JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'truck_load_id') required final int truckLoadId,
       @JsonKey(name: 'waypoints')
-      required final List<DispatchDetailModel> waypoints,
-      @JsonKey(name: 'next_waypoint_id') required final int nextWaypointId,
+      required final List<WaypointDetailModel> waypoints,
+      @JsonKey(name: 'started_moving_timestamp')
+      final int? startedMovingTimestamp,
+      @JsonKey(name: 'next_waypoint') final WaypointDetailModel? nextWaypoint,
+      @JsonKey(name: 'next_eta_waypoint')
+      final WaypointDetailModel? nextEtaWaypoint,
+      @JsonKey(name: 'next_eta_timestamp') final int? nextEtaTimestamp,
       @JsonKey(name: 'is_tonu_declared') required final bool isTonuDeclared,
       @JsonKey(name: 'is_finished') required final bool isFinished,
       @JsonKey(name: 'temperature_maintain_type')
@@ -469,10 +572,19 @@ abstract class _DispatchModel implements DispatchModel {
   int get truckLoadId;
   @override
   @JsonKey(name: 'waypoints')
-  List<DispatchDetailModel> get waypoints;
+  List<WaypointDetailModel> get waypoints;
   @override
-  @JsonKey(name: 'next_waypoint_id')
-  int get nextWaypointId;
+  @JsonKey(name: 'started_moving_timestamp')
+  int? get startedMovingTimestamp;
+  @override
+  @JsonKey(name: 'next_waypoint')
+  WaypointDetailModel? get nextWaypoint;
+  @override
+  @JsonKey(name: 'next_eta_waypoint')
+  WaypointDetailModel? get nextEtaWaypoint;
+  @override
+  @JsonKey(name: 'next_eta_timestamp')
+  int? get nextEtaTimestamp;
   @override
   @JsonKey(name: 'is_tonu_declared')
   bool get isTonuDeclared;

@@ -11,9 +11,19 @@ _$DispatchModelImpl _$$DispatchModelImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       truckLoadId: (json['truck_load_id'] as num).toInt(),
       waypoints: (json['waypoints'] as List<dynamic>)
-          .map((e) => DispatchDetailModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => WaypointDetailModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      nextWaypointId: (json['next_waypoint_id'] as num).toInt(),
+      startedMovingTimestamp:
+          (json['started_moving_timestamp'] as num?)?.toInt(),
+      nextWaypoint: json['next_waypoint'] == null
+          ? null
+          : WaypointDetailModel.fromJson(
+              json['next_waypoint'] as Map<String, dynamic>),
+      nextEtaWaypoint: json['next_eta_waypoint'] == null
+          ? null
+          : WaypointDetailModel.fromJson(
+              json['next_eta_waypoint'] as Map<String, dynamic>),
+      nextEtaTimestamp: (json['next_eta_timestamp'] as num?)?.toInt(),
       isTonuDeclared: json['is_tonu_declared'] as bool,
       isFinished: json['is_finished'] as bool,
       temperatureMaintainType: json['temperature_maintain_type'] as String?,
@@ -33,7 +43,10 @@ Map<String, dynamic> _$$DispatchModelImplToJson(_$DispatchModelImpl instance) =>
       'id': instance.id,
       'truck_load_id': instance.truckLoadId,
       'waypoints': instance.waypoints,
-      'next_waypoint_id': instance.nextWaypointId,
+      'started_moving_timestamp': instance.startedMovingTimestamp,
+      'next_waypoint': instance.nextWaypoint,
+      'next_eta_waypoint': instance.nextEtaWaypoint,
+      'next_eta_timestamp': instance.nextEtaTimestamp,
       'is_tonu_declared': instance.isTonuDeclared,
       'is_finished': instance.isFinished,
       'temperature_maintain_type': instance.temperatureMaintainType,
