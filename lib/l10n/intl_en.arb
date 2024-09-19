@@ -114,6 +114,7 @@
   },
   "failedToLoadTrip": "Failed to load trip information. Please try again later or contact support.",
   "startDriving": "Start driving",
-  "nextStop": "next stop"
+  "nextStop": "next stop",
+  "addComment": "add comment"
 }
 

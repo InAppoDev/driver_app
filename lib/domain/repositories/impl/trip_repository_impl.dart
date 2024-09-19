@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:tms_driver/data/data_source/api_data_source.dart';
+import 'package:tms_driver/data/models/check/check_call/check_call_model.dart';
 import 'package:tms_driver/data/models/document/upload_document_response.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_list_model/dispatch_list_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
@@ -33,5 +34,16 @@ class TripRepositoryImpl implements TripRepository {
   @override
   Future<DispatchModel?> getActiveTrip() {
     return apiDataSource.getActiveTrip();
+  }
+
+  @override
+  Future<bool> sendCheckCall({
+    required int id,
+    required CheckCallModel checkCall,
+  }) async {
+    return await apiDataSource.sendCheckCall(
+      checkCall: checkCall,
+      id: id,
+    );
   }
 }

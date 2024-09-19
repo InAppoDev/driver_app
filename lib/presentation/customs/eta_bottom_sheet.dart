@@ -4,20 +4,27 @@ import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.da
 import 'package:tms_driver/presentation/customs/custom_addres.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
+import 'package:tms_driver/presentation/customs/custom_text_field.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_dialog.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ETABottomSheet extends StatefulWidget {
   final DispatchModel trip;
-  final VoidCallback onConfirmPressed;
+  final Function(
+    int? etaTimestamp,
+    String? comment,
+    String type,
+  ) onConfirmPressed;
   final String? title;
+  final String type;
 
   const ETABottomSheet({
     super.key,
     required this.trip,
     required this.onConfirmPressed,
     this.title,
+    required this.type,
   });
 
   @override
@@ -26,12 +33,18 @@ class ETABottomSheet extends StatefulWidget {
 
 class ETABottomSheetState extends State<ETABottomSheet> {
   int? _nextEtaTimestamp;
+  final TextEditingController commentController = TextEditingController();
 
-  @override
   @override
   void initState() {
     super.initState();
     _nextEtaTimestamp = widget.trip.nextEtaTimestamp;
+  }
+
+  @override
+  void dispose() {
+    commentController.dispose();
+    super.dispose();
   }
 
   void _addMinutesToEta(int minutes) {
@@ -62,6 +75,14 @@ class ETABottomSheetState extends State<ETABottomSheet> {
         _nextEtaTimestamp = resp;
       });
     }
+  }
+
+  void _confirmTrip() {
+    widget.onConfirmPressed(
+      _nextEtaTimestamp,
+      commentController.text.isNotEmpty ? commentController.text : null,
+      widget.type,
+    );
   }
 
   @override
@@ -119,7 +140,6 @@ class ETABottomSheetState extends State<ETABottomSheet> {
             style:
                 theme.textTheme.bodySmall!.copyWith(color: theme.dividerColor),
           ),
-          const SizedBox(height: 10),
           if (_nextEtaTimestamp != null)
             CustomDateWidget(
               date: _nextEtaTimestamp!,
@@ -147,11 +167,16 @@ class ETABottomSheetState extends State<ETABottomSheet> {
               ),
             ],
           ),
-          const SizedBox(height: 15),
-          CustomButton(
-            label: context.localizations.confirm,
-            onPressed: widget.onConfirmPressed,
+          const SizedBox(height: 14),
+          CustomTextField(
+            hintText: context.localizations.addComment.toUpperCase(),
+            controller: commentController,
           ),
+          CustomButton(
+            label: context.localizations.confirm.toUpperCase(),
+            onPressed: _confirmTrip,
+            isDisabled: _nextEtaTimestamp == null,
+          )
         ],
       ),
     );

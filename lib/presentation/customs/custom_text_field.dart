@@ -25,8 +25,9 @@ class CustomTextField extends StatelessWidget {
     this.height = 60,
     this.focusNode,
     this.textInputAction,
-    this.onSubmitted,  this.scrollController,
-    this.keyboardType = TextInputType.phone,
+    this.onSubmitted,
+    this.scrollController,
+    this.keyboardType = TextInputType.text,
   });
 
   @override
@@ -48,6 +49,7 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
           isDense: true,
           counterText: '',
+          hintStyle: TextStyle(fontSize: 14, color: theme.hintColor),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(borderRadius),
             borderSide: BorderSide(color: theme.highlightColor),

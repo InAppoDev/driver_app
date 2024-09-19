@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/blocks/trip_list/trip_list_bloc.dart';
-import 'package:tms_driver/presentation/pages/active_trip/active_trip.dart';
+import 'package:tms_driver/presentation/pages/active_trip/widget/active_trip_view.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_items_list.dart';
 import 'package:tms_driver/presentation/utils/enums/enums.dart';
 
@@ -109,16 +109,11 @@ class TripListViewState extends State<TripListView>
                         final navigateToActiveTrip =
                             await context.push('/confirmTrip', extra: trip);
                         if (navigateToActiveTrip as bool && context.mounted) {
-                          context.read<TripListBloc>().add(
-                                TripListEvent.changeTab(
-                                  status: TabStatus.activeTrip,
-                                  trip: trip,
-                                ),
-                              );
+                          _tabController.animateTo(1);
                         }
                       },
                     ),
-                    const ActiveTrip(),
+                    const ActiveTripView(),
                     TripItemsList(
                       trips: state.historyTrips,
                       onPressed: (_) {},

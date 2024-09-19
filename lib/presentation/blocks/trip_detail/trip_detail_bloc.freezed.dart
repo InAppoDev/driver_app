@@ -27,6 +27,9 @@ mixin _$TripDetailEvent {
     required TResult Function(int tripId) fetchTripDetail,
     required TResult Function() toggleStopsVisibility,
     required TResult Function() loadActiveTrip,
+    required TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)
+        confirmTrip,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +43,9 @@ mixin _$TripDetailEvent {
     TResult? Function(int tripId)? fetchTripDetail,
     TResult? Function()? toggleStopsVisibility,
     TResult? Function()? loadActiveTrip,
+    TResult? Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +59,9 @@ mixin _$TripDetailEvent {
     TResult Function(int tripId)? fetchTripDetail,
     TResult Function()? toggleStopsVisibility,
     TResult Function()? loadActiveTrip,
+    TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +77,7 @@ mixin _$TripDetailEvent {
     required TResult Function(ToggleStopsVisibility value)
         toggleStopsVisibility,
     required TResult Function(LoadActiveTrip value) loadActiveTrip,
+    required TResult Function(ConfirmTrip value) confirmTrip,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +91,7 @@ mixin _$TripDetailEvent {
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
     TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult? Function(ConfirmTrip value)? confirmTrip,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,6 +105,7 @@ mixin _$TripDetailEvent {
     TResult Function(FetchTripDetail value)? fetchTripDetail,
     TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -170,6 +182,9 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(int tripId) fetchTripDetail,
     required TResult Function() toggleStopsVisibility,
     required TResult Function() loadActiveTrip,
+    required TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)
+        confirmTrip,
   }) {
     return initialize();
   }
@@ -186,6 +201,9 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(int tripId)? fetchTripDetail,
     TResult? Function()? toggleStopsVisibility,
     TResult? Function()? loadActiveTrip,
+    TResult? Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
   }) {
     return initialize?.call();
   }
@@ -202,6 +220,9 @@ class _$InitializeImpl implements Initialize {
     TResult Function(int tripId)? fetchTripDetail,
     TResult Function()? toggleStopsVisibility,
     TResult Function()? loadActiveTrip,
+    TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -223,6 +244,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(ToggleStopsVisibility value)
         toggleStopsVisibility,
     required TResult Function(LoadActiveTrip value) loadActiveTrip,
+    required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return initialize(this);
   }
@@ -239,6 +261,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
     TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return initialize?.call(this);
   }
@@ -255,6 +278,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function(FetchTripDetail value)? fetchTripDetail,
     TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -347,6 +371,9 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     required TResult Function(int tripId) fetchTripDetail,
     required TResult Function() toggleStopsVisibility,
     required TResult Function() loadActiveTrip,
+    required TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)
+        confirmTrip,
   }) {
     return getDateAndTime(dateTime);
   }
@@ -363,6 +390,9 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult? Function(int tripId)? fetchTripDetail,
     TResult? Function()? toggleStopsVisibility,
     TResult? Function()? loadActiveTrip,
+    TResult? Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
   }) {
     return getDateAndTime?.call(dateTime);
   }
@@ -379,6 +409,9 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult Function(int tripId)? fetchTripDetail,
     TResult Function()? toggleStopsVisibility,
     TResult Function()? loadActiveTrip,
+    TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
     required TResult orElse(),
   }) {
     if (getDateAndTime != null) {
@@ -400,6 +433,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     required TResult Function(ToggleStopsVisibility value)
         toggleStopsVisibility,
     required TResult Function(LoadActiveTrip value) loadActiveTrip,
+    required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return getDateAndTime(this);
   }
@@ -416,6 +450,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
     TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return getDateAndTime?.call(this);
   }
@@ -432,6 +467,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult Function(FetchTripDetail value)? fetchTripDetail,
     TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
     if (getDateAndTime != null) {
@@ -504,6 +540,9 @@ class _$PickFileImpl implements PickFile {
     required TResult Function(int tripId) fetchTripDetail,
     required TResult Function() toggleStopsVisibility,
     required TResult Function() loadActiveTrip,
+    required TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)
+        confirmTrip,
   }) {
     return pickFile();
   }
@@ -520,6 +559,9 @@ class _$PickFileImpl implements PickFile {
     TResult? Function(int tripId)? fetchTripDetail,
     TResult? Function()? toggleStopsVisibility,
     TResult? Function()? loadActiveTrip,
+    TResult? Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
   }) {
     return pickFile?.call();
   }
@@ -536,6 +578,9 @@ class _$PickFileImpl implements PickFile {
     TResult Function(int tripId)? fetchTripDetail,
     TResult Function()? toggleStopsVisibility,
     TResult Function()? loadActiveTrip,
+    TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
     required TResult orElse(),
   }) {
     if (pickFile != null) {
@@ -557,6 +602,7 @@ class _$PickFileImpl implements PickFile {
     required TResult Function(ToggleStopsVisibility value)
         toggleStopsVisibility,
     required TResult Function(LoadActiveTrip value) loadActiveTrip,
+    required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return pickFile(this);
   }
@@ -573,6 +619,7 @@ class _$PickFileImpl implements PickFile {
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
     TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return pickFile?.call(this);
   }
@@ -589,6 +636,7 @@ class _$PickFileImpl implements PickFile {
     TResult Function(FetchTripDetail value)? fetchTripDetail,
     TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
     if (pickFile != null) {
@@ -679,6 +727,9 @@ class _$RemoveFileImpl implements RemoveFile {
     required TResult Function(int tripId) fetchTripDetail,
     required TResult Function() toggleStopsVisibility,
     required TResult Function() loadActiveTrip,
+    required TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)
+        confirmTrip,
   }) {
     return removeFile(file);
   }
@@ -695,6 +746,9 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult? Function(int tripId)? fetchTripDetail,
     TResult? Function()? toggleStopsVisibility,
     TResult? Function()? loadActiveTrip,
+    TResult? Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
   }) {
     return removeFile?.call(file);
   }
@@ -711,6 +765,9 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult Function(int tripId)? fetchTripDetail,
     TResult Function()? toggleStopsVisibility,
     TResult Function()? loadActiveTrip,
+    TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
     required TResult orElse(),
   }) {
     if (removeFile != null) {
@@ -732,6 +789,7 @@ class _$RemoveFileImpl implements RemoveFile {
     required TResult Function(ToggleStopsVisibility value)
         toggleStopsVisibility,
     required TResult Function(LoadActiveTrip value) loadActiveTrip,
+    required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return removeFile(this);
   }
@@ -748,6 +806,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
     TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return removeFile?.call(this);
   }
@@ -764,6 +823,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult Function(FetchTripDetail value)? fetchTripDetail,
     TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
     if (removeFile != null) {
@@ -862,6 +922,9 @@ class _$ScanDocImpl implements ScanDoc {
     required TResult Function(int tripId) fetchTripDetail,
     required TResult Function() toggleStopsVisibility,
     required TResult Function() loadActiveTrip,
+    required TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)
+        confirmTrip,
   }) {
     return scanDoc(image);
   }
@@ -878,6 +941,9 @@ class _$ScanDocImpl implements ScanDoc {
     TResult? Function(int tripId)? fetchTripDetail,
     TResult? Function()? toggleStopsVisibility,
     TResult? Function()? loadActiveTrip,
+    TResult? Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
   }) {
     return scanDoc?.call(image);
   }
@@ -894,6 +960,9 @@ class _$ScanDocImpl implements ScanDoc {
     TResult Function(int tripId)? fetchTripDetail,
     TResult Function()? toggleStopsVisibility,
     TResult Function()? loadActiveTrip,
+    TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
     required TResult orElse(),
   }) {
     if (scanDoc != null) {
@@ -915,6 +984,7 @@ class _$ScanDocImpl implements ScanDoc {
     required TResult Function(ToggleStopsVisibility value)
         toggleStopsVisibility,
     required TResult Function(LoadActiveTrip value) loadActiveTrip,
+    required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return scanDoc(this);
   }
@@ -931,6 +1001,7 @@ class _$ScanDocImpl implements ScanDoc {
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
     TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return scanDoc?.call(this);
   }
@@ -947,6 +1018,7 @@ class _$ScanDocImpl implements ScanDoc {
     TResult Function(FetchTripDetail value)? fetchTripDetail,
     TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
     if (scanDoc != null) {
@@ -1018,6 +1090,9 @@ class _$UploadFilesImpl implements UploadFiles {
     required TResult Function(int tripId) fetchTripDetail,
     required TResult Function() toggleStopsVisibility,
     required TResult Function() loadActiveTrip,
+    required TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)
+        confirmTrip,
   }) {
     return uploadFiles();
   }
@@ -1034,6 +1109,9 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult? Function(int tripId)? fetchTripDetail,
     TResult? Function()? toggleStopsVisibility,
     TResult? Function()? loadActiveTrip,
+    TResult? Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
   }) {
     return uploadFiles?.call();
   }
@@ -1050,6 +1128,9 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult Function(int tripId)? fetchTripDetail,
     TResult Function()? toggleStopsVisibility,
     TResult Function()? loadActiveTrip,
+    TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
     required TResult orElse(),
   }) {
     if (uploadFiles != null) {
@@ -1071,6 +1152,7 @@ class _$UploadFilesImpl implements UploadFiles {
     required TResult Function(ToggleStopsVisibility value)
         toggleStopsVisibility,
     required TResult Function(LoadActiveTrip value) loadActiveTrip,
+    required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return uploadFiles(this);
   }
@@ -1087,6 +1169,7 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
     TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return uploadFiles?.call(this);
   }
@@ -1103,6 +1186,7 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult Function(FetchTripDetail value)? fetchTripDetail,
     TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
     if (uploadFiles != null) {
@@ -1194,6 +1278,9 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     required TResult Function(int tripId) fetchTripDetail,
     required TResult Function() toggleStopsVisibility,
     required TResult Function() loadActiveTrip,
+    required TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)
+        confirmTrip,
   }) {
     return fetchTripDetail(tripId);
   }
@@ -1210,6 +1297,9 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     TResult? Function(int tripId)? fetchTripDetail,
     TResult? Function()? toggleStopsVisibility,
     TResult? Function()? loadActiveTrip,
+    TResult? Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
   }) {
     return fetchTripDetail?.call(tripId);
   }
@@ -1226,6 +1316,9 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     TResult Function(int tripId)? fetchTripDetail,
     TResult Function()? toggleStopsVisibility,
     TResult Function()? loadActiveTrip,
+    TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
     required TResult orElse(),
   }) {
     if (fetchTripDetail != null) {
@@ -1247,6 +1340,7 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     required TResult Function(ToggleStopsVisibility value)
         toggleStopsVisibility,
     required TResult Function(LoadActiveTrip value) loadActiveTrip,
+    required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return fetchTripDetail(this);
   }
@@ -1263,6 +1357,7 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
     TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return fetchTripDetail?.call(this);
   }
@@ -1279,6 +1374,7 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     TResult Function(FetchTripDetail value)? fetchTripDetail,
     TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
     if (fetchTripDetail != null) {
@@ -1353,6 +1449,9 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
     required TResult Function(int tripId) fetchTripDetail,
     required TResult Function() toggleStopsVisibility,
     required TResult Function() loadActiveTrip,
+    required TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)
+        confirmTrip,
   }) {
     return toggleStopsVisibility();
   }
@@ -1369,6 +1468,9 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
     TResult? Function(int tripId)? fetchTripDetail,
     TResult? Function()? toggleStopsVisibility,
     TResult? Function()? loadActiveTrip,
+    TResult? Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
   }) {
     return toggleStopsVisibility?.call();
   }
@@ -1385,6 +1487,9 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
     TResult Function(int tripId)? fetchTripDetail,
     TResult Function()? toggleStopsVisibility,
     TResult Function()? loadActiveTrip,
+    TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
     required TResult orElse(),
   }) {
     if (toggleStopsVisibility != null) {
@@ -1406,6 +1511,7 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
     required TResult Function(ToggleStopsVisibility value)
         toggleStopsVisibility,
     required TResult Function(LoadActiveTrip value) loadActiveTrip,
+    required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return toggleStopsVisibility(this);
   }
@@ -1422,6 +1528,7 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
     TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return toggleStopsVisibility?.call(this);
   }
@@ -1438,6 +1545,7 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
     TResult Function(FetchTripDetail value)? fetchTripDetail,
     TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
     if (toggleStopsVisibility != null) {
@@ -1501,6 +1609,9 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
     required TResult Function(int tripId) fetchTripDetail,
     required TResult Function() toggleStopsVisibility,
     required TResult Function() loadActiveTrip,
+    required TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)
+        confirmTrip,
   }) {
     return loadActiveTrip();
   }
@@ -1517,6 +1628,9 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
     TResult? Function(int tripId)? fetchTripDetail,
     TResult? Function()? toggleStopsVisibility,
     TResult? Function()? loadActiveTrip,
+    TResult? Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
   }) {
     return loadActiveTrip?.call();
   }
@@ -1533,6 +1647,9 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
     TResult Function(int tripId)? fetchTripDetail,
     TResult Function()? toggleStopsVisibility,
     TResult Function()? loadActiveTrip,
+    TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
     required TResult orElse(),
   }) {
     if (loadActiveTrip != null) {
@@ -1554,6 +1671,7 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
     required TResult Function(ToggleStopsVisibility value)
         toggleStopsVisibility,
     required TResult Function(LoadActiveTrip value) loadActiveTrip,
+    required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return loadActiveTrip(this);
   }
@@ -1570,6 +1688,7 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
     TResult? Function(FetchTripDetail value)? fetchTripDetail,
     TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return loadActiveTrip?.call(this);
   }
@@ -1586,6 +1705,7 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
     TResult Function(FetchTripDetail value)? fetchTripDetail,
     TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
     TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
     if (loadActiveTrip != null) {
@@ -1600,6 +1720,238 @@ abstract class LoadActiveTrip implements TripDetailEvent {
 }
 
 /// @nodoc
+abstract class _$$ConfirmTripImplCopyWith<$Res> {
+  factory _$$ConfirmTripImplCopyWith(
+          _$ConfirmTripImpl value, $Res Function(_$ConfirmTripImpl) then) =
+      __$$ConfirmTripImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int tripId, String type, int? etaTimestamp, String? comment});
+}
+
+/// @nodoc
+class __$$ConfirmTripImplCopyWithImpl<$Res>
+    extends _$TripDetailEventCopyWithImpl<$Res, _$ConfirmTripImpl>
+    implements _$$ConfirmTripImplCopyWith<$Res> {
+  __$$ConfirmTripImplCopyWithImpl(
+      _$ConfirmTripImpl _value, $Res Function(_$ConfirmTripImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tripId = null,
+    Object? type = null,
+    Object? etaTimestamp = freezed,
+    Object? comment = freezed,
+  }) {
+    return _then(_$ConfirmTripImpl(
+      tripId: null == tripId
+          ? _value.tripId
+          : tripId // ignore: cast_nullable_to_non_nullable
+              as int,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      etaTimestamp: freezed == etaTimestamp
+          ? _value.etaTimestamp
+          : etaTimestamp // ignore: cast_nullable_to_non_nullable
+              as int?,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ConfirmTripImpl implements ConfirmTrip {
+  const _$ConfirmTripImpl(
+      {required this.tripId,
+      required this.type,
+      this.etaTimestamp,
+      this.comment});
+
+  @override
+  final int tripId;
+  @override
+  final String type;
+  @override
+  final int? etaTimestamp;
+  @override
+  final String? comment;
+
+  @override
+  String toString() {
+    return 'TripDetailEvent.confirmTrip(tripId: $tripId, type: $type, etaTimestamp: $etaTimestamp, comment: $comment)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ConfirmTripImpl &&
+            (identical(other.tripId, tripId) || other.tripId == tripId) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.etaTimestamp, etaTimestamp) ||
+                other.etaTimestamp == etaTimestamp) &&
+            (identical(other.comment, comment) || other.comment == comment));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, tripId, type, etaTimestamp, comment);
+
+  /// Create a copy of TripDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConfirmTripImplCopyWith<_$ConfirmTripImpl> get copyWith =>
+      __$$ConfirmTripImplCopyWithImpl<_$ConfirmTripImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function(String image) scanDoc,
+    required TResult Function() uploadFiles,
+    required TResult Function(int tripId) fetchTripDetail,
+    required TResult Function() toggleStopsVisibility,
+    required TResult Function() loadActiveTrip,
+    required TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)
+        confirmTrip,
+  }) {
+    return confirmTrip(tripId, type, etaTimestamp, comment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function(String image)? scanDoc,
+    TResult? Function()? uploadFiles,
+    TResult? Function(int tripId)? fetchTripDetail,
+    TResult? Function()? toggleStopsVisibility,
+    TResult? Function()? loadActiveTrip,
+    TResult? Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
+  }) {
+    return confirmTrip?.call(tripId, type, etaTimestamp, comment);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function(String image)? scanDoc,
+    TResult Function()? uploadFiles,
+    TResult Function(int tripId)? fetchTripDetail,
+    TResult Function()? toggleStopsVisibility,
+    TResult Function()? loadActiveTrip,
+    TResult Function(
+            int tripId, String type, int? etaTimestamp, String? comment)?
+        confirmTrip,
+    required TResult orElse(),
+  }) {
+    if (confirmTrip != null) {
+      return confirmTrip(tripId, type, etaTimestamp, comment);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(GetDateAndTime value) getDateAndTime,
+    required TResult Function(PickFile value) pickFile,
+    required TResult Function(RemoveFile value) removeFile,
+    required TResult Function(ScanDoc value) scanDoc,
+    required TResult Function(UploadFiles value) uploadFiles,
+    required TResult Function(FetchTripDetail value) fetchTripDetail,
+    required TResult Function(ToggleStopsVisibility value)
+        toggleStopsVisibility,
+    required TResult Function(LoadActiveTrip value) loadActiveTrip,
+    required TResult Function(ConfirmTrip value) confirmTrip,
+  }) {
+    return confirmTrip(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(GetDateAndTime value)? getDateAndTime,
+    TResult? Function(PickFile value)? pickFile,
+    TResult? Function(RemoveFile value)? removeFile,
+    TResult? Function(ScanDoc value)? scanDoc,
+    TResult? Function(UploadFiles value)? uploadFiles,
+    TResult? Function(FetchTripDetail value)? fetchTripDetail,
+    TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult? Function(ConfirmTrip value)? confirmTrip,
+  }) {
+    return confirmTrip?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(GetDateAndTime value)? getDateAndTime,
+    TResult Function(PickFile value)? pickFile,
+    TResult Function(RemoveFile value)? removeFile,
+    TResult Function(ScanDoc value)? scanDoc,
+    TResult Function(UploadFiles value)? uploadFiles,
+    TResult Function(FetchTripDetail value)? fetchTripDetail,
+    TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult Function(ConfirmTrip value)? confirmTrip,
+    required TResult orElse(),
+  }) {
+    if (confirmTrip != null) {
+      return confirmTrip(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ConfirmTrip implements TripDetailEvent {
+  const factory ConfirmTrip(
+      {required final int tripId,
+      required final String type,
+      final int? etaTimestamp,
+      final String? comment}) = _$ConfirmTripImpl;
+
+  int get tripId;
+  String get type;
+  int? get etaTimestamp;
+  String? get comment;
+
+  /// Create a copy of TripDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ConfirmTripImplCopyWith<_$ConfirmTripImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$TripDetailState {
   ActiveTripStatus get status => throw _privateConstructorUsedError;
   String? get dateTime => throw _privateConstructorUsedError;
@@ -1609,6 +1961,7 @@ mixin _$TripDetailState {
   bool get isLoading => throw _privateConstructorUsedError;
   DispatchModel? get trip => throw _privateConstructorUsedError;
   bool get areStopsVisible => throw _privateConstructorUsedError;
+  bool get isConfirmingTrip => throw _privateConstructorUsedError;
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -1631,7 +1984,8 @@ abstract class $TripDetailStateCopyWith<$Res> {
       bool isFileLoading,
       bool isLoading,
       DispatchModel? trip,
-      bool areStopsVisible});
+      bool areStopsVisible,
+      bool isConfirmingTrip});
 
   $DispatchModelCopyWith<$Res>? get trip;
 }
@@ -1659,6 +2013,7 @@ class _$TripDetailStateCopyWithImpl<$Res, $Val extends TripDetailState>
     Object? isLoading = null,
     Object? trip = freezed,
     Object? areStopsVisible = null,
+    Object? isConfirmingTrip = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -1692,6 +2047,10 @@ class _$TripDetailStateCopyWithImpl<$Res, $Val extends TripDetailState>
       areStopsVisible: null == areStopsVisible
           ? _value.areStopsVisible
           : areStopsVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isConfirmingTrip: null == isConfirmingTrip
+          ? _value.isConfirmingTrip
+          : isConfirmingTrip // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -1727,7 +2086,8 @@ abstract class _$$TripDetailStateImplCopyWith<$Res>
       bool isFileLoading,
       bool isLoading,
       DispatchModel? trip,
-      bool areStopsVisible});
+      bool areStopsVisible,
+      bool isConfirmingTrip});
 
   @override
   $DispatchModelCopyWith<$Res>? get trip;
@@ -1754,6 +2114,7 @@ class __$$TripDetailStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? trip = freezed,
     Object? areStopsVisible = null,
+    Object? isConfirmingTrip = null,
   }) {
     return _then(_$TripDetailStateImpl(
       status: null == status
@@ -1788,6 +2149,10 @@ class __$$TripDetailStateImplCopyWithImpl<$Res>
           ? _value.areStopsVisible
           : areStopsVisible // ignore: cast_nullable_to_non_nullable
               as bool,
+      isConfirmingTrip: null == isConfirmingTrip
+          ? _value.isConfirmingTrip
+          : isConfirmingTrip // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1803,7 +2168,8 @@ class _$TripDetailStateImpl implements _TripDetailState {
       this.isFileLoading = false,
       this.isLoading = false,
       this.trip,
-      this.areStopsVisible = true});
+      this.areStopsVisible = true,
+      this.isConfirmingTrip = false});
 
   @override
   final ActiveTripStatus status;
@@ -1824,10 +2190,13 @@ class _$TripDetailStateImpl implements _TripDetailState {
   @override
   @JsonKey()
   final bool areStopsVisible;
+  @override
+  @JsonKey()
+  final bool isConfirmingTrip;
 
   @override
   String toString() {
-    return 'TripDetailState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading, isLoading: $isLoading, trip: $trip, areStopsVisible: $areStopsVisible)';
+    return 'TripDetailState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading, isLoading: $isLoading, trip: $trip, areStopsVisible: $areStopsVisible, isConfirmingTrip: $isConfirmingTrip)';
   }
 
   @override
@@ -1848,12 +2217,23 @@ class _$TripDetailStateImpl implements _TripDetailState {
                 other.isLoading == isLoading) &&
             (identical(other.trip, trip) || other.trip == trip) &&
             (identical(other.areStopsVisible, areStopsVisible) ||
-                other.areStopsVisible == areStopsVisible));
+                other.areStopsVisible == areStopsVisible) &&
+            (identical(other.isConfirmingTrip, isConfirmingTrip) ||
+                other.isConfirmingTrip == isConfirmingTrip));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, dateTime, selectedFile,
-      errorMessage, isFileLoading, isLoading, trip, areStopsVisible);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      dateTime,
+      selectedFile,
+      errorMessage,
+      isFileLoading,
+      isLoading,
+      trip,
+      areStopsVisible,
+      isConfirmingTrip);
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -1874,7 +2254,8 @@ abstract class _TripDetailState implements TripDetailState {
       final bool isFileLoading,
       final bool isLoading,
       final DispatchModel? trip,
-      final bool areStopsVisible}) = _$TripDetailStateImpl;
+      final bool areStopsVisible,
+      final bool isConfirmingTrip}) = _$TripDetailStateImpl;
 
   @override
   ActiveTripStatus get status;
@@ -1892,6 +2273,8 @@ abstract class _TripDetailState implements TripDetailState {
   DispatchModel? get trip;
   @override
   bool get areStopsVisible;
+  @override
+  bool get isConfirmingTrip;
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.

@@ -52,21 +52,27 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
       final DispatchModel? activeTrip = await tripRepository.getActiveTrip();
 
       if (activeTrip != null) {
-        emit(state.copyWith(
-          status: ActiveTripStatus.success,
-          trip: activeTrip,
-        ));
+        emit(
+          state.copyWith(
+            status: ActiveTripStatus.success,
+            trip: activeTrip,
+          ),
+        );
       } else {
-        emit(state.copyWith(
-          status: ActiveTripStatus.success,
-          trip: null,
-        ));
+        emit(
+          state.copyWith(
+            status: ActiveTripStatus.success,
+            trip: null,
+          ),
+        );
       }
     } catch (e) {
-      emit(state.copyWith(
-        status: ActiveTripStatus.failure,
-        errorMessage: e.toString(),
-      ));
+      emit(
+        state.copyWith(
+          status: ActiveTripStatus.failure,
+          errorMessage: e.toString(),
+        ),
+      );
     }
   }
 

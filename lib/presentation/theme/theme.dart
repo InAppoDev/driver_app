@@ -20,7 +20,7 @@ final lightTheme = ThemeData(
     shape: CircularNotchedRectangle(),
     elevation: 10,
   ),
-  hintColor: AppColors.textGray,
+  hintColor: AppColors.hint,
   highlightColor: AppColors.whiteGray,
   indicatorColor: AppColors.error,
   iconButtonTheme: IconButtonThemeData(
@@ -37,29 +37,29 @@ final lightTheme = ThemeData(
       backgroundColor: WidgetStateProperty.all(AppColors.orange),
     ),
   ),
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ButtonStyle(
-      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      overlayColor: WidgetStateProperty.all(AppColors.orange),
-      padding: WidgetStateProperty.all(
-        const EdgeInsets.symmetric(horizontal: 15),
-      ),
-      shape: WidgetStateProperty.all(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-      ),
-      textStyle: WidgetStateProperty.all(
-        const TextStyle(
-          fontSize: 12,
-          color: AppColors.mainWhite,
-          fontWeight: FontWeight.w400,
-        ),
-      ),
-      foregroundColor: WidgetStateProperty.all(AppColors.mainWhite),
-      backgroundColor: WidgetStateProperty.all(AppColors.orange),
-    ),
-  ),
+  // elevatedButtonTheme: ElevatedButtonThemeData(
+  //   style: ButtonStyle(
+  //     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+  //     overlayColor: WidgetStateProperty.all(AppColors.orange),
+  //     padding: WidgetStateProperty.all(
+  //       const EdgeInsets.symmetric(horizontal: 15),
+  //     ),
+  //     shape: WidgetStateProperty.all(
+  //       RoundedRectangleBorder(
+  //         borderRadius: BorderRadius.circular(8),
+  //       ),
+  //     ),
+  //     textStyle: WidgetStateProperty.all(
+  //       const TextStyle(
+  //         fontSize: 12,
+  //         color: AppColors.mainWhite,
+  //         fontWeight: FontWeight.w400,
+  //       ),
+  //     ),
+  //     foregroundColor: WidgetStateProperty.all(AppColors.mainWhite),
+  //     backgroundColor: WidgetStateProperty.all(AppColors.orange),
+  //   ),
+  // ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: AppColors.mainWhite,
     selectedItemColor: AppColors.orange,
