@@ -154,7 +154,7 @@ class ConfirmTripView extends StatelessWidget {
                                         },
                                         title:
                                             context.localizations.startDriving,
-                                        type: 'started_moving',
+                                        type: 'eta',
                                       );
                                     },
                                   );

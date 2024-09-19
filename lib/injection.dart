@@ -30,23 +30,31 @@ Future<void> initApp() async {
   final Dio dio = Dio();
   final HiveService hiveService = HiveService();
   await hiveService.init();
+
+  // Initialize ForegroundService and register it in GetIt
   final ForegroundService foregroundService = ForegroundService();
   GetIt.instance.registerSingleton<ForegroundService>(foregroundService);
 
+  // Initialize ConnectivityService and register it in GetIt
   final ConnectivityService connectivityService = ConnectivityService();
-  const FlutterSecureStorage secureStorage = FlutterSecureStorage();
-
-  await FlutterDownloader.initialize();
-
   GetIt.instance.registerSingleton<ConnectivityService>(connectivityService);
 
+  // Initialize secure storage
+  const FlutterSecureStorage secureStorage = FlutterSecureStorage();
+
+  // Initialize Flutter Downloader
+  await FlutterDownloader.initialize();
+
+  // Initialize MyLocationService with foregroundService and register it in GetIt
   final MyLocationService locationService =
       MyLocationService(foregroundService: foregroundService);
-
   GetIt.instance.registerSingleton<MyLocationService>(locationService);
 
+  // Register ErrorHandler in GetIt
   final ErrorHandler errorHandler =
       GetIt.instance.registerSingleton<ErrorHandler>(ErrorHandlerImpl());
+
+  // Register AuthDataSource with dependencies in GetIt
   final AuthDataSource authDataSource =
       GetIt.instance.registerSingleton<AuthDataSource>(
     AuthDataSourceImpl(
@@ -55,6 +63,7 @@ Future<void> initApp() async {
     ),
   );
 
+  // Register ApiDataSource with dependencies in GetIt
   final ApiDataSource apiDataSource =
       GetIt.instance.registerSingleton<ApiDataSource>(
     ApiDataSourceImpl(
@@ -64,11 +73,14 @@ Future<void> initApp() async {
       api: 'https://dev.tms-master.com/driver-api/v1',
     ),
   );
+
+  // Register TrackingRepository with locationService and foregroundService
   GetIt.instance.registerSingleton<TrackingRepository>(TrackingRepositoryImpl(
     locationService: locationService,
     foregroundService: foregroundService,
   ));
 
+  // Register UserRepository with dependencies in GetIt
   GetIt.instance.registerSingleton<UserRepository>(
     UserRepositoryImpl(
       apiDataSource: apiDataSource,
@@ -76,11 +88,15 @@ Future<void> initApp() async {
       connectivityService: connectivityService,
     ),
   );
+
+  // Register TripRepository with apiDataSource in GetIt
   GetIt.instance.registerSingleton<TripRepository>(
     TripRepositoryImpl(
       apiDataSource: apiDataSource,
     ),
   );
+
+  // Register MessagesRepository with dependencies in GetIt
   GetIt.instance.registerSingleton<MessagesRepository>(
     MessagesRepositoryImpl(
       apiDataSource: apiDataSource,
@@ -88,12 +104,16 @@ Future<void> initApp() async {
       connectivityService: connectivityService,
     ),
   );
+
+  // Register AuthRepository with dependencies in GetIt
   GetIt.instance.registerSingleton<AuthRepository>(
     AuthRepositoryImpl(
       apiDataSource: apiDataSource,
       authDataSource: authDataSource,
     ),
   );
+
+  // Register NotificationRepository with apiDataSource in GetIt
   GetIt.instance.registerSingleton<NotificationRepository>(
     NotificationRepositoryImpl(apiDataSource: apiDataSource),
   );
