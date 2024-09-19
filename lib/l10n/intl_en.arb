@@ -62,7 +62,7 @@
   "selectTheDateAndTimeOfArrivalAt": "Select the date and time of arrival at PICK UP #1:",
   "selectDateTime": "Select Date\\ Time",
   "select": "SELECT",
-  "begin": "begin trip #",
+  "begin": "begin trip",
   "confirm": "confirm",
   "selectETAAt": "Select ETA at PICK UP#1:",
   "bolDocument": "BOL document:",
@@ -70,7 +70,7 @@
   "or": "or",
   "uploadTheBOLDocumentOrYouCanScanIt": "Upload the BOL document or you can scan it.",
   "upload": "UPLOAD",
-  "confirmThatYouHaveEmbarkedOnThisTrip": "Confirm that you have embarked on this trip:",
+  "readyToBegin": "Ready to begin this trip?",
   "approvedTrip": "Approved trip",
   "currentStop": "Current Stop",
   "min": "min",
@@ -85,7 +85,7 @@
       }
     }
   },
-  "dateTime": "Date/time",
+  "apptTime": "Appt/time",
   "emergencyPhone": "Emergency Phone",
   "errorMessage": "Error: {message}",
   "@errorMessage": {

@@ -65,7 +65,7 @@ class TripInfoWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      context.localizations.dateTime,
+                      context.localizations.apptTime,
                       style: theme.textTheme.bodySmall!
                           .copyWith(color: theme.disabledColor),
                     ),

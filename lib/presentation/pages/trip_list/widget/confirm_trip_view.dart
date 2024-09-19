@@ -38,7 +38,7 @@ class ConfirmTripView extends StatelessWidget {
             if (state.status == ActiveTripStatus.success &&
                 state.trip != null) {
               return Text(
-                '${context.localizations.begin.toUpperCase()} ${state.trip!.truckLoadId}',
+                '${context.localizations.begin.toUpperCase()} #${state.trip!.truckLoadId}',
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
                       color: Theme.of(context).disabledColor,
                     ),
@@ -122,8 +122,7 @@ class ConfirmTripView extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                context.localizations
-                                    .confirmThatYouHaveEmbarkedOnThisTrip,
+                                context.localizations.readyToBegin,
                                 style: theme.textTheme.titleSmall!.copyWith(
                                   fontWeight: FontWeight.w600,
                                   color: theme.dividerColor,
@@ -131,7 +130,8 @@ class ConfirmTripView extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               CustomButton(
-                                label: context.localizations.startDriving,
+                                label:
+                                    context.localizations.begin.toUpperCase(),
                                 onPressed: () async {
                                   final result = await showModalBottomSheet<
                                       Map<String, dynamic>>(

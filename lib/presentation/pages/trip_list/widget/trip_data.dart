@@ -43,28 +43,25 @@ class TripData extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            SvgPicture.asset(
-                              'assets/images/point.svg',
-                              height: 15,
-                            ),
-                            const SizedBox(width: 15),
-                            Text(
-                              'check text', //TODO
-                              style: theme.textTheme.titleSmall!
-                                  .copyWith(color: theme.dividerColor),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 55),
-                          child: Text(
-                            '-',
-                            style: theme.textTheme.titleSmall!
-                                .copyWith(color: theme.dividerColor),
+                        if (trip.nextWaypoint != null)
+                          Row(
+                            children: [
+                              SvgPicture.asset(
+                                'assets/images/point.svg',
+                                height: 15,
+                              ),
+                              const SizedBox(width: 15),
+                              Text(
+                                trip.nextWaypoint!.typeTitle,
+                                style: theme.textTheme.titleSmall!
+                                    .copyWith(color: theme.dividerColor),
+                              ),
+                              if (trip.startedMovingTimestamp != null)
+                                CustomDateWidget(
+                                  date: trip.startedMovingTimestamp!,
+                                ),
+                            ],
                           ),
-                        ),
                       ],
                     ),
                     const SizedBox(height: 12),
