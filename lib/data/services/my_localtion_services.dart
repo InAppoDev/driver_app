@@ -41,39 +41,6 @@ class MyLocationService {
     log('_initializeNotifications');
   }
 
-  void _showDriveModeNotification(String elapsedTime) async {
-    AndroidNotificationDetails androidPlatformChannelSpecifics =
-        AndroidNotificationDetails(
-      'drive_channel',
-      'Drive Tracking',
-      importance: Importance.max,
-      priority: Priority.high,
-      ongoing: true,
-      sound: null,
-      playSound: false,
-      enableVibration: false,
-      silent: true,
-      autoCancel: false,
-      styleInformation: BigTextStyleInformation(
-        'Auto-sharing location every 15 minutes \nTime: $elapsedTime',
-      ),
-    );
-
-    const DarwinNotificationDetails iOSPlatformChannelSpecifics =
-        DarwinNotificationDetails();
-
-    NotificationDetails platformChannelSpecifics = NotificationDetails(
-        android: androidPlatformChannelSpecifics,
-        iOS: iOSPlatformChannelSpecifics);
-
-    await flutterLocalNotificationsPlugin.show(
-      2,
-      'Drive Mode Active',
-      'Auto-sharing location every 15 minutes \n Time: $elapsedTime',
-      platformChannelSpecifics,
-    );
-  }
-
   Future<void> startDriveTimer(int tripId) async {
     if (_isTracking) {
       log('Tracking is already started');
@@ -81,10 +48,12 @@ class MyLocationService {
     }
 
     _isTracking = true;
+    _secondsElapsed = 0;
+    _updateDriveNotification();
+
     _driveTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _secondsElapsed++;
-      String elapsedTime = _formatDuration(Duration(seconds: _secondsElapsed));
-      _showDriveModeNotification(elapsedTime);
+      _updateDriveNotification();
     });
 
     startTracking(tripId);
@@ -97,11 +66,11 @@ class MyLocationService {
     }
 
     _isTracking = false;
+
     if (_driveTimer != null) {
       _driveTimer!.cancel();
+      _driveTimer = null;
       log('Drive timer stopped');
-    } else {
-      log('Drive timer was not running');
     }
 
     await flutterLocalNotificationsPlugin.cancel(2);
@@ -127,18 +96,19 @@ class MyLocationService {
         id: id,
         checkCall: checkCallModel,
       );
-
-      print('Check call sent successfully');
     } catch (e) {
       print('Failed to send check call: $e');
     }
   }
 
   void startTracking(int id) async {
-    if (_timer != null) {
-      log('Tracking timer is already running');
+    if (_timer != null || _isTracking) {
+      log('Tracking is already running');
       return;
     }
+
+    startDriveTimer(id);
+
     log('BackgroundFetch startTracking');
     BackgroundFetch.configure(
         BackgroundFetchConfig(
@@ -152,7 +122,10 @@ class MyLocationService {
           requiredNetworkType: NetworkType.NONE,
           forceAlarmManager: true,
         ), (String taskId) async {
-      await sendCheckCall(id: id, type: 'en_route_update');
+      if (_isTracking) {
+        // Додана перевірка перед відправкою івенту
+        await sendCheckCall(id: id, type: 'en_route_update');
+      }
       BackgroundFetch.finish(taskId);
     }, (String taskId) async {
       BackgroundFetch.finish(taskId);
@@ -160,15 +133,12 @@ class MyLocationService {
 
     await sendCheckCall(id: id, type: 'started_moving');
 
-    await FlutterForegroundTask.startService(
-      notificationTitle: 'Drive Mode Active',
-      notificationText: 'Auto-sharing location every 15 minutes',
-    );
-
-    // Запуск основного таймера, що відправляє CheckCall кожні 15 хвилин
-    _timer = Timer.periodic(Duration(seconds: 10), (timer) async {
-      log('Timer event received');
-      await sendCheckCall(id: id, type: 'en_route_update');
+    _timer = Timer.periodic(const Duration(seconds: 10), (timer) async {
+      if (_isTracking) {
+        // Додана перевірка перед відправкою івенту
+        log('Timer event received');
+        await sendCheckCall(id: id, type: 'en_route_update');
+      }
     });
   }
 
@@ -177,10 +147,13 @@ class MyLocationService {
       _timer!.cancel();
       _timer = null;
       log('Tracking timer stopped');
-      await sendCheckCall(id: id, type: 'stopped_moving');
     } else {
       log('Tracking timer was not running');
     }
+
+    stopDriveTimer(id);
+
+    await sendCheckCall(id: id, type: 'stopped_moving');
 
     BackgroundFetch.stop().then((_) {
       log('BackgroundFetch stopped');
@@ -193,6 +166,40 @@ class MyLocationService {
     }).catchError((e) {
       log('Failed to stop foreground service: $e');
     });
+  }
+
+  void _updateDriveNotification() async {
+    final String elapsedTime =
+        _formatDuration(Duration(seconds: _secondsElapsed));
+    log('_update Drive Notification $elapsedTime');
+
+    const AndroidNotificationDetails androidPlatformChannelSpecifics =
+        AndroidNotificationDetails(
+      'drive_channel',
+      'Drive Tracking',
+      importance: Importance.max,
+      priority: Priority.high,
+      ongoing: true,
+      sound: null,
+      playSound: false,
+      enableVibration: false,
+      silent: true,
+      autoCancel: false,
+    );
+
+    const DarwinNotificationDetails iOSPlatformChannelSpecifics =
+        DarwinNotificationDetails();
+
+    const NotificationDetails platformChannelSpecifics = NotificationDetails(
+        android: androidPlatformChannelSpecifics,
+        iOS: iOSPlatformChannelSpecifics);
+
+    await flutterLocalNotificationsPlugin.show(
+      2,
+      'Drive Time',
+      'Time: $elapsedTime',
+      platformChannelSpecifics,
+    );
   }
 
   void _onDidReceiveLocalNotification(
