@@ -10,13 +10,14 @@ class TrackingRepositoryImpl implements TrackingRepository {
     required this.locationService,
     required this.foregroundService,
   });
+
   @override
-  void startTracking() {
-    locationService.startTracking();
+  void startTracking(int id) {
+    locationService.startTracking(id);
   }
 
   @override
-  void stopTracking() {
-    locationService.stopTracking();
+  void stopTracking(int id) {
+    locationService.stopTracking(id);
   }
 }

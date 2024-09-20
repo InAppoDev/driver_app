@@ -20,7 +20,7 @@ mixin _$MainEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(MainPageEnum page) pageChanged,
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
-    required TResult Function() updateDriveButton,
+    required TResult Function(int id) updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
   }) =>
@@ -29,7 +29,7 @@ mixin _$MainEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MainPageEnum page)? pageChanged,
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult? Function()? updateDriveButton,
+    TResult? Function(int id)? updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
   }) =>
@@ -38,7 +38,7 @@ mixin _$MainEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainPageEnum page)? pageChanged,
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult Function()? updateDriveButton,
+    TResult Function(int id)? updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
     required TResult orElse(),
@@ -164,7 +164,7 @@ class _$PageChangedImpl implements _PageChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(MainPageEnum page) pageChanged,
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
-    required TResult Function() updateDriveButton,
+    required TResult Function(int id) updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
   }) {
@@ -176,7 +176,7 @@ class _$PageChangedImpl implements _PageChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MainPageEnum page)? pageChanged,
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult? Function()? updateDriveButton,
+    TResult? Function(int id)? updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
   }) {
@@ -188,7 +188,7 @@ class _$PageChangedImpl implements _PageChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainPageEnum page)? pageChanged,
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult Function()? updateDriveButton,
+    TResult Function(int id)? updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
     required TResult orElse(),
@@ -324,7 +324,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
   TResult when<TResult extends Object?>({
     required TResult Function(MainPageEnum page) pageChanged,
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
-    required TResult Function() updateDriveButton,
+    required TResult Function(int id) updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
   }) {
@@ -336,7 +336,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MainPageEnum page)? pageChanged,
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult? Function()? updateDriveButton,
+    TResult? Function(int id)? updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
   }) {
@@ -348,7 +348,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainPageEnum page)? pageChanged,
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult Function()? updateDriveButton,
+    TResult Function(int id)? updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
     required TResult orElse(),
@@ -418,6 +418,8 @@ abstract class _$$UpdateDriveButtonImplCopyWith<$Res> {
   factory _$$UpdateDriveButtonImplCopyWith(_$UpdateDriveButtonImpl value,
           $Res Function(_$UpdateDriveButtonImpl) then) =
       __$$UpdateDriveButtonImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
 }
 
 /// @nodoc
@@ -430,37 +432,63 @@ class __$$UpdateDriveButtonImplCopyWithImpl<$Res>
 
   /// Create a copy of MainEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$UpdateDriveButtonImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
-  const _$UpdateDriveButtonImpl();
+  const _$UpdateDriveButtonImpl(this.id);
+
+  @override
+  final int id;
 
   @override
   String toString() {
-    return 'MainEvent.updateDriveButton()';
+    return 'MainEvent.updateDriveButton(id: $id)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UpdateDriveButtonImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateDriveButtonImpl &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, id);
+
+  /// Create a copy of MainEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateDriveButtonImplCopyWith<_$UpdateDriveButtonImpl> get copyWith =>
+      __$$UpdateDriveButtonImplCopyWithImpl<_$UpdateDriveButtonImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(MainPageEnum page) pageChanged,
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
-    required TResult Function() updateDriveButton,
+    required TResult Function(int id) updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
   }) {
-    return updateDriveButton();
+    return updateDriveButton(id);
   }
 
   @override
@@ -468,11 +496,11 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MainPageEnum page)? pageChanged,
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult? Function()? updateDriveButton,
+    TResult? Function(int id)? updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
   }) {
-    return updateDriveButton?.call();
+    return updateDriveButton?.call(id);
   }
 
   @override
@@ -480,13 +508,13 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainPageEnum page)? pageChanged,
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult Function()? updateDriveButton,
+    TResult Function(int id)? updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
     required TResult orElse(),
   }) {
     if (updateDriveButton != null) {
-      return updateDriveButton();
+      return updateDriveButton(id);
     }
     return orElse();
   }
@@ -533,7 +561,15 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
 }
 
 abstract class _UpdateDriveButton implements MainEvent {
-  const factory _UpdateDriveButton() = _$UpdateDriveButtonImpl;
+  const factory _UpdateDriveButton(final int id) = _$UpdateDriveButtonImpl;
+
+  int get id;
+
+  /// Create a copy of MainEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateDriveButtonImplCopyWith<_$UpdateDriveButtonImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -579,7 +615,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
   TResult when<TResult extends Object?>({
     required TResult Function(MainPageEnum page) pageChanged,
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
-    required TResult Function() updateDriveButton,
+    required TResult Function(int id) updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
   }) {
@@ -591,7 +627,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MainPageEnum page)? pageChanged,
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult? Function()? updateDriveButton,
+    TResult? Function(int id)? updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
   }) {
@@ -603,7 +639,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainPageEnum page)? pageChanged,
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult Function()? updateDriveButton,
+    TResult Function(int id)? updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
     required TResult orElse(),
@@ -702,7 +738,7 @@ class _$InitializeAppImpl implements _InitializeApp {
   TResult when<TResult extends Object?>({
     required TResult Function(MainPageEnum page) pageChanged,
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
-    required TResult Function() updateDriveButton,
+    required TResult Function(int id) updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
   }) {
@@ -714,7 +750,7 @@ class _$InitializeAppImpl implements _InitializeApp {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MainPageEnum page)? pageChanged,
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult? Function()? updateDriveButton,
+    TResult? Function(int id)? updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
   }) {
@@ -726,7 +762,7 @@ class _$InitializeAppImpl implements _InitializeApp {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainPageEnum page)? pageChanged,
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult Function()? updateDriveButton,
+    TResult Function(int id)? updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
     required TResult orElse(),

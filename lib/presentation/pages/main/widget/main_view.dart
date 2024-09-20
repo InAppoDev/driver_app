@@ -76,9 +76,8 @@ class MainView extends StatelessWidget {
                 elevation: 2,
                 onPressed: isActiveTrip
                     ? () {
-                        context
-                            .read<MainBloc>()
-                            .add(const MainEvent.updateDriveButton());
+                        context.read<MainBloc>().add(
+                            MainEvent.updateDriveButton(tripState.trip!.id));
                       }
                     : null,
                 backgroundColor:

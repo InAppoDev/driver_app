@@ -46,8 +46,7 @@ Future<void> initApp() async {
   await FlutterDownloader.initialize();
 
   // Initialize MyLocationService with foregroundService and register it in GetIt
-  final MyLocationService locationService =
-      MyLocationService(foregroundService: foregroundService);
+  final MyLocationService locationService = MyLocationService();
   GetIt.instance.registerSingleton<MyLocationService>(locationService);
 
   // Register ErrorHandler in GetIt

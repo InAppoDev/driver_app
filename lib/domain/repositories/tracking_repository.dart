@@ -1,4 +1,4 @@
 abstract class TrackingRepository {
-  void startTracking();
-  void stopTracking();
+  void startTracking(int id);
+  void stopTracking(int id);
 }

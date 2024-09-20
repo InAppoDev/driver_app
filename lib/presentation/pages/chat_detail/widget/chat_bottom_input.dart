@@ -115,11 +115,13 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
               ),
               const SizedBox(width: 5),
               Expanded(
-                child: CustomTextField(
-                  keyboardType: TextInputType.multiline,
-                  controller: textEditingController,
+                child: SizedBox(
                   height: 50,
-                  borderRadius: 20,
+                  child: CustomTextField(
+                    keyboardType: TextInputType.multiline,
+                    controller: textEditingController,
+                    borderRadius: 20,
+                  ),
                 ),
               ),
               const SizedBox(width: 18),

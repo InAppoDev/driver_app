@@ -78,11 +78,12 @@ class ETABottomSheetState extends State<ETABottomSheet> {
   }
 
   void _confirmTrip() {
-    widget.onConfirmPressed(
-      _nextEtaTimestamp,
-      commentController.text.isNotEmpty ? commentController.text : null,
-      widget.type,
-    );
+    final int? etaTimestamp = _nextEtaTimestamp;
+    final String? comment =
+        commentController.text.isNotEmpty ? commentController.text : null;
+    final String type = widget.type;
+
+    widget.onConfirmPressed(etaTimestamp, comment, type);
   }
 
   @override
@@ -172,6 +173,7 @@ class ETABottomSheetState extends State<ETABottomSheet> {
             hintText: context.localizations.addComment.toUpperCase(),
             controller: commentController,
           ),
+          const SizedBox(height: 14),
           CustomButton(
             label: context.localizations.confirm.toUpperCase(),
             onPressed: _confirmTrip,

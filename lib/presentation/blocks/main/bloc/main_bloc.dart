@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tms_driver/data/services/connectivity_service.dart';
-import 'package:tms_driver/data/services/my_localtion_services.dart';
 import 'package:tms_driver/domain/repositories/auth_repository.dart';
+import 'package:tms_driver/domain/repositories/tracking_repository.dart';
 import 'package:tms_driver/presentation/blocks/message_list/message_list_bloc.dart';
 import 'package:tms_driver/presentation/blocks/notification/bloc/notification_bloc.dart';
 import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
@@ -19,7 +19,7 @@ part 'main_state.dart';
 
 class MainBloc extends Bloc<MainEvent, MainState> {
   final AuthRepository authRepo = GetIt.instance<AuthRepository>();
-  final MyLocationService locationService = GetIt.instance<MyLocationService>();
+  final TrackingRepository trackingRepo = GetIt.instance<TrackingRepository>();
   final ConnectivityService connectivityService =
       GetIt.instance<ConnectivityService>();
 
@@ -92,10 +92,10 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   Future<void> _onUpdateDriveButton(
       _UpdateDriveButton event, Emitter<MainState> emit) async {
     if (state.isDriveStarted) {
-      locationService.stopDriveTimer();
+      trackingRepo.stopTracking(event.id);
       emit(state.copyWith(isDriveStarted: false));
     } else {
-      locationService.startDriveTimer();
+      trackingRepo.startTracking(event.id);
       emit(state.copyWith(isDriveStarted: true));
     }
   }

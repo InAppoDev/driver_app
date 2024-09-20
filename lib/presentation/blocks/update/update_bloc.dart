@@ -40,6 +40,7 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
           lng: position.longitude,
         ),
         type: event.type,
+        comment: event.comment,
       );
 
       await tripRepository.sendCheckCall(

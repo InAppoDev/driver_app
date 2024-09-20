@@ -133,6 +133,8 @@ class ConfirmTripView extends StatelessWidget {
                                 label:
                                     context.localizations.begin.toUpperCase(),
                                 onPressed: () async {
+                                  final localizations = context.localizations;
+
                                   final result = await showModalBottomSheet<
                                       Map<String, dynamic>>(
                                     context: context,
@@ -152,8 +154,7 @@ class ConfirmTripView extends StatelessWidget {
                                             'type': type,
                                           });
                                         },
-                                        title:
-                                            context.localizations.startDriving,
+                                        title: localizations.startDriving,
                                         type: 'eta',
                                       );
                                     },

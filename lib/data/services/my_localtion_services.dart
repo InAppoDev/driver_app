@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'dart:developer';
-import 'package:flutter/foundation.dart';
+import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:background_fetch/background_fetch.dart';
-import 'package:tms_driver/data/services/foreground_service.dart';
+import 'package:get_it/get_it.dart';
+import 'package:tms_driver/data/models/check/check_call/check_call_model.dart';
+import 'package:tms_driver/data/models/check/location/location_model.dart';
+import 'package:tms_driver/domain/repositories/trip_repository.dart';
 
 class MyLocationService {
   late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
@@ -12,12 +15,11 @@ class MyLocationService {
   Timer? _timer;
   Timer? _driveTimer;
   int _secondsElapsed = 0;
-  final ForegroundService foregroundService;
+  bool _isTracking = false;
 
-  MyLocationService({required this.foregroundService}) {
+  MyLocationService() {
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     _initializeNotifications();
-    startTracking();
   }
 
   void _initializeNotifications() {
@@ -39,77 +41,7 @@ class MyLocationService {
     log('_initializeNotifications');
   }
 
-  void _sendLocation(Position position) async {
-    if (kDebugMode) {
-      print('Location: ${position.latitude}, ${position.longitude}');
-    }
-  }
-
-  void startTracking() async {
-    // Background task every 15 minutes
-    log('BackgroundFetch startTracking');
-    BackgroundFetch.configure(
-        BackgroundFetchConfig(
-          minimumFetchInterval: 15,
-          stopOnTerminate: false,
-          enableHeadless: true,
-          requiresBatteryNotLow: false,
-          requiresCharging: false,
-          requiresStorageNotLow: false,
-          requiresDeviceIdle: false,
-          requiredNetworkType: NetworkType.NONE,
-          forceAlarmManager: true,
-        ), (String taskId) async {
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
-      _sendLocation(position);
-      BackgroundFetch.finish(taskId);
-    }, (String taskId) async {
-      BackgroundFetch.finish(taskId);
-    });
-
-    // Timer for active mode every 15 minutes
-    _timer = Timer.periodic(const Duration(minutes: 15), (timer) async {
-      print('Timer event received');
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
-      _sendLocation(position);
-    });
-  }
-
-  void stopTracking() {
-    _timer?.cancel();
-    BackgroundFetch.stop();
-  }
-
-  // Callback for iOS local notifications
-  void _onDidReceiveLocalNotification(
-      int id, String? title, String? body, String? payload) async {}
-
-  // Callback for iOS notification selection
-  void _onSelectNotification(NotificationResponse? response) async {}
-
-  void startDriveTimer() async {
-    await foregroundService.startService();
-    _driveTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      _secondsElapsed++;
-      _updateDriveNotification();
-    });
-  }
-
-  void stopDriveTimer() async {
-    await foregroundService.stopService();
-    _driveTimer?.cancel();
-  }
-
-  void resetDriveTimer() {
-    _secondsElapsed = 0;
-  }
-
-  void _updateDriveNotification() async {
-    final String elapsedTime =
-        _formatDuration(Duration(seconds: _secondsElapsed));
-
+  void _showDriveModeNotification(String elapsedTime) async {
     AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
       'drive_channel',
@@ -141,6 +73,132 @@ class MyLocationService {
       platformChannelSpecifics,
     );
   }
+
+  Future<void> startDriveTimer(int tripId) async {
+    if (_isTracking) {
+      log('Tracking is already started');
+      return;
+    }
+
+    _isTracking = true;
+    _driveTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      _secondsElapsed++;
+      String elapsedTime = _formatDuration(Duration(seconds: _secondsElapsed));
+      _showDriveModeNotification(elapsedTime);
+    });
+
+    startTracking(tripId);
+  }
+
+  void stopDriveTimer(int id) async {
+    if (!_isTracking) {
+      log('Tracking is not active');
+      return;
+    }
+
+    _isTracking = false;
+    if (_driveTimer != null) {
+      _driveTimer!.cancel();
+      log('Drive timer stopped');
+    } else {
+      log('Drive timer was not running');
+    }
+
+    await flutterLocalNotificationsPlugin.cancel(2);
+    stopTracking(id);
+  }
+
+  Future<void> sendCheckCall({required int id, required String type}) async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+
+      final tripRepository = GetIt.instance<TripRepository>();
+
+      final CheckCallModel checkCallModel = CheckCallModel(
+        location: LocationModel(
+          lat: position.latitude,
+          lng: position.longitude,
+        ),
+        type: type,
+      );
+
+      await tripRepository.sendCheckCall(
+        id: id,
+        checkCall: checkCallModel,
+      );
+
+      print('Check call sent successfully');
+    } catch (e) {
+      print('Failed to send check call: $e');
+    }
+  }
+
+  void startTracking(int id) async {
+    if (_timer != null) {
+      log('Tracking timer is already running');
+      return;
+    }
+    log('BackgroundFetch startTracking');
+    BackgroundFetch.configure(
+        BackgroundFetchConfig(
+          minimumFetchInterval: 15,
+          stopOnTerminate: false,
+          enableHeadless: true,
+          requiresBatteryNotLow: false,
+          requiresCharging: false,
+          requiresStorageNotLow: false,
+          requiresDeviceIdle: false,
+          requiredNetworkType: NetworkType.NONE,
+          forceAlarmManager: true,
+        ), (String taskId) async {
+      await sendCheckCall(id: id, type: 'en_route_update');
+      BackgroundFetch.finish(taskId);
+    }, (String taskId) async {
+      BackgroundFetch.finish(taskId);
+    });
+
+    await sendCheckCall(id: id, type: 'started_moving');
+
+    await FlutterForegroundTask.startService(
+      notificationTitle: 'Drive Mode Active',
+      notificationText: 'Auto-sharing location every 15 minutes',
+    );
+
+    // Запуск основного таймера, що відправляє CheckCall кожні 15 хвилин
+    _timer = Timer.periodic(Duration(seconds: 10), (timer) async {
+      log('Timer event received');
+      await sendCheckCall(id: id, type: 'en_route_update');
+    });
+  }
+
+  void stopTracking(int id) async {
+    if (_timer != null) {
+      _timer!.cancel();
+      _timer = null;
+      log('Tracking timer stopped');
+      await sendCheckCall(id: id, type: 'stopped_moving');
+    } else {
+      log('Tracking timer was not running');
+    }
+
+    BackgroundFetch.stop().then((_) {
+      log('BackgroundFetch stopped');
+    }).catchError((e) {
+      log('Failed to stop BackgroundFetch: $e');
+    });
+
+    FlutterForegroundTask.stopService().then((_) {
+      log('Foreground service stopped');
+    }).catchError((e) {
+      log('Failed to stop foreground service: $e');
+    });
+  }
+
+  void _onDidReceiveLocalNotification(
+      int id, String? title, String? body, String? payload) async {}
+
+  void _onSelectNotification(NotificationResponse? response) async {}
 
   String _formatDuration(Duration duration) {
     String twoDigits(int n) => n.toString().padLeft(2, "0");
