@@ -7,7 +7,6 @@ import 'package:tms_driver/data/data_source/auth_data_source.dart';
 import 'package:tms_driver/data/data_source/ds_impl/api_data_source_impl.dart';
 import 'package:tms_driver/data/data_source/ds_impl/auth_data_source_impl.dart';
 import 'package:tms_driver/data/services/connectivity_service.dart';
-import 'package:tms_driver/data/services/foreground_service.dart';
 import 'package:tms_driver/data/services/hive_service.dart';
 import 'package:tms_driver/data/services/my_localtion_services.dart';
 import 'package:tms_driver/domain/repositories/auth_repository.dart';
@@ -30,10 +29,6 @@ Future<void> initApp() async {
   final Dio dio = Dio();
   final HiveService hiveService = HiveService();
   await hiveService.init();
-
-  // Initialize ForegroundService and register it in GetIt
-  final ForegroundService foregroundService = ForegroundService();
-  GetIt.instance.registerSingleton<ForegroundService>(foregroundService);
 
   // Initialize ConnectivityService and register it in GetIt
   final ConnectivityService connectivityService = ConnectivityService();
@@ -76,7 +71,6 @@ Future<void> initApp() async {
   // Register TrackingRepository with locationService and foregroundService
   GetIt.instance.registerSingleton<TrackingRepository>(TrackingRepositoryImpl(
     locationService: locationService,
-    foregroundService: foregroundService,
   ));
 
   // Register UserRepository with dependencies in GetIt

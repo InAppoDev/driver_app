@@ -39,12 +39,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   Future<void> requestLocationPermission() async {
-    if (isLocationPermission) {
-      await Permission.location.request();
-    } else {
-      PermissionStatus status = await Permission.location.request();
+    PermissionStatus status = await Permission.locationWhenInUse.request();
+    if (status.isGranted) {
+      PermissionStatus backgroundStatus =
+          await Permission.locationAlways.request();
       setState(() {
-        isLocationPermission = status.isGranted;
+        isLocationPermission = backgroundStatus.isGranted;
+      });
+    } else {
+      setState(() {
+        isLocationPermission = false;
       });
     }
   }
