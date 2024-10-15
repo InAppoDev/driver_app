@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tms_driver/presentation/blocks/main/bloc/main_bloc.dart';
+import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
 import 'package:tms_driver/presentation/blocks/user/user_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_app_bar.dart';
 import 'package:tms_driver/presentation/pages/home/home_page.dart';
@@ -67,32 +68,39 @@ class MainView extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 10),
           child: Align(
             alignment: Alignment.bottomCenter,
-            child: FloatingActionButton(
-              elevation: 2,
-              onPressed: () {
-                context
-                    .read<MainBloc>()
-                    .add(const MainEvent.updateDriveButton());
-              },
-              backgroundColor: Theme.of(context).cardColor,
-              child:
-                  BlocBuilder<MainBloc, MainState>(builder: (context, state) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/${state.isDriveStarted ? 'pause' : 'play'}.svg',
-                      height: 30,
-                      width: 30,
-                    ),
-                    Text(
-                      state.isDriveStarted ? 'Pause' : 'Drive',
-                      style: const TextStyle(fontSize: 12),
-                    ),
-                  ],
-                );
-              }),
-            ),
+            child: BlocBuilder<TripDetailBloc, TripDetailState>(
+                builder: (context, tripState) {
+              final isActiveTrip = tripState.trip != null;
+
+              return FloatingActionButton(
+                elevation: 2,
+                onPressed: isActiveTrip
+                    ? () {
+                        context.read<MainBloc>().add(
+                            MainEvent.updateDriveButton(tripState.trip!.id));
+                      }
+                    : null,
+                backgroundColor:
+                    isActiveTrip ? Theme.of(context).cardColor : Colors.grey,
+                child:
+                    BlocBuilder<MainBloc, MainState>(builder: (context, state) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/${state.isDriveStarted ? 'pause' : 'play'}.svg',
+                        height: 30,
+                        width: 30,
+                      ),
+                      Text(
+                        state.isDriveStarted ? 'Pause' : 'Drive',
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  );
+                }),
+              );
+            }),
           ),
         ),
         bottomNavigationBar: CustomPaint(

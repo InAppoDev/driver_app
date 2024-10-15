@@ -2,7 +2,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tms_driver/data/models/dispatch/cargo_info/cargo_info_model.dart';
-import 'package:tms_driver/data/models/dispatch/dipatch_detail_model/dispatch_detail_model.dart';
+import 'package:tms_driver/data/models/dispatch/waypoint/waypoint_detail_model.dart';
 
 part 'dispatch_model.freezed.dart';
 part 'dispatch_model.g.dart';
@@ -12,8 +12,11 @@ class DispatchModel with _$DispatchModel {
   const factory DispatchModel({
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'truck_load_id') required int truckLoadId,
-    @JsonKey(name: 'waypoints') required List<DispatchDetailModel> waypoints,
-    @JsonKey(name: 'next_waypoint_id') required int nextWaypointId,
+    @JsonKey(name: 'waypoints') required List<WaypointDetailModel> waypoints,
+    @JsonKey(name: 'started_moving_timestamp') int? startedMovingTimestamp,
+    @JsonKey(name: 'next_waypoint') WaypointDetailModel? nextWaypoint,
+    @JsonKey(name: 'next_eta_waypoint') WaypointDetailModel? nextEtaWaypoint,
+    @JsonKey(name: 'next_eta_timestamp') int? nextEtaTimestamp,
     @JsonKey(name: 'is_tonu_declared') required bool isTonuDeclared,
     @JsonKey(name: 'is_finished') required bool isFinished,
     @JsonKey(name: 'temperature_maintain_type') String? temperatureMaintainType,

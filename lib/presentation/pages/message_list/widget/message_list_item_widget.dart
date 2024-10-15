@@ -53,13 +53,14 @@ class MessageListItemWidget extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      CustomDateWidget(
-                        date: chat.lastUpdatedAt,
-                        textStyle: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
+                      if (chat.lastUpdatedAt != null)
+                        CustomDateWidget(
+                          date: chat.lastUpdatedAt!,
+                          textStyle: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
-                      ),
                     ],
                   ),
                   const SizedBox(height: 5),

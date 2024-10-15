@@ -3,20 +3,21 @@ import 'package:flutter_svg/svg.dart';
 import 'package:r_dotted_line_border/r_dotted_line_border.dart';
 import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
+import 'package:tms_driver/presentation/utils/extension/waypoint_type.dart';
 
 class TripInfoWidget extends StatelessWidget {
   const TripInfoWidget({
     super.key,
-    required this.topic,
+    required this.type,
     required this.address,
-    required this.time,
+    this.time,
     required this.showMidlLine,
     required this.showTipImage,
   });
 
-  final String topic;
+  final String type;
   final String address;
-  final int time;
+  final int? time;
   final bool showMidlLine;
   final bool showTipImage;
 
@@ -46,7 +47,7 @@ class TripInfoWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      topic,
+                      type.displayText,
                       style: theme.textTheme.bodySmall!
                           .copyWith(color: theme.disabledColor),
                     ),
@@ -64,18 +65,19 @@ class TripInfoWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      context.localizations.dateTime,
+                      context.localizations.apptTime,
                       style: theme.textTheme.bodySmall!
                           .copyWith(color: theme.disabledColor),
                     ),
-                    CustomDateWidget(
-                      date: time,
-                      textStyle: theme.textTheme.bodySmall!.copyWith(
-                        color: theme.dividerColor,
-                        fontSize: 9,
-                        fontWeight: FontWeight.w800,
+                    if (time != null)
+                      CustomDateWidget(
+                        date: time!,
+                        textStyle: theme.textTheme.bodySmall!.copyWith(
+                          color: theme.dividerColor,
+                          fontSize: 9,
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ],

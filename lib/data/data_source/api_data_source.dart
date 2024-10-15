@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
+import 'package:tms_driver/data/models/check/check_call/check_call_model.dart';
 import 'package:tms_driver/data/models/document/upload_document_response.dart';
 import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_list_model/dispatch_list_model.dart';
@@ -45,4 +46,9 @@ abstract class ApiDataSource {
   Future<DispatchModel?> getActiveTrip();
 
   Future<List<DispatchListModel>> getHistoryTrips();
+
+  Future<bool> sendCheckCall({
+    required int id,
+    required CheckCallModel checkCall,
+  });
 }

@@ -43,28 +43,25 @@ class TripData extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            SvgPicture.asset(
-                              'assets/images/point.svg',
-                              height: 15,
-                            ),
-                            const SizedBox(width: 15),
-                            Text(
-                              context.localizations.startingPoint,
-                              style: theme.textTheme.titleSmall!
-                                  .copyWith(color: theme.dividerColor),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 55),
-                          child: Text(
-                            '-',
-                            style: theme.textTheme.titleSmall!
-                                .copyWith(color: theme.dividerColor),
+                        if (trip.nextWaypoint != null)
+                          Row(
+                            children: [
+                              SvgPicture.asset(
+                                'assets/images/point.svg',
+                                height: 15,
+                              ),
+                              const SizedBox(width: 15),
+                              Text(
+                                trip.nextWaypoint!.typeTitle,
+                                style: theme.textTheme.titleSmall!
+                                    .copyWith(color: theme.dividerColor),
+                              ),
+                              if (trip.startedMovingTimestamp != null)
+                                CustomDateWidget(
+                                  date: trip.startedMovingTimestamp!,
+                                ),
+                            ],
                           ),
-                        ),
                       ],
                     ),
                     const SizedBox(height: 12),
@@ -91,9 +88,10 @@ class TripData extends StatelessWidget {
                             ),
                           ],
                         ),
-                        CustomDateWidget(
-                          date: trip.waypoints.first.apptFromTimestamp,
-                        ),
+                        if (trip.nextEtaTimestamp != null)
+                          CustomDateWidget(
+                            date: trip.nextEtaTimestamp!,
+                          ),
                       ],
                     ),
                     const SizedBox(height: 16),
@@ -117,7 +115,7 @@ class TripData extends StatelessWidget {
                                 children: [
                                   ...trip.waypoints.skip(1).map((waypoint) {
                                     return TripInfoWidget(
-                                      topic: waypoint.typeTitle,
+                                      type: waypoint.type,
                                       address: waypoint.address,
                                       time: waypoint.apptFromTimestamp,
                                       showMidlLine: true,

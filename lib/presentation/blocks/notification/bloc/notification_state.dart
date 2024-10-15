@@ -1,13 +1,16 @@
 part of 'notification_bloc.dart';
 
+enum NotificationStatus { initial, loading, loaded, error }
+
 @freezed
 class NotificationState with _$NotificationState {
-  const factory NotificationState.initial() = _Initial;
+  const factory NotificationState({
+    required NotificationStatus status,
+    List<NotificationModel>? notifications,
+    String? errorMessage,
+  }) = _NotificationState;
 
-  const factory NotificationState.loading() = _Loading;
-
-  const factory NotificationState.loaded(
-      {required List<NotificationModel> notifications}) = _Loaded;
-
-  const factory NotificationState.error({required String message}) = _Error;
+  factory NotificationState.initial() => const NotificationState(
+        status: NotificationStatus.initial,
+      );
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/data/services/time_formatter.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class TripDetailInfo extends StatelessWidget {
@@ -46,40 +47,44 @@ class TripDetailInfo extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 22),
-          Text(
-            trip.waypoints.first.typeTitle,
-            style: theme.textTheme.bodySmall!.copyWith(
-              color: theme.disabledColor,
-              fontWeight: FontWeight.w600,
+          if (trip.nextWaypoint != null)
+            Text(
+              trip.nextWaypoint!.typeTitle,
+              style: theme.textTheme.bodySmall!.copyWith(
+                color: theme.disabledColor,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
           const SizedBox(height: 15),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                context.localizations.hoursOfOperation,
-                style: theme.textTheme.bodySmall!.copyWith(
-                  color: theme.disabledColor,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(height: 5),
-              Row(
-                children: [
-                  SvgPicture.asset('assets/images/clock.svg'),
-                  const SizedBox(width: 5),
-                  Text(
-                    '10:00 AM - 19:00 PM', // TODO check it on backend
-                    style: theme.textTheme.titleSmall!.copyWith(
-                      fontWeight: FontWeight.w400,
-                      color: theme.dividerColor,
-                    ),
+          if (trip.nextWaypoint != null &&
+              trip.nextWaypoint!.apptFromTimestamp != null &&
+              trip.nextWaypoint!.apptToTimestamp != null)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  context.localizations.hoursOfOperation,
+                  style: theme.textTheme.bodySmall!.copyWith(
+                    color: theme.disabledColor,
+                    fontWeight: FontWeight.w400,
                   ),
-                ],
-              ),
-            ],
-          ),
+                ),
+                const SizedBox(height: 5),
+                Row(
+                  children: [
+                    SvgPicture.asset('assets/images/clock.svg'),
+                    const SizedBox(width: 5),
+                    Text(
+                      '${TimeFormatter.formatTimestamp(trip.nextWaypoint!.apptFromTimestamp)} - ${TimeFormatter.formatTimestamp(trip.nextWaypoint!.apptToTimestamp)}',
+                      style: theme.textTheme.titleSmall!.copyWith(
+                        fontWeight: FontWeight.w400,
+                        color: theme.dividerColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           const SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

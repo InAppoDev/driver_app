@@ -35,10 +35,14 @@ class CalendarPicker extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () async {
-              final resp = await showDialog(
-                  context: context,
-                  builder: (context) => const CalendarDialog());
-              onCalendarResponse(resp ?? '');
+              await showModalBottomSheet<int>(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder: (context) {
+                  return const CalendarBottomSheet();
+                },
+              );
             },
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 26),

@@ -5,13 +5,13 @@ import 'package:tms_driver/presentation/utils/extension/change_localization.dart
 
 class TripItemWidget extends StatelessWidget {
   final Function(DispatchListModel) onPressed;
-  final DispatchListModel tripListModel;
+  final DispatchListModel trip;
   final bool isHistoryWidget;
 
   const TripItemWidget({
     super.key,
     required this.onPressed,
-    required this.tripListModel,
+    required this.trip,
     required this.isHistoryWidget,
   });
 
@@ -20,7 +20,7 @@ class TripItemWidget extends StatelessWidget {
     final theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
-        onPressed.call(tripListModel);
+        onPressed.call(trip);
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 5),
@@ -46,11 +46,11 @@ class TripItemWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ...tripListModel.waypoints.map((detail) {
+                      ...trip.waypoints.map((waypoint) {
                         return TripInfoWidget(
-                          topic: detail.typeTitle,
-                          address: detail.address,
-                          time: detail.apptFromTimestamp,
+                          type: waypoint.type,
+                          address: waypoint.address,
+                          time: waypoint.apptFromTimestamp,
                           showMidlLine: true,
                           showTipImage: true,
                         );
@@ -60,7 +60,7 @@ class TripItemWidget extends StatelessWidget {
                             horizontal: 10, vertical: 10),
                         child: Text(
                           context.localizations
-                              .totalMilesMiles(tripListModel.routeTotalMi),
+                              .totalMilesMiles(trip.routeTotalMi),
                           style: theme.textTheme.labelSmall!.copyWith(
                             fontSize: 8,
                             color: theme.dividerColor,

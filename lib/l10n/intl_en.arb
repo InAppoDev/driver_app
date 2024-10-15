@@ -48,7 +48,6 @@
   "milesToGo": "Miles to go",
   "tripNumber": "Trip № 12321312312232",
   "loadDamage": "Load damage",
-  "startingPoint": "Starting point",
   "youHaventYetStartedTheTrip": "You haven`t yet started the trip.",
   "pickUp": "Pick up #2133123",
   "allStops": "All Stops",
@@ -63,14 +62,15 @@
   "selectTheDateAndTimeOfArrivalAt": "Select the date and time of arrival at PICK UP #1:",
   "selectDateTime": "Select Date\\ Time",
   "select": "SELECT",
-  "confirm": "CONFIRM",
+  "begin": "begin trip",
+  "confirm": "confirm",
   "selectETAAt": "Select ETA at PICK UP#1:",
   "bolDocument": "BOL document:",
   "uploadFiles": "Upload files",
   "or": "or",
   "uploadTheBOLDocumentOrYouCanScanIt": "Upload the BOL document or you can scan it.",
   "upload": "UPLOAD",
-  "confirmThatYouHaveEmbarkedOnThisTrip": "Confirm that you have embarked on this trip:",
+  "readyToBegin": "Ready to begin this trip?",
   "approvedTrip": "Approved trip",
   "currentStop": "Current Stop",
   "min": "min",
@@ -85,7 +85,7 @@
       }
     }
   },
-  "dateTime": "Date/time",
+  "apptTime": "Appt/time",
   "emergencyPhone": "Emergency Phone",
   "errorMessage": "Error: {message}",
   "@errorMessage": {
@@ -100,9 +100,9 @@
   "permissions": "Permissions",
   "dismiss": "DISMISS",
   "youHaveNoMessagesYetPullToRefresh": "You have no messages yet, pull to refresh the page",
+  "eta": "eta",
   "editETA": "Edit ETA:",
   "setValue": "Set Value",
-  "startDrive": "START DRIVE",
   "distanceKm": "{distance}km",
   "@distanceKm": {
     "description": "Distance in kilometers",
@@ -112,6 +112,9 @@
       }
     }
   },
-  "failedToLoadTrip": "Failed to load trip information. Please try again later or contact support."
+  "failedToLoadTrip": "Failed to load trip information. Please try again later or contact support.",
+  "startDriving": "Start driving",
+  "nextStop": "next stop",
+  "addComment": "add comment"
 }
 

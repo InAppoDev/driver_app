@@ -12,7 +12,8 @@ class TripDetailState with _$TripDetailState {
     @Default(false) bool isFileLoading,
     @Default(false) bool isLoading,
     DispatchModel? trip,
-    @Default(false) bool areStopsVisible,
+    @Default(true) bool areStopsVisible,
+    @Default(false) bool isConfirmingTrip,
   }) = _TripDetailState;
 
   factory TripDetailState.initial() => const TripDetailState(

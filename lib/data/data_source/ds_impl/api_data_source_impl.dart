@@ -7,6 +7,7 @@ import 'package:tms_driver/data/data_source/api_interceptor.dart';
 import 'package:tms_driver/data/data_source/auth_data_source.dart';
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
+import 'package:tms_driver/data/models/check/check_call/check_call_model.dart';
 import 'package:tms_driver/data/models/document/upload_document_response.dart';
 import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_list_model/dispatch_list_model.dart';
@@ -195,6 +196,22 @@ class ApiDataSourceImpl implements ApiDataSource {
   @override
   Future<DispatchModel?> getActiveTrip() async {
     final response = await _makeRequest(() => dio.get('/dispatches/active'));
+    // 204 no active dispatch found
+    if (response.statusCode == 204) {
+      return null;
+    }
     return DispatchModel.fromJson(response.data);
+  }
+
+  @override
+  Future<bool> sendCheckCall({
+    required int id,
+    required CheckCallModel checkCall,
+  }) async {
+    print(checkCall);
+    final response =
+        await _makeRequest(() => dio.post('/dispatches/$id/check-call'));
+    print('confirm CheckCall get response code ${response.statusCode}');
+    return response.statusCode == 200;
   }
 }

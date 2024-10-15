@@ -78,10 +78,13 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
               EtaWidget(
                 text: context.localizations.setValue,
                 onPressed: () async {
-                  final resp = await showDialog(
+                  await showModalBottomSheet<int>(
                       context: context,
-                      builder: (context) => const CalendarDialog());
-                  textEditingController.text += resp;
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (context) {
+                        return const CalendarBottomSheet();
+                      });
                 },
               ),
             ],
@@ -112,11 +115,13 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
               ),
               const SizedBox(width: 5),
               Expanded(
-                child: CustomTextField(
-                  keyboardType: TextInputType.multiline,
-                  controller: textEditingController,
+                child: SizedBox(
                   height: 50,
-                  borderRadius: 20,
+                  child: CustomTextField(
+                    keyboardType: TextInputType.multiline,
+                    controller: textEditingController,
+                    borderRadius: 20,
+                  ),
                 ),
               ),
               const SizedBox(width: 18),
