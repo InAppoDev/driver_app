@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
 import 'package:tms_driver/presentation/blocks/notification/bloc/notification_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
@@ -27,12 +28,13 @@ class NotificationListView extends StatelessWidget {
                         state.notifications![index];
 
                     return GestureDetector(
+                      // TODO fix add new_dispach in the future
                       onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                              content:
-                                  Text('Tapped on ${notificationModel.title}')),
-                        );
+                        notificationModel.type == 'message'
+                            ? GoRouter.of(context)
+                                .push('/chat/${notificationModel.entityId}')
+                            : GoRouter.of(context)
+                                .push('/chat/${notificationModel.entityId}');
                       },
                       child: Card(
                         color: Theme.of(context).scaffoldBackgroundColor,

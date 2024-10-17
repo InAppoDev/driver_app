@@ -16,43 +16,56 @@ class MainPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => TripListBloc()
-            ..add(const TripListEvent.fetchTrips())
-            ..add(const TripListEvent.fetchHistoryTrips()),
+          create: (context) {
+            final tripListBloc = TripListBloc();
+            Future.microtask(() {
+              tripListBloc.add(const TripListEvent.fetchTrips());
+              tripListBloc.add(const TripListEvent.fetchHistoryTrips());
+            });
+            return tripListBloc;
+          },
         ),
         BlocProvider(
-          create: (context) =>
-              TripDetailBloc()..add(const TripDetailEvent.loadActiveTrip()),
+          create: (context) {
+            final tripDetailBloc = TripDetailBloc();
+            Future.microtask(() {
+              tripDetailBloc.add(const TripDetailEvent.loadActiveTrip());
+            });
+            return tripDetailBloc;
+          },
         ),
         BlocProvider(
-          create: (context) =>
-              MessageListBloc()..add(const MessageListEvent.getChats()),
+          create: (context) {
+            final messageListBloc = MessageListBloc();
+            Future.microtask(() {
+              messageListBloc.add(const MessageListEvent.getChats());
+            });
+            return messageListBloc;
+          },
         ),
         BlocProvider(
-          create: (context) => UserBloc()..add(const UserEvent.started()),
+          create: (context) {
+            final userBloc = UserBloc();
+            Future.microtask(() {
+              userBloc.add(const UserEvent.started());
+            });
+            return userBloc;
+          },
         ),
         BlocProvider(
-          create: (context) =>
-              NotificationBloc()..add(const NotificationEvent.startPolling()),
+          create: (context) {
+            final notificationBloc = NotificationBloc();
+            Future.microtask(() {
+              notificationBloc.add(const NotificationEvent.startPolling());
+            });
+            return notificationBloc;
+          },
         ),
         BlocProvider(
           create: (context) => MainBloc(),
         ),
       ],
-      child: BlocListener<NotificationBloc, NotificationState>(
-        listener: (context, state) {
-          if (state.status == NotificationStatus.loaded) {
-          } else if (state.status == NotificationStatus.error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Error: ${state.errorMessage}'),
-                backgroundColor: Colors.red,
-              ),
-            );
-          }
-        },
-        child: const MainView(),
-      ),
+      child: const MainView(),
     );
   }
 }

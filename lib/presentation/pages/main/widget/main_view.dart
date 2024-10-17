@@ -147,9 +147,14 @@ class MainView extends StatelessWidget {
                 colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
               ),
             ),
-            Text(label,
-                style: TextStyle(
-                    color: color, fontWeight: fontWeight, fontSize: 12)),
+            Text(
+              label,
+              style: TextStyle(
+                color: color,
+                fontWeight: fontWeight,
+                fontSize: 12,
+              ),
+            ),
           ],
         ),
       ),
