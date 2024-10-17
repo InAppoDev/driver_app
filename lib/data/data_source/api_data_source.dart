@@ -37,7 +37,7 @@ abstract class ApiDataSource {
 
   Future<UploadDocumentResponse> uploadDocument(File file, String name);
 
-  Future<List<NotificationModel>> getNotifications();
+  Future<List<NotificationModel>> getNotifications({DateTime? after});
 
   Future<List<DispatchListModel>> getTrips();
 

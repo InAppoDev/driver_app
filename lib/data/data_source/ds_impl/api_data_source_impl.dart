@@ -176,9 +176,15 @@ class ApiDataSourceImpl implements ApiDataSource {
   }
 
   @override
-  Future<List<NotificationModel>> getNotifications() async {
+  Future<List<NotificationModel>> getNotifications({DateTime? after}) async {
     try {
-      final response = await _makeRequest(() => dio.get('/events'));
+      Map<String, dynamic> queryParams = {};
+
+      if (after != null) {
+        queryParams['after'] = after.millisecondsSinceEpoch;
+      }
+      final response = await _makeRequest(
+          () => dio.get('/events', queryParameters: queryParams));
       final List<NotificationModel> notifications = [];
       final responseList = response.data;
       for (final respNotification in responseList) {
@@ -189,7 +195,6 @@ class ApiDataSourceImpl implements ApiDataSource {
       if (kDebugMode) {
         print('Error getting notification: $e');
       }
-      // errorHandler.handleException(e as Exception);
       throw Exception('Error getting notifications');
     }
   }

@@ -21,12 +21,12 @@ class NotificationRepositoryImpl implements NotificationRepository {
       _notificationStreamController.stream;
 
   @override
-  Future<List<NotificationModel>> getNotifications() async {
+  Future<List<NotificationModel>> getNotifications({DateTime? after}) async {
     try {
       print('call getNotifications repo');
 
       List<NotificationModel> newNotifications =
-          await apiDataSource.getNotifications();
+          await apiDataSource.getNotifications(after: after);
 
       List<NotificationModel> currentNotifications =
           hiveService.getNotifications();

@@ -16,56 +16,46 @@ class MainPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) {
-            final tripListBloc = TripListBloc();
-            Future.microtask(() {
-              tripListBloc.add(const TripListEvent.fetchTrips());
-              tripListBloc.add(const TripListEvent.fetchHistoryTrips());
-            });
-            return tripListBloc;
-          },
+          create: (context) => TripListBloc(),
         ),
         BlocProvider(
-          create: (context) {
-            final tripDetailBloc = TripDetailBloc();
-            Future.microtask(() {
-              tripDetailBloc.add(const TripDetailEvent.loadActiveTrip());
-            });
-            return tripDetailBloc;
-          },
+          create: (context) => TripDetailBloc(),
         ),
         BlocProvider(
-          create: (context) {
-            final messageListBloc = MessageListBloc();
-            Future.microtask(() {
-              messageListBloc.add(const MessageListEvent.getChats());
-            });
-            return messageListBloc;
-          },
+          create: (context) => MessageListBloc(),
         ),
         BlocProvider(
-          create: (context) {
-            final userBloc = UserBloc();
-            Future.microtask(() {
-              userBloc.add(const UserEvent.started());
-            });
-            return userBloc;
-          },
+          create: (context) => UserBloc(),
         ),
         BlocProvider(
-          create: (context) {
-            final notificationBloc = NotificationBloc();
-            Future.microtask(() {
-              notificationBloc.add(const NotificationEvent.startPolling());
-            });
-            return notificationBloc;
-          },
+          create: (context) => NotificationBloc(),
         ),
         BlocProvider(
           create: (context) => MainBloc(),
         ),
       ],
-      child: const MainView(),
+      child: Builder(
+        builder: (context) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            context.read<TripListBloc>().add(const TripListEvent.fetchTrips());
+            context
+                .read<TripListBloc>()
+                .add(const TripListEvent.fetchHistoryTrips());
+            context
+                .read<TripDetailBloc>()
+                .add(const TripDetailEvent.loadActiveTrip());
+            context
+                .read<MessageListBloc>()
+                .add(const MessageListEvent.getChats());
+            context.read<UserBloc>().add(const UserEvent.started());
+            context
+                .read<NotificationBloc>()
+                .add(const NotificationEvent.startPolling());
+          });
+
+          return const MainView();
+        },
+      ),
     );
   }
 }

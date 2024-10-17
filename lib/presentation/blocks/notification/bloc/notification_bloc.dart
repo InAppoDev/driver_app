@@ -34,7 +34,8 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     print('Polling started');
     _timer = Timer.periodic(const Duration(seconds: 10), (timer) async {
       print('Polling Duration 10');
-      await notificationRepo.getNotifications();
+      DateTime timeAfter = DateTime.now();
+      await notificationRepo.getNotifications(after: timeAfter);
     });
   }
 
