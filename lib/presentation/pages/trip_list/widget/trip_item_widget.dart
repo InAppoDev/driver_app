@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_list_model/dispatch_list_model.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_info_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
+import 'package:tms_driver/presentation/utils/extension/waypoint_type.dart';
 
 class TripItemWidget extends StatelessWidget {
   final Function(DispatchListModel) onPressed;
@@ -46,13 +47,15 @@ class TripItemWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+
                       ...trip.waypoints.map((waypoint) {
+                        print('check waypoint - $waypoint');
                         return TripInfoWidget(
                           type: waypoint.type,
                           address: waypoint.address,
                           time: waypoint.apptFromTimestamp,
                           showMidlLine: true,
-                          showTipImage: true,
+                          iconName: WaypointTypeParser(waypoint.type).icon,
                         );
                       }),
                       Padding(

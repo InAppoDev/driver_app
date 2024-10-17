@@ -15,6 +15,8 @@ final lightTheme = ThemeData(
   hoverColor: AppColors.lightBlack,
   dialogBackgroundColor: AppColors.blueWhite,
   primaryColorLight: AppColors.darkIndigo,
+
+  colorSchemeSeed: AppColors.success,
   bottomAppBarTheme: const BottomAppBarTheme(
     color: AppColors.mainWhite,
     shape: CircularNotchedRectangle(),

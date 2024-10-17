@@ -12,14 +12,14 @@ class TripInfoWidget extends StatelessWidget {
     required this.address,
     this.time,
     required this.showMidlLine,
-    required this.showTipImage,
+    required this.iconName,
   });
 
   final String type;
   final String address;
   final int? time;
   final bool showMidlLine;
-  final bool showTipImage;
+  final String iconName;
 
   @override
   Widget build(BuildContext context) {
@@ -85,14 +85,14 @@ class TripInfoWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(left: showTipImage ? 16 : 12),
+          padding: EdgeInsets.only(left: iconName.contains('point') ? 16 :  12),
           child: Container(
             color: Colors.white,
             padding: const EdgeInsets.symmetric(vertical: 2),
             child: SvgPicture.asset(
-              'assets/images/${showTipImage ? 'point' : 'truck'}.svg',
-              height: showTipImage ? 14 : 10,
-              width: showTipImage ? 14 : 10,
+              iconName,
+              height: iconName.contains('point') ? 14 : 10,
+              width: iconName.contains('point') ? 14 : 10,
             ),
           ),
         ),

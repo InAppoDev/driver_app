@@ -21,17 +21,17 @@ extension WaypointTypeParser on String {
   String get icon {
     switch (this) {
       case 'departure':
-        return 'assets/icons/departure_icon.svg';
+        return 'assets/images/point.svg';
       case 'final_destination':
-        return 'assets/icons/final_destination_icon.svg';
+        return 'assets/images/point.svg';
       case 'custom_waypoint':
-        return 'assets/icons/custom_waypoint_icon.svg';
+        return 'assets/images/point.svg';
       case 'split':
-        return 'assets/icons/split_icon.svg';
+        return 'assets/images/point.svg';
       case 'pickup':
-        return 'assets/icons/pickup_icon.svg';
+        return 'assets/images/truck.svg';
       case 'delivery':
-        return 'assets/icons/delivery_icon.svg';
+        return 'assets/images/point.svg';
       default:
         return '';
     }

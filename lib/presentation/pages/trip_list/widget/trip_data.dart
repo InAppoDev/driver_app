@@ -5,7 +5,9 @@ import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.da
 import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_info_widget.dart';
+import 'package:tms_driver/presentation/theme/app_colors.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
+import 'package:tms_driver/presentation/utils/extension/waypoint_type.dart';
 
 class TripData extends StatelessWidget {
   const TripData({
@@ -43,20 +45,24 @@ class TripData extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        if (trip.nextWaypoint != null)
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                'assets/images/point.svg',
-                                height: 15,
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              trip.waypoints.first.type.icon,
+                              height: 15,
+                              colorFilter: const ColorFilter.mode(
+                                AppColors.success,
+                                BlendMode.srcIn,
                               ),
-                              const SizedBox(width: 15),
+                            ),
+                            const SizedBox(width: 15),
                               Text(
-                                trip.nextWaypoint!.typeTitle,
-                                style: theme.textTheme.titleSmall!
-                                    .copyWith(color: theme.dividerColor),
+                              trip.waypoints.first.typeTitle,
+                              style: theme.textTheme.titleSmall!.copyWith(
+                                color: AppColors.success,
                               ),
-                              if (trip.startedMovingTimestamp != null)
+                            ),
+                            if (trip.startedMovingTimestamp != null)
                                 CustomDateWidget(
                                   date: trip.startedMovingTimestamp!,
                                 ),
@@ -71,21 +77,27 @@ class TripData extends StatelessWidget {
                           .copyWith(color: theme.dividerColor),
                     ),
                     const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
+                    if (trip.nextWaypoint != null) ...[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
                           children: [
                             SvgPicture.asset(
-                              'assets/images/truck_pick_up.svg',
-                              height: 12,
-                            ),
+                                trip.nextWaypoint!.type.icon,
+                                colorFilter: ColorFilter.mode(
+                                  theme.secondaryHeaderColor,
+                                  BlendMode.srcIn,
+                                ),
+                                height: 12,
+                              ),
                             const SizedBox(width: 5),
                             Text(
-                              trip.waypoints.first.typeTitle,
-                              style: theme.textTheme.titleSmall!
-                                  .copyWith(color: theme.dividerColor),
-                            ),
+                                trip.nextWaypoint!.typeTitle,
+                                style: theme.textTheme.titleSmall!.copyWith(
+                                  color: theme.secondaryHeaderColor,
+                                ),
+                              ),
                           ],
                         ),
                         if (trip.nextEtaTimestamp != null)
@@ -96,10 +108,11 @@ class TripData extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      trip.waypoints.first.address,
-                      style: theme.textTheme.titleSmall!
-                          .copyWith(color: theme.dividerColor),
-                    ),
+                        trip.nextWaypoint!.address,
+                        style: theme.textTheme.titleSmall!
+                            .copyWith(color: theme.dividerColor),
+                      ),
+                    ],
                   ],
                 ),
               ),
@@ -111,18 +124,25 @@ class TripData extends StatelessWidget {
                         duration: const Duration(milliseconds: 300),
                         curve: Curves.easeInOut,
                         child: state.areStopsVisible
-                            ? Column(
-                                children: [
-                                  ...trip.waypoints.skip(1).map((waypoint) {
-                                    return TripInfoWidget(
-                                      type: waypoint.type,
-                                      address: waypoint.address,
-                                      time: waypoint.apptFromTimestamp,
-                                      showMidlLine: true,
-                                      showTipImage: true,
-                                    );
-                                  }),
-                                ],
+                            ? Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: Column(
+                                  children: [
+                                    ...trip.waypoints.skip(1).map(
+                                      (waypoint) {
+                                        return TripInfoWidget(
+                                          type: waypoint.type,
+                                          address: waypoint.address,
+                                          time: waypoint.apptFromTimestamp,
+                                          showMidlLine: trip.waypoints
+                                                  .indexOf(waypoint) !=
+                                              trip.waypoints.length - 1,
+                                          iconName: waypoint.type.icon,
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
                               )
                             : const SizedBox.shrink(),
                       ),

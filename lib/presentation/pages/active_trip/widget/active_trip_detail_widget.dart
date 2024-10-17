@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
-import 'package:tms_driver/presentation/pages/active_trip/widget/upload_scan_files.dart';
+import 'package:tms_driver/presentation/pages/active_trip/widget/next_trip.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_data.dart';
-import 'package:tms_driver/presentation/pages/trip_list/widget/trip_detail_info.dart';
 
 class ActiveTripDetailWidget extends StatelessWidget {
   final TripDetailState state;
@@ -23,32 +21,33 @@ class ActiveTripDetailWidget extends StatelessWidget {
               children: [
                 if (state.trip != null) TripData(trip: state.trip!),
                 const SizedBox(height: 10),
-                if (state.trip != null) TripDetailInfo(trip: state.trip!),
-                const SizedBox(height: 10),
-                UploadScanFiles(
-                  onAddFile: () {
-                    context
-                        .read<TripDetailBloc>()
-                        .add(const TripDetailEvent.pickFile());
-                  },
-                  onScanFile: (image) {
-                    context
-                        .read<TripDetailBloc>()
-                        .add(TripDetailEvent.scanDoc(image));
-                  },
-                  selectedFile: state.selectedFile,
-                  onFileRemove: (file) {
-                    context
-                        .read<TripDetailBloc>()
-                        .add(TripDetailEvent.removeFile(file: file));
-                  },
-                  onUploadPressed: () {
-                    context
-                        .read<TripDetailBloc>()
-                        .add(const TripDetailEvent.uploadFiles());
-                  },
-                  isFileLoading: state.isFileLoading,
-                ),
+                if (state.trip != null && state.trip!.nextWaypoint != null)
+                  NextTrip(nextTrip: state.trip!.nextWaypoint!),
+                // const SizedBox(height: 10),
+                // UploadScanFiles(
+                //   onAddFile: () {
+                //     context
+                //         .read<TripDetailBloc>()
+                //         .add(const TripDetailEvent.pickFile());
+                //   },
+                //   onScanFile: (image) {
+                //     context
+                //         .read<TripDetailBloc>()
+                //         .add(TripDetailEvent.scanDoc(image));
+                //   },
+                //   selectedFile: state.selectedFile,
+                //   onFileRemove: (file) {
+                //     context
+                //         .read<TripDetailBloc>()
+                //         .add(TripDetailEvent.removeFile(file: file));
+                //   },
+                //   onUploadPressed: () {
+                //     context
+                //         .read<TripDetailBloc>()
+                //         .add(const TripDetailEvent.uploadFiles());
+                //   },
+                //   isFileLoading: state.isFileLoading,
+                // ),
                 const SizedBox(height: 30),
               ],
             ),
@@ -83,7 +82,10 @@ class ActiveTripDetailWidget extends StatelessWidget {
                     height: 22,
                     child: SvgPicture.asset(
                       'assets/images/message.svg',
-                      color: Theme.of(context).scaffoldBackgroundColor,
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).scaffoldBackgroundColor,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
                   Text(
