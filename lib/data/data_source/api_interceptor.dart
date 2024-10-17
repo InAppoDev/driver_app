@@ -12,12 +12,24 @@ class AuthInterceptor extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    final token = await authDataSource.getAuthToken();
-    if (kDebugMode) {
-      print('AuthInterceptor token.accessToken - $token');
+    try {
+      final token = await authDataSource.getAuthToken();
+      if (kDebugMode) {
+        print('AuthInterceptor token.accessToken - $token');
+      }
+      options.headers['Authorization'] = 'Bearer $token';
+      options.baseUrl = api;
+      print('AuthInterceptor request headers: ${options.headers}');
+      print('AuthInterceptor request URL: ${options.uri}');
+    } catch (e) {
+      print('Error in AuthInterceptor: $e');
     }
-    options.headers['Authorization'] = 'Bearer $token';
-    options.baseUrl = api;
     return handler.next(options);
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    print('AuthInterceptor onError: ${err.message}');
+    return handler.next(err);
   }
 }

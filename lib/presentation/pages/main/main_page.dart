@@ -13,46 +13,50 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tripListBloc = TripListBloc()
-      ..add(const TripListEvent.fetchTrips())
-      ..add(const TripListEvent.fetchHistoryTrips());
-
-    final tripDetailBloc = TripDetailBloc()
-      ..add(const TripDetailEvent.loadActiveTrip());
-    final messageListBloc = MessageListBloc()
-      ..add(const MessageListEvent.getChats());
-    final userBloc = UserBloc()..add(const UserEvent.started());
-    final notificationBloc = NotificationBloc()
-      ..add(const NotificationEvent.started());
-
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => MainBloc(
-            tripListBloc: tripListBloc,
-            tripDetailBloc: tripDetailBloc,
-            messageListBloc: messageListBloc,
-            userBloc: userBloc,
-            notificationBloc: notificationBloc,
-          ),
+          create: (context) => TripListBloc(),
         ),
         BlocProvider(
-          create: (context) => tripListBloc,
+          create: (context) => TripDetailBloc(),
         ),
         BlocProvider(
-          create: (context) => tripDetailBloc,
+          create: (context) => MessageListBloc(),
         ),
         BlocProvider(
-          create: (context) => messageListBloc,
+          create: (context) => UserBloc(),
         ),
         BlocProvider(
-          create: (context) => userBloc,
+          create: (context) => NotificationBloc(),
         ),
         BlocProvider(
-          create: (context) => notificationBloc,
+          create: (context) => MainBloc(),
         ),
       ],
-      child: const MainView(),
+      child: Builder(
+        builder: (context) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            context.read<TripListBloc>().add(const TripListEvent.fetchTrips());
+            context
+                .read<TripListBloc>()
+                .add(const TripListEvent.fetchHistoryTrips());
+            context
+                .read<TripDetailBloc>()
+                .add(const TripDetailEvent.loadActiveTrip());
+            context
+                .read<MessageListBloc>()
+                .add(const MessageListEvent.getChats());
+            context.read<UserBloc>().add(const UserEvent.started());
+            // TODO start polling
+            // context
+            //     .read<NotificationBloc>()
+            //     .add(const NotificationEvent.startPolling());
+          });
+
+          return const MainView();
+        },
+      ),
     );
   }
 }

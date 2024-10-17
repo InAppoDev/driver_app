@@ -13,13 +13,41 @@ part 'notification_state.dart';
 class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   final NotificationRepository notificationRepo =
       GetIt.instance<NotificationRepository>();
+  Timer? _timer;
+  StreamSubscription<List<NotificationModel>>? _notificationSubscription;
 
   NotificationBloc() : super(NotificationState.initial()) {
     on<Started>(_getNotification);
+    on<StartPolling>(_startPolling);
+    on<StopPolling>(_stopPolling);
+    on<FetchNotifications>(_getNotification);
+
+    _notificationSubscription = notificationRepo.notificationStream.listen(
+      (notifications) {
+        add(NotificationEvent.fetchNotifications());
+      },
+    );
   }
 
-  FutureOr<void> _getNotification(
-      Started event, Emitter<NotificationState> emit) async {
+  Future<void> _startPolling(
+      StartPolling event, Emitter<NotificationState> emit) async {
+    print('Polling started');
+    _timer = Timer.periodic(const Duration(seconds: 10), (timer) async {
+      print('Polling Duration 10');
+      DateTime timeAfter = DateTime.now();
+      await notificationRepo.getNotifications(after: timeAfter);
+    });
+  }
+
+  FutureOr<void> _stopPolling(
+      StopPolling event, Emitter<NotificationState> emit) {
+    _timer?.cancel();
+    _timer = null;
+    _notificationSubscription?.cancel();
+  }
+
+  Future<void> _getNotification(
+      NotificationEvent event, Emitter<NotificationState> emit) async {
     emit(state.copyWith(status: NotificationStatus.loading));
     try {
       final notifications = await notificationRepo.getNotifications();
@@ -33,5 +61,12 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
         errorMessage: e.toString(),
       ));
     }
+  }
+
+  @override
+  Future<void> close() {
+    _timer?.cancel();
+    _notificationSubscription?.cancel();
+    return super.close();
   }
 }

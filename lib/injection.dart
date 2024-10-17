@@ -108,6 +108,9 @@ Future<void> initApp() async {
 
   // Register NotificationRepository with apiDataSource in GetIt
   GetIt.instance.registerSingleton<NotificationRepository>(
-    NotificationRepositoryImpl(apiDataSource: apiDataSource),
+    NotificationRepositoryImpl(
+      apiDataSource: apiDataSource,
+      hiveService: hiveService,
+    ),
   );
 }

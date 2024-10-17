@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
 import 'package:tms_driver/presentation/blocks/notification/bloc/notification_bloc.dart';
+import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 
 class NotificationListView extends StatelessWidget {
   const NotificationListView({super.key});
@@ -21,12 +24,42 @@ class NotificationListView extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: state.notifications!.length,
                   itemBuilder: (context, index) {
-                    return Card(
-                      child: ListTile(
-                        leading: const Icon(Icons.notifications_sharp),
-                        title: Text(state.notifications![index].title ?? ''),
-                        subtitle:
-                            Text(state.notifications![index].description ?? ''),
+                    final NotificationModel notificationModel =
+                        state.notifications![index];
+
+                    return GestureDetector(
+                      // TODO fix add new_dispach in the future
+                      onTap: () {
+                        notificationModel.type == 'message'
+                            ? GoRouter.of(context)
+                                .push('/chat/${notificationModel.entityId}')
+                            : GoRouter.of(context)
+                                .push('/chat/${notificationModel.entityId}');
+                      },
+                      child: Card(
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: ListTile(
+                          leading: Icon(
+                            notificationModel.type == 'message'
+                                ? Icons.message
+                                : Icons.notifications_sharp,
+                          ),
+                          title: Wrap(
+                            children: [
+                              Text(notificationModel.title ?? ''),
+                              if (notificationModel.eventAt != null)
+                                CustomDateWidget(
+                                    date: notificationModel.eventAt!)
+                            ],
+                          ),
+                          subtitle: Text(
+                            'Notification type: ${notificationModel.type}',
+                          ),
+                        ),
                       ),
                     );
                   },
