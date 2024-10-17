@@ -37,7 +37,10 @@ class ApiDataSourceImpl implements ApiDataSource {
     try {
       final response = await requestFunction();
       if (kDebugMode) {
-        print(' _makeRequest response.statusCode ${response.statusCode}');
+        print('Request URL: ${response.requestOptions.uri}');
+        print('Request Headers: ${response.requestOptions.headers}');
+        print('Response statusCode: ${response.statusCode}');
+        print('Response data: ${response.data}');
       }
       if (response.statusCode != 200 && response.statusCode != 201) {
         errorHandler.handleStatusCode(response.statusCode);
@@ -45,6 +48,16 @@ class ApiDataSourceImpl implements ApiDataSource {
       }
       return response;
     } catch (e) {
+      if (e is DioException) {
+        print('DioError: ${e.type}');
+        print('DioError message: ${e.message}');
+        if (e.response != null) {
+          print('DioError response: ${e.response?.data}');
+          print('DioError statusCode: ${e.response?.statusCode}');
+        }
+      } else {
+        print('Unexpected error: $e');
+      }
       errorHandler.handleException(e as Exception);
       throw Exception('Error making request');
     }
@@ -52,8 +65,16 @@ class ApiDataSourceImpl implements ApiDataSource {
 
   @override
   Future<String> ping() async {
-    final response = await _makeRequest(() => dio.get('/public/ping'));
-    return response.data['message'];
+    try {
+      final response = await _makeRequest(() => dio.get('/public/ping'));
+      if (kDebugMode) {
+        print('Ping response: ${response.data}');
+      }
+      return response.data['message'];
+    } catch (e) {
+      print('Ping request failed: $e');
+      rethrow;
+    }
   }
 
   @override

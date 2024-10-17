@@ -19,32 +19,50 @@ mixin _$NotificationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() startPolling,
+    required TResult Function() stopPolling,
+    required TResult Function() fetchNotifications,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? startPolling,
+    TResult? Function()? stopPolling,
+    TResult? Function()? fetchNotifications,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? startPolling,
+    TResult Function()? stopPolling,
+    TResult Function()? fetchNotifications,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
+    required TResult Function(StartPolling value) startPolling,
+    required TResult Function(StopPolling value) stopPolling,
+    required TResult Function(FetchNotifications value) fetchNotifications,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
+    TResult? Function(StartPolling value)? startPolling,
+    TResult? Function(StopPolling value)? stopPolling,
+    TResult? Function(FetchNotifications value)? fetchNotifications,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
+    TResult Function(StartPolling value)? startPolling,
+    TResult Function(StopPolling value)? stopPolling,
+    TResult Function(FetchNotifications value)? fetchNotifications,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,6 +131,9 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() startPolling,
+    required TResult Function() stopPolling,
+    required TResult Function() fetchNotifications,
   }) {
     return started();
   }
@@ -121,6 +142,9 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? startPolling,
+    TResult? Function()? stopPolling,
+    TResult? Function()? fetchNotifications,
   }) {
     return started?.call();
   }
@@ -129,6 +153,9 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? startPolling,
+    TResult Function()? stopPolling,
+    TResult Function()? fetchNotifications,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -141,6 +168,9 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Started value) started,
+    required TResult Function(StartPolling value) startPolling,
+    required TResult Function(StopPolling value) stopPolling,
+    required TResult Function(FetchNotifications value) fetchNotifications,
   }) {
     return started(this);
   }
@@ -149,6 +179,9 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Started value)? started,
+    TResult? Function(StartPolling value)? startPolling,
+    TResult? Function(StopPolling value)? stopPolling,
+    TResult? Function(FetchNotifications value)? fetchNotifications,
   }) {
     return started?.call(this);
   }
@@ -157,6 +190,9 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Started value)? started,
+    TResult Function(StartPolling value)? startPolling,
+    TResult Function(StopPolling value)? stopPolling,
+    TResult Function(FetchNotifications value)? fetchNotifications,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -168,6 +204,357 @@ class _$StartedImpl implements Started {
 
 abstract class Started implements NotificationEvent {
   const factory Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$StartPollingImplCopyWith<$Res> {
+  factory _$$StartPollingImplCopyWith(
+          _$StartPollingImpl value, $Res Function(_$StartPollingImpl) then) =
+      __$$StartPollingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StartPollingImplCopyWithImpl<$Res>
+    extends _$NotificationEventCopyWithImpl<$Res, _$StartPollingImpl>
+    implements _$$StartPollingImplCopyWith<$Res> {
+  __$$StartPollingImplCopyWithImpl(
+      _$StartPollingImpl _value, $Res Function(_$StartPollingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$StartPollingImpl implements StartPolling {
+  const _$StartPollingImpl();
+
+  @override
+  String toString() {
+    return 'NotificationEvent.startPolling()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StartPollingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() startPolling,
+    required TResult Function() stopPolling,
+    required TResult Function() fetchNotifications,
+  }) {
+    return startPolling();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? startPolling,
+    TResult? Function()? stopPolling,
+    TResult? Function()? fetchNotifications,
+  }) {
+    return startPolling?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? startPolling,
+    TResult Function()? stopPolling,
+    TResult Function()? fetchNotifications,
+    required TResult orElse(),
+  }) {
+    if (startPolling != null) {
+      return startPolling();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(StartPolling value) startPolling,
+    required TResult Function(StopPolling value) stopPolling,
+    required TResult Function(FetchNotifications value) fetchNotifications,
+  }) {
+    return startPolling(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Started value)? started,
+    TResult? Function(StartPolling value)? startPolling,
+    TResult? Function(StopPolling value)? stopPolling,
+    TResult? Function(FetchNotifications value)? fetchNotifications,
+  }) {
+    return startPolling?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(StartPolling value)? startPolling,
+    TResult Function(StopPolling value)? stopPolling,
+    TResult Function(FetchNotifications value)? fetchNotifications,
+    required TResult orElse(),
+  }) {
+    if (startPolling != null) {
+      return startPolling(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StartPolling implements NotificationEvent {
+  const factory StartPolling() = _$StartPollingImpl;
+}
+
+/// @nodoc
+abstract class _$$StopPollingImplCopyWith<$Res> {
+  factory _$$StopPollingImplCopyWith(
+          _$StopPollingImpl value, $Res Function(_$StopPollingImpl) then) =
+      __$$StopPollingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StopPollingImplCopyWithImpl<$Res>
+    extends _$NotificationEventCopyWithImpl<$Res, _$StopPollingImpl>
+    implements _$$StopPollingImplCopyWith<$Res> {
+  __$$StopPollingImplCopyWithImpl(
+      _$StopPollingImpl _value, $Res Function(_$StopPollingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$StopPollingImpl implements StopPolling {
+  const _$StopPollingImpl();
+
+  @override
+  String toString() {
+    return 'NotificationEvent.stopPolling()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StopPollingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() startPolling,
+    required TResult Function() stopPolling,
+    required TResult Function() fetchNotifications,
+  }) {
+    return stopPolling();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? startPolling,
+    TResult? Function()? stopPolling,
+    TResult? Function()? fetchNotifications,
+  }) {
+    return stopPolling?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? startPolling,
+    TResult Function()? stopPolling,
+    TResult Function()? fetchNotifications,
+    required TResult orElse(),
+  }) {
+    if (stopPolling != null) {
+      return stopPolling();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(StartPolling value) startPolling,
+    required TResult Function(StopPolling value) stopPolling,
+    required TResult Function(FetchNotifications value) fetchNotifications,
+  }) {
+    return stopPolling(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Started value)? started,
+    TResult? Function(StartPolling value)? startPolling,
+    TResult? Function(StopPolling value)? stopPolling,
+    TResult? Function(FetchNotifications value)? fetchNotifications,
+  }) {
+    return stopPolling?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(StartPolling value)? startPolling,
+    TResult Function(StopPolling value)? stopPolling,
+    TResult Function(FetchNotifications value)? fetchNotifications,
+    required TResult orElse(),
+  }) {
+    if (stopPolling != null) {
+      return stopPolling(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StopPolling implements NotificationEvent {
+  const factory StopPolling() = _$StopPollingImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchNotificationsImplCopyWith<$Res> {
+  factory _$$FetchNotificationsImplCopyWith(_$FetchNotificationsImpl value,
+          $Res Function(_$FetchNotificationsImpl) then) =
+      __$$FetchNotificationsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchNotificationsImplCopyWithImpl<$Res>
+    extends _$NotificationEventCopyWithImpl<$Res, _$FetchNotificationsImpl>
+    implements _$$FetchNotificationsImplCopyWith<$Res> {
+  __$$FetchNotificationsImplCopyWithImpl(_$FetchNotificationsImpl _value,
+      $Res Function(_$FetchNotificationsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NotificationEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$FetchNotificationsImpl implements FetchNotifications {
+  const _$FetchNotificationsImpl();
+
+  @override
+  String toString() {
+    return 'NotificationEvent.fetchNotifications()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchNotificationsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() startPolling,
+    required TResult Function() stopPolling,
+    required TResult Function() fetchNotifications,
+  }) {
+    return fetchNotifications();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? startPolling,
+    TResult? Function()? stopPolling,
+    TResult? Function()? fetchNotifications,
+  }) {
+    return fetchNotifications?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? startPolling,
+    TResult Function()? stopPolling,
+    TResult Function()? fetchNotifications,
+    required TResult orElse(),
+  }) {
+    if (fetchNotifications != null) {
+      return fetchNotifications();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(StartPolling value) startPolling,
+    required TResult Function(StopPolling value) stopPolling,
+    required TResult Function(FetchNotifications value) fetchNotifications,
+  }) {
+    return fetchNotifications(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Started value)? started,
+    TResult? Function(StartPolling value)? startPolling,
+    TResult? Function(StopPolling value)? stopPolling,
+    TResult? Function(FetchNotifications value)? fetchNotifications,
+  }) {
+    return fetchNotifications?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(StartPolling value)? startPolling,
+    TResult Function(StopPolling value)? stopPolling,
+    TResult Function(FetchNotifications value)? fetchNotifications,
+    required TResult orElse(),
+  }) {
+    if (fetchNotifications != null) {
+      return fetchNotifications(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchNotifications implements NotificationEvent {
+  const factory FetchNotifications() = _$FetchNotificationsImpl;
 }
 
 /// @nodoc

@@ -18,6 +18,10 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
   Future<void> _initialize(event, emit) async {
     try {
+      final String message = await authRepo.ping();
+
+      print('Server is working: $message');
+
       final token = await authRepo.getAuthToken();
       if (token != null) {
         emit(state.copyWith(status: SplashStatus.authenticated));
@@ -27,11 +31,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
         return;
       } else {
         emit(state.copyWith(status: SplashStatus.unauthenticated));
-      }
-
-      final message = await authRepo.ping();
-      if (kDebugMode) {
-        print('Server is working: $message');
       }
     } catch (e) {
       if (kDebugMode) {

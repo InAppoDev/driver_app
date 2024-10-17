@@ -13,43 +13,30 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tripListBloc = TripListBloc()
-      ..add(const TripListEvent.fetchTrips())
-      ..add(const TripListEvent.fetchHistoryTrips());
-
-    final tripDetailBloc = TripDetailBloc()
-      ..add(const TripDetailEvent.loadActiveTrip());
-    final messageListBloc = MessageListBloc()
-      ..add(const MessageListEvent.getChats());
-    final userBloc = UserBloc()..add(const UserEvent.started());
-    final notificationBloc = NotificationBloc()
-      ..add(const NotificationEvent.started());
-
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => MainBloc(
-            tripListBloc: tripListBloc,
-            tripDetailBloc: tripDetailBloc,
-            messageListBloc: messageListBloc,
-            userBloc: userBloc,
-            notificationBloc: notificationBloc,
-          ),
+          create: (context) => TripListBloc()
+            ..add(const TripListEvent.fetchTrips())
+            ..add(const TripListEvent.fetchHistoryTrips()),
         ),
         BlocProvider(
-          create: (context) => tripListBloc,
+          create: (context) =>
+              TripDetailBloc()..add(const TripDetailEvent.loadActiveTrip()),
         ),
         BlocProvider(
-          create: (context) => tripDetailBloc,
+          create: (context) =>
+              MessageListBloc()..add(const MessageListEvent.getChats()),
         ),
         BlocProvider(
-          create: (context) => messageListBloc,
+          create: (context) => UserBloc()..add(const UserEvent.started()),
         ),
         BlocProvider(
-          create: (context) => userBloc,
+          create: (context) =>
+              NotificationBloc()..add(const NotificationEvent.startPolling()),
         ),
         BlocProvider(
-          create: (context) => notificationBloc,
+          create: (context) => MainBloc(),
         ),
       ],
       child: const MainView(),

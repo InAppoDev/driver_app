@@ -3,9 +3,13 @@ import 'dart:developer';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
+import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
 import 'package:tms_driver/data/models/user/user_model.dart';
 import 'package:tms_driver/data/services/adapter/chat_model_adapter.dart';
 import 'package:tms_driver/data/services/adapter/chat_participant_adapter.dart';
+import 'package:tms_driver/data/services/adapter/notification_data_adapter.dart';
+import 'package:tms_driver/data/services/adapter/notification_model_adapter.dart';
+import 'package:tms_driver/data/services/adapter/notification_sender_adapter.dart';
 import 'package:tms_driver/data/services/adapter/user_model_adapter.dart';
 
 import 'adapter/chat_detail_adapter.dart';
@@ -23,6 +27,7 @@ class HiveService {
   late Box<UserModel> userBox;
   late Box<ChatModel> chatBox;
   late Box<ChatDetailModel> chatDetailBox;
+  late Box<NotificationModel> notificationBox;
 
   Future<void> init() async {
     log('Initializing Hive...', name: 'HiveService');
@@ -34,6 +39,9 @@ class HiveService {
     Hive.registerAdapter(ChatDetailModelAdapter());
     Hive.registerAdapter(ChatParticipantAdapter());
     Hive.registerAdapter(MessageAdapter());
+    Hive.registerAdapter(NotificationModelAdapter());
+    Hive.registerAdapter(NotificationDataAdapter());
+    Hive.registerAdapter(NotificationSenderAdapter());
 
     log('Opening userBox...', name: 'HiveService');
     userBox = await Hive.openBox<UserModel>('userBox');
@@ -41,6 +49,8 @@ class HiveService {
     chatBox = await Hive.openBox<ChatModel>('chatBox');
     log('Opening chatDetailBox...', name: 'HiveService');
     chatDetailBox = await Hive.openBox<ChatDetailModel>('chatDetailBox');
+    log('Opening notificationBox...', name: 'HiveService');
+    notificationBox = await Hive.openBox<NotificationModel>('notificationBox');
 
     if (userBox.isOpen) {
       log('userBox successfully opened.', name: 'HiveService');
@@ -58,6 +68,12 @@ class HiveService {
       log('chatDetailBox successfully opened.', name: 'HiveService');
     } else {
       log('Failed to open chatDetailBox.', name: 'HiveService');
+    }
+
+    if (notificationBox.isOpen) {
+      log('notificationBox successfully opened.', name: 'HiveService');
+    } else {
+      log('Failed to open notificationBox.', name: 'HiveService');
     }
   }
 
@@ -115,5 +131,24 @@ class HiveService {
     }
 
     return chatDetails;
+  }
+
+  Future<void> saveNotifications(List<NotificationModel> notifications) async {
+    log('Saving notifications to notificationBox...', name: 'HiveService');
+    await notificationBox.clear();
+    await notificationBox.addAll(notifications);
+    log('Notifications saved successfully.', name: 'HiveService');
+  }
+
+  List<NotificationModel> getNotifications() {
+    log('Retrieving notifications from notificationBox...',
+        name: 'HiveService');
+    final notifications = notificationBox.values.toList();
+    if (notifications.isNotEmpty) {
+      log('Notifications retrieved successfully.', name: 'HiveService');
+    } else {
+      log('No notifications found in notificationBox.', name: 'HiveService');
+    }
+    return notifications;
   }
 }
