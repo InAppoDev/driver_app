@@ -39,7 +39,20 @@ class MainPage extends StatelessWidget {
           create: (context) => MainBloc(),
         ),
       ],
-      child: const MainView(),
+      child: BlocListener<NotificationBloc, NotificationState>(
+        listener: (context, state) {
+          if (state.status == NotificationStatus.loaded) {
+          } else if (state.status == NotificationStatus.error) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Error: ${state.errorMessage}'),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
+        },
+        child: const MainView(),
+      ),
     );
   }
 }

@@ -2,4 +2,6 @@ import 'package:tms_driver/data/models/notification/notification_model/notificat
 
 abstract class NotificationRepository {
   Future<List<NotificationModel>> getNotifications();
+
+  Stream<List<NotificationModel>> get notificationStream;
 }

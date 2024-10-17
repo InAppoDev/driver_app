@@ -14,20 +14,27 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   final NotificationRepository notificationRepo =
       GetIt.instance<NotificationRepository>();
   Timer? _timer;
+  StreamSubscription<List<NotificationModel>>? _notificationSubscription;
 
   NotificationBloc() : super(NotificationState.initial()) {
     on<Started>(_getNotification);
     on<StartPolling>(_startPolling);
     on<StopPolling>(_stopPolling);
     on<FetchNotifications>(_getNotification);
+
+    _notificationSubscription = notificationRepo.notificationStream.listen(
+      (notifications) {
+        add(NotificationEvent.fetchNotifications());
+      },
+    );
   }
 
   Future<void> _startPolling(
       StartPolling event, Emitter<NotificationState> emit) async {
-    print('object');
+    print('Polling started');
     _timer = Timer.periodic(const Duration(seconds: 10), (timer) async {
-      final list = await notificationRepo.getNotifications();
-      print(list.length);
+      print('Polling Duration 10');
+      await notificationRepo.getNotifications();
     });
   }
 
@@ -35,6 +42,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
       StopPolling event, Emitter<NotificationState> emit) {
     _timer?.cancel();
     _timer = null;
+    _notificationSubscription?.cancel();
   }
 
   Future<void> _getNotification(
@@ -57,6 +65,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   @override
   Future<void> close() {
     _timer?.cancel();
+    _notificationSubscription?.cancel();
     return super.close();
   }
 }

@@ -16,6 +16,7 @@ class NotificationRepositoryImpl implements NotificationRepository {
     required this.hiveService,
   });
 
+  @override
   Stream<List<NotificationModel>> get notificationStream =>
       _notificationStreamController.stream;
 
@@ -26,24 +27,24 @@ class NotificationRepositoryImpl implements NotificationRepository {
 
       List<NotificationModel> newNotifications =
           await apiDataSource.getNotifications();
-      print('New notifications received: ${newNotifications.length}');
 
       List<NotificationModel> currentNotifications =
           hiveService.getNotifications();
 
-      bool hasNewNotifications =
-          _hasNewNotifications(newNotifications, currentNotifications);
+      List<NotificationModel> uniqueNotifications =
+          _getUniqueNotifications(newNotifications, currentNotifications);
 
-      if (hasNewNotifications) {
+      if (uniqueNotifications.isNotEmpty) {
         List<NotificationModel> updatedNotifications = [
           ...currentNotifications,
-          ...newNotifications
+          ...uniqueNotifications
         ];
 
         await hiveService.saveNotifications(updatedNotifications);
 
         _notificationStreamController.add(updatedNotifications);
       }
+
       return newNotifications;
     } on Exception catch (e, stacktrace) {
       print('Error: $e');
@@ -52,15 +53,14 @@ class NotificationRepositoryImpl implements NotificationRepository {
     }
   }
 
-  bool _hasNewNotifications(List<NotificationModel> newNotifications,
+  List<NotificationModel> _getUniqueNotifications(
+      List<NotificationModel> newNotifications,
       List<NotificationModel> currentNotifications) {
-    final existingIds = currentNotifications.map((n) => n.id).toSet();
-    for (final notification in newNotifications) {
-      if (!existingIds.contains(notification.id)) {
-        return true;
-      }
-    }
-    return false;
+    final currentIds = currentNotifications.map((n) => n.id).toSet();
+
+    return newNotifications
+        .where((newNotification) => !currentIds.contains(newNotification.id))
+        .toList();
   }
 
   void dispose() {
