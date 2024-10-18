@@ -32,6 +32,7 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
 
     date = DateFormat('yyyy-MM-dd').format(initialDateTime);
     time = DateFormat('h H m a').format(initialDateTime);
+    print('checll date - $date');
   }
 
   @override
@@ -124,8 +125,7 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
                           ),
                         ),
                         focusedDay: DateTime.parse(date),
-                        firstDay:
-                            DateTime.now().subtract(const Duration(days: 0)),
+                        firstDay: DateTime.utc(1969, 3, 14),// TODO: change it later toward to focusedDay
                         lastDay: DateTime.utc(2035, 3, 14),
                         currentDay: DateTime.now(),
                       ),
