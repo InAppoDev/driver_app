@@ -23,8 +23,6 @@ class NotificationRepositoryImpl implements NotificationRepository {
   @override
   Future<List<NotificationModel>> getNotifications({DateTime? after}) async {
     try {
-      print('call getNotifications repo');
-
       List<NotificationModel> newNotifications =
           await apiDataSource.getNotifications(after: after);
 

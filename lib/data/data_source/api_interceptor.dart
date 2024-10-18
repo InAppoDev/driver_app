@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:tms_driver/data/data_source/auth_data_source.dart';
@@ -20,7 +22,7 @@ class AuthInterceptor extends Interceptor {
       options.headers['Authorization'] = 'Bearer $token';
       options.baseUrl = api;
       print('AuthInterceptor request headers: ${options.headers}');
-      print('AuthInterceptor request URL: ${options.uri}');
+      log('AuthInterceptor request URL: ${options.uri}');
     } catch (e) {
       print('Error in AuthInterceptor: $e');
     }

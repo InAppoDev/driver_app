@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,11 +76,11 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       _CheckConnection event, Emitter<MainState> emit) async {
     if (!_lastResults.contains(ConnectivityResult.none)) {
       try {
-        print('authRepo.ping();');
+        log('authRepo.ping();');
         await authRepo.ping();
         emit(state.copyWith(isConnected: true));
       } catch (e) {
-        print('Ping failed: $e');
+        log('Ping failed: $e');
         emit(state.copyWith(isConnected: false));
       }
     } else {

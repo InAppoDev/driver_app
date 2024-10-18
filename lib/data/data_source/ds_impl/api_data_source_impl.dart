@@ -48,16 +48,6 @@ class ApiDataSourceImpl implements ApiDataSource {
       }
       return response;
     } catch (e) {
-      if (e is DioException) {
-        print('DioError: ${e.type}');
-        print('DioError message: ${e.message}');
-        if (e.response != null) {
-          print('DioError response: ${e.response?.data}');
-          print('DioError statusCode: ${e.response?.statusCode}');
-        }
-      } else {
-        print('Unexpected error: $e');
-      }
       errorHandler.handleException(e as Exception);
       throw Exception('Error making request');
     }

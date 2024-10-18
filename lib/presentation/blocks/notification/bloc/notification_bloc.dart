@@ -24,16 +24,14 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
 
     _notificationSubscription = notificationRepo.notificationStream.listen(
       (notifications) {
-        add(NotificationEvent.fetchNotifications());
+        add(const NotificationEvent.fetchNotifications());
       },
     );
   }
 
   Future<void> _startPolling(
       StartPolling event, Emitter<NotificationState> emit) async {
-    print('Polling started');
     _timer = Timer.periodic(const Duration(seconds: 10), (timer) async {
-      print('Polling Duration 10');
       DateTime timeAfter = DateTime.now();
       await notificationRepo.getNotifications(after: timeAfter);
     });

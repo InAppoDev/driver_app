@@ -103,19 +103,14 @@ class MyLocationService {
   }
 
   Future<void> sendCheckCall({required int id, required String type}) async {
-    print('enter sendCheckCall method');
     try {
-      print(' get position sendCheckCall method');
       Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high,
-      ).timeout(Duration(seconds: 10), onTimeout: () {
-        print('Failed to get location: timeout');
+      ).timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException('Failed to get location');
       });
-      print('get tripRepository  sendCheckCall method');
       final tripRepository = GetIt.instance<TripRepository>();
 
-      print('get checkCallModel  sendCheckCall method');
       final CheckCallModel checkCallModel = CheckCallModel(
         location: LocationModel(
           lat: position.latitude,
@@ -123,7 +118,6 @@ class MyLocationService {
         ),
         type: type,
       );
-      print('send checkCallModel  sendCheckCall method');
       await tripRepository.sendCheckCall(
         id: id,
         checkCall: checkCallModel,
