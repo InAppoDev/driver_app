@@ -36,6 +36,10 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       if (kDebugMode) {
         print('Server ERROR: $e');
       }
+      emit(state.copyWith(
+        status: SplashStatus.failure,
+        errorMessage: e.toString(),
+      ));
     }
   }
 

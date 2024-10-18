@@ -45,14 +45,14 @@ class CustomTextField extends StatelessWidget {
       decoration: InputDecoration(
         isDense: true,
         counterText: '',
-        hintStyle: TextStyle(fontSize: 14, color: theme.hintColor),
+        hintStyle: TextStyle(fontSize: 14, color: theme.dividerColor),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: BorderSide(color: theme.highlightColor),
+          borderSide: BorderSide(color: theme.dividerColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: BorderSide(color: theme.highlightColor),
+          borderSide: BorderSide(color: theme.dividerColor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),

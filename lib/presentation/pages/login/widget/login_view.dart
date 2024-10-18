@@ -49,7 +49,6 @@ class LoginView extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  // SvgPicture.asset('assets/images/logo.svg'),
                   ClipPath(
                     clipper: CustomShape(),
                     child: Container(
@@ -83,7 +82,7 @@ class LoginView extends StatelessWidget {
                   Text(
                     context.localizations.enterYourPhoneNumberToLoginAnAccount,
                     style: theme.textTheme.titleLarge!.copyWith(
-                      color: theme.hintColor,
+                      color: theme.dividerColor,
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -99,7 +98,7 @@ class LoginView extends StatelessWidget {
                         child: Text(
                           '+1',
                           style: theme.textTheme.labelMedium!.copyWith(
-                            color: theme.hintColor,
+                            color: theme.dividerColor,
                           ),
                         ),
                       ),
