@@ -106,9 +106,9 @@ class TripListViewState extends State<TripListView>
                     TripItemsList(
                       trips: state.trips,
                       onPressed: (trip) async {
-                        final navigateToActiveTrip =
-                            await context.push('/confirmTrip', extra: trip);
-                        if (navigateToActiveTrip as bool && context.mounted) {
+                        final navigateToConfirmTrip =
+                        await context.push('/confirmTrip', extra: trip);
+                        if (navigateToConfirmTrip as bool && context.mounted) {
                           _tabController.animateTo(1);
                         }
                       },

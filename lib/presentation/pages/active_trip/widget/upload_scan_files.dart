@@ -37,13 +37,6 @@ class UploadScanFiles extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            context.localizations.bolDocument,
-            style: theme.textTheme.labelSmall!.copyWith(
-              fontWeight: FontWeight.w700,
-              color: theme.dividerColor,
-            ),
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -102,14 +95,6 @@ class UploadScanFiles extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-          const SizedBox(height: 20),
-          Text(
-            context.localizations.uploadTheBOLDocumentOrYouCanScanIt,
-            style: theme.textTheme.labelSmall!.copyWith(
-              fontSize: 12,
-              color: theme.dividerColor,
-            ),
           ),
           const SizedBox(height: 16),
           if (selectedFile != null) ...[

@@ -55,7 +55,7 @@ class S {
     return Intl.message(
       'Profit Details',
       name: 'profitDetails',
-      desc: 'Profit Details',
+      desc: '',
       args: [],
     );
   }
@@ -65,7 +65,7 @@ class S {
     return Intl.message(
       'Below is a short summary of your month',
       name: 'belowIsAShortSummaryOfYourMonth',
-      desc: 'Below is a short summary of your mont',
+      desc: '',
       args: [],
     );
   }
@@ -75,7 +75,7 @@ class S {
     return Intl.message(
       'Lifetime Stats',
       name: 'lifetimeStats',
-      desc: 'Lifetime Stats',
+      desc: '',
       args: [],
     );
   }
@@ -85,7 +85,7 @@ class S {
     return Intl.message(
       'Here is a summary of your overall\nperformance',
       name: 'hereIsASummaryOfYourOverallPerformance',
-      desc: 'Here is a summary of your overall\nperformance',
+      desc: '',
       args: [],
     );
   }
@@ -95,7 +95,7 @@ class S {
     return Intl.message(
       'Get Started',
       name: 'getStarted',
-      desc: 'Get Started',
+      desc: '',
       args: [],
     );
   }
@@ -105,7 +105,7 @@ class S {
     return Intl.message(
       'Enter your Phone number to login an account',
       name: 'enterYourPhoneNumberToLoginAnAccount',
-      desc: 'Enter your Phone number to login an account',
+      desc: '',
       args: [],
     );
   }
@@ -115,7 +115,7 @@ class S {
     return Intl.message(
       'Login',
       name: 'login',
-      desc: 'Login',
+      desc: '',
       args: [],
     );
   }
@@ -125,8 +125,7 @@ class S {
     return Intl.message(
       'Your data is protected and used solely for app authentication. We respect your privacy and security.',
       name: 'yourDataIsProtected',
-      desc:
-          'Your data is protected and used solely for app authentication. We respect your privacy and security.',
+      desc: '',
       args: [],
     );
   }
@@ -136,7 +135,7 @@ class S {
     return Intl.message(
       'Verify Code',
       name: 'verifyCode',
-      desc: 'Verify Code',
+      desc: '',
       args: [],
     );
   }
@@ -146,7 +145,7 @@ class S {
     return Intl.message(
       'Enter Code',
       name: 'enterCode',
-      desc: 'Enter Codee',
+      desc: '',
       args: [],
     );
   }
@@ -156,7 +155,7 @@ class S {
     return Intl.message(
       'Request Code',
       name: 'requestCode',
-      desc: 'Request Code',
+      desc: '',
       args: [],
     );
   }
@@ -166,7 +165,7 @@ class S {
     return Intl.message(
       'Initializing...',
       name: 'initializing',
-      desc: 'Initializing...',
+      desc: '',
       args: [],
     );
   }
@@ -176,7 +175,7 @@ class S {
     return Intl.message(
       'Logout',
       name: 'logout',
-      desc: 'Logout',
+      desc: '',
       args: [],
     );
   }
@@ -186,7 +185,7 @@ class S {
     return Intl.message(
       'Account Information',
       name: 'accountInformation',
-      desc: 'Account Information',
+      desc: '',
       args: [],
     );
   }
@@ -196,7 +195,7 @@ class S {
     return Intl.message(
       'Phone',
       name: 'phone',
-      desc: 'Phone',
+      desc: '',
       args: [],
     );
   }
@@ -206,7 +205,7 @@ class S {
     return Intl.message(
       'Address',
       name: 'address',
-      desc: 'Address',
+      desc: '',
       args: [],
     );
   }
@@ -216,7 +215,7 @@ class S {
     return Intl.message(
       'City',
       name: 'city',
-      desc: 'City',
+      desc: '',
       args: [],
     );
   }
@@ -226,7 +225,7 @@ class S {
     return Intl.message(
       'State Code',
       name: 'stateCode',
-      desc: 'State Code',
+      desc: '',
       args: [],
     );
   }
@@ -236,7 +235,7 @@ class S {
     return Intl.message(
       'Zip Code',
       name: 'zipCode',
-      desc: 'Zip Code',
+      desc: '',
       args: [],
     );
   }
@@ -246,7 +245,7 @@ class S {
     return Intl.message(
       'Track Your work and get the result',
       name: 'trackYourWorkAndGetTheResult',
-      desc: 'Track Your work and get the result',
+      desc: '',
       args: [],
     );
   }
@@ -256,7 +255,7 @@ class S {
     return Intl.message(
       'Remember to keep track of your professional accomplishments.',
       name: 'rememberToKeepTrackOfYourProfessionalAccomplishments',
-      desc: 'Remember to keep track of your professional accomplishments.',
+      desc: '',
       args: [],
     );
   }
@@ -266,7 +265,7 @@ class S {
     return Intl.message(
       'Stay organized with team',
       name: 'stayOrganizedWithTeam',
-      desc: 'Stay organized with team',
+      desc: '',
       args: [],
     );
   }
@@ -278,8 +277,7 @@ class S {
       'But understanding the contributions our colleagues make to our teams and companies.',
       name:
           'butUnderstandingTheContributionsOurColleaguesMakeToOurTeamsAndCompanies',
-      desc:
-          'But understanding the contributions our colleagues make to our teams and companies.',
+      desc: '',
       args: [],
     );
   }
@@ -289,7 +287,7 @@ class S {
     return Intl.message(
       'Get notified when work happens',
       name: 'getNotifiedWhenWorkHappens',
-      desc: 'Get notified when work happens',
+      desc: '',
       args: [],
     );
   }
@@ -299,8 +297,7 @@ class S {
     return Intl.message(
       'Take control of notifications, collaborate live or on your own time.',
       name: 'takeControlOfNotificationsCollaborateLiveOrOnYourOwnTime',
-      desc:
-          'Take control of notifications, collaborate live or on your own time.',
+      desc: '',
       args: [],
     );
   }
@@ -310,7 +307,7 @@ class S {
     return Intl.message(
       'START',
       name: 'start',
-      desc: 'START',
+      desc: '',
       args: [],
     );
   }
@@ -320,7 +317,7 @@ class S {
     return Intl.message(
       'SKIP',
       name: 'skip',
-      desc: 'SKIP',
+      desc: '',
       args: [],
     );
   }
@@ -330,7 +327,7 @@ class S {
     return Intl.message(
       'NEXT',
       name: 'next',
-      desc: 'NEXT',
+      desc: '',
       args: [],
     );
   }
@@ -340,7 +337,7 @@ class S {
     return Intl.message(
       'Home',
       name: 'home',
-      desc: 'Home',
+      desc: '',
       args: [],
     );
   }
@@ -350,7 +347,7 @@ class S {
     return Intl.message(
       'Trips',
       name: 'trips',
-      desc: 'Trips',
+      desc: '',
       args: [],
     );
   }
@@ -360,7 +357,7 @@ class S {
     return Intl.message(
       'Messages',
       name: 'messages',
-      desc: 'Messages',
+      desc: '',
       args: [],
     );
   }
@@ -370,7 +367,7 @@ class S {
     return Intl.message(
       'You',
       name: 'you',
-      desc: 'You',
+      desc: '',
       args: [],
     );
   }
@@ -380,7 +377,7 @@ class S {
     return Intl.message(
       'Drive on',
       name: 'driveOn',
-      desc: 'Drive on',
+      desc: '',
       args: [],
     );
   }
@@ -390,7 +387,7 @@ class S {
     return Intl.message(
       'DRIVER APP',
       name: 'driveApp',
-      desc: 'DRIVER APP',
+      desc: '',
       args: [],
     );
   }
@@ -400,7 +397,7 @@ class S {
     return Intl.message(
       'Total Miles',
       name: 'totalMiles',
-      desc: 'Total Miles',
+      desc: '',
       args: [],
     );
   }
@@ -410,7 +407,7 @@ class S {
     return Intl.message(
       'Check Calls',
       name: 'checkCalls',
-      desc: 'Check Calls',
+      desc: '',
       args: [],
     );
   }
@@ -420,7 +417,7 @@ class S {
     return Intl.message(
       'Drive Time',
       name: 'driveTime',
-      desc: 'Drive Time',
+      desc: '',
       args: [],
     );
   }
@@ -430,7 +427,7 @@ class S {
     return Intl.message(
       'k',
       name: 'k',
-      desc: 'k',
+      desc: '',
       args: [],
     );
   }
@@ -440,7 +437,7 @@ class S {
     return Intl.message(
       'M',
       name: 'm',
-      desc: 'M',
+      desc: '',
       args: [],
     );
   }
@@ -450,7 +447,7 @@ class S {
     return Intl.message(
       'Mph',
       name: 'mph',
-      desc: 'Mph',
+      desc: '',
       args: [],
     );
   }
@@ -460,7 +457,7 @@ class S {
     return Intl.message(
       'h',
       name: 'h',
-      desc: 'h',
+      desc: '',
       args: [],
     );
   }
@@ -470,7 +467,7 @@ class S {
     return Intl.message(
       'Total trips',
       name: 'totalTrips',
-      desc: 'Total trips',
+      desc: '',
       args: [],
     );
   }
@@ -480,7 +477,7 @@ class S {
     return Intl.message(
       'Total Stops',
       name: 'totalStops',
-      desc: 'Total Stops',
+      desc: '',
       args: [],
     );
   }
@@ -490,7 +487,7 @@ class S {
     return Intl.message(
       'Shortest Trip',
       name: 'shortestTrip',
-      desc: 'Shortest Trip',
+      desc: '',
       args: [],
     );
   }
@@ -500,7 +497,7 @@ class S {
     return Intl.message(
       'Longest Trip',
       name: 'longestTrip',
-      desc: 'Longest Trip',
+      desc: '',
       args: [],
     );
   }
@@ -510,7 +507,7 @@ class S {
     return Intl.message(
       'Average Speed',
       name: 'averageSpeed',
-      desc: 'Average Speed',
+      desc: '',
       args: [],
     );
   }
@@ -520,7 +517,7 @@ class S {
     return Intl.message(
       'Miles to go',
       name: 'milesToGo',
-      desc: 'Miles to go',
+      desc: '',
       args: [],
     );
   }
@@ -530,7 +527,7 @@ class S {
     return Intl.message(
       'Trip № 12321312312232',
       name: 'tripNumber',
-      desc: 'Trip № 12321312312232',
+      desc: '',
       args: [],
     );
   }
@@ -540,17 +537,7 @@ class S {
     return Intl.message(
       'Load damage',
       name: 'loadDamage',
-      desc: 'Load damage',
-      args: [],
-    );
-  }
-
-  /// `Starting point`
-  String get startingPoint {
-    return Intl.message(
-      'Starting point',
-      name: 'startingPoint',
-      desc: 'Starting point',
+      desc: '',
       args: [],
     );
   }
@@ -560,7 +547,7 @@ class S {
     return Intl.message(
       'You haven`t yet started the trip.',
       name: 'youHaventYetStartedTheTrip',
-      desc: 'You haven`t yet started the trip.',
+      desc: '',
       args: [],
     );
   }
@@ -570,7 +557,7 @@ class S {
     return Intl.message(
       'Pick up #2133123',
       name: 'pickUp',
-      desc: 'Pick up #2133123',
+      desc: '',
       args: [],
     );
   }
@@ -580,7 +567,17 @@ class S {
     return Intl.message(
       'All Stops',
       name: 'allStops',
-      desc: 'All Stops',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hide Stops`
+  String get hideStops {
+    return Intl.message(
+      'Hide Stops',
+      name: 'hideStops',
+      desc: '',
       args: [],
     );
   }
@@ -590,7 +587,7 @@ class S {
     return Intl.message(
       'TRIP INFO',
       name: 'tripInfo',
-      desc: 'TRIP INFO',
+      desc: '',
       args: [],
     );
   }
@@ -600,7 +597,7 @@ class S {
     return Intl.message(
       'Hours of operation:',
       name: 'hoursOfOperation',
-      desc: 'Hours of operation:',
+      desc: '',
       args: [],
     );
   }
@@ -610,7 +607,7 @@ class S {
     return Intl.message(
       'WEIGHT:',
       name: 'weight',
-      desc: 'WEIGHT:',
+      desc: '',
       args: [],
     );
   }
@@ -620,7 +617,7 @@ class S {
     return Intl.message(
       'Tons:',
       name: 'tons',
-      desc: 'Tons:',
+      desc: '',
       args: [],
     );
   }
@@ -630,7 +627,7 @@ class S {
     return Intl.message(
       'Commodity:',
       name: 'commodity',
-      desc: 'Commodity:',
+      desc: '',
       args: [],
     );
   }
@@ -640,7 +637,7 @@ class S {
     return Intl.message(
       'Pallets:',
       name: 'pallets',
-      desc: 'Pallets:',
+      desc: '',
       args: [],
     );
   }
@@ -650,7 +647,7 @@ class S {
     return Intl.message(
       'Temperature:',
       name: 'temperature',
-      desc: 'Temperature:',
+      desc: '',
       args: [],
     );
   }
@@ -660,7 +657,7 @@ class S {
     return Intl.message(
       'Select the date and time of arrival at PICK UP #1:',
       name: 'selectTheDateAndTimeOfArrivalAt',
-      desc: 'Select the date and time of arrival at PICK UP #1:',
+      desc: '',
       args: [],
     );
   }
@@ -670,7 +667,7 @@ class S {
     return Intl.message(
       'Select Date\\ Time',
       name: 'selectDateTime',
-      desc: 'Select Date\\ Time',
+      desc: '',
       args: [],
     );
   }
@@ -680,7 +677,27 @@ class S {
     return Intl.message(
       'SELECT',
       name: 'select',
-      desc: 'SELECT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `begin trip`
+  String get begin {
+    return Intl.message(
+      'begin trip',
+      name: 'begin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `confirm`
+  String get confirm {
+    return Intl.message(
+      'confirm',
+      name: 'confirm',
+      desc: '',
       args: [],
     );
   }
@@ -690,7 +707,7 @@ class S {
     return Intl.message(
       'Select ETA at PICK UP#1:',
       name: 'selectETAAt',
-      desc: 'Select ETA at PICK UP#1:',
+      desc: '',
       args: [],
     );
   }
@@ -700,7 +717,7 @@ class S {
     return Intl.message(
       'BOL document:',
       name: 'bolDocument',
-      desc: 'BOL document:',
+      desc: '',
       args: [],
     );
   }
@@ -710,7 +727,7 @@ class S {
     return Intl.message(
       'Upload files',
       name: 'uploadFiles',
-      desc: 'Upload files',
+      desc: '',
       args: [],
     );
   }
@@ -720,7 +737,7 @@ class S {
     return Intl.message(
       'or',
       name: 'or',
-      desc: 'or',
+      desc: '',
       args: [],
     );
   }
@@ -730,7 +747,7 @@ class S {
     return Intl.message(
       'Upload the BOL document or you can scan it.',
       name: 'uploadTheBOLDocumentOrYouCanScanIt',
-      desc: 'Upload the BOL document or you can scan it.',
+      desc: '',
       args: [],
     );
   }
@@ -740,17 +757,17 @@ class S {
     return Intl.message(
       'UPLOAD',
       name: 'upload',
-      desc: 'UPLOAD',
+      desc: '',
       args: [],
     );
   }
 
-  /// `Confirm that you have embarked on this trip:`
-  String get confirmThatYouHaveEmbarkedOnThisTrip {
+  /// `Ready to begin this trip?`
+  String get readyToBegin {
     return Intl.message(
-      'Confirm that you have embarked on this trip:',
-      name: 'confirmThatYouHaveEmbarkedOnThisTrip',
-      desc: 'Confirm that you have embarked on this trip:',
+      'Ready to begin this trip?',
+      name: 'readyToBegin',
+      desc: '',
       args: [],
     );
   }
@@ -760,7 +777,197 @@ class S {
     return Intl.message(
       'Approved trip',
       name: 'approvedTrip',
-      desc: 'Approved trip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current Stop`
+  String get currentStop {
+    return Intl.message(
+      'Current Stop',
+      name: 'currentStop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `min`
+  String get min {
+    return Intl.message(
+      'min',
+      name: 'min',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hour`
+  String get hour {
+    return Intl.message(
+      'hour',
+      name: 'hour',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Custom`
+  String get custom {
+    return Intl.message(
+      'Custom',
+      name: 'custom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total: {miles} miles`
+  String totalMilesMiles(String miles) {
+    return Intl.message(
+      'Total: $miles miles',
+      name: 'totalMilesMiles',
+      desc: 'Text showing the total miles of a trip',
+      args: [miles],
+    );
+  }
+
+  /// `Appt/time`
+  String get apptTime {
+    return Intl.message(
+      'Appt/time',
+      name: 'apptTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Emergency Phone`
+  String get emergencyPhone {
+    return Intl.message(
+      'Emergency Phone',
+      name: 'emergencyPhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error: {message}`
+  String errorMessage(String message) {
+    return Intl.message(
+      'Error: $message',
+      name: 'errorMessage',
+      desc: 'Error message displayed when something goes wrong',
+      args: [message],
+    );
+  }
+
+  /// `Permissions`
+  String get permissions {
+    return Intl.message(
+      'Permissions',
+      name: 'permissions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DISMISS`
+  String get dismiss {
+    return Intl.message(
+      'DISMISS',
+      name: 'dismiss',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have no messages yet, pull to refresh the page`
+  String get youHaveNoMessagesYetPullToRefresh {
+    return Intl.message(
+      'You have no messages yet, pull to refresh the page',
+      name: 'youHaveNoMessagesYetPullToRefresh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eta`
+  String get eta {
+    return Intl.message(
+      'eta',
+      name: 'eta',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit ETA:`
+  String get editETA {
+    return Intl.message(
+      'Edit ETA:',
+      name: 'editETA',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Value`
+  String get setValue {
+    return Intl.message(
+      'Set Value',
+      name: 'setValue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{distance}km`
+  String distanceKm(String distance) {
+    return Intl.message(
+      '${distance}km',
+      name: 'distanceKm',
+      desc: 'Distance in kilometers',
+      args: [distance],
+    );
+  }
+
+  /// `Failed to load trip information. Please try again later or contact support.`
+  String get failedToLoadTrip {
+    return Intl.message(
+      'Failed to load trip information. Please try again later or contact support.',
+      name: 'failedToLoadTrip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start driving`
+  String get startDriving {
+    return Intl.message(
+      'Start driving',
+      name: 'startDriving',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `next stop`
+  String get nextStop {
+    return Intl.message(
+      'next stop',
+      name: 'nextStop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `add comment`
+  String get addComment {
+    return Intl.message(
+      'add comment',
+      name: 'addComment',
+      desc: '',
       args: [],
     );
   }
