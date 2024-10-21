@@ -28,6 +28,7 @@ class ChatBottomInput extends StatefulWidget {
 
 class _ChatBottomInputState extends State<ChatBottomInput> {
   final TextEditingController textEditingController = TextEditingController();
+  int minLines = 1;
 
   @override
   void dispose() {
@@ -37,6 +38,7 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     final theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.fromLTRB(13, 15, 13, 11),
@@ -115,9 +117,22 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
               ),
               const SizedBox(width: 5),
               Expanded(
-                child: SizedBox(
-                  height: 50,
+                child: Container(
+                  constraints: BoxConstraints(maxHeight: height * 0.17),
                   child: CustomTextField(
+                    minLines: minLines,
+                    onChanged: (text) {
+                      if (text.split('\n').length > 1) {
+                        setState(() {
+                          minLines = text.split('\n').length + 1;
+                        });
+                      }
+                      if(text.isEmpty || text.split('\n').length == 1){
+                       setState(() {
+                         minLines = 1;
+                       });
+                      }
+                    },
                     keyboardType: TextInputType.multiline,
                     controller: textEditingController,
                     borderRadius: 20,
