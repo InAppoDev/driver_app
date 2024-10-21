@@ -152,6 +152,7 @@ class LoginView extends StatelessWidget {
                                   CustomTextField(
                                     controller: _codeController,
                                     hintText: context.localizations.enterCode,
+                                    keyboardType: TextInputType.number,
                                   ),
                                   const SizedBox(height: 30),
                                   if (state.status != LoginStatus.loading)
