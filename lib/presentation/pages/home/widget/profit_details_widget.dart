@@ -8,7 +8,6 @@ class ProfitDetailsWidget extends StatelessWidget {
     required this.icon,
     required this.amount,
     required this.text,
-    required this.showM,
     required this.showDollar,
     this.showHours = false,
   });
@@ -17,7 +16,6 @@ class ProfitDetailsWidget extends StatelessWidget {
   final IconData icon;
   final String amount;
   final String text;
-  final bool showM;
   final bool showDollar;
   final bool showHours;
 
@@ -45,9 +43,7 @@ class ProfitDetailsWidget extends StatelessWidget {
             (showDollar ? '\$$amount' : amount) +
                 (showHours
                     ? context.localizations.h
-                    : showM
-                        ? context.localizations.m
-                        : context.localizations.k),
+                    : ''),
             style: theme.textTheme.headlineMedium!.copyWith(
               fontWeight: FontWeight.w700,
               color: isSelected ? Colors.white : Colors.black,

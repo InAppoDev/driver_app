@@ -12,6 +12,7 @@ import 'package:tms_driver/data/models/document/upload_document_response.dart';
 import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_list_model/dispatch_list_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/data/models/personal_stats_model/personal_stats_model.dart';
 import 'package:tms_driver/data/models/user/user_model.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler.dart';
 
@@ -207,6 +208,13 @@ class ApiDataSourceImpl implements ApiDataSource {
   Future<DispatchModel> getTripById(int tripId) async {
     final response = await _makeRequest(() => dio.get('/dispatches/$tripId'));
     return DispatchModel.fromJson(response.data);
+  }
+
+  @override
+  Future<PersonalStatsModel> getPersonalStats() async {
+    final response = await _makeRequest(() => dio.get('/personal-stats'));
+    print('personal stats response.data - ${response.data}');
+    return PersonalStatsModel.fromJson(response.data);
   }
 
   @override

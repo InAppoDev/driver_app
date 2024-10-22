@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/data/models/personal_stats_model/personal_stats_model.dart';
 import 'package:tms_driver/presentation/pages/home/widget/profit_details.dart';
 
 import 'dash_board.dart';
 
 class ProfitDashboard extends StatelessWidget {
-  const ProfitDashboard({super.key});
+  const ProfitDashboard({super.key, required this.personalStats});
+
+  final PersonalStatsModel? personalStats;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
+    return personalStats == null
+        ? const Center(
+            child: Text("You don't have any stats yet"),
+          )
+        : Container(
+            margin: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.all(Radius.circular(12)),
         boxShadow: [
@@ -22,13 +29,13 @@ class ProfitDashboard extends StatelessWidget {
           ),
         ],
       ),
-      child: const Column(
+      child:  Column(
         children: [
-          SizedBox(height: 10),
-          ProfitDetails(),
-          SizedBox(height: 10),
-          DashBoard(),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
+          ProfitDetails(personalStats: personalStats!),
+          const SizedBox(height: 10),
+          DashBoard(personalStats: personalStats!),
+          const SizedBox(height: 10),
         ],
       ),
     );

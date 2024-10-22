@@ -10,14 +10,16 @@ import 'package:tms_driver/data/services/connectivity_service.dart';
 import 'package:tms_driver/data/services/hive_service.dart';
 import 'package:tms_driver/data/services/my_localtion_services.dart';
 import 'package:tms_driver/domain/repositories/auth_repository.dart';
+import 'package:tms_driver/domain/repositories/home_repository.dart';
 import 'package:tms_driver/domain/repositories/impl/auth_repository_impl.dart';
+import 'package:tms_driver/domain/repositories/impl/home_impl.dart';
 import 'package:tms_driver/domain/repositories/impl/messages_repositpry_impl.dart';
 import 'package:tms_driver/domain/repositories/impl/tracking_repository_impl.dart';
 import 'package:tms_driver/domain/repositories/impl/trip_repository_impl.dart';
 import 'package:tms_driver/domain/repositories/impl/user_repository_impl.dart';
 import 'package:tms_driver/domain/repositories/messages_repository.dart';
-import 'package:tms_driver/domain/repositories/tracking_repository.dart';
 import 'package:tms_driver/domain/repositories/notification_repository.dart';
+import 'package:tms_driver/domain/repositories/tracking_repository.dart';
 import 'package:tms_driver/domain/repositories/trip_repository.dart';
 import 'package:tms_driver/domain/repositories/user_repository.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler.dart';
@@ -80,6 +82,10 @@ Future<void> initApp() async {
       hiveService: hiveService,
       connectivityService: connectivityService,
     ),
+  );
+
+  GetIt.instance.registerSingleton<HomeRepository>(
+    HomeImpl(apiDataSource: apiDataSource),
   );
 
   // Register TripRepository with apiDataSource in GetIt

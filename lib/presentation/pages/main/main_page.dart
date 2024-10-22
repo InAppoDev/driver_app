@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tms_driver/presentation/blocks/home/home_bloc.dart';
 import 'package:tms_driver/presentation/blocks/main/bloc/main_bloc.dart';
 import 'package:tms_driver/presentation/blocks/message_list/message_list_bloc.dart';
 import 'package:tms_driver/presentation/blocks/notification/bloc/notification_bloc.dart';
@@ -17,6 +18,9 @@ class MainPage extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => TripListBloc(),
+        ),
+        BlocProvider(
+          create: (context) => HomeBloc(),
         ),
         BlocProvider(
           create: (context) => TripDetailBloc(),
@@ -37,6 +41,7 @@ class MainPage extends StatelessWidget {
       child: Builder(
         builder: (context) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
+            context.read<HomeBloc>().add(const HomeEvent.fetchStats());
             context.read<TripListBloc>().add(const TripListEvent.fetchTrips());
             context
                 .read<TripListBloc>()
