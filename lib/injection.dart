@@ -84,8 +84,9 @@ Future<void> initApp() async {
     ),
   );
 
+  // Register HomeRepository with apiDataSource in GetIt
   GetIt.instance.registerSingleton<HomeRepository>(
-    HomeImpl(apiDataSource: apiDataSource),
+    HomeRepositoryImpl(apiDataSource: apiDataSource),
   );
 
   // Register TripRepository with apiDataSource in GetIt
