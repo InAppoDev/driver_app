@@ -103,6 +103,7 @@
   "eta": "eta",
   "editETA": "Edit ETA:",
   "setValue": "Set Value",
+  "updateETA": "Update ETA",
   "distanceKm": "{distance}km",
   "@distanceKm": {
     "description": "Distance in kilometers",

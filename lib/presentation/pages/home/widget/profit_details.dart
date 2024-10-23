@@ -43,7 +43,7 @@ class ProfitDetails extends StatelessWidget {
                 showDollar: false,
               ),
               ProfitDetailsWidget(
-                isSelected: true,
+                isSelected: false,
                 icon: Icons.speed,
                 amount: formatNumber(personalStats.monthly.totalMiles),
                 text: context.localizations.totalMiles,

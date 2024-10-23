@@ -53,32 +53,9 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
         children: [
           Row(
             children: [
-              Text(
-                context.localizations.editETA,
-                style: TextStyle(
-                  color: theme.cardColor,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
               EtaWidget(
-                text: '+ 30 ${context.localizations.min}',
-                onPressed: () {
-                  setState(() {
-                    textEditingController.text += '30 min';
-                  });
-                },
-              ),
-              EtaWidget(
-                text: '+ 1 ${context.localizations.hour}',
-                onPressed: () {
-                  setState(() {
-                    textEditingController.text += '1 hour';
-                  });
-                },
-              ),
-              EtaWidget(
-                text: context.localizations.setValue,
+                icon: Icons.access_time,
+                text: context.localizations.updateETA,
                 onPressed: () async {
                   await showModalBottomSheet<int>(
                       context: context,
@@ -87,6 +64,24 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                       builder: (context) {
                         return const CalendarBottomSheet();
                       });
+                },
+              ),
+              EtaWidget(
+                text: 'Rest Break',
+                onPressed: () {
+                  setState(() {
+                    textEditingController.text +=
+                        'Status update:\n Taking a rest break';
+                  });
+                },
+              ),
+              EtaWidget(
+                text: 'Need Assistance',
+                onPressed: () {
+                  setState(() {
+                    textEditingController.text +=
+                        'Requesting assistance. Issue:\n';
+                  });
                 },
               ),
             ],
@@ -127,10 +122,10 @@ class _ChatBottomInputState extends State<ChatBottomInput> {
                           minLines = text.split('\n').length + 1;
                         });
                       }
-                      if(text.isEmpty || text.split('\n').length == 1){
-                       setState(() {
-                         minLines = 1;
-                       });
+                      if (text.isEmpty || text.split('\n').length == 1) {
+                        setState(() {
+                          minLines = 1;
+                        });
                       }
                     },
                     keyboardType: TextInputType.multiline,

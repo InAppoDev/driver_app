@@ -52,7 +52,7 @@ class NotificationListView extends StatelessWidget {
                             children: [
                               Text(notificationModel.title ?? ''),
                               Text(
-                                'Notification type: ${notificationModel.description}',
+                                '${notificationModel.description}',
                               ),
                             ],
                           ),
