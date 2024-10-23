@@ -11,7 +11,7 @@ class PersonalStatsModel with _$PersonalStatsModel {
   const factory PersonalStatsModel({
     @JsonKey(name: 'current_month') required int currentMonth,
     required MonthlyModel monthly,
-    required LifeTimeModel? lifeTime,
+    required LifeTimeModel lifetime,
   }) = _PersonalStatsModel;
 
   factory PersonalStatsModel.fromJson(Map<String, dynamic> json) =>

@@ -133,6 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tripNumber":
             MessageLookupByLibrary.simpleMessage("Trip № 12321312312232"),
         "trips": MessageLookupByLibrary.simpleMessage("Trips"),
+        "updateETA": MessageLookupByLibrary.simpleMessage("Update ETA"),
         "upload": MessageLookupByLibrary.simpleMessage("UPLOAD"),
         "uploadFiles": MessageLookupByLibrary.simpleMessage("Upload files"),
         "uploadTheBOLDocumentOrYouCanScanIt":

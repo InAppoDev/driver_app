@@ -20,13 +20,13 @@ MonthlyModel _$MonthlyModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MonthlyModel {
-  int get dispatches => throw _privateConstructorUsedError;
+  int? get dispatches => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_miles')
-  int get totalMiles => throw _privateConstructorUsedError;
+  int? get totalMiles => throw _privateConstructorUsedError;
   @JsonKey(name: 'check_calls')
-  int get checkCalls => throw _privateConstructorUsedError;
+  int? get checkCalls => throw _privateConstructorUsedError;
   @JsonKey(name: 'drive_time_hours')
-  int get driveTimeHours => throw _privateConstructorUsedError;
+  int? get driveTimeHours => throw _privateConstructorUsedError;
 
   /// Serializes this MonthlyModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,10 +45,10 @@ abstract class $MonthlyModelCopyWith<$Res> {
       _$MonthlyModelCopyWithImpl<$Res, MonthlyModel>;
   @useResult
   $Res call(
-      {int dispatches,
-      @JsonKey(name: 'total_miles') int totalMiles,
-      @JsonKey(name: 'check_calls') int checkCalls,
-      @JsonKey(name: 'drive_time_hours') int driveTimeHours});
+      {int? dispatches,
+      @JsonKey(name: 'total_miles') int? totalMiles,
+      @JsonKey(name: 'check_calls') int? checkCalls,
+      @JsonKey(name: 'drive_time_hours') int? driveTimeHours});
 }
 
 /// @nodoc
@@ -66,28 +66,28 @@ class _$MonthlyModelCopyWithImpl<$Res, $Val extends MonthlyModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dispatches = null,
-    Object? totalMiles = null,
-    Object? checkCalls = null,
-    Object? driveTimeHours = null,
+    Object? dispatches = freezed,
+    Object? totalMiles = freezed,
+    Object? checkCalls = freezed,
+    Object? driveTimeHours = freezed,
   }) {
     return _then(_value.copyWith(
-      dispatches: null == dispatches
+      dispatches: freezed == dispatches
           ? _value.dispatches
           : dispatches // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalMiles: null == totalMiles
+              as int?,
+      totalMiles: freezed == totalMiles
           ? _value.totalMiles
           : totalMiles // ignore: cast_nullable_to_non_nullable
-              as int,
-      checkCalls: null == checkCalls
+              as int?,
+      checkCalls: freezed == checkCalls
           ? _value.checkCalls
           : checkCalls // ignore: cast_nullable_to_non_nullable
-              as int,
-      driveTimeHours: null == driveTimeHours
+              as int?,
+      driveTimeHours: freezed == driveTimeHours
           ? _value.driveTimeHours
           : driveTimeHours // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -101,10 +101,10 @@ abstract class _$$MonthlyModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int dispatches,
-      @JsonKey(name: 'total_miles') int totalMiles,
-      @JsonKey(name: 'check_calls') int checkCalls,
-      @JsonKey(name: 'drive_time_hours') int driveTimeHours});
+      {int? dispatches,
+      @JsonKey(name: 'total_miles') int? totalMiles,
+      @JsonKey(name: 'check_calls') int? checkCalls,
+      @JsonKey(name: 'drive_time_hours') int? driveTimeHours});
 }
 
 /// @nodoc
@@ -120,28 +120,28 @@ class __$$MonthlyModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dispatches = null,
-    Object? totalMiles = null,
-    Object? checkCalls = null,
-    Object? driveTimeHours = null,
+    Object? dispatches = freezed,
+    Object? totalMiles = freezed,
+    Object? checkCalls = freezed,
+    Object? driveTimeHours = freezed,
   }) {
     return _then(_$MonthlyModelImpl(
-      dispatches: null == dispatches
+      dispatches: freezed == dispatches
           ? _value.dispatches
           : dispatches // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalMiles: null == totalMiles
+              as int?,
+      totalMiles: freezed == totalMiles
           ? _value.totalMiles
           : totalMiles // ignore: cast_nullable_to_non_nullable
-              as int,
-      checkCalls: null == checkCalls
+              as int?,
+      checkCalls: freezed == checkCalls
           ? _value.checkCalls
           : checkCalls // ignore: cast_nullable_to_non_nullable
-              as int,
-      driveTimeHours: null == driveTimeHours
+              as int?,
+      driveTimeHours: freezed == driveTimeHours
           ? _value.driveTimeHours
           : driveTimeHours // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -159,16 +159,16 @@ class _$MonthlyModelImpl implements _MonthlyModel {
       _$$MonthlyModelImplFromJson(json);
 
   @override
-  final int dispatches;
+  final int? dispatches;
   @override
   @JsonKey(name: 'total_miles')
-  final int totalMiles;
+  final int? totalMiles;
   @override
   @JsonKey(name: 'check_calls')
-  final int checkCalls;
+  final int? checkCalls;
   @override
   @JsonKey(name: 'drive_time_hours')
-  final int driveTimeHours;
+  final int? driveTimeHours;
 
   @override
   String toString() {
@@ -213,26 +213,26 @@ class _$MonthlyModelImpl implements _MonthlyModel {
 
 abstract class _MonthlyModel implements MonthlyModel {
   const factory _MonthlyModel(
-      {required final int dispatches,
-      @JsonKey(name: 'total_miles') required final int totalMiles,
-      @JsonKey(name: 'check_calls') required final int checkCalls,
+      {required final int? dispatches,
+      @JsonKey(name: 'total_miles') required final int? totalMiles,
+      @JsonKey(name: 'check_calls') required final int? checkCalls,
       @JsonKey(name: 'drive_time_hours')
-      required final int driveTimeHours}) = _$MonthlyModelImpl;
+      required final int? driveTimeHours}) = _$MonthlyModelImpl;
 
   factory _MonthlyModel.fromJson(Map<String, dynamic> json) =
       _$MonthlyModelImpl.fromJson;
 
   @override
-  int get dispatches;
+  int? get dispatches;
   @override
   @JsonKey(name: 'total_miles')
-  int get totalMiles;
+  int? get totalMiles;
   @override
   @JsonKey(name: 'check_calls')
-  int get checkCalls;
+  int? get checkCalls;
   @override
   @JsonKey(name: 'drive_time_hours')
-  int get driveTimeHours;
+  int? get driveTimeHours;
 
   /// Create a copy of MonthlyModel
   /// with the given fields replaced by the non-null parameter values.

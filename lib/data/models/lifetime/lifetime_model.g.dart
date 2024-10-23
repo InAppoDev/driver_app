@@ -8,12 +8,12 @@ part of 'lifetime_model.dart';
 
 _$LifeTimeModelImpl _$$LifeTimeModelImplFromJson(Map<String, dynamic> json) =>
     _$LifeTimeModelImpl(
-      totalTrips: (json['total_dispatches'] as num).toInt(),
-      totalMiles: (json['total_miles'] as num).toInt(),
-      totalStops: (json['total_stops'] as num).toInt(),
-      totalCheckCalls: (json['total_check_calls'] as num).toInt(),
-      shortestTripMiles: (json['shortest_trip_miles'] as num).toInt(),
-      longestTripMiles: (json['longest_trip_miles'] as num).toInt(),
+      totalTrips: (json['total_dispatches'] as num?)?.toInt(),
+      totalMiles: (json['total_miles'] as num?)?.toInt(),
+      totalStops: (json['total_stops'] as num?)?.toInt(),
+      totalCheckCalls: (json['total_check_calls'] as num?)?.toInt(),
+      shortestTripMiles: (json['shortest_trip_miles'] as num?)?.toInt(),
+      longestTripMiles: (json['longest_trip_miles'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$LifeTimeModelImplToJson(_$LifeTimeModelImpl instance) =>

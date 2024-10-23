@@ -22,8 +22,9 @@ class ProfitDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final width = MediaQuery.of(context).size.width;
     return Container(
-      width: 150,
+      width: width * 0.45,
       padding: const EdgeInsets.all(25),
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       decoration: BoxDecoration(
@@ -40,9 +41,7 @@ class ProfitDetailsWidget extends StatelessWidget {
           ),
           const SizedBox(height: 7),
           Text(
-            (showDollar ? '\$$amount' : amount) +
-                (showHours
-                    ? context.localizations.h
+            amount + (showHours ? context.localizations.h
                     : ''),
             style: theme.textTheme.headlineMedium!.copyWith(
               fontWeight: FontWeight.w700,

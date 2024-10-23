@@ -11,9 +11,8 @@ _$PersonalStatsModelImpl _$$PersonalStatsModelImplFromJson(
     _$PersonalStatsModelImpl(
       currentMonth: (json['current_month'] as num).toInt(),
       monthly: MonthlyModel.fromJson(json['monthly'] as Map<String, dynamic>),
-      lifeTime: json['lifeTime'] == null
-          ? null
-          : LifeTimeModel.fromJson(json['lifeTime'] as Map<String, dynamic>),
+      lifetime:
+          LifeTimeModel.fromJson(json['lifetime'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$PersonalStatsModelImplToJson(
@@ -21,5 +20,5 @@ Map<String, dynamic> _$$PersonalStatsModelImplToJson(
     <String, dynamic>{
       'current_month': instance.currentMonth,
       'monthly': instance.monthly,
-      'lifeTime': instance.lifeTime,
+      'lifetime': instance.lifetime,
     };

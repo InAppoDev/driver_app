@@ -922,6 +922,16 @@ class S {
     );
   }
 
+  /// `Update ETA`
+  String get updateETA {
+    return Intl.message(
+      'Update ETA',
+      name: 'updateETA',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{distance}km`
   String distanceKm(String distance) {
     return Intl.message(
