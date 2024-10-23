@@ -352,6 +352,16 @@ class S {
     );
   }
 
+  /// `Pause`
+  String get pause {
+    return Intl.message(
+      'Pause',
+      name: 'pause',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Messages`
   String get messages {
     return Intl.message(
@@ -682,10 +692,10 @@ class S {
     );
   }
 
-  /// `begin trip`
+  /// `Begin trip`
   String get begin {
     return Intl.message(
-      'begin trip',
+      'Begin trip',
       name: 'begin',
       desc: '',
       args: [],

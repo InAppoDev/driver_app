@@ -36,7 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "approvedTrip": MessageLookupByLibrary.simpleMessage("Approved trip"),
         "apptTime": MessageLookupByLibrary.simpleMessage("Appt/time"),
         "averageSpeed": MessageLookupByLibrary.simpleMessage("Average Speed"),
-        "begin": MessageLookupByLibrary.simpleMessage("begin trip"),
+        "begin": MessageLookupByLibrary.simpleMessage("Begin trip"),
         "belowIsAShortSummaryOfYourMonth": MessageLookupByLibrary.simpleMessage(
             "Below is a short summary of your month"),
         "bolDocument": MessageLookupByLibrary.simpleMessage("BOL document:"),
@@ -93,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "nextStop": MessageLookupByLibrary.simpleMessage("next stop"),
         "or": MessageLookupByLibrary.simpleMessage("or"),
         "pallets": MessageLookupByLibrary.simpleMessage("Pallets:"),
+        "pause": MessageLookupByLibrary.simpleMessage("Pause"),
         "permissions": MessageLookupByLibrary.simpleMessage("Permissions"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "pickUp": MessageLookupByLibrary.simpleMessage("Pick up #2133123"),

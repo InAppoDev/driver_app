@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:tms_driver/presentation/blocks/main/bloc/main_bloc.dart';
 import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
 import 'package:tms_driver/presentation/consts/consts.dart';
 import 'package:tms_driver/presentation/pages/home/widget/current_widget.dart';
