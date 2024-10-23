@@ -8,6 +8,7 @@ import 'package:tms_driver/presentation/pages/trip_list/widget/trip_info_widget.
 import 'package:tms_driver/presentation/theme/app_colors.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 import 'package:tms_driver/presentation/utils/extension/waypoint_type.dart';
+import 'package:collection/collection.dart';
 
 class TripData extends StatelessWidget {
   const TripData({
@@ -128,15 +129,17 @@ class TripData extends StatelessWidget {
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: Column(
                                   children: [
-                                    ...trip.waypoints.skip(1).map(
-                                      (waypoint) {
+                                    ...trip.waypoints.skip(1).mapIndexed(
+                                      (index, waypoint) {
+                                        final showMidlLine =
+                                            index + 1 < trip.waypoints.length &&
+                                                trip.waypoints[index].type !=
+                                                    trip.waypoints[index + 1].type;
                                         return TripInfoWidget(
                                           type: waypoint.type,
                                           address: waypoint.address,
                                           time: waypoint.apptFromTimestamp,
-                                          showMidlLine: trip.waypoints
-                                                  .indexOf(waypoint) !=
-                                              trip.waypoints.length - 1,
+                                          showMidlLine: showMidlLine,
                                           iconName: waypoint.type.icon,
                                         );
                                       },
