@@ -23,7 +23,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         emit(state.copyWith(status: LoginStatus.initial));
       },
       checkPermissions: () async {
-        PermissionStatus status = await Permission.locationWhenInUse.request();
+        PermissionStatus status = await Permission.locationWhenInUse.status;
         PermissionStatus backgroundStatus =
             await Permission.locationAlways.request();
         if (status.isGranted && backgroundStatus.isGranted) {

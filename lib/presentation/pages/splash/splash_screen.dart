@@ -17,14 +17,15 @@ class SplashScreen extends StatelessWidget {
               if(context.mounted){
                 context.go('/main');
               }
-            });
+              },
+            );
           }
           if (listenerState.status == SplashStatus.unauthenticated) {
             await Future.delayed(const Duration(milliseconds: 2200), () {});
             if (context.mounted) {
-              context
-                  .read<SplashBloc>()
-                  .add(const SplashEvent.startAnimation(startAnimation: true));
+              context.read<SplashBloc>().add(
+                    const SplashEvent.startAnimation(startAnimation: true),
+                  );
             }
 
             await Future.delayed(const Duration(milliseconds: 800), () {});
@@ -36,7 +37,8 @@ class SplashScreen extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                   content:
-                      Text(listenerState.errorMessage ?? 'An error occurred')),
+                    Text(listenerState.errorMessage ?? 'An error occurred'),
+              ),
             );
           }
         },
@@ -51,7 +53,8 @@ class SplashScreen extends StatelessWidget {
                   'assets/images/logo.png',
                 ),
               ),
-            ));
+              ),
+            );
           },
         ),
       ),

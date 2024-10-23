@@ -12,6 +12,7 @@ class CustomTextField extends StatelessWidget {
   final FocusNode? focusNode;
   final TextInputAction? textInputAction;
   final ScrollController? scrollController;
+  final int? minLines;
 
   const CustomTextField({
     super.key,
@@ -25,6 +26,7 @@ class CustomTextField extends StatelessWidget {
     this.textInputAction,
     this.onSubmitted,
     this.scrollController,
+    this.minLines,
     this.keyboardType = TextInputType.text,
   });
 
@@ -36,6 +38,7 @@ class CustomTextField extends StatelessWidget {
       onSubmitted: onSubmitted,
       focusNode: focusNode,
       maxLength: maxLength,
+      minLines: minLines,
       maxLines: null,
       textInputAction: textInputAction,
       onChanged: onChanged,

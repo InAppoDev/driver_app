@@ -23,78 +23,55 @@ class ActiveTripDetailWidget extends StatelessWidget {
                 const SizedBox(height: 10),
                 if (state.trip != null && state.trip!.nextWaypoint != null)
                   NextTrip(nextTrip: state.trip!.nextWaypoint!),
-                // const SizedBox(height: 10),
-                // UploadScanFiles(
-                //   onAddFile: () {
-                //     context
-                //         .read<TripDetailBloc>()
-                //         .add(const TripDetailEvent.pickFile());
-                //   },
-                //   onScanFile: (image) {
-                //     context
-                //         .read<TripDetailBloc>()
-                //         .add(TripDetailEvent.scanDoc(image));
-                //   },
-                //   selectedFile: state.selectedFile,
-                //   onFileRemove: (file) {
-                //     context
-                //         .read<TripDetailBloc>()
-                //         .add(TripDetailEvent.removeFile(file: file));
-                //   },
-                //   onUploadPressed: () {
-                //     context
-                //         .read<TripDetailBloc>()
-                //         .add(const TripDetailEvent.uploadFiles());
-                //   },
-                //   isFileLoading: state.isFileLoading,
-                // ),
                 const SizedBox(height: 30),
               ],
             ),
           ),
         ),
-        Positioned(
-          bottom: 75,
-          right: 0,
-          child: GestureDetector(
-            onTap: () =>
-                GoRouter.of(context).push('/chat/${state.trip!.chatId}'),
-            child: Container(
-              padding: const EdgeInsets.all(14),
-              decoration: BoxDecoration(
-                color: Theme.of(context).cardColor,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Theme.of(context).focusColor.withOpacity(0.1),
-                    spreadRadius: 3,
-                    blurRadius: 3,
-                    offset: const Offset(0, 2),
-                  )
-                ],
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 22,
-                    height: 22,
-                    child: SvgPicture.asset(
-                      'assets/images/message.svg',
-                      colorFilter: ColorFilter.mode(
-                        Theme.of(context).scaffoldBackgroundColor,
-                        BlendMode.srcIn,
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 16, bottom: 75),
+            child: GestureDetector(
+              onTap: () =>
+                  GoRouter.of(context).push('/chat/${state.trip!.chatId}'),
+              child: Container(
+                padding: const EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).cardColor,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Theme.of(context).focusColor.withOpacity(0.1),
+                      spreadRadius: 3,
+                      blurRadius: 3,
+                      offset: const Offset(0, 2),
+                    )
+                  ],
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 22,
+                      height: 22,
+                      child: SvgPicture.asset(
+                        'assets/images/message.svg',
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).scaffoldBackgroundColor,
+                          BlendMode.srcIn,
+                        ),
                       ),
                     ),
-                  ),
-                  Text(
-                    'Chat id ${state.trip!.chatId}',
-                    style: TextStyle(
-                        fontSize: 12,
-                        color: Theme.of(context).scaffoldBackgroundColor),
-                  ),
-                ],
+                    Text(
+                      'Chat id ${state.trip!.chatId}',
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Theme.of(context).scaffoldBackgroundColor),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

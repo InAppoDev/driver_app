@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/data/models/personal_stats_model/personal_stats_model.dart';
+import 'package:tms_driver/presentation/consts/consts.dart';
 import 'package:tms_driver/presentation/pages/home/widget/profit_details_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class ProfitDetails extends StatelessWidget {
-  const ProfitDetails({super.key});
+  const ProfitDetails({super.key, required this.personalStats});
+
+  final PersonalStatsModel personalStats;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class ProfitDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'July 2024',
+                  formatDateFromTimestamp(personalStats.currentMonth),
                   style: theme.textTheme.labelSmall!.copyWith(fontSize: 15),
                 ),
                 Text(
@@ -34,33 +38,29 @@ class ProfitDetails extends StatelessWidget {
               ProfitDetailsWidget(
                 isSelected: false,
                 icon: Icons.local_shipping,
-                amount: '35',
+                amount: formatNumber(personalStats.monthly.dispatches),
                 text: context.localizations.trips,
-                showM: false,
                 showDollar: false,
               ),
               ProfitDetailsWidget(
-                isSelected: true,
+                isSelected: false,
                 icon: Icons.speed,
-                amount: '4500',
+                amount: formatNumber(personalStats.monthly.totalMiles),
                 text: context.localizations.totalMiles,
-                showM: false,
                 showDollar: true,
               ),
               ProfitDetailsWidget(
                 isSelected: false,
                 icon: Icons.checklist,
-                amount: '412',
+                amount: formatNumber(personalStats.monthly.checkCalls),
                 text: context.localizations.checkCalls,
-                showM: true,
                 showDollar: true,
               ),
               ProfitDetailsWidget(
                 isSelected: false,
                 icon: Icons.people,
-                amount: '210',
+                amount: formatNumber(personalStats.monthly.driveTimeHours),
                 text: context.localizations.driveTime,
-                showM: false,
                 showDollar: false,
                 showHours: true,
               ),

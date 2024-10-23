@@ -11,7 +11,7 @@ class SummaryOfTheDayWidget extends StatelessWidget {
     this.showMph = false,
   });
 
-  final int value;
+  final String value;
   final String text;
   final bool showK;
   final bool showMi;
@@ -32,12 +32,8 @@ class SummaryOfTheDayWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            value.toString() +
-                (showK
-                    ? context.localizations.k
-                    : showMi
-                        ? context.localizations.m
-                        : showMph
+            value +
+                ( showMph
                             ? context.localizations.mph
                             : ''),
             style: theme.textTheme.headlineLarge!

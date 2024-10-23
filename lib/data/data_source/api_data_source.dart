@@ -7,6 +7,7 @@ import 'package:tms_driver/data/models/document/upload_document_response.dart';
 import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_list_model/dispatch_list_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/data/models/personal_stats_model/personal_stats_model.dart';
 import 'package:tms_driver/data/models/user/user_model.dart';
 
 abstract class ApiDataSource {
@@ -44,6 +45,9 @@ abstract class ApiDataSource {
   Future<DispatchModel> getTripById(int tripId);
 
   Future<DispatchModel?> getActiveTrip();
+
+
+  Future<PersonalStatsModel?> getPersonalStats();
 
   Future<List<DispatchListModel>> getHistoryTrips();
 

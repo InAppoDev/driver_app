@@ -6,16 +6,19 @@ class Currents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Column(
           children: [
-            CurrentWidget(
-              topic: 'Ongoing Trip',
-              description: 'An overview of your trip',
-              value: '1/3',
-              milesToGo: 512,
-              valueDescription: 'Stops',
+            GestureDetector(
+              onTap: () {},
+              child: const CurrentWidget(
+                topic: 'Ongoing Trip',
+                description: 'An overview of your trip',
+                value: '1/3',
+                milesToGo: 512,
+                valueDescription: 'Stops',
+              ),
             ),
           ],
         ),

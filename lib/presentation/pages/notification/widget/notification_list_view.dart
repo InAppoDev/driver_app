@@ -51,14 +51,16 @@ class NotificationListView extends StatelessWidget {
                           title: Wrap(
                             children: [
                               Text(notificationModel.title ?? ''),
-                              if (notificationModel.eventAt != null)
-                                CustomDateWidget(
-                                    date: notificationModel.eventAt!)
+                              Text(
+                                '${notificationModel.description}',
+                              ),
                             ],
                           ),
-                          subtitle: Text(
-                            'Notification type: ${notificationModel.type}',
-                          ),
+                          subtitle: notificationModel.eventAt != null
+                              ? CustomDateWidget(
+                                  date: notificationModel.eventAt!,
+                                )
+                              : const SizedBox(),
                         ),
                       ),
                     );

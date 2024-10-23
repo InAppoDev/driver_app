@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class EtaWidget extends StatelessWidget {
+  final String text;
+  final VoidCallback onPressed;
+  final IconData? icon;
+
   const EtaWidget({
     super.key,
     required this.text,
     required this.onPressed,
+    this.icon,
   });
-
-  final String text;
-  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +26,25 @@ class EtaWidget extends StatelessWidget {
           ),
           border: Border.all(color: theme.dividerColor),
         ),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: theme.dividerColor,
-          ),
+        child: Row(
+          children: [
+            if (icon != null)
+              Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: Icon(
+                  icon,
+                  size: 14,
+                ),
+              ),
+            Text(
+              text,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: theme.dividerColor,
+              ),
+            ),
+          ],
         ),
       ),
     );
