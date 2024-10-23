@@ -28,7 +28,7 @@ class MainView extends StatelessWidget {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 ScaffoldMessenger.of(context).showMaterialBanner(
                   MaterialBanner(
-                    content: Text('No internet connection'),
+                    content: const Text('No internet connection'),
                     backgroundColor: Colors.redAccent,
                     actions: [
                       TextButton(
@@ -50,12 +50,13 @@ class MainView extends StatelessWidget {
                 ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
               });
             }
-
+            print('checkkk  1 - ${state.tabPage}');
+            print('checkkk  state.selectedPage - ${state.selectedPage}');
             switch (state.selectedPage) {
               case MainPageEnum.home:
                 return const HomePage();
               case MainPageEnum.trips:
-                return const TripListView();
+                return TripListView(tabPage: state.tabPage);
               case MainPageEnum.messages:
                 return const MessageListView();
               case MainPageEnum.profile:

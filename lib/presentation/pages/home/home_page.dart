@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tms_driver/presentation/blocks/home/home_bloc.dart';
+import 'package:tms_driver/presentation/blocks/main/bloc/main_bloc.dart';
+import 'package:tms_driver/presentation/blocks/trip_list/trip_list_bloc.dart';
 import 'package:tms_driver/presentation/pages/home/widget/currents.dart';
 import 'package:tms_driver/presentation/pages/home/widget/profit_dashboard.dart';
+import 'package:tms_driver/presentation/utils/enums/enums.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,7 +22,13 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   children: [
                     ProfitDashboard(personalStats: stats),
-                    const Currents(),
+                    Currents(
+                      onTap: () {
+                        context.read<MainBloc>().add(
+                            const MainEvent.updateSelectedPage(
+                                MainPageEnum.trips, 1));
+                      },
+                    ),
                   ],
                 ),
               ),

@@ -2,7 +2,6 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tms_driver/data/models/dispatch/cargo_info/cargo_info_model.dart';
-import 'package:tms_driver/data/models/dispatch/location_details/location_details_model.dart';
 import 'package:tms_driver/data/models/dispatch/waypoint/waypoint_detail_model.dart';
 
 part 'dispatch_model.freezed.dart';

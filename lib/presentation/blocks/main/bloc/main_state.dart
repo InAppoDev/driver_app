@@ -9,6 +9,7 @@ class MainState with _$MainState {
     required bool showNavBar,
     required bool isConnected,
     required bool isDriveStarted,
+    int? tabPage,
   }) = _MainState;
 
   factory MainState.initial() => const MainState(
