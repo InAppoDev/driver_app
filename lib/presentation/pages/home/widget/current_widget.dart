@@ -15,7 +15,7 @@ class CurrentWidget extends StatelessWidget {
   final String description;
   final String value;
   final String valueDescription;
-  final int milesToGo;
+  final String milesToGo;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +78,7 @@ class CurrentWidget extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    milesToGo.toString(),
+                    milesToGo,
                     style: theme.textTheme.labelLarge!.copyWith(fontSize: 22),
                   ),
                   Text(

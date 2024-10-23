@@ -15,6 +15,8 @@ _$DispatchModelImpl _$$DispatchModelImplFromJson(Map<String, dynamic> json) =>
           .toList(),
       startedMovingTimestamp:
           (json['started_moving_timestamp'] as num?)?.toInt(),
+      waypointsCompletedCount:
+          (json['waypoints_completed_count'] as num?)?.toInt(),
       nextWaypoint: json['next_waypoint'] == null
           ? null
           : WaypointDetailModel.fromJson(
@@ -44,6 +46,7 @@ Map<String, dynamic> _$$DispatchModelImplToJson(_$DispatchModelImpl instance) =>
       'truck_load_id': instance.truckLoadId,
       'waypoints': instance.waypoints,
       'started_moving_timestamp': instance.startedMovingTimestamp,
+      'waypoints_completed_count': instance.waypointsCompletedCount,
       'next_waypoint': instance.nextWaypoint,
       'next_eta_waypoint': instance.nextEtaWaypoint,
       'next_eta_timestamp': instance.nextEtaTimestamp,

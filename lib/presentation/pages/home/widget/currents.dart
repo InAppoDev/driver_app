@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
+import 'package:tms_driver/presentation/consts/consts.dart';
 import 'package:tms_driver/presentation/pages/home/widget/current_widget.dart';
 
 class Currents extends StatelessWidget {
@@ -6,23 +9,22 @@ class Currents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Column(
-          children: [
-            GestureDetector(
+    return BlocBuilder<TripDetailBloc, TripDetailState>(
+        builder: (context, state) {
+      return state.trip != null
+          ? GestureDetector(
               onTap: () {},
-              child: const CurrentWidget(
+              child: CurrentWidget(
                 topic: 'Ongoing Trip',
                 description: 'An overview of your trip',
-                value: '1/3',
-                milesToGo: 512,
+                value:
+                    '${state.trip!.waypointsCompletedCount ?? 0}/${state.trip!.waypoints.length}',
+                milesToGo: formatNumber(
+                    double.parse(state.trip!.routeTotalMi).toInt()),
                 valueDescription: 'Stops',
               ),
-            ),
-          ],
-        ),
-      ],
-    );
+            )
+          : const SizedBox();
+    });
   }
 }

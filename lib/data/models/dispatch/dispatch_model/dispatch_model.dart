@@ -2,6 +2,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:tms_driver/data/models/dispatch/cargo_info/cargo_info_model.dart';
+import 'package:tms_driver/data/models/dispatch/location_details/location_details_model.dart';
 import 'package:tms_driver/data/models/dispatch/waypoint/waypoint_detail_model.dart';
 
 part 'dispatch_model.freezed.dart';
@@ -14,7 +15,8 @@ class DispatchModel with _$DispatchModel {
     @JsonKey(name: 'truck_load_id') required int truckLoadId,
     @JsonKey(name: 'waypoints') required List<WaypointDetailModel> waypoints,
     @JsonKey(name: 'started_moving_timestamp') int? startedMovingTimestamp,
-    @JsonKey(name: 'next_waypoint') WaypointDetailModel? nextWaypoint,
+    @JsonKey(name: 'waypoints_completed_count') required int? waypointsCompletedCount,
+  @JsonKey(name: 'next_waypoint') WaypointDetailModel? nextWaypoint,
     @JsonKey(name: 'next_eta_waypoint') WaypointDetailModel? nextEtaWaypoint,
     @JsonKey(name: 'next_eta_timestamp') int? nextEtaTimestamp,
     @JsonKey(name: 'is_tonu_declared') required bool isTonuDeclared,

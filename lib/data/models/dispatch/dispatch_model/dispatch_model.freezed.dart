@@ -28,6 +28,8 @@ mixin _$DispatchModel {
   List<WaypointDetailModel> get waypoints => throw _privateConstructorUsedError;
   @JsonKey(name: 'started_moving_timestamp')
   int? get startedMovingTimestamp => throw _privateConstructorUsedError;
+  @JsonKey(name: 'waypoints_completed_count')
+  int? get waypointsCompletedCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'next_waypoint')
   WaypointDetailModel? get nextWaypoint => throw _privateConstructorUsedError;
   @JsonKey(name: 'next_eta_waypoint')
@@ -75,6 +77,7 @@ abstract class $DispatchModelCopyWith<$Res> {
       @JsonKey(name: 'truck_load_id') int truckLoadId,
       @JsonKey(name: 'waypoints') List<WaypointDetailModel> waypoints,
       @JsonKey(name: 'started_moving_timestamp') int? startedMovingTimestamp,
+      @JsonKey(name: 'waypoints_completed_count') int? waypointsCompletedCount,
       @JsonKey(name: 'next_waypoint') WaypointDetailModel? nextWaypoint,
       @JsonKey(name: 'next_eta_waypoint') WaypointDetailModel? nextEtaWaypoint,
       @JsonKey(name: 'next_eta_timestamp') int? nextEtaTimestamp,
@@ -114,6 +117,7 @@ class _$DispatchModelCopyWithImpl<$Res, $Val extends DispatchModel>
     Object? truckLoadId = null,
     Object? waypoints = null,
     Object? startedMovingTimestamp = freezed,
+    Object? waypointsCompletedCount = freezed,
     Object? nextWaypoint = freezed,
     Object? nextEtaWaypoint = freezed,
     Object? nextEtaTimestamp = freezed,
@@ -143,6 +147,10 @@ class _$DispatchModelCopyWithImpl<$Res, $Val extends DispatchModel>
       startedMovingTimestamp: freezed == startedMovingTimestamp
           ? _value.startedMovingTimestamp
           : startedMovingTimestamp // ignore: cast_nullable_to_non_nullable
+              as int?,
+      waypointsCompletedCount: freezed == waypointsCompletedCount
+          ? _value.waypointsCompletedCount
+          : waypointsCompletedCount // ignore: cast_nullable_to_non_nullable
               as int?,
       nextWaypoint: freezed == nextWaypoint
           ? _value.nextWaypoint
@@ -247,6 +255,7 @@ abstract class _$$DispatchModelImplCopyWith<$Res>
       @JsonKey(name: 'truck_load_id') int truckLoadId,
       @JsonKey(name: 'waypoints') List<WaypointDetailModel> waypoints,
       @JsonKey(name: 'started_moving_timestamp') int? startedMovingTimestamp,
+      @JsonKey(name: 'waypoints_completed_count') int? waypointsCompletedCount,
       @JsonKey(name: 'next_waypoint') WaypointDetailModel? nextWaypoint,
       @JsonKey(name: 'next_eta_waypoint') WaypointDetailModel? nextEtaWaypoint,
       @JsonKey(name: 'next_eta_timestamp') int? nextEtaTimestamp,
@@ -287,6 +296,7 @@ class __$$DispatchModelImplCopyWithImpl<$Res>
     Object? truckLoadId = null,
     Object? waypoints = null,
     Object? startedMovingTimestamp = freezed,
+    Object? waypointsCompletedCount = freezed,
     Object? nextWaypoint = freezed,
     Object? nextEtaWaypoint = freezed,
     Object? nextEtaTimestamp = freezed,
@@ -316,6 +326,10 @@ class __$$DispatchModelImplCopyWithImpl<$Res>
       startedMovingTimestamp: freezed == startedMovingTimestamp
           ? _value.startedMovingTimestamp
           : startedMovingTimestamp // ignore: cast_nullable_to_non_nullable
+              as int?,
+      waypointsCompletedCount: freezed == waypointsCompletedCount
+          ? _value.waypointsCompletedCount
+          : waypointsCompletedCount // ignore: cast_nullable_to_non_nullable
               as int?,
       nextWaypoint: freezed == nextWaypoint
           ? _value.nextWaypoint
@@ -378,6 +392,8 @@ class _$DispatchModelImpl implements _DispatchModel {
       @JsonKey(name: 'waypoints')
       required final List<WaypointDetailModel> waypoints,
       @JsonKey(name: 'started_moving_timestamp') this.startedMovingTimestamp,
+      @JsonKey(name: 'waypoints_completed_count')
+      required this.waypointsCompletedCount,
       @JsonKey(name: 'next_waypoint') this.nextWaypoint,
       @JsonKey(name: 'next_eta_waypoint') this.nextEtaWaypoint,
       @JsonKey(name: 'next_eta_timestamp') this.nextEtaTimestamp,
@@ -414,6 +430,9 @@ class _$DispatchModelImpl implements _DispatchModel {
   @override
   @JsonKey(name: 'started_moving_timestamp')
   final int? startedMovingTimestamp;
+  @override
+  @JsonKey(name: 'waypoints_completed_count')
+  final int? waypointsCompletedCount;
   @override
   @JsonKey(name: 'next_waypoint')
   final WaypointDetailModel? nextWaypoint;
@@ -453,7 +472,7 @@ class _$DispatchModelImpl implements _DispatchModel {
 
   @override
   String toString() {
-    return 'DispatchModel(id: $id, truckLoadId: $truckLoadId, waypoints: $waypoints, startedMovingTimestamp: $startedMovingTimestamp, nextWaypoint: $nextWaypoint, nextEtaWaypoint: $nextEtaWaypoint, nextEtaTimestamp: $nextEtaTimestamp, isTonuDeclared: $isTonuDeclared, isFinished: $isFinished, temperatureMaintainType: $temperatureMaintainType, temperatureMaintainFrom: $temperatureMaintainFrom, temperatureMaintainTo: $temperatureMaintainTo, cargoInfo: $cargoInfo, nextMandatoryCheckCallType: $nextMandatoryCheckCallType, chatId: $chatId, routeTotalMi: $routeTotalMi)';
+    return 'DispatchModel(id: $id, truckLoadId: $truckLoadId, waypoints: $waypoints, startedMovingTimestamp: $startedMovingTimestamp, waypointsCompletedCount: $waypointsCompletedCount, nextWaypoint: $nextWaypoint, nextEtaWaypoint: $nextEtaWaypoint, nextEtaTimestamp: $nextEtaTimestamp, isTonuDeclared: $isTonuDeclared, isFinished: $isFinished, temperatureMaintainType: $temperatureMaintainType, temperatureMaintainFrom: $temperatureMaintainFrom, temperatureMaintainTo: $temperatureMaintainTo, cargoInfo: $cargoInfo, nextMandatoryCheckCallType: $nextMandatoryCheckCallType, chatId: $chatId, routeTotalMi: $routeTotalMi)';
   }
 
   @override
@@ -468,6 +487,9 @@ class _$DispatchModelImpl implements _DispatchModel {
                 .equals(other._waypoints, _waypoints) &&
             (identical(other.startedMovingTimestamp, startedMovingTimestamp) ||
                 other.startedMovingTimestamp == startedMovingTimestamp) &&
+            (identical(
+                    other.waypointsCompletedCount, waypointsCompletedCount) ||
+                other.waypointsCompletedCount == waypointsCompletedCount) &&
             (identical(other.nextWaypoint, nextWaypoint) ||
                 other.nextWaypoint == nextWaypoint) &&
             (identical(other.nextEtaWaypoint, nextEtaWaypoint) ||
@@ -505,6 +527,7 @@ class _$DispatchModelImpl implements _DispatchModel {
       truckLoadId,
       const DeepCollectionEquality().hash(_waypoints),
       startedMovingTimestamp,
+      waypointsCompletedCount,
       nextWaypoint,
       nextEtaWaypoint,
       nextEtaTimestamp,
@@ -542,6 +565,8 @@ abstract class _DispatchModel implements DispatchModel {
       required final List<WaypointDetailModel> waypoints,
       @JsonKey(name: 'started_moving_timestamp')
       final int? startedMovingTimestamp,
+      @JsonKey(name: 'waypoints_completed_count')
+      required final int? waypointsCompletedCount,
       @JsonKey(name: 'next_waypoint') final WaypointDetailModel? nextWaypoint,
       @JsonKey(name: 'next_eta_waypoint')
       final WaypointDetailModel? nextEtaWaypoint,
@@ -576,6 +601,9 @@ abstract class _DispatchModel implements DispatchModel {
   @override
   @JsonKey(name: 'started_moving_timestamp')
   int? get startedMovingTimestamp;
+  @override
+  @JsonKey(name: 'waypoints_completed_count')
+  int? get waypointsCompletedCount;
   @override
   @JsonKey(name: 'next_waypoint')
   WaypointDetailModel? get nextWaypoint;
