@@ -30,7 +30,7 @@ class TripItemsList extends StatelessWidget {
         }
       },
       child: ListView.builder(
-        padding: const EdgeInsets.only(bottom: 80),
+        padding: const EdgeInsets.only(bottom: 80, ),
         shrinkWrap: true,
         itemCount: trips.length,
         itemBuilder: (context, index) => TripItemWidget(

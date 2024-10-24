@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
+import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/presentation/pages/active_trip/widget/fixed_button.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/next_trip.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_data.dart';
 
 class ActiveTripDetailWidget extends StatelessWidget {
-  final TripDetailState state;
+  final DispatchModel trip;
 
-  const ActiveTripDetailWidget({super.key, required this.state});
+  const ActiveTripDetailWidget({super.key, required this.trip});
 
   @override
   Widget build(BuildContext context) {
@@ -16,25 +17,29 @@ class ActiveTripDetailWidget extends StatelessWidget {
       children: [
         SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 60),
+            padding: const EdgeInsets.only(bottom: 160, right: 16, left: 16),
             child: Column(
               children: [
-                if (state.trip != null) TripData(trip: state.trip!),
+                TripData(trip: trip),
                 const SizedBox(height: 10),
-                if (state.trip != null && state.trip!.nextWaypoint != null)
-                  NextTrip(nextTrip: state.trip!.nextWaypoint!),
+                if (trip.nextWaypoint != null)
+                  NextTrip(nextTrip: trip.nextWaypoint!),
                 const SizedBox(height: 30),
               ],
             ),
           ),
         ),
+
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: FixedButton(trip: trip),
+          ),
         Align(
           alignment: Alignment.bottomRight,
           child: Padding(
-            padding: const EdgeInsets.only(right: 16, bottom: 75),
+            padding: const EdgeInsets.only(right: 16, bottom: 175),
             child: GestureDetector(
-              onTap: () =>
-                  GoRouter.of(context).push('/chat/${state.trip!.chatId}'),
+              onTap: () => GoRouter.of(context).push('/chat/${trip.chatId}'),
               child: Container(
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
@@ -65,7 +70,7 @@ class ActiveTripDetailWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Chat id ${state.trip!.chatId}',
+                      'Chat id ${trip.chatId}',
                       style: TextStyle(
                           fontSize: 12,
                           color: Theme.of(context).scaffoldBackgroundColor),

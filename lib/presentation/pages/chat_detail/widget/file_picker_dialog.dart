@@ -11,6 +11,9 @@ class FilePickerDialog extends StatelessWidget {
     this.selectedFile,
     required this.onFileRemove,
     required this.isFileLoading,
+    this.isActiveTrip = false,
+    this.title = '',
+    this.isCleanBol = false,
   });
 
   final VoidCallback onAddFile;
@@ -18,6 +21,9 @@ class FilePickerDialog extends StatelessWidget {
   final Function(File) onFileRemove;
   final File? selectedFile;
   final bool isFileLoading;
+  final bool isActiveTrip;
+  final bool isCleanBol;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +44,9 @@ class FilePickerDialog extends StatelessWidget {
         selectedFile: selectedFile,
         onFileRemove: onFileRemove,
         isFileLoading: isFileLoading,
+        title: title,
+        isActiveTrip: isActiveTrip,
+        isCleanBol: isCleanBol,
       ),
     );
   }

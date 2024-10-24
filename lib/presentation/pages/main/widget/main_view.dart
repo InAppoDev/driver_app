@@ -22,6 +22,7 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MainBloc, MainState>(builder: (context, state) {
       return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Theme.of(context).canvasColor,
         appBar: const CustomAppBar(),
         extendBody: true,

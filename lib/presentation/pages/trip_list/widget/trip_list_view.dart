@@ -50,7 +50,7 @@ class TripListViewState extends State<TripListView>
     return BlocBuilder<TripListBloc, TripListState>(
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.only(top: 8),
           child: Column(
             children: [
               Container(
@@ -68,6 +68,7 @@ class TripListViewState extends State<TripListView>
                 ),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 16),
                 child: TabBar(
                   controller: _tabController,
                   indicator: BoxDecoration(
