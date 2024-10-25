@@ -20,8 +20,7 @@ class Currents extends StatelessWidget {
                 description: 'An overview of your trip',
                 value:
                     '${state.trip!.waypointsCompletedCount ?? 0}/${state.trip!.waypoints.length}',
-                milesToGo: formatNumber(
-                    double.parse(state.trip!.routeTotalMi).toInt()),
+                milesToGo: '${formatNumber(double.parse(state.trip!.routeTotalMi).toInt())} mi',
                 valueDescription: 'Stops',
               ),
             )

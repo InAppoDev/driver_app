@@ -16,13 +16,13 @@ class DashBoard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 context.localizations.lifetimeStats,
-                style: theme.textTheme.labelSmall!.copyWith(fontSize: 15),
+                style: theme.textTheme.labelSmall!.copyWith(fontSize: 18),
               ),
               Text(
                 context.localizations.hereIsASummaryOfYourOverallPerformance,
@@ -34,7 +34,7 @@ class DashBoard extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 7),
+          padding: const EdgeInsets.symmetric(horizontal: 9),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
