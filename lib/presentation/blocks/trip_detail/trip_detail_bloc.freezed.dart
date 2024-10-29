@@ -30,6 +30,7 @@ mixin _$TripDetailEvent {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -37,7 +38,8 @@ mixin _$TripDetailEvent {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +57,7 @@ mixin _$TripDetailEvent {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -62,7 +65,8 @@ mixin _$TripDetailEvent {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) =>
       throw _privateConstructorUsedError;
@@ -80,6 +84,7 @@ mixin _$TripDetailEvent {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -87,7 +92,8 @@ mixin _$TripDetailEvent {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) =>
@@ -107,6 +113,8 @@ mixin _$TripDetailEvent {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) =>
       throw _privateConstructorUsedError;
@@ -124,6 +132,8 @@ mixin _$TripDetailEvent {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +151,8 @@ mixin _$TripDetailEvent {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) =>
@@ -221,6 +233,7 @@ class _$InitializeImpl implements Initialize {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -228,7 +241,8 @@ class _$InitializeImpl implements Initialize {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return initialize();
@@ -249,6 +263,7 @@ class _$InitializeImpl implements Initialize {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -256,7 +271,8 @@ class _$InitializeImpl implements Initialize {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return initialize?.call();
@@ -277,6 +293,7 @@ class _$InitializeImpl implements Initialize {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -284,7 +301,8 @@ class _$InitializeImpl implements Initialize {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
@@ -310,6 +328,8 @@ class _$InitializeImpl implements Initialize {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return initialize(this);
@@ -330,6 +350,8 @@ class _$InitializeImpl implements Initialize {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return initialize?.call(this);
@@ -350,6 +372,8 @@ class _$InitializeImpl implements Initialize {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -446,6 +470,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -453,7 +478,8 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return getDateAndTime(dateTime);
@@ -474,6 +500,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -481,7 +508,8 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return getDateAndTime?.call(dateTime);
@@ -502,6 +530,7 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -509,7 +538,8 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
@@ -535,6 +565,8 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return getDateAndTime(this);
@@ -555,6 +587,8 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return getDateAndTime?.call(this);
@@ -575,6 +609,8 @@ class _$GetDateAndTimeImpl implements GetDateAndTime {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -651,6 +687,7 @@ class _$PickFileImpl implements PickFile {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -658,7 +695,8 @@ class _$PickFileImpl implements PickFile {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return pickFile();
@@ -679,6 +717,7 @@ class _$PickFileImpl implements PickFile {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -686,7 +725,8 @@ class _$PickFileImpl implements PickFile {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return pickFile?.call();
@@ -707,6 +747,7 @@ class _$PickFileImpl implements PickFile {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -714,7 +755,8 @@ class _$PickFileImpl implements PickFile {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
@@ -740,6 +782,8 @@ class _$PickFileImpl implements PickFile {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return pickFile(this);
@@ -760,6 +804,8 @@ class _$PickFileImpl implements PickFile {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return pickFile?.call(this);
@@ -780,6 +826,8 @@ class _$PickFileImpl implements PickFile {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -874,6 +922,7 @@ class _$RemoveFileImpl implements RemoveFile {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -881,7 +930,8 @@ class _$RemoveFileImpl implements RemoveFile {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return removeFile(file);
@@ -902,6 +952,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -909,7 +960,8 @@ class _$RemoveFileImpl implements RemoveFile {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return removeFile?.call(file);
@@ -930,6 +982,7 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -937,7 +990,8 @@ class _$RemoveFileImpl implements RemoveFile {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
@@ -963,6 +1017,8 @@ class _$RemoveFileImpl implements RemoveFile {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return removeFile(this);
@@ -983,6 +1039,8 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return removeFile?.call(this);
@@ -1003,6 +1061,8 @@ class _$RemoveFileImpl implements RemoveFile {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -1105,6 +1165,7 @@ class _$ScanDocImpl implements ScanDoc {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -1112,7 +1173,8 @@ class _$ScanDocImpl implements ScanDoc {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return scanDoc(image);
@@ -1133,6 +1195,7 @@ class _$ScanDocImpl implements ScanDoc {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -1140,7 +1203,8 @@ class _$ScanDocImpl implements ScanDoc {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return scanDoc?.call(image);
@@ -1161,6 +1225,7 @@ class _$ScanDocImpl implements ScanDoc {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -1168,7 +1233,8 @@ class _$ScanDocImpl implements ScanDoc {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
@@ -1194,6 +1260,8 @@ class _$ScanDocImpl implements ScanDoc {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return scanDoc(this);
@@ -1214,6 +1282,8 @@ class _$ScanDocImpl implements ScanDoc {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return scanDoc?.call(this);
@@ -1234,6 +1304,8 @@ class _$ScanDocImpl implements ScanDoc {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -1309,6 +1381,7 @@ class _$UploadFilesImpl implements UploadFiles {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -1316,7 +1389,8 @@ class _$UploadFilesImpl implements UploadFiles {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return uploadFiles();
@@ -1337,6 +1411,7 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -1344,7 +1419,8 @@ class _$UploadFilesImpl implements UploadFiles {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return uploadFiles?.call();
@@ -1365,6 +1441,7 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -1372,7 +1449,8 @@ class _$UploadFilesImpl implements UploadFiles {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
@@ -1398,6 +1476,8 @@ class _$UploadFilesImpl implements UploadFiles {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return uploadFiles(this);
@@ -1418,6 +1498,8 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return uploadFiles?.call(this);
@@ -1438,6 +1520,8 @@ class _$UploadFilesImpl implements UploadFiles {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -1533,6 +1617,7 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -1540,7 +1625,8 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return fetchTripDetail(tripId);
@@ -1561,6 +1647,7 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -1568,7 +1655,8 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return fetchTripDetail?.call(tripId);
@@ -1589,6 +1677,7 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -1596,7 +1685,8 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
@@ -1622,6 +1712,8 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return fetchTripDetail(this);
@@ -1642,6 +1734,8 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return fetchTripDetail?.call(this);
@@ -1662,6 +1756,8 @@ class _$FetchTripDetailImpl implements FetchTripDetail {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -1740,6 +1836,7 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -1747,7 +1844,8 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return toggleStopsVisibility();
@@ -1768,6 +1866,7 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -1775,7 +1874,8 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return toggleStopsVisibility?.call();
@@ -1796,6 +1896,7 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -1803,7 +1904,8 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
@@ -1829,6 +1931,8 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return toggleStopsVisibility(this);
@@ -1849,6 +1953,8 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return toggleStopsVisibility?.call(this);
@@ -1869,6 +1975,8 @@ class _$ToggleStopsVisibilityImpl implements ToggleStopsVisibility {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -1936,6 +2044,7 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -1943,7 +2052,8 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return loadActiveTrip();
@@ -1964,6 +2074,7 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -1971,7 +2082,8 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return loadActiveTrip?.call();
@@ -1992,6 +2104,7 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -1999,7 +2112,8 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
@@ -2025,6 +2139,8 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return loadActiveTrip(this);
@@ -2045,6 +2161,8 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return loadActiveTrip?.call(this);
@@ -2065,6 +2183,8 @@ class _$LoadActiveTripImpl implements LoadActiveTrip {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -2132,6 +2252,7 @@ class _$AddDocumentImpl implements AddDocument {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -2139,7 +2260,8 @@ class _$AddDocumentImpl implements AddDocument {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return addDocument();
@@ -2160,6 +2282,7 @@ class _$AddDocumentImpl implements AddDocument {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -2167,7 +2290,8 @@ class _$AddDocumentImpl implements AddDocument {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return addDocument?.call();
@@ -2188,6 +2312,7 @@ class _$AddDocumentImpl implements AddDocument {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -2195,7 +2320,8 @@ class _$AddDocumentImpl implements AddDocument {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
@@ -2221,6 +2347,8 @@ class _$AddDocumentImpl implements AddDocument {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return addDocument(this);
@@ -2241,6 +2369,8 @@ class _$AddDocumentImpl implements AddDocument {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return addDocument?.call(this);
@@ -2261,6 +2391,8 @@ class _$AddDocumentImpl implements AddDocument {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -2355,6 +2487,7 @@ class _$ScanDocumentImpl implements ScanDocument {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -2362,7 +2495,8 @@ class _$ScanDocumentImpl implements ScanDocument {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return scanDocument(image);
@@ -2383,6 +2517,7 @@ class _$ScanDocumentImpl implements ScanDocument {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -2390,7 +2525,8 @@ class _$ScanDocumentImpl implements ScanDocument {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return scanDocument?.call(image);
@@ -2411,6 +2547,7 @@ class _$ScanDocumentImpl implements ScanDocument {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -2418,7 +2555,8 @@ class _$ScanDocumentImpl implements ScanDocument {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
@@ -2444,6 +2582,8 @@ class _$ScanDocumentImpl implements ScanDocument {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return scanDocument(this);
@@ -2464,6 +2604,8 @@ class _$ScanDocumentImpl implements ScanDocument {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return scanDocument?.call(this);
@@ -2484,6 +2626,8 @@ class _$ScanDocumentImpl implements ScanDocument {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -2587,6 +2731,7 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -2594,7 +2739,8 @@ class _$RemoveDocumentImpl implements RemoveDocument {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return removeDocument(doc);
@@ -2615,6 +2761,7 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -2622,7 +2769,8 @@ class _$RemoveDocumentImpl implements RemoveDocument {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return removeDocument?.call(doc);
@@ -2643,6 +2791,7 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -2650,7 +2799,8 @@ class _$RemoveDocumentImpl implements RemoveDocument {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
@@ -2676,6 +2826,8 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return removeDocument(this);
@@ -2696,6 +2848,8 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return removeDocument?.call(this);
@@ -2716,6 +2870,8 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -2739,6 +2895,217 @@ abstract class RemoveDocument implements TripDetailEvent {
 }
 
 /// @nodoc
+abstract class _$$SetCheckCallCheckerToNullImplCopyWith<$Res> {
+  factory _$$SetCheckCallCheckerToNullImplCopyWith(
+          _$SetCheckCallCheckerToNullImpl value,
+          $Res Function(_$SetCheckCallCheckerToNullImpl) then) =
+      __$$SetCheckCallCheckerToNullImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SetCheckCallCheckerToNullImplCopyWithImpl<$Res>
+    extends _$TripDetailEventCopyWithImpl<$Res, _$SetCheckCallCheckerToNullImpl>
+    implements _$$SetCheckCallCheckerToNullImplCopyWith<$Res> {
+  __$$SetCheckCallCheckerToNullImplCopyWithImpl(
+      _$SetCheckCallCheckerToNullImpl _value,
+      $Res Function(_$SetCheckCallCheckerToNullImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SetCheckCallCheckerToNullImpl implements SetCheckCallCheckerToNull {
+  const _$SetCheckCallCheckerToNullImpl();
+
+  @override
+  String toString() {
+    return 'TripDetailEvent.setCheckCallCheckerToNull()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetCheckCallCheckerToNullImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() pickFile,
+    required TResult Function(File file) removeFile,
+    required TResult Function(String image) scanDoc,
+    required TResult Function() uploadFiles,
+    required TResult Function(int tripId) fetchTripDetail,
+    required TResult Function() toggleStopsVisibility,
+    required TResult Function() loadActiveTrip,
+    required TResult Function() addDocument,
+    required TResult Function(String image) scanDocument,
+    required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
+    required TResult Function(
+            int tripId,
+            String type,
+            int? etaTimestamp,
+            String? comment,
+            List<String> documentIds,
+            bool? isCleanBol,
+            bool? isLoadReject,
+            VoidCallback onResult)
+        confirmTrip,
+  }) {
+    return setCheckCallCheckerToNull();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? pickFile,
+    TResult? Function(File file)? removeFile,
+    TResult? Function(String image)? scanDoc,
+    TResult? Function()? uploadFiles,
+    TResult? Function(int tripId)? fetchTripDetail,
+    TResult? Function()? toggleStopsVisibility,
+    TResult? Function()? loadActiveTrip,
+    TResult? Function()? addDocument,
+    TResult? Function(String image)? scanDocument,
+    TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
+    TResult? Function(
+            int tripId,
+            String type,
+            int? etaTimestamp,
+            String? comment,
+            List<String> documentIds,
+            bool? isCleanBol,
+            bool? isLoadReject,
+            VoidCallback onResult)?
+        confirmTrip,
+  }) {
+    return setCheckCallCheckerToNull?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? pickFile,
+    TResult Function(File file)? removeFile,
+    TResult Function(String image)? scanDoc,
+    TResult Function()? uploadFiles,
+    TResult Function(int tripId)? fetchTripDetail,
+    TResult Function()? toggleStopsVisibility,
+    TResult Function()? loadActiveTrip,
+    TResult Function()? addDocument,
+    TResult Function(String image)? scanDocument,
+    TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
+    TResult Function(
+            int tripId,
+            String type,
+            int? etaTimestamp,
+            String? comment,
+            List<String> documentIds,
+            bool? isCleanBol,
+            bool? isLoadReject,
+            VoidCallback onResult)?
+        confirmTrip,
+    required TResult orElse(),
+  }) {
+    if (setCheckCallCheckerToNull != null) {
+      return setCheckCallCheckerToNull();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initialize value) initialize,
+    required TResult Function(GetDateAndTime value) getDateAndTime,
+    required TResult Function(PickFile value) pickFile,
+    required TResult Function(RemoveFile value) removeFile,
+    required TResult Function(ScanDoc value) scanDoc,
+    required TResult Function(UploadFiles value) uploadFiles,
+    required TResult Function(FetchTripDetail value) fetchTripDetail,
+    required TResult Function(ToggleStopsVisibility value)
+        toggleStopsVisibility,
+    required TResult Function(LoadActiveTrip value) loadActiveTrip,
+    required TResult Function(AddDocument value) addDocument,
+    required TResult Function(ScanDocument value) scanDocument,
+    required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
+    required TResult Function(ConfirmTrip value) confirmTrip,
+  }) {
+    return setCheckCallCheckerToNull(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initialize value)? initialize,
+    TResult? Function(GetDateAndTime value)? getDateAndTime,
+    TResult? Function(PickFile value)? pickFile,
+    TResult? Function(RemoveFile value)? removeFile,
+    TResult? Function(ScanDoc value)? scanDoc,
+    TResult? Function(UploadFiles value)? uploadFiles,
+    TResult? Function(FetchTripDetail value)? fetchTripDetail,
+    TResult? Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult? Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult? Function(AddDocument value)? addDocument,
+    TResult? Function(ScanDocument value)? scanDocument,
+    TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
+    TResult? Function(ConfirmTrip value)? confirmTrip,
+  }) {
+    return setCheckCallCheckerToNull?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initialize value)? initialize,
+    TResult Function(GetDateAndTime value)? getDateAndTime,
+    TResult Function(PickFile value)? pickFile,
+    TResult Function(RemoveFile value)? removeFile,
+    TResult Function(ScanDoc value)? scanDoc,
+    TResult Function(UploadFiles value)? uploadFiles,
+    TResult Function(FetchTripDetail value)? fetchTripDetail,
+    TResult Function(ToggleStopsVisibility value)? toggleStopsVisibility,
+    TResult Function(LoadActiveTrip value)? loadActiveTrip,
+    TResult Function(AddDocument value)? addDocument,
+    TResult Function(ScanDocument value)? scanDocument,
+    TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
+    TResult Function(ConfirmTrip value)? confirmTrip,
+    required TResult orElse(),
+  }) {
+    if (setCheckCallCheckerToNull != null) {
+      return setCheckCallCheckerToNull(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetCheckCallCheckerToNull implements TripDetailEvent {
+  const factory SetCheckCallCheckerToNull() = _$SetCheckCallCheckerToNullImpl;
+}
+
+/// @nodoc
 abstract class _$$ConfirmTripImplCopyWith<$Res> {
   factory _$$ConfirmTripImplCopyWith(
           _$ConfirmTripImpl value, $Res Function(_$ConfirmTripImpl) then) =
@@ -2751,7 +3118,8 @@ abstract class _$$ConfirmTripImplCopyWith<$Res> {
       String? comment,
       List<String> documentIds,
       bool? isCleanBol,
-      bool? isLoadReject});
+      bool? isLoadReject,
+      VoidCallback onResult});
 }
 
 /// @nodoc
@@ -2774,6 +3142,7 @@ class __$$ConfirmTripImplCopyWithImpl<$Res>
     Object? documentIds = null,
     Object? isCleanBol = freezed,
     Object? isLoadReject = freezed,
+    Object? onResult = null,
   }) {
     return _then(_$ConfirmTripImpl(
       tripId: null == tripId
@@ -2804,6 +3173,10 @@ class __$$ConfirmTripImplCopyWithImpl<$Res>
           ? _value.isLoadReject
           : isLoadReject // ignore: cast_nullable_to_non_nullable
               as bool?,
+      onResult: null == onResult
+          ? _value.onResult
+          : onResult // ignore: cast_nullable_to_non_nullable
+              as VoidCallback,
     ));
   }
 }
@@ -2818,7 +3191,8 @@ class _$ConfirmTripImpl implements ConfirmTrip {
       this.comment,
       final List<String> documentIds = const [],
       this.isCleanBol,
-      this.isLoadReject})
+      this.isLoadReject,
+      required this.onResult})
       : _documentIds = documentIds;
 
   @override
@@ -2842,10 +3216,12 @@ class _$ConfirmTripImpl implements ConfirmTrip {
   final bool? isCleanBol;
   @override
   final bool? isLoadReject;
+  @override
+  final VoidCallback onResult;
 
   @override
   String toString() {
-    return 'TripDetailEvent.confirmTrip(tripId: $tripId, type: $type, etaTimestamp: $etaTimestamp, comment: $comment, documentIds: $documentIds, isCleanBol: $isCleanBol, isLoadReject: $isLoadReject)';
+    return 'TripDetailEvent.confirmTrip(tripId: $tripId, type: $type, etaTimestamp: $etaTimestamp, comment: $comment, documentIds: $documentIds, isCleanBol: $isCleanBol, isLoadReject: $isLoadReject, onResult: $onResult)';
   }
 
   @override
@@ -2863,7 +3239,9 @@ class _$ConfirmTripImpl implements ConfirmTrip {
             (identical(other.isCleanBol, isCleanBol) ||
                 other.isCleanBol == isCleanBol) &&
             (identical(other.isLoadReject, isLoadReject) ||
-                other.isLoadReject == isLoadReject));
+                other.isLoadReject == isLoadReject) &&
+            (identical(other.onResult, onResult) ||
+                other.onResult == onResult));
   }
 
   @override
@@ -2875,7 +3253,8 @@ class _$ConfirmTripImpl implements ConfirmTrip {
       comment,
       const DeepCollectionEquality().hash(_documentIds),
       isCleanBol,
-      isLoadReject);
+      isLoadReject,
+      onResult);
 
   /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -2900,6 +3279,7 @@ class _$ConfirmTripImpl implements ConfirmTrip {
     required TResult Function() addDocument,
     required TResult Function(String image) scanDocument,
     required TResult Function(String doc) removeDocument,
+    required TResult Function() setCheckCallCheckerToNull,
     required TResult Function(
             int tripId,
             String type,
@@ -2907,11 +3287,12 @@ class _$ConfirmTripImpl implements ConfirmTrip {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)
+            bool? isLoadReject,
+            VoidCallback onResult)
         confirmTrip,
   }) {
     return confirmTrip(tripId, type, etaTimestamp, comment, documentIds,
-        isCleanBol, isLoadReject);
+        isCleanBol, isLoadReject, onResult);
   }
 
   @override
@@ -2929,6 +3310,7 @@ class _$ConfirmTripImpl implements ConfirmTrip {
     TResult? Function()? addDocument,
     TResult? Function(String image)? scanDocument,
     TResult? Function(String doc)? removeDocument,
+    TResult? Function()? setCheckCallCheckerToNull,
     TResult? Function(
             int tripId,
             String type,
@@ -2936,11 +3318,12 @@ class _$ConfirmTripImpl implements ConfirmTrip {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
   }) {
     return confirmTrip?.call(tripId, type, etaTimestamp, comment, documentIds,
-        isCleanBol, isLoadReject);
+        isCleanBol, isLoadReject, onResult);
   }
 
   @override
@@ -2958,6 +3341,7 @@ class _$ConfirmTripImpl implements ConfirmTrip {
     TResult Function()? addDocument,
     TResult Function(String image)? scanDocument,
     TResult Function(String doc)? removeDocument,
+    TResult Function()? setCheckCallCheckerToNull,
     TResult Function(
             int tripId,
             String type,
@@ -2965,13 +3349,14 @@ class _$ConfirmTripImpl implements ConfirmTrip {
             String? comment,
             List<String> documentIds,
             bool? isCleanBol,
-            bool? isLoadReject)?
+            bool? isLoadReject,
+            VoidCallback onResult)?
         confirmTrip,
     required TResult orElse(),
   }) {
     if (confirmTrip != null) {
       return confirmTrip(tripId, type, etaTimestamp, comment, documentIds,
-          isCleanBol, isLoadReject);
+          isCleanBol, isLoadReject, onResult);
     }
     return orElse();
   }
@@ -2992,6 +3377,8 @@ class _$ConfirmTripImpl implements ConfirmTrip {
     required TResult Function(AddDocument value) addDocument,
     required TResult Function(ScanDocument value) scanDocument,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(SetCheckCallCheckerToNull value)
+        setCheckCallCheckerToNull,
     required TResult Function(ConfirmTrip value) confirmTrip,
   }) {
     return confirmTrip(this);
@@ -3012,6 +3399,8 @@ class _$ConfirmTripImpl implements ConfirmTrip {
     TResult? Function(AddDocument value)? addDocument,
     TResult? Function(ScanDocument value)? scanDocument,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult? Function(ConfirmTrip value)? confirmTrip,
   }) {
     return confirmTrip?.call(this);
@@ -3032,6 +3421,8 @@ class _$ConfirmTripImpl implements ConfirmTrip {
     TResult Function(AddDocument value)? addDocument,
     TResult Function(ScanDocument value)? scanDocument,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(SetCheckCallCheckerToNull value)?
+        setCheckCallCheckerToNull,
     TResult Function(ConfirmTrip value)? confirmTrip,
     required TResult orElse(),
   }) {
@@ -3050,7 +3441,8 @@ abstract class ConfirmTrip implements TripDetailEvent {
       final String? comment,
       final List<String> documentIds,
       final bool? isCleanBol,
-      final bool? isLoadReject}) = _$ConfirmTripImpl;
+      final bool? isLoadReject,
+      required final VoidCallback onResult}) = _$ConfirmTripImpl;
 
   int get tripId;
   String get type;
@@ -3059,6 +3451,7 @@ abstract class ConfirmTrip implements TripDetailEvent {
   List<String> get documentIds;
   bool? get isCleanBol;
   bool? get isLoadReject;
+  VoidCallback get onResult;
 
   /// Create a copy of TripDetailEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -3080,6 +3473,7 @@ mixin _$TripDetailState {
   bool get isConfirmingTrip => throw _privateConstructorUsedError;
   bool? get isConfirmTripSuccesses => throw _privateConstructorUsedError;
   List<String> get documents => throw _privateConstructorUsedError;
+  bool get isCheckCallLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -3105,7 +3499,8 @@ abstract class $TripDetailStateCopyWith<$Res> {
       bool areStopsVisible,
       bool isConfirmingTrip,
       bool? isConfirmTripSuccesses,
-      List<String> documents});
+      List<String> documents,
+      bool isCheckCallLoading});
 
   $DispatchModelCopyWith<$Res>? get trip;
 }
@@ -3136,6 +3531,7 @@ class _$TripDetailStateCopyWithImpl<$Res, $Val extends TripDetailState>
     Object? isConfirmingTrip = null,
     Object? isConfirmTripSuccesses = freezed,
     Object? documents = null,
+    Object? isCheckCallLoading = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -3182,6 +3578,10 @@ class _$TripDetailStateCopyWithImpl<$Res, $Val extends TripDetailState>
           ? _value.documents
           : documents // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      isCheckCallLoading: null == isCheckCallLoading
+          ? _value.isCheckCallLoading
+          : isCheckCallLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -3219,7 +3619,8 @@ abstract class _$$TripDetailStateImplCopyWith<$Res>
       bool areStopsVisible,
       bool isConfirmingTrip,
       bool? isConfirmTripSuccesses,
-      List<String> documents});
+      List<String> documents,
+      bool isCheckCallLoading});
 
   @override
   $DispatchModelCopyWith<$Res>? get trip;
@@ -3249,6 +3650,7 @@ class __$$TripDetailStateImplCopyWithImpl<$Res>
     Object? isConfirmingTrip = null,
     Object? isConfirmTripSuccesses = freezed,
     Object? documents = null,
+    Object? isCheckCallLoading = null,
   }) {
     return _then(_$TripDetailStateImpl(
       status: null == status
@@ -3295,6 +3697,10 @@ class __$$TripDetailStateImplCopyWithImpl<$Res>
           ? _value._documents
           : documents // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      isCheckCallLoading: null == isCheckCallLoading
+          ? _value.isCheckCallLoading
+          : isCheckCallLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -3313,7 +3719,8 @@ class _$TripDetailStateImpl implements _TripDetailState {
       this.areStopsVisible = true,
       this.isConfirmingTrip = false,
       this.isConfirmTripSuccesses,
-      final List<String> documents = const []})
+      final List<String> documents = const [],
+      this.isCheckCallLoading = false})
       : _documents = documents;
 
   @override
@@ -3350,8 +3757,12 @@ class _$TripDetailStateImpl implements _TripDetailState {
   }
 
   @override
+  @JsonKey()
+  final bool isCheckCallLoading;
+
+  @override
   String toString() {
-    return 'TripDetailState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading, isLoading: $isLoading, trip: $trip, areStopsVisible: $areStopsVisible, isConfirmingTrip: $isConfirmingTrip, isConfirmTripSuccesses: $isConfirmTripSuccesses, documents: $documents)';
+    return 'TripDetailState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading, isLoading: $isLoading, trip: $trip, areStopsVisible: $areStopsVisible, isConfirmingTrip: $isConfirmingTrip, isConfirmTripSuccesses: $isConfirmTripSuccesses, documents: $documents, isCheckCallLoading: $isCheckCallLoading)';
   }
 
   @override
@@ -3378,7 +3789,9 @@ class _$TripDetailStateImpl implements _TripDetailState {
             (identical(other.isConfirmTripSuccesses, isConfirmTripSuccesses) ||
                 other.isConfirmTripSuccesses == isConfirmTripSuccesses) &&
             const DeepCollectionEquality()
-                .equals(other._documents, _documents));
+                .equals(other._documents, _documents) &&
+            (identical(other.isCheckCallLoading, isCheckCallLoading) ||
+                other.isCheckCallLoading == isCheckCallLoading));
   }
 
   @override
@@ -3394,7 +3807,8 @@ class _$TripDetailStateImpl implements _TripDetailState {
       areStopsVisible,
       isConfirmingTrip,
       isConfirmTripSuccesses,
-      const DeepCollectionEquality().hash(_documents));
+      const DeepCollectionEquality().hash(_documents),
+      isCheckCallLoading);
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -3418,7 +3832,8 @@ abstract class _TripDetailState implements TripDetailState {
       final bool areStopsVisible,
       final bool isConfirmingTrip,
       final bool? isConfirmTripSuccesses,
-      final List<String> documents}) = _$TripDetailStateImpl;
+      final List<String> documents,
+      final bool isCheckCallLoading}) = _$TripDetailStateImpl;
 
   @override
   ActiveTripStatus get status;
@@ -3442,6 +3857,8 @@ abstract class _TripDetailState implements TripDetailState {
   bool? get isConfirmTripSuccesses;
   @override
   List<String> get documents;
+  @override
+  bool get isCheckCallLoading;
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.

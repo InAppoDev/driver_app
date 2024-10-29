@@ -10,13 +10,14 @@ import 'package:tms_driver/presentation/pages/trip_list/widget/trip_data.dart';
 
 class ActiveTripDetailWidget extends StatelessWidget {
   final DispatchModel trip;
-
   final List<String> documents;
+  final bool? isConfirmTripSuccesses;
 
   const ActiveTripDetailWidget({
     super.key,
     required this.trip,
     required this.documents,
+    required this.isConfirmTripSuccesses,
   });
 
   @override
@@ -42,21 +43,8 @@ class ActiveTripDetailWidget extends StatelessWidget {
             alignment: Alignment.bottomCenter,
           child: FixedButton(
             trip: trip,
-            onResult: (result) {
-              if (context.mounted) {
-                context.read<TripDetailBloc>().add(
-                      TripDetailEvent.confirmTrip(
-                        etaTimestamp: result.etaTimestamp,
-                        comment: result.comment,
-                        tripId: trip.id,
-                        type: result.type,
-                        isLoadReject: result.isLoadReject,
-                        isCleanBol: result.isCleanBol,
-                        documentIds: result.documentIds,
-                      ),
-                    );
-              }
-            },
+            isConfirmTripSuccesses: isConfirmTripSuccesses,
+
           ),
         ),
         Align(

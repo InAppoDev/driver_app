@@ -32,6 +32,7 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
     on<AddDocument>(_onAddDocument);
     on<ScanDocument>(_onScanDocument);
     on<RemoveDocument>(_onRemoveDocument);
+    on<SetCheckCallCheckerToNull>(_setCheckCallCheckerToNull);
   }
 
   void _fetchTripDetail(
@@ -51,8 +52,14 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
     }
   }
 
+  void _setCheckCallCheckerToNull(
+      SetCheckCallCheckerToNull event, Emitter<TripDetailState> emit) {
+    emit(state.copyWith(isConfirmTripSuccesses: null));
+  }
+
   Future<void> _confirmTrip(
       ConfirmTrip event, Emitter<TripDetailState> emit) async {
+    emit(state.copyWith(isCheckCallLoading: true));
     try {
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
@@ -68,14 +75,24 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
         isLoadReject: event.isLoadReject,
       );
 
-      await tripRepository.sendCheckCall(
+      final checkResult = await tripRepository.sendCheckCall(
         id: event.tripId,
         checkCall: checkCallModel,
       );
 
-      emit(state.copyWith(isConfirmTripSuccesses: true));
+      if (!checkResult) {
+        event.onResult();
+      }
+
+      emit(state.copyWith(
+        isConfirmTripSuccesses: checkResult,
+        isCheckCallLoading: false,
+      ));
     } catch (e) {
-      emit(state.copyWith(isConfirmTripSuccesses: false));
+      emit(state.copyWith(
+        isConfirmTripSuccesses: false,
+        isCheckCallLoading: false,
+      ));
     }
   }
 

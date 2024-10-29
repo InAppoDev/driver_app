@@ -12,6 +12,9 @@ class IsCleanBolBS extends StatefulWidget {
     required this.onFileRemove,
     required this.onAddFile,
     required this.documents,
+    required this.isConfirmTripSuccesses,
+    required this.onSuccessCheckCallPressed,
+    required this.isCheckCallLoading,
   });
 
   final Function(String, bool) onConfirmPressed;
@@ -19,6 +22,9 @@ class IsCleanBolBS extends StatefulWidget {
   final Function(File) onFileRemove;
   final VoidCallback onAddFile;
   final List<String> documents;
+  final bool? isConfirmTripSuccesses;
+  final bool isCheckCallLoading;
+  final VoidCallback? onSuccessCheckCallPressed;
 
   @override
   State<IsCleanBolBS> createState() => _IsCleanBolBSState();
@@ -140,6 +146,9 @@ class _IsCleanBolBSState extends State<IsCleanBolBS> {
             title: 'BOL DOCUMENT',
             isCleanBol: isCleanBol,
             documents: widget.documents,
+            isConfirmTripSuccesses: widget.isConfirmTripSuccesses,
+            onSuccessCheckCallPressed: widget.onSuccessCheckCallPressed,
+            isCheckCallLoading: widget.isCheckCallLoading,
           );
   }
 }

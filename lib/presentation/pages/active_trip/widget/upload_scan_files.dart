@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/custom_text_field.dart';
 import 'package:tms_driver/presentation/customs/selected_file_widget.dart';
+import 'package:tms_driver/presentation/customs/success_error_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class UploadScanFiles extends StatefulWidget {
@@ -20,6 +21,9 @@ class UploadScanFiles extends StatefulWidget {
   final bool isCleanBol;
   final String title;
   final List<String> documents;
+  final bool? isConfirmTripSuccesses;
+  final bool? isCheckCallLoading;
+  final VoidCallback? onSuccessCheckCallPressed;
 
   const UploadScanFiles({
     super.key,
@@ -34,6 +38,9 @@ class UploadScanFiles extends StatefulWidget {
     this.isCleanBol = false,
     this.title = '',
     this.documents = const [],
+    this.isConfirmTripSuccesses,
+    this.onSuccessCheckCallPressed,
+    this.isCheckCallLoading,
   });
 
   @override
@@ -59,15 +66,17 @@ class _UploadScanFilesState extends State<UploadScanFiles> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (widget.isActiveTrip) ...[
+            if (widget.isActiveTrip &&
+                widget.isConfirmTripSuccesses == null) ...[
               Text(widget.title),
               const SizedBox(height: 15),
             ],
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: widget.onAddFile,
+            if (widget.isConfirmTripSuccesses == null) ...[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: widget.onAddFile,
                   child: Column(
                     children: [
                       Container(
@@ -165,8 +174,19 @@ class _UploadScanFilesState extends State<UploadScanFiles> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 18),
+              ],
             ],
-            if (widget.isActiveTrip) ...[
+            if (widget.isActiveTrip &&
+                widget.isConfirmTripSuccesses != null) ...[
+              SuccessErrorWidget(
+                isSuccess: widget.isConfirmTripSuccesses!,
+                onPressed: () {
+                  widget.onSuccessCheckCallPressed?.call();
+                },
+              ),
+            ],
+            if (widget.isActiveTrip &&
+                widget.isConfirmTripSuccesses == null) ...[
               if (widget.isCleanBol) ...[
                 Text(
                   "Photo control upon receipt of cargo. Photo of the cargo.2 photos ( without seal and with seal):",
@@ -219,7 +239,8 @@ class _UploadScanFilesState extends State<UploadScanFiles> {
                   widget.onConfirmPressed?.call(
                       commentController.text.trim(), widget.isCleanBol);
                 },
-                isLoading: widget.isFileLoading,
+                isLoading: widget.isCheckCallLoading != null &&
+                    widget.isCheckCallLoading!,
               ),
               const SizedBox(height: 10),
             ],

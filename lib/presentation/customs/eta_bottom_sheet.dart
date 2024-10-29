@@ -6,6 +6,7 @@ import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 import 'package:tms_driver/presentation/customs/custom_text_field.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
+import 'package:tms_driver/presentation/customs/success_error_widget.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_dialog.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
@@ -18,6 +19,9 @@ class ETABottomSheet extends StatefulWidget {
   ) onConfirmPressed;
   final String? title;
   final String type;
+  final bool? isConfirmTripSuccesses;
+  final bool? isCheckCallLoading;
+  final VoidCallback? onSuccessCheckCallPressed;
 
   const ETABottomSheet({
     super.key,
@@ -25,6 +29,9 @@ class ETABottomSheet extends StatefulWidget {
     required this.onConfirmPressed,
     this.title,
     required this.type,
+    this.isConfirmTripSuccesses,
+    this.onSuccessCheckCallPressed,
+    this.isCheckCallLoading,
   });
 
   @override
@@ -101,10 +108,17 @@ class ETABottomSheetState extends State<ETABottomSheet> {
         color: theme.scaffoldBackgroundColor,
       ),
       child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
+        child: widget.isConfirmTripSuccesses != null
+            ? SuccessErrorWidget(
+                isSuccess: widget.isConfirmTripSuccesses!,
+                onPressed: () {
+                  widget.onSuccessCheckCallPressed?.call();
+                },
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
             if (widget.title != null)
               Center(
                 child: Text(
@@ -197,7 +211,9 @@ class ETABottomSheetState extends State<ETABottomSheet> {
               label: context.localizations.confirm.toUpperCase(),
               onPressed: _confirmTrip,
               isDisabled: _nextEtaTimestamp == null,
-            ),
+                    isLoading: widget.isCheckCallLoading != null &&
+                        widget.isCheckCallLoading!,
+                  ),
           ],
         ),
       ),

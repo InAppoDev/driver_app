@@ -32,6 +32,8 @@ class TripDetailEvent with _$TripDetailEvent {
 
   const factory TripDetailEvent.removeDocument(String doc) = RemoveDocument;
 
+  const factory TripDetailEvent.setCheckCallCheckerToNull() = SetCheckCallCheckerToNull;
+
   const factory TripDetailEvent.confirmTrip({
     required int tripId,
     required String type,
@@ -40,5 +42,6 @@ class TripDetailEvent with _$TripDetailEvent {
     @Default([]) List<String> documentIds,
     bool? isCleanBol,
     bool? isLoadReject,
+    required VoidCallback onResult,
   }) = ConfirmTrip;
 }

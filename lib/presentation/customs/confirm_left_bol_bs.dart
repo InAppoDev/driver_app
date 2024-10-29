@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
+import 'package:tms_driver/presentation/customs/success_error_widget.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 import 'custom_text_field.dart';
@@ -8,9 +9,14 @@ class ConfirmLeftBolBs extends StatefulWidget {
   const ConfirmLeftBolBs({
     super.key,
     required this.onConfirmPressed,
+    required this.isConfirmTripSuccesses,
+    required this.onSuccessCheckCallPressed, required this.isCheckCallLoading,
   });
 
   final Function(String) onConfirmPressed;
+  final bool? isConfirmTripSuccesses;
+  final VoidCallback onSuccessCheckCallPressed;
+  final bool isCheckCallLoading;
 
   @override
   State<ConfirmLeftBolBs> createState() => _ConfirmLeftBolBsState();
@@ -31,8 +37,15 @@ class _ConfirmLeftBolBsState extends State<ConfirmLeftBolBs> {
       padding: const EdgeInsets.all(16),
       color: theme.scaffoldBackgroundColor,
       child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        child: widget.isConfirmTripSuccesses != null
+            ? SuccessErrorWidget(
+                isSuccess: widget.isConfirmTripSuccesses!,
+                onPressed: () {
+                  widget.onSuccessCheckCallPressed.call();
+                },
+              )
+            : Column(
+                mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
@@ -102,6 +115,7 @@ class _ConfirmLeftBolBsState extends State<ConfirmLeftBolBs> {
               onPressed: (){
                 widget.onConfirmPressed(commentController.text.trim());
               },
+              isLoading: widget.isCheckCallLoading,
             ),
           ],
         ),

@@ -7,6 +7,7 @@ import 'package:tms_driver/presentation/customs/confirm_left_bol_bs.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/eta_bottom_sheet.dart';
 import 'package:tms_driver/presentation/customs/is_clean_bol_bs.dart';
+import 'package:tms_driver/presentation/customs/success_error_widget.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/file_picker_dialog.dart';
 import 'package:tms_driver/presentation/theme/app_colors.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
@@ -24,11 +25,11 @@ class FixedButton extends StatefulWidget {
   const FixedButton({
     super.key,
     required this.trip,
-    required this.onResult,
+    required this.isConfirmTripSuccesses,
   });
 
   final DispatchModel trip;
-  final Function(CallTypeResultModel) onResult;
+  final bool? isConfirmTripSuccesses;
 
   @override
   State<FixedButton> createState() => _FixedButtonState();
@@ -85,8 +86,10 @@ class _FixedButtonState extends State<FixedButton> {
     }
   }
 
-  Future<void> showModalByCallType(CheckCallType checkCallEnum) async {
-    final CallTypeResultModel? result = await showModalBottomSheet(
+  Future<void> showModalByCallType(
+    CheckCallType checkCallEnum,
+  ) async {
+    await showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
@@ -98,15 +101,20 @@ class _FixedButtonState extends State<FixedButton> {
             return Padding(
               padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: bottomSheet(context, checkCallEnum, state.documents),
-            );
-          }),
+                child: bottomSheet(
+                  bottomSheetContext: context,
+                  checkCallEnum: checkCallEnum,
+                  docs: state.documents,
+                  tripId: widget.trip.id,
+                  isConfirmTripSuccesses: state.isConfirmTripSuccesses,
+                  isCheckCallLoading: state.isCheckCallLoading,
+                ),
+              );
+            },
+          ),
         );
       },
     );
-    if (result != null) {
-      widget.onResult(result);
-    }
   }
 
   String buttonText(CheckCallType checkCallType) {
@@ -128,24 +136,71 @@ class _FixedButtonState extends State<FixedButton> {
     }
   }
 
-  Widget bottomSheet(BuildContext bottomSheetContext,
-      CheckCallType checkCallEnum, List<String> docs) {
+  Future<void> onCheckCallResult(
+      BuildContext context, CallTypeResultModel result, int tripId) async {
+    context.read<TripDetailBloc>().add(
+          TripDetailEvent.confirmTrip(
+              etaTimestamp: result.etaTimestamp,
+              comment: result.comment,
+              tripId: tripId,
+              type: result.type,
+              isLoadReject: result.isLoadReject,
+              isCleanBol: result.isCleanBol,
+              documentIds: result.documentIds,
+              onResult: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) => Container(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    child: Padding(
+                      padding: const EdgeInsets.all(25),
+                      child: SuccessErrorWidget(
+                        isSuccess: false,
+                        onPressed: () {
+                          context.read<TripDetailBloc>().add(
+                              const TripDetailEvent
+                                  .setCheckCallCheckerToNull());
+                        },
+                      ),
+                    ),
+                  ),
+                );
+              }),
+        );
+  }
+
+  Widget bottomSheet({
+    required BuildContext bottomSheetContext,
+    required CheckCallType checkCallEnum,
+    required List<String> docs,
+    required bool? isConfirmTripSuccesses,
+    required int tripId,
+    required bool isCheckCallLoading,
+  }) {
     final localizations = context.localizations;
     if (checkCallEnum == CheckCallType.eta) {
       return ETABottomSheet(
+        isConfirmTripSuccesses: isConfirmTripSuccesses,
+        isCheckCallLoading: isCheckCallLoading,
+        onSuccessCheckCallPressed: () {
+          bottomSheetContext
+              .read<TripDetailBloc>()
+              .add(const TripDetailEvent.setCheckCallCheckerToNull());
+        },
         trip: widget.trip,
         onConfirmPressed: (
           int? etaTimestamp,
           String? comment,
           String type,
         ) {
-          Navigator.pop(
+          onCheckCallResult(
             bottomSheetContext,
             CallTypeResultModel(
               type: type,
               etaTimestamp: etaTimestamp,
               comment: comment,
             ),
+            tripId,
           );
         },
         title: localizations.begin,
@@ -156,6 +211,13 @@ class _FixedButtonState extends State<FixedButton> {
         checkCallEnum == CheckCallType.pickupCheckIn ||
         checkCallEnum == CheckCallType.pickupCheckOut) {
       return FilePickerDialog(
+        isCheckCallLoading: isCheckCallLoading,
+        onSuccessCheckCallPressed: () {
+          bottomSheetContext
+              .read<TripDetailBloc>()
+              .add(const TripDetailEvent.setCheckCallCheckerToNull());
+        },
+        isConfirmTripSuccesses: isConfirmTripSuccesses,
         onAddFile: () {
           bottomSheetContext
               .read<TripDetailBloc>()
@@ -168,13 +230,14 @@ class _FixedButtonState extends State<FixedButton> {
         },
         documents: docs,
         onConfirmPressed: (comment, _) {
-          Navigator.pop(
+          onCheckCallResult(
             bottomSheetContext,
             CallTypeResultModel(
               type: convertCheckCallTypeToString(checkCallEnum),
               documentIds: docs,
               comment: comment,
             ),
+            tripId,
           );
         },
         onFileRemove: (file) {
@@ -193,6 +256,13 @@ class _FixedButtonState extends State<FixedButton> {
     }
     if (checkCallEnum == CheckCallType.deliveryCheckOut) {
       return IsCleanBolBS(
+        isCheckCallLoading: isCheckCallLoading,
+        onSuccessCheckCallPressed: () {
+          bottomSheetContext
+              .read<TripDetailBloc>()
+              .add(const TripDetailEvent.setCheckCallCheckerToNull());
+        },
+        isConfirmTripSuccesses: isConfirmTripSuccesses,
         onAddFile: () {
           bottomSheetContext
               .read<TripDetailBloc>()
@@ -210,7 +280,7 @@ class _FixedButtonState extends State<FixedButton> {
               .add(TripDetailEvent.removeDocument(file.path));
         },
         onConfirmPressed: (comment, isCleanBol) {
-          Navigator.pop(
+          onCheckCallResult(
             bottomSheetContext,
             CallTypeResultModel(
               type: convertCheckCallTypeToString(checkCallEnum),
@@ -219,19 +289,28 @@ class _FixedButtonState extends State<FixedButton> {
               isCleanBol: isCleanBol,
               isLoadReject: !isCleanBol,
             ),
+            tripId,
           );
         },
       );
     }
     if (checkCallEnum == CheckCallType.finalDestination) {
       return ConfirmLeftBolBs(
+        isCheckCallLoading: isCheckCallLoading,
+        onSuccessCheckCallPressed: () {
+          bottomSheetContext
+              .read<TripDetailBloc>()
+              .add(const TripDetailEvent.setCheckCallCheckerToNull());
+        },
+        isConfirmTripSuccesses: isConfirmTripSuccesses,
         onConfirmPressed: (comment) {
-          Navigator.pop(
+          onCheckCallResult(
             bottomSheetContext,
             CallTypeResultModel(
               type: convertCheckCallTypeToString(checkCallEnum),
               comment: comment,
             ),
+            tripId,
           );
           setState(() {
             isFinishTripPressed = false;
@@ -278,7 +357,9 @@ class _FixedButtonState extends State<FixedButton> {
                         : CustomButton(
                             label: 'Confirm trailer drop location',
                             onPressed: () {
-                              showModalByCallType(checkCallEnum);
+                              showModalByCallType(
+                                checkCallEnum,
+                              );
                             },
                           )
                     : CustomButton(
@@ -287,7 +368,9 @@ class _FixedButtonState extends State<FixedButton> {
                           setState(() {
                             checkCallEnum = CheckCallType.deliveryCheckIn;
                           });
-                          showModalByCallType(checkCallEnum);
+                          showModalByCallType(
+                            checkCallEnum,
+                          );
                         },
                       ),
               ],
