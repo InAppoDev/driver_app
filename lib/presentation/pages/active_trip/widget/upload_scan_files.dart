@@ -214,7 +214,7 @@ class _UploadScanFilesState extends State<UploadScanFiles> {
               ),
               const SizedBox(height: 20),
               CustomButton(
-                label: context.localizations.confirm,
+                label: context.localizations.confirm.toUpperCase(),
                 onPressed: () {
                   widget.onConfirmPressed?.call(
                       commentController.text.trim(), widget.isCleanBol);

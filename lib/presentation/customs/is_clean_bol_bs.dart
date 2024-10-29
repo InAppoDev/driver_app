@@ -139,7 +139,7 @@ class _IsCleanBolBSState extends State<IsCleanBolBS> {
             isActiveTrip: true,
             title: 'BOL DOCUMENT',
             isCleanBol: isCleanBol,
-      documents: widget.documents,
+            documents: widget.documents,
           );
   }
 }
