@@ -52,6 +52,7 @@ class ActiveTripDetailWidget extends StatelessWidget {
                         type: result.type,
                         isLoadReject: result.isLoadReject,
                         isCleanBol: result.isCleanBol,
+                        documentIds: result.documentIds,
                       ),
                     );
               }

@@ -14,7 +14,7 @@ class UploadScanFiles extends StatefulWidget {
   final Function(File) onFileRemove;
   final File? selectedFile;
   final VoidCallback? onUploadPressed;
-  final Function(String, List<String>, bool)? onConfirmPressed;
+  final Function(String, bool)? onConfirmPressed;
   final bool isFileLoading;
   final bool isActiveTrip;
   final bool isCleanBol;
@@ -217,7 +217,7 @@ class _UploadScanFilesState extends State<UploadScanFiles> {
                 label: context.localizations.confirm,
                 onPressed: () {
                   widget.onConfirmPressed?.call(
-                      commentController.text.trim(), [], widget.isCleanBol);
+                      commentController.text.trim(), widget.isCleanBol);
                 },
                 isLoading: widget.isFileLoading,
               ),

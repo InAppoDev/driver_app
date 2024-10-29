@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/file_picker_dialog.dart';
 import 'package:tms_driver/presentation/theme/app_colors.dart';
@@ -6,9 +8,17 @@ class IsCleanBolBS extends StatefulWidget {
   const IsCleanBolBS({
     super.key,
     required this.onConfirmPressed,
+    required this.onScanFile,
+    required this.onFileRemove,
+    required this.onAddFile,
+    required this.documents,
   });
 
-  final Function(String, List<String>, bool) onConfirmPressed;
+  final Function(String, bool) onConfirmPressed;
+  final Function(String) onScanFile;
+  final Function(File) onFileRemove;
+  final VoidCallback onAddFile;
+  final List<String> documents;
 
   @override
   State<IsCleanBolBS> createState() => _IsCleanBolBSState();
@@ -121,14 +131,15 @@ class _IsCleanBolBSState extends State<IsCleanBolBS> {
             ),
           )
         : FilePickerDialog(
-            onAddFile: () {},
-            onScanFile: (image) {},
-            onFileRemove: (file) {},
+            onAddFile: widget.onAddFile,
+            onScanFile: widget.onScanFile,
+            onFileRemove: widget.onFileRemove,
             onConfirmPressed: widget.onConfirmPressed,
             isFileLoading: false,
             isActiveTrip: true,
             title: 'BOL DOCUMENT',
             isCleanBol: isCleanBol,
+      documents: widget.documents,
           );
   }
 }

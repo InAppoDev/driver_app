@@ -167,12 +167,12 @@ class _FixedButtonState extends State<FixedButton> {
               .add(TripDetailEvent.scanDocument(image));
         },
         documents: docs,
-        onConfirmPressed: (comment, documents, _) {
+        onConfirmPressed: (comment, _) {
           Navigator.pop(
             bottomSheetContext,
             CallTypeResultModel(
               type: convertCheckCallTypeToString(checkCallEnum),
-              documentIds: documents,
+              documentIds: docs,
               comment: comment,
             ),
           );
@@ -182,6 +182,7 @@ class _FixedButtonState extends State<FixedButton> {
               .read<TripDetailBloc>()
               .add(TripDetailEvent.removeDocument(file.path));
         },
+        isCleanBol: true,
         isFileLoading: false,
         isActiveTrip: true,
         title: (checkCallEnum == CheckCallType.deliveryCheckIn ||
@@ -192,12 +193,28 @@ class _FixedButtonState extends State<FixedButton> {
     }
     if (checkCallEnum == CheckCallType.deliveryCheckOut) {
       return IsCleanBolBS(
-        onConfirmPressed: (comment, documents, isCleanBol) {
+        onAddFile: () {
+          bottomSheetContext
+              .read<TripDetailBloc>()
+              .add(const TripDetailEvent.addDocument());
+        },
+        onScanFile: (image) {
+          bottomSheetContext
+              .read<TripDetailBloc>()
+              .add(TripDetailEvent.scanDocument(image));
+        },
+        documents: docs,
+        onFileRemove: (file) {
+          bottomSheetContext
+              .read<TripDetailBloc>()
+              .add(TripDetailEvent.removeDocument(file.path));
+        },
+        onConfirmPressed: (comment, isCleanBol) {
           Navigator.pop(
             bottomSheetContext,
             CallTypeResultModel(
               type: convertCheckCallTypeToString(checkCallEnum),
-              documentIds: documents,
+              documentIds: docs,
               comment: comment,
               isCleanBol: isCleanBol,
               isLoadReject: !isCleanBol,
