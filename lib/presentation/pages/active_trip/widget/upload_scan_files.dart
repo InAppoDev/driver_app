@@ -105,6 +105,7 @@ class _UploadScanFilesState extends State<UploadScanFiles> {
                     if (pictures.isNotEmpty) {
                       widget.onScanFile(pictures.first);
                     }
+
                   },
                   child: Column(
                     children: [

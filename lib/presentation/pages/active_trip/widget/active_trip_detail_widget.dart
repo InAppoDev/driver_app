@@ -41,7 +41,6 @@ class ActiveTripDetailWidget extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
           child: FixedButton(
-            documents: documents,
             trip: trip,
             onResult: (result) {
               if (context.mounted) {
@@ -57,19 +56,6 @@ class ActiveTripDetailWidget extends StatelessWidget {
                     );
               }
             },
-            onAddDocument: () {
-              context
-                  .read<TripDetailBloc>()
-                  .add(const TripDetailEvent.addDocument());
-            },
-            onScanDocument: (image) {
-              context
-                  .read<TripDetailBloc>()
-                  .add(TripDetailEvent.scanDocument(image));
-            },
-            onRemoveDocument: (doc) => context
-                .read<TripDetailBloc>()
-                .add(TripDetailEvent.removeDocument(doc)),
           ),
         ),
         Align(

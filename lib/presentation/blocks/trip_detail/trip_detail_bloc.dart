@@ -109,7 +109,10 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
       RemoveDocument event, Emitter<TripDetailState> emit) async {
     final List<String> docs = [];
     docs.addAll(state.documents);
-    docs.removeWhere((doc) => doc == event.doc);
+
+    docs.removeWhere((doc) {
+      return doc == event.doc;
+    });
     emit(state.copyWith(documents: docs));
   }
 

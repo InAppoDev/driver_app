@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tms_driver/data/models/call_type_result_model/call_type_result_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
 import 'package:tms_driver/presentation/customs/confirm_left_bol_bs.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/eta_bottom_sheet.dart';
@@ -23,18 +25,10 @@ class FixedButton extends StatefulWidget {
     super.key,
     required this.trip,
     required this.onResult,
-    required this.onAddDocument,
-    required this.onScanDocument,
-    required this.documents,
-    required this.onRemoveDocument,
   });
 
   final DispatchModel trip;
   final Function(CallTypeResultModel) onResult;
-  final VoidCallback onAddDocument;
-  final Function(String) onScanDocument;
-  final List<String> documents;
-  final Function(String) onRemoveDocument;
 
   @override
   State<FixedButton> createState() => _FixedButtonState();
@@ -97,10 +91,16 @@ class _FixedButtonState extends State<FixedButton> {
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (BuildContext bottomSheetContext) {
-        return Padding(
-          padding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: bottomSheet(bottomSheetContext, checkCallEnum),
+        return BlocProvider(
+          create: (bottomSheetContext) => TripDetailBloc(),
+          child: BlocBuilder<TripDetailBloc, TripDetailState>(
+              builder: (context, state) {
+            return Padding(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: bottomSheet(context, checkCallEnum, state.documents),
+            );
+          }),
         );
       },
     );
@@ -128,8 +128,8 @@ class _FixedButtonState extends State<FixedButton> {
     }
   }
 
-  Widget bottomSheet(
-      BuildContext bottomSheetContext, CheckCallType checkCallEnum) {
+  Widget bottomSheet(BuildContext bottomSheetContext,
+      CheckCallType checkCallEnum, List<String> docs) {
     final localizations = context.localizations;
     if (checkCallEnum == CheckCallType.eta) {
       return ETABottomSheet(
@@ -156,11 +156,17 @@ class _FixedButtonState extends State<FixedButton> {
         checkCallEnum == CheckCallType.pickupCheckIn ||
         checkCallEnum == CheckCallType.pickupCheckOut) {
       return FilePickerDialog(
-        onAddFile: widget.onAddDocument,
-        onScanFile: (image) {
-          widget.onScanDocument(image);
+        onAddFile: () {
+          bottomSheetContext
+              .read<TripDetailBloc>()
+              .add(const TripDetailEvent.addDocument());
         },
-        documents: widget.documents,
+        onScanFile: (image) {
+          bottomSheetContext
+              .read<TripDetailBloc>()
+              .add(TripDetailEvent.scanDocument(image));
+        },
+        documents: docs,
         onConfirmPressed: (comment, documents, _) {
           Navigator.pop(
             bottomSheetContext,
@@ -172,7 +178,9 @@ class _FixedButtonState extends State<FixedButton> {
           );
         },
         onFileRemove: (file) {
-          widget.onRemoveDocument(file.path);
+          bottomSheetContext
+              .read<TripDetailBloc>()
+              .add(TripDetailEvent.removeDocument(file.path));
         },
         isFileLoading: false,
         isActiveTrip: true,
