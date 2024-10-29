@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
-import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/fixed_button.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/next_trip.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_data.dart';

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -57,6 +58,17 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
     emit(state.copyWith(isConfirmTripSuccesses: null));
   }
 
+  Future<List<String>> _convertPathToBytes(List<String> documentIds) async {
+    final List<String> documentsInBytes = [];
+    for (final doc in documentIds) {
+      File imageFile = File(doc);
+      Uint8List imageBytes = await imageFile.readAsBytes();
+      String base64Image = base64Encode(imageBytes);
+      documentsInBytes.add(base64Image);
+    }
+    return documentsInBytes;
+  }
+
   Future<void> _confirmTrip(
       ConfirmTrip event, Emitter<TripDetailState> emit) async {
     emit(state.copyWith(isCheckCallLoading: true));
@@ -70,7 +82,7 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
         ),
         type: event.type,
         comment: event.comment,
-        documentUploadIds: event.documentIds,
+        documentUploadIds: await _convertPathToBytes(event.documentIds),
         isCleanBol: event.isCleanBol,
         isLoadReject: event.isLoadReject,
       );
