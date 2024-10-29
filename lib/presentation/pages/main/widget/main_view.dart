@@ -87,25 +87,28 @@ class MainView extends StatelessWidget {
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
                             builder: (BuildContext bottomSheetContext) {
-                              return ETABottomSheet(
-                                trip: tripState.trip!,
-                                onConfirmPressed: (
-                                  int? etaTimestamp,
-                                  String? comment,
-                                  String type,
-                                ) {
-                                  Navigator.pop(bottomSheetContext, {
-                                    'etaTimestamp': etaTimestamp,
-                                    'comment': comment,
-                                    'type': type,
-                                  });
-                                },
-                                title: state.isDriveStarted
-                                    ? localizations.pause
-                                    : localizations.startDriving,
-                                type: state.isDriveStarted
-                                    ? 'stopped_moving'
-                                    : 'started_moving',
+                              return Padding(
+                                padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                                child: ETABottomSheet(
+                                  trip: tripState.trip!,
+                                  onConfirmPressed: (
+                                    int? etaTimestamp,
+                                    String? comment,
+                                    String type,
+                                  ) {
+                                    Navigator.pop(bottomSheetContext, {
+                                      'etaTimestamp': etaTimestamp,
+                                      'comment': comment,
+                                      'type': type,
+                                    });
+                                  },
+                                  title: state.isDriveStarted
+                                      ? localizations.pause
+                                      : localizations.startDriving,
+                                  type: state.isDriveStarted
+                                      ? 'stopped_moving'
+                                      : 'started_moving',
+                                ),
                               );
                             },
                           );

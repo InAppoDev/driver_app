@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/fixed_button.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/next_trip.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_data.dart';
@@ -9,7 +11,13 @@ import 'package:tms_driver/presentation/pages/trip_list/widget/trip_data.dart';
 class ActiveTripDetailWidget extends StatelessWidget {
   final DispatchModel trip;
 
-  const ActiveTripDetailWidget({super.key, required this.trip});
+  final List<String> documents;
+
+  const ActiveTripDetailWidget({
+    super.key,
+    required this.trip,
+    required this.documents,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +40,38 @@ class ActiveTripDetailWidget extends StatelessWidget {
 
           Align(
             alignment: Alignment.bottomCenter,
-            child: FixedButton(trip: trip),
+          child: FixedButton(
+            documents: documents,
+            trip: trip,
+            onResult: (result) {
+              if (context.mounted) {
+                context.read<TripDetailBloc>().add(
+                      TripDetailEvent.confirmTrip(
+                        etaTimestamp: result.etaTimestamp,
+                        comment: result.comment,
+                        tripId: trip.id,
+                        type: result.type,
+                        isLoadReject: result.isLoadReject,
+                        isCleanBol: result.isCleanBol,
+                      ),
+                    );
+              }
+            },
+            onAddDocument: () {
+              context
+                  .read<TripDetailBloc>()
+                  .add(const TripDetailEvent.addDocument());
+            },
+            onScanDocument: (image) {
+              context
+                  .read<TripDetailBloc>()
+                  .add(TripDetailEvent.scanDocument(image));
+            },
+            onRemoveDocument: (doc) => context
+                .read<TripDetailBloc>()
+                .add(TripDetailEvent.removeDocument(doc)),
           ),
+        ),
         Align(
           alignment: Alignment.bottomRight,
           child: Padding(

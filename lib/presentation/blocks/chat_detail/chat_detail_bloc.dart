@@ -143,7 +143,6 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
       );
       if (result == null) return;
       final file = File(result.files.single.path!);
-
       state.maybeWhen(
         loaded: (chatDetails, selectedFile, docs) {
           emit(ChatDetailState.loaded(chatDetails, file, docs));

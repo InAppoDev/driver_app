@@ -5,7 +5,10 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
+import 'package:tms_driver/data/models/check/check_call/check_call_model.dart';
+import 'package:tms_driver/data/models/check/location/location_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/domain/repositories/trip_repository.dart';
 
@@ -25,6 +28,10 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
     on<FetchTripDetail>(_fetchTripDetail);
     on<ToggleStopsVisibility>(_toggleStopsVisibility);
     on<LoadActiveTrip>(_loadActiveTrip);
+    on<ConfirmTrip>(_confirmTrip);
+    on<AddDocument>(_onAddDocument);
+    on<ScanDocument>(_onScanDocument);
+    on<RemoveDocument>(_onRemoveDocument);
   }
 
   void _fetchTripDetail(
@@ -42,6 +49,68 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
         errorMessage: e.toString(),
       ));
     }
+  }
+
+  Future<void> _confirmTrip(
+      ConfirmTrip event, Emitter<TripDetailState> emit) async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      final CheckCallModel checkCallModel = CheckCallModel(
+        location: LocationModel(
+          lat: position.latitude,
+          lng: position.longitude,
+        ),
+        type: event.type,
+        comment: event.comment,
+        documentUploadIds: event.documentIds,
+        isCleanBol: event.isCleanBol,
+        isLoadReject: event.isLoadReject,
+      );
+
+      await tripRepository.sendCheckCall(
+        id: event.tripId,
+        checkCall: checkCallModel,
+      );
+
+      emit(state.copyWith(isConfirmTripSuccesses: true));
+    } catch (e) {
+      emit(state.copyWith(isConfirmTripSuccesses: false));
+    }
+  }
+
+  Future<void> _onAddDocument(
+      AddDocument event, Emitter<TripDetailState> emit) async {
+    final List<String> docs = [];
+    docs.addAll(state.documents);
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['jpg', 'pdf', 'png', 'jpeg'],
+      );
+      if (result == null) return;
+      docs.add(result.files.single.path!);
+
+      emit(state.copyWith(documents: docs));
+    } catch (e) {
+      emit(state.copyWith(status: ActiveTripStatus.failure));
+    }
+  }
+
+  Future<void> _onScanDocument(
+      ScanDocument event, Emitter<TripDetailState> emit) async {
+    final List<String> docs = [];
+    docs.addAll(state.documents);
+    docs.add(event.image);
+    emit(state.copyWith(documents: docs));
+  }
+
+  Future<void> _onRemoveDocument(
+      RemoveDocument event, Emitter<TripDetailState> emit) async {
+    final List<String> docs = [];
+    docs.addAll(state.documents);
+    docs.removeWhere((doc) => doc == event.doc);
+    emit(state.copyWith(documents: docs));
   }
 
   Future<void> _loadActiveTrip(

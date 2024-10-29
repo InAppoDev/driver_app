@@ -5,7 +5,10 @@ import 'package:tms_driver/presentation/theme/app_colors.dart';
 class IsCleanBolBS extends StatefulWidget {
   const IsCleanBolBS({
     super.key,
+    required this.onConfirmPressed,
   });
+
+  final Function(String, List<String>, bool) onConfirmPressed;
 
   @override
   State<IsCleanBolBS> createState() => _IsCleanBolBSState();
@@ -121,6 +124,7 @@ class _IsCleanBolBSState extends State<IsCleanBolBS> {
             onAddFile: () {},
             onScanFile: (image) {},
             onFileRemove: (file) {},
+            onConfirmPressed: widget.onConfirmPressed,
             isFileLoading: false,
             isActiveTrip: true,
             title: 'BOL DOCUMENT',

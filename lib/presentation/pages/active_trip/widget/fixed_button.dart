@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tms_driver/data/models/call_type_result_model/call_type_result_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/presentation/customs/confirm_left_bol_bs.dart';
 import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/eta_bottom_sheet.dart';
 import 'package:tms_driver/presentation/customs/is_clean_bol_bs.dart';
@@ -17,16 +19,41 @@ enum CheckCallType {
 }
 
 class FixedButton extends StatefulWidget {
-  const FixedButton({super.key, required this.trip});
+  const FixedButton({
+    super.key,
+    required this.trip,
+    required this.onResult,
+    required this.onAddDocument,
+    required this.onScanDocument,
+    required this.documents,
+    required this.onRemoveDocument,
+  });
 
   final DispatchModel trip;
+  final Function(CallTypeResultModel) onResult;
+  final VoidCallback onAddDocument;
+  final Function(String) onScanDocument;
+  final List<String> documents;
+  final Function(String) onRemoveDocument;
 
   @override
   State<FixedButton> createState() => _FixedButtonState();
 }
 
 class _FixedButtonState extends State<FixedButton> {
-  CheckCallType _mapStringToEnum(String checkCallType) {
+  bool isFinishTripPressed = false;
+
+  CheckCallType checkCallEnum = CheckCallType.eta;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.trip.nextMandatoryCheckCallType != null) {
+      checkCallEnum = convertStringToCheckCallType(widget.trip.nextMandatoryCheckCallType!);
+    }
+  }
+
+  CheckCallType convertStringToCheckCallType(String checkCallType) {
     switch (checkCallType) {
       case 'eta':
         return CheckCallType.eta;
@@ -45,11 +72,27 @@ class _FixedButtonState extends State<FixedButton> {
     }
   }
 
+  String convertCheckCallTypeToString(CheckCallType checkCallType) {
+    switch (checkCallType) {
+      case CheckCallType.eta:
+        return 'eta';
+      case CheckCallType.pickupCheckIn:
+        return 'pickup_check_in';
+      case CheckCallType.deliveryCheckIn:
+        return 'delivery_check_in';
+      case CheckCallType.pickupCheckOut:
+        return 'pickup_check_out';
+      case CheckCallType.deliveryCheckOut:
+        return 'delivery_check_out';
+      case CheckCallType.finalDestination:
+        return 'final_destination';
+      default:
+        throw ArgumentError('Invalid check call type');
+    }
+  }
+
   Future<void> showModalByCallType(CheckCallType checkCallEnum) async {
-    // setState(() {
-    //   checkCallEnum = CheckCallType.deliveryCheckOut;
-    // });
-    final result = await showModalBottomSheet(
+    final CallTypeResultModel? result = await showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
@@ -61,6 +104,9 @@ class _FixedButtonState extends State<FixedButton> {
         );
       },
     );
+    if (result != null) {
+      widget.onResult(result);
+    }
   }
 
   String buttonText(CheckCallType checkCallType) {
@@ -93,11 +139,14 @@ class _FixedButtonState extends State<FixedButton> {
           String? comment,
           String type,
         ) {
-          Navigator.pop(bottomSheetContext, {
-            'etaTimestamp': etaTimestamp,
-            'comment': comment,
-            'type': type,
-          });
+          Navigator.pop(
+            bottomSheetContext,
+            CallTypeResultModel(
+              type: type,
+              etaTimestamp: etaTimestamp,
+              comment: comment,
+            ),
+          );
         },
         title: localizations.begin,
         type: 'eta',
@@ -107,9 +156,24 @@ class _FixedButtonState extends State<FixedButton> {
         checkCallEnum == CheckCallType.pickupCheckIn ||
         checkCallEnum == CheckCallType.pickupCheckOut) {
       return FilePickerDialog(
-        onAddFile: () {},
-        onScanFile: (image) {},
-        onFileRemove: (file) {},
+        onAddFile: widget.onAddDocument,
+        onScanFile: (image) {
+          widget.onScanDocument(image);
+        },
+        documents: widget.documents,
+        onConfirmPressed: (comment, documents, _) {
+          Navigator.pop(
+            bottomSheetContext,
+            CallTypeResultModel(
+              type: convertCheckCallTypeToString(checkCallEnum),
+              documentIds: documents,
+              comment: comment,
+            ),
+          );
+        },
+        onFileRemove: (file) {
+          widget.onRemoveDocument(file.path);
+        },
         isFileLoading: false,
         isActiveTrip: true,
         title: (checkCallEnum == CheckCallType.deliveryCheckIn ||
@@ -119,7 +183,36 @@ class _FixedButtonState extends State<FixedButton> {
       );
     }
     if (checkCallEnum == CheckCallType.deliveryCheckOut) {
-      return const IsCleanBolBS();
+      return IsCleanBolBS(
+        onConfirmPressed: (comment, documents, isCleanBol) {
+          Navigator.pop(
+            bottomSheetContext,
+            CallTypeResultModel(
+              type: convertCheckCallTypeToString(checkCallEnum),
+              documentIds: documents,
+              comment: comment,
+              isCleanBol: isCleanBol,
+              isLoadReject: !isCleanBol,
+            ),
+          );
+        },
+      );
+    }
+    if (checkCallEnum == CheckCallType.finalDestination) {
+      return ConfirmLeftBolBs(
+        onConfirmPressed: (comment) {
+          Navigator.pop(
+            bottomSheetContext,
+            CallTypeResultModel(
+              type: convertCheckCallTypeToString(checkCallEnum),
+              comment: comment,
+            ),
+          );
+          setState(() {
+            isFinishTripPressed = false;
+          });
+        },
+      );
     }
     return const SizedBox();
   }
@@ -128,8 +221,8 @@ class _FixedButtonState extends State<FixedButton> {
   Widget build(BuildContext context) {
     if (widget.trip.nextMandatoryCheckCallType != null) {
       final theme = Theme.of(context);
-      final checkCallEnum =
-          _mapStringToEnum(widget.trip.nextMandatoryCheckCallType!);
+
+
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -147,12 +240,31 @@ class _FixedButtonState extends State<FixedButton> {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                CustomButton(
-                  label: buttonText(checkCallEnum),
-                  onPressed: () {
-                    showModalByCallType(checkCallEnum);
-                  },
-                ),
+                checkCallEnum == CheckCallType.finalDestination
+                    ? !isFinishTripPressed
+                        ? CustomButton(
+                            label: 'FINISH TRIP',
+                            onPressed: () {
+                              setState(() {
+                                isFinishTripPressed = true;
+                              });
+                            },
+                          )
+                        : CustomButton(
+                            label: 'Confirm trailer drop location',
+                            onPressed: () {
+                              showModalByCallType(checkCallEnum);
+                            },
+                          )
+                    : CustomButton(
+                        label: buttonText(checkCallEnum),
+                        onPressed: () {
+                          setState(() {
+                            checkCallEnum = CheckCallType.deliveryCheckIn;
+                          });
+                          showModalByCallType(checkCallEnum);
+                        },
+                      ),
               ],
             ),
           ),

@@ -14,11 +14,12 @@ class UploadScanFiles extends StatefulWidget {
   final Function(File) onFileRemove;
   final File? selectedFile;
   final VoidCallback? onUploadPressed;
-  final VoidCallback? onConfirmPressed;
+  final Function(String, List<String>, bool)? onConfirmPressed;
   final bool isFileLoading;
   final bool isActiveTrip;
   final bool isCleanBol;
   final String title;
+  final List<String> documents;
 
   const UploadScanFiles({
     super.key,
@@ -32,6 +33,7 @@ class UploadScanFiles extends StatefulWidget {
     this.isActiveTrip = false,
     this.isCleanBol = false,
     this.title = '',
+    this.documents = const [],
   });
 
   @override
@@ -174,6 +176,20 @@ class _UploadScanFilesState extends State<UploadScanFiles> {
                 ),
                 const SizedBox(height: 16),
               ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    ...widget.documents.map(
+                      (doc) => SelectedFileWidget(
+                        selectedFile: File(doc),
+                        onFileRemove: widget.onFileRemove,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 15),
               Container(
                 constraints: BoxConstraints(maxHeight: height * 0.17),
                 child: CustomTextField(
@@ -199,7 +215,8 @@ class _UploadScanFilesState extends State<UploadScanFiles> {
               CustomButton(
                 label: context.localizations.confirm,
                 onPressed: () {
-                  widget.onConfirmPressed?.call();
+                  widget.onConfirmPressed?.call(
+                      commentController.text.trim(), [], widget.isCleanBol);
                 },
                 isLoading: widget.isFileLoading,
               ),

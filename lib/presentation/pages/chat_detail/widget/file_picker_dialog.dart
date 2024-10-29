@@ -14,9 +14,12 @@ class FilePickerDialog extends StatelessWidget {
     this.isActiveTrip = false,
     this.title = '',
     this.isCleanBol = false,
+    this.onConfirmPressed,
+    this.documents = const [],
   });
 
   final VoidCallback onAddFile;
+  final Function(String, List<String>, bool)? onConfirmPressed;
   final Function(String) onScanFile;
   final Function(File) onFileRemove;
   final File? selectedFile;
@@ -24,6 +27,7 @@ class FilePickerDialog extends StatelessWidget {
   final bool isActiveTrip;
   final bool isCleanBol;
   final String title;
+  final List<String> documents;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +51,8 @@ class FilePickerDialog extends StatelessWidget {
         title: title,
         isActiveTrip: isActiveTrip,
         isCleanBol: isCleanBol,
+        onConfirmPressed: onConfirmPressed,
+        documents: documents,
       ),
     );
   }

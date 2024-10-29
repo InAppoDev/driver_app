@@ -26,10 +26,19 @@ class TripDetailEvent with _$TripDetailEvent {
 
   const factory TripDetailEvent.loadActiveTrip() = LoadActiveTrip;
 
+  const factory TripDetailEvent.addDocument() = AddDocument;
+
+  const factory TripDetailEvent.scanDocument(String image) = ScanDocument;
+
+  const factory TripDetailEvent.removeDocument(String doc) = RemoveDocument;
+
   const factory TripDetailEvent.confirmTrip({
     required int tripId,
     required String type,
     int? etaTimestamp,
     String? comment,
+    @Default([]) List<String> documentIds,
+    bool? isCleanBol,
+    bool? isLoadReject,
   }) = ConfirmTrip;
 }
