@@ -10,13 +10,16 @@ class ConfirmLeftBolBs extends StatefulWidget {
     super.key,
     required this.onConfirmPressed,
     required this.isConfirmTripSuccesses,
-    required this.onSuccessCheckCallPressed, required this.isCheckCallLoading,
+    required this.onSuccessCheckCallPressed,
+    required this.isCheckCallLoading,
+    required this.checkCallResponseMessage,
   });
 
   final Function(String) onConfirmPressed;
   final bool? isConfirmTripSuccesses;
   final VoidCallback onSuccessCheckCallPressed;
   final bool isCheckCallLoading;
+ final String? checkCallResponseMessage;
 
   @override
   State<ConfirmLeftBolBs> createState() => _ConfirmLeftBolBsState();

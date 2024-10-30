@@ -102,6 +102,7 @@ class _FixedButtonState extends State<FixedButton> {
               padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: bottomSheet(
+                  checkCallResponseMessage: state.checkCallResponseMessage,
                   bottomSheetContext: context,
                   checkCallEnum: checkCallEnum,
                   docs: state.documents,
@@ -176,10 +177,12 @@ class _FixedButtonState extends State<FixedButton> {
     required bool? isConfirmTripSuccesses,
     required int tripId,
     required bool isCheckCallLoading,
+    required String? checkCallResponseMessage,
   }) {
     final localizations = context.localizations;
     if (checkCallEnum == CheckCallType.eta) {
       return ETABottomSheet(
+        checkCallResponseMessage: checkCallResponseMessage,
         isConfirmTripSuccesses: isConfirmTripSuccesses,
         isCheckCallLoading: isCheckCallLoading,
         onSuccessCheckCallPressed: () {
@@ -211,6 +214,7 @@ class _FixedButtonState extends State<FixedButton> {
         checkCallEnum == CheckCallType.pickupCheckIn ||
         checkCallEnum == CheckCallType.pickupCheckOut) {
       return FilePickerDialog(
+        checkCallResponseMessage: checkCallResponseMessage,
         isCheckCallLoading: isCheckCallLoading,
         onSuccessCheckCallPressed: () {
           bottomSheetContext
@@ -256,6 +260,7 @@ class _FixedButtonState extends State<FixedButton> {
     }
     if (checkCallEnum == CheckCallType.deliveryCheckOut) {
       return IsCleanBolBS(
+        checkCallResponseMessage: checkCallResponseMessage,
         isCheckCallLoading: isCheckCallLoading,
         onSuccessCheckCallPressed: () {
           bottomSheetContext
@@ -296,6 +301,7 @@ class _FixedButtonState extends State<FixedButton> {
     }
     if (checkCallEnum == CheckCallType.finalDestination) {
       return ConfirmLeftBolBs(
+        checkCallResponseMessage: checkCallResponseMessage,
         isCheckCallLoading: isCheckCallLoading,
         onSuccessCheckCallPressed: () {
           bottomSheetContext
@@ -326,9 +332,9 @@ class _FixedButtonState extends State<FixedButton> {
     if (widget.trip.nextMandatoryCheckCallType != null) {
       final theme = Theme.of(context);
 
-      // setState(() {
-      //   checkCallEnum = CheckCallType.pickupCheckOut;
-      // });
+      setState(() {
+        checkCallEnum = CheckCallType.pickupCheckOut;
+      });
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [

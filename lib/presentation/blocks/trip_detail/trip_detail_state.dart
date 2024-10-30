@@ -16,7 +16,8 @@ class TripDetailState with _$TripDetailState {
     @Default(false) bool isConfirmingTrip,
     bool? isConfirmTripSuccesses,
     @Default([]) List<String> documents,
-    @Default(false) bool isCheckCallLoading
+    @Default(false) bool isCheckCallLoading,
+    String? checkCallResponseMessage,
   }) = _TripDetailState;
 
   factory TripDetailState.initial() => const TripDetailState(

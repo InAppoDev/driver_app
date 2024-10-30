@@ -86,7 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "longestTrip": MessageLookupByLibrary.simpleMessage("Longest Trip"),
         "m": MessageLookupByLibrary.simpleMessage("M"),
         "messages": MessageLookupByLibrary.simpleMessage("Messages"),
-        "milesToGo": MessageLookupByLibrary.simpleMessage("Miles to go"),
+        "milesToGo": MessageLookupByLibrary.simpleMessage("Route distance"),
         "min": MessageLookupByLibrary.simpleMessage("min"),
         "mph": MessageLookupByLibrary.simpleMessage("Mph"),
         "next": MessageLookupByLibrary.simpleMessage("NEXT"),

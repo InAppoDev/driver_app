@@ -15,6 +15,7 @@ class IsCleanBolBS extends StatefulWidget {
     required this.isConfirmTripSuccesses,
     required this.onSuccessCheckCallPressed,
     required this.isCheckCallLoading,
+    required this.checkCallResponseMessage,
   });
 
   final Function(String, bool) onConfirmPressed;
@@ -25,6 +26,7 @@ class IsCleanBolBS extends StatefulWidget {
   final bool? isConfirmTripSuccesses;
   final bool isCheckCallLoading;
   final VoidCallback? onSuccessCheckCallPressed;
+  final String? checkCallResponseMessage;
 
   @override
   State<IsCleanBolBS> createState() => _IsCleanBolBSState();
@@ -149,6 +151,7 @@ class _IsCleanBolBSState extends State<IsCleanBolBS> {
             isConfirmTripSuccesses: widget.isConfirmTripSuccesses,
             onSuccessCheckCallPressed: widget.onSuccessCheckCallPressed,
             isCheckCallLoading: widget.isCheckCallLoading,
+            checkCallResponseMessage: widget.checkCallResponseMessage,
           );
   }
 }

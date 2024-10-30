@@ -24,6 +24,7 @@ class UploadScanFiles extends StatefulWidget {
   final bool? isConfirmTripSuccesses;
   final bool? isCheckCallLoading;
   final VoidCallback? onSuccessCheckCallPressed;
+  final String? checkCallResponseMessage;
 
   const UploadScanFiles({
     super.key,
@@ -40,7 +41,7 @@ class UploadScanFiles extends StatefulWidget {
     this.documents = const [],
     this.isConfirmTripSuccesses,
     this.onSuccessCheckCallPressed,
-    this.isCheckCallLoading,
+    this.isCheckCallLoading,    this.checkCallResponseMessage,
   });
 
   @override
@@ -179,6 +180,7 @@ class _UploadScanFilesState extends State<UploadScanFiles> {
             if (widget.isActiveTrip &&
                 widget.isConfirmTripSuccesses != null) ...[
               SuccessErrorWidget(
+                checkCallResponseMessage: widget.checkCallResponseMessage,
                 isSuccess: widget.isConfirmTripSuccesses!,
                 onPressed: () {
                   widget.onSuccessCheckCallPressed?.call();

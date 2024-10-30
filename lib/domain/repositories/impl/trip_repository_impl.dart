@@ -37,7 +37,7 @@ class TripRepositoryImpl implements TripRepository {
   }
 
   @override
-  Future<bool> sendCheckCall({
+  Future<(String?, bool)> sendCheckCall({
     required int id,
     required CheckCallModel checkCall,
   }) async {

@@ -71,7 +71,10 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
 
   Future<void> _confirmTrip(
       ConfirmTrip event, Emitter<TripDetailState> emit) async {
-    emit(state.copyWith(isCheckCallLoading: true));
+    emit(state.copyWith(
+      isCheckCallLoading: true,
+      checkCallResponseMessage: null,
+    ));
     try {
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
@@ -92,13 +95,14 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
         checkCall: checkCallModel,
       );
 
-      if (!checkResult) {
+      if (!checkResult.$2) {
         event.onResult();
       }
 
       emit(state.copyWith(
-        isConfirmTripSuccesses: checkResult,
+        isConfirmTripSuccesses: checkResult.$2,
         isCheckCallLoading: false,
+        checkCallResponseMessage: checkResult.$1,
       ));
     } catch (e) {
       emit(state.copyWith(

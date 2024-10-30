@@ -3474,6 +3474,7 @@ mixin _$TripDetailState {
   bool? get isConfirmTripSuccesses => throw _privateConstructorUsedError;
   List<String> get documents => throw _privateConstructorUsedError;
   bool get isCheckCallLoading => throw _privateConstructorUsedError;
+  String? get checkCallResponseMessage => throw _privateConstructorUsedError;
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -3500,7 +3501,8 @@ abstract class $TripDetailStateCopyWith<$Res> {
       bool isConfirmingTrip,
       bool? isConfirmTripSuccesses,
       List<String> documents,
-      bool isCheckCallLoading});
+      bool isCheckCallLoading,
+      String? checkCallResponseMessage});
 
   $DispatchModelCopyWith<$Res>? get trip;
 }
@@ -3532,6 +3534,7 @@ class _$TripDetailStateCopyWithImpl<$Res, $Val extends TripDetailState>
     Object? isConfirmTripSuccesses = freezed,
     Object? documents = null,
     Object? isCheckCallLoading = null,
+    Object? checkCallResponseMessage = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -3582,6 +3585,10 @@ class _$TripDetailStateCopyWithImpl<$Res, $Val extends TripDetailState>
           ? _value.isCheckCallLoading
           : isCheckCallLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      checkCallResponseMessage: freezed == checkCallResponseMessage
+          ? _value.checkCallResponseMessage
+          : checkCallResponseMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -3620,7 +3627,8 @@ abstract class _$$TripDetailStateImplCopyWith<$Res>
       bool isConfirmingTrip,
       bool? isConfirmTripSuccesses,
       List<String> documents,
-      bool isCheckCallLoading});
+      bool isCheckCallLoading,
+      String? checkCallResponseMessage});
 
   @override
   $DispatchModelCopyWith<$Res>? get trip;
@@ -3651,6 +3659,7 @@ class __$$TripDetailStateImplCopyWithImpl<$Res>
     Object? isConfirmTripSuccesses = freezed,
     Object? documents = null,
     Object? isCheckCallLoading = null,
+    Object? checkCallResponseMessage = freezed,
   }) {
     return _then(_$TripDetailStateImpl(
       status: null == status
@@ -3701,6 +3710,10 @@ class __$$TripDetailStateImplCopyWithImpl<$Res>
           ? _value.isCheckCallLoading
           : isCheckCallLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      checkCallResponseMessage: freezed == checkCallResponseMessage
+          ? _value.checkCallResponseMessage
+          : checkCallResponseMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -3720,7 +3733,8 @@ class _$TripDetailStateImpl implements _TripDetailState {
       this.isConfirmingTrip = false,
       this.isConfirmTripSuccesses,
       final List<String> documents = const [],
-      this.isCheckCallLoading = false})
+      this.isCheckCallLoading = false,
+      this.checkCallResponseMessage})
       : _documents = documents;
 
   @override
@@ -3759,10 +3773,12 @@ class _$TripDetailStateImpl implements _TripDetailState {
   @override
   @JsonKey()
   final bool isCheckCallLoading;
+  @override
+  final String? checkCallResponseMessage;
 
   @override
   String toString() {
-    return 'TripDetailState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading, isLoading: $isLoading, trip: $trip, areStopsVisible: $areStopsVisible, isConfirmingTrip: $isConfirmingTrip, isConfirmTripSuccesses: $isConfirmTripSuccesses, documents: $documents, isCheckCallLoading: $isCheckCallLoading)';
+    return 'TripDetailState(status: $status, dateTime: $dateTime, selectedFile: $selectedFile, errorMessage: $errorMessage, isFileLoading: $isFileLoading, isLoading: $isLoading, trip: $trip, areStopsVisible: $areStopsVisible, isConfirmingTrip: $isConfirmingTrip, isConfirmTripSuccesses: $isConfirmTripSuccesses, documents: $documents, isCheckCallLoading: $isCheckCallLoading, checkCallResponseMessage: $checkCallResponseMessage)';
   }
 
   @override
@@ -3791,7 +3807,10 @@ class _$TripDetailStateImpl implements _TripDetailState {
             const DeepCollectionEquality()
                 .equals(other._documents, _documents) &&
             (identical(other.isCheckCallLoading, isCheckCallLoading) ||
-                other.isCheckCallLoading == isCheckCallLoading));
+                other.isCheckCallLoading == isCheckCallLoading) &&
+            (identical(
+                    other.checkCallResponseMessage, checkCallResponseMessage) ||
+                other.checkCallResponseMessage == checkCallResponseMessage));
   }
 
   @override
@@ -3808,7 +3827,8 @@ class _$TripDetailStateImpl implements _TripDetailState {
       isConfirmingTrip,
       isConfirmTripSuccesses,
       const DeepCollectionEquality().hash(_documents),
-      isCheckCallLoading);
+      isCheckCallLoading,
+      checkCallResponseMessage);
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.
@@ -3833,7 +3853,8 @@ abstract class _TripDetailState implements TripDetailState {
       final bool isConfirmingTrip,
       final bool? isConfirmTripSuccesses,
       final List<String> documents,
-      final bool isCheckCallLoading}) = _$TripDetailStateImpl;
+      final bool isCheckCallLoading,
+      final String? checkCallResponseMessage}) = _$TripDetailStateImpl;
 
   @override
   ActiveTripStatus get status;
@@ -3859,6 +3880,8 @@ abstract class _TripDetailState implements TripDetailState {
   List<String> get documents;
   @override
   bool get isCheckCallLoading;
+  @override
+  String? get checkCallResponseMessage;
 
   /// Create a copy of TripDetailState
   /// with the given fields replaced by the non-null parameter values.

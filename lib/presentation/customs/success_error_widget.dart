@@ -6,10 +6,16 @@ import 'package:tms_driver/presentation/utils/extension/change_localization.dart
 import 'custom_button.dart';
 
 class SuccessErrorWidget extends StatelessWidget {
-  const SuccessErrorWidget({super.key, required this.isSuccess, required this.onPressed, });
+  const SuccessErrorWidget({
+    super.key,
+    required this.isSuccess,
+    required this.onPressed,
+    this.checkCallResponseMessage,
+  });
 
   final bool isSuccess;
   final VoidCallback onPressed;
+  final String? checkCallResponseMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +39,15 @@ class SuccessErrorWidget extends StatelessWidget {
           const SizedBox(height: 20),
           Text(
             'Something went wrong!',
+            style: theme.textTheme.labelMedium!.copyWith(
+              color: theme.indicatorColor,
+            ),
+          ),
+        ],
+        if(checkCallResponseMessage != null)...[
+          const SizedBox(height: 15),
+          Text(
+            checkCallResponseMessage!,
             style: theme.textTheme.labelMedium!.copyWith(
               color: theme.indicatorColor,
             ),

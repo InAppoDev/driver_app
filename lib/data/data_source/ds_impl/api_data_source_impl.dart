@@ -228,7 +228,7 @@ class ApiDataSourceImpl implements ApiDataSource {
   }
 
   @override
-  Future<bool> sendCheckCall({
+  Future<(String?, bool)> sendCheckCall({
     required int id,
     required CheckCallModel checkCall,
   }) async {
@@ -239,7 +239,15 @@ class ApiDataSourceImpl implements ApiDataSource {
         data: checkCall.toJson(),
       ),
     );
+
     print('confirm CheckCall get response code ${response.statusCode}');
-    return response.statusCode == 200;
+
+    if (response.statusCode == 422) {
+      final errorData = response.data as Map<String, dynamic>;
+      final message = errorData['message'] as String? ?? 'Unknown error';
+      return (message, false);
+    }
+
+    return ('', response.statusCode == 200);
   }
 }

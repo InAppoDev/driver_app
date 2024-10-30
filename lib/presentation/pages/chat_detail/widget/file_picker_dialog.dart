@@ -18,7 +18,7 @@ class FilePickerDialog extends StatelessWidget {
     this.documents = const [],
     this.isConfirmTripSuccesses,
     this.onSuccessCheckCallPressed,
-    this.isCheckCallLoading,
+    this.isCheckCallLoading, this.checkCallResponseMessage,
   });
 
   final VoidCallback onAddFile;
@@ -34,6 +34,7 @@ class FilePickerDialog extends StatelessWidget {
   final bool? isConfirmTripSuccesses;
   final bool? isCheckCallLoading;
   final VoidCallback? onSuccessCheckCallPressed;
+  final String? checkCallResponseMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +63,7 @@ class FilePickerDialog extends StatelessWidget {
         isConfirmTripSuccesses: isConfirmTripSuccesses,
         onSuccessCheckCallPressed: onSuccessCheckCallPressed,
         isCheckCallLoading: isCheckCallLoading,
+        checkCallResponseMessage: checkCallResponseMessage,
       ),
     );
   }

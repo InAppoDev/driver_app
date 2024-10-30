@@ -22,6 +22,7 @@ class ETABottomSheet extends StatefulWidget {
   final bool? isConfirmTripSuccesses;
   final bool? isCheckCallLoading;
   final VoidCallback? onSuccessCheckCallPressed;
+  final String? checkCallResponseMessage;
 
   const ETABottomSheet({
     super.key,
@@ -32,6 +33,7 @@ class ETABottomSheet extends StatefulWidget {
     this.isConfirmTripSuccesses,
     this.onSuccessCheckCallPressed,
     this.isCheckCallLoading,
+    this.checkCallResponseMessage,
   });
 
   @override
@@ -110,6 +112,7 @@ class ETABottomSheetState extends State<ETABottomSheet> {
       child: SingleChildScrollView(
         child: widget.isConfirmTripSuccesses != null
             ? SuccessErrorWidget(
+                checkCallResponseMessage: widget.checkCallResponseMessage,
                 isSuccess: widget.isConfirmTripSuccesses!,
                 onPressed: () {
                   widget.onSuccessCheckCallPressed?.call();

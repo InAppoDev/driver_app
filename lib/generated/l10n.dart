@@ -522,10 +522,10 @@ class S {
     );
   }
 
-  /// `Miles to go`
+  /// `Route distance`
   String get milesToGo {
     return Intl.message(
-      'Miles to go',
+      'Route distance',
       name: 'milesToGo',
       desc: '',
       args: [],
