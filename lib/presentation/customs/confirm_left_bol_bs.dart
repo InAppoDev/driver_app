@@ -62,7 +62,11 @@ class _ConfirmLeftBolBsState extends State<ConfirmLeftBolBs> {
                 CustomButton(
                   width: width * 0.15,
                   label: 'Yes',
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      showErrorOnNoPressed = false;
+                    });
+                  },
                 ),
                 const SizedBox(width: 16),
                 CustomButton(

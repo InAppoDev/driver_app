@@ -326,7 +326,9 @@ class _FixedButtonState extends State<FixedButton> {
     if (widget.trip.nextMandatoryCheckCallType != null) {
       final theme = Theme.of(context);
 
-
+      // setState(() {
+      //   checkCallEnum = CheckCallType.pickupCheckOut;
+      // });
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -365,9 +367,6 @@ class _FixedButtonState extends State<FixedButton> {
                     : CustomButton(
                         label: buttonText(checkCallEnum),
                         onPressed: () {
-                          setState(() {
-                            checkCallEnum = CheckCallType.deliveryCheckIn;
-                          });
                           showModalByCallType(
                             checkCallEnum,
                           );
