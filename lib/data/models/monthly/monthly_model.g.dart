@@ -8,10 +8,10 @@ part of 'monthly_model.dart';
 
 _$MonthlyModelImpl _$$MonthlyModelImplFromJson(Map<String, dynamic> json) =>
     _$MonthlyModelImpl(
-      dispatches: (json['dispatches'] as num).toInt(),
-      totalMiles: (json['total_miles'] as num).toInt(),
-      checkCalls: (json['check_calls'] as num).toInt(),
-      driveTimeHours: (json['drive_time_hours'] as num).toInt(),
+      dispatches: (json['dispatches'] as num?)?.toInt(),
+      totalMiles: (json['total_miles'] as num?)?.toInt(),
+      checkCalls: (json['check_calls'] as num?)?.toInt(),
+      driveTimeHours: (json['drive_time_hours'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$MonthlyModelImplToJson(_$MonthlyModelImpl instance) =>

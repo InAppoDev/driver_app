@@ -141,21 +141,27 @@ class ConfirmTripView extends StatelessWidget {
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
                                     builder: (BuildContext bottomSheetContext) {
-                                      return ETABottomSheet(
-                                        trip: trip,
-                                        onConfirmPressed: (
-                                          int? etaTimestamp,
-                                          String? comment,
-                                          String type,
-                                        ) {
-                                          Navigator.pop(bottomSheetContext, {
-                                            'etaTimestamp': etaTimestamp,
-                                            'comment': comment,
-                                            'type': type,
-                                          });
-                                        },
-                                        title: localizations.startDriving,
-                                        type: 'eta',
+                                      return Padding(
+                                        padding: EdgeInsets.only(
+                                            bottom: MediaQuery.of(context)
+                                                .viewInsets
+                                                .bottom),
+                                        child: ETABottomSheet(
+                                          trip: trip,
+                                          onConfirmPressed: (
+                                            int? etaTimestamp,
+                                            String? comment,
+                                            String type,
+                                          ) {
+                                            Navigator.pop(bottomSheetContext, {
+                                              'etaTimestamp': etaTimestamp,
+                                              'comment': comment,
+                                              'type': type,
+                                            });
+                                          },
+                                          title: localizations.begin,
+                                          type: 'eta',
+                                        ),
                                       );
                                     },
                                   );

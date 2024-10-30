@@ -6,6 +6,7 @@ import 'package:tms_driver/presentation/customs/custom_button.dart';
 import 'package:tms_driver/presentation/customs/custom_date_widget.dart';
 import 'package:tms_driver/presentation/customs/custom_text_field.dart';
 import 'package:tms_driver/presentation/customs/eta_widget.dart';
+import 'package:tms_driver/presentation/customs/success_error_widget.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/calendar_dialog.dart';
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
@@ -18,6 +19,10 @@ class ETABottomSheet extends StatefulWidget {
   ) onConfirmPressed;
   final String? title;
   final String type;
+  final bool? isConfirmTripSuccesses;
+  final bool? isCheckCallLoading;
+  final VoidCallback? onSuccessCheckCallPressed;
+  final String? checkCallResponseMessage;
 
   const ETABottomSheet({
     super.key,
@@ -25,6 +30,10 @@ class ETABottomSheet extends StatefulWidget {
     required this.onConfirmPressed,
     this.title,
     required this.type,
+    this.isConfirmTripSuccesses,
+    this.onSuccessCheckCallPressed,
+    this.isCheckCallLoading,
+    this.checkCallResponseMessage,
   });
 
   @override
@@ -91,119 +100,124 @@ class ETABottomSheetState extends State<ETABottomSheet> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final height = MediaQuery.of(context).size.height;
-    return Padding(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom,
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.only(
-            topRight: Radius.circular(16),
-            topLeft: Radius.circular(16),
-          ),
-          color: theme.scaffoldBackgroundColor,
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(16),
+          topLeft: Radius.circular(16),
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (widget.title != null)
-                Center(
-                  child: Text(
-                    widget.title!.toUpperCase(),
-                    style: theme.textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.w600,
-                      color: theme.dividerColor,
-                    ),
-                  ),
-                ),
-              const SizedBox(height: 20),
-              Text(
-                context.localizations.nextStop.toUpperCase(),
-                style: theme.textTheme.bodySmall!
-                    .copyWith(color: theme.dividerColor),
-              ),
-              const SizedBox(height: 12),
-              Row(
+        color: theme.scaffoldBackgroundColor,
+      ),
+      child: SingleChildScrollView(
+        child: widget.isConfirmTripSuccesses != null
+            ? SuccessErrorWidget(
+                checkCallResponseMessage: widget.checkCallResponseMessage,
+                isSuccess: widget.isConfirmTripSuccesses!,
+                onPressed: () {
+                  widget.onSuccessCheckCallPressed?.call();
+                },
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  SvgPicture.asset('assets/images/arrow_truck.svg'),
-                  const SizedBox(width: 8),
-                  Text(
-                    '${widget.trip.nextEtaWaypoint?.typeTitle.toUpperCase()} ${widget.trip.nextEtaWaypoint?.id.toString()}',
-                    style: theme.textTheme.bodySmall!.copyWith(
-                      color: theme.secondaryHeaderColor,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 15),
-              if (widget.trip.nextWaypoint != null)
-                CustomAddress(waypointDetail: widget.trip.nextWaypoint!),
-              const SizedBox(height: 30),
-              Text(
-                context.localizations.eta.toUpperCase(),
-                style: theme.textTheme.bodySmall!
-                    .copyWith(color: theme.dividerColor),
-              ),
-              if (_nextEtaTimestamp != null)
-                CustomDateWidget(
-                  date: _nextEtaTimestamp!,
-                  textStyle: theme.textTheme.titleSmall!.copyWith(
+            if (widget.title != null)
+              Center(
+                child: Text(
+                  widget.title!.toUpperCase(),
+                  style: theme.textTheme.titleLarge!.copyWith(
                     fontWeight: FontWeight.w600,
                     color: theme.dividerColor,
                   ),
                 ),
-              const SizedBox(height: 15),
-              Row(
-                children: [
-                  if (_nextEtaTimestamp != null)
-                    EtaWidget(
-                      text: '+ 30 ${context.localizations.min}',
-                      onPressed: () => _addMinutesToEta(30),
-                    ),
-                  if (_nextEtaTimestamp != null)
-                    EtaWidget(
-                      text: '+ 1 ${context.localizations.hour}',
-                      onPressed: () => _addMinutesToEta(60),
-                    ),
-                  EtaWidget(
-                    text: context.localizations.custom,
-                    onPressed: _setCustomEta,
-                  ),
-                ],
               ),
-              const SizedBox(height: 14),
-              Container(
-                constraints: BoxConstraints(maxHeight: height * 0.17),
-                child: CustomTextField(
-                  hintText: context.localizations.addComment.toUpperCase(),
-                  controller: commentController,
-                  minLines: minLines,
-                  onChanged: (text) {
-                    if (text.split('\n').length > 1) {
-                      setState(() {
-                        minLines = text.split('\n').length + 1;
-                      });
-                    }
-                    if (text.isEmpty || text.split('\n').length == 1) {
-                      setState(() {
-                        minLines = 1;
-                      });
-                    }
-                  },
-                  keyboardType: TextInputType.multiline,
+            const SizedBox(height: 20),
+            Text(
+              context.localizations.nextStop.toUpperCase(),
+              style: theme.textTheme.bodySmall!
+                  .copyWith(color: theme.dividerColor),
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                SvgPicture.asset('assets/images/arrow_truck.svg'),
+                const SizedBox(width: 8),
+                Text(
+                  '${widget.trip.nextEtaWaypoint?.typeTitle.toUpperCase()} ${widget.trip.nextEtaWaypoint?.id.toString()}',
+                  style: theme.textTheme.bodySmall!.copyWith(
+                    color: theme.secondaryHeaderColor,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 15),
+            if (widget.trip.nextWaypoint != null)
+              CustomAddress(waypointDetail: widget.trip.nextWaypoint!),
+            const SizedBox(height: 30),
+            Text(
+              context.localizations.eta.toUpperCase(),
+              style: theme.textTheme.bodySmall!
+                  .copyWith(color: theme.dividerColor),
+            ),
+            if (_nextEtaTimestamp != null)
+              CustomDateWidget(
+                date: _nextEtaTimestamp!,
+                textStyle: theme.textTheme.titleSmall!.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: theme.dividerColor,
                 ),
               ),
-              const SizedBox(height: 14),
-              CustomButton(
-                label: context.localizations.confirm.toUpperCase(),
-                onPressed: _confirmTrip,
-                isDisabled: _nextEtaTimestamp == null,
-              )
-            ],
-          ),
+            const SizedBox(height: 15),
+            Row(
+              children: [
+                if (_nextEtaTimestamp != null)
+                  EtaWidget(
+                    text: '+ 30 ${context.localizations.min}',
+                    onPressed: () => _addMinutesToEta(30),
+                  ),
+                if (_nextEtaTimestamp != null)
+                  EtaWidget(
+                    text: '+ 1 ${context.localizations.hour}',
+                    onPressed: () => _addMinutesToEta(60),
+                  ),
+                EtaWidget(
+                  text: context.localizations.custom,
+                  onPressed: _setCustomEta,
+                ),
+              ],
+            ),
+            const SizedBox(height: 14),
+            Container(
+              constraints: BoxConstraints(maxHeight: height * 0.17),
+              child: CustomTextField(
+                hintText: context.localizations.addComment.toUpperCase(),
+                controller: commentController,
+                minLines: minLines,
+                onChanged: (text) {
+                  if (text.split('\n').length > 1) {
+                    setState(() {
+                      minLines = text.split('\n').length + 1;
+                    });
+                  }
+                  if (text.isEmpty || text.split('\n').length == 1) {
+                    setState(() {
+                      minLines = 1;
+                    });
+                  }
+                },
+                keyboardType: TextInputType.multiline,
+              ),
+            ),
+            const SizedBox(height: 14),
+            CustomButton(
+              label: context.localizations.confirm.toUpperCase(),
+              onPressed: _confirmTrip,
+              isDisabled: _nextEtaTimestamp == null,
+                    isLoading: widget.isCheckCallLoading != null &&
+                        widget.isCheckCallLoading!,
+                  ),
+          ],
         ),
       ),
     );

@@ -23,7 +23,7 @@ mixin _$PersonalStatsModel {
   @JsonKey(name: 'current_month')
   int get currentMonth => throw _privateConstructorUsedError;
   MonthlyModel get monthly => throw _privateConstructorUsedError;
-  LifeTimeModel? get lifeTime => throw _privateConstructorUsedError;
+  LifeTimeModel get lifetime => throw _privateConstructorUsedError;
 
   /// Serializes this PersonalStatsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,10 +44,10 @@ abstract class $PersonalStatsModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'current_month') int currentMonth,
       MonthlyModel monthly,
-      LifeTimeModel? lifeTime});
+      LifeTimeModel lifetime});
 
   $MonthlyModelCopyWith<$Res> get monthly;
-  $LifeTimeModelCopyWith<$Res>? get lifeTime;
+  $LifeTimeModelCopyWith<$Res> get lifetime;
 }
 
 /// @nodoc
@@ -67,7 +67,7 @@ class _$PersonalStatsModelCopyWithImpl<$Res, $Val extends PersonalStatsModel>
   $Res call({
     Object? currentMonth = null,
     Object? monthly = null,
-    Object? lifeTime = freezed,
+    Object? lifetime = null,
   }) {
     return _then(_value.copyWith(
       currentMonth: null == currentMonth
@@ -78,10 +78,10 @@ class _$PersonalStatsModelCopyWithImpl<$Res, $Val extends PersonalStatsModel>
           ? _value.monthly
           : monthly // ignore: cast_nullable_to_non_nullable
               as MonthlyModel,
-      lifeTime: freezed == lifeTime
-          ? _value.lifeTime
-          : lifeTime // ignore: cast_nullable_to_non_nullable
-              as LifeTimeModel?,
+      lifetime: null == lifetime
+          ? _value.lifetime
+          : lifetime // ignore: cast_nullable_to_non_nullable
+              as LifeTimeModel,
     ) as $Val);
   }
 
@@ -99,13 +99,9 @@ class _$PersonalStatsModelCopyWithImpl<$Res, $Val extends PersonalStatsModel>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $LifeTimeModelCopyWith<$Res>? get lifeTime {
-    if (_value.lifeTime == null) {
-      return null;
-    }
-
-    return $LifeTimeModelCopyWith<$Res>(_value.lifeTime!, (value) {
-      return _then(_value.copyWith(lifeTime: value) as $Val);
+  $LifeTimeModelCopyWith<$Res> get lifetime {
+    return $LifeTimeModelCopyWith<$Res>(_value.lifetime, (value) {
+      return _then(_value.copyWith(lifetime: value) as $Val);
     });
   }
 }
@@ -121,12 +117,12 @@ abstract class _$$PersonalStatsModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'current_month') int currentMonth,
       MonthlyModel monthly,
-      LifeTimeModel? lifeTime});
+      LifeTimeModel lifetime});
 
   @override
   $MonthlyModelCopyWith<$Res> get monthly;
   @override
-  $LifeTimeModelCopyWith<$Res>? get lifeTime;
+  $LifeTimeModelCopyWith<$Res> get lifetime;
 }
 
 /// @nodoc
@@ -144,7 +140,7 @@ class __$$PersonalStatsModelImplCopyWithImpl<$Res>
   $Res call({
     Object? currentMonth = null,
     Object? monthly = null,
-    Object? lifeTime = freezed,
+    Object? lifetime = null,
   }) {
     return _then(_$PersonalStatsModelImpl(
       currentMonth: null == currentMonth
@@ -155,10 +151,10 @@ class __$$PersonalStatsModelImplCopyWithImpl<$Res>
           ? _value.monthly
           : monthly // ignore: cast_nullable_to_non_nullable
               as MonthlyModel,
-      lifeTime: freezed == lifeTime
-          ? _value.lifeTime
-          : lifeTime // ignore: cast_nullable_to_non_nullable
-              as LifeTimeModel?,
+      lifetime: null == lifetime
+          ? _value.lifetime
+          : lifetime // ignore: cast_nullable_to_non_nullable
+              as LifeTimeModel,
     ));
   }
 }
@@ -169,7 +165,7 @@ class _$PersonalStatsModelImpl implements _PersonalStatsModel {
   const _$PersonalStatsModelImpl(
       {@JsonKey(name: 'current_month') required this.currentMonth,
       required this.monthly,
-      required this.lifeTime});
+      required this.lifetime});
 
   factory _$PersonalStatsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PersonalStatsModelImplFromJson(json);
@@ -180,11 +176,11 @@ class _$PersonalStatsModelImpl implements _PersonalStatsModel {
   @override
   final MonthlyModel monthly;
   @override
-  final LifeTimeModel? lifeTime;
+  final LifeTimeModel lifetime;
 
   @override
   String toString() {
-    return 'PersonalStatsModel(currentMonth: $currentMonth, monthly: $monthly, lifeTime: $lifeTime)';
+    return 'PersonalStatsModel(currentMonth: $currentMonth, monthly: $monthly, lifetime: $lifetime)';
   }
 
   @override
@@ -195,13 +191,13 @@ class _$PersonalStatsModelImpl implements _PersonalStatsModel {
             (identical(other.currentMonth, currentMonth) ||
                 other.currentMonth == currentMonth) &&
             (identical(other.monthly, monthly) || other.monthly == monthly) &&
-            (identical(other.lifeTime, lifeTime) ||
-                other.lifeTime == lifeTime));
+            (identical(other.lifetime, lifetime) ||
+                other.lifetime == lifetime));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, currentMonth, monthly, lifeTime);
+  int get hashCode => Object.hash(runtimeType, currentMonth, monthly, lifetime);
 
   /// Create a copy of PersonalStatsModel
   /// with the given fields replaced by the non-null parameter values.
@@ -224,7 +220,7 @@ abstract class _PersonalStatsModel implements PersonalStatsModel {
   const factory _PersonalStatsModel(
       {@JsonKey(name: 'current_month') required final int currentMonth,
       required final MonthlyModel monthly,
-      required final LifeTimeModel? lifeTime}) = _$PersonalStatsModelImpl;
+      required final LifeTimeModel lifetime}) = _$PersonalStatsModelImpl;
 
   factory _PersonalStatsModel.fromJson(Map<String, dynamic> json) =
       _$PersonalStatsModelImpl.fromJson;
@@ -235,7 +231,7 @@ abstract class _PersonalStatsModel implements PersonalStatsModel {
   @override
   MonthlyModel get monthly;
   @override
-  LifeTimeModel? get lifeTime;
+  LifeTimeModel get lifetime;
 
   /// Create a copy of PersonalStatsModel
   /// with the given fields replaced by the non-null parameter values.

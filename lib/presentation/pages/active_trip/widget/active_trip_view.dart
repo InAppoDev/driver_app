@@ -38,7 +38,11 @@ class ActiveTripView extends StatelessWidget {
                         )
                       ],
                     )
-                  : ActiveTripDetailWidget(state: state),
+                  : ActiveTripDetailWidget(
+                      trip: state.trip!,
+                      documents: state.documents,
+                isConfirmTripSuccesses: state.isConfirmTripSuccesses,
+                    ),
             );
           }
         },

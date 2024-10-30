@@ -21,7 +21,7 @@ class SummaryOfTheDayWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      width: 150,
+      constraints: const BoxConstraints(minWidth: 120),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       decoration: BoxDecoration(
@@ -33,9 +33,7 @@ class SummaryOfTheDayWidget extends StatelessWidget {
         children: [
           Text(
             value +
-                ( showMph
-                            ? context.localizations.mph
-                            : ''),
+                ( showMph ? ' ${context.localizations.mph}' : ''),
             style: theme.textTheme.headlineLarge!
                 .copyWith(fontSize: 26, fontWeight: FontWeight.w800),
           ),

@@ -22,4 +22,7 @@ class AppColors {
   static const Color blueWhite = Color(0xFFEDF6FF);
   static const Color lightRed = Color(0xFFF36A6A);
   static const Color darkIndigo = Color(0xFF10152C);
+  static const Color lightGray = Color(0xFFD9D9D9);
+  static const Color lightGreen = Color(0xFF07DC8A);
+
 }

@@ -16,7 +16,7 @@ abstract class TripRepository {
 
   Future<List<DispatchListModel>> getHistoryTrips();
 
-  Future<bool> sendCheckCall({
+  Future<(String?, bool)> sendCheckCall({
     required int id,
     required CheckCallModel checkCall,
   });

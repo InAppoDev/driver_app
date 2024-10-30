@@ -21,17 +21,17 @@ LifeTimeModel _$LifeTimeModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$LifeTimeModel {
   @JsonKey(name: 'total_dispatches')
-  int get totalTrips => throw _privateConstructorUsedError;
+  int? get totalTrips => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_miles')
-  int get totalMiles => throw _privateConstructorUsedError;
+  int? get totalMiles => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_stops')
-  int get totalStops => throw _privateConstructorUsedError;
+  int? get totalStops => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_check_calls')
-  int get totalCheckCalls => throw _privateConstructorUsedError;
+  int? get totalCheckCalls => throw _privateConstructorUsedError;
   @JsonKey(name: 'shortest_trip_miles')
-  int get shortestTripMiles => throw _privateConstructorUsedError;
+  int? get shortestTripMiles => throw _privateConstructorUsedError;
   @JsonKey(name: 'longest_trip_miles')
-  int get longestTripMiles => throw _privateConstructorUsedError;
+  int? get longestTripMiles => throw _privateConstructorUsedError;
 
   /// Serializes this LifeTimeModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,12 +50,12 @@ abstract class $LifeTimeModelCopyWith<$Res> {
       _$LifeTimeModelCopyWithImpl<$Res, LifeTimeModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'total_dispatches') int totalTrips,
-      @JsonKey(name: 'total_miles') int totalMiles,
-      @JsonKey(name: 'total_stops') int totalStops,
-      @JsonKey(name: 'total_check_calls') int totalCheckCalls,
-      @JsonKey(name: 'shortest_trip_miles') int shortestTripMiles,
-      @JsonKey(name: 'longest_trip_miles') int longestTripMiles});
+      {@JsonKey(name: 'total_dispatches') int? totalTrips,
+      @JsonKey(name: 'total_miles') int? totalMiles,
+      @JsonKey(name: 'total_stops') int? totalStops,
+      @JsonKey(name: 'total_check_calls') int? totalCheckCalls,
+      @JsonKey(name: 'shortest_trip_miles') int? shortestTripMiles,
+      @JsonKey(name: 'longest_trip_miles') int? longestTripMiles});
 }
 
 /// @nodoc
@@ -73,38 +73,38 @@ class _$LifeTimeModelCopyWithImpl<$Res, $Val extends LifeTimeModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? totalTrips = null,
-    Object? totalMiles = null,
-    Object? totalStops = null,
-    Object? totalCheckCalls = null,
-    Object? shortestTripMiles = null,
-    Object? longestTripMiles = null,
+    Object? totalTrips = freezed,
+    Object? totalMiles = freezed,
+    Object? totalStops = freezed,
+    Object? totalCheckCalls = freezed,
+    Object? shortestTripMiles = freezed,
+    Object? longestTripMiles = freezed,
   }) {
     return _then(_value.copyWith(
-      totalTrips: null == totalTrips
+      totalTrips: freezed == totalTrips
           ? _value.totalTrips
           : totalTrips // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalMiles: null == totalMiles
+              as int?,
+      totalMiles: freezed == totalMiles
           ? _value.totalMiles
           : totalMiles // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalStops: null == totalStops
+              as int?,
+      totalStops: freezed == totalStops
           ? _value.totalStops
           : totalStops // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalCheckCalls: null == totalCheckCalls
+              as int?,
+      totalCheckCalls: freezed == totalCheckCalls
           ? _value.totalCheckCalls
           : totalCheckCalls // ignore: cast_nullable_to_non_nullable
-              as int,
-      shortestTripMiles: null == shortestTripMiles
+              as int?,
+      shortestTripMiles: freezed == shortestTripMiles
           ? _value.shortestTripMiles
           : shortestTripMiles // ignore: cast_nullable_to_non_nullable
-              as int,
-      longestTripMiles: null == longestTripMiles
+              as int?,
+      longestTripMiles: freezed == longestTripMiles
           ? _value.longestTripMiles
           : longestTripMiles // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -118,12 +118,12 @@ abstract class _$$LifeTimeModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'total_dispatches') int totalTrips,
-      @JsonKey(name: 'total_miles') int totalMiles,
-      @JsonKey(name: 'total_stops') int totalStops,
-      @JsonKey(name: 'total_check_calls') int totalCheckCalls,
-      @JsonKey(name: 'shortest_trip_miles') int shortestTripMiles,
-      @JsonKey(name: 'longest_trip_miles') int longestTripMiles});
+      {@JsonKey(name: 'total_dispatches') int? totalTrips,
+      @JsonKey(name: 'total_miles') int? totalMiles,
+      @JsonKey(name: 'total_stops') int? totalStops,
+      @JsonKey(name: 'total_check_calls') int? totalCheckCalls,
+      @JsonKey(name: 'shortest_trip_miles') int? shortestTripMiles,
+      @JsonKey(name: 'longest_trip_miles') int? longestTripMiles});
 }
 
 /// @nodoc
@@ -139,38 +139,38 @@ class __$$LifeTimeModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? totalTrips = null,
-    Object? totalMiles = null,
-    Object? totalStops = null,
-    Object? totalCheckCalls = null,
-    Object? shortestTripMiles = null,
-    Object? longestTripMiles = null,
+    Object? totalTrips = freezed,
+    Object? totalMiles = freezed,
+    Object? totalStops = freezed,
+    Object? totalCheckCalls = freezed,
+    Object? shortestTripMiles = freezed,
+    Object? longestTripMiles = freezed,
   }) {
     return _then(_$LifeTimeModelImpl(
-      totalTrips: null == totalTrips
+      totalTrips: freezed == totalTrips
           ? _value.totalTrips
           : totalTrips // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalMiles: null == totalMiles
+              as int?,
+      totalMiles: freezed == totalMiles
           ? _value.totalMiles
           : totalMiles // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalStops: null == totalStops
+              as int?,
+      totalStops: freezed == totalStops
           ? _value.totalStops
           : totalStops // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalCheckCalls: null == totalCheckCalls
+              as int?,
+      totalCheckCalls: freezed == totalCheckCalls
           ? _value.totalCheckCalls
           : totalCheckCalls // ignore: cast_nullable_to_non_nullable
-              as int,
-      shortestTripMiles: null == shortestTripMiles
+              as int?,
+      shortestTripMiles: freezed == shortestTripMiles
           ? _value.shortestTripMiles
           : shortestTripMiles // ignore: cast_nullable_to_non_nullable
-              as int,
-      longestTripMiles: null == longestTripMiles
+              as int?,
+      longestTripMiles: freezed == longestTripMiles
           ? _value.longestTripMiles
           : longestTripMiles // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -191,22 +191,22 @@ class _$LifeTimeModelImpl implements _LifeTimeModel {
 
   @override
   @JsonKey(name: 'total_dispatches')
-  final int totalTrips;
+  final int? totalTrips;
   @override
   @JsonKey(name: 'total_miles')
-  final int totalMiles;
+  final int? totalMiles;
   @override
   @JsonKey(name: 'total_stops')
-  final int totalStops;
+  final int? totalStops;
   @override
   @JsonKey(name: 'total_check_calls')
-  final int totalCheckCalls;
+  final int? totalCheckCalls;
   @override
   @JsonKey(name: 'shortest_trip_miles')
-  final int shortestTripMiles;
+  final int? shortestTripMiles;
   @override
   @JsonKey(name: 'longest_trip_miles')
-  final int longestTripMiles;
+  final int? longestTripMiles;
 
   @override
   String toString() {
@@ -255,36 +255,36 @@ class _$LifeTimeModelImpl implements _LifeTimeModel {
 
 abstract class _LifeTimeModel implements LifeTimeModel {
   const factory _LifeTimeModel(
-      {@JsonKey(name: 'total_dispatches') required final int totalTrips,
-      @JsonKey(name: 'total_miles') required final int totalMiles,
-      @JsonKey(name: 'total_stops') required final int totalStops,
-      @JsonKey(name: 'total_check_calls') required final int totalCheckCalls,
+      {@JsonKey(name: 'total_dispatches') required final int? totalTrips,
+      @JsonKey(name: 'total_miles') required final int? totalMiles,
+      @JsonKey(name: 'total_stops') required final int? totalStops,
+      @JsonKey(name: 'total_check_calls') required final int? totalCheckCalls,
       @JsonKey(name: 'shortest_trip_miles')
-      required final int shortestTripMiles,
+      required final int? shortestTripMiles,
       @JsonKey(name: 'longest_trip_miles')
-      required final int longestTripMiles}) = _$LifeTimeModelImpl;
+      required final int? longestTripMiles}) = _$LifeTimeModelImpl;
 
   factory _LifeTimeModel.fromJson(Map<String, dynamic> json) =
       _$LifeTimeModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'total_dispatches')
-  int get totalTrips;
+  int? get totalTrips;
   @override
   @JsonKey(name: 'total_miles')
-  int get totalMiles;
+  int? get totalMiles;
   @override
   @JsonKey(name: 'total_stops')
-  int get totalStops;
+  int? get totalStops;
   @override
   @JsonKey(name: 'total_check_calls')
-  int get totalCheckCalls;
+  int? get totalCheckCalls;
   @override
   @JsonKey(name: 'shortest_trip_miles')
-  int get shortestTripMiles;
+  int? get shortestTripMiles;
   @override
   @JsonKey(name: 'longest_trip_miles')
-  int get longestTripMiles;
+  int? get longestTripMiles;
 
   /// Create a copy of LifeTimeModel
   /// with the given fields replaced by the non-null parameter values.

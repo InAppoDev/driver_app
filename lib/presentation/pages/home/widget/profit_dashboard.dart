@@ -31,11 +31,11 @@ class ProfitDashboard extends StatelessWidget {
       ),
       child:  Column(
         children: [
-          const SizedBox(height: 10),
+          const SizedBox(height: 15),
           ProfitDetails(personalStats: personalStats!),
           const SizedBox(height: 10),
           DashBoard(personalStats: personalStats!),
-          const SizedBox(height: 10),
+          const SizedBox(height: 15),
         ],
       ),
     );

@@ -12,18 +12,17 @@ class DashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return personalStats.lifeTime != null
-        ? Column(
+    return  Column(
             crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 context.localizations.lifetimeStats,
-                style: theme.textTheme.labelSmall!.copyWith(fontSize: 15),
+                style: theme.textTheme.labelSmall!.copyWith(fontSize: 18),
               ),
               Text(
                 context.localizations.hereIsASummaryOfYourOverallPerformance,
@@ -35,39 +34,39 @@ class DashBoard extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 7),
+          padding: const EdgeInsets.symmetric(horizontal: 9),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                SummaryOfTheDayWidget(
-                        value: formatNumber(personalStats.lifeTime!.totalTrips),
+                if(personalStats.lifetime.totalTrips != null)SummaryOfTheDayWidget(
+                        value: formatNumber(personalStats.lifetime.totalTrips!),
                         text: context.localizations.totalTrips,
                       ),
-                SummaryOfTheDayWidget(
-                        value: formatNumber(personalStats.lifeTime!.totalMiles),
+               if(personalStats.lifetime.totalMiles != null) SummaryOfTheDayWidget(
+                        value: formatNumber(personalStats.lifetime.totalMiles!),
                         text: context.localizations.totalMiles,
                   showK: true,
                 ),
-                SummaryOfTheDayWidget(
-                        value: formatNumber(personalStats.lifeTime!.totalStops),
+              if(personalStats.lifetime.totalStops != null)  SummaryOfTheDayWidget(
+                        value: formatNumber(personalStats.lifetime.totalStops!),
                         text: context.localizations.totalStops,
                 ),
-                SummaryOfTheDayWidget(
+              if(personalStats.lifetime.shortestTripMiles != null)  SummaryOfTheDayWidget(
                         value: formatNumber(
-                            personalStats.lifeTime!.shortestTripMiles),
+                            personalStats.lifetime.shortestTripMiles!),
                         text: context.localizations.shortestTrip,
                   showMi: true,
                 ),
-                SummaryOfTheDayWidget(
+              if(personalStats.lifetime.longestTripMiles != null)  SummaryOfTheDayWidget(
                         value: formatNumber(
-                            personalStats.lifeTime!.longestTripMiles),
+                            personalStats.lifetime.longestTripMiles!),
                         text: context.localizations.longestTrip,
                   showMi: true,
                 ),
-                SummaryOfTheDayWidget(
+              if(personalStats.lifetime.totalCheckCalls != null)  SummaryOfTheDayWidget(
                         value: formatNumber(
-                            personalStats.lifeTime!.totalCheckCalls),
+                            personalStats.lifetime.totalCheckCalls!),
                         text: context.localizations.checkCalls,
                         showMph: true,
                 ),
@@ -76,7 +75,6 @@ class DashBoard extends StatelessWidget {
           ),
         )
       ],
-          )
-        : const SizedBox();
+          );
   }
 }

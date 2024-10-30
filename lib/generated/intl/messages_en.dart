@@ -36,7 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "approvedTrip": MessageLookupByLibrary.simpleMessage("Approved trip"),
         "apptTime": MessageLookupByLibrary.simpleMessage("Appt/time"),
         "averageSpeed": MessageLookupByLibrary.simpleMessage("Average Speed"),
-        "begin": MessageLookupByLibrary.simpleMessage("begin trip"),
+        "begin": MessageLookupByLibrary.simpleMessage("Begin trip"),
         "belowIsAShortSummaryOfYourMonth": MessageLookupByLibrary.simpleMessage(
             "Below is a short summary of your month"),
         "bolDocument": MessageLookupByLibrary.simpleMessage("BOL document:"),
@@ -86,13 +86,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "longestTrip": MessageLookupByLibrary.simpleMessage("Longest Trip"),
         "m": MessageLookupByLibrary.simpleMessage("M"),
         "messages": MessageLookupByLibrary.simpleMessage("Messages"),
-        "milesToGo": MessageLookupByLibrary.simpleMessage("Miles to go"),
+        "milesToGo": MessageLookupByLibrary.simpleMessage("Route distance"),
         "min": MessageLookupByLibrary.simpleMessage("min"),
         "mph": MessageLookupByLibrary.simpleMessage("Mph"),
         "next": MessageLookupByLibrary.simpleMessage("NEXT"),
         "nextStop": MessageLookupByLibrary.simpleMessage("next stop"),
         "or": MessageLookupByLibrary.simpleMessage("or"),
         "pallets": MessageLookupByLibrary.simpleMessage("Pallets:"),
+        "pause": MessageLookupByLibrary.simpleMessage("Pause"),
         "permissions": MessageLookupByLibrary.simpleMessage("Permissions"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "pickUp": MessageLookupByLibrary.simpleMessage("Pick up #2133123"),
@@ -133,6 +134,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tripNumber":
             MessageLookupByLibrary.simpleMessage("Trip № 12321312312232"),
         "trips": MessageLookupByLibrary.simpleMessage("Trips"),
+        "updateETA": MessageLookupByLibrary.simpleMessage("Update ETA"),
         "upload": MessageLookupByLibrary.simpleMessage("UPLOAD"),
         "uploadFiles": MessageLookupByLibrary.simpleMessage("Upload files"),
         "uploadTheBOLDocumentOrYouCanScanIt":

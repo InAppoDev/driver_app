@@ -5,6 +5,8 @@ String subFile(File file) {
   return subLongFileName(file.path.substring(file.path.lastIndexOf('/') + 1));
 }
 
+
+
 String subLongFileName(String name) {
   if (name.length > 17) {
     final start = name.substring(0, 14);
@@ -30,9 +32,9 @@ String formatDateFromTimestamp(int timestamp) {
 
 String formatNumber(int number) {
   if (number >= 1000000) {
-    return '${(number / 1000000).toStringAsFixed(1)} M';
+    return '${(number / 1000000).toStringAsFixed(1)}M';
   } else if (number >= 1000) {
-    return '${(number / 1000).toStringAsFixed(1)} k';
+    return '${(number / 1000).toStringAsFixed(1)}k';
   } else {
     return number.toString();
   }

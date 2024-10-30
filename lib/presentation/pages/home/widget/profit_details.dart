@@ -17,13 +17,13 @@ class ProfitDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 5),
+            padding: const EdgeInsets.only(left: 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   formatDateFromTimestamp(personalStats.currentMonth),
-                  style: theme.textTheme.labelSmall!.copyWith(fontSize: 15),
+                  style: theme.textTheme.labelSmall!.copyWith(fontSize: 18),
                 ),
                 Text(
                   context.localizations.belowIsAShortSummaryOfYourMonth,
@@ -33,38 +33,43 @@ class ProfitDetails extends StatelessWidget {
               ],
             ),
           ),
-          Wrap(
-            children: [
-              ProfitDetailsWidget(
-                isSelected: false,
-                icon: Icons.local_shipping,
-                amount: formatNumber(personalStats.monthly.dispatches),
-                text: context.localizations.trips,
-                showDollar: false,
-              ),
-              ProfitDetailsWidget(
-                isSelected: false,
-                icon: Icons.speed,
-                amount: formatNumber(personalStats.monthly.totalMiles),
-                text: context.localizations.totalMiles,
-                showDollar: true,
-              ),
-              ProfitDetailsWidget(
-                isSelected: false,
-                icon: Icons.checklist,
-                amount: formatNumber(personalStats.monthly.checkCalls),
-                text: context.localizations.checkCalls,
-                showDollar: true,
-              ),
-              ProfitDetailsWidget(
-                isSelected: false,
-                icon: Icons.people,
-                amount: formatNumber(personalStats.monthly.driveTimeHours),
-                text: context.localizations.driveTime,
-                showDollar: false,
-                showHours: true,
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(left: 12, right: 12, top: 10),
+            child: Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              children: [
+                ProfitDetailsWidget(
+                  isSelected: false,
+                  icon: Icons.local_shipping,
+                  amount: formatNumber(personalStats.monthly.dispatches ?? 0),
+                  text: context.localizations.trips,
+                  showDollar: false,
+                ),
+                ProfitDetailsWidget(
+                  isSelected: false,
+                  icon: Icons.speed,
+                  amount: formatNumber(personalStats.monthly.totalMiles ?? 0),
+                  text: context.localizations.totalMiles,
+                  showDollar: true,
+                ),
+                ProfitDetailsWidget(
+                  isSelected: false,
+                  icon: Icons.checklist,
+                  amount: formatNumber(personalStats.monthly.checkCalls ?? 0),
+                  text: context.localizations.checkCalls,
+                  showDollar: true,
+                ),
+                ProfitDetailsWidget(
+                  isSelected: false,
+                  icon: Icons.people,
+                  amount: formatNumber(personalStats.monthly.driveTimeHours ?? 0),
+                  text: context.localizations.driveTime,
+                  showDollar: false,
+                  showHours: true,
+                ),
+              ],
+            ),
           ),
         ],
       ),

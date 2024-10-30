@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_list_model/dispatch_list_model.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_info_widget.dart';
@@ -47,14 +48,16 @@ class TripItemWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
-                      ...trip.waypoints.map((waypoint) {
-                        print('check waypoint - $waypoint');
+                      ...trip.waypoints.mapIndexed((index, waypoint) {
+                        final showMidlLine =
+                            index + 1 < trip.waypoints.length &&
+                                trip.waypoints[index].type !=
+                                    trip.waypoints[index + 1].type;
                         return TripInfoWidget(
                           type: waypoint.type,
                           address: waypoint.address,
                           time: waypoint.apptFromTimestamp,
-                          showMidlLine: true,
+                          showMidlLine: showMidlLine,
                           iconName: WaypointTypeParser(waypoint.type).icon,
                         );
                       }),

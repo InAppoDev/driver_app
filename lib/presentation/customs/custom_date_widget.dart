@@ -21,7 +21,8 @@ class CustomDateWidget extends StatelessWidget {
 
       return DateFormat('hh:mm a').format(localDate);
     } else {
-      final dateTime = DateTime.fromMillisecondsSinceEpoch(date);
+      final dateTime =
+          DateTime.fromMillisecondsSinceEpoch(date * 1000, isUtc: true);
 
       return DateFormat('dd/MM/yy hh:mm a').format(dateTime);
     }

@@ -28,6 +28,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     on<_CheckConnection>(_checkConnection);
     on<_UpdateDriveButton>(_onUpdateDriveButton);
     on<_InitializeApp>(_initializeApp);
+    on<_UpdateSelectedPage>(_updateSelectedPage);
 
     _subscribeToBlocEvents();
 
@@ -36,6 +37,14 @@ class MainBloc extends Bloc<MainEvent, MainState> {
       _updateConnectionStatus(results);
       add(const MainEvent.checkConnection());
     });
+  }
+
+  void _updateSelectedPage(_UpdateSelectedPage event, Emitter<MainState> emit) {
+    print('checkkk - ${event.tabPage}');
+    emit(state.copyWith(
+      selectedPage: event.selectedPage,
+      tabPage: event.tabPage,
+    ));
   }
 
   void _subscribeToBlocEvents() {

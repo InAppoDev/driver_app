@@ -5,12 +5,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tms_driver/presentation/blocks/main/bloc/main_bloc.dart';
 import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart';
+import 'package:tms_driver/presentation/blocks/update/update_bloc.dart';
 import 'package:tms_driver/presentation/blocks/user/user_bloc.dart';
 import 'package:tms_driver/presentation/customs/custom_app_bar.dart';
+import 'package:tms_driver/presentation/customs/eta_bottom_sheet.dart';
 import 'package:tms_driver/presentation/pages/home/home_page.dart';
 import 'package:tms_driver/presentation/pages/message_list/widget/message_list_view.dart';
 import 'package:tms_driver/presentation/pages/profile/widget/profile_view.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_list_view.dart';
+import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class MainView extends StatelessWidget {
   const MainView({super.key});
@@ -19,6 +22,7 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MainBloc, MainState>(builder: (context, state) {
       return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Theme.of(context).canvasColor,
         appBar: const CustomAppBar(),
         extendBody: true,
@@ -28,7 +32,7 @@ class MainView extends StatelessWidget {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 ScaffoldMessenger.of(context).showMaterialBanner(
                   MaterialBanner(
-                    content: Text('No internet connection'),
+                    content: const Text('No internet connection'),
                     backgroundColor: Colors.redAccent,
                     actions: [
                       TextButton(
@@ -50,12 +54,11 @@ class MainView extends StatelessWidget {
                 ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
               });
             }
-
             switch (state.selectedPage) {
               case MainPageEnum.home:
                 return const HomePage();
               case MainPageEnum.trips:
-                return const TripListView();
+                return TripListView(tabPage: state.tabPage);
               case MainPageEnum.messages:
                 return const MessageListView();
               case MainPageEnum.profile:
@@ -75,11 +78,61 @@ class MainView extends StatelessWidget {
               return FloatingActionButton(
                 elevation: 2,
                 onPressed: isActiveTrip
-                    ? () {
-                        context.read<MainBloc>().add(
-                            MainEvent.updateDriveButton(tripState.trip!.id));
-                      }
-                    : null,
+                      ? () async {
+                          final localizations = context.localizations;
+
+                          final result =
+                              await showModalBottomSheet<Map<String, dynamic>>(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            builder: (BuildContext bottomSheetContext) {
+                              return Padding(
+                                padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                                child: ETABottomSheet(
+                                  trip: tripState.trip!,
+                                  onConfirmPressed: (
+                                    int? etaTimestamp,
+                                    String? comment,
+                                    String type,
+                                  ) {
+                                    Navigator.pop(bottomSheetContext, {
+                                      'etaTimestamp': etaTimestamp,
+                                      'comment': comment,
+                                      'type': type,
+                                    });
+                                  },
+                                  title: state.isDriveStarted
+                                      ? localizations.pause
+                                      : localizations.startDriving,
+                                  type: state.isDriveStarted
+                                      ? 'stopped_moving'
+                                      : 'started_moving',
+                                ),
+                              );
+                            },
+                          );
+                          if (result != null && context.mounted) {
+                            final etaTimestamp = result['etaTimestamp'] as int?;
+                            final comment = result['comment'] as String?;
+                            final type = result['type'] as String;
+
+                            context.read<UpdateBloc>().add(
+                                  UpdateEvent.sendUpdate(
+                                    etaTimestamp: etaTimestamp,
+                                    comment: comment,
+                                    tripId: tripState.trip!.id,
+                                    type: type,
+                                  ),
+                                );
+                            context.read<MainBloc>().add(
+                                  MainEvent.updateDriveButton(
+                                    tripState.trip!.id,
+                                  ),
+                                );
+                          }
+                        }
+                      : null,
                 backgroundColor:
                     isActiveTrip ? Theme.of(context).cardColor : Colors.grey,
                 child:
@@ -98,9 +151,11 @@ class MainView extends StatelessWidget {
                       ),
                     ],
                   );
-                }),
-              );
-            }),
+                    },
+                  ),
+                );
+              },
+            ),
           ),
         ),
         bottomNavigationBar: CustomPaint(

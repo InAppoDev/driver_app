@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -5,7 +6,10 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
+import 'package:tms_driver/data/models/check/check_call/check_call_model.dart';
+import 'package:tms_driver/data/models/check/location/location_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
 import 'package:tms_driver/domain/repositories/trip_repository.dart';
 
@@ -25,6 +29,11 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
     on<FetchTripDetail>(_fetchTripDetail);
     on<ToggleStopsVisibility>(_toggleStopsVisibility);
     on<LoadActiveTrip>(_loadActiveTrip);
+    on<ConfirmTrip>(_confirmTrip);
+    on<AddDocument>(_onAddDocument);
+    on<ScanDocument>(_onScanDocument);
+    on<RemoveDocument>(_onRemoveDocument);
+    on<SetCheckCallCheckerToNull>(_setCheckCallCheckerToNull);
   }
 
   void _fetchTripDetail(
@@ -42,6 +51,102 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
         errorMessage: e.toString(),
       ));
     }
+  }
+
+  void _setCheckCallCheckerToNull(
+      SetCheckCallCheckerToNull event, Emitter<TripDetailState> emit) {
+    emit(state.copyWith(isConfirmTripSuccesses: null));
+  }
+
+  Future<List<String>> _convertPathToBytes(List<String> documentIds) async {
+    final List<String> documentsInBytes = [];
+    for (final doc in documentIds) {
+      File imageFile = File(doc);
+      Uint8List imageBytes = await imageFile.readAsBytes();
+      String base64Image = base64Encode(imageBytes);
+      documentsInBytes.add(base64Image);
+    }
+    return documentsInBytes;
+  }
+
+  Future<void> _confirmTrip(
+      ConfirmTrip event, Emitter<TripDetailState> emit) async {
+    emit(state.copyWith(
+      isCheckCallLoading: true,
+      checkCallResponseMessage: null,
+    ));
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      final CheckCallModel checkCallModel = CheckCallModel(
+        location: LocationModel(
+          lat: position.latitude,
+          lng: position.longitude,
+        ),
+        type: event.type,
+        comment: event.comment,
+        documentUploadIds: await _convertPathToBytes(event.documentIds),
+        isCleanBol: event.isCleanBol,
+        isLoadReject: event.isLoadReject,
+      );
+
+      final checkResult = await tripRepository.sendCheckCall(
+        id: event.tripId,
+        checkCall: checkCallModel,
+      );
+
+      if (!checkResult.$2) {
+        event.onResult();
+      }
+
+      emit(state.copyWith(
+        isConfirmTripSuccesses: checkResult.$2,
+        isCheckCallLoading: false,
+        checkCallResponseMessage: checkResult.$1,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        isConfirmTripSuccesses: false,
+        isCheckCallLoading: false,
+      ));
+    }
+  }
+
+  Future<void> _onAddDocument(
+      AddDocument event, Emitter<TripDetailState> emit) async {
+    final List<String> docs = [];
+    docs.addAll(state.documents);
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['jpg', 'pdf', 'png', 'jpeg'],
+      );
+      if (result == null) return;
+      docs.add(result.files.single.path!);
+
+      emit(state.copyWith(documents: docs));
+    } catch (e) {
+      emit(state.copyWith(status: ActiveTripStatus.failure));
+    }
+  }
+
+  Future<void> _onScanDocument(
+      ScanDocument event, Emitter<TripDetailState> emit) async {
+    final List<String> docs = [];
+    docs.addAll(state.documents);
+    docs.add(event.image);
+    emit(state.copyWith(documents: docs));
+  }
+
+  Future<void> _onRemoveDocument(
+      RemoveDocument event, Emitter<TripDetailState> emit) async {
+    final List<String> docs = [];
+    docs.addAll(state.documents);
+
+    docs.removeWhere((doc) {
+      return doc == event.doc;
+    });
+    emit(state.copyWith(documents: docs));
   }
 
   Future<void> _loadActiveTrip(

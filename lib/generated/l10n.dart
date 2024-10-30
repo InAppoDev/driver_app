@@ -352,6 +352,16 @@ class S {
     );
   }
 
+  /// `Pause`
+  String get pause {
+    return Intl.message(
+      'Pause',
+      name: 'pause',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Messages`
   String get messages {
     return Intl.message(
@@ -512,10 +522,10 @@ class S {
     );
   }
 
-  /// `Miles to go`
+  /// `Route distance`
   String get milesToGo {
     return Intl.message(
-      'Miles to go',
+      'Route distance',
       name: 'milesToGo',
       desc: '',
       args: [],
@@ -682,10 +692,10 @@ class S {
     );
   }
 
-  /// `begin trip`
+  /// `Begin trip`
   String get begin {
     return Intl.message(
-      'begin trip',
+      'Begin trip',
       name: 'begin',
       desc: '',
       args: [],
@@ -917,6 +927,16 @@ class S {
     return Intl.message(
       'Set Value',
       name: 'setValue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update ETA`
+  String get updateETA {
+    return Intl.message(
+      'Update ETA',
+      name: 'updateETA',
       desc: '',
       args: [],
     );

@@ -14,6 +14,10 @@ class TripDetailState with _$TripDetailState {
     DispatchModel? trip,
     @Default(true) bool areStopsVisible,
     @Default(false) bool isConfirmingTrip,
+    bool? isConfirmTripSuccesses,
+    @Default([]) List<String> documents,
+    @Default(false) bool isCheckCallLoading,
+    String? checkCallResponseMessage,
   }) = _TripDetailState;
 
   factory TripDetailState.initial() => const TripDetailState(

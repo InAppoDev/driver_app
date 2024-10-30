@@ -7,7 +7,9 @@ import 'package:tms_driver/presentation/pages/trip_list/widget/trip_items_list.d
 import 'package:tms_driver/presentation/utils/enums/enums.dart';
 
 class TripListView extends StatefulWidget {
-  const TripListView({super.key});
+  const TripListView({super.key, this.tabPage});
+
+  final int? tabPage;
 
   @override
   TripListViewState createState() => TripListViewState();
@@ -21,6 +23,9 @@ class TripListViewState extends State<TripListView>
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
+    if (widget.tabPage != null) {
+      _tabController.animateTo(widget.tabPage!);
+    }
 
     _tabController.addListener(() {
       if (_tabController.indexIsChanging) {
@@ -45,7 +50,7 @@ class TripListViewState extends State<TripListView>
     return BlocBuilder<TripListBloc, TripListState>(
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.only(top: 8),
           child: Column(
             children: [
               Container(
@@ -63,6 +68,7 @@ class TripListViewState extends State<TripListView>
                 ),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 16),
                 child: TabBar(
                   controller: _tabController,
                   indicator: BoxDecoration(
