@@ -46,7 +46,7 @@
   "shortestTrip": "Shortest Trip",
   "longestTrip": "Longest Trip",
   "averageSpeed": "Average Speed",
-  "milesToGo": "Miles to go",
+  "milesToGo": "Route distance",
   "tripNumber": "Trip № 12321312312232",
   "loadDamage": "Load damage",
   "youHaventYetStartedTheTrip": "You haven`t yet started the trip.",

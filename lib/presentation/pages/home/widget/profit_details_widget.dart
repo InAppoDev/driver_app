@@ -24,9 +24,8 @@ class ProfitDetailsWidget extends StatelessWidget {
     final theme = Theme.of(context);
     final width = MediaQuery.of(context).size.width;
     return Container(
-      width: width * 0.45,
+      width: width / 2 - 25,
       padding: const EdgeInsets.all(25),
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(
           Radius.circular(16),
