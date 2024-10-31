@@ -9,12 +9,32 @@ class TrackingRepositoryImpl implements TrackingRepository {
   });
 
   @override
-  void startTracking(int id) {
-    locationService.startTracking(id);
+  void startTracking({
+    required int id,
+    required int? etaTimestamp,
+    required String? comment,
+    required String type,
+  }) {
+    locationService.startTracking(
+      id: id,
+      etaTimestamp: etaTimestamp,
+      comment: comment,
+      type: type,
+    );
   }
 
   @override
-  void stopTracking(int id) {
-    locationService.stopTracking(id);
+  void stopTracking({
+    required int id,
+    required int? etaTimestamp,
+    required String? comment,
+    required String type,
+  }) {
+    locationService.stopTracking(
+      id: id,
+      etaTimestamp: etaTimestamp,
+      comment: comment,
+      type: type,
+    );
   }
 }
