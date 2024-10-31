@@ -11,4 +11,9 @@ abstract class MessagesRepository {
     String content, [
     List<String>? documentUploadIds,
   ]);
+
+  Future<String> checkUnreadMessage(
+    String chatId,
+    int messageId,
+  );
 }

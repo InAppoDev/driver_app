@@ -23,6 +23,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
   final MessagesRepository messagesRepository =
       GetIt.instance<MessagesRepository>();
   final TripRepository tripRepository = GetIt.instance<TripRepository>();
+
   final int chatId;
 
   ChatDetailBloc({required this.chatId})
@@ -79,7 +80,12 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
       SendMessage event, Emitter<ChatDetailState> emit) async {
     try {
       await state.maybeWhen(
-        loaded: (chatDetails, selectedFile, docs) async {
+        loaded: (
+          chatDetails,
+          unreadMessage,
+          selectedFile,
+          docs,
+        ) async {
           final List<MessageModel> messages = [];
           final List<String> documentIds = [];
 
@@ -144,8 +150,13 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
       if (result == null) return;
       final file = File(result.files.single.path!);
       state.maybeWhen(
-        loaded: (chatDetails, selectedFile, docs) {
-          emit(ChatDetailState.loaded(chatDetails, file, docs));
+        loaded: (
+          chatDetails,
+          unreadMessage,
+          selectedFile,
+          docs,
+        ) {
+          emit(ChatDetailState.loaded(chatDetails, unreadMessage, file, docs));
           add(ChatDetailEvent.addDocument(event.context));
         },
         orElse: () {},
@@ -158,8 +169,9 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
   void _scanDoc(ScanDoc event, Emitter<ChatDetailState> emit) async {
     try {
       state.maybeWhen(
-        loaded: (chatDetails, selectedFile, docs) {
-          emit(ChatDetailState.loaded(chatDetails, File(event.image), docs));
+        loaded: (chatDetails, unreadMessage, selectedFile, docs) {
+          emit(ChatDetailState.loaded(
+              chatDetails, unreadMessage, File(event.image), docs));
           add(ChatDetailEvent.addDocument(event.context));
         },
         orElse: () {},
@@ -173,14 +185,15 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
       AddDocument event, Emitter<ChatDetailState> emit) async {
     try {
       state.maybeWhen(
-        loaded: (chatDetails, selectedFile, docs) {
+        loaded: (chatDetails, unreadMessage, selectedFile, docs) {
           final List<File> documents = [];
           documents.clear();
           documents.addAll(docs ?? []);
           if (selectedFile != null) {
             documents.add(selectedFile);
           }
-          emit(ChatDetailState.loaded(chatDetails, selectedFile, documents));
+          emit(ChatDetailState.loaded(
+              chatDetails, unreadMessage, selectedFile, documents));
           event.context.pop();
         },
         orElse: () {},
@@ -194,8 +207,8 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
       MakeNullSelectedFile event, Emitter<ChatDetailState> emit) async {
     try {
       state.maybeWhen(
-        loaded: (chatDetails, selectedFile, docs) {
-          emit(ChatDetailState.loaded(chatDetails, null, docs));
+        loaded: (chatDetails, unreadMessage, selectedFile, docs) {
+          emit(ChatDetailState.loaded(chatDetails, unreadMessage, null, docs));
         },
         orElse: () {},
       );
@@ -208,13 +221,14 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
       RemoveDocument event, Emitter<ChatDetailState> emit) async {
     try {
       state.maybeWhen(
-        loaded: (chatDetails, selectedFile, docs) {
+        loaded: (chatDetails, unreadMessage, selectedFile, docs) {
           final List<File> documents = [];
           documents.clear();
           documents.addAll(docs ?? []);
           documents.removeWhere((file) => file == event.file);
 
-          emit(ChatDetailState.loaded(chatDetails, selectedFile, documents));
+          emit(ChatDetailState.loaded(
+              chatDetails, unreadMessage, selectedFile, documents));
         },
         orElse: () {},
       );
@@ -226,7 +240,7 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
   Future<void> _receiveNewMessage(
       ReceiveNewMessage event, Emitter<ChatDetailState> emit) async {
     state.maybeWhen(
-      loaded: (chatDetails, selectedFile, docs) {
+      loaded: (chatDetails, unreadMessage, selectedFile, docs) {
         final updatedMessages = List<MessageModel>.from(chatDetails.messages)
           ..add(event.newMessage);
 

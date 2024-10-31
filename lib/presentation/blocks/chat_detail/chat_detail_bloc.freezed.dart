@@ -30,6 +30,7 @@ mixin _$ChatDetailEvent {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function(String chatId, int messageId) checkUnreadMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,6 +46,7 @@ mixin _$ChatDetailEvent {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function(String chatId, int messageId)? checkUnreadMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +62,7 @@ mixin _$ChatDetailEvent {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function(String chatId, int messageId)? checkUnreadMessage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +78,7 @@ mixin _$ChatDetailEvent {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CheckUnreadMessage value) checkUnreadMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,6 +93,7 @@ mixin _$ChatDetailEvent {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CheckUnreadMessage value)? checkUnreadMessage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -103,6 +108,7 @@ mixin _$ChatDetailEvent {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CheckUnreadMessage value)? checkUnreadMessage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -231,6 +237,7 @@ class _$SendMessageImpl implements SendMessage {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function(String chatId, int messageId) checkUnreadMessage,
   }) {
     return sendMessage(messageContent, chatDetails);
   }
@@ -249,6 +256,7 @@ class _$SendMessageImpl implements SendMessage {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function(String chatId, int messageId)? checkUnreadMessage,
   }) {
     return sendMessage?.call(messageContent, chatDetails);
   }
@@ -267,6 +275,7 @@ class _$SendMessageImpl implements SendMessage {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function(String chatId, int messageId)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -288,6 +297,7 @@ class _$SendMessageImpl implements SendMessage {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CheckUnreadMessage value) checkUnreadMessage,
   }) {
     return sendMessage(this);
   }
@@ -305,6 +315,7 @@ class _$SendMessageImpl implements SendMessage {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CheckUnreadMessage value)? checkUnreadMessage,
   }) {
     return sendMessage?.call(this);
   }
@@ -322,6 +333,7 @@ class _$SendMessageImpl implements SendMessage {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CheckUnreadMessage value)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -427,6 +439,7 @@ class _$FetchChatDetailsImpl implements FetchChatDetails {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function(String chatId, int messageId) checkUnreadMessage,
   }) {
     return fetchChatDetails(chatId);
   }
@@ -445,6 +458,7 @@ class _$FetchChatDetailsImpl implements FetchChatDetails {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function(String chatId, int messageId)? checkUnreadMessage,
   }) {
     return fetchChatDetails?.call(chatId);
   }
@@ -463,6 +477,7 @@ class _$FetchChatDetailsImpl implements FetchChatDetails {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function(String chatId, int messageId)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (fetchChatDetails != null) {
@@ -484,6 +499,7 @@ class _$FetchChatDetailsImpl implements FetchChatDetails {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CheckUnreadMessage value) checkUnreadMessage,
   }) {
     return fetchChatDetails(this);
   }
@@ -501,6 +517,7 @@ class _$FetchChatDetailsImpl implements FetchChatDetails {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CheckUnreadMessage value)? checkUnreadMessage,
   }) {
     return fetchChatDetails?.call(this);
   }
@@ -518,6 +535,7 @@ class _$FetchChatDetailsImpl implements FetchChatDetails {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CheckUnreadMessage value)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (fetchChatDetails != null) {
@@ -633,6 +651,7 @@ class _$ReceiveNewMessageImpl implements ReceiveNewMessage {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function(String chatId, int messageId) checkUnreadMessage,
   }) {
     return receiveNewMessage(newMessage);
   }
@@ -651,6 +670,7 @@ class _$ReceiveNewMessageImpl implements ReceiveNewMessage {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function(String chatId, int messageId)? checkUnreadMessage,
   }) {
     return receiveNewMessage?.call(newMessage);
   }
@@ -669,6 +689,7 @@ class _$ReceiveNewMessageImpl implements ReceiveNewMessage {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function(String chatId, int messageId)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (receiveNewMessage != null) {
@@ -690,6 +711,7 @@ class _$ReceiveNewMessageImpl implements ReceiveNewMessage {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CheckUnreadMessage value) checkUnreadMessage,
   }) {
     return receiveNewMessage(this);
   }
@@ -707,6 +729,7 @@ class _$ReceiveNewMessageImpl implements ReceiveNewMessage {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CheckUnreadMessage value)? checkUnreadMessage,
   }) {
     return receiveNewMessage?.call(this);
   }
@@ -724,6 +747,7 @@ class _$ReceiveNewMessageImpl implements ReceiveNewMessage {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CheckUnreadMessage value)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (receiveNewMessage != null) {
@@ -835,6 +859,7 @@ class _$DownloadFileImpl implements DownloadFile {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function(String chatId, int messageId) checkUnreadMessage,
   }) {
     return downloadFile(url, fileName);
   }
@@ -853,6 +878,7 @@ class _$DownloadFileImpl implements DownloadFile {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function(String chatId, int messageId)? checkUnreadMessage,
   }) {
     return downloadFile?.call(url, fileName);
   }
@@ -871,6 +897,7 @@ class _$DownloadFileImpl implements DownloadFile {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function(String chatId, int messageId)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (downloadFile != null) {
@@ -892,6 +919,7 @@ class _$DownloadFileImpl implements DownloadFile {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CheckUnreadMessage value) checkUnreadMessage,
   }) {
     return downloadFile(this);
   }
@@ -909,6 +937,7 @@ class _$DownloadFileImpl implements DownloadFile {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CheckUnreadMessage value)? checkUnreadMessage,
   }) {
     return downloadFile?.call(this);
   }
@@ -926,6 +955,7 @@ class _$DownloadFileImpl implements DownloadFile {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CheckUnreadMessage value)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (downloadFile != null) {
@@ -1029,6 +1059,7 @@ class _$TapToCallImpl implements TapToCall {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function(String chatId, int messageId) checkUnreadMessage,
   }) {
     return tapToCall(number);
   }
@@ -1047,6 +1078,7 @@ class _$TapToCallImpl implements TapToCall {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function(String chatId, int messageId)? checkUnreadMessage,
   }) {
     return tapToCall?.call(number);
   }
@@ -1065,6 +1097,7 @@ class _$TapToCallImpl implements TapToCall {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function(String chatId, int messageId)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (tapToCall != null) {
@@ -1086,6 +1119,7 @@ class _$TapToCallImpl implements TapToCall {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CheckUnreadMessage value) checkUnreadMessage,
   }) {
     return tapToCall(this);
   }
@@ -1103,6 +1137,7 @@ class _$TapToCallImpl implements TapToCall {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CheckUnreadMessage value)? checkUnreadMessage,
   }) {
     return tapToCall?.call(this);
   }
@@ -1120,6 +1155,7 @@ class _$TapToCallImpl implements TapToCall {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CheckUnreadMessage value)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (tapToCall != null) {
@@ -1221,6 +1257,7 @@ class _$PickFileImpl implements PickFile {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function(String chatId, int messageId) checkUnreadMessage,
   }) {
     return pickFile(context);
   }
@@ -1239,6 +1276,7 @@ class _$PickFileImpl implements PickFile {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function(String chatId, int messageId)? checkUnreadMessage,
   }) {
     return pickFile?.call(context);
   }
@@ -1257,6 +1295,7 @@ class _$PickFileImpl implements PickFile {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function(String chatId, int messageId)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (pickFile != null) {
@@ -1278,6 +1317,7 @@ class _$PickFileImpl implements PickFile {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CheckUnreadMessage value) checkUnreadMessage,
   }) {
     return pickFile(this);
   }
@@ -1295,6 +1335,7 @@ class _$PickFileImpl implements PickFile {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CheckUnreadMessage value)? checkUnreadMessage,
   }) {
     return pickFile?.call(this);
   }
@@ -1312,6 +1353,7 @@ class _$PickFileImpl implements PickFile {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CheckUnreadMessage value)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (pickFile != null) {
@@ -1413,6 +1455,7 @@ class _$AddDocumentImpl implements AddDocument {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function(String chatId, int messageId) checkUnreadMessage,
   }) {
     return addDocument(context);
   }
@@ -1431,6 +1474,7 @@ class _$AddDocumentImpl implements AddDocument {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function(String chatId, int messageId)? checkUnreadMessage,
   }) {
     return addDocument?.call(context);
   }
@@ -1449,6 +1493,7 @@ class _$AddDocumentImpl implements AddDocument {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function(String chatId, int messageId)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (addDocument != null) {
@@ -1470,6 +1515,7 @@ class _$AddDocumentImpl implements AddDocument {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CheckUnreadMessage value) checkUnreadMessage,
   }) {
     return addDocument(this);
   }
@@ -1487,6 +1533,7 @@ class _$AddDocumentImpl implements AddDocument {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CheckUnreadMessage value)? checkUnreadMessage,
   }) {
     return addDocument?.call(this);
   }
@@ -1504,6 +1551,7 @@ class _$AddDocumentImpl implements AddDocument {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CheckUnreadMessage value)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (addDocument != null) {
@@ -1579,6 +1627,7 @@ class _$MakeNullSelectedFileImpl implements MakeNullSelectedFile {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function(String chatId, int messageId) checkUnreadMessage,
   }) {
     return makeNullSelectedFile();
   }
@@ -1597,6 +1646,7 @@ class _$MakeNullSelectedFileImpl implements MakeNullSelectedFile {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function(String chatId, int messageId)? checkUnreadMessage,
   }) {
     return makeNullSelectedFile?.call();
   }
@@ -1615,6 +1665,7 @@ class _$MakeNullSelectedFileImpl implements MakeNullSelectedFile {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function(String chatId, int messageId)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (makeNullSelectedFile != null) {
@@ -1636,6 +1687,7 @@ class _$MakeNullSelectedFileImpl implements MakeNullSelectedFile {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CheckUnreadMessage value) checkUnreadMessage,
   }) {
     return makeNullSelectedFile(this);
   }
@@ -1653,6 +1705,7 @@ class _$MakeNullSelectedFileImpl implements MakeNullSelectedFile {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CheckUnreadMessage value)? checkUnreadMessage,
   }) {
     return makeNullSelectedFile?.call(this);
   }
@@ -1670,6 +1723,7 @@ class _$MakeNullSelectedFileImpl implements MakeNullSelectedFile {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CheckUnreadMessage value)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (makeNullSelectedFile != null) {
@@ -1771,6 +1825,7 @@ class _$ScanDocImpl implements ScanDoc {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function(String chatId, int messageId) checkUnreadMessage,
   }) {
     return scanDoc(image, context);
   }
@@ -1789,6 +1844,7 @@ class _$ScanDocImpl implements ScanDoc {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function(String chatId, int messageId)? checkUnreadMessage,
   }) {
     return scanDoc?.call(image, context);
   }
@@ -1807,6 +1863,7 @@ class _$ScanDocImpl implements ScanDoc {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function(String chatId, int messageId)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (scanDoc != null) {
@@ -1828,6 +1885,7 @@ class _$ScanDocImpl implements ScanDoc {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CheckUnreadMessage value) checkUnreadMessage,
   }) {
     return scanDoc(this);
   }
@@ -1845,6 +1903,7 @@ class _$ScanDocImpl implements ScanDoc {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CheckUnreadMessage value)? checkUnreadMessage,
   }) {
     return scanDoc?.call(this);
   }
@@ -1862,6 +1921,7 @@ class _$ScanDocImpl implements ScanDoc {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CheckUnreadMessage value)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (scanDoc != null) {
@@ -1966,6 +2026,7 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function(String chatId, int messageId) checkUnreadMessage,
   }) {
     return removeDocument(file);
   }
@@ -1984,6 +2045,7 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function(String chatId, int messageId)? checkUnreadMessage,
   }) {
     return removeDocument?.call(file);
   }
@@ -2002,6 +2064,7 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function(String chatId, int messageId)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (removeDocument != null) {
@@ -2023,6 +2086,7 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CheckUnreadMessage value) checkUnreadMessage,
   }) {
     return removeDocument(this);
   }
@@ -2040,6 +2104,7 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CheckUnreadMessage value)? checkUnreadMessage,
   }) {
     return removeDocument?.call(this);
   }
@@ -2057,6 +2122,7 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CheckUnreadMessage value)? checkUnreadMessage,
     required TResult orElse(),
   }) {
     if (removeDocument != null) {
@@ -2079,12 +2145,225 @@ abstract class RemoveDocument implements ChatDetailEvent {
 }
 
 /// @nodoc
+abstract class _$$CheckUnreadMessageImplCopyWith<$Res> {
+  factory _$$CheckUnreadMessageImplCopyWith(_$CheckUnreadMessageImpl value,
+          $Res Function(_$CheckUnreadMessageImpl) then) =
+      __$$CheckUnreadMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String chatId, int messageId});
+}
+
+/// @nodoc
+class __$$CheckUnreadMessageImplCopyWithImpl<$Res>
+    extends _$ChatDetailEventCopyWithImpl<$Res, _$CheckUnreadMessageImpl>
+    implements _$$CheckUnreadMessageImplCopyWith<$Res> {
+  __$$CheckUnreadMessageImplCopyWithImpl(_$CheckUnreadMessageImpl _value,
+      $Res Function(_$CheckUnreadMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chatId = null,
+    Object? messageId = null,
+  }) {
+    return _then(_$CheckUnreadMessageImpl(
+      null == chatId
+          ? _value.chatId
+          : chatId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == messageId
+          ? _value.messageId
+          : messageId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CheckUnreadMessageImpl implements CheckUnreadMessage {
+  const _$CheckUnreadMessageImpl(this.chatId, this.messageId);
+
+  @override
+  final String chatId;
+  @override
+  final int messageId;
+
+  @override
+  String toString() {
+    return 'ChatDetailEvent.checkUnreadMessage(chatId: $chatId, messageId: $messageId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckUnreadMessageImpl &&
+            (identical(other.chatId, chatId) || other.chatId == chatId) &&
+            (identical(other.messageId, messageId) ||
+                other.messageId == messageId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, chatId, messageId);
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckUnreadMessageImplCopyWith<_$CheckUnreadMessageImpl> get copyWith =>
+      __$$CheckUnreadMessageImplCopyWithImpl<_$CheckUnreadMessageImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String messageContent, ChatDetailModel chatDetails)
+        sendMessage,
+    required TResult Function(int chatId) fetchChatDetails,
+    required TResult Function(MessageModel newMessage) receiveNewMessage,
+    required TResult Function(String url, String fileName) downloadFile,
+    required TResult Function(String number) tapToCall,
+    required TResult Function(BuildContext context) pickFile,
+    required TResult Function(BuildContext context) addDocument,
+    required TResult Function() makeNullSelectedFile,
+    required TResult Function(String image, BuildContext context) scanDoc,
+    required TResult Function(File file) removeDocument,
+    required TResult Function(String chatId, int messageId) checkUnreadMessage,
+  }) {
+    return checkUnreadMessage(chatId, messageId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult? Function(int chatId)? fetchChatDetails,
+    TResult? Function(MessageModel newMessage)? receiveNewMessage,
+    TResult? Function(String url, String fileName)? downloadFile,
+    TResult? Function(String number)? tapToCall,
+    TResult? Function(BuildContext context)? pickFile,
+    TResult? Function(BuildContext context)? addDocument,
+    TResult? Function()? makeNullSelectedFile,
+    TResult? Function(String image, BuildContext context)? scanDoc,
+    TResult? Function(File file)? removeDocument,
+    TResult? Function(String chatId, int messageId)? checkUnreadMessage,
+  }) {
+    return checkUnreadMessage?.call(chatId, messageId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult Function(int chatId)? fetchChatDetails,
+    TResult Function(MessageModel newMessage)? receiveNewMessage,
+    TResult Function(String url, String fileName)? downloadFile,
+    TResult Function(String number)? tapToCall,
+    TResult Function(BuildContext context)? pickFile,
+    TResult Function(BuildContext context)? addDocument,
+    TResult Function()? makeNullSelectedFile,
+    TResult Function(String image, BuildContext context)? scanDoc,
+    TResult Function(File file)? removeDocument,
+    TResult Function(String chatId, int messageId)? checkUnreadMessage,
+    required TResult orElse(),
+  }) {
+    if (checkUnreadMessage != null) {
+      return checkUnreadMessage(chatId, messageId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SendMessage value) sendMessage,
+    required TResult Function(FetchChatDetails value) fetchChatDetails,
+    required TResult Function(ReceiveNewMessage value) receiveNewMessage,
+    required TResult Function(DownloadFile value) downloadFile,
+    required TResult Function(TapToCall value) tapToCall,
+    required TResult Function(PickFile value) pickFile,
+    required TResult Function(AddDocument value) addDocument,
+    required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
+    required TResult Function(ScanDoc value) scanDoc,
+    required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CheckUnreadMessage value) checkUnreadMessage,
+  }) {
+    return checkUnreadMessage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SendMessage value)? sendMessage,
+    TResult? Function(FetchChatDetails value)? fetchChatDetails,
+    TResult? Function(ReceiveNewMessage value)? receiveNewMessage,
+    TResult? Function(DownloadFile value)? downloadFile,
+    TResult? Function(TapToCall value)? tapToCall,
+    TResult? Function(PickFile value)? pickFile,
+    TResult? Function(AddDocument value)? addDocument,
+    TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
+    TResult? Function(ScanDoc value)? scanDoc,
+    TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CheckUnreadMessage value)? checkUnreadMessage,
+  }) {
+    return checkUnreadMessage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SendMessage value)? sendMessage,
+    TResult Function(FetchChatDetails value)? fetchChatDetails,
+    TResult Function(ReceiveNewMessage value)? receiveNewMessage,
+    TResult Function(DownloadFile value)? downloadFile,
+    TResult Function(TapToCall value)? tapToCall,
+    TResult Function(PickFile value)? pickFile,
+    TResult Function(AddDocument value)? addDocument,
+    TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
+    TResult Function(ScanDoc value)? scanDoc,
+    TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CheckUnreadMessage value)? checkUnreadMessage,
+    required TResult orElse(),
+  }) {
+    if (checkUnreadMessage != null) {
+      return checkUnreadMessage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CheckUnreadMessage implements ChatDetailEvent {
+  const factory CheckUnreadMessage(final String chatId, final int messageId) =
+      _$CheckUnreadMessageImpl;
+
+  String get chatId;
+  int get messageId;
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CheckUnreadMessageImplCopyWith<_$CheckUnreadMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ChatDetailState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
@@ -2096,7 +2375,10 @@ mixin _$ChatDetailState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
@@ -2108,7 +2390,10 @@ mixin _$ChatDetailState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
@@ -2214,7 +2499,10 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
@@ -2229,7 +2517,10 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
@@ -2244,7 +2535,10 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
@@ -2349,7 +2643,10 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
@@ -2364,7 +2661,10 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
@@ -2379,7 +2679,10 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
@@ -2448,7 +2751,10 @@ abstract class _$$LoadedImplCopyWith<$Res> {
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {ChatDetailModel chatDetails, File? selectedFile, List<File>? documents});
+      {ChatDetailModel chatDetails,
+      String? firstUnreadMessageText,
+      File? selectedFile,
+      List<File>? documents});
 
   $ChatDetailModelCopyWith<$Res> get chatDetails;
 }
@@ -2467,6 +2773,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? chatDetails = null,
+    Object? firstUnreadMessageText = freezed,
     Object? selectedFile = freezed,
     Object? documents = freezed,
   }) {
@@ -2475,6 +2782,10 @@ class __$$LoadedImplCopyWithImpl<$Res>
           ? _value.chatDetails
           : chatDetails // ignore: cast_nullable_to_non_nullable
               as ChatDetailModel,
+      freezed == firstUnreadMessageText
+          ? _value.firstUnreadMessageText
+          : firstUnreadMessageText // ignore: cast_nullable_to_non_nullable
+              as String?,
       freezed == selectedFile
           ? _value.selectedFile
           : selectedFile // ignore: cast_nullable_to_non_nullable
@@ -2501,11 +2812,15 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 class _$LoadedImpl implements Loaded {
   const _$LoadedImpl(this.chatDetails,
-      [this.selectedFile, final List<File>? documents])
+      [this.firstUnreadMessageText,
+      this.selectedFile,
+      final List<File>? documents])
       : _documents = documents;
 
   @override
   final ChatDetailModel chatDetails;
+  @override
+  final String? firstUnreadMessageText;
   @override
   final File? selectedFile;
   final List<File>? _documents;
@@ -2520,7 +2835,7 @@ class _$LoadedImpl implements Loaded {
 
   @override
   String toString() {
-    return 'ChatDetailState.loaded(chatDetails: $chatDetails, selectedFile: $selectedFile, documents: $documents)';
+    return 'ChatDetailState.loaded(chatDetails: $chatDetails, firstUnreadMessageText: $firstUnreadMessageText, selectedFile: $selectedFile, documents: $documents)';
   }
 
   @override
@@ -2530,6 +2845,8 @@ class _$LoadedImpl implements Loaded {
             other is _$LoadedImpl &&
             (identical(other.chatDetails, chatDetails) ||
                 other.chatDetails == chatDetails) &&
+            (identical(other.firstUnreadMessageText, firstUnreadMessageText) ||
+                other.firstUnreadMessageText == firstUnreadMessageText) &&
             (identical(other.selectedFile, selectedFile) ||
                 other.selectedFile == selectedFile) &&
             const DeepCollectionEquality()
@@ -2537,7 +2854,11 @@ class _$LoadedImpl implements Loaded {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, chatDetails, selectedFile,
+  int get hashCode => Object.hash(
+      runtimeType,
+      chatDetails,
+      firstUnreadMessageText,
+      selectedFile,
       const DeepCollectionEquality().hash(_documents));
 
   /// Create a copy of ChatDetailState
@@ -2553,14 +2874,17 @@ class _$LoadedImpl implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
     required TResult Function() messageSent,
     required TResult Function(String errorMessage) failure,
   }) {
-    return loaded(chatDetails, selectedFile, documents);
+    return loaded(chatDetails, firstUnreadMessageText, selectedFile, documents);
   }
 
   @override
@@ -2568,14 +2892,18 @@ class _$LoadedImpl implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
     TResult? Function()? messageSent,
     TResult? Function(String errorMessage)? failure,
   }) {
-    return loaded?.call(chatDetails, selectedFile, documents);
+    return loaded?.call(
+        chatDetails, firstUnreadMessageText, selectedFile, documents);
   }
 
   @override
@@ -2583,7 +2911,10 @@ class _$LoadedImpl implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
@@ -2592,7 +2923,8 @@ class _$LoadedImpl implements Loaded {
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(chatDetails, selectedFile, documents);
+      return loaded(
+          chatDetails, firstUnreadMessageText, selectedFile, documents);
     }
     return orElse();
   }
@@ -2643,9 +2975,12 @@ class _$LoadedImpl implements Loaded {
 
 abstract class Loaded implements ChatDetailState {
   const factory Loaded(final ChatDetailModel chatDetails,
-      [final File? selectedFile, final List<File>? documents]) = _$LoadedImpl;
+      [final String? firstUnreadMessageText,
+      final File? selectedFile,
+      final List<File>? documents]) = _$LoadedImpl;
 
   ChatDetailModel get chatDetails;
+  String? get firstUnreadMessageText;
   File? get selectedFile;
   List<File>? get documents;
 
@@ -2699,7 +3034,10 @@ class _$SendingMessageImpl implements SendingMessage {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
@@ -2714,7 +3052,10 @@ class _$SendingMessageImpl implements SendingMessage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
@@ -2729,7 +3070,10 @@ class _$SendingMessageImpl implements SendingMessage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
@@ -2834,7 +3178,10 @@ class _$MessageSentImpl implements MessageSent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
@@ -2849,7 +3196,10 @@ class _$MessageSentImpl implements MessageSent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
@@ -2864,7 +3214,10 @@ class _$MessageSentImpl implements MessageSent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
@@ -2997,7 +3350,10 @@ class _$FailureImpl implements Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
@@ -3012,7 +3368,10 @@ class _$FailureImpl implements Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
@@ -3027,7 +3386,10 @@ class _$FailureImpl implements Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,

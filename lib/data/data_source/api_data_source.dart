@@ -51,6 +51,8 @@ abstract class ApiDataSource {
 
   Future<List<DispatchListModel>> getHistoryTrips();
 
+  Future<String> checkUnreadMessage(String chatId, int messageId);
+
   Future<(String?, bool)> sendCheckCall({
     required int id,
     required CheckCallModel checkCall,

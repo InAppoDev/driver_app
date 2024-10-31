@@ -47,7 +47,12 @@ class ChatListViewState extends State<ChatListView> {
         return state.when(
           initial: () => const Center(child: CircularProgressIndicator()),
           loading: () => const Center(child: CircularProgressIndicator()),
-          loaded: (chatDetails, selectedFile, documents) {
+          loaded: (
+            chatDetails,
+            unreadMessage,
+            selectedFile,
+            documents,
+          ) {
             final messages = chatDetails.messages;
             WidgetsBinding.instance.addPostFrameCallback((_) {
               _scrollToBottom();

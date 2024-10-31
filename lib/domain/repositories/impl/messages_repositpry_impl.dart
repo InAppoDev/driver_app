@@ -75,6 +75,11 @@ class MessagesRepositoryImpl implements MessagesRepository {
   }
 
   @override
+  Future<String> checkUnreadMessage(String chatId, int messageId) async {
+    return await apiDataSource.checkUnreadMessage(chatId, messageId);
+  }
+
+  @override
   Future<List<ChatModel>> getChats() async {
     if (_lastResults.contains(ConnectivityResult.none)) {
       final chats = hiveService.getChats();
