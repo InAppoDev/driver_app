@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -11,7 +10,9 @@ import 'package:get_it/get_it.dart';
 import 'package:tms_driver/data/models/check/check_call/check_call_model.dart';
 import 'package:tms_driver/data/models/check/location/location_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/data/models/document/upload_document_response.dart';
 import 'package:tms_driver/domain/repositories/trip_repository.dart';
+import 'package:tms_driver/presentation/consts/consts.dart';
 
 part 'trip_detail_bloc.freezed.dart';
 part 'trip_detail_event.dart';
@@ -58,15 +59,24 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
     emit(state.copyWith(isConfirmTripSuccesses: null));
   }
 
-  Future<List<String>> _convertPathToBytes(List<String> documentIds) async {
-    final List<String> documentsInBytes = [];
+  Future<Map<String, dynamic>> _convertPathToBytes(
+      List<String> documentIds) async {
+    final List<String> documentsIds = [];
+
     for (final doc in documentIds) {
-      File imageFile = File(doc);
-      Uint8List imageBytes = await imageFile.readAsBytes();
-      String base64Image = base64Encode(imageBytes);
-      documentsInBytes.add(base64Image);
+      final docResp = await _sendDocsGetIds(doc);
+      if (docResp.success) {
+        documentsIds.add(docResp.uploadId);
+      } else {
+        return {'documents': [], 'isLoaded': false};
+      }
     }
-    return documentsInBytes;
+
+    return {'documents': documentsIds, 'isLoaded': true};
+  }
+
+  Future<UploadDocumentResponse> _sendDocsGetIds(String doc) async {
+    return await tripRepository.uploadDocument(File(doc), extractFileName(doc));
   }
 
   Future<void> _confirmTrip(
@@ -76,34 +86,43 @@ class TripDetailBloc extends Bloc<TripDetailEvent, TripDetailState> {
       checkCallResponseMessage: null,
     ));
     try {
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
-      final CheckCallModel checkCallModel = CheckCallModel(
-        location: LocationModel(
-          lat: position.latitude,
-          lng: position.longitude,
-        ),
-        type: event.type,
-        comment: event.comment,
-        documentUploadIds: await _convertPathToBytes(event.documentIds),
-        isCleanBol: event.isCleanBol,
-        isLoadReject: event.isLoadReject,
-      );
+      final respMap = await _convertPathToBytes(event.documentIds);
+      if (respMap['isLoaded']) {
+        Position position = await Geolocator.getCurrentPosition(
+            desiredAccuracy: LocationAccuracy.high);
+        final CheckCallModel checkCallModel = CheckCallModel(
+          location: LocationModel(
+            lat: position.latitude,
+            lng: position.longitude,
+          ),
+          type: event.type,
+          etaTimestamp: event.etaTimestamp,
+          comment: event.comment,
+          documentUploadIds: respMap['documents'],
+          isCleanBol: event.isCleanBol,
+          isLoadReject: event.isLoadReject,
+        );
 
-      final checkResult = await tripRepository.sendCheckCall(
-        id: event.tripId,
-        checkCall: checkCallModel,
-      );
+        final checkResult = await tripRepository.sendCheckCall(
+          id: event.tripId,
+          checkCall: checkCallModel,
+        );
 
-      if (!checkResult.$2) {
-        event.onResult();
+        if (!checkResult.$2) {
+          event.onResult();
+        }
+
+        emit(state.copyWith(
+          isConfirmTripSuccesses: checkResult.$2,
+          isCheckCallLoading: false,
+          checkCallResponseMessage: checkResult.$1,
+        ));
+      } else {
+        emit(state.copyWith(
+          isConfirmTripSuccesses: false,
+          isCheckCallLoading: false,
+        ));
       }
-
-      emit(state.copyWith(
-        isConfirmTripSuccesses: checkResult.$2,
-        isCheckCallLoading: false,
-        checkCallResponseMessage: checkResult.$1,
-      ));
     } catch (e) {
       emit(state.copyWith(
         isConfirmTripSuccesses: false,

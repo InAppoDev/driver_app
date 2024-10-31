@@ -322,6 +322,16 @@ class S {
     );
   }
 
+  /// `SET ETA`
+  String get setETA {
+    return Intl.message(
+      'SET ETA',
+      name: 'setETA',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `NEXT`
   String get next {
     return Intl.message(

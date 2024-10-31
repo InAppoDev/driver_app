@@ -18,7 +18,7 @@ class IsCleanBolBS extends StatefulWidget {
     required this.checkCallResponseMessage,
   });
 
-  final Function(String, bool) onConfirmPressed;
+  final Function(String, bool, bool) onConfirmPressed;
   final Function(String) onScanFile;
   final Function(File) onFileRemove;
   final VoidCallback onAddFile;

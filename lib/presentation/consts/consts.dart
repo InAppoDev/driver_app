@@ -5,7 +5,16 @@ String subFile(File file) {
   return subLongFileName(file.path.substring(file.path.lastIndexOf('/') + 1));
 }
 
+String extractFileName(String path) {
+  int lastSlashIndex = path.lastIndexOf('/');
+  int lastDotIndex = path.lastIndexOf('.');
 
+  if (lastSlashIndex != -1 && lastDotIndex != -1 && lastDotIndex > lastSlashIndex) {
+    return path.substring(lastSlashIndex + 1, lastDotIndex);
+  } else {
+    return '';
+  }
+}
 
 String subLongFileName(String name) {
   if (name.length > 17) {

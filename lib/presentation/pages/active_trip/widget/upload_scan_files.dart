@@ -15,7 +15,7 @@ class UploadScanFiles extends StatefulWidget {
   final Function(File) onFileRemove;
   final File? selectedFile;
   final VoidCallback? onUploadPressed;
-  final Function(String, bool)? onConfirmPressed;
+  final Function(String, bool, bool)? onConfirmPressed;
   final bool isFileLoading;
   final bool isActiveTrip;
   final bool isCleanBol;
@@ -41,7 +41,8 @@ class UploadScanFiles extends StatefulWidget {
     this.documents = const [],
     this.isConfirmTripSuccesses,
     this.onSuccessCheckCallPressed,
-    this.isCheckCallLoading,    this.checkCallResponseMessage,
+    this.isCheckCallLoading,
+    this.checkCallResponseMessage,
   });
 
   @override
@@ -51,6 +52,7 @@ class UploadScanFiles extends StatefulWidget {
 class _UploadScanFilesState extends State<UploadScanFiles> {
   int minLines = 1;
   final TextEditingController commentController = TextEditingController();
+  bool isLoaderRejected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -136,37 +138,59 @@ class _UploadScanFilesState extends State<UploadScanFiles> {
             const SizedBox(height: 16),
             if (!widget.isCleanBol) ...[
               const SizedBox(height: 8),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 8,
-                  horizontal: 16,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  border: Border.all(color: theme.splashColor, width: 2),
-                  color: theme.scaffoldBackgroundColor,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.4),
-                      blurRadius: 1,
-                      offset: const Offset(0, 1), // Shadow position
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isLoaderRejected = !isLoaderRejected;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
                     ),
-                  ],
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset('assets/images/rejected.svg'),
-                    const SizedBox(width: 12),
-                    Text(
-                      'Loader reject',
-                      style: theme.textTheme.labelSmall!
-                          .copyWith(color: theme.splashColor),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      border: Border.all(color: theme.splashColor, width: 2),
+                      color: theme.scaffoldBackgroundColor,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.4),
+                          blurRadius: 1,
+                          offset: const Offset(0, 1),
+                        ),
+                      ],
                     ),
-                  ],
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SvgPicture.asset('assets/images/rejected.svg'),
+                        const SizedBox(width: 12),
+                        Text(
+                          'Loader reject',
+                          style: theme.textTheme.labelSmall!
+                              .copyWith(color: theme.splashColor),
+                        ),
+                        const SizedBox(width: 25),
+                        Checkbox(
+                          fillColor: WidgetStateProperty.resolveWith((states) {
+                            if (states.contains(WidgetState.selected)) {
+                              return theme.splashColor;
+                            }
+                            return null;
+                          }),
+                          value: isLoaderRejected,
+                          onChanged: (value) {
+                            setState(() {
+                              isLoaderRejected = !isLoaderRejected;
+                            });
+                          },
+                          side: BorderSide(color: theme.splashColor),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 30),
+                const SizedBox(height: 30),
               Text(
                 "Upload the BOL document or you can scan it.",
                 style: theme.textTheme.titleSmall!.copyWith(
@@ -239,7 +263,10 @@ class _UploadScanFilesState extends State<UploadScanFiles> {
                 label: context.localizations.confirm.toUpperCase(),
                 onPressed: () {
                   widget.onConfirmPressed?.call(
-                      commentController.text.trim(), widget.isCleanBol);
+                    commentController.text.trim(),
+                    widget.isCleanBol,
+                    isLoaderRejected,
+                  );
                 },
                 isLoading: widget.isCheckCallLoading != null &&
                     widget.isCheckCallLoading!,
