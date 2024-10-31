@@ -333,7 +333,7 @@ class _FixedButtonState extends State<FixedButton> {
       final theme = Theme.of(context);
 
       setState(() {
-        checkCallEnum = CheckCallType.deliveryCheckOut;
+        checkCallEnum = CheckCallType.finalDestination;
       });
       return Column(
         mainAxisSize: MainAxisSize.min,
