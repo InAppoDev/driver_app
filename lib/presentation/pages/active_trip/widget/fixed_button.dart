@@ -332,9 +332,9 @@ class _FixedButtonState extends State<FixedButton> {
     if (widget.trip.nextMandatoryCheckCallType != null) {
       final theme = Theme.of(context);
 
-      setState(() {
-        checkCallEnum = CheckCallType.finalDestination;
-      });
+      // setState(() {
+      //   checkCallEnum = CheckCallType.deliveryCheckOut;
+      // });
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [

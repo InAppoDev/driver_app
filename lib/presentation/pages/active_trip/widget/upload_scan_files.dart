@@ -136,7 +136,7 @@ class _UploadScanFilesState extends State<UploadScanFiles> {
               ],
             ),
             const SizedBox(height: 16),
-            if (!widget.isCleanBol) ...[
+            if (widget.isActiveTrip && !widget.isCleanBol) ...[
               const SizedBox(height: 8),
                 GestureDetector(
                   onTap: () {
