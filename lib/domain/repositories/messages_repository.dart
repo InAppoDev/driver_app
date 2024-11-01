@@ -12,7 +12,7 @@ abstract class MessagesRepository {
     List<String>? documentUploadIds,
   ]);
 
-  Future<String> checkUnreadMessage(
+  Future<String?> checkUnreadMessage(
     String chatId,
     int messageId,
   );

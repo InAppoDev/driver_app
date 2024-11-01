@@ -44,8 +44,14 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
       FetchChatDetails event, Emitter<ChatDetailState> emit) async {
     emit(const ChatDetailState.loading());
     try {
+      String? unreadMessage;
       final chatDetails = await messagesRepository.getChatDetails(event.chatId);
-      emit(ChatDetailState.loaded(chatDetails));
+
+      if (chatDetails.firstUnreadMessageId != null) {
+        unreadMessage = await messagesRepository.checkUnreadMessage(
+            event.chatId.toString(), chatDetails.firstUnreadMessageId!);
+      }
+      emit(ChatDetailState.loaded(chatDetails, unreadMessage));
     } catch (e) {
       emit(ChatDetailState.failure(e.toString()));
     }

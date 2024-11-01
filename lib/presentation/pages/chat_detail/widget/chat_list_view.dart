@@ -26,6 +26,15 @@ class ChatListViewState extends State<ChatListView> {
     }
   }
 
+  void _scrollToIndex(int index) {
+    final double offset = index * 30.0;
+    _scrollController.animateTo(
+      offset,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
 //TODO remove initState in the future
   @override
   void initState() {
@@ -55,7 +64,13 @@ class ChatListViewState extends State<ChatListView> {
           ) {
             final messages = chatDetails.messages;
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              _scrollToBottom();
+              if (unreadMessage == null) {
+                _scrollToBottom();
+              } else {
+                final unreadMessageIndex = chatDetails.messages
+                    .indexWhere((message) => message.content == unreadMessage);
+                _scrollToIndex(unreadMessageIndex);
+              }
             });
             return Column(
               children: [

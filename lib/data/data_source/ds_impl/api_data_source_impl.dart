@@ -140,7 +140,7 @@ class ApiDataSourceImpl implements ApiDataSource {
   }
 
   @override
-  Future<String> checkUnreadMessage(String chatId, int messageId) async {
+  Future<String?> checkUnreadMessage(String chatId, int messageId) async {
     final response = await _makeRequest(
       () => dio.post(
         '/chats/$chatId/mark-read',
@@ -149,9 +149,8 @@ class ApiDataSourceImpl implements ApiDataSource {
         },
       ),
     );
-
     if (response.statusCode == 200) {
-      return response.data;
+      return response.data['first_unread_message_id'];
     } else {
       return '';
     }

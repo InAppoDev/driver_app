@@ -75,7 +75,7 @@ class MessagesRepositoryImpl implements MessagesRepository {
   }
 
   @override
-  Future<String> checkUnreadMessage(String chatId, int messageId) async {
+  Future<String?> checkUnreadMessage(String chatId, int messageId) async {
     return await apiDataSource.checkUnreadMessage(chatId, messageId);
   }
 
