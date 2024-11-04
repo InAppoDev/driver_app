@@ -24,12 +24,12 @@
     </queries>
     <application
         tools:replace="android:label"
-        android:label="tms_driver"
+        android:label="Orozco Driver"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <provider
             android:name="vn.hunghd.flutterdownloader.DownloadedFileProvider"
-            android:authorities="com.example.tms_driver.flutter_downloader.provider"
+            android:authorities="com.tms_master.driver_app.flutter_downloader.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
