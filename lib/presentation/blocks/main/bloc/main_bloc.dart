@@ -2,12 +2,14 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tms_driver/data/services/connectivity_service.dart';
 import 'package:tms_driver/domain/repositories/auth_repository.dart';
 import 'package:tms_driver/domain/repositories/tracking_repository.dart';
+import 'package:tms_driver/presentation/utils/fcm_service/fcm_service.dart';
 
 part 'main_bloc.freezed.dart';
 part 'main_event.dart';
@@ -15,6 +17,7 @@ part 'main_state.dart';
 
 class MainBloc extends Bloc<MainEvent, MainState> {
   final AuthRepository authRepo = GetIt.instance<AuthRepository>();
+  final FCMService fcmService = GetIt.instance<FCMService>();
   final TrackingRepository trackingRepo = GetIt.instance<TrackingRepository>();
   final ConnectivityService connectivityService =
       GetIt.instance<ConnectivityService>();
@@ -29,6 +32,7 @@ class MainBloc extends Bloc<MainEvent, MainState> {
     on<_UpdateDriveButton>(_onUpdateDriveButton);
     on<_InitializeApp>(_initializeApp);
     on<_UpdateSelectedPage>(_updateSelectedPage);
+    on<_SetUpFcmToken>(_setUpFcmToken);
 
     _subscribeToBlocEvents();
 
@@ -40,11 +44,15 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   }
 
   void _updateSelectedPage(_UpdateSelectedPage event, Emitter<MainState> emit) {
-    print('checkkk - ${event.tabPage}');
     emit(state.copyWith(
       selectedPage: event.selectedPage,
       tabPage: event.tabPage,
     ));
+  }
+
+  Future<void> _setUpFcmToken(
+      _SetUpFcmToken event, Emitter<MainState> emit) async {
+    await fcmService.initializeFCM(event.context);
   }
 
   void _subscribeToBlocEvents() {

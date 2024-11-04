@@ -198,6 +198,19 @@ class ApiDataSourceImpl implements ApiDataSource {
   }
 
   @override
+  Future<String> updateFcmToken(String fcmToken) async {
+    final response = await _makeRequest(
+      () => dio.post(
+        '/update-fcm-token',
+        data: {
+          'fcm_token': fcmToken,
+        },
+      ),
+    );
+    return response.data['message'];
+  }
+
+  @override
   Future<List<DispatchListModel>> getHistoryTrips() async {
     final response = await _makeRequest(() => dio.get('/dispatches/history'));
     final tripsJson = response.data as List<dynamic>;

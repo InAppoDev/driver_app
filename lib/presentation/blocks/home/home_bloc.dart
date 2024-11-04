@@ -22,7 +22,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       fetchStats: () async {
         emit(const HomeState.loading());
         final stats = await homeRepository.getPersonalStats();
-        print('check homebloc stats - $stats');
         emit( HomeState.fetched(stats));
       },
     );

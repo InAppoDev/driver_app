@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "275823721764",
+    "project_id": "orozco-438620",
+    "storage_bucket": "orozco-438620.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275823721764:android:fe974117549a5588d587b1",
+        "android_client_info": {
+          "package_name": "com.tms_master.driver_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUJNkcgEScKTU_MAkTog3FJEV6Lwz2iak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

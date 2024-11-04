@@ -45,6 +45,7 @@ class MainPage extends StatelessWidget {
       child: Builder(
         builder: (context) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
+            context.read<MainBloc>().add(MainEvent.setUpFcmToken(context));
             context.read<HomeBloc>().add(const HomeEvent.fetchStats());
             context.read<TripListBloc>().add(const TripListEvent.fetchTrips());
             context
@@ -58,9 +59,9 @@ class MainPage extends StatelessWidget {
                 .add(const MessageListEvent.getChats());
             context.read<UserBloc>().add(const UserEvent.started());
             //TODO uncomment for fetch notification
-            // context
-            //     .read<NotificationBloc>()
-            //     .add(const NotificationEvent.startPolling());
+            context
+                .read<NotificationBloc>()
+                .add(const NotificationEvent.startPolling());
           });
 
           return const MainView();

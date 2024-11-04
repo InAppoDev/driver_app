@@ -24,6 +24,7 @@ import 'package:tms_driver/domain/repositories/trip_repository.dart';
 import 'package:tms_driver/domain/repositories/user_repository.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler.dart';
 import 'package:tms_driver/presentation/utils/error_handler/error_handler_impl.dart';
+import 'package:tms_driver/presentation/utils/fcm_service/fcm_service.dart';
 
 import 'domain/repositories/impl/notification_repository_impl.dart';
 
@@ -111,6 +112,10 @@ Future<void> initApp() async {
       apiDataSource: apiDataSource,
       authDataSource: authDataSource,
     ),
+  );
+
+  GetIt.instance.registerSingleton<FCMService>(
+    FCMService(),
   );
 
   // Register NotificationRepository with apiDataSource in GetIt

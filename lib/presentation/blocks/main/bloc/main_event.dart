@@ -7,6 +7,7 @@ class MainEvent with _$MainEvent {
   const factory MainEvent.updateDriveButton(int id) = _UpdateDriveButton;
   const factory MainEvent.checkConnection() = _CheckConnection;
   const factory MainEvent.initializeApp() = _InitializeApp;
+  const factory MainEvent.setUpFcmToken(BuildContext context) = _SetUpFcmToken;
 
   const factory MainEvent.updateSelectedPage(MainPageEnum selectedPage,
       [int? tabPage]) = _UpdateSelectedPage;
