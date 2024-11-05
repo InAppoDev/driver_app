@@ -32,6 +32,7 @@ Place `google-services.json` into `android/app/`
 This project requires JDK v17, so it can be set using:  
 ```shell
 # assuming $JAVA_HOME is managed by jenv
+jenv local 17
 flutter config --jdk-dir $JAVA_HOME
 ```
 
