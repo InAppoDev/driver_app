@@ -1,16 +1,46 @@
-# tms_driver
+# Orozco Driver
 
-A new Flutter project.
+## Build (release)
+### .env file
+```shell
+# project root
+cp .env.example .env
+# fill in the variables
+```
 
-## Getting Started
+### Update version
+Update the `version` in `pubspec.yaml` if needed
 
-This project is a starting point for a Flutter application.
+## Android-specific build (release)
+### Signing key
+Add the following to the end of `android/local.properties`:  
+```properties
+# Keystore properties
+release.storeFile=/path/to/key.jks
+release.storePassword=
+release.keyAlias=
+release.keyPassword=
+```
 
-A few resources to get you started if this is your first Flutter project:
+### FCM (push notifications)
+Place `google-services.json` into `android/app/`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### JDK
+> Needed for multi-project local setup, especially when projects target different SDK levels
+> The following setup is for macOS & Android Studio. Probably similar for Ubuntu, and is unknown for Windows
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project requires JDK v17, so it can be set using:
+```shell
+# assuming $JAVA_HOME is managed by jenv
+flutter config --jdk-dir $JAVA_HOME
+```
+
+### Run the build
+```shell
+flutter clean
+flutter pub get
+flutter build appbundle --release
+```
+
+## iOS-specific build (release)
+TODO
