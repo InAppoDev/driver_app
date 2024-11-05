@@ -16,7 +16,20 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/main',
-      builder: (context, state) => const MainPage(),
+      builder: (context, state) {
+        return const MainPage();
+      },
+    ),
+    GoRoute(
+      path: '/main/:isNewTrip/:tripId',
+      builder: (context, state) {
+        final isNewTrip = state.pathParameters['isNewTrip']!;
+        final tripId = state.pathParameters['tripId']!;
+        return MainPage(
+          isNewTrip: isNewTrip.isNotEmpty ? bool.parse(isNewTrip) : null,
+          tripId: tripId.isNotEmpty ? int.parse(tripId) : null,
+        );
+      },
     ),
     GoRoute(
       path: '/splash',

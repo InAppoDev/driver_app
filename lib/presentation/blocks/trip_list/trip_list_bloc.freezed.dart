@@ -23,6 +23,9 @@ mixin _$TripListEvent {
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() fetchTrips,
     required TResult Function() fetchHistoryTrips,
+    required TResult Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)
+        navigateToConfirmTripFromPushNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,6 +34,9 @@ mixin _$TripListEvent {
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? fetchTrips,
     TResult? Function()? fetchHistoryTrips,
+    TResult? Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)?
+        navigateToConfirmTripFromPushNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +45,9 @@ mixin _$TripListEvent {
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? fetchTrips,
     TResult Function()? fetchHistoryTrips,
+    TResult Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)?
+        navigateToConfirmTripFromPushNotification,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +57,8 @@ mixin _$TripListEvent {
     required TResult Function(_GetDateAndTime value) getDateAndTime,
     required TResult Function(_FetchTrips value) fetchTrips,
     required TResult Function(_FetchHistoryTrips value) fetchHistoryTrips,
+    required TResult Function(_NavigateToConfirmTripFromPushNotification value)
+        navigateToConfirmTripFromPushNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +67,8 @@ mixin _$TripListEvent {
     TResult? Function(_GetDateAndTime value)? getDateAndTime,
     TResult? Function(_FetchTrips value)? fetchTrips,
     TResult? Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    TResult? Function(_NavigateToConfirmTripFromPushNotification value)?
+        navigateToConfirmTripFromPushNotification,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +77,8 @@ mixin _$TripListEvent {
     TResult Function(_GetDateAndTime value)? getDateAndTime,
     TResult Function(_FetchTrips value)? fetchTrips,
     TResult Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    TResult Function(_NavigateToConfirmTripFromPushNotification value)?
+        navigateToConfirmTripFromPushNotification,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -188,6 +203,9 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() fetchTrips,
     required TResult Function() fetchHistoryTrips,
+    required TResult Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)
+        navigateToConfirmTripFromPushNotification,
   }) {
     return changeTab(status, trip);
   }
@@ -199,6 +217,9 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? fetchTrips,
     TResult? Function()? fetchHistoryTrips,
+    TResult? Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)?
+        navigateToConfirmTripFromPushNotification,
   }) {
     return changeTab?.call(status, trip);
   }
@@ -210,6 +231,9 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? fetchTrips,
     TResult Function()? fetchHistoryTrips,
+    TResult Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)?
+        navigateToConfirmTripFromPushNotification,
     required TResult orElse(),
   }) {
     if (changeTab != null) {
@@ -225,6 +249,8 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
     required TResult Function(_GetDateAndTime value) getDateAndTime,
     required TResult Function(_FetchTrips value) fetchTrips,
     required TResult Function(_FetchHistoryTrips value) fetchHistoryTrips,
+    required TResult Function(_NavigateToConfirmTripFromPushNotification value)
+        navigateToConfirmTripFromPushNotification,
   }) {
     return changeTab(this);
   }
@@ -236,6 +262,8 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
     TResult? Function(_GetDateAndTime value)? getDateAndTime,
     TResult? Function(_FetchTrips value)? fetchTrips,
     TResult? Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    TResult? Function(_NavigateToConfirmTripFromPushNotification value)?
+        navigateToConfirmTripFromPushNotification,
   }) {
     return changeTab?.call(this);
   }
@@ -247,6 +275,8 @@ class _$ChangeTabPressedImpl implements _ChangeTabPressed {
     TResult Function(_GetDateAndTime value)? getDateAndTime,
     TResult Function(_FetchTrips value)? fetchTrips,
     TResult Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    TResult Function(_NavigateToConfirmTripFromPushNotification value)?
+        navigateToConfirmTripFromPushNotification,
     required TResult orElse(),
   }) {
     if (changeTab != null) {
@@ -346,6 +376,9 @@ class _$GetDateAndTimeImpl implements _GetDateAndTime {
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() fetchTrips,
     required TResult Function() fetchHistoryTrips,
+    required TResult Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)
+        navigateToConfirmTripFromPushNotification,
   }) {
     return getDateAndTime(dateTime);
   }
@@ -357,6 +390,9 @@ class _$GetDateAndTimeImpl implements _GetDateAndTime {
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? fetchTrips,
     TResult? Function()? fetchHistoryTrips,
+    TResult? Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)?
+        navigateToConfirmTripFromPushNotification,
   }) {
     return getDateAndTime?.call(dateTime);
   }
@@ -368,6 +404,9 @@ class _$GetDateAndTimeImpl implements _GetDateAndTime {
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? fetchTrips,
     TResult Function()? fetchHistoryTrips,
+    TResult Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)?
+        navigateToConfirmTripFromPushNotification,
     required TResult orElse(),
   }) {
     if (getDateAndTime != null) {
@@ -383,6 +422,8 @@ class _$GetDateAndTimeImpl implements _GetDateAndTime {
     required TResult Function(_GetDateAndTime value) getDateAndTime,
     required TResult Function(_FetchTrips value) fetchTrips,
     required TResult Function(_FetchHistoryTrips value) fetchHistoryTrips,
+    required TResult Function(_NavigateToConfirmTripFromPushNotification value)
+        navigateToConfirmTripFromPushNotification,
   }) {
     return getDateAndTime(this);
   }
@@ -394,6 +435,8 @@ class _$GetDateAndTimeImpl implements _GetDateAndTime {
     TResult? Function(_GetDateAndTime value)? getDateAndTime,
     TResult? Function(_FetchTrips value)? fetchTrips,
     TResult? Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    TResult? Function(_NavigateToConfirmTripFromPushNotification value)?
+        navigateToConfirmTripFromPushNotification,
   }) {
     return getDateAndTime?.call(this);
   }
@@ -405,6 +448,8 @@ class _$GetDateAndTimeImpl implements _GetDateAndTime {
     TResult Function(_GetDateAndTime value)? getDateAndTime,
     TResult Function(_FetchTrips value)? fetchTrips,
     TResult Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    TResult Function(_NavigateToConfirmTripFromPushNotification value)?
+        navigateToConfirmTripFromPushNotification,
     required TResult orElse(),
   }) {
     if (getDateAndTime != null) {
@@ -473,6 +518,9 @@ class _$FetchTripsImpl implements _FetchTrips {
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() fetchTrips,
     required TResult Function() fetchHistoryTrips,
+    required TResult Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)
+        navigateToConfirmTripFromPushNotification,
   }) {
     return fetchTrips();
   }
@@ -484,6 +532,9 @@ class _$FetchTripsImpl implements _FetchTrips {
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? fetchTrips,
     TResult? Function()? fetchHistoryTrips,
+    TResult? Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)?
+        navigateToConfirmTripFromPushNotification,
   }) {
     return fetchTrips?.call();
   }
@@ -495,6 +546,9 @@ class _$FetchTripsImpl implements _FetchTrips {
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? fetchTrips,
     TResult Function()? fetchHistoryTrips,
+    TResult Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)?
+        navigateToConfirmTripFromPushNotification,
     required TResult orElse(),
   }) {
     if (fetchTrips != null) {
@@ -510,6 +564,8 @@ class _$FetchTripsImpl implements _FetchTrips {
     required TResult Function(_GetDateAndTime value) getDateAndTime,
     required TResult Function(_FetchTrips value) fetchTrips,
     required TResult Function(_FetchHistoryTrips value) fetchHistoryTrips,
+    required TResult Function(_NavigateToConfirmTripFromPushNotification value)
+        navigateToConfirmTripFromPushNotification,
   }) {
     return fetchTrips(this);
   }
@@ -521,6 +577,8 @@ class _$FetchTripsImpl implements _FetchTrips {
     TResult? Function(_GetDateAndTime value)? getDateAndTime,
     TResult? Function(_FetchTrips value)? fetchTrips,
     TResult? Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    TResult? Function(_NavigateToConfirmTripFromPushNotification value)?
+        navigateToConfirmTripFromPushNotification,
   }) {
     return fetchTrips?.call(this);
   }
@@ -532,6 +590,8 @@ class _$FetchTripsImpl implements _FetchTrips {
     TResult Function(_GetDateAndTime value)? getDateAndTime,
     TResult Function(_FetchTrips value)? fetchTrips,
     TResult Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    TResult Function(_NavigateToConfirmTripFromPushNotification value)?
+        navigateToConfirmTripFromPushNotification,
     required TResult orElse(),
   }) {
     if (fetchTrips != null) {
@@ -591,6 +651,9 @@ class _$FetchHistoryTripsImpl implements _FetchHistoryTrips {
     required TResult Function(String dateTime) getDateAndTime,
     required TResult Function() fetchTrips,
     required TResult Function() fetchHistoryTrips,
+    required TResult Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)
+        navigateToConfirmTripFromPushNotification,
   }) {
     return fetchHistoryTrips();
   }
@@ -602,6 +665,9 @@ class _$FetchHistoryTripsImpl implements _FetchHistoryTrips {
     TResult? Function(String dateTime)? getDateAndTime,
     TResult? Function()? fetchTrips,
     TResult? Function()? fetchHistoryTrips,
+    TResult? Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)?
+        navigateToConfirmTripFromPushNotification,
   }) {
     return fetchHistoryTrips?.call();
   }
@@ -613,6 +679,9 @@ class _$FetchHistoryTripsImpl implements _FetchHistoryTrips {
     TResult Function(String dateTime)? getDateAndTime,
     TResult Function()? fetchTrips,
     TResult Function()? fetchHistoryTrips,
+    TResult Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)?
+        navigateToConfirmTripFromPushNotification,
     required TResult orElse(),
   }) {
     if (fetchHistoryTrips != null) {
@@ -628,6 +697,8 @@ class _$FetchHistoryTripsImpl implements _FetchHistoryTrips {
     required TResult Function(_GetDateAndTime value) getDateAndTime,
     required TResult Function(_FetchTrips value) fetchTrips,
     required TResult Function(_FetchHistoryTrips value) fetchHistoryTrips,
+    required TResult Function(_NavigateToConfirmTripFromPushNotification value)
+        navigateToConfirmTripFromPushNotification,
   }) {
     return fetchHistoryTrips(this);
   }
@@ -639,6 +710,8 @@ class _$FetchHistoryTripsImpl implements _FetchHistoryTrips {
     TResult? Function(_GetDateAndTime value)? getDateAndTime,
     TResult? Function(_FetchTrips value)? fetchTrips,
     TResult? Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    TResult? Function(_NavigateToConfirmTripFromPushNotification value)?
+        navigateToConfirmTripFromPushNotification,
   }) {
     return fetchHistoryTrips?.call(this);
   }
@@ -650,6 +723,8 @@ class _$FetchHistoryTripsImpl implements _FetchHistoryTrips {
     TResult Function(_GetDateAndTime value)? getDateAndTime,
     TResult Function(_FetchTrips value)? fetchTrips,
     TResult Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    TResult Function(_NavigateToConfirmTripFromPushNotification value)?
+        navigateToConfirmTripFromPushNotification,
     required TResult orElse(),
   }) {
     if (fetchHistoryTrips != null) {
@@ -661,6 +736,221 @@ class _$FetchHistoryTripsImpl implements _FetchHistoryTrips {
 
 abstract class _FetchHistoryTrips implements TripListEvent {
   const factory _FetchHistoryTrips() = _$FetchHistoryTripsImpl;
+}
+
+/// @nodoc
+abstract class _$$NavigateToConfirmTripFromPushNotificationImplCopyWith<$Res> {
+  factory _$$NavigateToConfirmTripFromPushNotificationImplCopyWith(
+          _$NavigateToConfirmTripFromPushNotificationImpl value,
+          $Res Function(_$NavigateToConfirmTripFromPushNotificationImpl) then) =
+      __$$NavigateToConfirmTripFromPushNotificationImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {List<DispatchListModel> trips,
+      int tripId,
+      dynamic Function(DispatchListModel) onNavigate});
+}
+
+/// @nodoc
+class __$$NavigateToConfirmTripFromPushNotificationImplCopyWithImpl<$Res>
+    extends _$TripListEventCopyWithImpl<$Res,
+        _$NavigateToConfirmTripFromPushNotificationImpl>
+    implements _$$NavigateToConfirmTripFromPushNotificationImplCopyWith<$Res> {
+  __$$NavigateToConfirmTripFromPushNotificationImplCopyWithImpl(
+      _$NavigateToConfirmTripFromPushNotificationImpl _value,
+      $Res Function(_$NavigateToConfirmTripFromPushNotificationImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of TripListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? trips = null,
+    Object? tripId = null,
+    Object? onNavigate = null,
+  }) {
+    return _then(_$NavigateToConfirmTripFromPushNotificationImpl(
+      null == trips
+          ? _value._trips
+          : trips // ignore: cast_nullable_to_non_nullable
+              as List<DispatchListModel>,
+      null == tripId
+          ? _value.tripId
+          : tripId // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == onNavigate
+          ? _value.onNavigate
+          : onNavigate // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(DispatchListModel),
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NavigateToConfirmTripFromPushNotificationImpl
+    implements _NavigateToConfirmTripFromPushNotification {
+  const _$NavigateToConfirmTripFromPushNotificationImpl(
+      final List<DispatchListModel> trips, this.tripId, this.onNavigate)
+      : _trips = trips;
+
+  final List<DispatchListModel> _trips;
+  @override
+  List<DispatchListModel> get trips {
+    if (_trips is EqualUnmodifiableListView) return _trips;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_trips);
+  }
+
+  @override
+  final int tripId;
+  @override
+  final dynamic Function(DispatchListModel) onNavigate;
+
+  @override
+  String toString() {
+    return 'TripListEvent.navigateToConfirmTripFromPushNotification(trips: $trips, tripId: $tripId, onNavigate: $onNavigate)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NavigateToConfirmTripFromPushNotificationImpl &&
+            const DeepCollectionEquality().equals(other._trips, _trips) &&
+            (identical(other.tripId, tripId) || other.tripId == tripId) &&
+            (identical(other.onNavigate, onNavigate) ||
+                other.onNavigate == onNavigate));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_trips), tripId, onNavigate);
+
+  /// Create a copy of TripListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NavigateToConfirmTripFromPushNotificationImplCopyWith<
+          _$NavigateToConfirmTripFromPushNotificationImpl>
+      get copyWith =>
+          __$$NavigateToConfirmTripFromPushNotificationImplCopyWithImpl<
+                  _$NavigateToConfirmTripFromPushNotificationImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TabStatus status, DispatchListModel? trip)
+        changeTab,
+    required TResult Function(String dateTime) getDateAndTime,
+    required TResult Function() fetchTrips,
+    required TResult Function() fetchHistoryTrips,
+    required TResult Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)
+        navigateToConfirmTripFromPushNotification,
+  }) {
+    return navigateToConfirmTripFromPushNotification(trips, tripId, onNavigate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TabStatus status, DispatchListModel? trip)? changeTab,
+    TResult? Function(String dateTime)? getDateAndTime,
+    TResult? Function()? fetchTrips,
+    TResult? Function()? fetchHistoryTrips,
+    TResult? Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)?
+        navigateToConfirmTripFromPushNotification,
+  }) {
+    return navigateToConfirmTripFromPushNotification?.call(
+        trips, tripId, onNavigate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TabStatus status, DispatchListModel? trip)? changeTab,
+    TResult Function(String dateTime)? getDateAndTime,
+    TResult Function()? fetchTrips,
+    TResult Function()? fetchHistoryTrips,
+    TResult Function(List<DispatchListModel> trips, int tripId,
+            dynamic Function(DispatchListModel) onNavigate)?
+        navigateToConfirmTripFromPushNotification,
+    required TResult orElse(),
+  }) {
+    if (navigateToConfirmTripFromPushNotification != null) {
+      return navigateToConfirmTripFromPushNotification(
+          trips, tripId, onNavigate);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ChangeTabPressed value) changeTab,
+    required TResult Function(_GetDateAndTime value) getDateAndTime,
+    required TResult Function(_FetchTrips value) fetchTrips,
+    required TResult Function(_FetchHistoryTrips value) fetchHistoryTrips,
+    required TResult Function(_NavigateToConfirmTripFromPushNotification value)
+        navigateToConfirmTripFromPushNotification,
+  }) {
+    return navigateToConfirmTripFromPushNotification(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ChangeTabPressed value)? changeTab,
+    TResult? Function(_GetDateAndTime value)? getDateAndTime,
+    TResult? Function(_FetchTrips value)? fetchTrips,
+    TResult? Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    TResult? Function(_NavigateToConfirmTripFromPushNotification value)?
+        navigateToConfirmTripFromPushNotification,
+  }) {
+    return navigateToConfirmTripFromPushNotification?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ChangeTabPressed value)? changeTab,
+    TResult Function(_GetDateAndTime value)? getDateAndTime,
+    TResult Function(_FetchTrips value)? fetchTrips,
+    TResult Function(_FetchHistoryTrips value)? fetchHistoryTrips,
+    TResult Function(_NavigateToConfirmTripFromPushNotification value)?
+        navigateToConfirmTripFromPushNotification,
+    required TResult orElse(),
+  }) {
+    if (navigateToConfirmTripFromPushNotification != null) {
+      return navigateToConfirmTripFromPushNotification(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NavigateToConfirmTripFromPushNotification
+    implements TripListEvent {
+  const factory _NavigateToConfirmTripFromPushNotification(
+          final List<DispatchListModel> trips,
+          final int tripId,
+          final dynamic Function(DispatchListModel) onNavigate) =
+      _$NavigateToConfirmTripFromPushNotificationImpl;
+
+  List<DispatchListModel> get trips;
+  int get tripId;
+  dynamic Function(DispatchListModel) get onNavigate;
+
+  /// Create a copy of TripListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$NavigateToConfirmTripFromPushNotificationImplCopyWith<
+          _$NavigateToConfirmTripFromPushNotificationImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

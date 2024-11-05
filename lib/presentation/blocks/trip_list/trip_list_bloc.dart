@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:get_it/get_it.dart';
@@ -17,6 +19,25 @@ class TripListBloc extends Bloc<TripListEvent, TripListState> {
     on<_GetDateAndTime>(_getDataAndTime);
     on<_FetchTrips>(_fetchTrips);
     on<_FetchHistoryTrips>(_fetchHistoryTrips);
+    on<_NavigateToConfirmTripFromPushNotification>(
+        _navigateToConfirmTripFromPushNotification);
+  }
+
+  void _navigateToConfirmTripFromPushNotification(
+      _NavigateToConfirmTripFromPushNotification event,
+      Emitter<TripListState> emit) {
+    for (final trip in event.trips) {
+      if (trip.id == event.tripId) {
+        event.onNavigate(trip);
+      }
+    }
+  }
+
+  DispatchListModel checkTripId(int? tripId, DispatchListModel dispatch) {
+    if (tripId != null && tripId == dispatch.id) {
+      return dispatch;
+    }
+    return dispatch;
   }
 
   void _changeTabEvent(_ChangeTabPressed event, Emitter<TripListState> emit) {

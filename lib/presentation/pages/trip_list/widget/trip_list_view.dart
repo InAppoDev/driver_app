@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tms_driver/data/models/dispatch/dispatch_list_model/dispatch_list_model.dart';
 import 'package:tms_driver/presentation/blocks/trip_list/trip_list_bloc.dart';
 import 'package:tms_driver/presentation/pages/active_trip/widget/active_trip_view.dart';
 import 'package:tms_driver/presentation/pages/trip_list/widget/trip_items_list.dart';
 import 'package:tms_driver/presentation/utils/enums/enums.dart';
 
 class TripListView extends StatefulWidget {
-  const TripListView({super.key, this.tabPage});
+  const TripListView({
+    super.key,
+    this.tabPage,
+    this.tripId,
+    this.showETABS,
+  });
 
   final int? tabPage;
+  final int? tripId;
+  final bool? showETABS;
 
   @override
   TripListViewState createState() => TripListViewState();
@@ -43,12 +51,36 @@ class TripListViewState extends State<TripListView>
     super.dispose();
   }
 
+  Future<void> navigateToConfirm(DispatchListModel trip) async {
+    final navigateToConfirmTrip = await context.push(
+      '/confirmTrip',
+      extra: context.read<TripListBloc>().checkTripId(
+            widget.tripId,
+            trip,
+          ),
+    );
+    if (navigateToConfirmTrip as bool && context.mounted) {
+      _tabController.animateTo(1);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return BlocBuilder<TripListBloc, TripListState>(
       builder: (context, state) {
+        if (widget.tripId != null) {
+          context.read<TripListBloc>().add(
+                TripListEvent.navigateToConfirmTripFromPushNotification(
+                  state.trips,
+                  widget.tripId!,
+                  (trip) {
+                    navigateToConfirm(trip);
+                  },
+                ),
+              );
+        }
         return Padding(
           padding: const EdgeInsets.only(top: 8),
           child: Column(
@@ -111,15 +143,9 @@ class TripListViewState extends State<TripListView>
                   children: [
                     TripItemsList(
                       trips: state.trips,
-                      onPressed: (trip) async {
-                        final navigateToConfirmTrip =
-                        await context.push('/confirmTrip', extra: trip);
-                        if (navigateToConfirmTrip as bool && context.mounted) {
-                          _tabController.animateTo(1);
-                        }
-                      },
+                      onPressed: navigateToConfirm,
                     ),
-                    const ActiveTripView(),
+                    ActiveTripView(showETABS: widget.showETABS),
                     TripItemsList(
                       trips: state.historyTrips,
                       onPressed: (_) {},

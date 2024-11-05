@@ -16,7 +16,10 @@ import 'package:tms_driver/presentation/pages/trip_list/widget/trip_list_view.da
 import 'package:tms_driver/presentation/utils/extension/change_localization.dart';
 
 class MainView extends StatelessWidget {
-  const MainView({super.key});
+  const MainView({super.key, this.tripId, this.isNewTrip});
+
+  final bool? isNewTrip;
+  final int? tripId;
 
   @override
   Widget build(BuildContext context) {
@@ -54,11 +57,24 @@ class MainView extends StatelessWidget {
                 ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
               });
             }
+            if (isNewTrip != null && isNewTrip! && tripId != null) {
+              context.read<MainBloc>().add(
+                  const MainEvent.updateSelectedPage(MainPageEnum.trips, 1));
+            }
+
+            if (isNewTrip != null && !isNewTrip!) {
+              context.read<MainBloc>().add(
+                  const MainEvent.updateSelectedPage(MainPageEnum.trips, 2));
+            }
             switch (state.selectedPage) {
               case MainPageEnum.home:
                 return const HomePage();
               case MainPageEnum.trips:
-                return TripListView(tabPage: state.tabPage);
+                return TripListView(
+                  tabPage: state.tabPage,
+                  tripId: tripId,
+                  showETABS: isNewTrip != null ? !isNewTrip! : false,
+                );
               case MainPageEnum.messages:
                 return const MessageListView();
               case MainPageEnum.profile:

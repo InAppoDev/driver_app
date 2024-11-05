@@ -11,7 +11,10 @@ import 'package:tms_driver/presentation/blocks/user/user_bloc.dart';
 import 'package:tms_driver/presentation/pages/main/widget/main_view.dart';
 
 class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+  const MainPage({super.key, this.isNewTrip, this.tripId});
+
+  final bool? isNewTrip;
+  final int? tripId;
 
   @override
   Widget build(BuildContext context) {
