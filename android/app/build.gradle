@@ -62,6 +62,10 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
+
+            ndk {
+                debugSymbolLevel 'SYMBOL_TABLE'
+            }
         }
     }
 }
@@ -71,3 +75,33 @@ flutter {
 }
 
 dependencies {}
+
+/// ----------
+/// ---------- DEBUG SYMBOLS for GOOGLE PLAY
+/// ----------
+
+def zipNativeDebugSymbols = tasks.register('zipNativeDebugSymbols', Zip) {
+    group = 'Build'
+    description = 'Zips debug symbol files for upload to Google Play store.'
+
+    from(file("${buildDir}/intermediates/merged_native_libs/release/out/lib")) {
+        include '**/*'
+        exclude '**/__MACOSX/**', '**/.DS_Store'
+    }
+
+    archiveFileName = 'native-debug-symbols.zip'
+    destinationDirectory = file("${buildDir}/outputs/bundle/release")
+
+    // Force the task to run by setting up-to-date to false
+    outputs.upToDateWhen { false }
+
+    doLast {
+        println '✅ zipNativeDebugSymbols: task executed and zip created.'
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'bundleRelease') {
+        task.finalizedBy zipNativeDebugSymbols
+    }
+}

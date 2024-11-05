@@ -26,10 +26,10 @@ release.keyPassword=
 Place `google-services.json` into `android/app/`
 
 ### JDK
-> Needed for multi-project local setup, especially when projects target different SDK levels
-> The following setup is for macOS & Android Studio. Probably similar for Ubuntu, and is unknown for Windows
+> Needed for multi-project local setup, especially when projects target different SDK levels  
+> The following setup is for macOS & Android Studio. Probably similar for Ubuntu, and is unknown for Windows  
 
-This project requires JDK v17, so it can be set using:
+This project requires JDK v17, so it can be set using:  
 ```shell
 # assuming $JAVA_HOME is managed by jenv
 flutter config --jdk-dir $JAVA_HOME
@@ -37,9 +37,7 @@ flutter config --jdk-dir $JAVA_HOME
 
 ### Run the build
 ```shell
-flutter clean
-flutter pub get
-flutter build appbundle --release
+flutter clean && flutter build appbundle --release
 ```
 
 ## iOS-specific build (release)
