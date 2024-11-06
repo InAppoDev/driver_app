@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:downloadsfolder/downloadsfolder.dart';
@@ -11,6 +12,7 @@ import 'package:go_router/go_router.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
 import 'package:tms_driver/data/models/chats/message/message_model.dart';
 import 'package:tms_driver/domain/repositories/messages_repository.dart';
+import 'package:tms_driver/domain/repositories/notification_repository.dart';
 import 'package:tms_driver/domain/repositories/trip_repository.dart';
 import 'package:tms_driver/presentation/consts/consts.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -23,7 +25,9 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
   final MessagesRepository messagesRepository =
       GetIt.instance<MessagesRepository>();
   final TripRepository tripRepository = GetIt.instance<TripRepository>();
-
+  final NotificationRepository notificationRepo =
+      GetIt.instance<NotificationRepository>();
+  Timer? _timer;
   final int chatId;
 
   ChatDetailBloc({required this.chatId})
@@ -38,23 +42,65 @@ class ChatDetailBloc extends Bloc<ChatDetailEvent, ChatDetailState> {
     on<AddDocument>(_addToDocumentList);
     on<MakeNullSelectedFile>(_makeNullSelectedFile);
     on<ScanDoc>(_scanDoc);
+    on<CancelTimer>(_cancelTimer);
+    on<StartPeriodicTimer>(_startPeriodicTimer);
   }
 
-  Future<void> _fetchChatDetails(
-      FetchChatDetails event, Emitter<ChatDetailState> emit) async {
+  Future<void> _fetchChatDetails(FetchChatDetails event,
+      Emitter<ChatDetailState> emit,) async {
     emit(const ChatDetailState.loading());
+
     try {
       String? unreadMessage;
       final chatDetails = await messagesRepository.getChatDetails(event.chatId);
 
       if (chatDetails.firstUnreadMessageId != null) {
         unreadMessage = await messagesRepository.checkUnreadMessage(
-            event.chatId.toString(), chatDetails.firstUnreadMessageId!);
+          event.chatId.toString(),
+          chatDetails.firstUnreadMessageId!,
+        );
       }
+      emit(ChatDetailState.loaded(chatDetails, unreadMessage));
+
+      _timer = Timer.periodic(const Duration(seconds: 10), (timer) async {
+        add(ChatDetailEvent.startPeriodicTimer(event.chatId));
+      });
       emit(ChatDetailState.loaded(chatDetails, unreadMessage));
     } catch (e) {
       emit(ChatDetailState.failure(e.toString()));
     }
+  }
+
+  Future<void> _startPeriodicTimer(
+      StartPeriodicTimer event, Emitter<ChatDetailState> emit) async {
+    final chatDetails = await messagesRepository.getChatDetails(event.chatId);
+    String? unreadMessage;
+    if (chatDetails.firstUnreadMessageId != null) {
+      unreadMessage = await messagesRepository.checkUnreadMessage(
+        event.chatId.toString(),
+        chatDetails.firstUnreadMessageId!,
+      );
+    }
+
+    state.maybeWhen(
+      loaded: (stateChatDetails, _, __, ___) async {
+        bool areEqual = stateChatDetails.messages.length ==
+                chatDetails.messages.length &&
+            stateChatDetails.messages.every((item) =>
+                chatDetails.messages[stateChatDetails.messages.indexOf(item)] ==
+                item);
+
+        if (!areEqual) {
+          emit(ChatDetailState.loaded(chatDetails, unreadMessage));
+        }
+      },
+      orElse: () async {},
+    );
+  }
+
+  void _cancelTimer(CancelTimer event, Emitter<ChatDetailState> emit) {
+    _timer?.cancel();
+    _timer = null;
   }
 
   Future<void> _downloadFile(

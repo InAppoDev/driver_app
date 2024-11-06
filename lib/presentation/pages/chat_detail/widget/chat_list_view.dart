@@ -76,6 +76,11 @@ class ChatListViewState extends State<ChatListView> {
               children: [
                 const SizedBox(height: 15),
                 ChatBarInfo(
+                  onArrowBackPressed: () {
+                    context
+                        .read<ChatDetailBloc>()
+                        .add(const ChatDetailEvent.cancelTimer());
+                  },
                   chatDetails: chatDetails,
                   onPhonePressed: (number) {
                     context

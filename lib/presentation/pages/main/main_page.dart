@@ -61,10 +61,6 @@ class MainPage extends StatelessWidget {
                 .read<MessageListBloc>()
                 .add(const MessageListEvent.getChats());
             context.read<UserBloc>().add(const UserEvent.started());
-            //TODO uncomment for fetch notification
-            context
-                .read<NotificationBloc>()
-                .add(const NotificationEvent.startPolling());
           });
 
           return const MainView();

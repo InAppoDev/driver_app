@@ -1038,7 +1038,9 @@ class _$SetUpFcmTokenImpl implements _SetUpFcmToken {
   TResult when<TResult extends Object?>({
     required TResult Function(MainPageEnum page) pageChanged,
     required TResult Function(bool hideShowNavBar) hideShowNavBar,
-    required TResult Function(int id) updateDriveButton,
+    required TResult Function(
+            int id, int? etaTimestamp, String? comment, String type)
+        updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
     required TResult Function(BuildContext context) setUpFcmToken,
@@ -1053,7 +1055,8 @@ class _$SetUpFcmTokenImpl implements _SetUpFcmToken {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(MainPageEnum page)? pageChanged,
     TResult? Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult? Function(int id)? updateDriveButton,
+    TResult? Function(int id, int? etaTimestamp, String? comment, String type)?
+        updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
     TResult? Function(BuildContext context)? setUpFcmToken,
@@ -1068,7 +1071,8 @@ class _$SetUpFcmTokenImpl implements _SetUpFcmToken {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(MainPageEnum page)? pageChanged,
     TResult Function(bool hideShowNavBar)? hideShowNavBar,
-    TResult Function(int id)? updateDriveButton,
+    TResult Function(int id, int? etaTimestamp, String? comment, String type)?
+        updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
     TResult Function(BuildContext context)? setUpFcmToken,
