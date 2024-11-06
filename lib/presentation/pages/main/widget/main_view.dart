@@ -143,11 +143,15 @@ class MainView extends StatelessWidget {
                                 );
                             context.read<MainBloc>().add(
                                   MainEvent.updateDriveButton(
-                                    tripState.trip!.id,
+                                    etaTimestamp: etaTimestamp,
+                                    comment: comment,
+                                    id: tripState.trip!.id,
+                                    type: type,
                                   ),
                                 );
                           }
                         }
+                      //   int? etaTimestamp, String? comment, String type
                       : null,
                 backgroundColor:
                     isActiveTrip ? Theme.of(context).cardColor : Colors.grey,

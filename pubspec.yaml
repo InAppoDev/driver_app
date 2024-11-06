@@ -1,9 +1,9 @@
 name: tms_driver
-description: "A new Flutter project."
+description: "Orozco Driver - app for truck drivers in Orozco Trucking inc."
 
 publish_to: "none"
 
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -62,7 +62,7 @@ dependencies:
 dev_dependencies:
   build_runner: ^2.4.11
   freezed: ^2.5.2
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.14.1
   analyzer: ^6.4.1
 
   flutter_lints: ^4.0.0
@@ -107,9 +107,14 @@ flutter_native_splash:
   android: true
   ios: true
   android_12:
-    image: assets/images/logo.png
     color: "#FFFFFF"
     icon_background_color: "#FFFFFF"
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/app_icon.png"
 flutter_intl:
   enabled: true
   arb_dir: lib/l10n

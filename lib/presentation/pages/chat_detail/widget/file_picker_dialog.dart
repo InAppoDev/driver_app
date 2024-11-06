@@ -22,7 +22,7 @@ class FilePickerDialog extends StatelessWidget {
   });
 
   final VoidCallback onAddFile;
-  final Function(String, bool)? onConfirmPressed;
+  final Function(String, bool, bool)? onConfirmPressed;
   final Function(String) onScanFile;
   final Function(File) onFileRemove;
   final File? selectedFile;

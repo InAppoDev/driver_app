@@ -81,10 +81,20 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   Future<void> _onUpdateDriveButton(
       _UpdateDriveButton event, Emitter<MainState> emit) async {
     if (state.isDriveStarted) {
-      trackingRepo.stopTracking(event.id);
+      trackingRepo.stopTracking(
+        id: event.id,
+        etaTimestamp: event.etaTimestamp,
+        comment: event.comment,
+        type: event.type,
+      );
       emit(state.copyWith(isDriveStarted: false));
     } else {
-      trackingRepo.startTracking(event.id);
+      trackingRepo.startTracking(
+        id: event.id,
+        etaTimestamp: event.etaTimestamp,
+        comment: event.comment,
+        type: event.type,
+      );
       emit(state.copyWith(isDriveStarted: true));
     }
   }

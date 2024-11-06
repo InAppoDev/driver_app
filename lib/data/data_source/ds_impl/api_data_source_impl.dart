@@ -140,6 +140,23 @@ class ApiDataSourceImpl implements ApiDataSource {
   }
 
   @override
+  Future<String?> checkUnreadMessage(String chatId, int messageId) async {
+    final response = await _makeRequest(
+      () => dio.post(
+        '/chats/$chatId/mark-read',
+        data: {
+          'message_id': messageId,
+        },
+      ),
+    );
+    if (response.statusCode == 200) {
+      return response.data['first_unread_message_id'];
+    } else {
+      return '';
+    }
+  }
+
+  @override
   Future<UploadDocumentResponse> uploadDocument(File file, String name) async {
     try {
       FormData formData = FormData.fromMap({

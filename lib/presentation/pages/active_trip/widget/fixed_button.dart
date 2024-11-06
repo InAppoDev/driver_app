@@ -208,7 +208,7 @@ class _FixedButtonState extends State<FixedButton> {
             tripId,
           );
         },
-        title: localizations.begin,
+        title: localizations.setETA,
         type: 'eta',
       );
     }
@@ -235,7 +235,7 @@ class _FixedButtonState extends State<FixedButton> {
               .add(TripDetailEvent.scanDocument(image));
         },
         documents: docs,
-        onConfirmPressed: (comment, _) {
+        onConfirmPressed: (comment, _, __) {
           onCheckCallResult(
             bottomSheetContext,
             CallTypeResultModel(
@@ -286,7 +286,7 @@ class _FixedButtonState extends State<FixedButton> {
               .read<TripDetailBloc>()
               .add(TripDetailEvent.removeDocument(file.path));
         },
-        onConfirmPressed: (comment, isCleanBol) {
+        onConfirmPressed: (comment, isCleanBol, isLoaderRejected) {
           onCheckCallResult(
             bottomSheetContext,
             CallTypeResultModel(
@@ -294,7 +294,7 @@ class _FixedButtonState extends State<FixedButton> {
               documentIds: docs,
               comment: comment,
               isCleanBol: isCleanBol,
-              isLoadReject: !isCleanBol,
+              isLoadReject: isLoaderRejected,
             ),
             tripId,
           );
@@ -334,9 +334,9 @@ class _FixedButtonState extends State<FixedButton> {
     if (widget.trip.nextMandatoryCheckCallType != null) {
       final theme = Theme.of(context);
 
-      setState(() {
-        checkCallEnum = CheckCallType.pickupCheckOut;
-      });
+      // setState(() {
+      //   checkCallEnum = CheckCallType.deliveryCheckOut;
+      // });
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [

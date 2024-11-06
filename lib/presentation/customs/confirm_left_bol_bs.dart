@@ -29,7 +29,8 @@ class _ConfirmLeftBolBsState extends State<ConfirmLeftBolBs> {
   int minLines = 1;
   final TextEditingController commentController = TextEditingController();
 
-  bool showErrorOnNoPressed = false;
+  bool onYesPressed = false;
+  bool onNoPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -65,27 +66,30 @@ class _ConfirmLeftBolBsState extends State<ConfirmLeftBolBs> {
                 CustomButton(
                   width: width * 0.15,
                   label: 'Yes',
-                  onPressed: () {
+                        onlyBorder: !onYesPressed,
+                        onPressed: () {
                     setState(() {
-                      showErrorOnNoPressed = false;
-                    });
-                  },
+                            onYesPressed = true;
+                            onNoPressed = false;
+                          });
+                        },
                 ),
                 const SizedBox(width: 16),
                 CustomButton(
                   width: width * 0.15,
                   label: 'No',
-                  onlyBorder: true,
-                  onPressed: () {
+                        onlyBorder: !onNoPressed,
+                        onPressed: () {
                     setState(() {
-                      showErrorOnNoPressed = true;
-                    });
-                  },
+                            onNoPressed = true;
+                            onYesPressed = false;
+                          });
+                        },
                 ),
               ],
             ),
-            if (showErrorOnNoPressed) ...[
-              const SizedBox(height: 18),
+                  if (onNoPressed) ...[
+                    const SizedBox(height: 18),
               Text(
                 'Please leave BOL in the trailer box',
                 style: theme.textTheme.titleSmall!.copyWith(
@@ -120,9 +124,11 @@ class _ConfirmLeftBolBsState extends State<ConfirmLeftBolBs> {
             CustomButton(
               label: context.localizations.confirm.toUpperCase(),
               onPressed: (){
-                widget.onConfirmPressed(commentController.text.trim());
-              },
-              isLoading: widget.isCheckCallLoading,
+                      if (!onNoPressed) {
+                        widget.onConfirmPressed(commentController.text.trim());
+                      }
+                    },
+                    isLoading: widget.isCheckCallLoading,
             ),
           ],
         ),

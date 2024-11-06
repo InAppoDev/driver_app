@@ -2084,7 +2084,10 @@ mixin _$ChatDetailState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
@@ -2096,7 +2099,10 @@ mixin _$ChatDetailState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
@@ -2108,7 +2114,10 @@ mixin _$ChatDetailState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
@@ -2214,7 +2223,10 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
@@ -2229,7 +2241,10 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
@@ -2244,7 +2259,10 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
@@ -2349,7 +2367,10 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
@@ -2364,7 +2385,10 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
@@ -2379,7 +2403,10 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
@@ -2448,7 +2475,10 @@ abstract class _$$LoadedImplCopyWith<$Res> {
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {ChatDetailModel chatDetails, File? selectedFile, List<File>? documents});
+      {ChatDetailModel chatDetails,
+      String? firstUnreadMessageText,
+      File? selectedFile,
+      List<File>? documents});
 
   $ChatDetailModelCopyWith<$Res> get chatDetails;
 }
@@ -2467,6 +2497,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? chatDetails = null,
+    Object? firstUnreadMessageText = freezed,
     Object? selectedFile = freezed,
     Object? documents = freezed,
   }) {
@@ -2475,6 +2506,10 @@ class __$$LoadedImplCopyWithImpl<$Res>
           ? _value.chatDetails
           : chatDetails // ignore: cast_nullable_to_non_nullable
               as ChatDetailModel,
+      freezed == firstUnreadMessageText
+          ? _value.firstUnreadMessageText
+          : firstUnreadMessageText // ignore: cast_nullable_to_non_nullable
+              as String?,
       freezed == selectedFile
           ? _value.selectedFile
           : selectedFile // ignore: cast_nullable_to_non_nullable
@@ -2501,11 +2536,15 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 class _$LoadedImpl implements Loaded {
   const _$LoadedImpl(this.chatDetails,
-      [this.selectedFile, final List<File>? documents])
+      [this.firstUnreadMessageText,
+      this.selectedFile,
+      final List<File>? documents])
       : _documents = documents;
 
   @override
   final ChatDetailModel chatDetails;
+  @override
+  final String? firstUnreadMessageText;
   @override
   final File? selectedFile;
   final List<File>? _documents;
@@ -2520,7 +2559,7 @@ class _$LoadedImpl implements Loaded {
 
   @override
   String toString() {
-    return 'ChatDetailState.loaded(chatDetails: $chatDetails, selectedFile: $selectedFile, documents: $documents)';
+    return 'ChatDetailState.loaded(chatDetails: $chatDetails, firstUnreadMessageText: $firstUnreadMessageText, selectedFile: $selectedFile, documents: $documents)';
   }
 
   @override
@@ -2530,6 +2569,8 @@ class _$LoadedImpl implements Loaded {
             other is _$LoadedImpl &&
             (identical(other.chatDetails, chatDetails) ||
                 other.chatDetails == chatDetails) &&
+            (identical(other.firstUnreadMessageText, firstUnreadMessageText) ||
+                other.firstUnreadMessageText == firstUnreadMessageText) &&
             (identical(other.selectedFile, selectedFile) ||
                 other.selectedFile == selectedFile) &&
             const DeepCollectionEquality()
@@ -2537,7 +2578,11 @@ class _$LoadedImpl implements Loaded {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, chatDetails, selectedFile,
+  int get hashCode => Object.hash(
+      runtimeType,
+      chatDetails,
+      firstUnreadMessageText,
+      selectedFile,
       const DeepCollectionEquality().hash(_documents));
 
   /// Create a copy of ChatDetailState
@@ -2553,14 +2598,17 @@ class _$LoadedImpl implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
     required TResult Function() messageSent,
     required TResult Function(String errorMessage) failure,
   }) {
-    return loaded(chatDetails, selectedFile, documents);
+    return loaded(chatDetails, firstUnreadMessageText, selectedFile, documents);
   }
 
   @override
@@ -2568,14 +2616,18 @@ class _$LoadedImpl implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
     TResult? Function()? messageSent,
     TResult? Function(String errorMessage)? failure,
   }) {
-    return loaded?.call(chatDetails, selectedFile, documents);
+    return loaded?.call(
+        chatDetails, firstUnreadMessageText, selectedFile, documents);
   }
 
   @override
@@ -2583,7 +2635,10 @@ class _$LoadedImpl implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
@@ -2592,7 +2647,8 @@ class _$LoadedImpl implements Loaded {
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(chatDetails, selectedFile, documents);
+      return loaded(
+          chatDetails, firstUnreadMessageText, selectedFile, documents);
     }
     return orElse();
   }
@@ -2643,9 +2699,12 @@ class _$LoadedImpl implements Loaded {
 
 abstract class Loaded implements ChatDetailState {
   const factory Loaded(final ChatDetailModel chatDetails,
-      [final File? selectedFile, final List<File>? documents]) = _$LoadedImpl;
+      [final String? firstUnreadMessageText,
+      final File? selectedFile,
+      final List<File>? documents]) = _$LoadedImpl;
 
   ChatDetailModel get chatDetails;
+  String? get firstUnreadMessageText;
   File? get selectedFile;
   List<File>? get documents;
 
@@ -2699,7 +2758,10 @@ class _$SendingMessageImpl implements SendingMessage {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
@@ -2714,7 +2776,10 @@ class _$SendingMessageImpl implements SendingMessage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
@@ -2729,7 +2794,10 @@ class _$SendingMessageImpl implements SendingMessage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
@@ -2834,7 +2902,10 @@ class _$MessageSentImpl implements MessageSent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
@@ -2849,7 +2920,10 @@ class _$MessageSentImpl implements MessageSent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
@@ -2864,7 +2938,10 @@ class _$MessageSentImpl implements MessageSent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
@@ -2997,7 +3074,10 @@ class _$FailureImpl implements Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    required TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)
         loaded,
     required TResult Function() sendingMessage,
@@ -3012,7 +3092,10 @@ class _$FailureImpl implements Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult? Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult? Function()? sendingMessage,
@@ -3027,7 +3110,10 @@ class _$FailureImpl implements Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(ChatDetailModel chatDetails, File? selectedFile,
+    TResult Function(
+            ChatDetailModel chatDetails,
+            String? firstUnreadMessageText,
+            File? selectedFile,
             List<File>? documents)?
         loaded,
     TResult Function()? sendingMessage,
