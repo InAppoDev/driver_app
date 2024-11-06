@@ -41,6 +41,7 @@ class UpdateBloc extends Bloc<UpdateEvent, UpdateState> {
         ),
         type: event.type,
         comment: event.comment,
+        etaTimestamp: event.etaTimestamp,
       );
 
       await tripRepository.sendCheckCall(

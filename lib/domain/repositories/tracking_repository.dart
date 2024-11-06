@@ -1,4 +1,15 @@
 abstract class TrackingRepository {
-  void startTracking(int id);
-  void stopTracking(int id);
+  void startTracking({
+    required int id,
+    required int? etaTimestamp,
+    required String? comment,
+    required String type,
+  });
+
+  void stopTracking({
+    required int id,
+    required int? etaTimestamp,
+    required String? comment,
+    required String type,
+  });
 }

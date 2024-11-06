@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'dart:developer';
-import 'package:flutter_foreground_task/flutter_foreground_task.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
 import 'package:background_fetch/background_fetch.dart';
+import 'package:flutter_foreground_task/flutter_foreground_task.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tms_driver/data/models/check/check_call/check_call_model.dart';
 import 'package:tms_driver/data/models/check/location/location_model.dart';
@@ -64,7 +65,12 @@ class MyLocationService {
     log('_initializeNotifications');
   }
 
-  Future<void> startDriveTimer(int tripId) async {
+  Future<void> startDriveTimer({
+    required int id,
+    required int? etaTimestamp,
+    required String? comment,
+    required String type,
+  }) async {
     if (_isTracking) {
       log('Tracking is already started');
       return;
@@ -80,10 +86,20 @@ class MyLocationService {
       _updateDriveNotification();
     });
 
-    startTracking(tripId);
+    startTracking(
+      id: id,
+      etaTimestamp: etaTimestamp,
+      comment: comment,
+      type: type,
+    );
   }
 
-  void stopDriveTimer(int id) async {
+  void stopDriveTimer({
+    required int id,
+    required int? etaTimestamp,
+    required String? comment,
+    required String type,
+  }) async {
     if (!_isTracking) {
       log('Tracking is not active');
       return;
@@ -99,10 +115,20 @@ class MyLocationService {
 
     await flutterLocalNotificationsPlugin.cancel(2);
     await stopService();
-    stopTracking(id);
+    stopTracking(
+      id: id,
+      etaTimestamp: etaTimestamp,
+      comment: comment,
+      type: type,
+    );
   }
 
-  Future<void> sendCheckCall({required int id, required String type}) async {
+  Future<void> sendCheckCall({
+    required int id,
+    required String type,
+    String? comment,
+    int? etaTimestamp,
+  }) async {
     try {
       Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high,
@@ -117,6 +143,8 @@ class MyLocationService {
           lng: position.longitude,
         ),
         type: type,
+        comment: comment,
+        etaTimestamp: etaTimestamp,
       );
       await tripRepository.sendCheckCall(
         id: id,
@@ -127,13 +155,24 @@ class MyLocationService {
     }
   }
 
-  void startTracking(int id) async {
+  void startTracking({
+    required int id,
+    required int? etaTimestamp,
+    required String? comment,
+    required String type,
+  }) async {
     if (_timer != null || _isTracking) {
       log('Tracking is already running');
       return;
     }
 
-    startDriveTimer(id);
+
+    startDriveTimer(
+      id: id,
+      etaTimestamp: etaTimestamp,
+      comment: comment,
+      type: type,
+    );
 
     log('BackgroundFetch startTracking');
     BackgroundFetch.configure(
@@ -157,7 +196,12 @@ class MyLocationService {
       BackgroundFetch.finish(taskId);
     });
 
-    await sendCheckCall(id: id, type: 'started_moving');
+    await sendCheckCall(
+      id: id,
+      type: 'started_moving',
+      comment: comment,
+      etaTimestamp: etaTimestamp,
+    );
 
     _timer = Timer.periodic(const Duration(seconds: 10), (timer) async {
       if (_isTracking) {
@@ -167,7 +211,12 @@ class MyLocationService {
     });
   }
 
-  void stopTracking(int id) async {
+  void stopTracking({
+    required int id,
+    required int? etaTimestamp,
+    required String? comment,
+    required String type,
+  }) async {
     if (_timer != null) {
       _timer!.cancel();
       _timer = null;
@@ -176,9 +225,19 @@ class MyLocationService {
       log('Tracking timer was not running');
     }
 
-    stopDriveTimer(id);
+    stopDriveTimer(
+      id: id,
+      etaTimestamp: etaTimestamp,
+      comment: comment,
+      type: type,
+    );
 
-    await sendCheckCall(id: id, type: 'stopped_moving');
+    await sendCheckCall(
+      id: id,
+      type: 'stopped_moving',
+      comment: comment,
+      etaTimestamp: etaTimestamp,
+    );
 
     BackgroundFetch.stop().then((_) {
       log('BackgroundFetch stopped');

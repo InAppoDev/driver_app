@@ -111,6 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Select ETA at PICK UP#1:"),
         "selectTheDateAndTimeOfArrivalAt": MessageLookupByLibrary.simpleMessage(
             "Select the date and time of arrival at PICK UP #1:"),
+        "setETA": MessageLookupByLibrary.simpleMessage("SET ETA"),
         "setValue": MessageLookupByLibrary.simpleMessage("Set Value"),
         "shortestTrip": MessageLookupByLibrary.simpleMessage("Shortest Trip"),
         "skip": MessageLookupByLibrary.simpleMessage("SKIP"),
