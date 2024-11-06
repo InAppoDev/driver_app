@@ -25,6 +25,7 @@ mixin _$MainEvent {
         updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
+    required TResult Function(BuildContext context) setUpFcmToken,
     required TResult Function(MainPageEnum selectedPage, int? tabPage)
         updateSelectedPage,
   }) =>
@@ -37,6 +38,7 @@ mixin _$MainEvent {
         updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
+    TResult? Function(BuildContext context)? setUpFcmToken,
     TResult? Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
   }) =>
@@ -49,6 +51,7 @@ mixin _$MainEvent {
         updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
+    TResult Function(BuildContext context)? setUpFcmToken,
     TResult Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
     required TResult orElse(),
@@ -61,6 +64,7 @@ mixin _$MainEvent {
     required TResult Function(_UpdateDriveButton value) updateDriveButton,
     required TResult Function(_CheckConnection value) checkConnection,
     required TResult Function(_InitializeApp value) initializeApp,
+    required TResult Function(_SetUpFcmToken value) setUpFcmToken,
     required TResult Function(_UpdateSelectedPage value) updateSelectedPage,
   }) =>
       throw _privateConstructorUsedError;
@@ -71,6 +75,7 @@ mixin _$MainEvent {
     TResult? Function(_UpdateDriveButton value)? updateDriveButton,
     TResult? Function(_CheckConnection value)? checkConnection,
     TResult? Function(_InitializeApp value)? initializeApp,
+    TResult? Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult? Function(_UpdateSelectedPage value)? updateSelectedPage,
   }) =>
       throw _privateConstructorUsedError;
@@ -81,6 +86,7 @@ mixin _$MainEvent {
     TResult Function(_UpdateDriveButton value)? updateDriveButton,
     TResult Function(_CheckConnection value)? checkConnection,
     TResult Function(_InitializeApp value)? initializeApp,
+    TResult Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult Function(_UpdateSelectedPage value)? updateSelectedPage,
     required TResult orElse(),
   }) =>
@@ -182,6 +188,7 @@ class _$PageChangedImpl implements _PageChanged {
         updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
+    required TResult Function(BuildContext context) setUpFcmToken,
     required TResult Function(MainPageEnum selectedPage, int? tabPage)
         updateSelectedPage,
   }) {
@@ -197,6 +204,7 @@ class _$PageChangedImpl implements _PageChanged {
         updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
+    TResult? Function(BuildContext context)? setUpFcmToken,
     TResult? Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
   }) {
@@ -212,6 +220,7 @@ class _$PageChangedImpl implements _PageChanged {
         updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
+    TResult Function(BuildContext context)? setUpFcmToken,
     TResult Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
     required TResult orElse(),
@@ -230,6 +239,7 @@ class _$PageChangedImpl implements _PageChanged {
     required TResult Function(_UpdateDriveButton value) updateDriveButton,
     required TResult Function(_CheckConnection value) checkConnection,
     required TResult Function(_InitializeApp value) initializeApp,
+    required TResult Function(_SetUpFcmToken value) setUpFcmToken,
     required TResult Function(_UpdateSelectedPage value) updateSelectedPage,
   }) {
     return pageChanged(this);
@@ -243,6 +253,7 @@ class _$PageChangedImpl implements _PageChanged {
     TResult? Function(_UpdateDriveButton value)? updateDriveButton,
     TResult? Function(_CheckConnection value)? checkConnection,
     TResult? Function(_InitializeApp value)? initializeApp,
+    TResult? Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult? Function(_UpdateSelectedPage value)? updateSelectedPage,
   }) {
     return pageChanged?.call(this);
@@ -256,6 +267,7 @@ class _$PageChangedImpl implements _PageChanged {
     TResult Function(_UpdateDriveButton value)? updateDriveButton,
     TResult Function(_CheckConnection value)? checkConnection,
     TResult Function(_InitializeApp value)? initializeApp,
+    TResult Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult Function(_UpdateSelectedPage value)? updateSelectedPage,
     required TResult orElse(),
   }) {
@@ -355,6 +367,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
         updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
+    required TResult Function(BuildContext context) setUpFcmToken,
     required TResult Function(MainPageEnum selectedPage, int? tabPage)
         updateSelectedPage,
   }) {
@@ -370,6 +383,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
         updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
+    TResult? Function(BuildContext context)? setUpFcmToken,
     TResult? Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
   }) {
@@ -385,6 +399,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
         updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
+    TResult Function(BuildContext context)? setUpFcmToken,
     TResult Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
     required TResult orElse(),
@@ -403,6 +418,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
     required TResult Function(_UpdateDriveButton value) updateDriveButton,
     required TResult Function(_CheckConnection value) checkConnection,
     required TResult Function(_InitializeApp value) initializeApp,
+    required TResult Function(_SetUpFcmToken value) setUpFcmToken,
     required TResult Function(_UpdateSelectedPage value) updateSelectedPage,
   }) {
     return hideShowNavBar(this);
@@ -416,6 +432,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
     TResult? Function(_UpdateDriveButton value)? updateDriveButton,
     TResult? Function(_CheckConnection value)? checkConnection,
     TResult? Function(_InitializeApp value)? initializeApp,
+    TResult? Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult? Function(_UpdateSelectedPage value)? updateSelectedPage,
   }) {
     return hideShowNavBar?.call(this);
@@ -429,6 +446,7 @@ class _$HideShowNavBarImpl implements _HideShowNavBar {
     TResult Function(_UpdateDriveButton value)? updateDriveButton,
     TResult Function(_CheckConnection value)? checkConnection,
     TResult Function(_InitializeApp value)? initializeApp,
+    TResult Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult Function(_UpdateSelectedPage value)? updateSelectedPage,
     required TResult orElse(),
   }) {
@@ -557,6 +575,7 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
         updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
+    required TResult Function(BuildContext context) setUpFcmToken,
     required TResult Function(MainPageEnum selectedPage, int? tabPage)
         updateSelectedPage,
   }) {
@@ -572,6 +591,7 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
         updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
+    TResult? Function(BuildContext context)? setUpFcmToken,
     TResult? Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
   }) {
@@ -587,6 +607,7 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
         updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
+    TResult Function(BuildContext context)? setUpFcmToken,
     TResult Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
     required TResult orElse(),
@@ -605,6 +626,7 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
     required TResult Function(_UpdateDriveButton value) updateDriveButton,
     required TResult Function(_CheckConnection value) checkConnection,
     required TResult Function(_InitializeApp value) initializeApp,
+    required TResult Function(_SetUpFcmToken value) setUpFcmToken,
     required TResult Function(_UpdateSelectedPage value) updateSelectedPage,
   }) {
     return updateDriveButton(this);
@@ -618,6 +640,7 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
     TResult? Function(_UpdateDriveButton value)? updateDriveButton,
     TResult? Function(_CheckConnection value)? checkConnection,
     TResult? Function(_InitializeApp value)? initializeApp,
+    TResult? Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult? Function(_UpdateSelectedPage value)? updateSelectedPage,
   }) {
     return updateDriveButton?.call(this);
@@ -631,6 +654,7 @@ class _$UpdateDriveButtonImpl implements _UpdateDriveButton {
     TResult Function(_UpdateDriveButton value)? updateDriveButton,
     TResult Function(_CheckConnection value)? checkConnection,
     TResult Function(_InitializeApp value)? initializeApp,
+    TResult Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult Function(_UpdateSelectedPage value)? updateSelectedPage,
     required TResult orElse(),
   }) {
@@ -708,6 +732,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
         updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
+    required TResult Function(BuildContext context) setUpFcmToken,
     required TResult Function(MainPageEnum selectedPage, int? tabPage)
         updateSelectedPage,
   }) {
@@ -723,6 +748,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
         updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
+    TResult? Function(BuildContext context)? setUpFcmToken,
     TResult? Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
   }) {
@@ -738,6 +764,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
         updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
+    TResult Function(BuildContext context)? setUpFcmToken,
     TResult Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
     required TResult orElse(),
@@ -756,6 +783,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
     required TResult Function(_UpdateDriveButton value) updateDriveButton,
     required TResult Function(_CheckConnection value) checkConnection,
     required TResult Function(_InitializeApp value) initializeApp,
+    required TResult Function(_SetUpFcmToken value) setUpFcmToken,
     required TResult Function(_UpdateSelectedPage value) updateSelectedPage,
   }) {
     return checkConnection(this);
@@ -769,6 +797,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
     TResult? Function(_UpdateDriveButton value)? updateDriveButton,
     TResult? Function(_CheckConnection value)? checkConnection,
     TResult? Function(_InitializeApp value)? initializeApp,
+    TResult? Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult? Function(_UpdateSelectedPage value)? updateSelectedPage,
   }) {
     return checkConnection?.call(this);
@@ -782,6 +811,7 @@ class _$CheckConnectionImpl implements _CheckConnection {
     TResult Function(_UpdateDriveButton value)? updateDriveButton,
     TResult Function(_CheckConnection value)? checkConnection,
     TResult Function(_InitializeApp value)? initializeApp,
+    TResult Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult Function(_UpdateSelectedPage value)? updateSelectedPage,
     required TResult orElse(),
   }) {
@@ -844,6 +874,7 @@ class _$InitializeAppImpl implements _InitializeApp {
         updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
+    required TResult Function(BuildContext context) setUpFcmToken,
     required TResult Function(MainPageEnum selectedPage, int? tabPage)
         updateSelectedPage,
   }) {
@@ -859,6 +890,7 @@ class _$InitializeAppImpl implements _InitializeApp {
         updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
+    TResult? Function(BuildContext context)? setUpFcmToken,
     TResult? Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
   }) {
@@ -874,6 +906,7 @@ class _$InitializeAppImpl implements _InitializeApp {
         updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
+    TResult Function(BuildContext context)? setUpFcmToken,
     TResult Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
     required TResult orElse(),
@@ -892,6 +925,7 @@ class _$InitializeAppImpl implements _InitializeApp {
     required TResult Function(_UpdateDriveButton value) updateDriveButton,
     required TResult Function(_CheckConnection value) checkConnection,
     required TResult Function(_InitializeApp value) initializeApp,
+    required TResult Function(_SetUpFcmToken value) setUpFcmToken,
     required TResult Function(_UpdateSelectedPage value) updateSelectedPage,
   }) {
     return initializeApp(this);
@@ -905,6 +939,7 @@ class _$InitializeAppImpl implements _InitializeApp {
     TResult? Function(_UpdateDriveButton value)? updateDriveButton,
     TResult? Function(_CheckConnection value)? checkConnection,
     TResult? Function(_InitializeApp value)? initializeApp,
+    TResult? Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult? Function(_UpdateSelectedPage value)? updateSelectedPage,
   }) {
     return initializeApp?.call(this);
@@ -918,6 +953,7 @@ class _$InitializeAppImpl implements _InitializeApp {
     TResult Function(_UpdateDriveButton value)? updateDriveButton,
     TResult Function(_CheckConnection value)? checkConnection,
     TResult Function(_InitializeApp value)? initializeApp,
+    TResult Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult Function(_UpdateSelectedPage value)? updateSelectedPage,
     required TResult orElse(),
   }) {
@@ -930,6 +966,180 @@ class _$InitializeAppImpl implements _InitializeApp {
 
 abstract class _InitializeApp implements MainEvent {
   const factory _InitializeApp() = _$InitializeAppImpl;
+}
+
+/// @nodoc
+abstract class _$$SetUpFcmTokenImplCopyWith<$Res> {
+  factory _$$SetUpFcmTokenImplCopyWith(
+          _$SetUpFcmTokenImpl value, $Res Function(_$SetUpFcmTokenImpl) then) =
+      __$$SetUpFcmTokenImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context});
+}
+
+/// @nodoc
+class __$$SetUpFcmTokenImplCopyWithImpl<$Res>
+    extends _$MainEventCopyWithImpl<$Res, _$SetUpFcmTokenImpl>
+    implements _$$SetUpFcmTokenImplCopyWith<$Res> {
+  __$$SetUpFcmTokenImplCopyWithImpl(
+      _$SetUpFcmTokenImpl _value, $Res Function(_$SetUpFcmTokenImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MainEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+  }) {
+    return _then(_$SetUpFcmTokenImpl(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetUpFcmTokenImpl implements _SetUpFcmToken {
+  const _$SetUpFcmTokenImpl(this.context);
+
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'MainEvent.setUpFcmToken(context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetUpFcmTokenImpl &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context);
+
+  /// Create a copy of MainEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetUpFcmTokenImplCopyWith<_$SetUpFcmTokenImpl> get copyWith =>
+      __$$SetUpFcmTokenImplCopyWithImpl<_$SetUpFcmTokenImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(MainPageEnum page) pageChanged,
+    required TResult Function(bool hideShowNavBar) hideShowNavBar,
+    required TResult Function(int id) updateDriveButton,
+    required TResult Function() checkConnection,
+    required TResult Function() initializeApp,
+    required TResult Function(BuildContext context) setUpFcmToken,
+    required TResult Function(MainPageEnum selectedPage, int? tabPage)
+        updateSelectedPage,
+  }) {
+    return setUpFcmToken(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(MainPageEnum page)? pageChanged,
+    TResult? Function(bool hideShowNavBar)? hideShowNavBar,
+    TResult? Function(int id)? updateDriveButton,
+    TResult? Function()? checkConnection,
+    TResult? Function()? initializeApp,
+    TResult? Function(BuildContext context)? setUpFcmToken,
+    TResult? Function(MainPageEnum selectedPage, int? tabPage)?
+        updateSelectedPage,
+  }) {
+    return setUpFcmToken?.call(context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(MainPageEnum page)? pageChanged,
+    TResult Function(bool hideShowNavBar)? hideShowNavBar,
+    TResult Function(int id)? updateDriveButton,
+    TResult Function()? checkConnection,
+    TResult Function()? initializeApp,
+    TResult Function(BuildContext context)? setUpFcmToken,
+    TResult Function(MainPageEnum selectedPage, int? tabPage)?
+        updateSelectedPage,
+    required TResult orElse(),
+  }) {
+    if (setUpFcmToken != null) {
+      return setUpFcmToken(context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PageChanged value) pageChanged,
+    required TResult Function(_HideShowNavBar value) hideShowNavBar,
+    required TResult Function(_UpdateDriveButton value) updateDriveButton,
+    required TResult Function(_CheckConnection value) checkConnection,
+    required TResult Function(_InitializeApp value) initializeApp,
+    required TResult Function(_SetUpFcmToken value) setUpFcmToken,
+    required TResult Function(_UpdateSelectedPage value) updateSelectedPage,
+  }) {
+    return setUpFcmToken(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PageChanged value)? pageChanged,
+    TResult? Function(_HideShowNavBar value)? hideShowNavBar,
+    TResult? Function(_UpdateDriveButton value)? updateDriveButton,
+    TResult? Function(_CheckConnection value)? checkConnection,
+    TResult? Function(_InitializeApp value)? initializeApp,
+    TResult? Function(_SetUpFcmToken value)? setUpFcmToken,
+    TResult? Function(_UpdateSelectedPage value)? updateSelectedPage,
+  }) {
+    return setUpFcmToken?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PageChanged value)? pageChanged,
+    TResult Function(_HideShowNavBar value)? hideShowNavBar,
+    TResult Function(_UpdateDriveButton value)? updateDriveButton,
+    TResult Function(_CheckConnection value)? checkConnection,
+    TResult Function(_InitializeApp value)? initializeApp,
+    TResult Function(_SetUpFcmToken value)? setUpFcmToken,
+    TResult Function(_UpdateSelectedPage value)? updateSelectedPage,
+    required TResult orElse(),
+  }) {
+    if (setUpFcmToken != null) {
+      return setUpFcmToken(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetUpFcmToken implements MainEvent {
+  const factory _SetUpFcmToken(final BuildContext context) =
+      _$SetUpFcmTokenImpl;
+
+  BuildContext get context;
+
+  /// Create a copy of MainEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetUpFcmTokenImplCopyWith<_$SetUpFcmTokenImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1017,6 +1227,7 @@ class _$UpdateSelectedPageImpl implements _UpdateSelectedPage {
         updateDriveButton,
     required TResult Function() checkConnection,
     required TResult Function() initializeApp,
+    required TResult Function(BuildContext context) setUpFcmToken,
     required TResult Function(MainPageEnum selectedPage, int? tabPage)
         updateSelectedPage,
   }) {
@@ -1032,6 +1243,7 @@ class _$UpdateSelectedPageImpl implements _UpdateSelectedPage {
         updateDriveButton,
     TResult? Function()? checkConnection,
     TResult? Function()? initializeApp,
+    TResult? Function(BuildContext context)? setUpFcmToken,
     TResult? Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
   }) {
@@ -1047,6 +1259,7 @@ class _$UpdateSelectedPageImpl implements _UpdateSelectedPage {
         updateDriveButton,
     TResult Function()? checkConnection,
     TResult Function()? initializeApp,
+    TResult Function(BuildContext context)? setUpFcmToken,
     TResult Function(MainPageEnum selectedPage, int? tabPage)?
         updateSelectedPage,
     required TResult orElse(),
@@ -1065,6 +1278,7 @@ class _$UpdateSelectedPageImpl implements _UpdateSelectedPage {
     required TResult Function(_UpdateDriveButton value) updateDriveButton,
     required TResult Function(_CheckConnection value) checkConnection,
     required TResult Function(_InitializeApp value) initializeApp,
+    required TResult Function(_SetUpFcmToken value) setUpFcmToken,
     required TResult Function(_UpdateSelectedPage value) updateSelectedPage,
   }) {
     return updateSelectedPage(this);
@@ -1078,6 +1292,7 @@ class _$UpdateSelectedPageImpl implements _UpdateSelectedPage {
     TResult? Function(_UpdateDriveButton value)? updateDriveButton,
     TResult? Function(_CheckConnection value)? checkConnection,
     TResult? Function(_InitializeApp value)? initializeApp,
+    TResult? Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult? Function(_UpdateSelectedPage value)? updateSelectedPage,
   }) {
     return updateSelectedPage?.call(this);
@@ -1091,6 +1306,7 @@ class _$UpdateSelectedPageImpl implements _UpdateSelectedPage {
     TResult Function(_UpdateDriveButton value)? updateDriveButton,
     TResult Function(_CheckConnection value)? checkConnection,
     TResult Function(_InitializeApp value)? initializeApp,
+    TResult Function(_SetUpFcmToken value)? setUpFcmToken,
     TResult Function(_UpdateSelectedPage value)? updateSelectedPage,
     required TResult orElse(),
   }) {

@@ -12,4 +12,8 @@ class TripListEvent with _$TripListEvent {
 
   const factory TripListEvent.fetchTrips() = _FetchTrips;
   const factory TripListEvent.fetchHistoryTrips() = _FetchHistoryTrips;
+
+  const factory TripListEvent.navigateToConfirmTripFromPushNotification(
+          List<DispatchListModel> trips, int tripId, Function(DispatchListModel) onNavigate) =
+      _NavigateToConfirmTripFromPushNotification;
 }

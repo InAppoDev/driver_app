@@ -4,8 +4,9 @@ import 'package:tms_driver/presentation/blocks/trip_detail/trip_detail_bloc.dart
 import 'package:tms_driver/presentation/pages/active_trip/widget/active_trip_detail_widget.dart';
 
 class ActiveTripView extends StatelessWidget {
-  const ActiveTripView({super.key});
+  const ActiveTripView({super.key, this.showETABS});
 
+  final bool? showETABS;
   @override
   Widget build(BuildContext context) {
     return BlocListener<TripDetailBloc, TripDetailState>(
@@ -41,7 +42,8 @@ class ActiveTripView extends StatelessWidget {
                   : ActiveTripDetailWidget(
                       trip: state.trip!,
                       documents: state.documents,
-                isConfirmTripSuccesses: state.isConfirmTripSuccesses,
+                      isConfirmTripSuccesses: state.isConfirmTripSuccesses,
+                      showETABS: showETABS,
                     ),
             );
           }

@@ -215,6 +215,19 @@ class ApiDataSourceImpl implements ApiDataSource {
   }
 
   @override
+  Future<String> updateFcmToken(String fcmToken) async {
+    final response = await _makeRequest(
+      () => dio.post(
+        '/update-fcm-token',
+        data: {
+          'fcm_token': fcmToken,
+        },
+      ),
+    );
+    return response.data['message'];
+  }
+
+  @override
   Future<List<DispatchListModel>> getHistoryTrips() async {
     final response = await _makeRequest(() => dio.get('/dispatches/history'));
     final tripsJson = response.data as List<dynamic>;
@@ -230,7 +243,6 @@ class ApiDataSourceImpl implements ApiDataSource {
   @override
   Future<PersonalStatsModel> getPersonalStats() async {
     final response = await _makeRequest(() => dio.get('/personal-stats'));
-    print('personal stats response.data - ${response.data}');
     return PersonalStatsModel.fromJson(response.data);
   }
 
@@ -256,8 +268,6 @@ class ApiDataSourceImpl implements ApiDataSource {
         data: checkCall.toJson(),
       ),
     );
-
-    print('confirm CheckCall get response code ${response.statusCode}');
 
     if (response.statusCode == 422) {
       final errorData = response.data as Map<String, dynamic>;

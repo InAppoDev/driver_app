@@ -26,10 +26,12 @@ class FixedButton extends StatefulWidget {
     super.key,
     required this.trip,
     required this.isConfirmTripSuccesses,
+    required this.showETABS,
   });
 
   final DispatchModel trip;
   final bool? isConfirmTripSuccesses;
+  final bool? showETABS;
 
   @override
   State<FixedButton> createState() => _FixedButtonState();
@@ -180,7 +182,7 @@ class _FixedButtonState extends State<FixedButton> {
     required String? checkCallResponseMessage,
   }) {
     final localizations = context.localizations;
-    if (checkCallEnum == CheckCallType.eta) {
+    if ((widget.showETABS != null && widget.showETABS!) || checkCallEnum == CheckCallType.eta) {
       return ETABottomSheet(
         checkCallResponseMessage: checkCallResponseMessage,
         isConfirmTripSuccesses: isConfirmTripSuccesses,

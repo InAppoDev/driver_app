@@ -60,6 +60,11 @@ class UserRepositoryImpl implements UserRepository {
     }
   }
 
+
+  Future<String> updateFcmToken(String fcmToken) async {
+    return await apiDataSource.updateFcmToken(fcmToken);
+  }
+
   Future<String> _getLocalImagePath() async {
     final directory = await getApplicationDocumentsDirectory();
     print('picture _getLocalImagePath ${directory.path}/user_photo.jpg');

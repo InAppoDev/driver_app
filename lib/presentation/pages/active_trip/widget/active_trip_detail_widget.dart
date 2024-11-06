@@ -10,12 +10,14 @@ class ActiveTripDetailWidget extends StatelessWidget {
   final DispatchModel trip;
   final List<String> documents;
   final bool? isConfirmTripSuccesses;
+  final bool? showETABS;
 
   const ActiveTripDetailWidget({
     super.key,
     required this.trip,
     required this.documents,
     required this.isConfirmTripSuccesses,
+    this.showETABS,
   });
 
   @override
@@ -42,7 +44,7 @@ class ActiveTripDetailWidget extends StatelessWidget {
           child: FixedButton(
             trip: trip,
             isConfirmTripSuccesses: isConfirmTripSuccesses,
-
+            showETABS: showETABS,
           ),
         ),
         Align(
