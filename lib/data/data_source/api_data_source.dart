@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:tms_driver/data/models/chats/chat/chat_model.dart';
 import 'package:tms_driver/data/models/chats/chat_detail/chat_detail_model.dart';
 import 'package:tms_driver/data/models/check/check_call/check_call_model.dart';
-import 'package:tms_driver/data/models/document/upload_document_response.dart';
-import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_list_model/dispatch_list_model.dart';
 import 'package:tms_driver/data/models/dispatch/dispatch_model/dispatch_model.dart';
+import 'package:tms_driver/data/models/document/upload_document_response.dart';
+import 'package:tms_driver/data/models/notification/notification_model/notification_model.dart';
 import 'package:tms_driver/data/models/personal_stats_model/personal_stats_model.dart';
 import 'package:tms_driver/data/models/user/user_model.dart';
 
@@ -52,6 +52,8 @@ abstract class ApiDataSource {
   Future<List<DispatchListModel>> getHistoryTrips();
 
   Future<String> updateFcmToken(String fcmToken);
+
+  Future<String?> checkUnreadMessage(String chatId, int messageId);
 
   Future<(String?, bool)> sendCheckCall({
     required int id,

@@ -30,6 +30,8 @@ mixin _$ChatDetailEvent {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,6 +47,8 @@ mixin _$ChatDetailEvent {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,8 @@ mixin _$ChatDetailEvent {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +81,8 @@ mixin _$ChatDetailEvent {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,6 +97,8 @@ mixin _$ChatDetailEvent {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -103,6 +113,8 @@ mixin _$ChatDetailEvent {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -231,6 +243,8 @@ class _$SendMessageImpl implements SendMessage {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
   }) {
     return sendMessage(messageContent, chatDetails);
   }
@@ -249,6 +263,8 @@ class _$SendMessageImpl implements SendMessage {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
   }) {
     return sendMessage?.call(messageContent, chatDetails);
   }
@@ -267,6 +283,8 @@ class _$SendMessageImpl implements SendMessage {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -288,6 +306,8 @@ class _$SendMessageImpl implements SendMessage {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
   }) {
     return sendMessage(this);
   }
@@ -305,6 +325,8 @@ class _$SendMessageImpl implements SendMessage {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
   }) {
     return sendMessage?.call(this);
   }
@@ -322,6 +344,8 @@ class _$SendMessageImpl implements SendMessage {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (sendMessage != null) {
@@ -427,6 +451,8 @@ class _$FetchChatDetailsImpl implements FetchChatDetails {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
   }) {
     return fetchChatDetails(chatId);
   }
@@ -445,6 +471,8 @@ class _$FetchChatDetailsImpl implements FetchChatDetails {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
   }) {
     return fetchChatDetails?.call(chatId);
   }
@@ -463,6 +491,8 @@ class _$FetchChatDetailsImpl implements FetchChatDetails {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (fetchChatDetails != null) {
@@ -484,6 +514,8 @@ class _$FetchChatDetailsImpl implements FetchChatDetails {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
   }) {
     return fetchChatDetails(this);
   }
@@ -501,6 +533,8 @@ class _$FetchChatDetailsImpl implements FetchChatDetails {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
   }) {
     return fetchChatDetails?.call(this);
   }
@@ -518,6 +552,8 @@ class _$FetchChatDetailsImpl implements FetchChatDetails {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (fetchChatDetails != null) {
@@ -633,6 +669,8 @@ class _$ReceiveNewMessageImpl implements ReceiveNewMessage {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
   }) {
     return receiveNewMessage(newMessage);
   }
@@ -651,6 +689,8 @@ class _$ReceiveNewMessageImpl implements ReceiveNewMessage {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
   }) {
     return receiveNewMessage?.call(newMessage);
   }
@@ -669,6 +709,8 @@ class _$ReceiveNewMessageImpl implements ReceiveNewMessage {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (receiveNewMessage != null) {
@@ -690,6 +732,8 @@ class _$ReceiveNewMessageImpl implements ReceiveNewMessage {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
   }) {
     return receiveNewMessage(this);
   }
@@ -707,6 +751,8 @@ class _$ReceiveNewMessageImpl implements ReceiveNewMessage {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
   }) {
     return receiveNewMessage?.call(this);
   }
@@ -724,6 +770,8 @@ class _$ReceiveNewMessageImpl implements ReceiveNewMessage {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (receiveNewMessage != null) {
@@ -835,6 +883,8 @@ class _$DownloadFileImpl implements DownloadFile {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
   }) {
     return downloadFile(url, fileName);
   }
@@ -853,6 +903,8 @@ class _$DownloadFileImpl implements DownloadFile {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
   }) {
     return downloadFile?.call(url, fileName);
   }
@@ -871,6 +923,8 @@ class _$DownloadFileImpl implements DownloadFile {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (downloadFile != null) {
@@ -892,6 +946,8 @@ class _$DownloadFileImpl implements DownloadFile {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
   }) {
     return downloadFile(this);
   }
@@ -909,6 +965,8 @@ class _$DownloadFileImpl implements DownloadFile {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
   }) {
     return downloadFile?.call(this);
   }
@@ -926,6 +984,8 @@ class _$DownloadFileImpl implements DownloadFile {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (downloadFile != null) {
@@ -1029,6 +1089,8 @@ class _$TapToCallImpl implements TapToCall {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
   }) {
     return tapToCall(number);
   }
@@ -1047,6 +1109,8 @@ class _$TapToCallImpl implements TapToCall {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
   }) {
     return tapToCall?.call(number);
   }
@@ -1065,6 +1129,8 @@ class _$TapToCallImpl implements TapToCall {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (tapToCall != null) {
@@ -1086,6 +1152,8 @@ class _$TapToCallImpl implements TapToCall {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
   }) {
     return tapToCall(this);
   }
@@ -1103,6 +1171,8 @@ class _$TapToCallImpl implements TapToCall {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
   }) {
     return tapToCall?.call(this);
   }
@@ -1120,6 +1190,8 @@ class _$TapToCallImpl implements TapToCall {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (tapToCall != null) {
@@ -1221,6 +1293,8 @@ class _$PickFileImpl implements PickFile {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
   }) {
     return pickFile(context);
   }
@@ -1239,6 +1313,8 @@ class _$PickFileImpl implements PickFile {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
   }) {
     return pickFile?.call(context);
   }
@@ -1257,6 +1333,8 @@ class _$PickFileImpl implements PickFile {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (pickFile != null) {
@@ -1278,6 +1356,8 @@ class _$PickFileImpl implements PickFile {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
   }) {
     return pickFile(this);
   }
@@ -1295,6 +1375,8 @@ class _$PickFileImpl implements PickFile {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
   }) {
     return pickFile?.call(this);
   }
@@ -1312,6 +1394,8 @@ class _$PickFileImpl implements PickFile {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (pickFile != null) {
@@ -1413,6 +1497,8 @@ class _$AddDocumentImpl implements AddDocument {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
   }) {
     return addDocument(context);
   }
@@ -1431,6 +1517,8 @@ class _$AddDocumentImpl implements AddDocument {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
   }) {
     return addDocument?.call(context);
   }
@@ -1449,6 +1537,8 @@ class _$AddDocumentImpl implements AddDocument {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (addDocument != null) {
@@ -1470,6 +1560,8 @@ class _$AddDocumentImpl implements AddDocument {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
   }) {
     return addDocument(this);
   }
@@ -1487,6 +1579,8 @@ class _$AddDocumentImpl implements AddDocument {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
   }) {
     return addDocument?.call(this);
   }
@@ -1504,6 +1598,8 @@ class _$AddDocumentImpl implements AddDocument {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (addDocument != null) {
@@ -1579,6 +1675,8 @@ class _$MakeNullSelectedFileImpl implements MakeNullSelectedFile {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
   }) {
     return makeNullSelectedFile();
   }
@@ -1597,6 +1695,8 @@ class _$MakeNullSelectedFileImpl implements MakeNullSelectedFile {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
   }) {
     return makeNullSelectedFile?.call();
   }
@@ -1615,6 +1715,8 @@ class _$MakeNullSelectedFileImpl implements MakeNullSelectedFile {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (makeNullSelectedFile != null) {
@@ -1636,6 +1738,8 @@ class _$MakeNullSelectedFileImpl implements MakeNullSelectedFile {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
   }) {
     return makeNullSelectedFile(this);
   }
@@ -1653,6 +1757,8 @@ class _$MakeNullSelectedFileImpl implements MakeNullSelectedFile {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
   }) {
     return makeNullSelectedFile?.call(this);
   }
@@ -1670,6 +1776,8 @@ class _$MakeNullSelectedFileImpl implements MakeNullSelectedFile {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (makeNullSelectedFile != null) {
@@ -1771,6 +1879,8 @@ class _$ScanDocImpl implements ScanDoc {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
   }) {
     return scanDoc(image, context);
   }
@@ -1789,6 +1899,8 @@ class _$ScanDocImpl implements ScanDoc {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
   }) {
     return scanDoc?.call(image, context);
   }
@@ -1807,6 +1919,8 @@ class _$ScanDocImpl implements ScanDoc {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (scanDoc != null) {
@@ -1828,6 +1942,8 @@ class _$ScanDocImpl implements ScanDoc {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
   }) {
     return scanDoc(this);
   }
@@ -1845,6 +1961,8 @@ class _$ScanDocImpl implements ScanDoc {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
   }) {
     return scanDoc?.call(this);
   }
@@ -1862,6 +1980,8 @@ class _$ScanDocImpl implements ScanDoc {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (scanDoc != null) {
@@ -1966,6 +2086,8 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     required TResult Function() makeNullSelectedFile,
     required TResult Function(String image, BuildContext context) scanDoc,
     required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
   }) {
     return removeDocument(file);
   }
@@ -1984,6 +2106,8 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     TResult? Function()? makeNullSelectedFile,
     TResult? Function(String image, BuildContext context)? scanDoc,
     TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
   }) {
     return removeDocument?.call(file);
   }
@@ -2002,6 +2126,8 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     TResult Function()? makeNullSelectedFile,
     TResult Function(String image, BuildContext context)? scanDoc,
     TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (removeDocument != null) {
@@ -2023,6 +2149,8 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
     required TResult Function(ScanDoc value) scanDoc,
     required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
   }) {
     return removeDocument(this);
   }
@@ -2040,6 +2168,8 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult? Function(ScanDoc value)? scanDoc,
     TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
   }) {
     return removeDocument?.call(this);
   }
@@ -2057,6 +2187,8 @@ class _$RemoveDocumentImpl implements RemoveDocument {
     TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
     TResult Function(ScanDoc value)? scanDoc,
     TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
     required TResult orElse(),
   }) {
     if (removeDocument != null) {
@@ -2075,6 +2207,380 @@ abstract class RemoveDocument implements ChatDetailEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RemoveDocumentImplCopyWith<_$RemoveDocumentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CancelTimerImplCopyWith<$Res> {
+  factory _$$CancelTimerImplCopyWith(
+          _$CancelTimerImpl value, $Res Function(_$CancelTimerImpl) then) =
+      __$$CancelTimerImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CancelTimerImplCopyWithImpl<$Res>
+    extends _$ChatDetailEventCopyWithImpl<$Res, _$CancelTimerImpl>
+    implements _$$CancelTimerImplCopyWith<$Res> {
+  __$$CancelTimerImplCopyWithImpl(
+      _$CancelTimerImpl _value, $Res Function(_$CancelTimerImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CancelTimerImpl implements CancelTimer {
+  const _$CancelTimerImpl();
+
+  @override
+  String toString() {
+    return 'ChatDetailEvent.cancelTimer()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CancelTimerImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String messageContent, ChatDetailModel chatDetails)
+        sendMessage,
+    required TResult Function(int chatId) fetchChatDetails,
+    required TResult Function(MessageModel newMessage) receiveNewMessage,
+    required TResult Function(String url, String fileName) downloadFile,
+    required TResult Function(String number) tapToCall,
+    required TResult Function(BuildContext context) pickFile,
+    required TResult Function(BuildContext context) addDocument,
+    required TResult Function() makeNullSelectedFile,
+    required TResult Function(String image, BuildContext context) scanDoc,
+    required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
+  }) {
+    return cancelTimer();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult? Function(int chatId)? fetchChatDetails,
+    TResult? Function(MessageModel newMessage)? receiveNewMessage,
+    TResult? Function(String url, String fileName)? downloadFile,
+    TResult? Function(String number)? tapToCall,
+    TResult? Function(BuildContext context)? pickFile,
+    TResult? Function(BuildContext context)? addDocument,
+    TResult? Function()? makeNullSelectedFile,
+    TResult? Function(String image, BuildContext context)? scanDoc,
+    TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
+  }) {
+    return cancelTimer?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult Function(int chatId)? fetchChatDetails,
+    TResult Function(MessageModel newMessage)? receiveNewMessage,
+    TResult Function(String url, String fileName)? downloadFile,
+    TResult Function(String number)? tapToCall,
+    TResult Function(BuildContext context)? pickFile,
+    TResult Function(BuildContext context)? addDocument,
+    TResult Function()? makeNullSelectedFile,
+    TResult Function(String image, BuildContext context)? scanDoc,
+    TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
+    required TResult orElse(),
+  }) {
+    if (cancelTimer != null) {
+      return cancelTimer();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SendMessage value) sendMessage,
+    required TResult Function(FetchChatDetails value) fetchChatDetails,
+    required TResult Function(ReceiveNewMessage value) receiveNewMessage,
+    required TResult Function(DownloadFile value) downloadFile,
+    required TResult Function(TapToCall value) tapToCall,
+    required TResult Function(PickFile value) pickFile,
+    required TResult Function(AddDocument value) addDocument,
+    required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
+    required TResult Function(ScanDoc value) scanDoc,
+    required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
+  }) {
+    return cancelTimer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SendMessage value)? sendMessage,
+    TResult? Function(FetchChatDetails value)? fetchChatDetails,
+    TResult? Function(ReceiveNewMessage value)? receiveNewMessage,
+    TResult? Function(DownloadFile value)? downloadFile,
+    TResult? Function(TapToCall value)? tapToCall,
+    TResult? Function(PickFile value)? pickFile,
+    TResult? Function(AddDocument value)? addDocument,
+    TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
+    TResult? Function(ScanDoc value)? scanDoc,
+    TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
+  }) {
+    return cancelTimer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SendMessage value)? sendMessage,
+    TResult Function(FetchChatDetails value)? fetchChatDetails,
+    TResult Function(ReceiveNewMessage value)? receiveNewMessage,
+    TResult Function(DownloadFile value)? downloadFile,
+    TResult Function(TapToCall value)? tapToCall,
+    TResult Function(PickFile value)? pickFile,
+    TResult Function(AddDocument value)? addDocument,
+    TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
+    TResult Function(ScanDoc value)? scanDoc,
+    TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
+    required TResult orElse(),
+  }) {
+    if (cancelTimer != null) {
+      return cancelTimer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CancelTimer implements ChatDetailEvent {
+  const factory CancelTimer() = _$CancelTimerImpl;
+}
+
+/// @nodoc
+abstract class _$$StartPeriodicTimerImplCopyWith<$Res> {
+  factory _$$StartPeriodicTimerImplCopyWith(_$StartPeriodicTimerImpl value,
+          $Res Function(_$StartPeriodicTimerImpl) then) =
+      __$$StartPeriodicTimerImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int chatId});
+}
+
+/// @nodoc
+class __$$StartPeriodicTimerImplCopyWithImpl<$Res>
+    extends _$ChatDetailEventCopyWithImpl<$Res, _$StartPeriodicTimerImpl>
+    implements _$$StartPeriodicTimerImplCopyWith<$Res> {
+  __$$StartPeriodicTimerImplCopyWithImpl(_$StartPeriodicTimerImpl _value,
+      $Res Function(_$StartPeriodicTimerImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chatId = null,
+  }) {
+    return _then(_$StartPeriodicTimerImpl(
+      null == chatId
+          ? _value.chatId
+          : chatId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StartPeriodicTimerImpl implements StartPeriodicTimer {
+  const _$StartPeriodicTimerImpl(this.chatId);
+
+  @override
+  final int chatId;
+
+  @override
+  String toString() {
+    return 'ChatDetailEvent.startPeriodicTimer(chatId: $chatId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StartPeriodicTimerImpl &&
+            (identical(other.chatId, chatId) || other.chatId == chatId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, chatId);
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartPeriodicTimerImplCopyWith<_$StartPeriodicTimerImpl> get copyWith =>
+      __$$StartPeriodicTimerImplCopyWithImpl<_$StartPeriodicTimerImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String messageContent, ChatDetailModel chatDetails)
+        sendMessage,
+    required TResult Function(int chatId) fetchChatDetails,
+    required TResult Function(MessageModel newMessage) receiveNewMessage,
+    required TResult Function(String url, String fileName) downloadFile,
+    required TResult Function(String number) tapToCall,
+    required TResult Function(BuildContext context) pickFile,
+    required TResult Function(BuildContext context) addDocument,
+    required TResult Function() makeNullSelectedFile,
+    required TResult Function(String image, BuildContext context) scanDoc,
+    required TResult Function(File file) removeDocument,
+    required TResult Function() cancelTimer,
+    required TResult Function(int chatId) startPeriodicTimer,
+  }) {
+    return startPeriodicTimer(chatId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult? Function(int chatId)? fetchChatDetails,
+    TResult? Function(MessageModel newMessage)? receiveNewMessage,
+    TResult? Function(String url, String fileName)? downloadFile,
+    TResult? Function(String number)? tapToCall,
+    TResult? Function(BuildContext context)? pickFile,
+    TResult? Function(BuildContext context)? addDocument,
+    TResult? Function()? makeNullSelectedFile,
+    TResult? Function(String image, BuildContext context)? scanDoc,
+    TResult? Function(File file)? removeDocument,
+    TResult? Function()? cancelTimer,
+    TResult? Function(int chatId)? startPeriodicTimer,
+  }) {
+    return startPeriodicTimer?.call(chatId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String messageContent, ChatDetailModel chatDetails)?
+        sendMessage,
+    TResult Function(int chatId)? fetchChatDetails,
+    TResult Function(MessageModel newMessage)? receiveNewMessage,
+    TResult Function(String url, String fileName)? downloadFile,
+    TResult Function(String number)? tapToCall,
+    TResult Function(BuildContext context)? pickFile,
+    TResult Function(BuildContext context)? addDocument,
+    TResult Function()? makeNullSelectedFile,
+    TResult Function(String image, BuildContext context)? scanDoc,
+    TResult Function(File file)? removeDocument,
+    TResult Function()? cancelTimer,
+    TResult Function(int chatId)? startPeriodicTimer,
+    required TResult orElse(),
+  }) {
+    if (startPeriodicTimer != null) {
+      return startPeriodicTimer(chatId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SendMessage value) sendMessage,
+    required TResult Function(FetchChatDetails value) fetchChatDetails,
+    required TResult Function(ReceiveNewMessage value) receiveNewMessage,
+    required TResult Function(DownloadFile value) downloadFile,
+    required TResult Function(TapToCall value) tapToCall,
+    required TResult Function(PickFile value) pickFile,
+    required TResult Function(AddDocument value) addDocument,
+    required TResult Function(MakeNullSelectedFile value) makeNullSelectedFile,
+    required TResult Function(ScanDoc value) scanDoc,
+    required TResult Function(RemoveDocument value) removeDocument,
+    required TResult Function(CancelTimer value) cancelTimer,
+    required TResult Function(StartPeriodicTimer value) startPeriodicTimer,
+  }) {
+    return startPeriodicTimer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SendMessage value)? sendMessage,
+    TResult? Function(FetchChatDetails value)? fetchChatDetails,
+    TResult? Function(ReceiveNewMessage value)? receiveNewMessage,
+    TResult? Function(DownloadFile value)? downloadFile,
+    TResult? Function(TapToCall value)? tapToCall,
+    TResult? Function(PickFile value)? pickFile,
+    TResult? Function(AddDocument value)? addDocument,
+    TResult? Function(MakeNullSelectedFile value)? makeNullSelectedFile,
+    TResult? Function(ScanDoc value)? scanDoc,
+    TResult? Function(RemoveDocument value)? removeDocument,
+    TResult? Function(CancelTimer value)? cancelTimer,
+    TResult? Function(StartPeriodicTimer value)? startPeriodicTimer,
+  }) {
+    return startPeriodicTimer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SendMessage value)? sendMessage,
+    TResult Function(FetchChatDetails value)? fetchChatDetails,
+    TResult Function(ReceiveNewMessage value)? receiveNewMessage,
+    TResult Function(DownloadFile value)? downloadFile,
+    TResult Function(TapToCall value)? tapToCall,
+    TResult Function(PickFile value)? pickFile,
+    TResult Function(AddDocument value)? addDocument,
+    TResult Function(MakeNullSelectedFile value)? makeNullSelectedFile,
+    TResult Function(ScanDoc value)? scanDoc,
+    TResult Function(RemoveDocument value)? removeDocument,
+    TResult Function(CancelTimer value)? cancelTimer,
+    TResult Function(StartPeriodicTimer value)? startPeriodicTimer,
+    required TResult orElse(),
+  }) {
+    if (startPeriodicTimer != null) {
+      return startPeriodicTimer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StartPeriodicTimer implements ChatDetailEvent {
+  const factory StartPeriodicTimer(final int chatId) = _$StartPeriodicTimerImpl;
+
+  int get chatId;
+
+  /// Create a copy of ChatDetailEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StartPeriodicTimerImplCopyWith<_$StartPeriodicTimerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -4,11 +4,16 @@ import 'package:tms_driver/presentation/customs/custom_icon_button.dart';
 import 'package:tms_driver/presentation/pages/chat_detail/widget/chat_image.dart';
 
 class ChatBarInfo extends StatelessWidget {
-  const ChatBarInfo(
-      {super.key, required this.chatDetails, required this.onPhonePressed});
+  const ChatBarInfo({
+    super.key,
+    required this.chatDetails,
+    required this.onPhonePressed,
+    required this.onArrowBackPressed,
+  });
 
   final ChatDetailModel chatDetails;
   final Function(String) onPhonePressed;
+  final VoidCallback onArrowBackPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +28,7 @@ class ChatBarInfo extends StatelessWidget {
                   justIcon: true,
                   icon: 'arrow',
                   onPressed: () {
+                    onArrowBackPressed();
                     Navigator.of(context).pop();
                   },
                 ),

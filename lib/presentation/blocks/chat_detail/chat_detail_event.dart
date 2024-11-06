@@ -18,4 +18,6 @@ class ChatDetailEvent with _$ChatDetailEvent {
 
   const factory ChatDetailEvent.scanDoc(String image, BuildContext context) = ScanDoc;
   const factory ChatDetailEvent.removeDocument(File file) = RemoveDocument;
+  const factory ChatDetailEvent.cancelTimer() = CancelTimer;
+  const factory ChatDetailEvent.startPeriodicTimer(int chatId) = StartPeriodicTimer;
 }
