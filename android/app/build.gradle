@@ -51,24 +51,25 @@ android {
         versionName flutterVersionName
     }
 
-    signingConfigs {
-        release {
-            storeFile file(localProperties.getProperty('release.storeFile'))
-            storePassword localProperties.getProperty('release.storePassword')
-            keyAlias localProperties.getProperty('release.keyAlias')
-            keyPassword localProperties.getProperty('release.keyPassword')
-        }
-    }
+    // signingConfigs {
+    //     release {
+    //         storeFile file(localProperties.getProperty('release.storeFile')) 
+    //         storePassword localProperties.getProperty('release.storePassword')
+    //         keyAlias localProperties.getProperty('release.keyAlias')
+    //         keyPassword localProperties.getProperty('release.keyPassword')
+    //     }
+    // }
 
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
+    // buildTypes {
+    //     debug {}
+    //     release {
+    //         signingConfig signingConfigs.release
 
-            ndk {
-                debugSymbolLevel 'SYMBOL_TABLE'
-            }
-        }
-    }
+    //         ndk {
+    //             debugSymbolLevel 'SYMBOL_TABLE'
+    //         }
+    //     }
+    // }
 }
 
 flutter {
